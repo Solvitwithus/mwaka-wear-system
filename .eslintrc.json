@@ -1,0 +1,10 @@
+{
+  "extends": ["next/core-web-vitals", "next/typescript"],
+  "rules": {
+    "@typescript-eslint/no-unused-expressions": "off",
+    "@typescript-eslint/no-unused-vars": "off",  // Use 'warn' instead of 'error' to just warn about unused variables
+    "@typescript-eslint/no-require-imports": "off",
+    "@typescript-eslint/no-this-alias": "off",
+    "@typescript-eslint/no-explicit-any": "off"  // Disables the rule for explicit 'any' types
+  }
+}
