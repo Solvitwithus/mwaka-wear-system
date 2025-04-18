@@ -39,6 +39,7 @@ export default function RootLayout({
         
         <div className="flex-1">
           <ConditionalMenu/>
+          
           {children}
         </div>
       </body>

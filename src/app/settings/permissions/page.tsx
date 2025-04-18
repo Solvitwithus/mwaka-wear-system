@@ -8,9 +8,6 @@ interface Roles {
   permissions: { name: string; value: boolean }[];
 }
 
-const Page = () => {
-  
-  const [openModule, setOpenModule] = useState<null | 'procurement' | 'sales' | 'itemsandInventory' | 'humanResourceManagement'>(null);
 
 const procurementPermissions =[
   {name:"requisitionEntry",value:false},
@@ -187,10 +184,92 @@ const humanResourceManagement =[
 ]
 
 
+const transport =[
+  {name:"CreateLoadingOrder",value:false},
+  {name:"VehicleLoading",value:false},
+  {name:"VehiclePurchaseOrderEntry",value:false},
+  {name:"VehiclePurchaseApproval",value:false},
+  {name:"VehiclePayment",value:false},
+  {name:"VehicleConsumption",value:false},
+  {name:"ExpenseInvoice",value:false},
+  {name:"LifecycleTracking",value:false}, 
+  {name:"AddVehicle",value:false},
+  {name:"CreateVehicleShift",value:false},
+  {name:"VehicleCategories",value:false},
+  {name:"VehicleGenealLedgerAccount",value:false},
+  {name:"VehicleExpenseCategories",value:false}, 
+  {name:"DriverListing",value:false},
+  {name:"DriverListing",value:false},
+  {name:"VehicleStatusTracking",value:false}, 
+]
+
+const branch = [
+  {name:"CycleManagement",value:false},
+  {name:"ReceiveNewStockfromTransit",value:false},
+  {name:"BranchInventory",value:false},
+  {name:"StockReturnOrder",value:false}, 
+  {name:"FileReturnLoadingOrder",value:false},
+  {name:"AddBranch",value:false},
+  {name:"CreateNewCycle",value:false}, 
+  {name:"BranchStructure",value:false},
+  {name:"BranchCustomers",value:false},
+  {name:"BranchAssets",value:false},
+  {name:"BranchBudget",value:false}, 
+  {name:"BranchCycleReview",value:false},
+  {name:"BranchDiscountItems",value:false},
+  {name:"BranchStaff",value:false}, 
+]
+
+const thriftPermissions = [
+  {name:"Rebale",value:false},
+  {name:"InventoryItemsGrading",value:false},
+  {name:"PrintGradedItemsBarcode",value:false},
+  {name:"OutstandingGradingOrders",value:false}, 
+  {name:"DiscardItems",value:false},
+  {name:"GradingOrderInquiry",value:false},
+  {name:"GradingReports",value:false},
+  {name:"DiscardedItems",value:false},
+  {name:"WorkCenters",value:false}, 
+]
+
+
+const AssetManagementPermissions = [
+  {name:"AssetPurchase",value:false},
+  {name:"AssetLocationTransfer",value:false},
+  {name:"AssetDisposal",value:false},
+  {name:"AssetSale",value:false}, 
+  {name:"AssetDepreciationorAppreciationRateAdjustments",value:false},
+  {name:"AssetMovements",value:false},
+  {name:"GeneralAssetsReport",value:false},
+  {name:"CreateAsset",value:false},
+  {name:"AssetCategory",value:false},
+  {name:"AssetRateSetup",value:false}, 
+]
+const Page = () => {
+  
+  const [openModule, setOpenModule] = useState<null | 'procurement' | 'sales' | 'itemsandInventory' | 'humanResourceManagement' | 'transport' | 'branch' | 'thrift' | 'asset'>(null);
+
+
+
+const handleBranchPermissions = () => {
+  setOpenModule('branch');
+};
+
+const handleAssetPermissions = () => {
+  setOpenModule('asset');
+};
+
+const handleThriftPermissions = () => {
+  setOpenModule('thrift');
+};
+
 const handleSalesPermissions = () => {
   setOpenModule('sales');
 };
 
+const handleTransportPermissions = () => {
+  setOpenModule('transport');
+};
 const handleModalClose = () => {
   setOpenModule(null);
 };
@@ -289,8 +368,8 @@ setError(echo.error || "Error Posting")
           <h3 className='font-semibold text-[#1b798a] border-b-[1px] border-black mx-2 my-2'>Module Level Permissions</h3>
 <div className='flex border-black border-[1px] my-1'>
 <div className='w-fit py-4 my-2 px-4 cursor-pointer flex flex-col border-r-[2px] border-black'>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]' >1. </span>Asset Management</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>2. </span>Branches</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleAssetPermissions}><span className='text-[#FF8C00]' >1. </span>Asset Management</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleBranchPermissions}><span className='text-[#FF8C00]'>2. </span>Branches</h6>
   <h6 className='text-[#8E530D] ' onClick={handlehumanResourceManagementPermission}><span className='text-[#FF8C00]'>2. </span>Human Resource Managment</h6>
   <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>3. </span>Customer Relationship Management</h6>
   <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>4. </span>Dashboard</h6>
@@ -299,8 +378,8 @@ setError(echo.error || "Error Posting")
   <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>7. </span>Payroll</h6>
   <h6 className='text-[#8E530D] '  onClick={handleProcursementPermission}><span className='text-[#FF8C00]'>8. </span>Procurement</h6>
   <h6 className='text-[#8E530D] '  onClick={handleSalesPermissions}><span className='text-[#FF8C00]'>9. </span>Sales</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>10. </span>Transport</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>11. </span>Thrift Processing</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleTransportPermissions }><span className='text-[#FF8C00]' >10. </span>Transport</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleThriftPermissions}><span className='text-[#FF8C00]'>11. </span>Thrift Processing</h6>
 </div>
 
 <div className='my-2 mx-4'>
@@ -326,6 +405,98 @@ setError(echo.error || "Error Posting")
         <div className='flex flex-wrap gap-2'>
         {
           SalesPermissions.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
+
+
+
+{
+      openModule==='asset' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Asset Management Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          AssetManagementPermissions.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
+
+
+{
+      openModule==='thrift' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Thrifting Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          thriftPermissions.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
+
+{
+      openModule==='branch' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Branch Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          branch.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
+
+
+{
+      openModule==='transport' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Transport Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          transport.map((val,idx)=>(
           
           <div key={idx} className='flex items-center gap-1'>
             <Input type="checkbox" name={val.name}

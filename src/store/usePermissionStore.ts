@@ -157,6 +157,60 @@ interface Permissions {
  ExitRequisitionInquiry: boolean;
  DisciplinaryInquiry: boolean;
  OrientationInquiry:Boolean;
+
+ CreateLoadingOrder:Boolean;
+ VehicleLoading:Boolean;
+ VehiclePurchaseOrderEntry:Boolean;
+ VehiclePurchaseApproval:Boolean;
+ VehiclePayment:Boolean;
+ VehicleConsumption:Boolean;
+ ExpenseInvoice:Boolean;
+ LifecycleTracking:Boolean;
+ AddVehicle:Boolean;
+ CreateVehicleShift:Boolean;
+ VehicleCategories:Boolean;
+ VehicleGenealLedgerAccount:Boolean;
+ VehicleExpenseCategories:Boolean;
+ DriverListing:Boolean;
+ VehicleListing:Boolean;
+ VehicleStatusTracking:Boolean;
+
+ CycleManagement:Boolean;
+ ReceiveNewStockfromTransit:Boolean;
+ BranchInventory:Boolean;
+ StockReturnOrder:Boolean;
+ FileReturnLoadingOrder:Boolean;
+ AddBranch:Boolean;
+ CreateNewCycle:Boolean;
+ BranchStructure:Boolean;
+ BranchCustomers:Boolean;
+ BranchAssets:Boolean;
+ BranchBudget:Boolean;
+ BranchCycleReview:Boolean;
+ BranchDiscountItems:Boolean;
+ BranchStaff:Boolean;
+
+ Rebale:Boolean;
+ InventoryItemsGrading:Boolean;
+ PrintGradedItemsBarcode:Boolean;
+ OutstandingGradingOrders:Boolean;
+ DiscardItems:Boolean;
+ GradingOrderInquiry:Boolean;
+ GradingReports:Boolean;
+ DiscardedItems:Boolean;
+ WorkCenters:Boolean;
+
+
+ AssetPurchase:Boolean;
+ AssetLocationTransfer:Boolean;
+ AssetDisposal:Boolean;
+ AssetSale:Boolean;
+ AssetDepreciationorAppreciationRateAdjustments:Boolean;
+ AssetMovements:Boolean;
+ GeneralAssetsReport:Boolean;
+ CreateAsset:Boolean;
+ AssetCategory:Boolean;
+ AssetRateSetup:Boolean;
 }
 
 interface PermissionStore {
