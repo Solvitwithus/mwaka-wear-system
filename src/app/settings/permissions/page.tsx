@@ -245,14 +245,35 @@ const AssetManagementPermissions = [
   {name:"AssetCategory",value:false},
   {name:"AssetRateSetup",value:false}, 
 ]
+
+
+const menuPermissions =[
+  {name:"AssetManagement",value:false},
+  {name:"Branches",value:false},
+  {name:"CRM",value:false},
+  {name:"Dashboard",value:false}, 
+  {name:"Finance",value:false},
+  {name:"HRM",value:false},
+  {name:"ItemsandInventory",value:false},
+  {name:"Payroll",value:false},
+  {name:"Procurement",value:false},
+  {name:"Sales",value:false},
+  {name:"Transport",value:false},
+  {name:"ThriftProcessing",value:false},
+  {name:"Settings",value:false},
+]
 const Page = () => {
   
-  const [openModule, setOpenModule] = useState<null | 'procurement' | 'sales' | 'itemsandInventory' | 'humanResourceManagement' | 'transport' | 'branch' | 'thrift' | 'asset'>(null);
+  const [openModule, setOpenModule] = useState<null | 'procurement' | 'sales' | 'itemsandInventory' | 'humanResourceManagement' | 'transport' | 'branch' | 'thrift' | 'asset'|'menu'>(null);
 
 
 
 const handleBranchPermissions = () => {
   setOpenModule('branch');
+};
+
+const handleMenuPermissions = () => {
+  setOpenModule('menu');
 };
 
 const handleAssetPermissions = () => {
@@ -370,16 +391,17 @@ setError(echo.error || "Error Posting")
 <div className='w-fit py-4 my-2 px-4 cursor-pointer flex flex-col border-r-[2px] border-black'>
   <h6 className='text-[#8E530D] ' onClick={handleAssetPermissions}><span className='text-[#FF8C00]' >1. </span>Asset Management</h6>
   <h6 className='text-[#8E530D] ' onClick={handleBranchPermissions}><span className='text-[#FF8C00]'>2. </span>Branches</h6>
-  <h6 className='text-[#8E530D] ' onClick={handlehumanResourceManagementPermission}><span className='text-[#FF8C00]'>2. </span>Human Resource Managment</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>3. </span>Customer Relationship Management</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>4. </span>Dashboard</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>5. </span>Finance</h6>
-  <h6 className='text-[#8E530D] ' onClick={handleInventoryPermission}><span className='text-[#FF8C00]'>6. </span>Items and Inventory</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>7. </span>Payroll</h6>
-  <h6 className='text-[#8E530D] '  onClick={handleProcursementPermission}><span className='text-[#FF8C00]'>8. </span>Procurement</h6>
-  <h6 className='text-[#8E530D] '  onClick={handleSalesPermissions}><span className='text-[#FF8C00]'>9. </span>Sales</h6>
-  <h6 className='text-[#8E530D] ' onClick={handleTransportPermissions }><span className='text-[#FF8C00]' >10. </span>Transport</h6>
-  <h6 className='text-[#8E530D] ' onClick={handleThriftPermissions}><span className='text-[#FF8C00]'>11. </span>Thrift Processing</h6>
+  <h6 className='text-[#8E530D] ' onClick={handlehumanResourceManagementPermission}><span className='text-[#FF8C00]'>3. </span>Human Resource Managment</h6>
+  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>4. </span>Customer Relationship Management</h6>
+  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>5. </span>Dashboard</h6>
+  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>6. </span>Finance</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleInventoryPermission}><span className='text-[#FF8C00]'>7. </span>Items and Inventory</h6>
+  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>8. </span>Payroll</h6>
+  <h6 className='text-[#8E530D] '  onClick={handleProcursementPermission}><span className='text-[#FF8C00]'>9. </span>Procurement</h6>
+  <h6 className='text-[#8E530D] '  onClick={handleSalesPermissions}><span className='text-[#FF8C00]'>10. </span>Sales</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleTransportPermissions }><span className='text-[#FF8C00]' >11. </span>Transport</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleThriftPermissions}><span className='text-[#FF8C00]'>12. </span>Thrift Processing</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleMenuPermissions}><span className='text-[#FF8C00]'>8. </span>Menu</h6>
 </div>
 
 <div className='my-2 mx-4'>
@@ -429,6 +451,29 @@ setError(echo.error || "Error Posting")
         <div className='flex flex-wrap gap-2'>
         {
           AssetManagementPermissions.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
+
+
+{
+      openModule==='menu' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Menu Accessibility Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          menuPermissions.map((val,idx)=>(
           
           <div key={idx} className='flex items-center gap-1'>
             <Input type="checkbox" name={val.name}

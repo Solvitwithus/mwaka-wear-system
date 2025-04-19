@@ -1,16 +1,44 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { NavItems } from "./navitems";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx"; // Optional for clean class handling
+import { usePermissionStore } from '@/store/usePermissionStore';
 
+type Permissions = {
+  AssetManagement:Boolean;
+  Branches:Boolean;
+  CRM:Boolean;
+  Dashboard:Boolean;
+  Finance:Boolean;
+  HRM:Boolean;
+  ItemsandInventory:Boolean;
+  Payroll:Boolean;
+  Procurement:Boolean;
+  Sales:Boolean;
+  Transport:Boolean;
+  ThriftProcessing:Boolean;
+  Settings:Boolean;
+  
+ 
+  
+}
 const NavMenu = () => {
-  const pathname = usePathname();
 
+   const { permissions, loading, fetchPermissions } = usePermissionStore();
+  
+    useEffect(() => {
+      fetchPermissions();
+    }, [fetchPermissions]);
+  
+    if (loading) return <p>Loading...</p>;
+    if (!permissions) return <p>Unauthorized</p>;
+  const pathname = usePathname();
+  const filteredNavItems = NavItems.filter(item => permissions[item.permission as keyof Permissions]);
   return (
 <div className="flex ml-1 font-serif whitespace-nowrap">
-      {NavItems.map((nav, idx) => {
+      {filteredNavItems.map((nav, idx) => {
         const isActive = pathname === nav.link;
 
         return (

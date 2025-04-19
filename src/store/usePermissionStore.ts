@@ -211,6 +211,21 @@ interface Permissions {
  CreateAsset:Boolean;
  AssetCategory:Boolean;
  AssetRateSetup:Boolean;
+
+
+ AssetManagement:Boolean;
+ Branches:Boolean;
+ CRM:Boolean;
+ Dashboard:Boolean;
+ Finance:Boolean;
+ HRM:Boolean;
+ ItemsandInventory:Boolean;
+ Payroll:Boolean;
+ Procurement:Boolean;
+ Sales:Boolean;
+ Transport:Boolean;
+ ThriftProcessing:Boolean;
+ Settings:Boolean;
 }
 
 interface PermissionStore {
