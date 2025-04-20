@@ -199,7 +199,7 @@ const transport =[
   {name:"VehicleGenealLedgerAccount",value:false},
   {name:"VehicleExpenseCategories",value:false}, 
   {name:"DriverListing",value:false},
-  {name:"DriverListing",value:false},
+  {name:"VehicleListing",value:false},
   {name:"VehicleStatusTracking",value:false}, 
 ]
 
@@ -262,14 +262,97 @@ const menuPermissions =[
   {name:"ThriftProcessing",value:false},
   {name:"Settings",value:false},
 ]
+
+const payroll = [
+  {name:"MonthlyPosting",value:false},
+  {name:"RecurrentPosting",value:false},
+  {name:"ApprovePayroll",value:false},
+  {name:"ProcessPayroll",value:false}, 
+  {name:"DeductionRegistration",value:false},
+  {name:"EarningorDeductionApproval",value:false},
+  {name:"SendPayslip",value:false},
+  {name:"StaffAbsentismReview",value:false},
+  {name:"PayslipsReport",value:false},
+  {name:"MonthlyPostingReport",value:false},
+  {name:"RecurrentPostingReview",value:false},
+  {name:"DeductionsInquiry",value:false},
+  {name:"AddBank",value:false},
+  {name:"DeductionOrganizations",value:false},
+  {name:"Earnings",value:false},
+  {name:"Deductions",value:false},
+  {name:"TaxNSSFNHIFHLandReliefSetup",value:false},
+  {name:"PayrollandGeneralLedger",value:false},
+]
+
+
+const customerRelationshipManagement = [
+  {name:"SalesDashboard",value:false},
+  {name:"CustomerAnalysis",value:false},
+  {name:"CustomerTransactionView",value:false},
+  {name:"CustomerListing",value:false},
+  {name:"CustomerRemarks",value:false},
+  {name:"DisqualifiedLeads",value:false},
+  {name:"Appointments",value:false},
+  {name:"AddandManageLeads",value:false},
+  {name:"SalesArea",value:false},
+  {name:"SalesGroups",value:false},
+]
+
+const bankingandGenealLedgers = [
+  {name:"SuperPayments",value:false},
+  {name:"Deposits",value:false},
+  {name:"BankTransfers",value:false},
+  {name:"ApprovePayments",value:false},
+  {name:"BudgetEntry",value:false},
+  {name:"BudgetEvaluation",value:false},
+  {name:"BudgetApproval",value:false},
+  {name:"JournalEntry",value:false},
+  {name:"ReconcileBankAccounts",value:false},
+  {name:"ApproveJournalEntry",value:false},
+  {name:"RequisitiontoAddtoPettyCashBook",value:false},
+  {name:"PettyCashBookRequisitionReview",value:false},
+  {name:"ApprovePettyCashBookRequisition",value:false},
+  {name:"BalanceBooks",value:false},
+{name:"PettyCashBookReport",value:false},
+  {name:"JournalInquiry",value:false},
+  {name:"BankAccountInquiry",value:false},
+  {name:"TaxInquiry",value:false},
+  {name:"BudgetInquiry",value:false},
+  {name:"BalanceSheet",value:false},
+  {name:"BankReports",value:false},
+  {name:"GeneralLedgersReports",value:false},
+ {name:"MpesaTill",value:false},
+  {name:"BankAccounts",value:false},
+  {name:"Banks",value:false},
+  {name:"Currencies",value:false},
+  {name:"PaymentMethods",value:false},
+  {name:"ExchangeRates",value:false},
+  {name:"GLAccounts",value:false},
+  {name:"GLAccountsGroups",value:false},
+  {name:"BudgetPeriods",value:false},
+]
 const Page = () => {
   
-  const [openModule, setOpenModule] = useState<null | 'procurement' | 'sales' | 'itemsandInventory' | 'humanResourceManagement' | 'transport' | 'branch' | 'thrift' | 'asset'|'menu'>(null);
+  const [openModule, setOpenModule] = useState<null | 'procurement' | 'sales' | 'itemsandInventory' | 'humanResourceManagement' | 'transport' | 'branch' | 'thrift' | 'asset'|'menu'|'payroll' |'customerRelationshipManagement' | 'bankingandGenealLedgers'>(null);
 
 
+
+const handleBankingandGenealLedgersPermissions = () => {
+  setOpenModule('bankingandGenealLedgers');
+};
 
 const handleBranchPermissions = () => {
   setOpenModule('branch');
+};
+
+const handlecustomerRelationshipManagementPermissions = () => {
+  setOpenModule('customerRelationshipManagement');
+};
+
+
+
+const handlePayrollPermissions = () => {
+  setOpenModule('payroll');
 };
 
 const handleMenuPermissions = () => {
@@ -392,11 +475,11 @@ setError(echo.error || "Error Posting")
   <h6 className='text-[#8E530D] ' onClick={handleAssetPermissions}><span className='text-[#FF8C00]' >1. </span>Asset Management</h6>
   <h6 className='text-[#8E530D] ' onClick={handleBranchPermissions}><span className='text-[#FF8C00]'>2. </span>Branches</h6>
   <h6 className='text-[#8E530D] ' onClick={handlehumanResourceManagementPermission}><span className='text-[#FF8C00]'>3. </span>Human Resource Managment</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>4. </span>Customer Relationship Management</h6>
+  <h6 className='text-[#8E530D] ' onClick={handlecustomerRelationshipManagementPermissions}><span className='text-[#FF8C00]'>4. </span>Customer Relationship Management</h6>
   <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>5. </span>Dashboard</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>6. </span>Finance</h6>
+  <h6 className='text-[#8E530D] ' onClick={handleBankingandGenealLedgersPermissions}><span className='text-[#FF8C00]'>6. </span>Finance</h6>
   <h6 className='text-[#8E530D] ' onClick={handleInventoryPermission}><span className='text-[#FF8C00]'>7. </span>Items and Inventory</h6>
-  <h6 className='text-[#8E530D] '><span className='text-[#FF8C00]'>8. </span>Payroll</h6>
+  <h6 className='text-[#8E530D] ' onClick={handlePayrollPermissions}><span className='text-[#FF8C00]'>8. </span>Payroll</h6>
   <h6 className='text-[#8E530D] '  onClick={handleProcursementPermission}><span className='text-[#FF8C00]'>9. </span>Procurement</h6>
   <h6 className='text-[#8E530D] '  onClick={handleSalesPermissions}><span className='text-[#FF8C00]'>10. </span>Sales</h6>
   <h6 className='text-[#8E530D] ' onClick={handleTransportPermissions }><span className='text-[#FF8C00]' >11. </span>Transport</h6>
@@ -443,7 +526,73 @@ setError(echo.error || "Error Posting")
       </div>
     }
 
+{
+      openModule==='payroll' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Payroll Management Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          payroll.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
 
+{
+      openModule==='bankingandGenealLedgers' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Finance Management Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          bankingandGenealLedgers.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
+
+
+
+{
+      openModule==='customerRelationshipManagement' && <div>
+        <h4 className='font-mono font-bold text-base text-green-600 underline'>Customer Relationship Management CRM Management Module Permissions</h4>
+        <div className='flex flex-wrap gap-2'>
+        {
+          customerRelationshipManagement.map((val,idx)=>(
+          
+          <div key={idx} className='flex items-center gap-1'>
+            <Input type="checkbox" name={val.name}
+      checked={role.permissions.find(p => p.name === val.name)?.value || false}
+      onChange={handlePermissions}/>
+            <label>{val.name}</label>
+          </div>
+          
+         )) 
+        }
+        
+      </div>
+      <button onClick={handleModalClose} className='border-[1px] border-black rounded-md px-2 font-thin text-sm text-red-800'>Close</button>
+      </div>
+    }
 
 {
       openModule==='asset' && <div>

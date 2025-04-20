@@ -33,7 +33,8 @@ const response = await axios.post("/api/auth/login",userData,{ withCredentials: 
 
 setSuccess(response.data.message)
 setuserData(initialState)
-window.location.href = "/procurement";
+alert("shaka")
+window.location.href = "/dashboard";
 
 
 

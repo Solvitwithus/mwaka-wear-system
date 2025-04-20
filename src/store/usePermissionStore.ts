@@ -226,6 +226,69 @@ interface Permissions {
  Transport:Boolean;
  ThriftProcessing:Boolean;
  Settings:Boolean;
+
+
+ MonthlyPosting:Boolean;
+ RecurrentPosting:Boolean;
+ ApprovePayroll:Boolean;
+ ProcessPayroll:Boolean;
+ DeductionRegistration:Boolean;
+ EarningorDeductionApproval:Boolean;
+ SendPayslip:Boolean;
+ StaffAbsentismReview:Boolean;
+ PayslipsReport:Boolean;
+ MonthlyPostingReport:Boolean;
+ RecurrentPostingReview:Boolean;
+ DeductionsInquiry:Boolean;
+ AddBank:Boolean;
+ DeductionOrganizations:Boolean;
+ Earnings:Boolean;
+ Deductions:Boolean;
+ TaxNSSFNHIFHLandReliefSetup:Boolean;
+ PayrollandGeneralLedger:Boolean;
+
+ SalesDashboard: boolean;
+ CustomerAnalysis: boolean;
+ CustomerTransactionView: boolean;
+ CustomerListing: boolean;
+ CustomerRemarks: boolean;
+ DisqualifiedLeads: boolean;
+ Appointment: boolean;
+ AddandManageLeads: boolean;
+ SalesArea: boolean;
+ SalesGroups: boolean;
+
+ SuperPayments: boolean;
+ Deposits: boolean;
+ BankTransfers: boolean;
+ ApprovePayments: boolean;
+ BudgetEntry: boolean;
+ BudgetEvaluation: boolean;
+ BudgetApproval: boolean;
+ JournalEntry: boolean;
+ ReconcileBankAccounts: boolean;
+ ApproveJournalEntry: boolean;
+ RequisitiontoAddtoPettyCashBook: boolean;
+ PettyCashBookRequisitionReview: boolean;
+ ApprovePettyCashBookRequisition: boolean;
+ BalanceBooks: boolean;
+PettyCashBookReport: boolean;
+ JournalInquiry: boolean;
+ BankAccountInquiry: boolean;
+ TaxInquiry: boolean;
+ BudgetInquiry: boolean;
+ BalanceSheet: boolean;
+ BankReports: boolean;
+ GeneralLedgersReports: boolean;
+MpesaTill: boolean;
+ BankAccounts: boolean;
+ Banks:Boolean;
+ Currencies: boolean;
+ PaymentMethods: boolean;
+ ExchangeRates:Boolean;
+ GLAccounts: boolean;
+ GLAccountsGroups: boolean;
+ BudgetPeriods:Boolean;
 }
 
 interface PermissionStore {

@@ -40,6 +40,7 @@ const Page = () => {
 
   useEffect(() => {
     fetchPermissions();
+    console.log("Fetched permissions:", permissions);
   }, [fetchPermissions]);
 
   if (loading) return <p>Loading...</p>;
