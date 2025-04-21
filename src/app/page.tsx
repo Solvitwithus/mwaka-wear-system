@@ -22,18 +22,19 @@ export default function Home() {
   const [userData, setuserData] = useState<login>(initialState);
   const [success, setSuccess] = useState<string>("");
 const [error, setError] = useState<string>("");
+const [loading, setLoading] = useState<boolean>(false);
   const handleUserInput =(e:ChangeEvent<HTMLInputElement>)=>{
 const {name,value} = e.target
 setuserData({...userData,[name]:value})
   }
   const handleAuthentication =async(e:FormEvent<HTMLFormElement>)=>{
 e.preventDefault()
+setLoading(true);
 try{
 const response = await axios.post("/api/auth/login",userData,{ withCredentials: true })
 
 setSuccess(response.data.message)
 setuserData(initialState)
-alert("shaka")
 window.location.href = "/dashboard";
 
 
@@ -84,7 +85,20 @@ catch(err : any){
         <Input type='password' required placeholder="Password" className="pl-10" name="password" value={userData.password} onChange={handleUserInput}/>
         </div>
        <div className="flex flex-col justify-center gap-2 mt-2">
-       <Button type="submit" className="bg-[#006E7A] text-[#FF8C00]">Login</Button>
+
+       <Button
+                type="submit"
+                className="bg-[#006E7A] text-[#FF8C00]"
+                disabled={loading}
+              >
+                {loading ? "Loging In..." : "Login"}
+              </Button>
+
+
+
+
+      
+       
        <Button className="bg-[#FF8C00] text-[#006E7A]">Change Password</Button>
        </div>
        

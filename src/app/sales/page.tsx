@@ -178,7 +178,7 @@ const filteredSetupItems = setupItems.filter(item => permissions[item.permission
     {/* Right Content */}
     <div  className='flex flex-col bg-[#CACACA] w-2/4 border-[1px] border-black m-2 h-fit mb-10 rounded-md'>
 
-    <span className=' bg-[#006E7A] px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Reports and Inquiries</span>
+    <span className=' bg-[#006E7A] px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Sales Reports and Inquiries</span>
     <div className='ml-2'>
       
         {/* Upper Content */}

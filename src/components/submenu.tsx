@@ -83,6 +83,7 @@ import React, { useEffect, useState } from 'react';
 import credentialImage from "@/assets/change-cedentials-icon.svg";
 import logoutImage from "@/assets/logout.svg";
 import axios from 'axios';
+import Link from 'next/link';
 
 const handleCredentialChange = () => {
   alert("Change Credentials clicked!");
@@ -155,8 +156,9 @@ const Submenu = () => {
   return (
     <>
       <nav className='flex justify-between items-center border border-black bg-[#D9D9D9] px-2 py-1 mx-1 mt-[0.5px]'>
-        <span className='text-[#894B00] text-sm font-semibold font-sans'>
-          MwaKa Clothing Center | skeletalerpapp.vercel.com | SolvIt Support chatHub
+        <span className='text-[#894B00] text-sm font-semibold font-sans inline'>
+          MwaKa Clothing Center | skeletalerpapp.vercel.com | SolvIt Support
+          <Link href="/chathub" className='font-serif text-[#2b8508]'> --- ChatHub ---</Link>
         </span>
         <div className='flex gap-4'>
           {menuItems.map((item, index) => (

@@ -61,7 +61,7 @@ const Page = () => {
       <div className='flex justify-center gap-4'>
         {/* left content */}
         <div className=' flex flex-col bg-[#CACACA] w-1/3 border-[1px] border-black m-2 h-fit rounded-md'>
-      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Procurement Operations</span>
+      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Customer Relationship Management Operations</span>
       <div className='ml-2'>
         {
          filteredMenu.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
@@ -74,7 +74,7 @@ const Page = () => {
 
         {/* right content */}
         <div className=' flex flex-col bg-[#CACACA] w-2/3 border-[1px] border-black m-2 h-96 rounded-md'>
-      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Reports and Inquiries</span>
+      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Customer Relationship Management Reports and Inquiries</span>
       <div className='ml-2'>
       {
          filteredReports.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
@@ -83,7 +83,7 @@ const Page = () => {
           </Link>))
         }
         </div>
-        <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Procurement Setups and Company Configuration</span>
+        <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Customer Relationship Management Setups and Company Configuration</span>
         <div className='ml-2'>
           {
              filteredSettings.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>

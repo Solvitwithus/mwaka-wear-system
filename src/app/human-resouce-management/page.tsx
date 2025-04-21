@@ -99,19 +99,23 @@ const Page = () => {
       {title:"Mark Employee Attendance",link:"/sales/pos-report",permission:"MarkEmployeeAttendance",image:StudIcon},
       {title:"Report Employee for Disciplinary",link:"/procurement/",permission:" ReportEmployeeforDisciplinary",image:StudIcon},
       {title:"Issue Disciplinary Warning",link:"/procurement/",permission:"IssueDisciplinaryWarning",image:StudIcon},
-      {title:"List Warned Employees",link:"/sales/pos-report",permission:"ListWarnedEmployees",image:StudIcon},
-      {title:"List Pending Disciplinaries",link:"/procurement/",permission:"ListPendingDisciplinaries",image:StudIcon},
-      {title:"Final Disciplinary Hearing",link:"/sales/pos-report",permission:"FinalDisciplinaryHearin",image:StudIcon},
-      {title:"Disciplinary Case-Closure",link:"/procurement/",permission:"DisciplinaryCaseClosure",image:StudIcon},
-      {title:"RequestExit",link:"/sales/pos-report",permission:"RequestExit",image:StudIcon},
-      {title:"ReviewExitRequestandApproval",link:"/procurement/",permission:"ReviewExitRequestandApproval",image:StudIcon},
-      {title:"Employee Exit",link:"/sales/pos-report",permission:"EmployeeExit",image:StudIcon},
-      {title:"Employee Transfer Request",link:"/procurement/",permission:"EmployeeTransferRequest",image:StudIcon},
-      {title:"Employee Transfer Approval Decline",link:"/sales/pos-report",permission:"TransferApprovalDecline",image:StudIcon},
-      {title:"Employee Promotion Request",link:"/procurement/",permission:"EmployeePromotionRequest",image:StudIcon},
-      {title:"PromotionApproval",link:"/sales/pos-report",permission:"PromotionApproval",image:StudIcon},
-      {title:"Direct Employee Promotion",link:"/procurement/",permission:"DirectPromotion",image:StudIcon},
-   
+     
+  ]
+
+  const rightleftmenu = [
+    {title:"List Warned Employees",link:"/sales/pos-report",permission:"ListWarnedEmployees",image:StudIcon},
+    {title:"List Pending Disciplinaries",link:"/procurement/",permission:"ListPendingDisciplinaries",image:StudIcon},
+    {title:"Final Disciplinary Hearing",link:"/sales/pos-report",permission:"FinalDisciplinaryHearin",image:StudIcon},
+    {title:"Disciplinary Case-Closure",link:"/procurement/",permission:"DisciplinaryCaseClosure",image:StudIcon},
+    {title:"RequestExit",link:"/sales/pos-report",permission:"RequestExit",image:StudIcon},
+    {title:"ReviewExitRequestandApproval",link:"/procurement/",permission:"ReviewExitRequestandApproval",image:StudIcon},
+    {title:"Employee Exit",link:"/sales/pos-report",permission:"EmployeeExit",image:StudIcon},
+    {title:"Employee Transfer Request",link:"/procurement/",permission:"EmployeeTransferRequest",image:StudIcon},
+    {title:"Employee Transfer Approval Decline",link:"/sales/pos-report",permission:"TransferApprovalDecline",image:StudIcon},
+    {title:"Employee Promotion Request",link:"/procurement/",permission:"EmployeePromotionRequest",image:StudIcon},
+    {title:"PromotionApproval",link:"/sales/pos-report",permission:"PromotionApproval",image:StudIcon},
+    {title:"Direct Employee Promotion",link:"/procurement/",permission:"DirectPromotion",image:StudIcon},
+ 
 
   ]
 
@@ -126,6 +130,10 @@ const Page = () => {
     {title:"Leave Types",link:"/procurement/",permission:"LeaveTypes",image:SettingsIcon},
     {title:"Designation Titles",link:"/sales/pos-report",permission:"DesignationTitles",image:SettingsIcon},
     {title:"Priority Levels",link:"/procurement/",permission:"PriorityLevels",image:SettingsIcon},
+    
+  ]
+
+  const leftConfiguration =[
     {title:"Contract Types",link:"/sales/pos-report",permission:"ContractTypes",image:SettingsIcon},
     {title:"Payment Mode",link:"/procurement/",permission:"PaymentMode",image:SettingsIcon},
     {title:"Non Attendance Reasons",link:"/sales/pos-report",permission:"NonAttendanceReasons",image:SettingsIcon},
@@ -146,6 +154,8 @@ const Page = () => {
     {title:"OrientationInquiry",link:"/sales/pos-report",permission:"OrientationInquiry",image:reportIcon},
   ]
 
+  const filteredLeftConfiguration = leftConfiguration.filter(item => permissions[item.permission as keyof Permissions]);                  
+const filteredRightleftmenu = rightleftmenu.filter(item => permissions[item.permission as keyof Permissions]);
   const filteredReporsandInquiry = reporsandInquiry.filter(item => permissions[item.permission as keyof Permissions]);
   const filteredConfiguration = configuration.filter(item => permissions[item.permission as keyof Permissions]);  
   const filteredMenu = menu.filter(item => permissions[item.permission as keyof Permissions]);                  
@@ -154,22 +164,31 @@ const Page = () => {
     {/* wrapper */}
     <div className='flex justify-center gap-4'>
       {/* left content */}
-      <div className=' flex flex-col bg-[#CACACA] w-1/3 border-[1px] border-black m-2 h-fit rounded-md'>
-    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Procurement Operations</span>
-    <div className='ml-2'>
+      <div className=' flex flex-col bg-[#CACACA] w-2/4 border-[1px] border-black m-2 h-fit rounded-md'>
+    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Human Resource Management Operations</span>
+    <div className='ml-2 flex gap-6'>
+    <div className='flex flex-col'>
       {
        filteredMenu.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
         <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
         <span className="text-[#8E530D] cursor-pointer font-medium text-sm">{val.title}</span>
         </Link>))
       }
-      
+</div>
+<div className='flex flex-col'>
+       {
+       filteredRightleftmenu.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
+        <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
+        <span className="text-[#8E530D] cursor-pointer font-medium text-sm">{val.title}</span>
+        </Link>))
+      }
+     </div> 
       </div>
       </div>
 
       {/* right content */}
       <div className=' flex flex-col bg-[#CACACA] w-2/3 border-[1px] border-black m-2 h-fit rounded-md'>
-    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Reports and Inquiries</span>
+    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Human Resource Management Reports and Inquiries</span>
     <div className='ml-2'>
     {
        filteredReporsandInquiry.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
@@ -178,14 +197,23 @@ const Page = () => {
         </Link>))
       }
       </div>
-      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Procurement Setups and Company Configuration</span>
-      <div className='ml-2'>
+      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Human Resource Management Setups and Company Configuration</span>
+      <div className='ml-2 flex gap-16'>
+      <div className='flex flex-col'>
         {
            filteredConfiguration.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
             <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
             <span className="text-[#333333] cursor-pointer font-medium text-sm">{val.title}</span>
             </Link>))
         }
+</div>
+<div className='flex flex-col'>
+{
+           filteredLeftConfiguration.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
+            <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
+            <span className="text-[#333333] cursor-pointer font-medium text-sm">{val.title}</span>
+            </Link>))
+        }</div>
       </div>
       </div>
     </div>

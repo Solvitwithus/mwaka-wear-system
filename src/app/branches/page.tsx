@@ -78,7 +78,7 @@ const filteredTransactions = transactions.filter(item => permissions[item.permis
     <div className='flex justify-center gap-4'>
       {/* left content */}
       <div className=' flex flex-col bg-[#CACACA] w-1/3 border-[1px] border-black m-2 h-fit rounded-md'>
-    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Procurement Operations</span>
+    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Branch Operations</span>
     <div className='ml-2'>
       {
        filteredTransactions.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
@@ -92,7 +92,7 @@ const filteredTransactions = transactions.filter(item => permissions[item.permis
 
       {/* right content */}
       <div className=' flex flex-col bg-[#CACACA] w-2/3 border-[1px] border-black m-2 h-fit rounded-md'>
-    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Reports and Inquiries</span>
+    <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Branch Reports and Inquiries</span>
     <div className='ml-2'>
     {
        filteredReport.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
@@ -101,7 +101,7 @@ const filteredTransactions = transactions.filter(item => permissions[item.permis
         </Link>))
       }
       </div>
-      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Procurement Setups and Company Configuration</span>
+      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Branch Setups and Company Configuration</span>
       <div className='ml-2'>
         {
           filteredSetup.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
