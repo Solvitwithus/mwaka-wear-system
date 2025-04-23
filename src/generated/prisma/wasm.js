@@ -143,6 +143,12 @@ exports.Prisma.PermissionScalarFieldEnum = {
   roleId: 'roleId'
 };
 
+exports.Prisma.MessageScalarFieldEnum = {
+  id: 'id',
+  file: 'file',
+  chat: 'chat'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -157,7 +163,8 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.ModelName = {
   User: 'User',
   Role: 'Role',
-  Permission: 'Permission'
+  Permission: 'Permission',
+  Message: 'Message'
 };
 
 /**

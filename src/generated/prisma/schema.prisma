@@ -43,3 +43,9 @@ model Permission {
   role   Role    @relation(fields: [roleId], references: [id], onDelete: Cascade)
   roleId String
 }
+
+model Message {
+  id   String  @id @default(uuid())
+  file String?
+  chat String?
+}

@@ -45,3 +45,10 @@ model Permission {
 }
 
 
+
+model Message {
+  id       String  @id @default(uuid())
+  file     String? 
+  chat     String?
+ 
+}
