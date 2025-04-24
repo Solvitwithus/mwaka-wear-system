@@ -4,9 +4,14 @@
 import {Paperclip,SendIcon} from 'lucide-react'
 import { Input } from "@/components/ui/input";
 import { supabase } from "@/lib/supabase";
-import { useState,useRef,useEffect,useCallback } from "react";
+import { useState,useRef,useEffect,useCallback, ChangeEvent } from "react";
 import axios from "axios";
 
+interface profile {
+  profileName:string,
+  profileAbout:string
+
+}
 const ChatUploader = () => {
   const [chatInput, setChatInput] = useState("");
   const [fileUrl, setFileUrl] = useState<string | null>(null);
@@ -43,6 +48,66 @@ const ChatUploader = () => {
     setUploading(false);
   };
 
+
+
+  const [userProfileDetails, setuserProfileDetails] = useState<profile>({profileName:"",profileAbout:""});
+  const [profileUrl, setProfileUrl] = useState<string | null>(null);
+
+  const handleProfileUpload = async (file: File) => {
+    setUploading(true);
+    const fileName = `${Date.now()}-${file.name}`;
+  
+    const { data, error } = await supabase.storage
+      .from("mwaka-weak-chathub")
+      .upload(fileName, file);
+  
+    if (error) {
+      console.error("Upload error:", error.message);
+    
+      setUploading(false);
+      return;
+    }
+  
+    const { data: publicUrlData } = supabase.storage
+      .from("mwaka-weak-chathub")
+      .getPublicUrl(fileName);
+  
+    if (publicUrlData?.publicUrl) {
+      setProfileUrl(publicUrlData.publicUrl); 
+      console.log("Uploaded to ✔🐱‍👓🐱‍👓🐱‍👓✔✔✔🐱‍👓🐱‍👓:", publicUrlData.publicUrl);
+     
+    }
+  
+    setUploading(false);
+  };
+
+  const handleProfileNameInput =(e:ChangeEvent<HTMLInputElement>)=>{
+const {name,value} = e.target
+setuserProfileDetails({...userProfileDetails,[name]:value})
+  }
+
+  const handleProfileSend = async () => {
+    try {
+      const res = await axios.post("/api/auth/profile", {
+        profileName: userProfileDetails.profileName,
+        profilePicture: profileUrl,
+        profileAbout:userProfileDetails.profileAbout
+      });
+
+      if (res.data.success) {
+        setuserProfileDetails({ profileName: "",profileAbout:""});
+        setProfileUrl(null);
+        setRefreshMessages(prev =>!prev)
+      } else {
+        setError(res.data.error || "Failed to send message");
+
+      }
+    } catch (err: any) {
+      setError(err.message || "Unknown error");
+    }
+  };
+
+
 const [data, setData] = useState<any[]>([]);
 const handleFetchfromMessageEndpoint = useCallback(async () => {
   try {
@@ -78,6 +143,8 @@ const handleFetchfromMessageEndpoint = useCallback(async () => {
     }
   };
 
+
+
   const handleFilePopup =()=>{
     if(fileoutput.current){
       fileoutput.current.click()
@@ -88,6 +155,13 @@ const handleFetchfromMessageEndpoint = useCallback(async () => {
     <div className="flex overflow-hidden max-h-max">
       <div className='flex flex-col border-r-[1px] border-black h-screen w-1/4 overflow-x-auto bg-red-700'>
         wawawawawwawawawawwueundhddndjdjdjdjd
+        {profileUrl && <img src={profileUrl} alt="Uploaded preview" className="h-20 w-20 absolute bottom-12 rounded-md border-red-500 border-[1px] z-30 right-[40%]" />}
+        <input type="file" placeholder='select profile'  onChange={(e) => {
+          if (e.target.files?.[0]) handleProfileUpload(e.target.files[0]);
+        }}/>
+        <input type="text" onChange={handleProfileNameInput} placeholder="Enter profilename" name="profileName" value={userProfileDetails.profileName}/>
+        <input type="text" onChange={handleProfileNameInput} placeholder="Enter profile about" name="profileAbout" value={userProfileDetails.profileAbout}/>
+        <SendIcon onClick={handleProfileSend}/>
         {
   Array.from(
     new Map(data.map((val) => [val.user.id, val])).values()

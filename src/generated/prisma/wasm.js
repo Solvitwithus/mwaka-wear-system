@@ -152,6 +152,16 @@ exports.Prisma.MessageScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.ProfileScalarFieldEnum = {
+  id: 'id',
+  profileName: 'profileName',
+  profileAbout: 'profileAbout',
+  profilePicture: 'profilePicture',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -167,7 +177,8 @@ exports.Prisma.ModelName = {
   User: 'User',
   Role: 'Role',
   Permission: 'Permission',
-  Message: 'Message'
+  Message: 'Message',
+  Profile: 'Profile'
 };
 
 /**
