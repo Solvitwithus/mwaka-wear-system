@@ -146,7 +146,10 @@ exports.Prisma.PermissionScalarFieldEnum = {
 exports.Prisma.MessageScalarFieldEnum = {
   id: 'id',
   file: 'file',
-  chat: 'chat'
+  chat: 'chat',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {

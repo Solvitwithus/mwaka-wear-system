@@ -1138,6 +1138,37 @@ export namespace Prisma {
 
 
   /**
+   * Count Type UserCountOutputType
+   */
+
+  export type UserCountOutputType = {
+    messages: number
+  }
+
+  export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    messages?: boolean | UserCountOutputTypeCountMessagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UserCountOutputType
+     */
+    select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountMessagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MessageWhereInput
+  }
+
+
+  /**
    * Count Type RoleCountOutputType
    */
 
@@ -1410,6 +1441,8 @@ export namespace Prisma {
     phone2?: boolean
     description?: boolean
     role?: boolean | RoleDefaultArgs<ExtArgs>
+    messages?: boolean | User$messagesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -1465,6 +1498,8 @@ export namespace Prisma {
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userName" | "password" | "firstName" | "lastName" | "shortName" | "address" | "email" | "roleId" | "branch" | "phone1" | "phone2" | "description", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
+    messages?: boolean | User$messagesArgs<ExtArgs>
+    _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UserIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     role?: boolean | RoleDefaultArgs<ExtArgs>
@@ -1477,6 +1512,7 @@ export namespace Prisma {
     name: "User"
     objects: {
       role: Prisma.$RolePayload<ExtArgs>
+      messages: Prisma.$MessagePayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
@@ -1887,6 +1923,7 @@ export namespace Prisma {
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    messages<T extends User$messagesArgs<ExtArgs> = {}>(args?: Subset<T, User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2320,6 +2357,30 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.messages
+   */
+  export type User$messagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Message
+     */
+    select?: MessageSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Message
+     */
+    omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    where?: MessageWhereInput
+    orderBy?: MessageOrderByWithRelationInput | MessageOrderByWithRelationInput[]
+    cursor?: MessageWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: MessageScalarFieldEnum | MessageScalarFieldEnum[]
   }
 
   /**
@@ -4468,18 +4529,27 @@ export namespace Prisma {
     id: string | null
     file: string | null
     chat: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type MessageMaxAggregateOutputType = {
     id: string | null
     file: string | null
     chat: string | null
+    userId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type MessageCountAggregateOutputType = {
     id: number
     file: number
     chat: number
+    userId: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -4488,18 +4558,27 @@ export namespace Prisma {
     id?: true
     file?: true
     chat?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type MessageMaxAggregateInputType = {
     id?: true
     file?: true
     chat?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type MessageCountAggregateInputType = {
     id?: true
     file?: true
     chat?: true
+    userId?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -4579,6 +4658,9 @@ export namespace Prisma {
     id: string
     file: string | null
     chat: string | null
+    userId: string | null
+    createdAt: Date
+    updatedAt: Date
     _count: MessageCountAggregateOutputType | null
     _min: MessageMinAggregateOutputType | null
     _max: MessageMaxAggregateOutputType | null
@@ -4602,35 +4684,64 @@ export namespace Prisma {
     id?: boolean
     file?: boolean
     chat?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | Message$userArgs<ExtArgs>
   }, ExtArgs["result"]["message"]>
 
   export type MessageSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     file?: boolean
     chat?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | Message$userArgs<ExtArgs>
   }, ExtArgs["result"]["message"]>
 
   export type MessageSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     file?: boolean
     chat?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    user?: boolean | Message$userArgs<ExtArgs>
   }, ExtArgs["result"]["message"]>
 
   export type MessageSelectScalar = {
     id?: boolean
     file?: boolean
     chat?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "chat", ExtArgs["result"]["message"]>
+  export type MessageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "file" | "chat" | "userId" | "createdAt" | "updatedAt", ExtArgs["result"]["message"]>
+  export type MessageInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Message$userArgs<ExtArgs>
+  }
+  export type MessageIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Message$userArgs<ExtArgs>
+  }
+  export type MessageIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    user?: boolean | Message$userArgs<ExtArgs>
+  }
 
   export type $MessagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Message"
-    objects: {}
+    objects: {
+      user: Prisma.$UserPayload<ExtArgs> | null
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       file: string | null
       chat: string | null
+      userId: string | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["message"]>
     composites: {}
   }
@@ -5025,6 +5136,7 @@ export namespace Prisma {
    */
   export interface Prisma__MessageClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    user<T extends Message$userArgs<ExtArgs> = {}>(args?: Subset<T, Message$userArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5057,6 +5169,9 @@ export namespace Prisma {
     readonly id: FieldRef<"Message", 'String'>
     readonly file: FieldRef<"Message", 'String'>
     readonly chat: FieldRef<"Message", 'String'>
+    readonly userId: FieldRef<"Message", 'String'>
+    readonly createdAt: FieldRef<"Message", 'DateTime'>
+    readonly updatedAt: FieldRef<"Message", 'DateTime'>
   }
     
 
@@ -5073,6 +5188,10 @@ export namespace Prisma {
      * Omit specific fields from the Message
      */
     omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
     /**
      * Filter, which Message to fetch.
      */
@@ -5092,6 +5211,10 @@ export namespace Prisma {
      */
     omit?: MessageOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
      * Filter, which Message to fetch.
      */
     where: MessageWhereUniqueInput
@@ -5109,6 +5232,10 @@ export namespace Prisma {
      * Omit specific fields from the Message
      */
     omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
     /**
      * Filter, which Message to fetch.
      */
@@ -5158,6 +5285,10 @@ export namespace Prisma {
      */
     omit?: MessageOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
      * Filter, which Message to fetch.
      */
     where?: MessageWhereInput
@@ -5206,6 +5337,10 @@ export namespace Prisma {
      */
     omit?: MessageOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
      * Filter, which Messages to fetch.
      */
     where?: MessageWhereInput
@@ -5249,9 +5384,13 @@ export namespace Prisma {
      */
     omit?: MessageOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
      * The data needed to create a Message.
      */
-    data?: XOR<MessageCreateInput, MessageUncheckedCreateInput>
+    data: XOR<MessageCreateInput, MessageUncheckedCreateInput>
   }
 
   /**
@@ -5280,6 +5419,10 @@ export namespace Prisma {
      * The data used to create many Messages.
      */
     data: MessageCreateManyInput | MessageCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5294,6 +5437,10 @@ export namespace Prisma {
      * Omit specific fields from the Message
      */
     omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
     /**
      * The data needed to update a Message.
      */
@@ -5346,6 +5493,10 @@ export namespace Prisma {
      * Limit how many Messages to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -5360,6 +5511,10 @@ export namespace Prisma {
      * Omit specific fields from the Message
      */
     omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
     /**
      * The filter to search for the Message to update in case it exists.
      */
@@ -5387,6 +5542,10 @@ export namespace Prisma {
      */
     omit?: MessageOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
+    /**
      * Filter which Message to delete.
      */
     where: MessageWhereUniqueInput
@@ -5407,6 +5566,25 @@ export namespace Prisma {
   }
 
   /**
+   * Message.user
+   */
+  export type Message$userArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User
+     */
+    select?: UserSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the User
+     */
+    omit?: UserOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: UserInclude<ExtArgs> | null
+    where?: UserWhereInput
+  }
+
+  /**
    * Message without action
    */
   export type MessageDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5418,6 +5596,10 @@ export namespace Prisma {
      * Omit specific fields from the Message
      */
     omit?: MessageOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: MessageInclude<ExtArgs> | null
   }
 
 
@@ -5473,7 +5655,10 @@ export namespace Prisma {
   export const MessageScalarFieldEnum: {
     id: 'id',
     file: 'file',
-    chat: 'chat'
+    chat: 'chat',
+    userId: 'userId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type MessageScalarFieldEnum = (typeof MessageScalarFieldEnum)[keyof typeof MessageScalarFieldEnum]
@@ -5515,6 +5700,13 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'DateTime'
+   */
+  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
+    
+
+
+  /**
    * Reference to a field of type 'Int'
    */
   export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
@@ -5542,6 +5734,7 @@ export namespace Prisma {
     phone2?: StringFilter<"User"> | string
     description?: StringNullableFilter<"User"> | string | null
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
+    messages?: MessageListRelationFilter
   }
 
   export type UserOrderByWithRelationInput = {
@@ -5559,6 +5752,7 @@ export namespace Prisma {
     phone2?: SortOrder
     description?: SortOrderInput | SortOrder
     role?: RoleOrderByWithRelationInput
+    messages?: MessageOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -5579,6 +5773,7 @@ export namespace Prisma {
     phone2?: StringFilter<"User"> | string
     description?: StringNullableFilter<"User"> | string | null
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
+    messages?: MessageListRelationFilter
   }, "id" | "userName" | "email">
 
   export type UserOrderByWithAggregationInput = {
@@ -5724,12 +5919,20 @@ export namespace Prisma {
     id?: StringFilter<"Message"> | string
     file?: StringNullableFilter<"Message"> | string | null
     chat?: StringNullableFilter<"Message"> | string | null
+    userId?: StringNullableFilter<"Message"> | string | null
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    updatedAt?: DateTimeFilter<"Message"> | Date | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }
 
   export type MessageOrderByWithRelationInput = {
     id?: SortOrder
     file?: SortOrderInput | SortOrder
     chat?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    user?: UserOrderByWithRelationInput
   }
 
   export type MessageWhereUniqueInput = Prisma.AtLeast<{
@@ -5739,12 +5942,19 @@ export namespace Prisma {
     NOT?: MessageWhereInput | MessageWhereInput[]
     file?: StringNullableFilter<"Message"> | string | null
     chat?: StringNullableFilter<"Message"> | string | null
+    userId?: StringNullableFilter<"Message"> | string | null
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    updatedAt?: DateTimeFilter<"Message"> | Date | string
+    user?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
   }, "id">
 
   export type MessageOrderByWithAggregationInput = {
     id?: SortOrder
     file?: SortOrderInput | SortOrder
     chat?: SortOrderInput | SortOrder
+    userId?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: MessageCountOrderByAggregateInput
     _max?: MessageMaxOrderByAggregateInput
     _min?: MessageMinOrderByAggregateInput
@@ -5757,6 +5967,9 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Message"> | string
     file?: StringNullableWithAggregatesFilter<"Message"> | string | null
     chat?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    userId?: StringNullableWithAggregatesFilter<"Message"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Message"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -5773,6 +5986,7 @@ export namespace Prisma {
     phone2: string
     description?: string | null
     role: RoleCreateNestedOneWithoutUsersInput
+    messages?: MessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateInput = {
@@ -5789,6 +6003,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    messages?: MessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserUpdateInput = {
@@ -5805,6 +6020,7 @@ export namespace Prisma {
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    messages?: MessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateInput = {
@@ -5821,6 +6037,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserCreateManyInput = {
@@ -5972,42 +6189,62 @@ export namespace Prisma {
     id?: string
     file?: string | null
     chat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    user?: UserCreateNestedOneWithoutMessagesInput
   }
 
   export type MessageUncheckedCreateInput = {
     id?: string
     file?: string | null
     chat?: string | null
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type MessageUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     file?: NullableStringFieldUpdateOperationsInput | string | null
     chat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    user?: UserUpdateOneWithoutMessagesNestedInput
   }
 
   export type MessageUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     file?: NullableStringFieldUpdateOperationsInput | string | null
     chat?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageCreateManyInput = {
     id?: string
     file?: string | null
     chat?: string | null
+    userId?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type MessageUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     file?: NullableStringFieldUpdateOperationsInput | string | null
     chat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     file?: NullableStringFieldUpdateOperationsInput | string | null
     chat?: NullableStringFieldUpdateOperationsInput | string | null
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -6043,9 +6280,19 @@ export namespace Prisma {
     isNot?: RoleWhereInput
   }
 
+  export type MessageListRelationFilter = {
+    every?: MessageWhereInput
+    some?: MessageWhereInput
+    none?: MessageWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type MessageOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -6202,28 +6449,81 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type UserNullableScalarRelationFilter = {
+    is?: UserWhereInput | null
+    isNot?: UserWhereInput | null
+  }
+
   export type MessageCountOrderByAggregateInput = {
     id?: SortOrder
     file?: SortOrder
     chat?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type MessageMaxOrderByAggregateInput = {
     id?: SortOrder
     file?: SortOrder
     chat?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type MessageMinOrderByAggregateInput = {
     id?: SortOrder
     file?: SortOrder
     chat?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {
     create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
     connect?: RoleWhereUniqueInput
+  }
+
+  export type MessageCreateNestedManyWithoutUserInput = {
+    create?: XOR<MessageCreateWithoutUserInput, MessageUncheckedCreateWithoutUserInput> | MessageCreateWithoutUserInput[] | MessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutUserInput | MessageCreateOrConnectWithoutUserInput[]
+    createMany?: MessageCreateManyUserInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+  }
+
+  export type MessageUncheckedCreateNestedManyWithoutUserInput = {
+    create?: XOR<MessageCreateWithoutUserInput, MessageUncheckedCreateWithoutUserInput> | MessageCreateWithoutUserInput[] | MessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutUserInput | MessageCreateOrConnectWithoutUserInput[]
+    createMany?: MessageCreateManyUserInputEnvelope
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -6240,6 +6540,34 @@ export namespace Prisma {
     upsert?: RoleUpsertWithoutUsersInput
     connect?: RoleWhereUniqueInput
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutUsersInput, RoleUpdateWithoutUsersInput>, RoleUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type MessageUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MessageCreateWithoutUserInput, MessageUncheckedCreateWithoutUserInput> | MessageCreateWithoutUserInput[] | MessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutUserInput | MessageCreateOrConnectWithoutUserInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutUserInput | MessageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MessageCreateManyUserInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutUserInput | MessageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutUserInput | MessageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
+  }
+
+  export type MessageUncheckedUpdateManyWithoutUserNestedInput = {
+    create?: XOR<MessageCreateWithoutUserInput, MessageUncheckedCreateWithoutUserInput> | MessageCreateWithoutUserInput[] | MessageUncheckedCreateWithoutUserInput[]
+    connectOrCreate?: MessageCreateOrConnectWithoutUserInput | MessageCreateOrConnectWithoutUserInput[]
+    upsert?: MessageUpsertWithWhereUniqueWithoutUserInput | MessageUpsertWithWhereUniqueWithoutUserInput[]
+    createMany?: MessageCreateManyUserInputEnvelope
+    set?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    disconnect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    delete?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    connect?: MessageWhereUniqueInput | MessageWhereUniqueInput[]
+    update?: MessageUpdateWithWhereUniqueWithoutUserInput | MessageUpdateWithWhereUniqueWithoutUserInput[]
+    updateMany?: MessageUpdateManyWithWhereWithoutUserInput | MessageUpdateManyWithWhereWithoutUserInput[]
+    deleteMany?: MessageScalarWhereInput | MessageScalarWhereInput[]
   }
 
   export type PermissionCreateNestedManyWithoutRoleInput = {
@@ -6344,6 +6672,26 @@ export namespace Prisma {
     update?: XOR<XOR<RoleUpdateToOneWithWhereWithoutPermissionsInput, RoleUpdateWithoutPermissionsInput>, RoleUncheckedUpdateWithoutPermissionsInput>
   }
 
+  export type UserCreateNestedOneWithoutMessagesInput = {
+    create?: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type UserUpdateOneWithoutMessagesNestedInput = {
+    create?: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    connectOrCreate?: UserCreateOrConnectWithoutMessagesInput
+    upsert?: UserUpsertWithoutMessagesInput
+    disconnect?: UserWhereInput | boolean
+    delete?: UserWhereInput | boolean
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutMessagesInput, UserUpdateWithoutMessagesInput>, UserUncheckedUpdateWithoutMessagesInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -6441,6 +6789,31 @@ export namespace Prisma {
     _max?: NestedBoolFilter<$PrismaModel>
   }
 
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
   export type RoleCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -6458,6 +6831,31 @@ export namespace Prisma {
   export type RoleCreateOrConnectWithoutUsersInput = {
     where: RoleWhereUniqueInput
     create: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
+  }
+
+  export type MessageCreateWithoutUserInput = {
+    id?: string
+    file?: string | null
+    chat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MessageUncheckedCreateWithoutUserInput = {
+    id?: string
+    file?: string | null
+    chat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MessageCreateOrConnectWithoutUserInput = {
+    where: MessageWhereUniqueInput
+    create: XOR<MessageCreateWithoutUserInput, MessageUncheckedCreateWithoutUserInput>
+  }
+
+  export type MessageCreateManyUserInputEnvelope = {
+    data: MessageCreateManyUserInput | MessageCreateManyUserInput[]
   }
 
   export type RoleUpsertWithoutUsersInput = {
@@ -6483,6 +6881,34 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
     permissions?: PermissionUncheckedUpdateManyWithoutRoleNestedInput
+  }
+
+  export type MessageUpsertWithWhereUniqueWithoutUserInput = {
+    where: MessageWhereUniqueInput
+    update: XOR<MessageUpdateWithoutUserInput, MessageUncheckedUpdateWithoutUserInput>
+    create: XOR<MessageCreateWithoutUserInput, MessageUncheckedCreateWithoutUserInput>
+  }
+
+  export type MessageUpdateWithWhereUniqueWithoutUserInput = {
+    where: MessageWhereUniqueInput
+    data: XOR<MessageUpdateWithoutUserInput, MessageUncheckedUpdateWithoutUserInput>
+  }
+
+  export type MessageUpdateManyWithWhereWithoutUserInput = {
+    where: MessageScalarWhereInput
+    data: XOR<MessageUpdateManyMutationInput, MessageUncheckedUpdateManyWithoutUserInput>
+  }
+
+  export type MessageScalarWhereInput = {
+    AND?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    OR?: MessageScalarWhereInput[]
+    NOT?: MessageScalarWhereInput | MessageScalarWhereInput[]
+    id?: StringFilter<"Message"> | string
+    file?: StringNullableFilter<"Message"> | string | null
+    chat?: StringNullableFilter<"Message"> | string | null
+    userId?: StringNullableFilter<"Message"> | string | null
+    createdAt?: DateTimeFilter<"Message"> | Date | string
+    updatedAt?: DateTimeFilter<"Message"> | Date | string
   }
 
   export type PermissionCreateWithoutRoleInput = {
@@ -6519,6 +6945,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    messages?: MessageCreateNestedManyWithoutUserInput
   }
 
   export type UserUncheckedCreateWithoutRoleInput = {
@@ -6534,6 +6961,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    messages?: MessageUncheckedCreateNestedManyWithoutUserInput
   }
 
   export type UserCreateOrConnectWithoutRoleInput = {
@@ -6650,6 +7078,118 @@ export namespace Prisma {
     users?: UserUncheckedUpdateManyWithoutRoleNestedInput
   }
 
+  export type UserCreateWithoutMessagesInput = {
+    id?: string
+    userName: string
+    password: string
+    firstName: string
+    lastName: string
+    shortName: string
+    address: string
+    email: string
+    branch: string
+    phone1: string
+    phone2: string
+    description?: string | null
+    role: RoleCreateNestedOneWithoutUsersInput
+  }
+
+  export type UserUncheckedCreateWithoutMessagesInput = {
+    id?: string
+    userName: string
+    password: string
+    firstName: string
+    lastName: string
+    shortName: string
+    address: string
+    email: string
+    roleId: string
+    branch: string
+    phone1: string
+    phone2: string
+    description?: string | null
+  }
+
+  export type UserCreateOrConnectWithoutMessagesInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+  }
+
+  export type UserUpsertWithoutMessagesInput = {
+    update: XOR<UserUpdateWithoutMessagesInput, UserUncheckedUpdateWithoutMessagesInput>
+    create: XOR<UserCreateWithoutMessagesInput, UserUncheckedCreateWithoutMessagesInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutMessagesInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutMessagesInput, UserUncheckedUpdateWithoutMessagesInput>
+  }
+
+  export type UserUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutMessagesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type MessageCreateManyUserInput = {
+    id?: string
+    file?: string | null
+    chat?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type MessageUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: NullableStringFieldUpdateOperationsInput | string | null
+    chat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: NullableStringFieldUpdateOperationsInput | string | null
+    chat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type MessageUncheckedUpdateManyWithoutUserInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    file?: NullableStringFieldUpdateOperationsInput | string | null
+    chat?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type PermissionCreateManyRoleInput = {
     id?: string
     name: string
@@ -6702,6 +7242,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    messages?: MessageUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateWithoutRoleInput = {
@@ -6717,6 +7258,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
   export type UserUncheckedUpdateManyWithoutRoleInput = {

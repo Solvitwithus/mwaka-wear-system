@@ -26,6 +26,7 @@ model User {
   phone2     String
   description String? @default("No description")
   role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  messages Message[]
 }
 
 model Role {
@@ -46,9 +47,15 @@ model Permission {
 
 
 
+
 model Message {
-  id       String  @id @default(uuid())
-  file     String? 
-  chat     String?
- 
+  id        String   @id @default(uuid())
+  file      String?
+  chat      String?
+  userId    String?
+  user      User?    @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
+
+
