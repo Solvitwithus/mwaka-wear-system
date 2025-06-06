@@ -66,3 +66,173 @@ model Profile {
   userId         String   @unique
   user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
+
+model Currency {
+  id                     String  @id @default(uuid())
+  currencyName           String
+  currencySymbol         String
+  currencyCode           String
+  currencyFormat         String
+  decimalPlaces          String
+  thousandSeparator      String
+  KSHtoUSDExchange       String
+  allowedforTransactions Boolean
+}
+
+model BankName {
+  id String @id @default(uuid())
+
+  bankCode          String  @unique
+  bankName          String
+  branchName        String
+  branchCode        String  @unique
+  BICCode           String
+  headOfficeAddress String
+  country           String
+  email             String  @unique
+  phone1            String
+  phone2            String
+  website           String
+  status            Boolean @default(false)
+  addedBy           String
+  bankType          String
+  remarks           String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Salesperson {
+  id        String   @id @default(uuid())
+  salesCode String   @unique
+  firstName String
+  lastName  String
+  gender    String
+  phone     String   @unique
+  email     String   @unique
+  address   String
+  region    String
+  status    Boolean  @default(false)
+  addedBy   String
+  remarks   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Branch {
+  id            String   @id @default(uuid())
+  branchCode    String   @unique
+  name          String
+  region        String
+  town          String
+  address       String
+  phone         String
+  email         String
+  manager       String
+  status        Boolean
+  cycleDuration String
+  remarks       String
+  addedBy       String
+  createdAt     DateTime @default(now())
+}
+
+model SalesArea {
+  id           String   @id @default(uuid())
+  code         String   @unique
+  name         String
+  region       String
+  county       String
+  zone         String
+  headquarters String
+  areaManager  String
+  phone        String
+  email        String
+  status       Boolean  @default(true)
+  remarks      String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model PaymentTerm {
+  id                      String   @id @default(cuid())
+  name                    String
+  description             String?
+  totalDuration           Int
+  numInstallments         Int
+  installments            Json
+  startDateRule           String
+  gracePeriod             Int
+  lateFeeEnabled          Boolean
+  lateFeeType             String
+  lateFeeAmount           Float
+  lateFeeAfterDays        Int
+  earlyDiscountEnabled    Boolean
+  earlyDiscountPercent    Float
+  earlyDiscountWithinDays Int
+  allowedMethods          String
+  applicableTo            String
+  isActive                Boolean  @default(true)
+  notes                   String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model PaymentMethod {
+  id             String   @id @default(cuid())
+  code           String   @unique
+  name           String
+  description    String?
+  supportedTypes String // e.g., ["Cash", "Card", "Mobile Money"]
+  isActive       Boolean  @default(true)
+  notes          String?
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model SalesCategory {
+  id                  String  @id @default(uuid())
+  code                String  @unique
+  name                String
+  description         String?
+  priceAdjustmentType String // e.g., "percentage", "fixed"
+  priceAdjustment     String
+  allowCredit         Boolean
+  creditLimit         String?
+  defaultPaymentTerm  String? // Reference payment term name or ID if normalized
+  applicableChannels  String // Comma-separated values like "online,retail"
+  isActive            Boolean @default(true)
+  remarks             String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Client {
+  id                    String   @id @default(uuid())
+  customerName          String
+  customerInitials      String
+  address               String
+  kraPin                String
+  currency              String
+  isActive              Boolean
+  phone1                String
+  phone2                String
+  email                 String
+  bankName              String
+  accountNumber         String
+  salesPerson           String
+  discountEliginility   Boolean
+  branchName            String
+  salesArea             String
+  salesType             String
+  comment               String
+  customerId            String
+  preferedPaymentMethod String
+  sex                   String
+  allowedDiscount       String
+  creditLimit           String
+  paymentTerms          String
+  refNo                 String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}

@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { usePermissionStore } from '@/store/usePermissionStore';
 import reportIcon from '@/assets/ReportIcon.svg'
 import SettingsIcon from '@/assets/SettingsIcon.svg'
+import { Skeleton } from '@heroui/skeleton';
 
 type Permissions = {
   CycleManagement:Boolean;
@@ -36,7 +37,7 @@ const transactions = [
 ]
 
 const setups =[
-  {name:"Add Branch", link:"/items-and-inventory/",image:SettingsIcon,permission:"AddBranch"},
+  {name:"Add Branch", link:"/branches/addbranch",image:SettingsIcon,permission:"AddBranch"},
   {name:"Create New Cycle", link:"/items-and-inventory/",image:SettingsIcon,permission:"CreateNewCycle"},
  
 ]
@@ -67,8 +68,30 @@ const page = () => {
       fetchPermissions();
     }, [fetchPermissions]);
   
-    if (loading) return <p>Loading...</p>;
-    if (!permissions) return <p>Unauthorized</p>;
+ if (loading) return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>
+);
+  if (!permissions)  return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>)
+
   const filteredReport = reports.filter(item => permissions[item.permission as keyof Permissions]);  
 const filteredSetup = setups.filter(item => permissions[item.permission as keyof Permissions]);  
 const filteredTransactions = transactions.filter(item => permissions[item.permission as keyof Permissions]);  

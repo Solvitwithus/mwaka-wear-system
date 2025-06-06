@@ -76,7 +76,7 @@ export async function middleware(req: NextRequest) {
     // 🧠 Restrict access to /pos for non-cashiers
     if (pathname.startsWith("/sales/pos")) {
       const userRole = payload.role as string; // Make sure your JWT includes a 'role' claim
-      if (!["cashier", "sales"].includes(userRole)) {
+      if (!["cashier", "sales","administrator"].includes(userRole)) {
         return NextResponse.redirect(new URL("/sales?error=unauthorized", req.url));
 
       }

@@ -285,6 +285,7 @@ MpesaTill: boolean;
  Banks:Boolean;
  Currencies: boolean;
  PaymentMethods: boolean;
+ PaymentTerms:boolean;
  ExchangeRates:Boolean;
  GLAccounts: boolean;
  GLAccountsGroups: boolean;

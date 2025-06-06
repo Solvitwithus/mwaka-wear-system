@@ -326,6 +326,7 @@ const bankingandGenealLedgers = [
   {name:"Banks",value:false},
   {name:"Currencies",value:false},
   {name:"PaymentMethods",value:false},
+  {name:"PaymentTerms",value:false},
   {name:"ExchangeRates",value:false},
   {name:"GLAccounts",value:false},
   {name:"GLAccountsGroups",value:false},

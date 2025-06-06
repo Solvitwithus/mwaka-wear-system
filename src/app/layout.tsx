@@ -4,6 +4,8 @@ import "./globals.css";
 
 
 import ConditionalMenu from "@/components/ConditionalMenu";
+import { ThemeProvider } from "@/components/theme-provider";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -33,15 +35,24 @@ export default function RootLayout({
 {
   
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased m-0 overflow-x-auto bg-[#9FBFC5] whitespace-nowrap flex`}
       >
         
         <div className="flex-1">
-          <ConditionalMenu/>
           
-          {children}
+          
+           <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+          >
+            
+            <ConditionalMenu/>
+            {children}
+          </ThemeProvider>
         </div>
       </body>
     </html>

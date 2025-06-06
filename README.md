@@ -44,3 +44,13 @@ CREATE POLICY "Allow public upload"
   ON storage.objects
   FOR INSERT
   WITH CHECK (true);
+
+  The hardisk crashed \
+  update the .env
+  sqlite
+  jwt secret
+  
+
+  add the skeletal load instead of just the mere loading
+  fix the dark mode
+  

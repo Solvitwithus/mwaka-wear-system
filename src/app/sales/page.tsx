@@ -5,8 +5,9 @@ import React, { useEffect, useState } from 'react';
 import StudIcon from "@/assets/LinkBar.svg"
 import Image from 'next/image';
 import { usePermissionStore } from '@/store/usePermissionStore';
-import reportIcon from '@/assets/ReportIcon.svg'
+import reportIcon from '@/assets/ReportIcon.svg';
 import SettingsIcon from '@/assets/SettingsIcon.svg'
+import { Skeleton } from '@heroui/skeleton';
 
 
 type Permissions = {
@@ -62,8 +63,29 @@ const [error, setError] = useState<string>("");
     fetchPermissions();
   }, [fetchPermissions]);
 
-  if (loading) return <p>Loading...</p>;
-  if (!permissions) return <p>Unauthorized</p>;
+ if (loading) return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>
+);
+  if (!permissions)  return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>)
 
   
  
@@ -72,21 +94,21 @@ const [error, setError] = useState<string>("");
 // Operations
 const menu =[
   {name:"Point of Sale (POS)",link:"/sales/pos",image:StudIcon,permission:"PointOfSale" },
-  {name:"Print Statement",link:"/add-customer",image:StudIcon,permission:"printStatement"},
-  {name:"Direct Sale",link:"/edit-customer",image:StudIcon,permission:"directSale"},
-  {name:"Customer Postings",link:"/edit-customer",image:StudIcon,permission:"customerPostings"},
-  {name:"Sales Man Posting",link:"/add-customer",image:StudIcon,permission:"salesManPosting"},
-  {name:"Customer Credit",link:"/edit-customer",image:StudIcon,permission:"customerCredit"},
-  {name:"Customer Credit Payments",link:"/edit-customer",image:StudIcon,permission:"customerCreditPayments"}
+  {name:"Print Statement",link:"/sales/printstatement",image:StudIcon,permission:"printStatement"},
+  {name:"Direct Sale",link:"/sales/directsales",image:StudIcon,permission:"directSale"},
+  {name:"Customer Postings",link:"/sales/customerposting",image:StudIcon,permission:"customerPostings"},
+  {name:"Sales Man Posting",link:"/sales/salesmanposting",image:StudIcon,permission:"salesManPosting"},
+  {name:"Customer Credit",link:"/sales/customercredit",image:StudIcon,permission:"customerCredit"},
+  {name:"Customer Credit Payments",link:"/sales/customercreditpayments",image:StudIcon,permission:"customerCreditPayments"}
 ]
 
 
 const submenu=[
-  {name:"Sales Quotation Entry",link:"/edit-customer",image:StudIcon,permission:"salesQuotationEntry"},
-  {name:"Sales Order Entry",link:"/edit-customer",image:StudIcon,permission:"salesOrderEntry"},
-  {name:"Delivery Against Sales Orders",link:"/add-customer",image:StudIcon,permission:"deliveryAgainstSalesOrders"},
-  {name:"Invoice Against Sales Delivery",link:"/edit-customer",image:StudIcon,permission:"invoiceAgainstSalesDelivery"},
-  {name:"Invoive Prepaid Orders",link:"/edit-customer",image:StudIcon,permission:"invoivePrepaidOrders"}
+  {name:"Sales Quotation Entry",link:"/sales/salesquotationentry",image:StudIcon,permission:"salesQuotationEntry"},
+  {name:"Sales Order Entry",link:"/sales/salesorderentry",image:StudIcon,permission:"salesOrderEntry"},
+  {name:"Delivery Against Sales Orders",link:"/sales/deliveryagainstsalesorders",image:StudIcon,permission:"deliveryAgainstSalesOrders"},
+  {name:"Invoice Against Sales Delivery",link:"/sales/invoiceagainstsalesdelivery",image:StudIcon,permission:"invoiceAgainstSalesDelivery"},
+  {name:"Invoive Prepaid Orders",link:"/sales/invoiceprepaidorders",image:StudIcon,permission:"invoivePrepaidOrders"}
 ]
 
 
@@ -119,13 +141,13 @@ const reportsRightItems=[
 
 // Reports and Inquiries Section
 const setupItems=[
-  {name:"Add and Manage Customers",link:"/edit-customer",image:SettingsIcon,permission:"addAndManageCustomes"},
+  {name:"Add and Manage Customers",link:"/sales/addandmanageclients",image:SettingsIcon,permission:"addAndManageCustomes"},
   {name:"Customer Branches",link:"/edit-customer",image:SettingsIcon,permission:"customerBranches"},
   {name:"Sales Group",link:"/add-customer",image:SettingsIcon,permission:"salesGroup"},
-  {name:"Sales Type",link:"/edit-customer",image:SettingsIcon,permission:"salesType"},
-  {name:"Sales Person",link:"/edit-customer",image:SettingsIcon,permission:"salesPerson"},
+  {name:"Sales Type",link:"/sales/salestype",image:SettingsIcon,permission:"salesType"},
+  {name:"Sales Person",link:"/sales/salesperson",image:SettingsIcon,permission:"salesPerson"},
   {name:"Sales Person Targets",link:"/edit-customer",image:SettingsIcon,permission:"salesPersonTargets"},
-  {name:"Sales Area",link:"/edit-customer",image:SettingsIcon,permission:"salesArea"},
+  {name:"Sales Area",link:"/sales/salesarea",image:SettingsIcon,permission:"salesArea"},
   {name:"Credit Status Setup",link:"/add-customer",image:SettingsIcon,permission:"creditStatusSetup"},
 
 ]

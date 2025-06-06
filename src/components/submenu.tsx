@@ -84,6 +84,7 @@ import credentialImage from "@/assets/change-cedentials-icon.svg";
 import logoutImage from "@/assets/logout.svg";
 import axios from 'axios';
 import Link from 'next/link';
+import { ModeToggle } from './ui/darkmode';
 
 const handleCredentialChange = () => {
   alert("Change Credentials clicked!");
@@ -155,7 +156,7 @@ const Submenu = () => {
 
   return (
     <>
-      <nav className='flex justify-between items-center border border-black bg-[#D9D9D9] px-2 py-1 mx-1 mt-[0.5px]'>
+      <nav className='flex justify-between items-center border border-black bg-[#D9D9D9] px-2 py-1 mx-1 mt-[0.5px] h-9'>
         <span className='text-[#894B00] text-sm font-semibold font-sans inline'>
           MwaKa Clothing Center | skeletalerpapp.vercel.com | SolvIt Support
           <Link href="/chathub" className='font-serif text-[#2b8508]'> --- ChatHub ---</Link>
@@ -164,7 +165,9 @@ const Submenu = () => {
           {menuItems.map((item, index) => (
             <SubmenuItem key={index} {...item} />
           ))}
+          <ModeToggle/>
         </div>
+          
       </nav>
 
       {success && (
