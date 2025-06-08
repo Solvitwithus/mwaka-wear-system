@@ -50,7 +50,8 @@ CREATE POLICY "Allow public upload"
   sqlite
   jwt secret
   
-
-  add the skeletal load instead of just the mere loading
-  fix the dark mode
+for the item add tax type then for the sales quotation add the type. update prisma client the model item! 
+finish the quotation
   
+
+

@@ -290,6 +290,7 @@ MpesaTill: boolean;
  GLAccounts: boolean;
  GLAccountsGroups: boolean;
  BudgetPeriods:Boolean;
+ addDriver:Boolean;
 }
 
 interface PermissionStore {

@@ -200,7 +200,8 @@ const transport =[
   {name:"VehicleExpenseCategories",value:false}, 
   {name:"DriverListing",value:false},
   {name:"VehicleListing",value:false},
-  {name:"VehicleStatusTracking",value:false}, 
+  {name:"VehicleStatusTracking",value:false},
+  {name:"addDriver",value:false} 
 ]
 
 const branch = [

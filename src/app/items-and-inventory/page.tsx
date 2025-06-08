@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { usePermissionStore } from '@/store/usePermissionStore';
 import reportIcon from '@/assets/ReportIcon.svg'
 import SettingsIcon from '@/assets/SettingsIcon.svg'
+import { Skeleton } from '@heroui/skeleton';
 
 type Permissions = {
   ReceiveSupplyIntoInventory:Boolean;
@@ -66,8 +67,29 @@ const page = () => {
       fetchPermissions();
     }, [fetchPermissions]);
   
-    if (loading) return <p>Loading...</p>;
-    if (!permissions) return <p>Unauthorized</p>;
+ if (loading) return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>
+);
+  if (!permissions)  return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>)
   
 const transactions = [
   {name:"Receive Into Inventory", link:"/items-and-inventory/",image:StudIcon,permission:"ReceiveSupplyIntoInventory"},
@@ -103,10 +125,10 @@ const reportsandInquiry = [
 ]
 
 const mainainance = [
-  {name:"Items Categories", link:"/items-and-inventory/",image:SettingsIcon,permission:"ItemCategories"},
-  {name:"Items", link:"/items-and-inventory/",image:SettingsIcon,permission:"Items"},
-  {name:"Units of Measure", link:"/items-and-inventory/",image:SettingsIcon,permission:"UnitofMeasure"},
-  {name:"Item Type", link:"/items-and-inventory/",image:SettingsIcon,permission:"ItemType"},
+  {name:"Items Categories", link:"/items-and-inventory/createitemcategory",image:SettingsIcon,permission:"ItemCategories"},
+  {name:"Items Price", link:"/items-and-inventory/itemcreation",image:SettingsIcon,permission:"Items"},
+  {name:"Units of Measure", link:"/items-and-inventory/unitofmeasure",image:SettingsIcon,permission:"UnitofMeasure"},
+  {name:"Item Type", link:"/items-and-inventory/itemcreation",image:SettingsIcon,permission:"ItemType"},
   
 ]
 

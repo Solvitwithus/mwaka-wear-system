@@ -6,6 +6,7 @@ import StudIcon from "@/assets/LinkBar.svg"
 import reportIcon from '@/assets/ReportIcon.svg'
 import SettingsIcon from '@/assets/SettingsIcon.svg'
 import Image from 'next/image';
+import { Skeleton } from '@heroui/skeleton';
 type Permissions = {
   NewPositionRequisition: boolean;
   ApproveNewPositionRequisition: boolean;
@@ -75,8 +76,29 @@ const Page = () => {
     fetchPermissions();
   }, [fetchPermissions]);
 
-  if (loading) return <p>Loading...</p>;
-  if (!permissions) return <p>Unauthorized</p>;
+if (loading) return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>
+);
+  if (!permissions)  return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>)
 
   const menu =[
     {title:"New Position Requisition",link:"/procurement/",permission:"NewPositionRequisition",image:StudIcon},

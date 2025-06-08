@@ -97,6 +97,7 @@ creditLimit:"",
 paymentTerms:"",
 refNo:""
 }
+
 const page = () => {
   const router = useRouter();
     const [curr, setCurr] = useState<Currency[]>([])

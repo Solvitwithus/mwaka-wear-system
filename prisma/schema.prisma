@@ -237,3 +237,135 @@ model Client {
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
 }
+
+model Driver {
+  id                 Int      @id @default(autoincrement())
+  userName           String   @unique
+  firstName          String
+  lastName           String
+  phoneNumber        String?
+  email              String   @unique
+  licenseNumber      String?
+  licenseIssueDate  String?
+  dateOfBirth        String?
+  address            String?
+  remarks            String?
+
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+model Vehicle {
+  id                      String   @id @default(uuid())
+  plateNumber             String
+  make                    String
+  model                   String
+  yearOfManufacture       String
+  status                  String
+  fuelType                String
+  capacity                String
+  driver                  String
+  assignedBranch          String
+  purpose                 String
+  remarks                 String
+  initialOdometerReading  String
+  ownershipType           String
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+
+model Shift {
+  id                  Int      @id @default(autoincrement())
+  shiftName           String
+  shiftCode           String   @unique
+  startTime           String
+  endTime             String
+  shiftActiveDate     DateTime
+  driver              String
+  vehicle             String
+  transportationItem  String
+  startLocation       String
+  endLocation         String
+  wayPoint            String?
+  isActive            String
+  comment             String?
+  customStartLocation String?
+  customEndLocation   String?
+
+  createdAt           DateTime @default(now())
+  updatedAt           DateTime @updatedAt
+}
+
+model VehicleCategory {
+
+  id           Int     @id @default(autoincrement())
+  categoryName String
+  description  String
+  type         String
+  maxLoad      Float
+  isActive     Boolean
+
+
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model UnitOfMeasure {
+  id               String   @id @default(uuid())
+  unitName         String
+  abbreviation     String
+  description      String?
+  conversionFactor Float
+  isBaseUnit       Boolean  @default(false)
+  isActive         Boolean  @default(true)
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model ItemCategory {
+  id             String   @id @default(uuid())
+  categoryName   String
+  categoryCode   String   @unique
+  description    String?
+  type           String
+  unitOfMeasure  String
+  tags           String?
+  isActive       Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+model Item {
+  id                 Int      @id @default(autoincrement())
+  code               String   @unique
+  name               String
+  category           String
+  unitOfMeasure      String
+  description        String?
+  excludeFromSale    Boolean  @default(false)
+  excludeFromPurchase Boolean @default(false)
+  branch             String
+  creator            String
+  status             String
+  barcode            String   @unique
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+}
+
+
+model Tax {
+  id               String   @id @default(uuid())
+  name             String
+  code             String   @unique
+  description      String?
+  chargeType       String   // "Fixed" or "Percentage"
+  lowerLimit       Float
+  upperLimit       Float
+  rate             Float
+  fixedAmount      Float
+  reliefApplicable Boolean
+  effectiveFrom    DateTime
+  branch           String
+  creator          String
+  status           String   // "Active" or "Inactive"
+  createdAt        DateTime @default(now())
+}

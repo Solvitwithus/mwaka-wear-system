@@ -332,6 +332,133 @@ exports.Prisma.ClientScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.DriverScalarFieldEnum = {
+  id: 'id',
+  userName: 'userName',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  phoneNumber: 'phoneNumber',
+  email: 'email',
+  licenseNumber: 'licenseNumber',
+  licenseIssueDate: 'licenseIssueDate',
+  dateOfBirth: 'dateOfBirth',
+  address: 'address',
+  remarks: 'remarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VehicleScalarFieldEnum = {
+  id: 'id',
+  plateNumber: 'plateNumber',
+  make: 'make',
+  model: 'model',
+  yearOfManufacture: 'yearOfManufacture',
+  status: 'status',
+  fuelType: 'fuelType',
+  capacity: 'capacity',
+  driver: 'driver',
+  assignedBranch: 'assignedBranch',
+  purpose: 'purpose',
+  remarks: 'remarks',
+  initialOdometerReading: 'initialOdometerReading',
+  ownershipType: 'ownershipType',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ShiftScalarFieldEnum = {
+  id: 'id',
+  shiftName: 'shiftName',
+  shiftCode: 'shiftCode',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  shiftActiveDate: 'shiftActiveDate',
+  driver: 'driver',
+  vehicle: 'vehicle',
+  transportationItem: 'transportationItem',
+  startLocation: 'startLocation',
+  endLocation: 'endLocation',
+  wayPoint: 'wayPoint',
+  isActive: 'isActive',
+  comment: 'comment',
+  customStartLocation: 'customStartLocation',
+  customEndLocation: 'customEndLocation',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VehicleCategoryScalarFieldEnum = {
+  id: 'id',
+  categoryName: 'categoryName',
+  description: 'description',
+  type: 'type',
+  maxLoad: 'maxLoad',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UnitOfMeasureScalarFieldEnum = {
+  id: 'id',
+  unitName: 'unitName',
+  abbreviation: 'abbreviation',
+  description: 'description',
+  conversionFactor: 'conversionFactor',
+  isBaseUnit: 'isBaseUnit',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ItemCategoryScalarFieldEnum = {
+  id: 'id',
+  categoryName: 'categoryName',
+  categoryCode: 'categoryCode',
+  description: 'description',
+  type: 'type',
+  unitOfMeasure: 'unitOfMeasure',
+  tags: 'tags',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.ItemScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  category: 'category',
+  unitOfMeasure: 'unitOfMeasure',
+  description: 'description',
+  excludeFromSale: 'excludeFromSale',
+  excludeFromPurchase: 'excludeFromPurchase',
+  branch: 'branch',
+  creator: 'creator',
+  status: 'status',
+  barcode: 'barcode',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TaxScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  description: 'description',
+  chargeType: 'chargeType',
+  lowerLimit: 'lowerLimit',
+  upperLimit: 'upperLimit',
+  rate: 'rate',
+  fixedAmount: 'fixedAmount',
+  reliefApplicable: 'reliefApplicable',
+  effectiveFrom: 'effectiveFrom',
+  branch: 'branch',
+  creator: 'creator',
+  status: 'status',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -372,7 +499,15 @@ exports.Prisma.ModelName = {
   PaymentTerm: 'PaymentTerm',
   PaymentMethod: 'PaymentMethod',
   SalesCategory: 'SalesCategory',
-  Client: 'Client'
+  Client: 'Client',
+  Driver: 'Driver',
+  Vehicle: 'Vehicle',
+  Shift: 'Shift',
+  VehicleCategory: 'VehicleCategory',
+  UnitOfMeasure: 'UnitOfMeasure',
+  ItemCategory: 'ItemCategory',
+  Item: 'Item',
+  Tax: 'Tax'
 };
 
 /**
