@@ -30,11 +30,16 @@ type Item = {
   discountRetail: number;
   customDiscountAllowed: boolean;
   taxType: string;
+  taxAmount: number;
+  pricebeforeTax: number;
 };
+
 type Tax = {
   name: string;
   code: string;
+  fixedAmount: number;
 };
+
 type ItemCategory = {
   categoryName: string;
   categoryCode: string;
@@ -69,7 +74,9 @@ const initialState: Item = {
   discountWholesale: 0,
   discountRetail: 0,
   customDiscountAllowed: false,
-  taxType:""
+  taxType: "",
+  taxAmount: 0,
+  pricebeforeTax: 0,
 };
 
 const statusOptions = ["Active", "Inactive"];
@@ -83,7 +90,8 @@ const Page = () => {
   const [measures, setMeasures] = useState<Measure[]>([]);
   const [branches, setBranches] = useState<Branch[]>([]);
   const [users, setUsers] = useState<User[]>([]);
-const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
+  const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type } = e.target;
     setItem((prev) => ({
@@ -98,6 +106,8 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+    console.log(item);
+    
     try {
       const res = await axios.post("/api/auth/items-creation", item);
       if (res.status === 201) {
@@ -120,7 +130,7 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
 
   const fetchInitialData = useCallback(async () => {
     try {
-      const [catRes, measRes, branchRes, userRes,taxRes] = await Promise.all([
+      const [catRes, measRes, branchRes, userRes, taxRes] = await Promise.all([
         axios.get("/api/auth/item-category"),
         axios.get("/api/auth/unit-of-measure"),
         axios.get("/api/auth/addbranch"),
@@ -131,8 +141,7 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
       setMeasures(measRes.data);
       setBranches(branchRes.data);
       setUsers(userRes.data);
-      setTaxTypes(taxRes.data)
-      alert()
+      setTaxTypes(taxRes.data);
     } catch (err) {
       console.error("Error fetching form data:", err);
     }
@@ -141,6 +150,18 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
   useEffect(() => {
     fetchInitialData();
   }, [fetchInitialData]);
+
+  useEffect(() => {
+    const selectedTax = taxTypes.find((tax) => tax.code === item.taxType);
+    const taxAmount = selectedTax?.fixedAmount || 0;
+    const pricebeforeTax = item.itemPrice - taxAmount;
+
+    setItem((prev) => ({
+      ...prev,
+      taxAmount,
+      pricebeforeTax: pricebeforeTax < 0 ? 0 : pricebeforeTax,
+    }));
+  }, [item.taxType, item.itemPrice, taxTypes]);
 
   return (
     <div className="bg-[rgb(239,239,239)] m-1 rounded-md p-1 h-fit">
@@ -151,6 +172,7 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
       >
         <div className="border-black border-[1px] m-1 rounded-md flex justify-center gap-20 py-8">
           <div className="flex flex-col">
+            {/* Left side inputs */}
             {[
               { label: "Name", name: "name", placeholder: "e.g. Ball Pen" },
               { label: "Code", name: "code", readOnly: true },
@@ -184,21 +206,46 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
                 onChange={handleChange}
               />
             </div>
-<div className="flex justify-end gap-2 mb-1">
-  <label htmlFor="taxType" className="text-sm text-black">Tax Type:</label>
-  <select
-    name="taxType"
-    id="taxType"
-    value={item.taxType}
-    onChange={handleChange}
-    className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
-  >
-    <option value="">Select Tax Type</option>
-    {taxTypes.map((tax, idx) => (
-      <option key={idx} value={tax.code}>{tax.name}</option>
-    ))}
-  </select>
-</div>
+
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="taxType" className="text-sm text-black">Tax Type:</label>
+              <select
+                name="taxType"
+                id="taxType"
+                value={item.taxType}
+                onChange={handleChange}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
+              >
+                <option value="">Select Tax Type</option>
+                {taxTypes.map((tax, idx) => (
+                  <option key={idx} value={tax.code}>{tax.name}</option>
+                ))}
+              </select>
+            </div>
+
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="taxAmount" className="text-sm text-black">Tax Amount:</label>
+              <input
+                readOnly
+                type="text"
+                name="taxAmount"
+                id="taxAmount"
+                value={item.taxAmount}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2"
+              />
+            </div>
+
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="pricebeforeTax" className="text-sm text-black">Price Before Tax:</label>
+              <input
+                readOnly
+                type="text"
+                name="pricebeforeTax"
+                id="pricebeforeTax"
+                value={item.pricebeforeTax}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2"
+              />
+            </div>
 
             <div className="flex justify-end gap-2 mb-1">
               <label htmlFor="description" className="text-sm text-black">Description:</label>
@@ -234,6 +281,7 @@ const [taxTypes, setTaxTypes] = useState<Tax[]>([]);
             </div>
           </div>
 
+          {/* Right side dropdowns */}
           <div className="flex flex-col">
             {[
               { label: "Category", name: "category", options: categories.map(c => ({ label: c.categoryName, value: c.categoryCode })) },

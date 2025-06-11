@@ -302,36 +302,6 @@ exports.Prisma.SalesCategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.ClientScalarFieldEnum = {
-  id: 'id',
-  customerName: 'customerName',
-  customerInitials: 'customerInitials',
-  address: 'address',
-  kraPin: 'kraPin',
-  currency: 'currency',
-  isActive: 'isActive',
-  phone1: 'phone1',
-  phone2: 'phone2',
-  email: 'email',
-  bankName: 'bankName',
-  accountNumber: 'accountNumber',
-  salesPerson: 'salesPerson',
-  discountEliginility: 'discountEliginility',
-  branchName: 'branchName',
-  salesArea: 'salesArea',
-  salesType: 'salesType',
-  comment: 'comment',
-  customerId: 'customerId',
-  preferedPaymentMethod: 'preferedPaymentMethod',
-  sex: 'sex',
-  allowedDiscount: 'allowedDiscount',
-  creditLimit: 'creditLimit',
-  paymentTerms: 'paymentTerms',
-  refNo: 'refNo',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
 exports.Prisma.DriverScalarFieldEnum = {
   id: 'id',
   userName: 'userName',
@@ -437,6 +407,13 @@ exports.Prisma.ItemScalarFieldEnum = {
   creator: 'creator',
   status: 'status',
   barcode: 'barcode',
+  itemPrice: 'itemPrice',
+  priceBeforeTax: 'priceBeforeTax',
+  taxAmount: 'taxAmount',
+  discountWholesale: 'discountWholesale',
+  discountRetail: 'discountRetail',
+  customDiscountAllowed: 'customDiscountAllowed',
+  taxType: 'taxType',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -457,6 +434,135 @@ exports.Prisma.TaxScalarFieldEnum = {
   creator: 'creator',
   status: 'status',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.ClientScalarFieldEnum = {
+  id: 'id',
+  customerName: 'customerName',
+  customerInitials: 'customerInitials',
+  address: 'address',
+  kraPin: 'kraPin',
+  currency: 'currency',
+  isActive: 'isActive',
+  phone1: 'phone1',
+  phone2: 'phone2',
+  email: 'email',
+  bankName: 'bankName',
+  accountNumber: 'accountNumber',
+  salesPerson: 'salesPerson',
+  discountEliginility: 'discountEliginility',
+  branchName: 'branchName',
+  salesArea: 'salesArea',
+  salesType: 'salesType',
+  comment: 'comment',
+  customerId: 'customerId',
+  preferedPaymentMethod: 'preferedPaymentMethod',
+  sex: 'sex',
+  allowedDiscount: 'allowedDiscount',
+  creditLimit: 'creditLimit',
+  paymentTerms: 'paymentTerms',
+  refNo: 'refNo',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.QuotationItemScalarFieldEnum = {
+  id: 'id',
+  quotationId: 'quotationId',
+  itemId: 'itemId',
+  itemName: 'itemName',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  discount: 'discount',
+  tax: 'tax',
+  total: 'total',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SalesQuotationScalarFieldEnum = {
+  id: 'id',
+  quotationDate: 'quotationDate',
+  clientId: 'clientId',
+  deliveryDetailsId: 'deliveryDetailsId',
+  subtotal: 'subtotal',
+  shipping: 'shipping',
+  grandTotal: 'grandTotal',
+  remarks: 'remarks',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DeliveryDetailScalarFieldEnum = {
+  id: 'id',
+  address: 'address',
+  shiftId: 'shiftId',
+  driverId: 'driverId',
+  vehicleId: 'vehicleId',
+  deliveryDate: 'deliveryDate',
+  deliveryFrom: 'deliveryFrom',
+  destination: 'destination',
+  customerReference: 'customerReference',
+  comment: 'comment',
+  phoneNumber: 'phoneNumber',
+  accompaniedBy: 'accompaniedBy'
+};
+
+exports.Prisma.DirectSaleScalarFieldEnum = {
+  id: 'id',
+  saleDate: 'saleDate',
+  clientId: 'clientId',
+  deliveryDetailsId: 'deliveryDetailsId',
+  subtotal: 'subtotal',
+  shipping: 'shipping',
+  grandTotal: 'grandTotal',
+  remarks: 'remarks',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DirectSaleItemScalarFieldEnum = {
+  id: 'id',
+  directSaleId: 'directSaleId',
+  itemId: 'itemId',
+  itemName: 'itemName',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  discount: 'discount',
+  tax: 'tax',
+  total: 'total',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SalesEntryScalarFieldEnum = {
+  id: 'id',
+  saleDate: 'saleDate',
+  clientId: 'clientId',
+  deliveryDetailsId: 'deliveryDetailsId',
+  subtotal: 'subtotal',
+  shipping: 'shipping',
+  grandTotal: 'grandTotal',
+  remarks: 'remarks',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SalesEntryItemScalarFieldEnum = {
+  id: 'id',
+  salesEntryId: 'salesEntryId',
+  itemId: 'itemId',
+  itemName: 'itemName',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  discount: 'discount',
+  tax: 'tax',
+  total: 'total',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -499,7 +605,6 @@ exports.Prisma.ModelName = {
   PaymentTerm: 'PaymentTerm',
   PaymentMethod: 'PaymentMethod',
   SalesCategory: 'SalesCategory',
-  Client: 'Client',
   Driver: 'Driver',
   Vehicle: 'Vehicle',
   Shift: 'Shift',
@@ -507,7 +612,15 @@ exports.Prisma.ModelName = {
   UnitOfMeasure: 'UnitOfMeasure',
   ItemCategory: 'ItemCategory',
   Item: 'Item',
-  Tax: 'Tax'
+  Tax: 'Tax',
+  Client: 'Client',
+  QuotationItem: 'QuotationItem',
+  SalesQuotation: 'SalesQuotation',
+  DeliveryDetail: 'DeliveryDetail',
+  DirectSale: 'DirectSale',
+  DirectSaleItem: 'DirectSaleItem',
+  SalesEntry: 'SalesEntry',
+  SalesEntryItem: 'SalesEntryItem'
 };
 
 /**

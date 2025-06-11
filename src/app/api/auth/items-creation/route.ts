@@ -17,9 +17,21 @@ export async function POST(request: Request) {
   try {
     const data = await request.json();
 
-    // Basic validation (you can add more)
-    if (!data.name || !data.code || !data.category || !data.unitOfMeasure || !data.branch || !data.creator || !data.status || !data.barcode) {
-      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    // Validate required fields
+    const requiredFields = [
+      "name",
+      "code",
+      "category",
+      "unitOfMeasure",
+      "branch",
+      "creator",
+      "status",
+      "barcode",
+    ];
+    for (const field of requiredFields) {
+      if (!data[field]) {
+        return NextResponse.json({ error: `Missing required field: ${field}` }, { status: 400 });
+      }
     }
 
     const newItem = await prisma.item.create({
@@ -35,12 +47,22 @@ export async function POST(request: Request) {
         creator: data.creator,
         status: data.status,
         barcode: data.barcode,
+        itemPrice: data.itemPrice ?? 0,
+        priceBeforeTax: data.priceBeforeTax ?? 0,
+        taxAmount: data.taxAmount ?? 0,
+        discountWholesale: data.discountWholesale ?? 0,
+        discountRetail: data.discountRetail ?? 0,
+        customDiscountAllowed: data.customDiscountAllowed ?? false,
+        taxType: data.taxType ?? null,
       },
     });
 
     return NextResponse.json(newItem, { status: 201 });
-  } catch (error) {
+  } catch (error: any) {
     console.error("POST /items error:", error);
-    return NextResponse.json({ error: "Failed to create item" }, { status: 500 });
+    return NextResponse.json(
+      { error: error?.message || "Failed to create item" },
+      { status: 500 }
+    );
   }
 }

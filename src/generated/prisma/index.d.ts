@@ -79,11 +79,6 @@ export type PaymentMethod = $Result.DefaultSelection<Prisma.$PaymentMethodPayloa
  */
 export type SalesCategory = $Result.DefaultSelection<Prisma.$SalesCategoryPayload>
 /**
- * Model Client
- * 
- */
-export type Client = $Result.DefaultSelection<Prisma.$ClientPayload>
-/**
  * Model Driver
  * 
  */
@@ -123,6 +118,46 @@ export type Item = $Result.DefaultSelection<Prisma.$ItemPayload>
  * 
  */
 export type Tax = $Result.DefaultSelection<Prisma.$TaxPayload>
+/**
+ * Model Client
+ * 
+ */
+export type Client = $Result.DefaultSelection<Prisma.$ClientPayload>
+/**
+ * Model QuotationItem
+ * 
+ */
+export type QuotationItem = $Result.DefaultSelection<Prisma.$QuotationItemPayload>
+/**
+ * Model SalesQuotation
+ * 
+ */
+export type SalesQuotation = $Result.DefaultSelection<Prisma.$SalesQuotationPayload>
+/**
+ * Model DeliveryDetail
+ * 
+ */
+export type DeliveryDetail = $Result.DefaultSelection<Prisma.$DeliveryDetailPayload>
+/**
+ * Model DirectSale
+ * 
+ */
+export type DirectSale = $Result.DefaultSelection<Prisma.$DirectSalePayload>
+/**
+ * Model DirectSaleItem
+ * 
+ */
+export type DirectSaleItem = $Result.DefaultSelection<Prisma.$DirectSaleItemPayload>
+/**
+ * Model SalesEntry
+ * 
+ */
+export type SalesEntry = $Result.DefaultSelection<Prisma.$SalesEntryPayload>
+/**
+ * Model SalesEntryItem
+ * 
+ */
+export type SalesEntryItem = $Result.DefaultSelection<Prisma.$SalesEntryItemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -380,16 +415,6 @@ export class PrismaClient<
   get salesCategory(): Prisma.SalesCategoryDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.client`: Exposes CRUD operations for the **Client** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Clients
-    * const clients = await prisma.client.findMany()
-    * ```
-    */
-  get client(): Prisma.ClientDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.driver`: Exposes CRUD operations for the **Driver** model.
     * Example usage:
     * ```ts
@@ -468,6 +493,86 @@ export class PrismaClient<
     * ```
     */
   get tax(): Prisma.TaxDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.client`: Exposes CRUD operations for the **Client** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Clients
+    * const clients = await prisma.client.findMany()
+    * ```
+    */
+  get client(): Prisma.ClientDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.quotationItem`: Exposes CRUD operations for the **QuotationItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more QuotationItems
+    * const quotationItems = await prisma.quotationItem.findMany()
+    * ```
+    */
+  get quotationItem(): Prisma.QuotationItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.salesQuotation`: Exposes CRUD operations for the **SalesQuotation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SalesQuotations
+    * const salesQuotations = await prisma.salesQuotation.findMany()
+    * ```
+    */
+  get salesQuotation(): Prisma.SalesQuotationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.deliveryDetail`: Exposes CRUD operations for the **DeliveryDetail** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DeliveryDetails
+    * const deliveryDetails = await prisma.deliveryDetail.findMany()
+    * ```
+    */
+  get deliveryDetail(): Prisma.DeliveryDetailDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.directSale`: Exposes CRUD operations for the **DirectSale** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DirectSales
+    * const directSales = await prisma.directSale.findMany()
+    * ```
+    */
+  get directSale(): Prisma.DirectSaleDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.directSaleItem`: Exposes CRUD operations for the **DirectSaleItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more DirectSaleItems
+    * const directSaleItems = await prisma.directSaleItem.findMany()
+    * ```
+    */
+  get directSaleItem(): Prisma.DirectSaleItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.salesEntry`: Exposes CRUD operations for the **SalesEntry** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SalesEntries
+    * const salesEntries = await prisma.salesEntry.findMany()
+    * ```
+    */
+  get salesEntry(): Prisma.SalesEntryDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.salesEntryItem`: Exposes CRUD operations for the **SalesEntryItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SalesEntryItems
+    * const salesEntryItems = await prisma.salesEntryItem.findMany()
+    * ```
+    */
+  get salesEntryItem(): Prisma.SalesEntryItemDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -921,7 +1026,6 @@ export namespace Prisma {
     PaymentTerm: 'PaymentTerm',
     PaymentMethod: 'PaymentMethod',
     SalesCategory: 'SalesCategory',
-    Client: 'Client',
     Driver: 'Driver',
     Vehicle: 'Vehicle',
     Shift: 'Shift',
@@ -929,7 +1033,15 @@ export namespace Prisma {
     UnitOfMeasure: 'UnitOfMeasure',
     ItemCategory: 'ItemCategory',
     Item: 'Item',
-    Tax: 'Tax'
+    Tax: 'Tax',
+    Client: 'Client',
+    QuotationItem: 'QuotationItem',
+    SalesQuotation: 'SalesQuotation',
+    DeliveryDetail: 'DeliveryDetail',
+    DirectSale: 'DirectSale',
+    DirectSaleItem: 'DirectSaleItem',
+    SalesEntry: 'SalesEntry',
+    SalesEntryItem: 'SalesEntryItem'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -948,7 +1060,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "client" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "itemCategory" | "item" | "tax"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "salesEntry" | "salesEntryItem"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1914,80 +2026,6 @@ export namespace Prisma {
           }
         }
       }
-      Client: {
-        payload: Prisma.$ClientPayload<ExtArgs>
-        fields: Prisma.ClientFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.ClientFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.ClientFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
-          }
-          findFirst: {
-            args: Prisma.ClientFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.ClientFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
-          }
-          findMany: {
-            args: Prisma.ClientFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>[]
-          }
-          create: {
-            args: Prisma.ClientCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
-          }
-          createMany: {
-            args: Prisma.ClientCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.ClientCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>[]
-          }
-          delete: {
-            args: Prisma.ClientDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
-          }
-          update: {
-            args: Prisma.ClientUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
-          }
-          deleteMany: {
-            args: Prisma.ClientDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.ClientUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.ClientUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>[]
-          }
-          upsert: {
-            args: Prisma.ClientUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
-          }
-          aggregate: {
-            args: Prisma.ClientAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateClient>
-          }
-          groupBy: {
-            args: Prisma.ClientGroupByArgs<ExtArgs>
-            result: $Utils.Optional<ClientGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.ClientCountArgs<ExtArgs>
-            result: $Utils.Optional<ClientCountAggregateOutputType> | number
-          }
-        }
-      }
       Driver: {
         payload: Prisma.$DriverPayload<ExtArgs>
         fields: Prisma.DriverFieldRefs
@@ -2580,6 +2618,598 @@ export namespace Prisma {
           }
         }
       }
+      Client: {
+        payload: Prisma.$ClientPayload<ExtArgs>
+        fields: Prisma.ClientFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ClientFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ClientFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
+          }
+          findFirst: {
+            args: Prisma.ClientFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ClientFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
+          }
+          findMany: {
+            args: Prisma.ClientFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>[]
+          }
+          create: {
+            args: Prisma.ClientCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
+          }
+          createMany: {
+            args: Prisma.ClientCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ClientCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>[]
+          }
+          delete: {
+            args: Prisma.ClientDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
+          }
+          update: {
+            args: Prisma.ClientUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
+          }
+          deleteMany: {
+            args: Prisma.ClientDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ClientUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ClientUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>[]
+          }
+          upsert: {
+            args: Prisma.ClientUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ClientPayload>
+          }
+          aggregate: {
+            args: Prisma.ClientAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateClient>
+          }
+          groupBy: {
+            args: Prisma.ClientGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ClientGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ClientCountArgs<ExtArgs>
+            result: $Utils.Optional<ClientCountAggregateOutputType> | number
+          }
+        }
+      }
+      QuotationItem: {
+        payload: Prisma.$QuotationItemPayload<ExtArgs>
+        fields: Prisma.QuotationItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.QuotationItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.QuotationItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>
+          }
+          findFirst: {
+            args: Prisma.QuotationItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.QuotationItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>
+          }
+          findMany: {
+            args: Prisma.QuotationItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>[]
+          }
+          create: {
+            args: Prisma.QuotationItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>
+          }
+          createMany: {
+            args: Prisma.QuotationItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.QuotationItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>[]
+          }
+          delete: {
+            args: Prisma.QuotationItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>
+          }
+          update: {
+            args: Prisma.QuotationItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.QuotationItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.QuotationItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.QuotationItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.QuotationItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$QuotationItemPayload>
+          }
+          aggregate: {
+            args: Prisma.QuotationItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateQuotationItem>
+          }
+          groupBy: {
+            args: Prisma.QuotationItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<QuotationItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.QuotationItemCountArgs<ExtArgs>
+            result: $Utils.Optional<QuotationItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      SalesQuotation: {
+        payload: Prisma.$SalesQuotationPayload<ExtArgs>
+        fields: Prisma.SalesQuotationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SalesQuotationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SalesQuotationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>
+          }
+          findFirst: {
+            args: Prisma.SalesQuotationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SalesQuotationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>
+          }
+          findMany: {
+            args: Prisma.SalesQuotationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>[]
+          }
+          create: {
+            args: Prisma.SalesQuotationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>
+          }
+          createMany: {
+            args: Prisma.SalesQuotationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SalesQuotationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>[]
+          }
+          delete: {
+            args: Prisma.SalesQuotationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>
+          }
+          update: {
+            args: Prisma.SalesQuotationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>
+          }
+          deleteMany: {
+            args: Prisma.SalesQuotationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SalesQuotationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SalesQuotationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>[]
+          }
+          upsert: {
+            args: Prisma.SalesQuotationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesQuotationPayload>
+          }
+          aggregate: {
+            args: Prisma.SalesQuotationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSalesQuotation>
+          }
+          groupBy: {
+            args: Prisma.SalesQuotationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SalesQuotationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SalesQuotationCountArgs<ExtArgs>
+            result: $Utils.Optional<SalesQuotationCountAggregateOutputType> | number
+          }
+        }
+      }
+      DeliveryDetail: {
+        payload: Prisma.$DeliveryDetailPayload<ExtArgs>
+        fields: Prisma.DeliveryDetailFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DeliveryDetailFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DeliveryDetailFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>
+          }
+          findFirst: {
+            args: Prisma.DeliveryDetailFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DeliveryDetailFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>
+          }
+          findMany: {
+            args: Prisma.DeliveryDetailFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>[]
+          }
+          create: {
+            args: Prisma.DeliveryDetailCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>
+          }
+          createMany: {
+            args: Prisma.DeliveryDetailCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DeliveryDetailCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>[]
+          }
+          delete: {
+            args: Prisma.DeliveryDetailDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>
+          }
+          update: {
+            args: Prisma.DeliveryDetailUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>
+          }
+          deleteMany: {
+            args: Prisma.DeliveryDetailDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DeliveryDetailUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DeliveryDetailUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>[]
+          }
+          upsert: {
+            args: Prisma.DeliveryDetailUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DeliveryDetailPayload>
+          }
+          aggregate: {
+            args: Prisma.DeliveryDetailAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDeliveryDetail>
+          }
+          groupBy: {
+            args: Prisma.DeliveryDetailGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DeliveryDetailGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DeliveryDetailCountArgs<ExtArgs>
+            result: $Utils.Optional<DeliveryDetailCountAggregateOutputType> | number
+          }
+        }
+      }
+      DirectSale: {
+        payload: Prisma.$DirectSalePayload<ExtArgs>
+        fields: Prisma.DirectSaleFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DirectSaleFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DirectSaleFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>
+          }
+          findFirst: {
+            args: Prisma.DirectSaleFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DirectSaleFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>
+          }
+          findMany: {
+            args: Prisma.DirectSaleFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>[]
+          }
+          create: {
+            args: Prisma.DirectSaleCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>
+          }
+          createMany: {
+            args: Prisma.DirectSaleCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DirectSaleCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>[]
+          }
+          delete: {
+            args: Prisma.DirectSaleDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>
+          }
+          update: {
+            args: Prisma.DirectSaleUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>
+          }
+          deleteMany: {
+            args: Prisma.DirectSaleDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DirectSaleUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DirectSaleUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>[]
+          }
+          upsert: {
+            args: Prisma.DirectSaleUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSalePayload>
+          }
+          aggregate: {
+            args: Prisma.DirectSaleAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDirectSale>
+          }
+          groupBy: {
+            args: Prisma.DirectSaleGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DirectSaleGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DirectSaleCountArgs<ExtArgs>
+            result: $Utils.Optional<DirectSaleCountAggregateOutputType> | number
+          }
+        }
+      }
+      DirectSaleItem: {
+        payload: Prisma.$DirectSaleItemPayload<ExtArgs>
+        fields: Prisma.DirectSaleItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.DirectSaleItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.DirectSaleItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>
+          }
+          findFirst: {
+            args: Prisma.DirectSaleItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.DirectSaleItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>
+          }
+          findMany: {
+            args: Prisma.DirectSaleItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>[]
+          }
+          create: {
+            args: Prisma.DirectSaleItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>
+          }
+          createMany: {
+            args: Prisma.DirectSaleItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.DirectSaleItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>[]
+          }
+          delete: {
+            args: Prisma.DirectSaleItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>
+          }
+          update: {
+            args: Prisma.DirectSaleItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.DirectSaleItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.DirectSaleItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.DirectSaleItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.DirectSaleItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$DirectSaleItemPayload>
+          }
+          aggregate: {
+            args: Prisma.DirectSaleItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateDirectSaleItem>
+          }
+          groupBy: {
+            args: Prisma.DirectSaleItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<DirectSaleItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.DirectSaleItemCountArgs<ExtArgs>
+            result: $Utils.Optional<DirectSaleItemCountAggregateOutputType> | number
+          }
+        }
+      }
+      SalesEntry: {
+        payload: Prisma.$SalesEntryPayload<ExtArgs>
+        fields: Prisma.SalesEntryFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SalesEntryFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SalesEntryFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>
+          }
+          findFirst: {
+            args: Prisma.SalesEntryFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SalesEntryFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>
+          }
+          findMany: {
+            args: Prisma.SalesEntryFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>[]
+          }
+          create: {
+            args: Prisma.SalesEntryCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>
+          }
+          createMany: {
+            args: Prisma.SalesEntryCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SalesEntryCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>[]
+          }
+          delete: {
+            args: Prisma.SalesEntryDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>
+          }
+          update: {
+            args: Prisma.SalesEntryUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>
+          }
+          deleteMany: {
+            args: Prisma.SalesEntryDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SalesEntryUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SalesEntryUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>[]
+          }
+          upsert: {
+            args: Prisma.SalesEntryUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryPayload>
+          }
+          aggregate: {
+            args: Prisma.SalesEntryAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSalesEntry>
+          }
+          groupBy: {
+            args: Prisma.SalesEntryGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SalesEntryGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SalesEntryCountArgs<ExtArgs>
+            result: $Utils.Optional<SalesEntryCountAggregateOutputType> | number
+          }
+        }
+      }
+      SalesEntryItem: {
+        payload: Prisma.$SalesEntryItemPayload<ExtArgs>
+        fields: Prisma.SalesEntryItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SalesEntryItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SalesEntryItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>
+          }
+          findFirst: {
+            args: Prisma.SalesEntryItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SalesEntryItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>
+          }
+          findMany: {
+            args: Prisma.SalesEntryItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>[]
+          }
+          create: {
+            args: Prisma.SalesEntryItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>
+          }
+          createMany: {
+            args: Prisma.SalesEntryItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SalesEntryItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>[]
+          }
+          delete: {
+            args: Prisma.SalesEntryItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>
+          }
+          update: {
+            args: Prisma.SalesEntryItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.SalesEntryItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SalesEntryItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SalesEntryItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.SalesEntryItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SalesEntryItemPayload>
+          }
+          aggregate: {
+            args: Prisma.SalesEntryItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSalesEntryItem>
+          }
+          groupBy: {
+            args: Prisma.SalesEntryItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SalesEntryItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SalesEntryItemCountArgs<ExtArgs>
+            result: $Utils.Optional<SalesEntryItemCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2677,7 +3307,6 @@ export namespace Prisma {
     paymentTerm?: PaymentTermOmit
     paymentMethod?: PaymentMethodOmit
     salesCategory?: SalesCategoryOmit
-    client?: ClientOmit
     driver?: DriverOmit
     vehicle?: VehicleOmit
     shift?: ShiftOmit
@@ -2686,6 +3315,14 @@ export namespace Prisma {
     itemCategory?: ItemCategoryOmit
     item?: ItemOmit
     tax?: TaxOmit
+    client?: ClientOmit
+    quotationItem?: QuotationItemOmit
+    salesQuotation?: SalesQuotationOmit
+    deliveryDetail?: DeliveryDetailOmit
+    directSale?: DirectSaleOmit
+    directSaleItem?: DirectSaleItemOmit
+    salesEntry?: SalesEntryOmit
+    salesEntryItem?: SalesEntryItemOmit
   }
 
   /* Types for Logging */
@@ -2843,6 +3480,148 @@ export namespace Prisma {
    */
   export type RoleCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: UserWhereInput
+  }
+
+
+  /**
+   * Count Type ClientCountOutputType
+   */
+
+  export type ClientCountOutputType = {
+    salesQuotations: number
+    directSales: number
+    salesEntry: number
+  }
+
+  export type ClientCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesQuotations?: boolean | ClientCountOutputTypeCountSalesQuotationsArgs
+    directSales?: boolean | ClientCountOutputTypeCountDirectSalesArgs
+    salesEntry?: boolean | ClientCountOutputTypeCountSalesEntryArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ClientCountOutputType without action
+   */
+  export type ClientCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ClientCountOutputType
+     */
+    select?: ClientCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ClientCountOutputType without action
+   */
+  export type ClientCountOutputTypeCountSalesQuotationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesQuotationWhereInput
+  }
+
+  /**
+   * ClientCountOutputType without action
+   */
+  export type ClientCountOutputTypeCountDirectSalesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DirectSaleWhereInput
+  }
+
+  /**
+   * ClientCountOutputType without action
+   */
+  export type ClientCountOutputTypeCountSalesEntryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesEntryWhereInput
+  }
+
+
+  /**
+   * Count Type SalesQuotationCountOutputType
+   */
+
+  export type SalesQuotationCountOutputType = {
+    quotationItems: number
+  }
+
+  export type SalesQuotationCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quotationItems?: boolean | SalesQuotationCountOutputTypeCountQuotationItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SalesQuotationCountOutputType without action
+   */
+  export type SalesQuotationCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotationCountOutputType
+     */
+    select?: SalesQuotationCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SalesQuotationCountOutputType without action
+   */
+  export type SalesQuotationCountOutputTypeCountQuotationItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuotationItemWhereInput
+  }
+
+
+  /**
+   * Count Type DirectSaleCountOutputType
+   */
+
+  export type DirectSaleCountOutputType = {
+    saleItems: number
+  }
+
+  export type DirectSaleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    saleItems?: boolean | DirectSaleCountOutputTypeCountSaleItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * DirectSaleCountOutputType without action
+   */
+  export type DirectSaleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleCountOutputType
+     */
+    select?: DirectSaleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * DirectSaleCountOutputType without action
+   */
+  export type DirectSaleCountOutputTypeCountSaleItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DirectSaleItemWhereInput
+  }
+
+
+  /**
+   * Count Type SalesEntryCountOutputType
+   */
+
+  export type SalesEntryCountOutputType = {
+    salesEntryItems: number
+  }
+
+  export type SalesEntryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesEntryItems?: boolean | SalesEntryCountOutputTypeCountSalesEntryItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SalesEntryCountOutputType without action
+   */
+  export type SalesEntryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryCountOutputType
+     */
+    select?: SalesEntryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SalesEntryCountOutputType without action
+   */
+  export type SalesEntryCountOutputTypeCountSalesEntryItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesEntryItemWhereInput
   }
 
 
@@ -17294,1285 +18073,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Client
-   */
-
-  export type AggregateClient = {
-    _count: ClientCountAggregateOutputType | null
-    _min: ClientMinAggregateOutputType | null
-    _max: ClientMaxAggregateOutputType | null
-  }
-
-  export type ClientMinAggregateOutputType = {
-    id: string | null
-    customerName: string | null
-    customerInitials: string | null
-    address: string | null
-    kraPin: string | null
-    currency: string | null
-    isActive: boolean | null
-    phone1: string | null
-    phone2: string | null
-    email: string | null
-    bankName: string | null
-    accountNumber: string | null
-    salesPerson: string | null
-    discountEliginility: boolean | null
-    branchName: string | null
-    salesArea: string | null
-    salesType: string | null
-    comment: string | null
-    customerId: string | null
-    preferedPaymentMethod: string | null
-    sex: string | null
-    allowedDiscount: string | null
-    creditLimit: string | null
-    paymentTerms: string | null
-    refNo: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type ClientMaxAggregateOutputType = {
-    id: string | null
-    customerName: string | null
-    customerInitials: string | null
-    address: string | null
-    kraPin: string | null
-    currency: string | null
-    isActive: boolean | null
-    phone1: string | null
-    phone2: string | null
-    email: string | null
-    bankName: string | null
-    accountNumber: string | null
-    salesPerson: string | null
-    discountEliginility: boolean | null
-    branchName: string | null
-    salesArea: string | null
-    salesType: string | null
-    comment: string | null
-    customerId: string | null
-    preferedPaymentMethod: string | null
-    sex: string | null
-    allowedDiscount: string | null
-    creditLimit: string | null
-    paymentTerms: string | null
-    refNo: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
-  }
-
-  export type ClientCountAggregateOutputType = {
-    id: number
-    customerName: number
-    customerInitials: number
-    address: number
-    kraPin: number
-    currency: number
-    isActive: number
-    phone1: number
-    phone2: number
-    email: number
-    bankName: number
-    accountNumber: number
-    salesPerson: number
-    discountEliginility: number
-    branchName: number
-    salesArea: number
-    salesType: number
-    comment: number
-    customerId: number
-    preferedPaymentMethod: number
-    sex: number
-    allowedDiscount: number
-    creditLimit: number
-    paymentTerms: number
-    refNo: number
-    createdAt: number
-    updatedAt: number
-    _all: number
-  }
-
-
-  export type ClientMinAggregateInputType = {
-    id?: true
-    customerName?: true
-    customerInitials?: true
-    address?: true
-    kraPin?: true
-    currency?: true
-    isActive?: true
-    phone1?: true
-    phone2?: true
-    email?: true
-    bankName?: true
-    accountNumber?: true
-    salesPerson?: true
-    discountEliginility?: true
-    branchName?: true
-    salesArea?: true
-    salesType?: true
-    comment?: true
-    customerId?: true
-    preferedPaymentMethod?: true
-    sex?: true
-    allowedDiscount?: true
-    creditLimit?: true
-    paymentTerms?: true
-    refNo?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type ClientMaxAggregateInputType = {
-    id?: true
-    customerName?: true
-    customerInitials?: true
-    address?: true
-    kraPin?: true
-    currency?: true
-    isActive?: true
-    phone1?: true
-    phone2?: true
-    email?: true
-    bankName?: true
-    accountNumber?: true
-    salesPerson?: true
-    discountEliginility?: true
-    branchName?: true
-    salesArea?: true
-    salesType?: true
-    comment?: true
-    customerId?: true
-    preferedPaymentMethod?: true
-    sex?: true
-    allowedDiscount?: true
-    creditLimit?: true
-    paymentTerms?: true
-    refNo?: true
-    createdAt?: true
-    updatedAt?: true
-  }
-
-  export type ClientCountAggregateInputType = {
-    id?: true
-    customerName?: true
-    customerInitials?: true
-    address?: true
-    kraPin?: true
-    currency?: true
-    isActive?: true
-    phone1?: true
-    phone2?: true
-    email?: true
-    bankName?: true
-    accountNumber?: true
-    salesPerson?: true
-    discountEliginility?: true
-    branchName?: true
-    salesArea?: true
-    salesType?: true
-    comment?: true
-    customerId?: true
-    preferedPaymentMethod?: true
-    sex?: true
-    allowedDiscount?: true
-    creditLimit?: true
-    paymentTerms?: true
-    refNo?: true
-    createdAt?: true
-    updatedAt?: true
-    _all?: true
-  }
-
-  export type ClientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Client to aggregate.
-     */
-    where?: ClientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Clients to fetch.
-     */
-    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: ClientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Clients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Clients.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Clients
-    **/
-    _count?: true | ClientCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: ClientMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: ClientMaxAggregateInputType
-  }
-
-  export type GetClientAggregateType<T extends ClientAggregateArgs> = {
-        [P in keyof T & keyof AggregateClient]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateClient[P]>
-      : GetScalarType<T[P], AggregateClient[P]>
-  }
-
-
-
-
-  export type ClientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: ClientWhereInput
-    orderBy?: ClientOrderByWithAggregationInput | ClientOrderByWithAggregationInput[]
-    by: ClientScalarFieldEnum[] | ClientScalarFieldEnum
-    having?: ClientScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: ClientCountAggregateInputType | true
-    _min?: ClientMinAggregateInputType
-    _max?: ClientMaxAggregateInputType
-  }
-
-  export type ClientGroupByOutputType = {
-    id: string
-    customerName: string
-    customerInitials: string
-    address: string
-    kraPin: string
-    currency: string
-    isActive: boolean
-    phone1: string
-    phone2: string
-    email: string
-    bankName: string
-    accountNumber: string
-    salesPerson: string
-    discountEliginility: boolean
-    branchName: string
-    salesArea: string
-    salesType: string
-    comment: string
-    customerId: string
-    preferedPaymentMethod: string
-    sex: string
-    allowedDiscount: string
-    creditLimit: string
-    paymentTerms: string
-    refNo: string
-    createdAt: Date
-    updatedAt: Date
-    _count: ClientCountAggregateOutputType | null
-    _min: ClientMinAggregateOutputType | null
-    _max: ClientMaxAggregateOutputType | null
-  }
-
-  type GetClientGroupByPayload<T extends ClientGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<ClientGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof ClientGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], ClientGroupByOutputType[P]>
-            : GetScalarType<T[P], ClientGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type ClientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    customerName?: boolean
-    customerInitials?: boolean
-    address?: boolean
-    kraPin?: boolean
-    currency?: boolean
-    isActive?: boolean
-    phone1?: boolean
-    phone2?: boolean
-    email?: boolean
-    bankName?: boolean
-    accountNumber?: boolean
-    salesPerson?: boolean
-    discountEliginility?: boolean
-    branchName?: boolean
-    salesArea?: boolean
-    salesType?: boolean
-    comment?: boolean
-    customerId?: boolean
-    preferedPaymentMethod?: boolean
-    sex?: boolean
-    allowedDiscount?: boolean
-    creditLimit?: boolean
-    paymentTerms?: boolean
-    refNo?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["client"]>
-
-  export type ClientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    customerName?: boolean
-    customerInitials?: boolean
-    address?: boolean
-    kraPin?: boolean
-    currency?: boolean
-    isActive?: boolean
-    phone1?: boolean
-    phone2?: boolean
-    email?: boolean
-    bankName?: boolean
-    accountNumber?: boolean
-    salesPerson?: boolean
-    discountEliginility?: boolean
-    branchName?: boolean
-    salesArea?: boolean
-    salesType?: boolean
-    comment?: boolean
-    customerId?: boolean
-    preferedPaymentMethod?: boolean
-    sex?: boolean
-    allowedDiscount?: boolean
-    creditLimit?: boolean
-    paymentTerms?: boolean
-    refNo?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["client"]>
-
-  export type ClientSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    customerName?: boolean
-    customerInitials?: boolean
-    address?: boolean
-    kraPin?: boolean
-    currency?: boolean
-    isActive?: boolean
-    phone1?: boolean
-    phone2?: boolean
-    email?: boolean
-    bankName?: boolean
-    accountNumber?: boolean
-    salesPerson?: boolean
-    discountEliginility?: boolean
-    branchName?: boolean
-    salesArea?: boolean
-    salesType?: boolean
-    comment?: boolean
-    customerId?: boolean
-    preferedPaymentMethod?: boolean
-    sex?: boolean
-    allowedDiscount?: boolean
-    creditLimit?: boolean
-    paymentTerms?: boolean
-    refNo?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }, ExtArgs["result"]["client"]>
-
-  export type ClientSelectScalar = {
-    id?: boolean
-    customerName?: boolean
-    customerInitials?: boolean
-    address?: boolean
-    kraPin?: boolean
-    currency?: boolean
-    isActive?: boolean
-    phone1?: boolean
-    phone2?: boolean
-    email?: boolean
-    bankName?: boolean
-    accountNumber?: boolean
-    salesPerson?: boolean
-    discountEliginility?: boolean
-    branchName?: boolean
-    salesArea?: boolean
-    salesType?: boolean
-    comment?: boolean
-    customerId?: boolean
-    preferedPaymentMethod?: boolean
-    sex?: boolean
-    allowedDiscount?: boolean
-    creditLimit?: boolean
-    paymentTerms?: boolean
-    refNo?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
-  }
-
-  export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerName" | "customerInitials" | "address" | "kraPin" | "currency" | "isActive" | "phone1" | "phone2" | "email" | "bankName" | "accountNumber" | "salesPerson" | "discountEliginility" | "branchName" | "salesArea" | "salesType" | "comment" | "customerId" | "preferedPaymentMethod" | "sex" | "allowedDiscount" | "creditLimit" | "paymentTerms" | "refNo" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
-
-  export type $ClientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Client"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-      customerName: string
-      customerInitials: string
-      address: string
-      kraPin: string
-      currency: string
-      isActive: boolean
-      phone1: string
-      phone2: string
-      email: string
-      bankName: string
-      accountNumber: string
-      salesPerson: string
-      discountEliginility: boolean
-      branchName: string
-      salesArea: string
-      salesType: string
-      comment: string
-      customerId: string
-      preferedPaymentMethod: string
-      sex: string
-      allowedDiscount: string
-      creditLimit: string
-      paymentTerms: string
-      refNo: string
-      createdAt: Date
-      updatedAt: Date
-    }, ExtArgs["result"]["client"]>
-    composites: {}
-  }
-
-  type ClientGetPayload<S extends boolean | null | undefined | ClientDefaultArgs> = $Result.GetResult<Prisma.$ClientPayload, S>
-
-  type ClientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<ClientFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: ClientCountAggregateInputType | true
-    }
-
-  export interface ClientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Client'], meta: { name: 'Client' } }
-    /**
-     * Find zero or one Client that matches the filter.
-     * @param {ClientFindUniqueArgs} args - Arguments to find a Client
-     * @example
-     * // Get one Client
-     * const client = await prisma.client.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends ClientFindUniqueArgs>(args: SelectSubset<T, ClientFindUniqueArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Client that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {ClientFindUniqueOrThrowArgs} args - Arguments to find a Client
-     * @example
-     * // Get one Client
-     * const client = await prisma.client.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends ClientFindUniqueOrThrowArgs>(args: SelectSubset<T, ClientFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Client that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientFindFirstArgs} args - Arguments to find a Client
-     * @example
-     * // Get one Client
-     * const client = await prisma.client.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends ClientFindFirstArgs>(args?: SelectSubset<T, ClientFindFirstArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Client that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientFindFirstOrThrowArgs} args - Arguments to find a Client
-     * @example
-     * // Get one Client
-     * const client = await prisma.client.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends ClientFindFirstOrThrowArgs>(args?: SelectSubset<T, ClientFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Clients that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Clients
-     * const clients = await prisma.client.findMany()
-     * 
-     * // Get first 10 Clients
-     * const clients = await prisma.client.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const clientWithIdOnly = await prisma.client.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends ClientFindManyArgs>(args?: SelectSubset<T, ClientFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Client.
-     * @param {ClientCreateArgs} args - Arguments to create a Client.
-     * @example
-     * // Create one Client
-     * const Client = await prisma.client.create({
-     *   data: {
-     *     // ... data to create a Client
-     *   }
-     * })
-     * 
-     */
-    create<T extends ClientCreateArgs>(args: SelectSubset<T, ClientCreateArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Clients.
-     * @param {ClientCreateManyArgs} args - Arguments to create many Clients.
-     * @example
-     * // Create many Clients
-     * const client = await prisma.client.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends ClientCreateManyArgs>(args?: SelectSubset<T, ClientCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Clients and returns the data saved in the database.
-     * @param {ClientCreateManyAndReturnArgs} args - Arguments to create many Clients.
-     * @example
-     * // Create many Clients
-     * const client = await prisma.client.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Clients and only return the `id`
-     * const clientWithIdOnly = await prisma.client.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends ClientCreateManyAndReturnArgs>(args?: SelectSubset<T, ClientCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Client.
-     * @param {ClientDeleteArgs} args - Arguments to delete one Client.
-     * @example
-     * // Delete one Client
-     * const Client = await prisma.client.delete({
-     *   where: {
-     *     // ... filter to delete one Client
-     *   }
-     * })
-     * 
-     */
-    delete<T extends ClientDeleteArgs>(args: SelectSubset<T, ClientDeleteArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Client.
-     * @param {ClientUpdateArgs} args - Arguments to update one Client.
-     * @example
-     * // Update one Client
-     * const client = await prisma.client.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends ClientUpdateArgs>(args: SelectSubset<T, ClientUpdateArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Clients.
-     * @param {ClientDeleteManyArgs} args - Arguments to filter Clients to delete.
-     * @example
-     * // Delete a few Clients
-     * const { count } = await prisma.client.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends ClientDeleteManyArgs>(args?: SelectSubset<T, ClientDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Clients.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Clients
-     * const client = await prisma.client.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends ClientUpdateManyArgs>(args: SelectSubset<T, ClientUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Clients and returns the data updated in the database.
-     * @param {ClientUpdateManyAndReturnArgs} args - Arguments to update many Clients.
-     * @example
-     * // Update many Clients
-     * const client = await prisma.client.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Clients and only return the `id`
-     * const clientWithIdOnly = await prisma.client.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends ClientUpdateManyAndReturnArgs>(args: SelectSubset<T, ClientUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Client.
-     * @param {ClientUpsertArgs} args - Arguments to update or create a Client.
-     * @example
-     * // Update or create a Client
-     * const client = await prisma.client.upsert({
-     *   create: {
-     *     // ... data to create a Client
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Client we want to update
-     *   }
-     * })
-     */
-    upsert<T extends ClientUpsertArgs>(args: SelectSubset<T, ClientUpsertArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Clients.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientCountArgs} args - Arguments to filter Clients to count.
-     * @example
-     * // Count the number of Clients
-     * const count = await prisma.client.count({
-     *   where: {
-     *     // ... the filter for the Clients we want to count
-     *   }
-     * })
-    **/
-    count<T extends ClientCountArgs>(
-      args?: Subset<T, ClientCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], ClientCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Client.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends ClientAggregateArgs>(args: Subset<T, ClientAggregateArgs>): Prisma.PrismaPromise<GetClientAggregateType<T>>
-
-    /**
-     * Group by Client.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {ClientGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends ClientGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: ClientGroupByArgs['orderBy'] }
-        : { orderBy?: ClientGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, ClientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Client model
-   */
-  readonly fields: ClientFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Client.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__ClientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Client model
-   */
-  interface ClientFieldRefs {
-    readonly id: FieldRef<"Client", 'String'>
-    readonly customerName: FieldRef<"Client", 'String'>
-    readonly customerInitials: FieldRef<"Client", 'String'>
-    readonly address: FieldRef<"Client", 'String'>
-    readonly kraPin: FieldRef<"Client", 'String'>
-    readonly currency: FieldRef<"Client", 'String'>
-    readonly isActive: FieldRef<"Client", 'Boolean'>
-    readonly phone1: FieldRef<"Client", 'String'>
-    readonly phone2: FieldRef<"Client", 'String'>
-    readonly email: FieldRef<"Client", 'String'>
-    readonly bankName: FieldRef<"Client", 'String'>
-    readonly accountNumber: FieldRef<"Client", 'String'>
-    readonly salesPerson: FieldRef<"Client", 'String'>
-    readonly discountEliginility: FieldRef<"Client", 'Boolean'>
-    readonly branchName: FieldRef<"Client", 'String'>
-    readonly salesArea: FieldRef<"Client", 'String'>
-    readonly salesType: FieldRef<"Client", 'String'>
-    readonly comment: FieldRef<"Client", 'String'>
-    readonly customerId: FieldRef<"Client", 'String'>
-    readonly preferedPaymentMethod: FieldRef<"Client", 'String'>
-    readonly sex: FieldRef<"Client", 'String'>
-    readonly allowedDiscount: FieldRef<"Client", 'String'>
-    readonly creditLimit: FieldRef<"Client", 'String'>
-    readonly paymentTerms: FieldRef<"Client", 'String'>
-    readonly refNo: FieldRef<"Client", 'String'>
-    readonly createdAt: FieldRef<"Client", 'DateTime'>
-    readonly updatedAt: FieldRef<"Client", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Client findUnique
-   */
-  export type ClientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * Filter, which Client to fetch.
-     */
-    where: ClientWhereUniqueInput
-  }
-
-  /**
-   * Client findUniqueOrThrow
-   */
-  export type ClientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * Filter, which Client to fetch.
-     */
-    where: ClientWhereUniqueInput
-  }
-
-  /**
-   * Client findFirst
-   */
-  export type ClientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * Filter, which Client to fetch.
-     */
-    where?: ClientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Clients to fetch.
-     */
-    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Clients.
-     */
-    cursor?: ClientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Clients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Clients.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Clients.
-     */
-    distinct?: ClientScalarFieldEnum | ClientScalarFieldEnum[]
-  }
-
-  /**
-   * Client findFirstOrThrow
-   */
-  export type ClientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * Filter, which Client to fetch.
-     */
-    where?: ClientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Clients to fetch.
-     */
-    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Clients.
-     */
-    cursor?: ClientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Clients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Clients.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Clients.
-     */
-    distinct?: ClientScalarFieldEnum | ClientScalarFieldEnum[]
-  }
-
-  /**
-   * Client findMany
-   */
-  export type ClientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * Filter, which Clients to fetch.
-     */
-    where?: ClientWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Clients to fetch.
-     */
-    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Clients.
-     */
-    cursor?: ClientWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Clients from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Clients.
-     */
-    skip?: number
-    distinct?: ClientScalarFieldEnum | ClientScalarFieldEnum[]
-  }
-
-  /**
-   * Client create
-   */
-  export type ClientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * The data needed to create a Client.
-     */
-    data: XOR<ClientCreateInput, ClientUncheckedCreateInput>
-  }
-
-  /**
-   * Client createMany
-   */
-  export type ClientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Clients.
-     */
-    data: ClientCreateManyInput | ClientCreateManyInput[]
-  }
-
-  /**
-   * Client createManyAndReturn
-   */
-  export type ClientCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * The data used to create many Clients.
-     */
-    data: ClientCreateManyInput | ClientCreateManyInput[]
-  }
-
-  /**
-   * Client update
-   */
-  export type ClientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * The data needed to update a Client.
-     */
-    data: XOR<ClientUpdateInput, ClientUncheckedUpdateInput>
-    /**
-     * Choose, which Client to update.
-     */
-    where: ClientWhereUniqueInput
-  }
-
-  /**
-   * Client updateMany
-   */
-  export type ClientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Clients.
-     */
-    data: XOR<ClientUpdateManyMutationInput, ClientUncheckedUpdateManyInput>
-    /**
-     * Filter which Clients to update
-     */
-    where?: ClientWhereInput
-    /**
-     * Limit how many Clients to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Client updateManyAndReturn
-   */
-  export type ClientUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * The data used to update Clients.
-     */
-    data: XOR<ClientUpdateManyMutationInput, ClientUncheckedUpdateManyInput>
-    /**
-     * Filter which Clients to update
-     */
-    where?: ClientWhereInput
-    /**
-     * Limit how many Clients to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Client upsert
-   */
-  export type ClientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * The filter to search for the Client to update in case it exists.
-     */
-    where: ClientWhereUniqueInput
-    /**
-     * In case the Client found by the `where` argument doesn't exist, create a new Client with this data.
-     */
-    create: XOR<ClientCreateInput, ClientUncheckedCreateInput>
-    /**
-     * In case the Client was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<ClientUpdateInput, ClientUncheckedUpdateInput>
-  }
-
-  /**
-   * Client delete
-   */
-  export type ClientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-    /**
-     * Filter which Client to delete.
-     */
-    where: ClientWhereUniqueInput
-  }
-
-  /**
-   * Client deleteMany
-   */
-  export type ClientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Clients to delete
-     */
-    where?: ClientWhereInput
-    /**
-     * Limit how many Clients to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Client without action
-   */
-  export type ClientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Client
-     */
-    select?: ClientSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Client
-     */
-    omit?: ClientOmit<ExtArgs> | null
-  }
-
-
-  /**
    * Model Driver
    */
 
@@ -25256,10 +24756,20 @@ export namespace Prisma {
 
   export type ItemAvgAggregateOutputType = {
     id: number | null
+    itemPrice: number | null
+    priceBeforeTax: number | null
+    taxAmount: number | null
+    discountWholesale: number | null
+    discountRetail: number | null
   }
 
   export type ItemSumAggregateOutputType = {
     id: number | null
+    itemPrice: number | null
+    priceBeforeTax: number | null
+    taxAmount: number | null
+    discountWholesale: number | null
+    discountRetail: number | null
   }
 
   export type ItemMinAggregateOutputType = {
@@ -25275,6 +24785,13 @@ export namespace Prisma {
     creator: string | null
     status: string | null
     barcode: string | null
+    itemPrice: number | null
+    priceBeforeTax: number | null
+    taxAmount: number | null
+    discountWholesale: number | null
+    discountRetail: number | null
+    customDiscountAllowed: boolean | null
+    taxType: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25292,6 +24809,13 @@ export namespace Prisma {
     creator: string | null
     status: string | null
     barcode: string | null
+    itemPrice: number | null
+    priceBeforeTax: number | null
+    taxAmount: number | null
+    discountWholesale: number | null
+    discountRetail: number | null
+    customDiscountAllowed: boolean | null
+    taxType: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -25309,6 +24833,13 @@ export namespace Prisma {
     creator: number
     status: number
     barcode: number
+    itemPrice: number
+    priceBeforeTax: number
+    taxAmount: number
+    discountWholesale: number
+    discountRetail: number
+    customDiscountAllowed: number
+    taxType: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -25317,10 +24848,20 @@ export namespace Prisma {
 
   export type ItemAvgAggregateInputType = {
     id?: true
+    itemPrice?: true
+    priceBeforeTax?: true
+    taxAmount?: true
+    discountWholesale?: true
+    discountRetail?: true
   }
 
   export type ItemSumAggregateInputType = {
     id?: true
+    itemPrice?: true
+    priceBeforeTax?: true
+    taxAmount?: true
+    discountWholesale?: true
+    discountRetail?: true
   }
 
   export type ItemMinAggregateInputType = {
@@ -25336,6 +24877,13 @@ export namespace Prisma {
     creator?: true
     status?: true
     barcode?: true
+    itemPrice?: true
+    priceBeforeTax?: true
+    taxAmount?: true
+    discountWholesale?: true
+    discountRetail?: true
+    customDiscountAllowed?: true
+    taxType?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -25353,6 +24901,13 @@ export namespace Prisma {
     creator?: true
     status?: true
     barcode?: true
+    itemPrice?: true
+    priceBeforeTax?: true
+    taxAmount?: true
+    discountWholesale?: true
+    discountRetail?: true
+    customDiscountAllowed?: true
+    taxType?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -25370,6 +24925,13 @@ export namespace Prisma {
     creator?: true
     status?: true
     barcode?: true
+    itemPrice?: true
+    priceBeforeTax?: true
+    taxAmount?: true
+    discountWholesale?: true
+    discountRetail?: true
+    customDiscountAllowed?: true
+    taxType?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -25474,6 +25036,13 @@ export namespace Prisma {
     creator: string
     status: string
     barcode: string
+    itemPrice: number
+    priceBeforeTax: number
+    taxAmount: number
+    discountWholesale: number
+    discountRetail: number
+    customDiscountAllowed: boolean
+    taxType: string | null
     createdAt: Date
     updatedAt: Date
     _count: ItemCountAggregateOutputType | null
@@ -25510,6 +25079,13 @@ export namespace Prisma {
     creator?: boolean
     status?: boolean
     barcode?: boolean
+    itemPrice?: boolean
+    priceBeforeTax?: boolean
+    taxAmount?: boolean
+    discountWholesale?: boolean
+    discountRetail?: boolean
+    customDiscountAllowed?: boolean
+    taxType?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["item"]>
@@ -25527,6 +25103,13 @@ export namespace Prisma {
     creator?: boolean
     status?: boolean
     barcode?: boolean
+    itemPrice?: boolean
+    priceBeforeTax?: boolean
+    taxAmount?: boolean
+    discountWholesale?: boolean
+    discountRetail?: boolean
+    customDiscountAllowed?: boolean
+    taxType?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["item"]>
@@ -25544,6 +25127,13 @@ export namespace Prisma {
     creator?: boolean
     status?: boolean
     barcode?: boolean
+    itemPrice?: boolean
+    priceBeforeTax?: boolean
+    taxAmount?: boolean
+    discountWholesale?: boolean
+    discountRetail?: boolean
+    customDiscountAllowed?: boolean
+    taxType?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["item"]>
@@ -25561,11 +25151,18 @@ export namespace Prisma {
     creator?: boolean
     status?: boolean
     barcode?: boolean
+    itemPrice?: boolean
+    priceBeforeTax?: boolean
+    taxAmount?: boolean
+    discountWholesale?: boolean
+    discountRetail?: boolean
+    customDiscountAllowed?: boolean
+    taxType?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "category" | "unitOfMeasure" | "description" | "excludeFromSale" | "excludeFromPurchase" | "branch" | "creator" | "status" | "barcode" | "createdAt" | "updatedAt", ExtArgs["result"]["item"]>
+  export type ItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "name" | "category" | "unitOfMeasure" | "description" | "excludeFromSale" | "excludeFromPurchase" | "branch" | "creator" | "status" | "barcode" | "itemPrice" | "priceBeforeTax" | "taxAmount" | "discountWholesale" | "discountRetail" | "customDiscountAllowed" | "taxType" | "createdAt" | "updatedAt", ExtArgs["result"]["item"]>
 
   export type $ItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Item"
@@ -25583,6 +25180,13 @@ export namespace Prisma {
       creator: string
       status: string
       barcode: string
+      itemPrice: number
+      priceBeforeTax: number
+      taxAmount: number
+      discountWholesale: number
+      discountRetail: number
+      customDiscountAllowed: boolean
+      taxType: string | null
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["item"]>
@@ -26020,6 +25624,13 @@ export namespace Prisma {
     readonly creator: FieldRef<"Item", 'String'>
     readonly status: FieldRef<"Item", 'String'>
     readonly barcode: FieldRef<"Item", 'String'>
+    readonly itemPrice: FieldRef<"Item", 'Float'>
+    readonly priceBeforeTax: FieldRef<"Item", 'Float'>
+    readonly taxAmount: FieldRef<"Item", 'Float'>
+    readonly discountWholesale: FieldRef<"Item", 'Float'>
+    readonly discountRetail: FieldRef<"Item", 'Float'>
+    readonly customDiscountAllowed: FieldRef<"Item", 'Boolean'>
+    readonly taxType: FieldRef<"Item", 'String'>
     readonly createdAt: FieldRef<"Item", 'DateTime'>
     readonly updatedAt: FieldRef<"Item", 'DateTime'>
   }
@@ -27556,6 +27167,9808 @@ export namespace Prisma {
 
 
   /**
+   * Model Client
+   */
+
+  export type AggregateClient = {
+    _count: ClientCountAggregateOutputType | null
+    _min: ClientMinAggregateOutputType | null
+    _max: ClientMaxAggregateOutputType | null
+  }
+
+  export type ClientMinAggregateOutputType = {
+    id: string | null
+    customerName: string | null
+    customerInitials: string | null
+    address: string | null
+    kraPin: string | null
+    currency: string | null
+    isActive: boolean | null
+    phone1: string | null
+    phone2: string | null
+    email: string | null
+    bankName: string | null
+    accountNumber: string | null
+    salesPerson: string | null
+    discountEliginility: boolean | null
+    branchName: string | null
+    salesArea: string | null
+    salesType: string | null
+    comment: string | null
+    customerId: string | null
+    preferedPaymentMethod: string | null
+    sex: string | null
+    allowedDiscount: string | null
+    creditLimit: string | null
+    paymentTerms: string | null
+    refNo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ClientMaxAggregateOutputType = {
+    id: string | null
+    customerName: string | null
+    customerInitials: string | null
+    address: string | null
+    kraPin: string | null
+    currency: string | null
+    isActive: boolean | null
+    phone1: string | null
+    phone2: string | null
+    email: string | null
+    bankName: string | null
+    accountNumber: string | null
+    salesPerson: string | null
+    discountEliginility: boolean | null
+    branchName: string | null
+    salesArea: string | null
+    salesType: string | null
+    comment: string | null
+    customerId: string | null
+    preferedPaymentMethod: string | null
+    sex: string | null
+    allowedDiscount: string | null
+    creditLimit: string | null
+    paymentTerms: string | null
+    refNo: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type ClientCountAggregateOutputType = {
+    id: number
+    customerName: number
+    customerInitials: number
+    address: number
+    kraPin: number
+    currency: number
+    isActive: number
+    phone1: number
+    phone2: number
+    email: number
+    bankName: number
+    accountNumber: number
+    salesPerson: number
+    discountEliginility: number
+    branchName: number
+    salesArea: number
+    salesType: number
+    comment: number
+    customerId: number
+    preferedPaymentMethod: number
+    sex: number
+    allowedDiscount: number
+    creditLimit: number
+    paymentTerms: number
+    refNo: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type ClientMinAggregateInputType = {
+    id?: true
+    customerName?: true
+    customerInitials?: true
+    address?: true
+    kraPin?: true
+    currency?: true
+    isActive?: true
+    phone1?: true
+    phone2?: true
+    email?: true
+    bankName?: true
+    accountNumber?: true
+    salesPerson?: true
+    discountEliginility?: true
+    branchName?: true
+    salesArea?: true
+    salesType?: true
+    comment?: true
+    customerId?: true
+    preferedPaymentMethod?: true
+    sex?: true
+    allowedDiscount?: true
+    creditLimit?: true
+    paymentTerms?: true
+    refNo?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ClientMaxAggregateInputType = {
+    id?: true
+    customerName?: true
+    customerInitials?: true
+    address?: true
+    kraPin?: true
+    currency?: true
+    isActive?: true
+    phone1?: true
+    phone2?: true
+    email?: true
+    bankName?: true
+    accountNumber?: true
+    salesPerson?: true
+    discountEliginility?: true
+    branchName?: true
+    salesArea?: true
+    salesType?: true
+    comment?: true
+    customerId?: true
+    preferedPaymentMethod?: true
+    sex?: true
+    allowedDiscount?: true
+    creditLimit?: true
+    paymentTerms?: true
+    refNo?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type ClientCountAggregateInputType = {
+    id?: true
+    customerName?: true
+    customerInitials?: true
+    address?: true
+    kraPin?: true
+    currency?: true
+    isActive?: true
+    phone1?: true
+    phone2?: true
+    email?: true
+    bankName?: true
+    accountNumber?: true
+    salesPerson?: true
+    discountEliginility?: true
+    branchName?: true
+    salesArea?: true
+    salesType?: true
+    comment?: true
+    customerId?: true
+    preferedPaymentMethod?: true
+    sex?: true
+    allowedDiscount?: true
+    creditLimit?: true
+    paymentTerms?: true
+    refNo?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type ClientAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Client to aggregate.
+     */
+    where?: ClientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clients to fetch.
+     */
+    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ClientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Clients
+    **/
+    _count?: true | ClientCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ClientMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ClientMaxAggregateInputType
+  }
+
+  export type GetClientAggregateType<T extends ClientAggregateArgs> = {
+        [P in keyof T & keyof AggregateClient]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateClient[P]>
+      : GetScalarType<T[P], AggregateClient[P]>
+  }
+
+
+
+
+  export type ClientGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ClientWhereInput
+    orderBy?: ClientOrderByWithAggregationInput | ClientOrderByWithAggregationInput[]
+    by: ClientScalarFieldEnum[] | ClientScalarFieldEnum
+    having?: ClientScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ClientCountAggregateInputType | true
+    _min?: ClientMinAggregateInputType
+    _max?: ClientMaxAggregateInputType
+  }
+
+  export type ClientGroupByOutputType = {
+    id: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt: Date
+    updatedAt: Date
+    _count: ClientCountAggregateOutputType | null
+    _min: ClientMinAggregateOutputType | null
+    _max: ClientMaxAggregateOutputType | null
+  }
+
+  type GetClientGroupByPayload<T extends ClientGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ClientGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ClientGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ClientGroupByOutputType[P]>
+            : GetScalarType<T[P], ClientGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ClientSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerName?: boolean
+    customerInitials?: boolean
+    address?: boolean
+    kraPin?: boolean
+    currency?: boolean
+    isActive?: boolean
+    phone1?: boolean
+    phone2?: boolean
+    email?: boolean
+    bankName?: boolean
+    accountNumber?: boolean
+    salesPerson?: boolean
+    discountEliginility?: boolean
+    branchName?: boolean
+    salesArea?: boolean
+    salesType?: boolean
+    comment?: boolean
+    customerId?: boolean
+    preferedPaymentMethod?: boolean
+    sex?: boolean
+    allowedDiscount?: boolean
+    creditLimit?: boolean
+    paymentTerms?: boolean
+    refNo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    salesQuotations?: boolean | Client$salesQuotationsArgs<ExtArgs>
+    directSales?: boolean | Client$directSalesArgs<ExtArgs>
+    salesEntry?: boolean | Client$salesEntryArgs<ExtArgs>
+    _count?: boolean | ClientCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["client"]>
+
+  export type ClientSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerName?: boolean
+    customerInitials?: boolean
+    address?: boolean
+    kraPin?: boolean
+    currency?: boolean
+    isActive?: boolean
+    phone1?: boolean
+    phone2?: boolean
+    email?: boolean
+    bankName?: boolean
+    accountNumber?: boolean
+    salesPerson?: boolean
+    discountEliginility?: boolean
+    branchName?: boolean
+    salesArea?: boolean
+    salesType?: boolean
+    comment?: boolean
+    customerId?: boolean
+    preferedPaymentMethod?: boolean
+    sex?: boolean
+    allowedDiscount?: boolean
+    creditLimit?: boolean
+    paymentTerms?: boolean
+    refNo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["client"]>
+
+  export type ClientSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    customerName?: boolean
+    customerInitials?: boolean
+    address?: boolean
+    kraPin?: boolean
+    currency?: boolean
+    isActive?: boolean
+    phone1?: boolean
+    phone2?: boolean
+    email?: boolean
+    bankName?: boolean
+    accountNumber?: boolean
+    salesPerson?: boolean
+    discountEliginility?: boolean
+    branchName?: boolean
+    salesArea?: boolean
+    salesType?: boolean
+    comment?: boolean
+    customerId?: boolean
+    preferedPaymentMethod?: boolean
+    sex?: boolean
+    allowedDiscount?: boolean
+    creditLimit?: boolean
+    paymentTerms?: boolean
+    refNo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["client"]>
+
+  export type ClientSelectScalar = {
+    id?: boolean
+    customerName?: boolean
+    customerInitials?: boolean
+    address?: boolean
+    kraPin?: boolean
+    currency?: boolean
+    isActive?: boolean
+    phone1?: boolean
+    phone2?: boolean
+    email?: boolean
+    bankName?: boolean
+    accountNumber?: boolean
+    salesPerson?: boolean
+    discountEliginility?: boolean
+    branchName?: boolean
+    salesArea?: boolean
+    salesType?: boolean
+    comment?: boolean
+    customerId?: boolean
+    preferedPaymentMethod?: boolean
+    sex?: boolean
+    allowedDiscount?: boolean
+    creditLimit?: boolean
+    paymentTerms?: boolean
+    refNo?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type ClientOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "customerName" | "customerInitials" | "address" | "kraPin" | "currency" | "isActive" | "phone1" | "phone2" | "email" | "bankName" | "accountNumber" | "salesPerson" | "discountEliginility" | "branchName" | "salesArea" | "salesType" | "comment" | "customerId" | "preferedPaymentMethod" | "sex" | "allowedDiscount" | "creditLimit" | "paymentTerms" | "refNo" | "createdAt" | "updatedAt", ExtArgs["result"]["client"]>
+  export type ClientInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesQuotations?: boolean | Client$salesQuotationsArgs<ExtArgs>
+    directSales?: boolean | Client$directSalesArgs<ExtArgs>
+    salesEntry?: boolean | Client$salesEntryArgs<ExtArgs>
+    _count?: boolean | ClientCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type ClientIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type ClientIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $ClientPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Client"
+    objects: {
+      salesQuotations: Prisma.$SalesQuotationPayload<ExtArgs>[]
+      directSales: Prisma.$DirectSalePayload<ExtArgs>[]
+      salesEntry: Prisma.$SalesEntryPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      customerName: string
+      customerInitials: string
+      address: string
+      kraPin: string
+      currency: string
+      isActive: boolean
+      phone1: string
+      phone2: string
+      email: string
+      bankName: string
+      accountNumber: string
+      salesPerson: string
+      discountEliginility: boolean
+      branchName: string
+      salesArea: string
+      salesType: string
+      comment: string
+      customerId: string
+      preferedPaymentMethod: string
+      sex: string
+      allowedDiscount: string
+      creditLimit: string
+      paymentTerms: string
+      refNo: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["client"]>
+    composites: {}
+  }
+
+  type ClientGetPayload<S extends boolean | null | undefined | ClientDefaultArgs> = $Result.GetResult<Prisma.$ClientPayload, S>
+
+  type ClientCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ClientFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ClientCountAggregateInputType | true
+    }
+
+  export interface ClientDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Client'], meta: { name: 'Client' } }
+    /**
+     * Find zero or one Client that matches the filter.
+     * @param {ClientFindUniqueArgs} args - Arguments to find a Client
+     * @example
+     * // Get one Client
+     * const client = await prisma.client.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ClientFindUniqueArgs>(args: SelectSubset<T, ClientFindUniqueArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Client that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ClientFindUniqueOrThrowArgs} args - Arguments to find a Client
+     * @example
+     * // Get one Client
+     * const client = await prisma.client.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ClientFindUniqueOrThrowArgs>(args: SelectSubset<T, ClientFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Client that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientFindFirstArgs} args - Arguments to find a Client
+     * @example
+     * // Get one Client
+     * const client = await prisma.client.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ClientFindFirstArgs>(args?: SelectSubset<T, ClientFindFirstArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Client that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientFindFirstOrThrowArgs} args - Arguments to find a Client
+     * @example
+     * // Get one Client
+     * const client = await prisma.client.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ClientFindFirstOrThrowArgs>(args?: SelectSubset<T, ClientFindFirstOrThrowArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Clients that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Clients
+     * const clients = await prisma.client.findMany()
+     * 
+     * // Get first 10 Clients
+     * const clients = await prisma.client.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const clientWithIdOnly = await prisma.client.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ClientFindManyArgs>(args?: SelectSubset<T, ClientFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Client.
+     * @param {ClientCreateArgs} args - Arguments to create a Client.
+     * @example
+     * // Create one Client
+     * const Client = await prisma.client.create({
+     *   data: {
+     *     // ... data to create a Client
+     *   }
+     * })
+     * 
+     */
+    create<T extends ClientCreateArgs>(args: SelectSubset<T, ClientCreateArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Clients.
+     * @param {ClientCreateManyArgs} args - Arguments to create many Clients.
+     * @example
+     * // Create many Clients
+     * const client = await prisma.client.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ClientCreateManyArgs>(args?: SelectSubset<T, ClientCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Clients and returns the data saved in the database.
+     * @param {ClientCreateManyAndReturnArgs} args - Arguments to create many Clients.
+     * @example
+     * // Create many Clients
+     * const client = await prisma.client.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Clients and only return the `id`
+     * const clientWithIdOnly = await prisma.client.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ClientCreateManyAndReturnArgs>(args?: SelectSubset<T, ClientCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Client.
+     * @param {ClientDeleteArgs} args - Arguments to delete one Client.
+     * @example
+     * // Delete one Client
+     * const Client = await prisma.client.delete({
+     *   where: {
+     *     // ... filter to delete one Client
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ClientDeleteArgs>(args: SelectSubset<T, ClientDeleteArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Client.
+     * @param {ClientUpdateArgs} args - Arguments to update one Client.
+     * @example
+     * // Update one Client
+     * const client = await prisma.client.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ClientUpdateArgs>(args: SelectSubset<T, ClientUpdateArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Clients.
+     * @param {ClientDeleteManyArgs} args - Arguments to filter Clients to delete.
+     * @example
+     * // Delete a few Clients
+     * const { count } = await prisma.client.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ClientDeleteManyArgs>(args?: SelectSubset<T, ClientDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clients.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Clients
+     * const client = await prisma.client.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ClientUpdateManyArgs>(args: SelectSubset<T, ClientUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Clients and returns the data updated in the database.
+     * @param {ClientUpdateManyAndReturnArgs} args - Arguments to update many Clients.
+     * @example
+     * // Update many Clients
+     * const client = await prisma.client.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Clients and only return the `id`
+     * const clientWithIdOnly = await prisma.client.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ClientUpdateManyAndReturnArgs>(args: SelectSubset<T, ClientUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Client.
+     * @param {ClientUpsertArgs} args - Arguments to update or create a Client.
+     * @example
+     * // Update or create a Client
+     * const client = await prisma.client.upsert({
+     *   create: {
+     *     // ... data to create a Client
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Client we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ClientUpsertArgs>(args: SelectSubset<T, ClientUpsertArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Clients.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientCountArgs} args - Arguments to filter Clients to count.
+     * @example
+     * // Count the number of Clients
+     * const count = await prisma.client.count({
+     *   where: {
+     *     // ... the filter for the Clients we want to count
+     *   }
+     * })
+    **/
+    count<T extends ClientCountArgs>(
+      args?: Subset<T, ClientCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ClientCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Client.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ClientAggregateArgs>(args: Subset<T, ClientAggregateArgs>): Prisma.PrismaPromise<GetClientAggregateType<T>>
+
+    /**
+     * Group by Client.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ClientGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ClientGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ClientGroupByArgs['orderBy'] }
+        : { orderBy?: ClientGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ClientGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetClientGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Client model
+   */
+  readonly fields: ClientFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Client.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ClientClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    salesQuotations<T extends Client$salesQuotationsArgs<ExtArgs> = {}>(args?: Subset<T, Client$salesQuotationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    directSales<T extends Client$directSalesArgs<ExtArgs> = {}>(args?: Subset<T, Client$directSalesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    salesEntry<T extends Client$salesEntryArgs<ExtArgs> = {}>(args?: Subset<T, Client$salesEntryArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Client model
+   */
+  interface ClientFieldRefs {
+    readonly id: FieldRef<"Client", 'String'>
+    readonly customerName: FieldRef<"Client", 'String'>
+    readonly customerInitials: FieldRef<"Client", 'String'>
+    readonly address: FieldRef<"Client", 'String'>
+    readonly kraPin: FieldRef<"Client", 'String'>
+    readonly currency: FieldRef<"Client", 'String'>
+    readonly isActive: FieldRef<"Client", 'Boolean'>
+    readonly phone1: FieldRef<"Client", 'String'>
+    readonly phone2: FieldRef<"Client", 'String'>
+    readonly email: FieldRef<"Client", 'String'>
+    readonly bankName: FieldRef<"Client", 'String'>
+    readonly accountNumber: FieldRef<"Client", 'String'>
+    readonly salesPerson: FieldRef<"Client", 'String'>
+    readonly discountEliginility: FieldRef<"Client", 'Boolean'>
+    readonly branchName: FieldRef<"Client", 'String'>
+    readonly salesArea: FieldRef<"Client", 'String'>
+    readonly salesType: FieldRef<"Client", 'String'>
+    readonly comment: FieldRef<"Client", 'String'>
+    readonly customerId: FieldRef<"Client", 'String'>
+    readonly preferedPaymentMethod: FieldRef<"Client", 'String'>
+    readonly sex: FieldRef<"Client", 'String'>
+    readonly allowedDiscount: FieldRef<"Client", 'String'>
+    readonly creditLimit: FieldRef<"Client", 'String'>
+    readonly paymentTerms: FieldRef<"Client", 'String'>
+    readonly refNo: FieldRef<"Client", 'String'>
+    readonly createdAt: FieldRef<"Client", 'DateTime'>
+    readonly updatedAt: FieldRef<"Client", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Client findUnique
+   */
+  export type ClientFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * Filter, which Client to fetch.
+     */
+    where: ClientWhereUniqueInput
+  }
+
+  /**
+   * Client findUniqueOrThrow
+   */
+  export type ClientFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * Filter, which Client to fetch.
+     */
+    where: ClientWhereUniqueInput
+  }
+
+  /**
+   * Client findFirst
+   */
+  export type ClientFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * Filter, which Client to fetch.
+     */
+    where?: ClientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clients to fetch.
+     */
+    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Clients.
+     */
+    cursor?: ClientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Clients.
+     */
+    distinct?: ClientScalarFieldEnum | ClientScalarFieldEnum[]
+  }
+
+  /**
+   * Client findFirstOrThrow
+   */
+  export type ClientFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * Filter, which Client to fetch.
+     */
+    where?: ClientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clients to fetch.
+     */
+    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Clients.
+     */
+    cursor?: ClientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clients.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Clients.
+     */
+    distinct?: ClientScalarFieldEnum | ClientScalarFieldEnum[]
+  }
+
+  /**
+   * Client findMany
+   */
+  export type ClientFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * Filter, which Clients to fetch.
+     */
+    where?: ClientWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Clients to fetch.
+     */
+    orderBy?: ClientOrderByWithRelationInput | ClientOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Clients.
+     */
+    cursor?: ClientWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Clients from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Clients.
+     */
+    skip?: number
+    distinct?: ClientScalarFieldEnum | ClientScalarFieldEnum[]
+  }
+
+  /**
+   * Client create
+   */
+  export type ClientCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Client.
+     */
+    data: XOR<ClientCreateInput, ClientUncheckedCreateInput>
+  }
+
+  /**
+   * Client createMany
+   */
+  export type ClientCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Clients.
+     */
+    data: ClientCreateManyInput | ClientCreateManyInput[]
+  }
+
+  /**
+   * Client createManyAndReturn
+   */
+  export type ClientCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * The data used to create many Clients.
+     */
+    data: ClientCreateManyInput | ClientCreateManyInput[]
+  }
+
+  /**
+   * Client update
+   */
+  export type ClientUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Client.
+     */
+    data: XOR<ClientUpdateInput, ClientUncheckedUpdateInput>
+    /**
+     * Choose, which Client to update.
+     */
+    where: ClientWhereUniqueInput
+  }
+
+  /**
+   * Client updateMany
+   */
+  export type ClientUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Clients.
+     */
+    data: XOR<ClientUpdateManyMutationInput, ClientUncheckedUpdateManyInput>
+    /**
+     * Filter which Clients to update
+     */
+    where?: ClientWhereInput
+    /**
+     * Limit how many Clients to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Client updateManyAndReturn
+   */
+  export type ClientUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * The data used to update Clients.
+     */
+    data: XOR<ClientUpdateManyMutationInput, ClientUncheckedUpdateManyInput>
+    /**
+     * Filter which Clients to update
+     */
+    where?: ClientWhereInput
+    /**
+     * Limit how many Clients to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Client upsert
+   */
+  export type ClientUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Client to update in case it exists.
+     */
+    where: ClientWhereUniqueInput
+    /**
+     * In case the Client found by the `where` argument doesn't exist, create a new Client with this data.
+     */
+    create: XOR<ClientCreateInput, ClientUncheckedCreateInput>
+    /**
+     * In case the Client was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ClientUpdateInput, ClientUncheckedUpdateInput>
+  }
+
+  /**
+   * Client delete
+   */
+  export type ClientDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+    /**
+     * Filter which Client to delete.
+     */
+    where: ClientWhereUniqueInput
+  }
+
+  /**
+   * Client deleteMany
+   */
+  export type ClientDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Clients to delete
+     */
+    where?: ClientWhereInput
+    /**
+     * Limit how many Clients to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Client.salesQuotations
+   */
+  export type Client$salesQuotationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    where?: SalesQuotationWhereInput
+    orderBy?: SalesQuotationOrderByWithRelationInput | SalesQuotationOrderByWithRelationInput[]
+    cursor?: SalesQuotationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SalesQuotationScalarFieldEnum | SalesQuotationScalarFieldEnum[]
+  }
+
+  /**
+   * Client.directSales
+   */
+  export type Client$directSalesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    where?: DirectSaleWhereInput
+    orderBy?: DirectSaleOrderByWithRelationInput | DirectSaleOrderByWithRelationInput[]
+    cursor?: DirectSaleWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DirectSaleScalarFieldEnum | DirectSaleScalarFieldEnum[]
+  }
+
+  /**
+   * Client.salesEntry
+   */
+  export type Client$salesEntryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    where?: SalesEntryWhereInput
+    orderBy?: SalesEntryOrderByWithRelationInput | SalesEntryOrderByWithRelationInput[]
+    cursor?: SalesEntryWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SalesEntryScalarFieldEnum | SalesEntryScalarFieldEnum[]
+  }
+
+  /**
+   * Client without action
+   */
+  export type ClientDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Client
+     */
+    select?: ClientSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Client
+     */
+    omit?: ClientOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: ClientInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model QuotationItem
+   */
+
+  export type AggregateQuotationItem = {
+    _count: QuotationItemCountAggregateOutputType | null
+    _avg: QuotationItemAvgAggregateOutputType | null
+    _sum: QuotationItemSumAggregateOutputType | null
+    _min: QuotationItemMinAggregateOutputType | null
+    _max: QuotationItemMaxAggregateOutputType | null
+  }
+
+  export type QuotationItemAvgAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+  }
+
+  export type QuotationItemSumAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+  }
+
+  export type QuotationItemMinAggregateOutputType = {
+    id: string | null
+    quotationId: string | null
+    itemId: string | null
+    itemName: string | null
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type QuotationItemMaxAggregateOutputType = {
+    id: string | null
+    quotationId: string | null
+    itemId: string | null
+    itemName: string | null
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type QuotationItemCountAggregateOutputType = {
+    id: number
+    quotationId: number
+    itemId: number
+    itemName: number
+    quantity: number
+    unitPrice: number
+    discount: number
+    tax: number
+    total: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type QuotationItemAvgAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+  }
+
+  export type QuotationItemSumAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+  }
+
+  export type QuotationItemMinAggregateInputType = {
+    id?: true
+    quotationId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type QuotationItemMaxAggregateInputType = {
+    id?: true
+    quotationId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type QuotationItemCountAggregateInputType = {
+    id?: true
+    quotationId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type QuotationItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuotationItem to aggregate.
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuotationItems to fetch.
+     */
+    orderBy?: QuotationItemOrderByWithRelationInput | QuotationItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: QuotationItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuotationItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuotationItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned QuotationItems
+    **/
+    _count?: true | QuotationItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: QuotationItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: QuotationItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: QuotationItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: QuotationItemMaxAggregateInputType
+  }
+
+  export type GetQuotationItemAggregateType<T extends QuotationItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateQuotationItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateQuotationItem[P]>
+      : GetScalarType<T[P], AggregateQuotationItem[P]>
+  }
+
+
+
+
+  export type QuotationItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: QuotationItemWhereInput
+    orderBy?: QuotationItemOrderByWithAggregationInput | QuotationItemOrderByWithAggregationInput[]
+    by: QuotationItemScalarFieldEnum[] | QuotationItemScalarFieldEnum
+    having?: QuotationItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: QuotationItemCountAggregateInputType | true
+    _avg?: QuotationItemAvgAggregateInputType
+    _sum?: QuotationItemSumAggregateInputType
+    _min?: QuotationItemMinAggregateInputType
+    _max?: QuotationItemMaxAggregateInputType
+  }
+
+  export type QuotationItemGroupByOutputType = {
+    id: string
+    quotationId: string
+    itemId: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount: number | null
+    tax: number | null
+    total: number
+    createdAt: Date
+    updatedAt: Date
+    _count: QuotationItemCountAggregateOutputType | null
+    _avg: QuotationItemAvgAggregateOutputType | null
+    _sum: QuotationItemSumAggregateOutputType | null
+    _min: QuotationItemMinAggregateOutputType | null
+    _max: QuotationItemMaxAggregateOutputType | null
+  }
+
+  type GetQuotationItemGroupByPayload<T extends QuotationItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<QuotationItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof QuotationItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], QuotationItemGroupByOutputType[P]>
+            : GetScalarType<T[P], QuotationItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type QuotationItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quotationId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    quotation?: boolean | SalesQuotationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quotationItem"]>
+
+  export type QuotationItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quotationId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    quotation?: boolean | SalesQuotationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quotationItem"]>
+
+  export type QuotationItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quotationId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    quotation?: boolean | SalesQuotationDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["quotationItem"]>
+
+  export type QuotationItemSelectScalar = {
+    id?: boolean
+    quotationId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type QuotationItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "quotationId" | "itemId" | "itemName" | "quantity" | "unitPrice" | "discount" | "tax" | "total" | "createdAt" | "updatedAt", ExtArgs["result"]["quotationItem"]>
+  export type QuotationItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quotation?: boolean | SalesQuotationDefaultArgs<ExtArgs>
+  }
+  export type QuotationItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quotation?: boolean | SalesQuotationDefaultArgs<ExtArgs>
+  }
+  export type QuotationItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    quotation?: boolean | SalesQuotationDefaultArgs<ExtArgs>
+  }
+
+  export type $QuotationItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "QuotationItem"
+    objects: {
+      quotation: Prisma.$SalesQuotationPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      quotationId: string
+      itemId: string | null
+      itemName: string
+      quantity: number
+      unitPrice: number
+      discount: number | null
+      tax: number | null
+      total: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["quotationItem"]>
+    composites: {}
+  }
+
+  type QuotationItemGetPayload<S extends boolean | null | undefined | QuotationItemDefaultArgs> = $Result.GetResult<Prisma.$QuotationItemPayload, S>
+
+  type QuotationItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<QuotationItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: QuotationItemCountAggregateInputType | true
+    }
+
+  export interface QuotationItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['QuotationItem'], meta: { name: 'QuotationItem' } }
+    /**
+     * Find zero or one QuotationItem that matches the filter.
+     * @param {QuotationItemFindUniqueArgs} args - Arguments to find a QuotationItem
+     * @example
+     * // Get one QuotationItem
+     * const quotationItem = await prisma.quotationItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends QuotationItemFindUniqueArgs>(args: SelectSubset<T, QuotationItemFindUniqueArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one QuotationItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {QuotationItemFindUniqueOrThrowArgs} args - Arguments to find a QuotationItem
+     * @example
+     * // Get one QuotationItem
+     * const quotationItem = await prisma.quotationItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends QuotationItemFindUniqueOrThrowArgs>(args: SelectSubset<T, QuotationItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first QuotationItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemFindFirstArgs} args - Arguments to find a QuotationItem
+     * @example
+     * // Get one QuotationItem
+     * const quotationItem = await prisma.quotationItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends QuotationItemFindFirstArgs>(args?: SelectSubset<T, QuotationItemFindFirstArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first QuotationItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemFindFirstOrThrowArgs} args - Arguments to find a QuotationItem
+     * @example
+     * // Get one QuotationItem
+     * const quotationItem = await prisma.quotationItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends QuotationItemFindFirstOrThrowArgs>(args?: SelectSubset<T, QuotationItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more QuotationItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all QuotationItems
+     * const quotationItems = await prisma.quotationItem.findMany()
+     * 
+     * // Get first 10 QuotationItems
+     * const quotationItems = await prisma.quotationItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const quotationItemWithIdOnly = await prisma.quotationItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends QuotationItemFindManyArgs>(args?: SelectSubset<T, QuotationItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a QuotationItem.
+     * @param {QuotationItemCreateArgs} args - Arguments to create a QuotationItem.
+     * @example
+     * // Create one QuotationItem
+     * const QuotationItem = await prisma.quotationItem.create({
+     *   data: {
+     *     // ... data to create a QuotationItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends QuotationItemCreateArgs>(args: SelectSubset<T, QuotationItemCreateArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many QuotationItems.
+     * @param {QuotationItemCreateManyArgs} args - Arguments to create many QuotationItems.
+     * @example
+     * // Create many QuotationItems
+     * const quotationItem = await prisma.quotationItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends QuotationItemCreateManyArgs>(args?: SelectSubset<T, QuotationItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many QuotationItems and returns the data saved in the database.
+     * @param {QuotationItemCreateManyAndReturnArgs} args - Arguments to create many QuotationItems.
+     * @example
+     * // Create many QuotationItems
+     * const quotationItem = await prisma.quotationItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many QuotationItems and only return the `id`
+     * const quotationItemWithIdOnly = await prisma.quotationItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends QuotationItemCreateManyAndReturnArgs>(args?: SelectSubset<T, QuotationItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a QuotationItem.
+     * @param {QuotationItemDeleteArgs} args - Arguments to delete one QuotationItem.
+     * @example
+     * // Delete one QuotationItem
+     * const QuotationItem = await prisma.quotationItem.delete({
+     *   where: {
+     *     // ... filter to delete one QuotationItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends QuotationItemDeleteArgs>(args: SelectSubset<T, QuotationItemDeleteArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one QuotationItem.
+     * @param {QuotationItemUpdateArgs} args - Arguments to update one QuotationItem.
+     * @example
+     * // Update one QuotationItem
+     * const quotationItem = await prisma.quotationItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends QuotationItemUpdateArgs>(args: SelectSubset<T, QuotationItemUpdateArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more QuotationItems.
+     * @param {QuotationItemDeleteManyArgs} args - Arguments to filter QuotationItems to delete.
+     * @example
+     * // Delete a few QuotationItems
+     * const { count } = await prisma.quotationItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends QuotationItemDeleteManyArgs>(args?: SelectSubset<T, QuotationItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more QuotationItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many QuotationItems
+     * const quotationItem = await prisma.quotationItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends QuotationItemUpdateManyArgs>(args: SelectSubset<T, QuotationItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more QuotationItems and returns the data updated in the database.
+     * @param {QuotationItemUpdateManyAndReturnArgs} args - Arguments to update many QuotationItems.
+     * @example
+     * // Update many QuotationItems
+     * const quotationItem = await prisma.quotationItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more QuotationItems and only return the `id`
+     * const quotationItemWithIdOnly = await prisma.quotationItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends QuotationItemUpdateManyAndReturnArgs>(args: SelectSubset<T, QuotationItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one QuotationItem.
+     * @param {QuotationItemUpsertArgs} args - Arguments to update or create a QuotationItem.
+     * @example
+     * // Update or create a QuotationItem
+     * const quotationItem = await prisma.quotationItem.upsert({
+     *   create: {
+     *     // ... data to create a QuotationItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the QuotationItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends QuotationItemUpsertArgs>(args: SelectSubset<T, QuotationItemUpsertArgs<ExtArgs>>): Prisma__QuotationItemClient<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of QuotationItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemCountArgs} args - Arguments to filter QuotationItems to count.
+     * @example
+     * // Count the number of QuotationItems
+     * const count = await prisma.quotationItem.count({
+     *   where: {
+     *     // ... the filter for the QuotationItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends QuotationItemCountArgs>(
+      args?: Subset<T, QuotationItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], QuotationItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a QuotationItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends QuotationItemAggregateArgs>(args: Subset<T, QuotationItemAggregateArgs>): Prisma.PrismaPromise<GetQuotationItemAggregateType<T>>
+
+    /**
+     * Group by QuotationItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {QuotationItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends QuotationItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: QuotationItemGroupByArgs['orderBy'] }
+        : { orderBy?: QuotationItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, QuotationItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetQuotationItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the QuotationItem model
+   */
+  readonly fields: QuotationItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for QuotationItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__QuotationItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    quotation<T extends SalesQuotationDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SalesQuotationDefaultArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the QuotationItem model
+   */
+  interface QuotationItemFieldRefs {
+    readonly id: FieldRef<"QuotationItem", 'String'>
+    readonly quotationId: FieldRef<"QuotationItem", 'String'>
+    readonly itemId: FieldRef<"QuotationItem", 'String'>
+    readonly itemName: FieldRef<"QuotationItem", 'String'>
+    readonly quantity: FieldRef<"QuotationItem", 'Int'>
+    readonly unitPrice: FieldRef<"QuotationItem", 'Float'>
+    readonly discount: FieldRef<"QuotationItem", 'Float'>
+    readonly tax: FieldRef<"QuotationItem", 'Float'>
+    readonly total: FieldRef<"QuotationItem", 'Float'>
+    readonly createdAt: FieldRef<"QuotationItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"QuotationItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * QuotationItem findUnique
+   */
+  export type QuotationItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * Filter, which QuotationItem to fetch.
+     */
+    where: QuotationItemWhereUniqueInput
+  }
+
+  /**
+   * QuotationItem findUniqueOrThrow
+   */
+  export type QuotationItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * Filter, which QuotationItem to fetch.
+     */
+    where: QuotationItemWhereUniqueInput
+  }
+
+  /**
+   * QuotationItem findFirst
+   */
+  export type QuotationItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * Filter, which QuotationItem to fetch.
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuotationItems to fetch.
+     */
+    orderBy?: QuotationItemOrderByWithRelationInput | QuotationItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuotationItems.
+     */
+    cursor?: QuotationItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuotationItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuotationItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuotationItems.
+     */
+    distinct?: QuotationItemScalarFieldEnum | QuotationItemScalarFieldEnum[]
+  }
+
+  /**
+   * QuotationItem findFirstOrThrow
+   */
+  export type QuotationItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * Filter, which QuotationItem to fetch.
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuotationItems to fetch.
+     */
+    orderBy?: QuotationItemOrderByWithRelationInput | QuotationItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for QuotationItems.
+     */
+    cursor?: QuotationItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuotationItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuotationItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of QuotationItems.
+     */
+    distinct?: QuotationItemScalarFieldEnum | QuotationItemScalarFieldEnum[]
+  }
+
+  /**
+   * QuotationItem findMany
+   */
+  export type QuotationItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * Filter, which QuotationItems to fetch.
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of QuotationItems to fetch.
+     */
+    orderBy?: QuotationItemOrderByWithRelationInput | QuotationItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing QuotationItems.
+     */
+    cursor?: QuotationItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` QuotationItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` QuotationItems.
+     */
+    skip?: number
+    distinct?: QuotationItemScalarFieldEnum | QuotationItemScalarFieldEnum[]
+  }
+
+  /**
+   * QuotationItem create
+   */
+  export type QuotationItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a QuotationItem.
+     */
+    data: XOR<QuotationItemCreateInput, QuotationItemUncheckedCreateInput>
+  }
+
+  /**
+   * QuotationItem createMany
+   */
+  export type QuotationItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many QuotationItems.
+     */
+    data: QuotationItemCreateManyInput | QuotationItemCreateManyInput[]
+  }
+
+  /**
+   * QuotationItem createManyAndReturn
+   */
+  export type QuotationItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many QuotationItems.
+     */
+    data: QuotationItemCreateManyInput | QuotationItemCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * QuotationItem update
+   */
+  export type QuotationItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a QuotationItem.
+     */
+    data: XOR<QuotationItemUpdateInput, QuotationItemUncheckedUpdateInput>
+    /**
+     * Choose, which QuotationItem to update.
+     */
+    where: QuotationItemWhereUniqueInput
+  }
+
+  /**
+   * QuotationItem updateMany
+   */
+  export type QuotationItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update QuotationItems.
+     */
+    data: XOR<QuotationItemUpdateManyMutationInput, QuotationItemUncheckedUpdateManyInput>
+    /**
+     * Filter which QuotationItems to update
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * Limit how many QuotationItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * QuotationItem updateManyAndReturn
+   */
+  export type QuotationItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * The data used to update QuotationItems.
+     */
+    data: XOR<QuotationItemUpdateManyMutationInput, QuotationItemUncheckedUpdateManyInput>
+    /**
+     * Filter which QuotationItems to update
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * Limit how many QuotationItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * QuotationItem upsert
+   */
+  export type QuotationItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the QuotationItem to update in case it exists.
+     */
+    where: QuotationItemWhereUniqueInput
+    /**
+     * In case the QuotationItem found by the `where` argument doesn't exist, create a new QuotationItem with this data.
+     */
+    create: XOR<QuotationItemCreateInput, QuotationItemUncheckedCreateInput>
+    /**
+     * In case the QuotationItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<QuotationItemUpdateInput, QuotationItemUncheckedUpdateInput>
+  }
+
+  /**
+   * QuotationItem delete
+   */
+  export type QuotationItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    /**
+     * Filter which QuotationItem to delete.
+     */
+    where: QuotationItemWhereUniqueInput
+  }
+
+  /**
+   * QuotationItem deleteMany
+   */
+  export type QuotationItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which QuotationItems to delete
+     */
+    where?: QuotationItemWhereInput
+    /**
+     * Limit how many QuotationItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * QuotationItem without action
+   */
+  export type QuotationItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SalesQuotation
+   */
+
+  export type AggregateSalesQuotation = {
+    _count: SalesQuotationCountAggregateOutputType | null
+    _avg: SalesQuotationAvgAggregateOutputType | null
+    _sum: SalesQuotationSumAggregateOutputType | null
+    _min: SalesQuotationMinAggregateOutputType | null
+    _max: SalesQuotationMaxAggregateOutputType | null
+  }
+
+  export type SalesQuotationAvgAggregateOutputType = {
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+  }
+
+  export type SalesQuotationSumAggregateOutputType = {
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+  }
+
+  export type SalesQuotationMinAggregateOutputType = {
+    id: string | null
+    quotationDate: Date | null
+    clientId: string | null
+    deliveryDetailsId: string | null
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+    remarks: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SalesQuotationMaxAggregateOutputType = {
+    id: string | null
+    quotationDate: Date | null
+    clientId: string | null
+    deliveryDetailsId: string | null
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+    remarks: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SalesQuotationCountAggregateOutputType = {
+    id: number
+    quotationDate: number
+    clientId: number
+    deliveryDetailsId: number
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SalesQuotationAvgAggregateInputType = {
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+  }
+
+  export type SalesQuotationSumAggregateInputType = {
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+  }
+
+  export type SalesQuotationMinAggregateInputType = {
+    id?: true
+    quotationDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SalesQuotationMaxAggregateInputType = {
+    id?: true
+    quotationDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SalesQuotationCountAggregateInputType = {
+    id?: true
+    quotationDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SalesQuotationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesQuotation to aggregate.
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesQuotations to fetch.
+     */
+    orderBy?: SalesQuotationOrderByWithRelationInput | SalesQuotationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SalesQuotationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesQuotations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesQuotations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SalesQuotations
+    **/
+    _count?: true | SalesQuotationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SalesQuotationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SalesQuotationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SalesQuotationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SalesQuotationMaxAggregateInputType
+  }
+
+  export type GetSalesQuotationAggregateType<T extends SalesQuotationAggregateArgs> = {
+        [P in keyof T & keyof AggregateSalesQuotation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSalesQuotation[P]>
+      : GetScalarType<T[P], AggregateSalesQuotation[P]>
+  }
+
+
+
+
+  export type SalesQuotationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesQuotationWhereInput
+    orderBy?: SalesQuotationOrderByWithAggregationInput | SalesQuotationOrderByWithAggregationInput[]
+    by: SalesQuotationScalarFieldEnum[] | SalesQuotationScalarFieldEnum
+    having?: SalesQuotationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SalesQuotationCountAggregateInputType | true
+    _avg?: SalesQuotationAvgAggregateInputType
+    _sum?: SalesQuotationSumAggregateInputType
+    _min?: SalesQuotationMinAggregateInputType
+    _max?: SalesQuotationMaxAggregateInputType
+  }
+
+  export type SalesQuotationGroupByOutputType = {
+    id: string
+    quotationDate: Date
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: SalesQuotationCountAggregateOutputType | null
+    _avg: SalesQuotationAvgAggregateOutputType | null
+    _sum: SalesQuotationSumAggregateOutputType | null
+    _min: SalesQuotationMinAggregateOutputType | null
+    _max: SalesQuotationMaxAggregateOutputType | null
+  }
+
+  type GetSalesQuotationGroupByPayload<T extends SalesQuotationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SalesQuotationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SalesQuotationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SalesQuotationGroupByOutputType[P]>
+            : GetScalarType<T[P], SalesQuotationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SalesQuotationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quotationDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+    quotationItems?: boolean | SalesQuotation$quotationItemsArgs<ExtArgs>
+    _count?: boolean | SalesQuotationCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesQuotation"]>
+
+  export type SalesQuotationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quotationDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesQuotation"]>
+
+  export type SalesQuotationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    quotationDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesQuotation"]>
+
+  export type SalesQuotationSelectScalar = {
+    id?: boolean
+    quotationDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SalesQuotationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "quotationDate" | "clientId" | "deliveryDetailsId" | "subtotal" | "shipping" | "grandTotal" | "remarks" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["salesQuotation"]>
+  export type SalesQuotationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+    quotationItems?: boolean | SalesQuotation$quotationItemsArgs<ExtArgs>
+    _count?: boolean | SalesQuotationCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SalesQuotationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }
+  export type SalesQuotationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }
+
+  export type $SalesQuotationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SalesQuotation"
+    objects: {
+      client: Prisma.$ClientPayload<ExtArgs>
+      deliveryDetails: Prisma.$DeliveryDetailPayload<ExtArgs>
+      quotationItems: Prisma.$QuotationItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      quotationDate: Date
+      clientId: string
+      deliveryDetailsId: string
+      subtotal: number
+      shipping: number
+      grandTotal: number
+      remarks: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["salesQuotation"]>
+    composites: {}
+  }
+
+  type SalesQuotationGetPayload<S extends boolean | null | undefined | SalesQuotationDefaultArgs> = $Result.GetResult<Prisma.$SalesQuotationPayload, S>
+
+  type SalesQuotationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SalesQuotationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SalesQuotationCountAggregateInputType | true
+    }
+
+  export interface SalesQuotationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SalesQuotation'], meta: { name: 'SalesQuotation' } }
+    /**
+     * Find zero or one SalesQuotation that matches the filter.
+     * @param {SalesQuotationFindUniqueArgs} args - Arguments to find a SalesQuotation
+     * @example
+     * // Get one SalesQuotation
+     * const salesQuotation = await prisma.salesQuotation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SalesQuotationFindUniqueArgs>(args: SelectSubset<T, SalesQuotationFindUniqueArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SalesQuotation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SalesQuotationFindUniqueOrThrowArgs} args - Arguments to find a SalesQuotation
+     * @example
+     * // Get one SalesQuotation
+     * const salesQuotation = await prisma.salesQuotation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SalesQuotationFindUniqueOrThrowArgs>(args: SelectSubset<T, SalesQuotationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SalesQuotation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationFindFirstArgs} args - Arguments to find a SalesQuotation
+     * @example
+     * // Get one SalesQuotation
+     * const salesQuotation = await prisma.salesQuotation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SalesQuotationFindFirstArgs>(args?: SelectSubset<T, SalesQuotationFindFirstArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SalesQuotation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationFindFirstOrThrowArgs} args - Arguments to find a SalesQuotation
+     * @example
+     * // Get one SalesQuotation
+     * const salesQuotation = await prisma.salesQuotation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SalesQuotationFindFirstOrThrowArgs>(args?: SelectSubset<T, SalesQuotationFindFirstOrThrowArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SalesQuotations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SalesQuotations
+     * const salesQuotations = await prisma.salesQuotation.findMany()
+     * 
+     * // Get first 10 SalesQuotations
+     * const salesQuotations = await prisma.salesQuotation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const salesQuotationWithIdOnly = await prisma.salesQuotation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SalesQuotationFindManyArgs>(args?: SelectSubset<T, SalesQuotationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SalesQuotation.
+     * @param {SalesQuotationCreateArgs} args - Arguments to create a SalesQuotation.
+     * @example
+     * // Create one SalesQuotation
+     * const SalesQuotation = await prisma.salesQuotation.create({
+     *   data: {
+     *     // ... data to create a SalesQuotation
+     *   }
+     * })
+     * 
+     */
+    create<T extends SalesQuotationCreateArgs>(args: SelectSubset<T, SalesQuotationCreateArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SalesQuotations.
+     * @param {SalesQuotationCreateManyArgs} args - Arguments to create many SalesQuotations.
+     * @example
+     * // Create many SalesQuotations
+     * const salesQuotation = await prisma.salesQuotation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SalesQuotationCreateManyArgs>(args?: SelectSubset<T, SalesQuotationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SalesQuotations and returns the data saved in the database.
+     * @param {SalesQuotationCreateManyAndReturnArgs} args - Arguments to create many SalesQuotations.
+     * @example
+     * // Create many SalesQuotations
+     * const salesQuotation = await prisma.salesQuotation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SalesQuotations and only return the `id`
+     * const salesQuotationWithIdOnly = await prisma.salesQuotation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SalesQuotationCreateManyAndReturnArgs>(args?: SelectSubset<T, SalesQuotationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SalesQuotation.
+     * @param {SalesQuotationDeleteArgs} args - Arguments to delete one SalesQuotation.
+     * @example
+     * // Delete one SalesQuotation
+     * const SalesQuotation = await prisma.salesQuotation.delete({
+     *   where: {
+     *     // ... filter to delete one SalesQuotation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SalesQuotationDeleteArgs>(args: SelectSubset<T, SalesQuotationDeleteArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SalesQuotation.
+     * @param {SalesQuotationUpdateArgs} args - Arguments to update one SalesQuotation.
+     * @example
+     * // Update one SalesQuotation
+     * const salesQuotation = await prisma.salesQuotation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SalesQuotationUpdateArgs>(args: SelectSubset<T, SalesQuotationUpdateArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SalesQuotations.
+     * @param {SalesQuotationDeleteManyArgs} args - Arguments to filter SalesQuotations to delete.
+     * @example
+     * // Delete a few SalesQuotations
+     * const { count } = await prisma.salesQuotation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SalesQuotationDeleteManyArgs>(args?: SelectSubset<T, SalesQuotationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesQuotations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SalesQuotations
+     * const salesQuotation = await prisma.salesQuotation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SalesQuotationUpdateManyArgs>(args: SelectSubset<T, SalesQuotationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesQuotations and returns the data updated in the database.
+     * @param {SalesQuotationUpdateManyAndReturnArgs} args - Arguments to update many SalesQuotations.
+     * @example
+     * // Update many SalesQuotations
+     * const salesQuotation = await prisma.salesQuotation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SalesQuotations and only return the `id`
+     * const salesQuotationWithIdOnly = await prisma.salesQuotation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SalesQuotationUpdateManyAndReturnArgs>(args: SelectSubset<T, SalesQuotationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SalesQuotation.
+     * @param {SalesQuotationUpsertArgs} args - Arguments to update or create a SalesQuotation.
+     * @example
+     * // Update or create a SalesQuotation
+     * const salesQuotation = await prisma.salesQuotation.upsert({
+     *   create: {
+     *     // ... data to create a SalesQuotation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SalesQuotation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SalesQuotationUpsertArgs>(args: SelectSubset<T, SalesQuotationUpsertArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SalesQuotations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationCountArgs} args - Arguments to filter SalesQuotations to count.
+     * @example
+     * // Count the number of SalesQuotations
+     * const count = await prisma.salesQuotation.count({
+     *   where: {
+     *     // ... the filter for the SalesQuotations we want to count
+     *   }
+     * })
+    **/
+    count<T extends SalesQuotationCountArgs>(
+      args?: Subset<T, SalesQuotationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SalesQuotationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SalesQuotation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SalesQuotationAggregateArgs>(args: Subset<T, SalesQuotationAggregateArgs>): Prisma.PrismaPromise<GetSalesQuotationAggregateType<T>>
+
+    /**
+     * Group by SalesQuotation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesQuotationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SalesQuotationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SalesQuotationGroupByArgs['orderBy'] }
+        : { orderBy?: SalesQuotationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SalesQuotationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSalesQuotationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SalesQuotation model
+   */
+  readonly fields: SalesQuotationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SalesQuotation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SalesQuotationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    client<T extends ClientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientDefaultArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    deliveryDetails<T extends DeliveryDetailDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeliveryDetailDefaultArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    quotationItems<T extends SalesQuotation$quotationItemsArgs<ExtArgs> = {}>(args?: Subset<T, SalesQuotation$quotationItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$QuotationItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SalesQuotation model
+   */
+  interface SalesQuotationFieldRefs {
+    readonly id: FieldRef<"SalesQuotation", 'String'>
+    readonly quotationDate: FieldRef<"SalesQuotation", 'DateTime'>
+    readonly clientId: FieldRef<"SalesQuotation", 'String'>
+    readonly deliveryDetailsId: FieldRef<"SalesQuotation", 'String'>
+    readonly subtotal: FieldRef<"SalesQuotation", 'Float'>
+    readonly shipping: FieldRef<"SalesQuotation", 'Float'>
+    readonly grandTotal: FieldRef<"SalesQuotation", 'Float'>
+    readonly remarks: FieldRef<"SalesQuotation", 'String'>
+    readonly status: FieldRef<"SalesQuotation", 'String'>
+    readonly createdAt: FieldRef<"SalesQuotation", 'DateTime'>
+    readonly updatedAt: FieldRef<"SalesQuotation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SalesQuotation findUnique
+   */
+  export type SalesQuotationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesQuotation to fetch.
+     */
+    where: SalesQuotationWhereUniqueInput
+  }
+
+  /**
+   * SalesQuotation findUniqueOrThrow
+   */
+  export type SalesQuotationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesQuotation to fetch.
+     */
+    where: SalesQuotationWhereUniqueInput
+  }
+
+  /**
+   * SalesQuotation findFirst
+   */
+  export type SalesQuotationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesQuotation to fetch.
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesQuotations to fetch.
+     */
+    orderBy?: SalesQuotationOrderByWithRelationInput | SalesQuotationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesQuotations.
+     */
+    cursor?: SalesQuotationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesQuotations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesQuotations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesQuotations.
+     */
+    distinct?: SalesQuotationScalarFieldEnum | SalesQuotationScalarFieldEnum[]
+  }
+
+  /**
+   * SalesQuotation findFirstOrThrow
+   */
+  export type SalesQuotationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesQuotation to fetch.
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesQuotations to fetch.
+     */
+    orderBy?: SalesQuotationOrderByWithRelationInput | SalesQuotationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesQuotations.
+     */
+    cursor?: SalesQuotationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesQuotations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesQuotations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesQuotations.
+     */
+    distinct?: SalesQuotationScalarFieldEnum | SalesQuotationScalarFieldEnum[]
+  }
+
+  /**
+   * SalesQuotation findMany
+   */
+  export type SalesQuotationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesQuotations to fetch.
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesQuotations to fetch.
+     */
+    orderBy?: SalesQuotationOrderByWithRelationInput | SalesQuotationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SalesQuotations.
+     */
+    cursor?: SalesQuotationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesQuotations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesQuotations.
+     */
+    skip?: number
+    distinct?: SalesQuotationScalarFieldEnum | SalesQuotationScalarFieldEnum[]
+  }
+
+  /**
+   * SalesQuotation create
+   */
+  export type SalesQuotationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SalesQuotation.
+     */
+    data: XOR<SalesQuotationCreateInput, SalesQuotationUncheckedCreateInput>
+  }
+
+  /**
+   * SalesQuotation createMany
+   */
+  export type SalesQuotationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SalesQuotations.
+     */
+    data: SalesQuotationCreateManyInput | SalesQuotationCreateManyInput[]
+  }
+
+  /**
+   * SalesQuotation createManyAndReturn
+   */
+  export type SalesQuotationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * The data used to create many SalesQuotations.
+     */
+    data: SalesQuotationCreateManyInput | SalesQuotationCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesQuotation update
+   */
+  export type SalesQuotationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SalesQuotation.
+     */
+    data: XOR<SalesQuotationUpdateInput, SalesQuotationUncheckedUpdateInput>
+    /**
+     * Choose, which SalesQuotation to update.
+     */
+    where: SalesQuotationWhereUniqueInput
+  }
+
+  /**
+   * SalesQuotation updateMany
+   */
+  export type SalesQuotationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SalesQuotations.
+     */
+    data: XOR<SalesQuotationUpdateManyMutationInput, SalesQuotationUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesQuotations to update
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * Limit how many SalesQuotations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SalesQuotation updateManyAndReturn
+   */
+  export type SalesQuotationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * The data used to update SalesQuotations.
+     */
+    data: XOR<SalesQuotationUpdateManyMutationInput, SalesQuotationUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesQuotations to update
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * Limit how many SalesQuotations to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesQuotation upsert
+   */
+  export type SalesQuotationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SalesQuotation to update in case it exists.
+     */
+    where: SalesQuotationWhereUniqueInput
+    /**
+     * In case the SalesQuotation found by the `where` argument doesn't exist, create a new SalesQuotation with this data.
+     */
+    create: XOR<SalesQuotationCreateInput, SalesQuotationUncheckedCreateInput>
+    /**
+     * In case the SalesQuotation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SalesQuotationUpdateInput, SalesQuotationUncheckedUpdateInput>
+  }
+
+  /**
+   * SalesQuotation delete
+   */
+  export type SalesQuotationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    /**
+     * Filter which SalesQuotation to delete.
+     */
+    where: SalesQuotationWhereUniqueInput
+  }
+
+  /**
+   * SalesQuotation deleteMany
+   */
+  export type SalesQuotationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesQuotations to delete
+     */
+    where?: SalesQuotationWhereInput
+    /**
+     * Limit how many SalesQuotations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SalesQuotation.quotationItems
+   */
+  export type SalesQuotation$quotationItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the QuotationItem
+     */
+    select?: QuotationItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the QuotationItem
+     */
+    omit?: QuotationItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: QuotationItemInclude<ExtArgs> | null
+    where?: QuotationItemWhereInput
+    orderBy?: QuotationItemOrderByWithRelationInput | QuotationItemOrderByWithRelationInput[]
+    cursor?: QuotationItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: QuotationItemScalarFieldEnum | QuotationItemScalarFieldEnum[]
+  }
+
+  /**
+   * SalesQuotation without action
+   */
+  export type SalesQuotationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DeliveryDetail
+   */
+
+  export type AggregateDeliveryDetail = {
+    _count: DeliveryDetailCountAggregateOutputType | null
+    _min: DeliveryDetailMinAggregateOutputType | null
+    _max: DeliveryDetailMaxAggregateOutputType | null
+  }
+
+  export type DeliveryDetailMinAggregateOutputType = {
+    id: string | null
+    address: string | null
+    shiftId: string | null
+    driverId: string | null
+    vehicleId: string | null
+    deliveryDate: Date | null
+    deliveryFrom: string | null
+    destination: string | null
+    customerReference: string | null
+    comment: string | null
+    phoneNumber: string | null
+    accompaniedBy: string | null
+  }
+
+  export type DeliveryDetailMaxAggregateOutputType = {
+    id: string | null
+    address: string | null
+    shiftId: string | null
+    driverId: string | null
+    vehicleId: string | null
+    deliveryDate: Date | null
+    deliveryFrom: string | null
+    destination: string | null
+    customerReference: string | null
+    comment: string | null
+    phoneNumber: string | null
+    accompaniedBy: string | null
+  }
+
+  export type DeliveryDetailCountAggregateOutputType = {
+    id: number
+    address: number
+    shiftId: number
+    driverId: number
+    vehicleId: number
+    deliveryDate: number
+    deliveryFrom: number
+    destination: number
+    customerReference: number
+    comment: number
+    phoneNumber: number
+    accompaniedBy: number
+    _all: number
+  }
+
+
+  export type DeliveryDetailMinAggregateInputType = {
+    id?: true
+    address?: true
+    shiftId?: true
+    driverId?: true
+    vehicleId?: true
+    deliveryDate?: true
+    deliveryFrom?: true
+    destination?: true
+    customerReference?: true
+    comment?: true
+    phoneNumber?: true
+    accompaniedBy?: true
+  }
+
+  export type DeliveryDetailMaxAggregateInputType = {
+    id?: true
+    address?: true
+    shiftId?: true
+    driverId?: true
+    vehicleId?: true
+    deliveryDate?: true
+    deliveryFrom?: true
+    destination?: true
+    customerReference?: true
+    comment?: true
+    phoneNumber?: true
+    accompaniedBy?: true
+  }
+
+  export type DeliveryDetailCountAggregateInputType = {
+    id?: true
+    address?: true
+    shiftId?: true
+    driverId?: true
+    vehicleId?: true
+    deliveryDate?: true
+    deliveryFrom?: true
+    destination?: true
+    customerReference?: true
+    comment?: true
+    phoneNumber?: true
+    accompaniedBy?: true
+    _all?: true
+  }
+
+  export type DeliveryDetailAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeliveryDetail to aggregate.
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryDetails to fetch.
+     */
+    orderBy?: DeliveryDetailOrderByWithRelationInput | DeliveryDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DeliveryDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DeliveryDetails
+    **/
+    _count?: true | DeliveryDetailCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DeliveryDetailMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DeliveryDetailMaxAggregateInputType
+  }
+
+  export type GetDeliveryDetailAggregateType<T extends DeliveryDetailAggregateArgs> = {
+        [P in keyof T & keyof AggregateDeliveryDetail]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDeliveryDetail[P]>
+      : GetScalarType<T[P], AggregateDeliveryDetail[P]>
+  }
+
+
+
+
+  export type DeliveryDetailGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DeliveryDetailWhereInput
+    orderBy?: DeliveryDetailOrderByWithAggregationInput | DeliveryDetailOrderByWithAggregationInput[]
+    by: DeliveryDetailScalarFieldEnum[] | DeliveryDetailScalarFieldEnum
+    having?: DeliveryDetailScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DeliveryDetailCountAggregateInputType | true
+    _min?: DeliveryDetailMinAggregateInputType
+    _max?: DeliveryDetailMaxAggregateInputType
+  }
+
+  export type DeliveryDetailGroupByOutputType = {
+    id: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date
+    deliveryFrom: string | null
+    destination: string | null
+    customerReference: string | null
+    comment: string | null
+    phoneNumber: string | null
+    accompaniedBy: string | null
+    _count: DeliveryDetailCountAggregateOutputType | null
+    _min: DeliveryDetailMinAggregateOutputType | null
+    _max: DeliveryDetailMaxAggregateOutputType | null
+  }
+
+  type GetDeliveryDetailGroupByPayload<T extends DeliveryDetailGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DeliveryDetailGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DeliveryDetailGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DeliveryDetailGroupByOutputType[P]>
+            : GetScalarType<T[P], DeliveryDetailGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DeliveryDetailSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    address?: boolean
+    shiftId?: boolean
+    driverId?: boolean
+    vehicleId?: boolean
+    deliveryDate?: boolean
+    deliveryFrom?: boolean
+    destination?: boolean
+    customerReference?: boolean
+    comment?: boolean
+    phoneNumber?: boolean
+    accompaniedBy?: boolean
+    salesQuotation?: boolean | DeliveryDetail$salesQuotationArgs<ExtArgs>
+    directSale?: boolean | DeliveryDetail$directSaleArgs<ExtArgs>
+    salesEntry?: boolean | DeliveryDetail$salesEntryArgs<ExtArgs>
+  }, ExtArgs["result"]["deliveryDetail"]>
+
+  export type DeliveryDetailSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    address?: boolean
+    shiftId?: boolean
+    driverId?: boolean
+    vehicleId?: boolean
+    deliveryDate?: boolean
+    deliveryFrom?: boolean
+    destination?: boolean
+    customerReference?: boolean
+    comment?: boolean
+    phoneNumber?: boolean
+    accompaniedBy?: boolean
+  }, ExtArgs["result"]["deliveryDetail"]>
+
+  export type DeliveryDetailSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    address?: boolean
+    shiftId?: boolean
+    driverId?: boolean
+    vehicleId?: boolean
+    deliveryDate?: boolean
+    deliveryFrom?: boolean
+    destination?: boolean
+    customerReference?: boolean
+    comment?: boolean
+    phoneNumber?: boolean
+    accompaniedBy?: boolean
+  }, ExtArgs["result"]["deliveryDetail"]>
+
+  export type DeliveryDetailSelectScalar = {
+    id?: boolean
+    address?: boolean
+    shiftId?: boolean
+    driverId?: boolean
+    vehicleId?: boolean
+    deliveryDate?: boolean
+    deliveryFrom?: boolean
+    destination?: boolean
+    customerReference?: boolean
+    comment?: boolean
+    phoneNumber?: boolean
+    accompaniedBy?: boolean
+  }
+
+  export type DeliveryDetailOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "address" | "shiftId" | "driverId" | "vehicleId" | "deliveryDate" | "deliveryFrom" | "destination" | "customerReference" | "comment" | "phoneNumber" | "accompaniedBy", ExtArgs["result"]["deliveryDetail"]>
+  export type DeliveryDetailInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesQuotation?: boolean | DeliveryDetail$salesQuotationArgs<ExtArgs>
+    directSale?: boolean | DeliveryDetail$directSaleArgs<ExtArgs>
+    salesEntry?: boolean | DeliveryDetail$salesEntryArgs<ExtArgs>
+  }
+  export type DeliveryDetailIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type DeliveryDetailIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $DeliveryDetailPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DeliveryDetail"
+    objects: {
+      salesQuotation: Prisma.$SalesQuotationPayload<ExtArgs> | null
+      directSale: Prisma.$DirectSalePayload<ExtArgs> | null
+      salesEntry: Prisma.$SalesEntryPayload<ExtArgs> | null
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      address: string
+      shiftId: string
+      driverId: string
+      vehicleId: string
+      deliveryDate: Date
+      deliveryFrom: string | null
+      destination: string | null
+      customerReference: string | null
+      comment: string | null
+      phoneNumber: string | null
+      accompaniedBy: string | null
+    }, ExtArgs["result"]["deliveryDetail"]>
+    composites: {}
+  }
+
+  type DeliveryDetailGetPayload<S extends boolean | null | undefined | DeliveryDetailDefaultArgs> = $Result.GetResult<Prisma.$DeliveryDetailPayload, S>
+
+  type DeliveryDetailCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DeliveryDetailFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DeliveryDetailCountAggregateInputType | true
+    }
+
+  export interface DeliveryDetailDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DeliveryDetail'], meta: { name: 'DeliveryDetail' } }
+    /**
+     * Find zero or one DeliveryDetail that matches the filter.
+     * @param {DeliveryDetailFindUniqueArgs} args - Arguments to find a DeliveryDetail
+     * @example
+     * // Get one DeliveryDetail
+     * const deliveryDetail = await prisma.deliveryDetail.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DeliveryDetailFindUniqueArgs>(args: SelectSubset<T, DeliveryDetailFindUniqueArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DeliveryDetail that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DeliveryDetailFindUniqueOrThrowArgs} args - Arguments to find a DeliveryDetail
+     * @example
+     * // Get one DeliveryDetail
+     * const deliveryDetail = await prisma.deliveryDetail.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DeliveryDetailFindUniqueOrThrowArgs>(args: SelectSubset<T, DeliveryDetailFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DeliveryDetail that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailFindFirstArgs} args - Arguments to find a DeliveryDetail
+     * @example
+     * // Get one DeliveryDetail
+     * const deliveryDetail = await prisma.deliveryDetail.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DeliveryDetailFindFirstArgs>(args?: SelectSubset<T, DeliveryDetailFindFirstArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DeliveryDetail that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailFindFirstOrThrowArgs} args - Arguments to find a DeliveryDetail
+     * @example
+     * // Get one DeliveryDetail
+     * const deliveryDetail = await prisma.deliveryDetail.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DeliveryDetailFindFirstOrThrowArgs>(args?: SelectSubset<T, DeliveryDetailFindFirstOrThrowArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DeliveryDetails that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DeliveryDetails
+     * const deliveryDetails = await prisma.deliveryDetail.findMany()
+     * 
+     * // Get first 10 DeliveryDetails
+     * const deliveryDetails = await prisma.deliveryDetail.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const deliveryDetailWithIdOnly = await prisma.deliveryDetail.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DeliveryDetailFindManyArgs>(args?: SelectSubset<T, DeliveryDetailFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DeliveryDetail.
+     * @param {DeliveryDetailCreateArgs} args - Arguments to create a DeliveryDetail.
+     * @example
+     * // Create one DeliveryDetail
+     * const DeliveryDetail = await prisma.deliveryDetail.create({
+     *   data: {
+     *     // ... data to create a DeliveryDetail
+     *   }
+     * })
+     * 
+     */
+    create<T extends DeliveryDetailCreateArgs>(args: SelectSubset<T, DeliveryDetailCreateArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DeliveryDetails.
+     * @param {DeliveryDetailCreateManyArgs} args - Arguments to create many DeliveryDetails.
+     * @example
+     * // Create many DeliveryDetails
+     * const deliveryDetail = await prisma.deliveryDetail.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DeliveryDetailCreateManyArgs>(args?: SelectSubset<T, DeliveryDetailCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DeliveryDetails and returns the data saved in the database.
+     * @param {DeliveryDetailCreateManyAndReturnArgs} args - Arguments to create many DeliveryDetails.
+     * @example
+     * // Create many DeliveryDetails
+     * const deliveryDetail = await prisma.deliveryDetail.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DeliveryDetails and only return the `id`
+     * const deliveryDetailWithIdOnly = await prisma.deliveryDetail.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DeliveryDetailCreateManyAndReturnArgs>(args?: SelectSubset<T, DeliveryDetailCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DeliveryDetail.
+     * @param {DeliveryDetailDeleteArgs} args - Arguments to delete one DeliveryDetail.
+     * @example
+     * // Delete one DeliveryDetail
+     * const DeliveryDetail = await prisma.deliveryDetail.delete({
+     *   where: {
+     *     // ... filter to delete one DeliveryDetail
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DeliveryDetailDeleteArgs>(args: SelectSubset<T, DeliveryDetailDeleteArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DeliveryDetail.
+     * @param {DeliveryDetailUpdateArgs} args - Arguments to update one DeliveryDetail.
+     * @example
+     * // Update one DeliveryDetail
+     * const deliveryDetail = await prisma.deliveryDetail.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DeliveryDetailUpdateArgs>(args: SelectSubset<T, DeliveryDetailUpdateArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DeliveryDetails.
+     * @param {DeliveryDetailDeleteManyArgs} args - Arguments to filter DeliveryDetails to delete.
+     * @example
+     * // Delete a few DeliveryDetails
+     * const { count } = await prisma.deliveryDetail.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DeliveryDetailDeleteManyArgs>(args?: SelectSubset<T, DeliveryDetailDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DeliveryDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DeliveryDetails
+     * const deliveryDetail = await prisma.deliveryDetail.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DeliveryDetailUpdateManyArgs>(args: SelectSubset<T, DeliveryDetailUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DeliveryDetails and returns the data updated in the database.
+     * @param {DeliveryDetailUpdateManyAndReturnArgs} args - Arguments to update many DeliveryDetails.
+     * @example
+     * // Update many DeliveryDetails
+     * const deliveryDetail = await prisma.deliveryDetail.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DeliveryDetails and only return the `id`
+     * const deliveryDetailWithIdOnly = await prisma.deliveryDetail.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DeliveryDetailUpdateManyAndReturnArgs>(args: SelectSubset<T, DeliveryDetailUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DeliveryDetail.
+     * @param {DeliveryDetailUpsertArgs} args - Arguments to update or create a DeliveryDetail.
+     * @example
+     * // Update or create a DeliveryDetail
+     * const deliveryDetail = await prisma.deliveryDetail.upsert({
+     *   create: {
+     *     // ... data to create a DeliveryDetail
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DeliveryDetail we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DeliveryDetailUpsertArgs>(args: SelectSubset<T, DeliveryDetailUpsertArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DeliveryDetails.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailCountArgs} args - Arguments to filter DeliveryDetails to count.
+     * @example
+     * // Count the number of DeliveryDetails
+     * const count = await prisma.deliveryDetail.count({
+     *   where: {
+     *     // ... the filter for the DeliveryDetails we want to count
+     *   }
+     * })
+    **/
+    count<T extends DeliveryDetailCountArgs>(
+      args?: Subset<T, DeliveryDetailCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DeliveryDetailCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DeliveryDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DeliveryDetailAggregateArgs>(args: Subset<T, DeliveryDetailAggregateArgs>): Prisma.PrismaPromise<GetDeliveryDetailAggregateType<T>>
+
+    /**
+     * Group by DeliveryDetail.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DeliveryDetailGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DeliveryDetailGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DeliveryDetailGroupByArgs['orderBy'] }
+        : { orderBy?: DeliveryDetailGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DeliveryDetailGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDeliveryDetailGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DeliveryDetail model
+   */
+  readonly fields: DeliveryDetailFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DeliveryDetail.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DeliveryDetailClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    salesQuotation<T extends DeliveryDetail$salesQuotationArgs<ExtArgs> = {}>(args?: Subset<T, DeliveryDetail$salesQuotationArgs<ExtArgs>>): Prisma__SalesQuotationClient<$Result.GetResult<Prisma.$SalesQuotationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    directSale<T extends DeliveryDetail$directSaleArgs<ExtArgs> = {}>(args?: Subset<T, DeliveryDetail$directSaleArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    salesEntry<T extends DeliveryDetail$salesEntryArgs<ExtArgs> = {}>(args?: Subset<T, DeliveryDetail$salesEntryArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DeliveryDetail model
+   */
+  interface DeliveryDetailFieldRefs {
+    readonly id: FieldRef<"DeliveryDetail", 'String'>
+    readonly address: FieldRef<"DeliveryDetail", 'String'>
+    readonly shiftId: FieldRef<"DeliveryDetail", 'String'>
+    readonly driverId: FieldRef<"DeliveryDetail", 'String'>
+    readonly vehicleId: FieldRef<"DeliveryDetail", 'String'>
+    readonly deliveryDate: FieldRef<"DeliveryDetail", 'DateTime'>
+    readonly deliveryFrom: FieldRef<"DeliveryDetail", 'String'>
+    readonly destination: FieldRef<"DeliveryDetail", 'String'>
+    readonly customerReference: FieldRef<"DeliveryDetail", 'String'>
+    readonly comment: FieldRef<"DeliveryDetail", 'String'>
+    readonly phoneNumber: FieldRef<"DeliveryDetail", 'String'>
+    readonly accompaniedBy: FieldRef<"DeliveryDetail", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DeliveryDetail findUnique
+   */
+  export type DeliveryDetailFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which DeliveryDetail to fetch.
+     */
+    where: DeliveryDetailWhereUniqueInput
+  }
+
+  /**
+   * DeliveryDetail findUniqueOrThrow
+   */
+  export type DeliveryDetailFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which DeliveryDetail to fetch.
+     */
+    where: DeliveryDetailWhereUniqueInput
+  }
+
+  /**
+   * DeliveryDetail findFirst
+   */
+  export type DeliveryDetailFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which DeliveryDetail to fetch.
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryDetails to fetch.
+     */
+    orderBy?: DeliveryDetailOrderByWithRelationInput | DeliveryDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DeliveryDetails.
+     */
+    cursor?: DeliveryDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DeliveryDetails.
+     */
+    distinct?: DeliveryDetailScalarFieldEnum | DeliveryDetailScalarFieldEnum[]
+  }
+
+  /**
+   * DeliveryDetail findFirstOrThrow
+   */
+  export type DeliveryDetailFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which DeliveryDetail to fetch.
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryDetails to fetch.
+     */
+    orderBy?: DeliveryDetailOrderByWithRelationInput | DeliveryDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DeliveryDetails.
+     */
+    cursor?: DeliveryDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryDetails.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DeliveryDetails.
+     */
+    distinct?: DeliveryDetailScalarFieldEnum | DeliveryDetailScalarFieldEnum[]
+  }
+
+  /**
+   * DeliveryDetail findMany
+   */
+  export type DeliveryDetailFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * Filter, which DeliveryDetails to fetch.
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DeliveryDetails to fetch.
+     */
+    orderBy?: DeliveryDetailOrderByWithRelationInput | DeliveryDetailOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DeliveryDetails.
+     */
+    cursor?: DeliveryDetailWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DeliveryDetails from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DeliveryDetails.
+     */
+    skip?: number
+    distinct?: DeliveryDetailScalarFieldEnum | DeliveryDetailScalarFieldEnum[]
+  }
+
+  /**
+   * DeliveryDetail create
+   */
+  export type DeliveryDetailCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DeliveryDetail.
+     */
+    data: XOR<DeliveryDetailCreateInput, DeliveryDetailUncheckedCreateInput>
+  }
+
+  /**
+   * DeliveryDetail createMany
+   */
+  export type DeliveryDetailCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DeliveryDetails.
+     */
+    data: DeliveryDetailCreateManyInput | DeliveryDetailCreateManyInput[]
+  }
+
+  /**
+   * DeliveryDetail createManyAndReturn
+   */
+  export type DeliveryDetailCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * The data used to create many DeliveryDetails.
+     */
+    data: DeliveryDetailCreateManyInput | DeliveryDetailCreateManyInput[]
+  }
+
+  /**
+   * DeliveryDetail update
+   */
+  export type DeliveryDetailUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DeliveryDetail.
+     */
+    data: XOR<DeliveryDetailUpdateInput, DeliveryDetailUncheckedUpdateInput>
+    /**
+     * Choose, which DeliveryDetail to update.
+     */
+    where: DeliveryDetailWhereUniqueInput
+  }
+
+  /**
+   * DeliveryDetail updateMany
+   */
+  export type DeliveryDetailUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DeliveryDetails.
+     */
+    data: XOR<DeliveryDetailUpdateManyMutationInput, DeliveryDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which DeliveryDetails to update
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * Limit how many DeliveryDetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeliveryDetail updateManyAndReturn
+   */
+  export type DeliveryDetailUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * The data used to update DeliveryDetails.
+     */
+    data: XOR<DeliveryDetailUpdateManyMutationInput, DeliveryDetailUncheckedUpdateManyInput>
+    /**
+     * Filter which DeliveryDetails to update
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * Limit how many DeliveryDetails to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeliveryDetail upsert
+   */
+  export type DeliveryDetailUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DeliveryDetail to update in case it exists.
+     */
+    where: DeliveryDetailWhereUniqueInput
+    /**
+     * In case the DeliveryDetail found by the `where` argument doesn't exist, create a new DeliveryDetail with this data.
+     */
+    create: XOR<DeliveryDetailCreateInput, DeliveryDetailUncheckedCreateInput>
+    /**
+     * In case the DeliveryDetail was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DeliveryDetailUpdateInput, DeliveryDetailUncheckedUpdateInput>
+  }
+
+  /**
+   * DeliveryDetail delete
+   */
+  export type DeliveryDetailDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+    /**
+     * Filter which DeliveryDetail to delete.
+     */
+    where: DeliveryDetailWhereUniqueInput
+  }
+
+  /**
+   * DeliveryDetail deleteMany
+   */
+  export type DeliveryDetailDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DeliveryDetails to delete
+     */
+    where?: DeliveryDetailWhereInput
+    /**
+     * Limit how many DeliveryDetails to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DeliveryDetail.salesQuotation
+   */
+  export type DeliveryDetail$salesQuotationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesQuotation
+     */
+    select?: SalesQuotationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesQuotation
+     */
+    omit?: SalesQuotationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesQuotationInclude<ExtArgs> | null
+    where?: SalesQuotationWhereInput
+  }
+
+  /**
+   * DeliveryDetail.directSale
+   */
+  export type DeliveryDetail$directSaleArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    where?: DirectSaleWhereInput
+  }
+
+  /**
+   * DeliveryDetail.salesEntry
+   */
+  export type DeliveryDetail$salesEntryArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    where?: SalesEntryWhereInput
+  }
+
+  /**
+   * DeliveryDetail without action
+   */
+  export type DeliveryDetailDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DeliveryDetail
+     */
+    select?: DeliveryDetailSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DeliveryDetail
+     */
+    omit?: DeliveryDetailOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DeliveryDetailInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DirectSale
+   */
+
+  export type AggregateDirectSale = {
+    _count: DirectSaleCountAggregateOutputType | null
+    _avg: DirectSaleAvgAggregateOutputType | null
+    _sum: DirectSaleSumAggregateOutputType | null
+    _min: DirectSaleMinAggregateOutputType | null
+    _max: DirectSaleMaxAggregateOutputType | null
+  }
+
+  export type DirectSaleAvgAggregateOutputType = {
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+  }
+
+  export type DirectSaleSumAggregateOutputType = {
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+  }
+
+  export type DirectSaleMinAggregateOutputType = {
+    id: string | null
+    saleDate: Date | null
+    clientId: string | null
+    deliveryDetailsId: string | null
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+    remarks: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DirectSaleMaxAggregateOutputType = {
+    id: string | null
+    saleDate: Date | null
+    clientId: string | null
+    deliveryDetailsId: string | null
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+    remarks: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DirectSaleCountAggregateOutputType = {
+    id: number
+    saleDate: number
+    clientId: number
+    deliveryDetailsId: number
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DirectSaleAvgAggregateInputType = {
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+  }
+
+  export type DirectSaleSumAggregateInputType = {
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+  }
+
+  export type DirectSaleMinAggregateInputType = {
+    id?: true
+    saleDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DirectSaleMaxAggregateInputType = {
+    id?: true
+    saleDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DirectSaleCountAggregateInputType = {
+    id?: true
+    saleDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DirectSaleAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DirectSale to aggregate.
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSales to fetch.
+     */
+    orderBy?: DirectSaleOrderByWithRelationInput | DirectSaleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DirectSaleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSales.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DirectSales
+    **/
+    _count?: true | DirectSaleCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DirectSaleAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DirectSaleSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DirectSaleMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DirectSaleMaxAggregateInputType
+  }
+
+  export type GetDirectSaleAggregateType<T extends DirectSaleAggregateArgs> = {
+        [P in keyof T & keyof AggregateDirectSale]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDirectSale[P]>
+      : GetScalarType<T[P], AggregateDirectSale[P]>
+  }
+
+
+
+
+  export type DirectSaleGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DirectSaleWhereInput
+    orderBy?: DirectSaleOrderByWithAggregationInput | DirectSaleOrderByWithAggregationInput[]
+    by: DirectSaleScalarFieldEnum[] | DirectSaleScalarFieldEnum
+    having?: DirectSaleScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DirectSaleCountAggregateInputType | true
+    _avg?: DirectSaleAvgAggregateInputType
+    _sum?: DirectSaleSumAggregateInputType
+    _min?: DirectSaleMinAggregateInputType
+    _max?: DirectSaleMaxAggregateInputType
+  }
+
+  export type DirectSaleGroupByOutputType = {
+    id: string
+    saleDate: Date
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: DirectSaleCountAggregateOutputType | null
+    _avg: DirectSaleAvgAggregateOutputType | null
+    _sum: DirectSaleSumAggregateOutputType | null
+    _min: DirectSaleMinAggregateOutputType | null
+    _max: DirectSaleMaxAggregateOutputType | null
+  }
+
+  type GetDirectSaleGroupByPayload<T extends DirectSaleGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DirectSaleGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DirectSaleGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DirectSaleGroupByOutputType[P]>
+            : GetScalarType<T[P], DirectSaleGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DirectSaleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+    saleItems?: boolean | DirectSale$saleItemsArgs<ExtArgs>
+    _count?: boolean | DirectSaleCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["directSale"]>
+
+  export type DirectSaleSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["directSale"]>
+
+  export type DirectSaleSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["directSale"]>
+
+  export type DirectSaleSelectScalar = {
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DirectSaleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "saleDate" | "clientId" | "deliveryDetailsId" | "subtotal" | "shipping" | "grandTotal" | "remarks" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["directSale"]>
+  export type DirectSaleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+    saleItems?: boolean | DirectSale$saleItemsArgs<ExtArgs>
+    _count?: boolean | DirectSaleCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type DirectSaleIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }
+  export type DirectSaleIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }
+
+  export type $DirectSalePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DirectSale"
+    objects: {
+      client: Prisma.$ClientPayload<ExtArgs>
+      deliveryDetails: Prisma.$DeliveryDetailPayload<ExtArgs>
+      saleItems: Prisma.$DirectSaleItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      saleDate: Date
+      clientId: string
+      deliveryDetailsId: string
+      subtotal: number
+      shipping: number
+      grandTotal: number
+      remarks: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["directSale"]>
+    composites: {}
+  }
+
+  type DirectSaleGetPayload<S extends boolean | null | undefined | DirectSaleDefaultArgs> = $Result.GetResult<Prisma.$DirectSalePayload, S>
+
+  type DirectSaleCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DirectSaleFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DirectSaleCountAggregateInputType | true
+    }
+
+  export interface DirectSaleDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DirectSale'], meta: { name: 'DirectSale' } }
+    /**
+     * Find zero or one DirectSale that matches the filter.
+     * @param {DirectSaleFindUniqueArgs} args - Arguments to find a DirectSale
+     * @example
+     * // Get one DirectSale
+     * const directSale = await prisma.directSale.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DirectSaleFindUniqueArgs>(args: SelectSubset<T, DirectSaleFindUniqueArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DirectSale that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DirectSaleFindUniqueOrThrowArgs} args - Arguments to find a DirectSale
+     * @example
+     * // Get one DirectSale
+     * const directSale = await prisma.directSale.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DirectSaleFindUniqueOrThrowArgs>(args: SelectSubset<T, DirectSaleFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DirectSale that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleFindFirstArgs} args - Arguments to find a DirectSale
+     * @example
+     * // Get one DirectSale
+     * const directSale = await prisma.directSale.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DirectSaleFindFirstArgs>(args?: SelectSubset<T, DirectSaleFindFirstArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DirectSale that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleFindFirstOrThrowArgs} args - Arguments to find a DirectSale
+     * @example
+     * // Get one DirectSale
+     * const directSale = await prisma.directSale.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DirectSaleFindFirstOrThrowArgs>(args?: SelectSubset<T, DirectSaleFindFirstOrThrowArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DirectSales that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DirectSales
+     * const directSales = await prisma.directSale.findMany()
+     * 
+     * // Get first 10 DirectSales
+     * const directSales = await prisma.directSale.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const directSaleWithIdOnly = await prisma.directSale.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DirectSaleFindManyArgs>(args?: SelectSubset<T, DirectSaleFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DirectSale.
+     * @param {DirectSaleCreateArgs} args - Arguments to create a DirectSale.
+     * @example
+     * // Create one DirectSale
+     * const DirectSale = await prisma.directSale.create({
+     *   data: {
+     *     // ... data to create a DirectSale
+     *   }
+     * })
+     * 
+     */
+    create<T extends DirectSaleCreateArgs>(args: SelectSubset<T, DirectSaleCreateArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DirectSales.
+     * @param {DirectSaleCreateManyArgs} args - Arguments to create many DirectSales.
+     * @example
+     * // Create many DirectSales
+     * const directSale = await prisma.directSale.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DirectSaleCreateManyArgs>(args?: SelectSubset<T, DirectSaleCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DirectSales and returns the data saved in the database.
+     * @param {DirectSaleCreateManyAndReturnArgs} args - Arguments to create many DirectSales.
+     * @example
+     * // Create many DirectSales
+     * const directSale = await prisma.directSale.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DirectSales and only return the `id`
+     * const directSaleWithIdOnly = await prisma.directSale.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DirectSaleCreateManyAndReturnArgs>(args?: SelectSubset<T, DirectSaleCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DirectSale.
+     * @param {DirectSaleDeleteArgs} args - Arguments to delete one DirectSale.
+     * @example
+     * // Delete one DirectSale
+     * const DirectSale = await prisma.directSale.delete({
+     *   where: {
+     *     // ... filter to delete one DirectSale
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DirectSaleDeleteArgs>(args: SelectSubset<T, DirectSaleDeleteArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DirectSale.
+     * @param {DirectSaleUpdateArgs} args - Arguments to update one DirectSale.
+     * @example
+     * // Update one DirectSale
+     * const directSale = await prisma.directSale.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DirectSaleUpdateArgs>(args: SelectSubset<T, DirectSaleUpdateArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DirectSales.
+     * @param {DirectSaleDeleteManyArgs} args - Arguments to filter DirectSales to delete.
+     * @example
+     * // Delete a few DirectSales
+     * const { count } = await prisma.directSale.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DirectSaleDeleteManyArgs>(args?: SelectSubset<T, DirectSaleDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DirectSales.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DirectSales
+     * const directSale = await prisma.directSale.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DirectSaleUpdateManyArgs>(args: SelectSubset<T, DirectSaleUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DirectSales and returns the data updated in the database.
+     * @param {DirectSaleUpdateManyAndReturnArgs} args - Arguments to update many DirectSales.
+     * @example
+     * // Update many DirectSales
+     * const directSale = await prisma.directSale.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DirectSales and only return the `id`
+     * const directSaleWithIdOnly = await prisma.directSale.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DirectSaleUpdateManyAndReturnArgs>(args: SelectSubset<T, DirectSaleUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DirectSale.
+     * @param {DirectSaleUpsertArgs} args - Arguments to update or create a DirectSale.
+     * @example
+     * // Update or create a DirectSale
+     * const directSale = await prisma.directSale.upsert({
+     *   create: {
+     *     // ... data to create a DirectSale
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DirectSale we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DirectSaleUpsertArgs>(args: SelectSubset<T, DirectSaleUpsertArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DirectSales.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleCountArgs} args - Arguments to filter DirectSales to count.
+     * @example
+     * // Count the number of DirectSales
+     * const count = await prisma.directSale.count({
+     *   where: {
+     *     // ... the filter for the DirectSales we want to count
+     *   }
+     * })
+    **/
+    count<T extends DirectSaleCountArgs>(
+      args?: Subset<T, DirectSaleCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DirectSaleCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DirectSale.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DirectSaleAggregateArgs>(args: Subset<T, DirectSaleAggregateArgs>): Prisma.PrismaPromise<GetDirectSaleAggregateType<T>>
+
+    /**
+     * Group by DirectSale.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DirectSaleGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DirectSaleGroupByArgs['orderBy'] }
+        : { orderBy?: DirectSaleGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DirectSaleGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDirectSaleGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DirectSale model
+   */
+  readonly fields: DirectSaleFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DirectSale.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DirectSaleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    client<T extends ClientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientDefaultArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    deliveryDetails<T extends DeliveryDetailDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeliveryDetailDefaultArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    saleItems<T extends DirectSale$saleItemsArgs<ExtArgs> = {}>(args?: Subset<T, DirectSale$saleItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DirectSale model
+   */
+  interface DirectSaleFieldRefs {
+    readonly id: FieldRef<"DirectSale", 'String'>
+    readonly saleDate: FieldRef<"DirectSale", 'DateTime'>
+    readonly clientId: FieldRef<"DirectSale", 'String'>
+    readonly deliveryDetailsId: FieldRef<"DirectSale", 'String'>
+    readonly subtotal: FieldRef<"DirectSale", 'Float'>
+    readonly shipping: FieldRef<"DirectSale", 'Float'>
+    readonly grandTotal: FieldRef<"DirectSale", 'Float'>
+    readonly remarks: FieldRef<"DirectSale", 'String'>
+    readonly status: FieldRef<"DirectSale", 'String'>
+    readonly createdAt: FieldRef<"DirectSale", 'DateTime'>
+    readonly updatedAt: FieldRef<"DirectSale", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DirectSale findUnique
+   */
+  export type DirectSaleFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSale to fetch.
+     */
+    where: DirectSaleWhereUniqueInput
+  }
+
+  /**
+   * DirectSale findUniqueOrThrow
+   */
+  export type DirectSaleFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSale to fetch.
+     */
+    where: DirectSaleWhereUniqueInput
+  }
+
+  /**
+   * DirectSale findFirst
+   */
+  export type DirectSaleFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSale to fetch.
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSales to fetch.
+     */
+    orderBy?: DirectSaleOrderByWithRelationInput | DirectSaleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DirectSales.
+     */
+    cursor?: DirectSaleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSales.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DirectSales.
+     */
+    distinct?: DirectSaleScalarFieldEnum | DirectSaleScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSale findFirstOrThrow
+   */
+  export type DirectSaleFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSale to fetch.
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSales to fetch.
+     */
+    orderBy?: DirectSaleOrderByWithRelationInput | DirectSaleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DirectSales.
+     */
+    cursor?: DirectSaleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSales.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DirectSales.
+     */
+    distinct?: DirectSaleScalarFieldEnum | DirectSaleScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSale findMany
+   */
+  export type DirectSaleFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSales to fetch.
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSales to fetch.
+     */
+    orderBy?: DirectSaleOrderByWithRelationInput | DirectSaleOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DirectSales.
+     */
+    cursor?: DirectSaleWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSales from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSales.
+     */
+    skip?: number
+    distinct?: DirectSaleScalarFieldEnum | DirectSaleScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSale create
+   */
+  export type DirectSaleCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DirectSale.
+     */
+    data: XOR<DirectSaleCreateInput, DirectSaleUncheckedCreateInput>
+  }
+
+  /**
+   * DirectSale createMany
+   */
+  export type DirectSaleCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DirectSales.
+     */
+    data: DirectSaleCreateManyInput | DirectSaleCreateManyInput[]
+  }
+
+  /**
+   * DirectSale createManyAndReturn
+   */
+  export type DirectSaleCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * The data used to create many DirectSales.
+     */
+    data: DirectSaleCreateManyInput | DirectSaleCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DirectSale update
+   */
+  export type DirectSaleUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DirectSale.
+     */
+    data: XOR<DirectSaleUpdateInput, DirectSaleUncheckedUpdateInput>
+    /**
+     * Choose, which DirectSale to update.
+     */
+    where: DirectSaleWhereUniqueInput
+  }
+
+  /**
+   * DirectSale updateMany
+   */
+  export type DirectSaleUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DirectSales.
+     */
+    data: XOR<DirectSaleUpdateManyMutationInput, DirectSaleUncheckedUpdateManyInput>
+    /**
+     * Filter which DirectSales to update
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * Limit how many DirectSales to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DirectSale updateManyAndReturn
+   */
+  export type DirectSaleUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * The data used to update DirectSales.
+     */
+    data: XOR<DirectSaleUpdateManyMutationInput, DirectSaleUncheckedUpdateManyInput>
+    /**
+     * Filter which DirectSales to update
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * Limit how many DirectSales to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DirectSale upsert
+   */
+  export type DirectSaleUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DirectSale to update in case it exists.
+     */
+    where: DirectSaleWhereUniqueInput
+    /**
+     * In case the DirectSale found by the `where` argument doesn't exist, create a new DirectSale with this data.
+     */
+    create: XOR<DirectSaleCreateInput, DirectSaleUncheckedCreateInput>
+    /**
+     * In case the DirectSale was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DirectSaleUpdateInput, DirectSaleUncheckedUpdateInput>
+  }
+
+  /**
+   * DirectSale delete
+   */
+  export type DirectSaleDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+    /**
+     * Filter which DirectSale to delete.
+     */
+    where: DirectSaleWhereUniqueInput
+  }
+
+  /**
+   * DirectSale deleteMany
+   */
+  export type DirectSaleDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DirectSales to delete
+     */
+    where?: DirectSaleWhereInput
+    /**
+     * Limit how many DirectSales to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DirectSale.saleItems
+   */
+  export type DirectSale$saleItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    where?: DirectSaleItemWhereInput
+    orderBy?: DirectSaleItemOrderByWithRelationInput | DirectSaleItemOrderByWithRelationInput[]
+    cursor?: DirectSaleItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: DirectSaleItemScalarFieldEnum | DirectSaleItemScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSale without action
+   */
+  export type DirectSaleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSale
+     */
+    select?: DirectSaleSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSale
+     */
+    omit?: DirectSaleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model DirectSaleItem
+   */
+
+  export type AggregateDirectSaleItem = {
+    _count: DirectSaleItemCountAggregateOutputType | null
+    _avg: DirectSaleItemAvgAggregateOutputType | null
+    _sum: DirectSaleItemSumAggregateOutputType | null
+    _min: DirectSaleItemMinAggregateOutputType | null
+    _max: DirectSaleItemMaxAggregateOutputType | null
+  }
+
+  export type DirectSaleItemAvgAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+  }
+
+  export type DirectSaleItemSumAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+  }
+
+  export type DirectSaleItemMinAggregateOutputType = {
+    id: string | null
+    directSaleId: string | null
+    itemId: string | null
+    itemName: string | null
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DirectSaleItemMaxAggregateOutputType = {
+    id: string | null
+    directSaleId: string | null
+    itemId: string | null
+    itemName: string | null
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type DirectSaleItemCountAggregateOutputType = {
+    id: number
+    directSaleId: number
+    itemId: number
+    itemName: number
+    quantity: number
+    unitPrice: number
+    discount: number
+    tax: number
+    total: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type DirectSaleItemAvgAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+  }
+
+  export type DirectSaleItemSumAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+  }
+
+  export type DirectSaleItemMinAggregateInputType = {
+    id?: true
+    directSaleId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DirectSaleItemMaxAggregateInputType = {
+    id?: true
+    directSaleId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type DirectSaleItemCountAggregateInputType = {
+    id?: true
+    directSaleId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type DirectSaleItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DirectSaleItem to aggregate.
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSaleItems to fetch.
+     */
+    orderBy?: DirectSaleItemOrderByWithRelationInput | DirectSaleItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: DirectSaleItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSaleItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSaleItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned DirectSaleItems
+    **/
+    _count?: true | DirectSaleItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: DirectSaleItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: DirectSaleItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: DirectSaleItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: DirectSaleItemMaxAggregateInputType
+  }
+
+  export type GetDirectSaleItemAggregateType<T extends DirectSaleItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateDirectSaleItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateDirectSaleItem[P]>
+      : GetScalarType<T[P], AggregateDirectSaleItem[P]>
+  }
+
+
+
+
+  export type DirectSaleItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DirectSaleItemWhereInput
+    orderBy?: DirectSaleItemOrderByWithAggregationInput | DirectSaleItemOrderByWithAggregationInput[]
+    by: DirectSaleItemScalarFieldEnum[] | DirectSaleItemScalarFieldEnum
+    having?: DirectSaleItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: DirectSaleItemCountAggregateInputType | true
+    _avg?: DirectSaleItemAvgAggregateInputType
+    _sum?: DirectSaleItemSumAggregateInputType
+    _min?: DirectSaleItemMinAggregateInputType
+    _max?: DirectSaleItemMaxAggregateInputType
+  }
+
+  export type DirectSaleItemGroupByOutputType = {
+    id: string
+    directSaleId: string
+    itemId: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount: number | null
+    tax: number | null
+    total: number
+    createdAt: Date
+    updatedAt: Date
+    _count: DirectSaleItemCountAggregateOutputType | null
+    _avg: DirectSaleItemAvgAggregateOutputType | null
+    _sum: DirectSaleItemSumAggregateOutputType | null
+    _min: DirectSaleItemMinAggregateOutputType | null
+    _max: DirectSaleItemMaxAggregateOutputType | null
+  }
+
+  type GetDirectSaleItemGroupByPayload<T extends DirectSaleItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<DirectSaleItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof DirectSaleItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], DirectSaleItemGroupByOutputType[P]>
+            : GetScalarType<T[P], DirectSaleItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type DirectSaleItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    directSaleId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    directSale?: boolean | DirectSaleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["directSaleItem"]>
+
+  export type DirectSaleItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    directSaleId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    directSale?: boolean | DirectSaleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["directSaleItem"]>
+
+  export type DirectSaleItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    directSaleId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    directSale?: boolean | DirectSaleDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["directSaleItem"]>
+
+  export type DirectSaleItemSelectScalar = {
+    id?: boolean
+    directSaleId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type DirectSaleItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "directSaleId" | "itemId" | "itemName" | "quantity" | "unitPrice" | "discount" | "tax" | "total" | "createdAt" | "updatedAt", ExtArgs["result"]["directSaleItem"]>
+  export type DirectSaleItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    directSale?: boolean | DirectSaleDefaultArgs<ExtArgs>
+  }
+  export type DirectSaleItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    directSale?: boolean | DirectSaleDefaultArgs<ExtArgs>
+  }
+  export type DirectSaleItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    directSale?: boolean | DirectSaleDefaultArgs<ExtArgs>
+  }
+
+  export type $DirectSaleItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "DirectSaleItem"
+    objects: {
+      directSale: Prisma.$DirectSalePayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      directSaleId: string
+      itemId: string | null
+      itemName: string
+      quantity: number
+      unitPrice: number
+      discount: number | null
+      tax: number | null
+      total: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["directSaleItem"]>
+    composites: {}
+  }
+
+  type DirectSaleItemGetPayload<S extends boolean | null | undefined | DirectSaleItemDefaultArgs> = $Result.GetResult<Prisma.$DirectSaleItemPayload, S>
+
+  type DirectSaleItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<DirectSaleItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: DirectSaleItemCountAggregateInputType | true
+    }
+
+  export interface DirectSaleItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['DirectSaleItem'], meta: { name: 'DirectSaleItem' } }
+    /**
+     * Find zero or one DirectSaleItem that matches the filter.
+     * @param {DirectSaleItemFindUniqueArgs} args - Arguments to find a DirectSaleItem
+     * @example
+     * // Get one DirectSaleItem
+     * const directSaleItem = await prisma.directSaleItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends DirectSaleItemFindUniqueArgs>(args: SelectSubset<T, DirectSaleItemFindUniqueArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one DirectSaleItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {DirectSaleItemFindUniqueOrThrowArgs} args - Arguments to find a DirectSaleItem
+     * @example
+     * // Get one DirectSaleItem
+     * const directSaleItem = await prisma.directSaleItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends DirectSaleItemFindUniqueOrThrowArgs>(args: SelectSubset<T, DirectSaleItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DirectSaleItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemFindFirstArgs} args - Arguments to find a DirectSaleItem
+     * @example
+     * // Get one DirectSaleItem
+     * const directSaleItem = await prisma.directSaleItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends DirectSaleItemFindFirstArgs>(args?: SelectSubset<T, DirectSaleItemFindFirstArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first DirectSaleItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemFindFirstOrThrowArgs} args - Arguments to find a DirectSaleItem
+     * @example
+     * // Get one DirectSaleItem
+     * const directSaleItem = await prisma.directSaleItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends DirectSaleItemFindFirstOrThrowArgs>(args?: SelectSubset<T, DirectSaleItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more DirectSaleItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all DirectSaleItems
+     * const directSaleItems = await prisma.directSaleItem.findMany()
+     * 
+     * // Get first 10 DirectSaleItems
+     * const directSaleItems = await prisma.directSaleItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const directSaleItemWithIdOnly = await prisma.directSaleItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends DirectSaleItemFindManyArgs>(args?: SelectSubset<T, DirectSaleItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a DirectSaleItem.
+     * @param {DirectSaleItemCreateArgs} args - Arguments to create a DirectSaleItem.
+     * @example
+     * // Create one DirectSaleItem
+     * const DirectSaleItem = await prisma.directSaleItem.create({
+     *   data: {
+     *     // ... data to create a DirectSaleItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends DirectSaleItemCreateArgs>(args: SelectSubset<T, DirectSaleItemCreateArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many DirectSaleItems.
+     * @param {DirectSaleItemCreateManyArgs} args - Arguments to create many DirectSaleItems.
+     * @example
+     * // Create many DirectSaleItems
+     * const directSaleItem = await prisma.directSaleItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends DirectSaleItemCreateManyArgs>(args?: SelectSubset<T, DirectSaleItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many DirectSaleItems and returns the data saved in the database.
+     * @param {DirectSaleItemCreateManyAndReturnArgs} args - Arguments to create many DirectSaleItems.
+     * @example
+     * // Create many DirectSaleItems
+     * const directSaleItem = await prisma.directSaleItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many DirectSaleItems and only return the `id`
+     * const directSaleItemWithIdOnly = await prisma.directSaleItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends DirectSaleItemCreateManyAndReturnArgs>(args?: SelectSubset<T, DirectSaleItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a DirectSaleItem.
+     * @param {DirectSaleItemDeleteArgs} args - Arguments to delete one DirectSaleItem.
+     * @example
+     * // Delete one DirectSaleItem
+     * const DirectSaleItem = await prisma.directSaleItem.delete({
+     *   where: {
+     *     // ... filter to delete one DirectSaleItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends DirectSaleItemDeleteArgs>(args: SelectSubset<T, DirectSaleItemDeleteArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one DirectSaleItem.
+     * @param {DirectSaleItemUpdateArgs} args - Arguments to update one DirectSaleItem.
+     * @example
+     * // Update one DirectSaleItem
+     * const directSaleItem = await prisma.directSaleItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends DirectSaleItemUpdateArgs>(args: SelectSubset<T, DirectSaleItemUpdateArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more DirectSaleItems.
+     * @param {DirectSaleItemDeleteManyArgs} args - Arguments to filter DirectSaleItems to delete.
+     * @example
+     * // Delete a few DirectSaleItems
+     * const { count } = await prisma.directSaleItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends DirectSaleItemDeleteManyArgs>(args?: SelectSubset<T, DirectSaleItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DirectSaleItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many DirectSaleItems
+     * const directSaleItem = await prisma.directSaleItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends DirectSaleItemUpdateManyArgs>(args: SelectSubset<T, DirectSaleItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more DirectSaleItems and returns the data updated in the database.
+     * @param {DirectSaleItemUpdateManyAndReturnArgs} args - Arguments to update many DirectSaleItems.
+     * @example
+     * // Update many DirectSaleItems
+     * const directSaleItem = await prisma.directSaleItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more DirectSaleItems and only return the `id`
+     * const directSaleItemWithIdOnly = await prisma.directSaleItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends DirectSaleItemUpdateManyAndReturnArgs>(args: SelectSubset<T, DirectSaleItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one DirectSaleItem.
+     * @param {DirectSaleItemUpsertArgs} args - Arguments to update or create a DirectSaleItem.
+     * @example
+     * // Update or create a DirectSaleItem
+     * const directSaleItem = await prisma.directSaleItem.upsert({
+     *   create: {
+     *     // ... data to create a DirectSaleItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the DirectSaleItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends DirectSaleItemUpsertArgs>(args: SelectSubset<T, DirectSaleItemUpsertArgs<ExtArgs>>): Prisma__DirectSaleItemClient<$Result.GetResult<Prisma.$DirectSaleItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of DirectSaleItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemCountArgs} args - Arguments to filter DirectSaleItems to count.
+     * @example
+     * // Count the number of DirectSaleItems
+     * const count = await prisma.directSaleItem.count({
+     *   where: {
+     *     // ... the filter for the DirectSaleItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends DirectSaleItemCountArgs>(
+      args?: Subset<T, DirectSaleItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], DirectSaleItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a DirectSaleItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends DirectSaleItemAggregateArgs>(args: Subset<T, DirectSaleItemAggregateArgs>): Prisma.PrismaPromise<GetDirectSaleItemAggregateType<T>>
+
+    /**
+     * Group by DirectSaleItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {DirectSaleItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends DirectSaleItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: DirectSaleItemGroupByArgs['orderBy'] }
+        : { orderBy?: DirectSaleItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, DirectSaleItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDirectSaleItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the DirectSaleItem model
+   */
+  readonly fields: DirectSaleItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for DirectSaleItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__DirectSaleItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    directSale<T extends DirectSaleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DirectSaleDefaultArgs<ExtArgs>>): Prisma__DirectSaleClient<$Result.GetResult<Prisma.$DirectSalePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the DirectSaleItem model
+   */
+  interface DirectSaleItemFieldRefs {
+    readonly id: FieldRef<"DirectSaleItem", 'String'>
+    readonly directSaleId: FieldRef<"DirectSaleItem", 'String'>
+    readonly itemId: FieldRef<"DirectSaleItem", 'String'>
+    readonly itemName: FieldRef<"DirectSaleItem", 'String'>
+    readonly quantity: FieldRef<"DirectSaleItem", 'Int'>
+    readonly unitPrice: FieldRef<"DirectSaleItem", 'Float'>
+    readonly discount: FieldRef<"DirectSaleItem", 'Float'>
+    readonly tax: FieldRef<"DirectSaleItem", 'Float'>
+    readonly total: FieldRef<"DirectSaleItem", 'Float'>
+    readonly createdAt: FieldRef<"DirectSaleItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"DirectSaleItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * DirectSaleItem findUnique
+   */
+  export type DirectSaleItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSaleItem to fetch.
+     */
+    where: DirectSaleItemWhereUniqueInput
+  }
+
+  /**
+   * DirectSaleItem findUniqueOrThrow
+   */
+  export type DirectSaleItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSaleItem to fetch.
+     */
+    where: DirectSaleItemWhereUniqueInput
+  }
+
+  /**
+   * DirectSaleItem findFirst
+   */
+  export type DirectSaleItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSaleItem to fetch.
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSaleItems to fetch.
+     */
+    orderBy?: DirectSaleItemOrderByWithRelationInput | DirectSaleItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DirectSaleItems.
+     */
+    cursor?: DirectSaleItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSaleItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSaleItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DirectSaleItems.
+     */
+    distinct?: DirectSaleItemScalarFieldEnum | DirectSaleItemScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSaleItem findFirstOrThrow
+   */
+  export type DirectSaleItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSaleItem to fetch.
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSaleItems to fetch.
+     */
+    orderBy?: DirectSaleItemOrderByWithRelationInput | DirectSaleItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for DirectSaleItems.
+     */
+    cursor?: DirectSaleItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSaleItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSaleItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of DirectSaleItems.
+     */
+    distinct?: DirectSaleItemScalarFieldEnum | DirectSaleItemScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSaleItem findMany
+   */
+  export type DirectSaleItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * Filter, which DirectSaleItems to fetch.
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of DirectSaleItems to fetch.
+     */
+    orderBy?: DirectSaleItemOrderByWithRelationInput | DirectSaleItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing DirectSaleItems.
+     */
+    cursor?: DirectSaleItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` DirectSaleItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` DirectSaleItems.
+     */
+    skip?: number
+    distinct?: DirectSaleItemScalarFieldEnum | DirectSaleItemScalarFieldEnum[]
+  }
+
+  /**
+   * DirectSaleItem create
+   */
+  export type DirectSaleItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a DirectSaleItem.
+     */
+    data: XOR<DirectSaleItemCreateInput, DirectSaleItemUncheckedCreateInput>
+  }
+
+  /**
+   * DirectSaleItem createMany
+   */
+  export type DirectSaleItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many DirectSaleItems.
+     */
+    data: DirectSaleItemCreateManyInput | DirectSaleItemCreateManyInput[]
+  }
+
+  /**
+   * DirectSaleItem createManyAndReturn
+   */
+  export type DirectSaleItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many DirectSaleItems.
+     */
+    data: DirectSaleItemCreateManyInput | DirectSaleItemCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DirectSaleItem update
+   */
+  export type DirectSaleItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a DirectSaleItem.
+     */
+    data: XOR<DirectSaleItemUpdateInput, DirectSaleItemUncheckedUpdateInput>
+    /**
+     * Choose, which DirectSaleItem to update.
+     */
+    where: DirectSaleItemWhereUniqueInput
+  }
+
+  /**
+   * DirectSaleItem updateMany
+   */
+  export type DirectSaleItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update DirectSaleItems.
+     */
+    data: XOR<DirectSaleItemUpdateManyMutationInput, DirectSaleItemUncheckedUpdateManyInput>
+    /**
+     * Filter which DirectSaleItems to update
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * Limit how many DirectSaleItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * DirectSaleItem updateManyAndReturn
+   */
+  export type DirectSaleItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * The data used to update DirectSaleItems.
+     */
+    data: XOR<DirectSaleItemUpdateManyMutationInput, DirectSaleItemUncheckedUpdateManyInput>
+    /**
+     * Filter which DirectSaleItems to update
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * Limit how many DirectSaleItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * DirectSaleItem upsert
+   */
+  export type DirectSaleItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the DirectSaleItem to update in case it exists.
+     */
+    where: DirectSaleItemWhereUniqueInput
+    /**
+     * In case the DirectSaleItem found by the `where` argument doesn't exist, create a new DirectSaleItem with this data.
+     */
+    create: XOR<DirectSaleItemCreateInput, DirectSaleItemUncheckedCreateInput>
+    /**
+     * In case the DirectSaleItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<DirectSaleItemUpdateInput, DirectSaleItemUncheckedUpdateInput>
+  }
+
+  /**
+   * DirectSaleItem delete
+   */
+  export type DirectSaleItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+    /**
+     * Filter which DirectSaleItem to delete.
+     */
+    where: DirectSaleItemWhereUniqueInput
+  }
+
+  /**
+   * DirectSaleItem deleteMany
+   */
+  export type DirectSaleItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which DirectSaleItems to delete
+     */
+    where?: DirectSaleItemWhereInput
+    /**
+     * Limit how many DirectSaleItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * DirectSaleItem without action
+   */
+  export type DirectSaleItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the DirectSaleItem
+     */
+    select?: DirectSaleItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the DirectSaleItem
+     */
+    omit?: DirectSaleItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: DirectSaleItemInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SalesEntry
+   */
+
+  export type AggregateSalesEntry = {
+    _count: SalesEntryCountAggregateOutputType | null
+    _avg: SalesEntryAvgAggregateOutputType | null
+    _sum: SalesEntrySumAggregateOutputType | null
+    _min: SalesEntryMinAggregateOutputType | null
+    _max: SalesEntryMaxAggregateOutputType | null
+  }
+
+  export type SalesEntryAvgAggregateOutputType = {
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+  }
+
+  export type SalesEntrySumAggregateOutputType = {
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+  }
+
+  export type SalesEntryMinAggregateOutputType = {
+    id: string | null
+    saleDate: Date | null
+    clientId: string | null
+    deliveryDetailsId: string | null
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+    remarks: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SalesEntryMaxAggregateOutputType = {
+    id: string | null
+    saleDate: Date | null
+    clientId: string | null
+    deliveryDetailsId: string | null
+    subtotal: number | null
+    shipping: number | null
+    grandTotal: number | null
+    remarks: string | null
+    status: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SalesEntryCountAggregateOutputType = {
+    id: number
+    saleDate: number
+    clientId: number
+    deliveryDetailsId: number
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks: number
+    status: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SalesEntryAvgAggregateInputType = {
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+  }
+
+  export type SalesEntrySumAggregateInputType = {
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+  }
+
+  export type SalesEntryMinAggregateInputType = {
+    id?: true
+    saleDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SalesEntryMaxAggregateInputType = {
+    id?: true
+    saleDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SalesEntryCountAggregateInputType = {
+    id?: true
+    saleDate?: true
+    clientId?: true
+    deliveryDetailsId?: true
+    subtotal?: true
+    shipping?: true
+    grandTotal?: true
+    remarks?: true
+    status?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SalesEntryAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesEntry to aggregate.
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntries to fetch.
+     */
+    orderBy?: SalesEntryOrderByWithRelationInput | SalesEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SalesEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SalesEntries
+    **/
+    _count?: true | SalesEntryCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SalesEntryAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SalesEntrySumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SalesEntryMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SalesEntryMaxAggregateInputType
+  }
+
+  export type GetSalesEntryAggregateType<T extends SalesEntryAggregateArgs> = {
+        [P in keyof T & keyof AggregateSalesEntry]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSalesEntry[P]>
+      : GetScalarType<T[P], AggregateSalesEntry[P]>
+  }
+
+
+
+
+  export type SalesEntryGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesEntryWhereInput
+    orderBy?: SalesEntryOrderByWithAggregationInput | SalesEntryOrderByWithAggregationInput[]
+    by: SalesEntryScalarFieldEnum[] | SalesEntryScalarFieldEnum
+    having?: SalesEntryScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SalesEntryCountAggregateInputType | true
+    _avg?: SalesEntryAvgAggregateInputType
+    _sum?: SalesEntrySumAggregateInputType
+    _min?: SalesEntryMinAggregateInputType
+    _max?: SalesEntryMaxAggregateInputType
+  }
+
+  export type SalesEntryGroupByOutputType = {
+    id: string
+    saleDate: Date
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks: string | null
+    status: string
+    createdAt: Date
+    updatedAt: Date
+    _count: SalesEntryCountAggregateOutputType | null
+    _avg: SalesEntryAvgAggregateOutputType | null
+    _sum: SalesEntrySumAggregateOutputType | null
+    _min: SalesEntryMinAggregateOutputType | null
+    _max: SalesEntryMaxAggregateOutputType | null
+  }
+
+  type GetSalesEntryGroupByPayload<T extends SalesEntryGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SalesEntryGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SalesEntryGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SalesEntryGroupByOutputType[P]>
+            : GetScalarType<T[P], SalesEntryGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SalesEntrySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+    salesEntryItems?: boolean | SalesEntry$salesEntryItemsArgs<ExtArgs>
+    _count?: boolean | SalesEntryCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesEntry"]>
+
+  export type SalesEntrySelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesEntry"]>
+
+  export type SalesEntrySelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesEntry"]>
+
+  export type SalesEntrySelectScalar = {
+    id?: boolean
+    saleDate?: boolean
+    clientId?: boolean
+    deliveryDetailsId?: boolean
+    subtotal?: boolean
+    shipping?: boolean
+    grandTotal?: boolean
+    remarks?: boolean
+    status?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SalesEntryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "saleDate" | "clientId" | "deliveryDetailsId" | "subtotal" | "shipping" | "grandTotal" | "remarks" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["salesEntry"]>
+  export type SalesEntryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+    salesEntryItems?: boolean | SalesEntry$salesEntryItemsArgs<ExtArgs>
+    _count?: boolean | SalesEntryCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type SalesEntryIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }
+  export type SalesEntryIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    client?: boolean | ClientDefaultArgs<ExtArgs>
+    deliveryDetails?: boolean | DeliveryDetailDefaultArgs<ExtArgs>
+  }
+
+  export type $SalesEntryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SalesEntry"
+    objects: {
+      client: Prisma.$ClientPayload<ExtArgs>
+      deliveryDetails: Prisma.$DeliveryDetailPayload<ExtArgs>
+      salesEntryItems: Prisma.$SalesEntryItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      saleDate: Date
+      clientId: string
+      deliveryDetailsId: string
+      subtotal: number
+      shipping: number
+      grandTotal: number
+      remarks: string | null
+      status: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["salesEntry"]>
+    composites: {}
+  }
+
+  type SalesEntryGetPayload<S extends boolean | null | undefined | SalesEntryDefaultArgs> = $Result.GetResult<Prisma.$SalesEntryPayload, S>
+
+  type SalesEntryCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SalesEntryFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SalesEntryCountAggregateInputType | true
+    }
+
+  export interface SalesEntryDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SalesEntry'], meta: { name: 'SalesEntry' } }
+    /**
+     * Find zero or one SalesEntry that matches the filter.
+     * @param {SalesEntryFindUniqueArgs} args - Arguments to find a SalesEntry
+     * @example
+     * // Get one SalesEntry
+     * const salesEntry = await prisma.salesEntry.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SalesEntryFindUniqueArgs>(args: SelectSubset<T, SalesEntryFindUniqueArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SalesEntry that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SalesEntryFindUniqueOrThrowArgs} args - Arguments to find a SalesEntry
+     * @example
+     * // Get one SalesEntry
+     * const salesEntry = await prisma.salesEntry.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SalesEntryFindUniqueOrThrowArgs>(args: SelectSubset<T, SalesEntryFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SalesEntry that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryFindFirstArgs} args - Arguments to find a SalesEntry
+     * @example
+     * // Get one SalesEntry
+     * const salesEntry = await prisma.salesEntry.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SalesEntryFindFirstArgs>(args?: SelectSubset<T, SalesEntryFindFirstArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SalesEntry that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryFindFirstOrThrowArgs} args - Arguments to find a SalesEntry
+     * @example
+     * // Get one SalesEntry
+     * const salesEntry = await prisma.salesEntry.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SalesEntryFindFirstOrThrowArgs>(args?: SelectSubset<T, SalesEntryFindFirstOrThrowArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SalesEntries that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SalesEntries
+     * const salesEntries = await prisma.salesEntry.findMany()
+     * 
+     * // Get first 10 SalesEntries
+     * const salesEntries = await prisma.salesEntry.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const salesEntryWithIdOnly = await prisma.salesEntry.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SalesEntryFindManyArgs>(args?: SelectSubset<T, SalesEntryFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SalesEntry.
+     * @param {SalesEntryCreateArgs} args - Arguments to create a SalesEntry.
+     * @example
+     * // Create one SalesEntry
+     * const SalesEntry = await prisma.salesEntry.create({
+     *   data: {
+     *     // ... data to create a SalesEntry
+     *   }
+     * })
+     * 
+     */
+    create<T extends SalesEntryCreateArgs>(args: SelectSubset<T, SalesEntryCreateArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SalesEntries.
+     * @param {SalesEntryCreateManyArgs} args - Arguments to create many SalesEntries.
+     * @example
+     * // Create many SalesEntries
+     * const salesEntry = await prisma.salesEntry.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SalesEntryCreateManyArgs>(args?: SelectSubset<T, SalesEntryCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SalesEntries and returns the data saved in the database.
+     * @param {SalesEntryCreateManyAndReturnArgs} args - Arguments to create many SalesEntries.
+     * @example
+     * // Create many SalesEntries
+     * const salesEntry = await prisma.salesEntry.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SalesEntries and only return the `id`
+     * const salesEntryWithIdOnly = await prisma.salesEntry.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SalesEntryCreateManyAndReturnArgs>(args?: SelectSubset<T, SalesEntryCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SalesEntry.
+     * @param {SalesEntryDeleteArgs} args - Arguments to delete one SalesEntry.
+     * @example
+     * // Delete one SalesEntry
+     * const SalesEntry = await prisma.salesEntry.delete({
+     *   where: {
+     *     // ... filter to delete one SalesEntry
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SalesEntryDeleteArgs>(args: SelectSubset<T, SalesEntryDeleteArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SalesEntry.
+     * @param {SalesEntryUpdateArgs} args - Arguments to update one SalesEntry.
+     * @example
+     * // Update one SalesEntry
+     * const salesEntry = await prisma.salesEntry.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SalesEntryUpdateArgs>(args: SelectSubset<T, SalesEntryUpdateArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SalesEntries.
+     * @param {SalesEntryDeleteManyArgs} args - Arguments to filter SalesEntries to delete.
+     * @example
+     * // Delete a few SalesEntries
+     * const { count } = await prisma.salesEntry.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SalesEntryDeleteManyArgs>(args?: SelectSubset<T, SalesEntryDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SalesEntries
+     * const salesEntry = await prisma.salesEntry.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SalesEntryUpdateManyArgs>(args: SelectSubset<T, SalesEntryUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesEntries and returns the data updated in the database.
+     * @param {SalesEntryUpdateManyAndReturnArgs} args - Arguments to update many SalesEntries.
+     * @example
+     * // Update many SalesEntries
+     * const salesEntry = await prisma.salesEntry.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SalesEntries and only return the `id`
+     * const salesEntryWithIdOnly = await prisma.salesEntry.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SalesEntryUpdateManyAndReturnArgs>(args: SelectSubset<T, SalesEntryUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SalesEntry.
+     * @param {SalesEntryUpsertArgs} args - Arguments to update or create a SalesEntry.
+     * @example
+     * // Update or create a SalesEntry
+     * const salesEntry = await prisma.salesEntry.upsert({
+     *   create: {
+     *     // ... data to create a SalesEntry
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SalesEntry we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SalesEntryUpsertArgs>(args: SelectSubset<T, SalesEntryUpsertArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SalesEntries.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryCountArgs} args - Arguments to filter SalesEntries to count.
+     * @example
+     * // Count the number of SalesEntries
+     * const count = await prisma.salesEntry.count({
+     *   where: {
+     *     // ... the filter for the SalesEntries we want to count
+     *   }
+     * })
+    **/
+    count<T extends SalesEntryCountArgs>(
+      args?: Subset<T, SalesEntryCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SalesEntryCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SalesEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SalesEntryAggregateArgs>(args: Subset<T, SalesEntryAggregateArgs>): Prisma.PrismaPromise<GetSalesEntryAggregateType<T>>
+
+    /**
+     * Group by SalesEntry.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SalesEntryGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SalesEntryGroupByArgs['orderBy'] }
+        : { orderBy?: SalesEntryGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SalesEntryGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSalesEntryGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SalesEntry model
+   */
+  readonly fields: SalesEntryFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SalesEntry.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SalesEntryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    client<T extends ClientDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClientDefaultArgs<ExtArgs>>): Prisma__ClientClient<$Result.GetResult<Prisma.$ClientPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    deliveryDetails<T extends DeliveryDetailDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DeliveryDetailDefaultArgs<ExtArgs>>): Prisma__DeliveryDetailClient<$Result.GetResult<Prisma.$DeliveryDetailPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    salesEntryItems<T extends SalesEntry$salesEntryItemsArgs<ExtArgs> = {}>(args?: Subset<T, SalesEntry$salesEntryItemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SalesEntry model
+   */
+  interface SalesEntryFieldRefs {
+    readonly id: FieldRef<"SalesEntry", 'String'>
+    readonly saleDate: FieldRef<"SalesEntry", 'DateTime'>
+    readonly clientId: FieldRef<"SalesEntry", 'String'>
+    readonly deliveryDetailsId: FieldRef<"SalesEntry", 'String'>
+    readonly subtotal: FieldRef<"SalesEntry", 'Float'>
+    readonly shipping: FieldRef<"SalesEntry", 'Float'>
+    readonly grandTotal: FieldRef<"SalesEntry", 'Float'>
+    readonly remarks: FieldRef<"SalesEntry", 'String'>
+    readonly status: FieldRef<"SalesEntry", 'String'>
+    readonly createdAt: FieldRef<"SalesEntry", 'DateTime'>
+    readonly updatedAt: FieldRef<"SalesEntry", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SalesEntry findUnique
+   */
+  export type SalesEntryFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntry to fetch.
+     */
+    where: SalesEntryWhereUniqueInput
+  }
+
+  /**
+   * SalesEntry findUniqueOrThrow
+   */
+  export type SalesEntryFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntry to fetch.
+     */
+    where: SalesEntryWhereUniqueInput
+  }
+
+  /**
+   * SalesEntry findFirst
+   */
+  export type SalesEntryFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntry to fetch.
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntries to fetch.
+     */
+    orderBy?: SalesEntryOrderByWithRelationInput | SalesEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesEntries.
+     */
+    cursor?: SalesEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesEntries.
+     */
+    distinct?: SalesEntryScalarFieldEnum | SalesEntryScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntry findFirstOrThrow
+   */
+  export type SalesEntryFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntry to fetch.
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntries to fetch.
+     */
+    orderBy?: SalesEntryOrderByWithRelationInput | SalesEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesEntries.
+     */
+    cursor?: SalesEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntries.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesEntries.
+     */
+    distinct?: SalesEntryScalarFieldEnum | SalesEntryScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntry findMany
+   */
+  export type SalesEntryFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntries to fetch.
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntries to fetch.
+     */
+    orderBy?: SalesEntryOrderByWithRelationInput | SalesEntryOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SalesEntries.
+     */
+    cursor?: SalesEntryWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntries from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntries.
+     */
+    skip?: number
+    distinct?: SalesEntryScalarFieldEnum | SalesEntryScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntry create
+   */
+  export type SalesEntryCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SalesEntry.
+     */
+    data: XOR<SalesEntryCreateInput, SalesEntryUncheckedCreateInput>
+  }
+
+  /**
+   * SalesEntry createMany
+   */
+  export type SalesEntryCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SalesEntries.
+     */
+    data: SalesEntryCreateManyInput | SalesEntryCreateManyInput[]
+  }
+
+  /**
+   * SalesEntry createManyAndReturn
+   */
+  export type SalesEntryCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * The data used to create many SalesEntries.
+     */
+    data: SalesEntryCreateManyInput | SalesEntryCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesEntry update
+   */
+  export type SalesEntryUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SalesEntry.
+     */
+    data: XOR<SalesEntryUpdateInput, SalesEntryUncheckedUpdateInput>
+    /**
+     * Choose, which SalesEntry to update.
+     */
+    where: SalesEntryWhereUniqueInput
+  }
+
+  /**
+   * SalesEntry updateMany
+   */
+  export type SalesEntryUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SalesEntries.
+     */
+    data: XOR<SalesEntryUpdateManyMutationInput, SalesEntryUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesEntries to update
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * Limit how many SalesEntries to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SalesEntry updateManyAndReturn
+   */
+  export type SalesEntryUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * The data used to update SalesEntries.
+     */
+    data: XOR<SalesEntryUpdateManyMutationInput, SalesEntryUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesEntries to update
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * Limit how many SalesEntries to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesEntry upsert
+   */
+  export type SalesEntryUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SalesEntry to update in case it exists.
+     */
+    where: SalesEntryWhereUniqueInput
+    /**
+     * In case the SalesEntry found by the `where` argument doesn't exist, create a new SalesEntry with this data.
+     */
+    create: XOR<SalesEntryCreateInput, SalesEntryUncheckedCreateInput>
+    /**
+     * In case the SalesEntry was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SalesEntryUpdateInput, SalesEntryUncheckedUpdateInput>
+  }
+
+  /**
+   * SalesEntry delete
+   */
+  export type SalesEntryDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+    /**
+     * Filter which SalesEntry to delete.
+     */
+    where: SalesEntryWhereUniqueInput
+  }
+
+  /**
+   * SalesEntry deleteMany
+   */
+  export type SalesEntryDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesEntries to delete
+     */
+    where?: SalesEntryWhereInput
+    /**
+     * Limit how many SalesEntries to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SalesEntry.salesEntryItems
+   */
+  export type SalesEntry$salesEntryItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    where?: SalesEntryItemWhereInput
+    orderBy?: SalesEntryItemOrderByWithRelationInput | SalesEntryItemOrderByWithRelationInput[]
+    cursor?: SalesEntryItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SalesEntryItemScalarFieldEnum | SalesEntryItemScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntry without action
+   */
+  export type SalesEntryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntry
+     */
+    select?: SalesEntrySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntry
+     */
+    omit?: SalesEntryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model SalesEntryItem
+   */
+
+  export type AggregateSalesEntryItem = {
+    _count: SalesEntryItemCountAggregateOutputType | null
+    _avg: SalesEntryItemAvgAggregateOutputType | null
+    _sum: SalesEntryItemSumAggregateOutputType | null
+    _min: SalesEntryItemMinAggregateOutputType | null
+    _max: SalesEntryItemMaxAggregateOutputType | null
+  }
+
+  export type SalesEntryItemAvgAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+  }
+
+  export type SalesEntryItemSumAggregateOutputType = {
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+  }
+
+  export type SalesEntryItemMinAggregateOutputType = {
+    id: string | null
+    salesEntryId: string | null
+    itemId: string | null
+    itemName: string | null
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SalesEntryItemMaxAggregateOutputType = {
+    id: string | null
+    salesEntryId: string | null
+    itemId: string | null
+    itemName: string | null
+    quantity: number | null
+    unitPrice: number | null
+    discount: number | null
+    tax: number | null
+    total: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SalesEntryItemCountAggregateOutputType = {
+    id: number
+    salesEntryId: number
+    itemId: number
+    itemName: number
+    quantity: number
+    unitPrice: number
+    discount: number
+    tax: number
+    total: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SalesEntryItemAvgAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+  }
+
+  export type SalesEntryItemSumAggregateInputType = {
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+  }
+
+  export type SalesEntryItemMinAggregateInputType = {
+    id?: true
+    salesEntryId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SalesEntryItemMaxAggregateInputType = {
+    id?: true
+    salesEntryId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SalesEntryItemCountAggregateInputType = {
+    id?: true
+    salesEntryId?: true
+    itemId?: true
+    itemName?: true
+    quantity?: true
+    unitPrice?: true
+    discount?: true
+    tax?: true
+    total?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SalesEntryItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesEntryItem to aggregate.
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntryItems to fetch.
+     */
+    orderBy?: SalesEntryItemOrderByWithRelationInput | SalesEntryItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SalesEntryItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntryItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntryItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SalesEntryItems
+    **/
+    _count?: true | SalesEntryItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SalesEntryItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SalesEntryItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SalesEntryItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SalesEntryItemMaxAggregateInputType
+  }
+
+  export type GetSalesEntryItemAggregateType<T extends SalesEntryItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateSalesEntryItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSalesEntryItem[P]>
+      : GetScalarType<T[P], AggregateSalesEntryItem[P]>
+  }
+
+
+
+
+  export type SalesEntryItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SalesEntryItemWhereInput
+    orderBy?: SalesEntryItemOrderByWithAggregationInput | SalesEntryItemOrderByWithAggregationInput[]
+    by: SalesEntryItemScalarFieldEnum[] | SalesEntryItemScalarFieldEnum
+    having?: SalesEntryItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SalesEntryItemCountAggregateInputType | true
+    _avg?: SalesEntryItemAvgAggregateInputType
+    _sum?: SalesEntryItemSumAggregateInputType
+    _min?: SalesEntryItemMinAggregateInputType
+    _max?: SalesEntryItemMaxAggregateInputType
+  }
+
+  export type SalesEntryItemGroupByOutputType = {
+    id: string
+    salesEntryId: string
+    itemId: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount: number | null
+    tax: number | null
+    total: number
+    createdAt: Date
+    updatedAt: Date
+    _count: SalesEntryItemCountAggregateOutputType | null
+    _avg: SalesEntryItemAvgAggregateOutputType | null
+    _sum: SalesEntryItemSumAggregateOutputType | null
+    _min: SalesEntryItemMinAggregateOutputType | null
+    _max: SalesEntryItemMaxAggregateOutputType | null
+  }
+
+  type GetSalesEntryItemGroupByPayload<T extends SalesEntryItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SalesEntryItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SalesEntryItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SalesEntryItemGroupByOutputType[P]>
+            : GetScalarType<T[P], SalesEntryItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SalesEntryItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    salesEntryId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    salesEntry?: boolean | SalesEntryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesEntryItem"]>
+
+  export type SalesEntryItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    salesEntryId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    salesEntry?: boolean | SalesEntryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesEntryItem"]>
+
+  export type SalesEntryItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    salesEntryId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    salesEntry?: boolean | SalesEntryDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["salesEntryItem"]>
+
+  export type SalesEntryItemSelectScalar = {
+    id?: boolean
+    salesEntryId?: boolean
+    itemId?: boolean
+    itemName?: boolean
+    quantity?: boolean
+    unitPrice?: boolean
+    discount?: boolean
+    tax?: boolean
+    total?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SalesEntryItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "salesEntryId" | "itemId" | "itemName" | "quantity" | "unitPrice" | "discount" | "tax" | "total" | "createdAt" | "updatedAt", ExtArgs["result"]["salesEntryItem"]>
+  export type SalesEntryItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesEntry?: boolean | SalesEntryDefaultArgs<ExtArgs>
+  }
+  export type SalesEntryItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesEntry?: boolean | SalesEntryDefaultArgs<ExtArgs>
+  }
+  export type SalesEntryItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    salesEntry?: boolean | SalesEntryDefaultArgs<ExtArgs>
+  }
+
+  export type $SalesEntryItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SalesEntryItem"
+    objects: {
+      salesEntry: Prisma.$SalesEntryPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      salesEntryId: string
+      itemId: string | null
+      itemName: string
+      quantity: number
+      unitPrice: number
+      discount: number | null
+      tax: number | null
+      total: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["salesEntryItem"]>
+    composites: {}
+  }
+
+  type SalesEntryItemGetPayload<S extends boolean | null | undefined | SalesEntryItemDefaultArgs> = $Result.GetResult<Prisma.$SalesEntryItemPayload, S>
+
+  type SalesEntryItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SalesEntryItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SalesEntryItemCountAggregateInputType | true
+    }
+
+  export interface SalesEntryItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SalesEntryItem'], meta: { name: 'SalesEntryItem' } }
+    /**
+     * Find zero or one SalesEntryItem that matches the filter.
+     * @param {SalesEntryItemFindUniqueArgs} args - Arguments to find a SalesEntryItem
+     * @example
+     * // Get one SalesEntryItem
+     * const salesEntryItem = await prisma.salesEntryItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SalesEntryItemFindUniqueArgs>(args: SelectSubset<T, SalesEntryItemFindUniqueArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SalesEntryItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SalesEntryItemFindUniqueOrThrowArgs} args - Arguments to find a SalesEntryItem
+     * @example
+     * // Get one SalesEntryItem
+     * const salesEntryItem = await prisma.salesEntryItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SalesEntryItemFindUniqueOrThrowArgs>(args: SelectSubset<T, SalesEntryItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SalesEntryItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemFindFirstArgs} args - Arguments to find a SalesEntryItem
+     * @example
+     * // Get one SalesEntryItem
+     * const salesEntryItem = await prisma.salesEntryItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SalesEntryItemFindFirstArgs>(args?: SelectSubset<T, SalesEntryItemFindFirstArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SalesEntryItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemFindFirstOrThrowArgs} args - Arguments to find a SalesEntryItem
+     * @example
+     * // Get one SalesEntryItem
+     * const salesEntryItem = await prisma.salesEntryItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SalesEntryItemFindFirstOrThrowArgs>(args?: SelectSubset<T, SalesEntryItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SalesEntryItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SalesEntryItems
+     * const salesEntryItems = await prisma.salesEntryItem.findMany()
+     * 
+     * // Get first 10 SalesEntryItems
+     * const salesEntryItems = await prisma.salesEntryItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const salesEntryItemWithIdOnly = await prisma.salesEntryItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SalesEntryItemFindManyArgs>(args?: SelectSubset<T, SalesEntryItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SalesEntryItem.
+     * @param {SalesEntryItemCreateArgs} args - Arguments to create a SalesEntryItem.
+     * @example
+     * // Create one SalesEntryItem
+     * const SalesEntryItem = await prisma.salesEntryItem.create({
+     *   data: {
+     *     // ... data to create a SalesEntryItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends SalesEntryItemCreateArgs>(args: SelectSubset<T, SalesEntryItemCreateArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SalesEntryItems.
+     * @param {SalesEntryItemCreateManyArgs} args - Arguments to create many SalesEntryItems.
+     * @example
+     * // Create many SalesEntryItems
+     * const salesEntryItem = await prisma.salesEntryItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SalesEntryItemCreateManyArgs>(args?: SelectSubset<T, SalesEntryItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SalesEntryItems and returns the data saved in the database.
+     * @param {SalesEntryItemCreateManyAndReturnArgs} args - Arguments to create many SalesEntryItems.
+     * @example
+     * // Create many SalesEntryItems
+     * const salesEntryItem = await prisma.salesEntryItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SalesEntryItems and only return the `id`
+     * const salesEntryItemWithIdOnly = await prisma.salesEntryItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SalesEntryItemCreateManyAndReturnArgs>(args?: SelectSubset<T, SalesEntryItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SalesEntryItem.
+     * @param {SalesEntryItemDeleteArgs} args - Arguments to delete one SalesEntryItem.
+     * @example
+     * // Delete one SalesEntryItem
+     * const SalesEntryItem = await prisma.salesEntryItem.delete({
+     *   where: {
+     *     // ... filter to delete one SalesEntryItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SalesEntryItemDeleteArgs>(args: SelectSubset<T, SalesEntryItemDeleteArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SalesEntryItem.
+     * @param {SalesEntryItemUpdateArgs} args - Arguments to update one SalesEntryItem.
+     * @example
+     * // Update one SalesEntryItem
+     * const salesEntryItem = await prisma.salesEntryItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SalesEntryItemUpdateArgs>(args: SelectSubset<T, SalesEntryItemUpdateArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SalesEntryItems.
+     * @param {SalesEntryItemDeleteManyArgs} args - Arguments to filter SalesEntryItems to delete.
+     * @example
+     * // Delete a few SalesEntryItems
+     * const { count } = await prisma.salesEntryItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SalesEntryItemDeleteManyArgs>(args?: SelectSubset<T, SalesEntryItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesEntryItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SalesEntryItems
+     * const salesEntryItem = await prisma.salesEntryItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SalesEntryItemUpdateManyArgs>(args: SelectSubset<T, SalesEntryItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SalesEntryItems and returns the data updated in the database.
+     * @param {SalesEntryItemUpdateManyAndReturnArgs} args - Arguments to update many SalesEntryItems.
+     * @example
+     * // Update many SalesEntryItems
+     * const salesEntryItem = await prisma.salesEntryItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SalesEntryItems and only return the `id`
+     * const salesEntryItemWithIdOnly = await prisma.salesEntryItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SalesEntryItemUpdateManyAndReturnArgs>(args: SelectSubset<T, SalesEntryItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SalesEntryItem.
+     * @param {SalesEntryItemUpsertArgs} args - Arguments to update or create a SalesEntryItem.
+     * @example
+     * // Update or create a SalesEntryItem
+     * const salesEntryItem = await prisma.salesEntryItem.upsert({
+     *   create: {
+     *     // ... data to create a SalesEntryItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SalesEntryItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SalesEntryItemUpsertArgs>(args: SelectSubset<T, SalesEntryItemUpsertArgs<ExtArgs>>): Prisma__SalesEntryItemClient<$Result.GetResult<Prisma.$SalesEntryItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SalesEntryItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemCountArgs} args - Arguments to filter SalesEntryItems to count.
+     * @example
+     * // Count the number of SalesEntryItems
+     * const count = await prisma.salesEntryItem.count({
+     *   where: {
+     *     // ... the filter for the SalesEntryItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends SalesEntryItemCountArgs>(
+      args?: Subset<T, SalesEntryItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SalesEntryItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SalesEntryItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SalesEntryItemAggregateArgs>(args: Subset<T, SalesEntryItemAggregateArgs>): Prisma.PrismaPromise<GetSalesEntryItemAggregateType<T>>
+
+    /**
+     * Group by SalesEntryItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SalesEntryItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SalesEntryItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SalesEntryItemGroupByArgs['orderBy'] }
+        : { orderBy?: SalesEntryItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SalesEntryItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSalesEntryItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SalesEntryItem model
+   */
+  readonly fields: SalesEntryItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SalesEntryItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SalesEntryItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    salesEntry<T extends SalesEntryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, SalesEntryDefaultArgs<ExtArgs>>): Prisma__SalesEntryClient<$Result.GetResult<Prisma.$SalesEntryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SalesEntryItem model
+   */
+  interface SalesEntryItemFieldRefs {
+    readonly id: FieldRef<"SalesEntryItem", 'String'>
+    readonly salesEntryId: FieldRef<"SalesEntryItem", 'String'>
+    readonly itemId: FieldRef<"SalesEntryItem", 'String'>
+    readonly itemName: FieldRef<"SalesEntryItem", 'String'>
+    readonly quantity: FieldRef<"SalesEntryItem", 'Int'>
+    readonly unitPrice: FieldRef<"SalesEntryItem", 'Float'>
+    readonly discount: FieldRef<"SalesEntryItem", 'Float'>
+    readonly tax: FieldRef<"SalesEntryItem", 'Float'>
+    readonly total: FieldRef<"SalesEntryItem", 'Float'>
+    readonly createdAt: FieldRef<"SalesEntryItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"SalesEntryItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SalesEntryItem findUnique
+   */
+  export type SalesEntryItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntryItem to fetch.
+     */
+    where: SalesEntryItemWhereUniqueInput
+  }
+
+  /**
+   * SalesEntryItem findUniqueOrThrow
+   */
+  export type SalesEntryItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntryItem to fetch.
+     */
+    where: SalesEntryItemWhereUniqueInput
+  }
+
+  /**
+   * SalesEntryItem findFirst
+   */
+  export type SalesEntryItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntryItem to fetch.
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntryItems to fetch.
+     */
+    orderBy?: SalesEntryItemOrderByWithRelationInput | SalesEntryItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesEntryItems.
+     */
+    cursor?: SalesEntryItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntryItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntryItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesEntryItems.
+     */
+    distinct?: SalesEntryItemScalarFieldEnum | SalesEntryItemScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntryItem findFirstOrThrow
+   */
+  export type SalesEntryItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntryItem to fetch.
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntryItems to fetch.
+     */
+    orderBy?: SalesEntryItemOrderByWithRelationInput | SalesEntryItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SalesEntryItems.
+     */
+    cursor?: SalesEntryItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntryItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntryItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SalesEntryItems.
+     */
+    distinct?: SalesEntryItemScalarFieldEnum | SalesEntryItemScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntryItem findMany
+   */
+  export type SalesEntryItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * Filter, which SalesEntryItems to fetch.
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SalesEntryItems to fetch.
+     */
+    orderBy?: SalesEntryItemOrderByWithRelationInput | SalesEntryItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SalesEntryItems.
+     */
+    cursor?: SalesEntryItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SalesEntryItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SalesEntryItems.
+     */
+    skip?: number
+    distinct?: SalesEntryItemScalarFieldEnum | SalesEntryItemScalarFieldEnum[]
+  }
+
+  /**
+   * SalesEntryItem create
+   */
+  export type SalesEntryItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a SalesEntryItem.
+     */
+    data: XOR<SalesEntryItemCreateInput, SalesEntryItemUncheckedCreateInput>
+  }
+
+  /**
+   * SalesEntryItem createMany
+   */
+  export type SalesEntryItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SalesEntryItems.
+     */
+    data: SalesEntryItemCreateManyInput | SalesEntryItemCreateManyInput[]
+  }
+
+  /**
+   * SalesEntryItem createManyAndReturn
+   */
+  export type SalesEntryItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many SalesEntryItems.
+     */
+    data: SalesEntryItemCreateManyInput | SalesEntryItemCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesEntryItem update
+   */
+  export type SalesEntryItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a SalesEntryItem.
+     */
+    data: XOR<SalesEntryItemUpdateInput, SalesEntryItemUncheckedUpdateInput>
+    /**
+     * Choose, which SalesEntryItem to update.
+     */
+    where: SalesEntryItemWhereUniqueInput
+  }
+
+  /**
+   * SalesEntryItem updateMany
+   */
+  export type SalesEntryItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SalesEntryItems.
+     */
+    data: XOR<SalesEntryItemUpdateManyMutationInput, SalesEntryItemUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesEntryItems to update
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * Limit how many SalesEntryItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SalesEntryItem updateManyAndReturn
+   */
+  export type SalesEntryItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * The data used to update SalesEntryItems.
+     */
+    data: XOR<SalesEntryItemUpdateManyMutationInput, SalesEntryItemUncheckedUpdateManyInput>
+    /**
+     * Filter which SalesEntryItems to update
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * Limit how many SalesEntryItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * SalesEntryItem upsert
+   */
+  export type SalesEntryItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the SalesEntryItem to update in case it exists.
+     */
+    where: SalesEntryItemWhereUniqueInput
+    /**
+     * In case the SalesEntryItem found by the `where` argument doesn't exist, create a new SalesEntryItem with this data.
+     */
+    create: XOR<SalesEntryItemCreateInput, SalesEntryItemUncheckedCreateInput>
+    /**
+     * In case the SalesEntryItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SalesEntryItemUpdateInput, SalesEntryItemUncheckedUpdateInput>
+  }
+
+  /**
+   * SalesEntryItem delete
+   */
+  export type SalesEntryItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+    /**
+     * Filter which SalesEntryItem to delete.
+     */
+    where: SalesEntryItemWhereUniqueInput
+  }
+
+  /**
+   * SalesEntryItem deleteMany
+   */
+  export type SalesEntryItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SalesEntryItems to delete
+     */
+    where?: SalesEntryItemWhereInput
+    /**
+     * Limit how many SalesEntryItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SalesEntryItem without action
+   */
+  export type SalesEntryItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SalesEntryItem
+     */
+    select?: SalesEntryItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SalesEntryItem
+     */
+    omit?: SalesEntryItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: SalesEntryItemInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -27790,39 +37203,6 @@ export namespace Prisma {
   export type SalesCategoryScalarFieldEnum = (typeof SalesCategoryScalarFieldEnum)[keyof typeof SalesCategoryScalarFieldEnum]
 
 
-  export const ClientScalarFieldEnum: {
-    id: 'id',
-    customerName: 'customerName',
-    customerInitials: 'customerInitials',
-    address: 'address',
-    kraPin: 'kraPin',
-    currency: 'currency',
-    isActive: 'isActive',
-    phone1: 'phone1',
-    phone2: 'phone2',
-    email: 'email',
-    bankName: 'bankName',
-    accountNumber: 'accountNumber',
-    salesPerson: 'salesPerson',
-    discountEliginility: 'discountEliginility',
-    branchName: 'branchName',
-    salesArea: 'salesArea',
-    salesType: 'salesType',
-    comment: 'comment',
-    customerId: 'customerId',
-    preferedPaymentMethod: 'preferedPaymentMethod',
-    sex: 'sex',
-    allowedDiscount: 'allowedDiscount',
-    creditLimit: 'creditLimit',
-    paymentTerms: 'paymentTerms',
-    refNo: 'refNo',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
-  };
-
-  export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
-
-
   export const DriverScalarFieldEnum: {
     id: 'id',
     userName: 'userName',
@@ -27946,6 +37326,13 @@ export namespace Prisma {
     creator: 'creator',
     status: 'status',
     barcode: 'barcode',
+    itemPrice: 'itemPrice',
+    priceBeforeTax: 'priceBeforeTax',
+    taxAmount: 'taxAmount',
+    discountWholesale: 'discountWholesale',
+    discountRetail: 'discountRetail',
+    customDiscountAllowed: 'customDiscountAllowed',
+    taxType: 'taxType',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -27972,6 +37359,159 @@ export namespace Prisma {
   };
 
   export type TaxScalarFieldEnum = (typeof TaxScalarFieldEnum)[keyof typeof TaxScalarFieldEnum]
+
+
+  export const ClientScalarFieldEnum: {
+    id: 'id',
+    customerName: 'customerName',
+    customerInitials: 'customerInitials',
+    address: 'address',
+    kraPin: 'kraPin',
+    currency: 'currency',
+    isActive: 'isActive',
+    phone1: 'phone1',
+    phone2: 'phone2',
+    email: 'email',
+    bankName: 'bankName',
+    accountNumber: 'accountNumber',
+    salesPerson: 'salesPerson',
+    discountEliginility: 'discountEliginility',
+    branchName: 'branchName',
+    salesArea: 'salesArea',
+    salesType: 'salesType',
+    comment: 'comment',
+    customerId: 'customerId',
+    preferedPaymentMethod: 'preferedPaymentMethod',
+    sex: 'sex',
+    allowedDiscount: 'allowedDiscount',
+    creditLimit: 'creditLimit',
+    paymentTerms: 'paymentTerms',
+    refNo: 'refNo',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type ClientScalarFieldEnum = (typeof ClientScalarFieldEnum)[keyof typeof ClientScalarFieldEnum]
+
+
+  export const QuotationItemScalarFieldEnum: {
+    id: 'id',
+    quotationId: 'quotationId',
+    itemId: 'itemId',
+    itemName: 'itemName',
+    quantity: 'quantity',
+    unitPrice: 'unitPrice',
+    discount: 'discount',
+    tax: 'tax',
+    total: 'total',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type QuotationItemScalarFieldEnum = (typeof QuotationItemScalarFieldEnum)[keyof typeof QuotationItemScalarFieldEnum]
+
+
+  export const SalesQuotationScalarFieldEnum: {
+    id: 'id',
+    quotationDate: 'quotationDate',
+    clientId: 'clientId',
+    deliveryDetailsId: 'deliveryDetailsId',
+    subtotal: 'subtotal',
+    shipping: 'shipping',
+    grandTotal: 'grandTotal',
+    remarks: 'remarks',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SalesQuotationScalarFieldEnum = (typeof SalesQuotationScalarFieldEnum)[keyof typeof SalesQuotationScalarFieldEnum]
+
+
+  export const DeliveryDetailScalarFieldEnum: {
+    id: 'id',
+    address: 'address',
+    shiftId: 'shiftId',
+    driverId: 'driverId',
+    vehicleId: 'vehicleId',
+    deliveryDate: 'deliveryDate',
+    deliveryFrom: 'deliveryFrom',
+    destination: 'destination',
+    customerReference: 'customerReference',
+    comment: 'comment',
+    phoneNumber: 'phoneNumber',
+    accompaniedBy: 'accompaniedBy'
+  };
+
+  export type DeliveryDetailScalarFieldEnum = (typeof DeliveryDetailScalarFieldEnum)[keyof typeof DeliveryDetailScalarFieldEnum]
+
+
+  export const DirectSaleScalarFieldEnum: {
+    id: 'id',
+    saleDate: 'saleDate',
+    clientId: 'clientId',
+    deliveryDetailsId: 'deliveryDetailsId',
+    subtotal: 'subtotal',
+    shipping: 'shipping',
+    grandTotal: 'grandTotal',
+    remarks: 'remarks',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DirectSaleScalarFieldEnum = (typeof DirectSaleScalarFieldEnum)[keyof typeof DirectSaleScalarFieldEnum]
+
+
+  export const DirectSaleItemScalarFieldEnum: {
+    id: 'id',
+    directSaleId: 'directSaleId',
+    itemId: 'itemId',
+    itemName: 'itemName',
+    quantity: 'quantity',
+    unitPrice: 'unitPrice',
+    discount: 'discount',
+    tax: 'tax',
+    total: 'total',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type DirectSaleItemScalarFieldEnum = (typeof DirectSaleItemScalarFieldEnum)[keyof typeof DirectSaleItemScalarFieldEnum]
+
+
+  export const SalesEntryScalarFieldEnum: {
+    id: 'id',
+    saleDate: 'saleDate',
+    clientId: 'clientId',
+    deliveryDetailsId: 'deliveryDetailsId',
+    subtotal: 'subtotal',
+    shipping: 'shipping',
+    grandTotal: 'grandTotal',
+    remarks: 'remarks',
+    status: 'status',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SalesEntryScalarFieldEnum = (typeof SalesEntryScalarFieldEnum)[keyof typeof SalesEntryScalarFieldEnum]
+
+
+  export const SalesEntryItemScalarFieldEnum: {
+    id: 'id',
+    salesEntryId: 'salesEntryId',
+    itemId: 'itemId',
+    itemName: 'itemName',
+    quantity: 'quantity',
+    unitPrice: 'unitPrice',
+    discount: 'discount',
+    tax: 'tax',
+    total: 'total',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SalesEntryItemScalarFieldEnum = (typeof SalesEntryItemScalarFieldEnum)[keyof typeof SalesEntryItemScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -29178,168 +38718,6 @@ export namespace Prisma {
     updatedAt?: DateTimeWithAggregatesFilter<"SalesCategory"> | Date | string
   }
 
-  export type ClientWhereInput = {
-    AND?: ClientWhereInput | ClientWhereInput[]
-    OR?: ClientWhereInput[]
-    NOT?: ClientWhereInput | ClientWhereInput[]
-    id?: StringFilter<"Client"> | string
-    customerName?: StringFilter<"Client"> | string
-    customerInitials?: StringFilter<"Client"> | string
-    address?: StringFilter<"Client"> | string
-    kraPin?: StringFilter<"Client"> | string
-    currency?: StringFilter<"Client"> | string
-    isActive?: BoolFilter<"Client"> | boolean
-    phone1?: StringFilter<"Client"> | string
-    phone2?: StringFilter<"Client"> | string
-    email?: StringFilter<"Client"> | string
-    bankName?: StringFilter<"Client"> | string
-    accountNumber?: StringFilter<"Client"> | string
-    salesPerson?: StringFilter<"Client"> | string
-    discountEliginility?: BoolFilter<"Client"> | boolean
-    branchName?: StringFilter<"Client"> | string
-    salesArea?: StringFilter<"Client"> | string
-    salesType?: StringFilter<"Client"> | string
-    comment?: StringFilter<"Client"> | string
-    customerId?: StringFilter<"Client"> | string
-    preferedPaymentMethod?: StringFilter<"Client"> | string
-    sex?: StringFilter<"Client"> | string
-    allowedDiscount?: StringFilter<"Client"> | string
-    creditLimit?: StringFilter<"Client"> | string
-    paymentTerms?: StringFilter<"Client"> | string
-    refNo?: StringFilter<"Client"> | string
-    createdAt?: DateTimeFilter<"Client"> | Date | string
-    updatedAt?: DateTimeFilter<"Client"> | Date | string
-  }
-
-  export type ClientOrderByWithRelationInput = {
-    id?: SortOrder
-    customerName?: SortOrder
-    customerInitials?: SortOrder
-    address?: SortOrder
-    kraPin?: SortOrder
-    currency?: SortOrder
-    isActive?: SortOrder
-    phone1?: SortOrder
-    phone2?: SortOrder
-    email?: SortOrder
-    bankName?: SortOrder
-    accountNumber?: SortOrder
-    salesPerson?: SortOrder
-    discountEliginility?: SortOrder
-    branchName?: SortOrder
-    salesArea?: SortOrder
-    salesType?: SortOrder
-    comment?: SortOrder
-    customerId?: SortOrder
-    preferedPaymentMethod?: SortOrder
-    sex?: SortOrder
-    allowedDiscount?: SortOrder
-    creditLimit?: SortOrder
-    paymentTerms?: SortOrder
-    refNo?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ClientWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: ClientWhereInput | ClientWhereInput[]
-    OR?: ClientWhereInput[]
-    NOT?: ClientWhereInput | ClientWhereInput[]
-    customerName?: StringFilter<"Client"> | string
-    customerInitials?: StringFilter<"Client"> | string
-    address?: StringFilter<"Client"> | string
-    kraPin?: StringFilter<"Client"> | string
-    currency?: StringFilter<"Client"> | string
-    isActive?: BoolFilter<"Client"> | boolean
-    phone1?: StringFilter<"Client"> | string
-    phone2?: StringFilter<"Client"> | string
-    email?: StringFilter<"Client"> | string
-    bankName?: StringFilter<"Client"> | string
-    accountNumber?: StringFilter<"Client"> | string
-    salesPerson?: StringFilter<"Client"> | string
-    discountEliginility?: BoolFilter<"Client"> | boolean
-    branchName?: StringFilter<"Client"> | string
-    salesArea?: StringFilter<"Client"> | string
-    salesType?: StringFilter<"Client"> | string
-    comment?: StringFilter<"Client"> | string
-    customerId?: StringFilter<"Client"> | string
-    preferedPaymentMethod?: StringFilter<"Client"> | string
-    sex?: StringFilter<"Client"> | string
-    allowedDiscount?: StringFilter<"Client"> | string
-    creditLimit?: StringFilter<"Client"> | string
-    paymentTerms?: StringFilter<"Client"> | string
-    refNo?: StringFilter<"Client"> | string
-    createdAt?: DateTimeFilter<"Client"> | Date | string
-    updatedAt?: DateTimeFilter<"Client"> | Date | string
-  }, "id">
-
-  export type ClientOrderByWithAggregationInput = {
-    id?: SortOrder
-    customerName?: SortOrder
-    customerInitials?: SortOrder
-    address?: SortOrder
-    kraPin?: SortOrder
-    currency?: SortOrder
-    isActive?: SortOrder
-    phone1?: SortOrder
-    phone2?: SortOrder
-    email?: SortOrder
-    bankName?: SortOrder
-    accountNumber?: SortOrder
-    salesPerson?: SortOrder
-    discountEliginility?: SortOrder
-    branchName?: SortOrder
-    salesArea?: SortOrder
-    salesType?: SortOrder
-    comment?: SortOrder
-    customerId?: SortOrder
-    preferedPaymentMethod?: SortOrder
-    sex?: SortOrder
-    allowedDiscount?: SortOrder
-    creditLimit?: SortOrder
-    paymentTerms?: SortOrder
-    refNo?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-    _count?: ClientCountOrderByAggregateInput
-    _max?: ClientMaxOrderByAggregateInput
-    _min?: ClientMinOrderByAggregateInput
-  }
-
-  export type ClientScalarWhereWithAggregatesInput = {
-    AND?: ClientScalarWhereWithAggregatesInput | ClientScalarWhereWithAggregatesInput[]
-    OR?: ClientScalarWhereWithAggregatesInput[]
-    NOT?: ClientScalarWhereWithAggregatesInput | ClientScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Client"> | string
-    customerName?: StringWithAggregatesFilter<"Client"> | string
-    customerInitials?: StringWithAggregatesFilter<"Client"> | string
-    address?: StringWithAggregatesFilter<"Client"> | string
-    kraPin?: StringWithAggregatesFilter<"Client"> | string
-    currency?: StringWithAggregatesFilter<"Client"> | string
-    isActive?: BoolWithAggregatesFilter<"Client"> | boolean
-    phone1?: StringWithAggregatesFilter<"Client"> | string
-    phone2?: StringWithAggregatesFilter<"Client"> | string
-    email?: StringWithAggregatesFilter<"Client"> | string
-    bankName?: StringWithAggregatesFilter<"Client"> | string
-    accountNumber?: StringWithAggregatesFilter<"Client"> | string
-    salesPerson?: StringWithAggregatesFilter<"Client"> | string
-    discountEliginility?: BoolWithAggregatesFilter<"Client"> | boolean
-    branchName?: StringWithAggregatesFilter<"Client"> | string
-    salesArea?: StringWithAggregatesFilter<"Client"> | string
-    salesType?: StringWithAggregatesFilter<"Client"> | string
-    comment?: StringWithAggregatesFilter<"Client"> | string
-    customerId?: StringWithAggregatesFilter<"Client"> | string
-    preferedPaymentMethod?: StringWithAggregatesFilter<"Client"> | string
-    sex?: StringWithAggregatesFilter<"Client"> | string
-    allowedDiscount?: StringWithAggregatesFilter<"Client"> | string
-    creditLimit?: StringWithAggregatesFilter<"Client"> | string
-    paymentTerms?: StringWithAggregatesFilter<"Client"> | string
-    refNo?: StringWithAggregatesFilter<"Client"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
-  }
-
   export type DriverWhereInput = {
     AND?: DriverWhereInput | DriverWhereInput[]
     OR?: DriverWhereInput[]
@@ -29896,6 +39274,13 @@ export namespace Prisma {
     creator?: StringFilter<"Item"> | string
     status?: StringFilter<"Item"> | string
     barcode?: StringFilter<"Item"> | string
+    itemPrice?: FloatFilter<"Item"> | number
+    priceBeforeTax?: FloatFilter<"Item"> | number
+    taxAmount?: FloatFilter<"Item"> | number
+    discountWholesale?: FloatFilter<"Item"> | number
+    discountRetail?: FloatFilter<"Item"> | number
+    customDiscountAllowed?: BoolFilter<"Item"> | boolean
+    taxType?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
     updatedAt?: DateTimeFilter<"Item"> | Date | string
   }
@@ -29913,6 +39298,13 @@ export namespace Prisma {
     creator?: SortOrder
     status?: SortOrder
     barcode?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
+    customDiscountAllowed?: SortOrder
+    taxType?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -29933,6 +39325,13 @@ export namespace Prisma {
     branch?: StringFilter<"Item"> | string
     creator?: StringFilter<"Item"> | string
     status?: StringFilter<"Item"> | string
+    itemPrice?: FloatFilter<"Item"> | number
+    priceBeforeTax?: FloatFilter<"Item"> | number
+    taxAmount?: FloatFilter<"Item"> | number
+    discountWholesale?: FloatFilter<"Item"> | number
+    discountRetail?: FloatFilter<"Item"> | number
+    customDiscountAllowed?: BoolFilter<"Item"> | boolean
+    taxType?: StringNullableFilter<"Item"> | string | null
     createdAt?: DateTimeFilter<"Item"> | Date | string
     updatedAt?: DateTimeFilter<"Item"> | Date | string
   }, "id" | "code" | "barcode">
@@ -29950,6 +39349,13 @@ export namespace Prisma {
     creator?: SortOrder
     status?: SortOrder
     barcode?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
+    customDiscountAllowed?: SortOrder
+    taxType?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: ItemCountOrderByAggregateInput
@@ -29975,6 +39381,13 @@ export namespace Prisma {
     creator?: StringWithAggregatesFilter<"Item"> | string
     status?: StringWithAggregatesFilter<"Item"> | string
     barcode?: StringWithAggregatesFilter<"Item"> | string
+    itemPrice?: FloatWithAggregatesFilter<"Item"> | number
+    priceBeforeTax?: FloatWithAggregatesFilter<"Item"> | number
+    taxAmount?: FloatWithAggregatesFilter<"Item"> | number
+    discountWholesale?: FloatWithAggregatesFilter<"Item"> | number
+    discountRetail?: FloatWithAggregatesFilter<"Item"> | number
+    customDiscountAllowed?: BoolWithAggregatesFilter<"Item"> | boolean
+    taxType?: StringNullableWithAggregatesFilter<"Item"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"Item"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Item"> | Date | string
   }
@@ -30081,6 +39494,813 @@ export namespace Prisma {
     creator?: StringWithAggregatesFilter<"Tax"> | string
     status?: StringWithAggregatesFilter<"Tax"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Tax"> | Date | string
+  }
+
+  export type ClientWhereInput = {
+    AND?: ClientWhereInput | ClientWhereInput[]
+    OR?: ClientWhereInput[]
+    NOT?: ClientWhereInput | ClientWhereInput[]
+    id?: StringFilter<"Client"> | string
+    customerName?: StringFilter<"Client"> | string
+    customerInitials?: StringFilter<"Client"> | string
+    address?: StringFilter<"Client"> | string
+    kraPin?: StringFilter<"Client"> | string
+    currency?: StringFilter<"Client"> | string
+    isActive?: BoolFilter<"Client"> | boolean
+    phone1?: StringFilter<"Client"> | string
+    phone2?: StringFilter<"Client"> | string
+    email?: StringFilter<"Client"> | string
+    bankName?: StringFilter<"Client"> | string
+    accountNumber?: StringFilter<"Client"> | string
+    salesPerson?: StringFilter<"Client"> | string
+    discountEliginility?: BoolFilter<"Client"> | boolean
+    branchName?: StringFilter<"Client"> | string
+    salesArea?: StringFilter<"Client"> | string
+    salesType?: StringFilter<"Client"> | string
+    comment?: StringFilter<"Client"> | string
+    customerId?: StringFilter<"Client"> | string
+    preferedPaymentMethod?: StringFilter<"Client"> | string
+    sex?: StringFilter<"Client"> | string
+    allowedDiscount?: StringFilter<"Client"> | string
+    creditLimit?: StringFilter<"Client"> | string
+    paymentTerms?: StringFilter<"Client"> | string
+    refNo?: StringFilter<"Client"> | string
+    createdAt?: DateTimeFilter<"Client"> | Date | string
+    updatedAt?: DateTimeFilter<"Client"> | Date | string
+    salesQuotations?: SalesQuotationListRelationFilter
+    directSales?: DirectSaleListRelationFilter
+    salesEntry?: SalesEntryListRelationFilter
+  }
+
+  export type ClientOrderByWithRelationInput = {
+    id?: SortOrder
+    customerName?: SortOrder
+    customerInitials?: SortOrder
+    address?: SortOrder
+    kraPin?: SortOrder
+    currency?: SortOrder
+    isActive?: SortOrder
+    phone1?: SortOrder
+    phone2?: SortOrder
+    email?: SortOrder
+    bankName?: SortOrder
+    accountNumber?: SortOrder
+    salesPerson?: SortOrder
+    discountEliginility?: SortOrder
+    branchName?: SortOrder
+    salesArea?: SortOrder
+    salesType?: SortOrder
+    comment?: SortOrder
+    customerId?: SortOrder
+    preferedPaymentMethod?: SortOrder
+    sex?: SortOrder
+    allowedDiscount?: SortOrder
+    creditLimit?: SortOrder
+    paymentTerms?: SortOrder
+    refNo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    salesQuotations?: SalesQuotationOrderByRelationAggregateInput
+    directSales?: DirectSaleOrderByRelationAggregateInput
+    salesEntry?: SalesEntryOrderByRelationAggregateInput
+  }
+
+  export type ClientWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ClientWhereInput | ClientWhereInput[]
+    OR?: ClientWhereInput[]
+    NOT?: ClientWhereInput | ClientWhereInput[]
+    customerName?: StringFilter<"Client"> | string
+    customerInitials?: StringFilter<"Client"> | string
+    address?: StringFilter<"Client"> | string
+    kraPin?: StringFilter<"Client"> | string
+    currency?: StringFilter<"Client"> | string
+    isActive?: BoolFilter<"Client"> | boolean
+    phone1?: StringFilter<"Client"> | string
+    phone2?: StringFilter<"Client"> | string
+    email?: StringFilter<"Client"> | string
+    bankName?: StringFilter<"Client"> | string
+    accountNumber?: StringFilter<"Client"> | string
+    salesPerson?: StringFilter<"Client"> | string
+    discountEliginility?: BoolFilter<"Client"> | boolean
+    branchName?: StringFilter<"Client"> | string
+    salesArea?: StringFilter<"Client"> | string
+    salesType?: StringFilter<"Client"> | string
+    comment?: StringFilter<"Client"> | string
+    customerId?: StringFilter<"Client"> | string
+    preferedPaymentMethod?: StringFilter<"Client"> | string
+    sex?: StringFilter<"Client"> | string
+    allowedDiscount?: StringFilter<"Client"> | string
+    creditLimit?: StringFilter<"Client"> | string
+    paymentTerms?: StringFilter<"Client"> | string
+    refNo?: StringFilter<"Client"> | string
+    createdAt?: DateTimeFilter<"Client"> | Date | string
+    updatedAt?: DateTimeFilter<"Client"> | Date | string
+    salesQuotations?: SalesQuotationListRelationFilter
+    directSales?: DirectSaleListRelationFilter
+    salesEntry?: SalesEntryListRelationFilter
+  }, "id">
+
+  export type ClientOrderByWithAggregationInput = {
+    id?: SortOrder
+    customerName?: SortOrder
+    customerInitials?: SortOrder
+    address?: SortOrder
+    kraPin?: SortOrder
+    currency?: SortOrder
+    isActive?: SortOrder
+    phone1?: SortOrder
+    phone2?: SortOrder
+    email?: SortOrder
+    bankName?: SortOrder
+    accountNumber?: SortOrder
+    salesPerson?: SortOrder
+    discountEliginility?: SortOrder
+    branchName?: SortOrder
+    salesArea?: SortOrder
+    salesType?: SortOrder
+    comment?: SortOrder
+    customerId?: SortOrder
+    preferedPaymentMethod?: SortOrder
+    sex?: SortOrder
+    allowedDiscount?: SortOrder
+    creditLimit?: SortOrder
+    paymentTerms?: SortOrder
+    refNo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: ClientCountOrderByAggregateInput
+    _max?: ClientMaxOrderByAggregateInput
+    _min?: ClientMinOrderByAggregateInput
+  }
+
+  export type ClientScalarWhereWithAggregatesInput = {
+    AND?: ClientScalarWhereWithAggregatesInput | ClientScalarWhereWithAggregatesInput[]
+    OR?: ClientScalarWhereWithAggregatesInput[]
+    NOT?: ClientScalarWhereWithAggregatesInput | ClientScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Client"> | string
+    customerName?: StringWithAggregatesFilter<"Client"> | string
+    customerInitials?: StringWithAggregatesFilter<"Client"> | string
+    address?: StringWithAggregatesFilter<"Client"> | string
+    kraPin?: StringWithAggregatesFilter<"Client"> | string
+    currency?: StringWithAggregatesFilter<"Client"> | string
+    isActive?: BoolWithAggregatesFilter<"Client"> | boolean
+    phone1?: StringWithAggregatesFilter<"Client"> | string
+    phone2?: StringWithAggregatesFilter<"Client"> | string
+    email?: StringWithAggregatesFilter<"Client"> | string
+    bankName?: StringWithAggregatesFilter<"Client"> | string
+    accountNumber?: StringWithAggregatesFilter<"Client"> | string
+    salesPerson?: StringWithAggregatesFilter<"Client"> | string
+    discountEliginility?: BoolWithAggregatesFilter<"Client"> | boolean
+    branchName?: StringWithAggregatesFilter<"Client"> | string
+    salesArea?: StringWithAggregatesFilter<"Client"> | string
+    salesType?: StringWithAggregatesFilter<"Client"> | string
+    comment?: StringWithAggregatesFilter<"Client"> | string
+    customerId?: StringWithAggregatesFilter<"Client"> | string
+    preferedPaymentMethod?: StringWithAggregatesFilter<"Client"> | string
+    sex?: StringWithAggregatesFilter<"Client"> | string
+    allowedDiscount?: StringWithAggregatesFilter<"Client"> | string
+    creditLimit?: StringWithAggregatesFilter<"Client"> | string
+    paymentTerms?: StringWithAggregatesFilter<"Client"> | string
+    refNo?: StringWithAggregatesFilter<"Client"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Client"> | Date | string
+  }
+
+  export type QuotationItemWhereInput = {
+    AND?: QuotationItemWhereInput | QuotationItemWhereInput[]
+    OR?: QuotationItemWhereInput[]
+    NOT?: QuotationItemWhereInput | QuotationItemWhereInput[]
+    id?: StringFilter<"QuotationItem"> | string
+    quotationId?: StringFilter<"QuotationItem"> | string
+    itemId?: StringNullableFilter<"QuotationItem"> | string | null
+    itemName?: StringFilter<"QuotationItem"> | string
+    quantity?: IntFilter<"QuotationItem"> | number
+    unitPrice?: FloatFilter<"QuotationItem"> | number
+    discount?: FloatNullableFilter<"QuotationItem"> | number | null
+    tax?: FloatNullableFilter<"QuotationItem"> | number | null
+    total?: FloatFilter<"QuotationItem"> | number
+    createdAt?: DateTimeFilter<"QuotationItem"> | Date | string
+    updatedAt?: DateTimeFilter<"QuotationItem"> | Date | string
+    quotation?: XOR<SalesQuotationScalarRelationFilter, SalesQuotationWhereInput>
+  }
+
+  export type QuotationItemOrderByWithRelationInput = {
+    id?: SortOrder
+    quotationId?: SortOrder
+    itemId?: SortOrderInput | SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrderInput | SortOrder
+    tax?: SortOrderInput | SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    quotation?: SalesQuotationOrderByWithRelationInput
+  }
+
+  export type QuotationItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: QuotationItemWhereInput | QuotationItemWhereInput[]
+    OR?: QuotationItemWhereInput[]
+    NOT?: QuotationItemWhereInput | QuotationItemWhereInput[]
+    quotationId?: StringFilter<"QuotationItem"> | string
+    itemId?: StringNullableFilter<"QuotationItem"> | string | null
+    itemName?: StringFilter<"QuotationItem"> | string
+    quantity?: IntFilter<"QuotationItem"> | number
+    unitPrice?: FloatFilter<"QuotationItem"> | number
+    discount?: FloatNullableFilter<"QuotationItem"> | number | null
+    tax?: FloatNullableFilter<"QuotationItem"> | number | null
+    total?: FloatFilter<"QuotationItem"> | number
+    createdAt?: DateTimeFilter<"QuotationItem"> | Date | string
+    updatedAt?: DateTimeFilter<"QuotationItem"> | Date | string
+    quotation?: XOR<SalesQuotationScalarRelationFilter, SalesQuotationWhereInput>
+  }, "id">
+
+  export type QuotationItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    quotationId?: SortOrder
+    itemId?: SortOrderInput | SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrderInput | SortOrder
+    tax?: SortOrderInput | SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: QuotationItemCountOrderByAggregateInput
+    _avg?: QuotationItemAvgOrderByAggregateInput
+    _max?: QuotationItemMaxOrderByAggregateInput
+    _min?: QuotationItemMinOrderByAggregateInput
+    _sum?: QuotationItemSumOrderByAggregateInput
+  }
+
+  export type QuotationItemScalarWhereWithAggregatesInput = {
+    AND?: QuotationItemScalarWhereWithAggregatesInput | QuotationItemScalarWhereWithAggregatesInput[]
+    OR?: QuotationItemScalarWhereWithAggregatesInput[]
+    NOT?: QuotationItemScalarWhereWithAggregatesInput | QuotationItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"QuotationItem"> | string
+    quotationId?: StringWithAggregatesFilter<"QuotationItem"> | string
+    itemId?: StringNullableWithAggregatesFilter<"QuotationItem"> | string | null
+    itemName?: StringWithAggregatesFilter<"QuotationItem"> | string
+    quantity?: IntWithAggregatesFilter<"QuotationItem"> | number
+    unitPrice?: FloatWithAggregatesFilter<"QuotationItem"> | number
+    discount?: FloatNullableWithAggregatesFilter<"QuotationItem"> | number | null
+    tax?: FloatNullableWithAggregatesFilter<"QuotationItem"> | number | null
+    total?: FloatWithAggregatesFilter<"QuotationItem"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"QuotationItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"QuotationItem"> | Date | string
+  }
+
+  export type SalesQuotationWhereInput = {
+    AND?: SalesQuotationWhereInput | SalesQuotationWhereInput[]
+    OR?: SalesQuotationWhereInput[]
+    NOT?: SalesQuotationWhereInput | SalesQuotationWhereInput[]
+    id?: StringFilter<"SalesQuotation"> | string
+    quotationDate?: DateTimeFilter<"SalesQuotation"> | Date | string
+    clientId?: StringFilter<"SalesQuotation"> | string
+    deliveryDetailsId?: StringFilter<"SalesQuotation"> | string
+    subtotal?: FloatFilter<"SalesQuotation"> | number
+    shipping?: FloatFilter<"SalesQuotation"> | number
+    grandTotal?: FloatFilter<"SalesQuotation"> | number
+    remarks?: StringNullableFilter<"SalesQuotation"> | string | null
+    status?: StringFilter<"SalesQuotation"> | string
+    createdAt?: DateTimeFilter<"SalesQuotation"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesQuotation"> | Date | string
+    client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    deliveryDetails?: XOR<DeliveryDetailScalarRelationFilter, DeliveryDetailWhereInput>
+    quotationItems?: QuotationItemListRelationFilter
+  }
+
+  export type SalesQuotationOrderByWithRelationInput = {
+    id?: SortOrder
+    quotationDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    client?: ClientOrderByWithRelationInput
+    deliveryDetails?: DeliveryDetailOrderByWithRelationInput
+    quotationItems?: QuotationItemOrderByRelationAggregateInput
+  }
+
+  export type SalesQuotationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    deliveryDetailsId?: string
+    AND?: SalesQuotationWhereInput | SalesQuotationWhereInput[]
+    OR?: SalesQuotationWhereInput[]
+    NOT?: SalesQuotationWhereInput | SalesQuotationWhereInput[]
+    quotationDate?: DateTimeFilter<"SalesQuotation"> | Date | string
+    clientId?: StringFilter<"SalesQuotation"> | string
+    subtotal?: FloatFilter<"SalesQuotation"> | number
+    shipping?: FloatFilter<"SalesQuotation"> | number
+    grandTotal?: FloatFilter<"SalesQuotation"> | number
+    remarks?: StringNullableFilter<"SalesQuotation"> | string | null
+    status?: StringFilter<"SalesQuotation"> | string
+    createdAt?: DateTimeFilter<"SalesQuotation"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesQuotation"> | Date | string
+    client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    deliveryDetails?: XOR<DeliveryDetailScalarRelationFilter, DeliveryDetailWhereInput>
+    quotationItems?: QuotationItemListRelationFilter
+  }, "id" | "deliveryDetailsId">
+
+  export type SalesQuotationOrderByWithAggregationInput = {
+    id?: SortOrder
+    quotationDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SalesQuotationCountOrderByAggregateInput
+    _avg?: SalesQuotationAvgOrderByAggregateInput
+    _max?: SalesQuotationMaxOrderByAggregateInput
+    _min?: SalesQuotationMinOrderByAggregateInput
+    _sum?: SalesQuotationSumOrderByAggregateInput
+  }
+
+  export type SalesQuotationScalarWhereWithAggregatesInput = {
+    AND?: SalesQuotationScalarWhereWithAggregatesInput | SalesQuotationScalarWhereWithAggregatesInput[]
+    OR?: SalesQuotationScalarWhereWithAggregatesInput[]
+    NOT?: SalesQuotationScalarWhereWithAggregatesInput | SalesQuotationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SalesQuotation"> | string
+    quotationDate?: DateTimeWithAggregatesFilter<"SalesQuotation"> | Date | string
+    clientId?: StringWithAggregatesFilter<"SalesQuotation"> | string
+    deliveryDetailsId?: StringWithAggregatesFilter<"SalesQuotation"> | string
+    subtotal?: FloatWithAggregatesFilter<"SalesQuotation"> | number
+    shipping?: FloatWithAggregatesFilter<"SalesQuotation"> | number
+    grandTotal?: FloatWithAggregatesFilter<"SalesQuotation"> | number
+    remarks?: StringNullableWithAggregatesFilter<"SalesQuotation"> | string | null
+    status?: StringWithAggregatesFilter<"SalesQuotation"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"SalesQuotation"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SalesQuotation"> | Date | string
+  }
+
+  export type DeliveryDetailWhereInput = {
+    AND?: DeliveryDetailWhereInput | DeliveryDetailWhereInput[]
+    OR?: DeliveryDetailWhereInput[]
+    NOT?: DeliveryDetailWhereInput | DeliveryDetailWhereInput[]
+    id?: StringFilter<"DeliveryDetail"> | string
+    address?: StringFilter<"DeliveryDetail"> | string
+    shiftId?: StringFilter<"DeliveryDetail"> | string
+    driverId?: StringFilter<"DeliveryDetail"> | string
+    vehicleId?: StringFilter<"DeliveryDetail"> | string
+    deliveryDate?: DateTimeFilter<"DeliveryDetail"> | Date | string
+    deliveryFrom?: StringNullableFilter<"DeliveryDetail"> | string | null
+    destination?: StringNullableFilter<"DeliveryDetail"> | string | null
+    customerReference?: StringNullableFilter<"DeliveryDetail"> | string | null
+    comment?: StringNullableFilter<"DeliveryDetail"> | string | null
+    phoneNumber?: StringNullableFilter<"DeliveryDetail"> | string | null
+    accompaniedBy?: StringNullableFilter<"DeliveryDetail"> | string | null
+    salesQuotation?: XOR<SalesQuotationNullableScalarRelationFilter, SalesQuotationWhereInput> | null
+    directSale?: XOR<DirectSaleNullableScalarRelationFilter, DirectSaleWhereInput> | null
+    salesEntry?: XOR<SalesEntryNullableScalarRelationFilter, SalesEntryWhereInput> | null
+  }
+
+  export type DeliveryDetailOrderByWithRelationInput = {
+    id?: SortOrder
+    address?: SortOrder
+    shiftId?: SortOrder
+    driverId?: SortOrder
+    vehicleId?: SortOrder
+    deliveryDate?: SortOrder
+    deliveryFrom?: SortOrderInput | SortOrder
+    destination?: SortOrderInput | SortOrder
+    customerReference?: SortOrderInput | SortOrder
+    comment?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    accompaniedBy?: SortOrderInput | SortOrder
+    salesQuotation?: SalesQuotationOrderByWithRelationInput
+    directSale?: DirectSaleOrderByWithRelationInput
+    salesEntry?: SalesEntryOrderByWithRelationInput
+  }
+
+  export type DeliveryDetailWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DeliveryDetailWhereInput | DeliveryDetailWhereInput[]
+    OR?: DeliveryDetailWhereInput[]
+    NOT?: DeliveryDetailWhereInput | DeliveryDetailWhereInput[]
+    address?: StringFilter<"DeliveryDetail"> | string
+    shiftId?: StringFilter<"DeliveryDetail"> | string
+    driverId?: StringFilter<"DeliveryDetail"> | string
+    vehicleId?: StringFilter<"DeliveryDetail"> | string
+    deliveryDate?: DateTimeFilter<"DeliveryDetail"> | Date | string
+    deliveryFrom?: StringNullableFilter<"DeliveryDetail"> | string | null
+    destination?: StringNullableFilter<"DeliveryDetail"> | string | null
+    customerReference?: StringNullableFilter<"DeliveryDetail"> | string | null
+    comment?: StringNullableFilter<"DeliveryDetail"> | string | null
+    phoneNumber?: StringNullableFilter<"DeliveryDetail"> | string | null
+    accompaniedBy?: StringNullableFilter<"DeliveryDetail"> | string | null
+    salesQuotation?: XOR<SalesQuotationNullableScalarRelationFilter, SalesQuotationWhereInput> | null
+    directSale?: XOR<DirectSaleNullableScalarRelationFilter, DirectSaleWhereInput> | null
+    salesEntry?: XOR<SalesEntryNullableScalarRelationFilter, SalesEntryWhereInput> | null
+  }, "id">
+
+  export type DeliveryDetailOrderByWithAggregationInput = {
+    id?: SortOrder
+    address?: SortOrder
+    shiftId?: SortOrder
+    driverId?: SortOrder
+    vehicleId?: SortOrder
+    deliveryDate?: SortOrder
+    deliveryFrom?: SortOrderInput | SortOrder
+    destination?: SortOrderInput | SortOrder
+    customerReference?: SortOrderInput | SortOrder
+    comment?: SortOrderInput | SortOrder
+    phoneNumber?: SortOrderInput | SortOrder
+    accompaniedBy?: SortOrderInput | SortOrder
+    _count?: DeliveryDetailCountOrderByAggregateInput
+    _max?: DeliveryDetailMaxOrderByAggregateInput
+    _min?: DeliveryDetailMinOrderByAggregateInput
+  }
+
+  export type DeliveryDetailScalarWhereWithAggregatesInput = {
+    AND?: DeliveryDetailScalarWhereWithAggregatesInput | DeliveryDetailScalarWhereWithAggregatesInput[]
+    OR?: DeliveryDetailScalarWhereWithAggregatesInput[]
+    NOT?: DeliveryDetailScalarWhereWithAggregatesInput | DeliveryDetailScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DeliveryDetail"> | string
+    address?: StringWithAggregatesFilter<"DeliveryDetail"> | string
+    shiftId?: StringWithAggregatesFilter<"DeliveryDetail"> | string
+    driverId?: StringWithAggregatesFilter<"DeliveryDetail"> | string
+    vehicleId?: StringWithAggregatesFilter<"DeliveryDetail"> | string
+    deliveryDate?: DateTimeWithAggregatesFilter<"DeliveryDetail"> | Date | string
+    deliveryFrom?: StringNullableWithAggregatesFilter<"DeliveryDetail"> | string | null
+    destination?: StringNullableWithAggregatesFilter<"DeliveryDetail"> | string | null
+    customerReference?: StringNullableWithAggregatesFilter<"DeliveryDetail"> | string | null
+    comment?: StringNullableWithAggregatesFilter<"DeliveryDetail"> | string | null
+    phoneNumber?: StringNullableWithAggregatesFilter<"DeliveryDetail"> | string | null
+    accompaniedBy?: StringNullableWithAggregatesFilter<"DeliveryDetail"> | string | null
+  }
+
+  export type DirectSaleWhereInput = {
+    AND?: DirectSaleWhereInput | DirectSaleWhereInput[]
+    OR?: DirectSaleWhereInput[]
+    NOT?: DirectSaleWhereInput | DirectSaleWhereInput[]
+    id?: StringFilter<"DirectSale"> | string
+    saleDate?: DateTimeFilter<"DirectSale"> | Date | string
+    clientId?: StringFilter<"DirectSale"> | string
+    deliveryDetailsId?: StringFilter<"DirectSale"> | string
+    subtotal?: FloatFilter<"DirectSale"> | number
+    shipping?: FloatFilter<"DirectSale"> | number
+    grandTotal?: FloatFilter<"DirectSale"> | number
+    remarks?: StringNullableFilter<"DirectSale"> | string | null
+    status?: StringFilter<"DirectSale"> | string
+    createdAt?: DateTimeFilter<"DirectSale"> | Date | string
+    updatedAt?: DateTimeFilter<"DirectSale"> | Date | string
+    client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    deliveryDetails?: XOR<DeliveryDetailScalarRelationFilter, DeliveryDetailWhereInput>
+    saleItems?: DirectSaleItemListRelationFilter
+  }
+
+  export type DirectSaleOrderByWithRelationInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    client?: ClientOrderByWithRelationInput
+    deliveryDetails?: DeliveryDetailOrderByWithRelationInput
+    saleItems?: DirectSaleItemOrderByRelationAggregateInput
+  }
+
+  export type DirectSaleWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    deliveryDetailsId?: string
+    AND?: DirectSaleWhereInput | DirectSaleWhereInput[]
+    OR?: DirectSaleWhereInput[]
+    NOT?: DirectSaleWhereInput | DirectSaleWhereInput[]
+    saleDate?: DateTimeFilter<"DirectSale"> | Date | string
+    clientId?: StringFilter<"DirectSale"> | string
+    subtotal?: FloatFilter<"DirectSale"> | number
+    shipping?: FloatFilter<"DirectSale"> | number
+    grandTotal?: FloatFilter<"DirectSale"> | number
+    remarks?: StringNullableFilter<"DirectSale"> | string | null
+    status?: StringFilter<"DirectSale"> | string
+    createdAt?: DateTimeFilter<"DirectSale"> | Date | string
+    updatedAt?: DateTimeFilter<"DirectSale"> | Date | string
+    client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    deliveryDetails?: XOR<DeliveryDetailScalarRelationFilter, DeliveryDetailWhereInput>
+    saleItems?: DirectSaleItemListRelationFilter
+  }, "id" | "deliveryDetailsId">
+
+  export type DirectSaleOrderByWithAggregationInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DirectSaleCountOrderByAggregateInput
+    _avg?: DirectSaleAvgOrderByAggregateInput
+    _max?: DirectSaleMaxOrderByAggregateInput
+    _min?: DirectSaleMinOrderByAggregateInput
+    _sum?: DirectSaleSumOrderByAggregateInput
+  }
+
+  export type DirectSaleScalarWhereWithAggregatesInput = {
+    AND?: DirectSaleScalarWhereWithAggregatesInput | DirectSaleScalarWhereWithAggregatesInput[]
+    OR?: DirectSaleScalarWhereWithAggregatesInput[]
+    NOT?: DirectSaleScalarWhereWithAggregatesInput | DirectSaleScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DirectSale"> | string
+    saleDate?: DateTimeWithAggregatesFilter<"DirectSale"> | Date | string
+    clientId?: StringWithAggregatesFilter<"DirectSale"> | string
+    deliveryDetailsId?: StringWithAggregatesFilter<"DirectSale"> | string
+    subtotal?: FloatWithAggregatesFilter<"DirectSale"> | number
+    shipping?: FloatWithAggregatesFilter<"DirectSale"> | number
+    grandTotal?: FloatWithAggregatesFilter<"DirectSale"> | number
+    remarks?: StringNullableWithAggregatesFilter<"DirectSale"> | string | null
+    status?: StringWithAggregatesFilter<"DirectSale"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"DirectSale"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DirectSale"> | Date | string
+  }
+
+  export type DirectSaleItemWhereInput = {
+    AND?: DirectSaleItemWhereInput | DirectSaleItemWhereInput[]
+    OR?: DirectSaleItemWhereInput[]
+    NOT?: DirectSaleItemWhereInput | DirectSaleItemWhereInput[]
+    id?: StringFilter<"DirectSaleItem"> | string
+    directSaleId?: StringFilter<"DirectSaleItem"> | string
+    itemId?: StringNullableFilter<"DirectSaleItem"> | string | null
+    itemName?: StringFilter<"DirectSaleItem"> | string
+    quantity?: IntFilter<"DirectSaleItem"> | number
+    unitPrice?: FloatFilter<"DirectSaleItem"> | number
+    discount?: FloatNullableFilter<"DirectSaleItem"> | number | null
+    tax?: FloatNullableFilter<"DirectSaleItem"> | number | null
+    total?: FloatFilter<"DirectSaleItem"> | number
+    createdAt?: DateTimeFilter<"DirectSaleItem"> | Date | string
+    updatedAt?: DateTimeFilter<"DirectSaleItem"> | Date | string
+    directSale?: XOR<DirectSaleScalarRelationFilter, DirectSaleWhereInput>
+  }
+
+  export type DirectSaleItemOrderByWithRelationInput = {
+    id?: SortOrder
+    directSaleId?: SortOrder
+    itemId?: SortOrderInput | SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrderInput | SortOrder
+    tax?: SortOrderInput | SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    directSale?: DirectSaleOrderByWithRelationInput
+  }
+
+  export type DirectSaleItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: DirectSaleItemWhereInput | DirectSaleItemWhereInput[]
+    OR?: DirectSaleItemWhereInput[]
+    NOT?: DirectSaleItemWhereInput | DirectSaleItemWhereInput[]
+    directSaleId?: StringFilter<"DirectSaleItem"> | string
+    itemId?: StringNullableFilter<"DirectSaleItem"> | string | null
+    itemName?: StringFilter<"DirectSaleItem"> | string
+    quantity?: IntFilter<"DirectSaleItem"> | number
+    unitPrice?: FloatFilter<"DirectSaleItem"> | number
+    discount?: FloatNullableFilter<"DirectSaleItem"> | number | null
+    tax?: FloatNullableFilter<"DirectSaleItem"> | number | null
+    total?: FloatFilter<"DirectSaleItem"> | number
+    createdAt?: DateTimeFilter<"DirectSaleItem"> | Date | string
+    updatedAt?: DateTimeFilter<"DirectSaleItem"> | Date | string
+    directSale?: XOR<DirectSaleScalarRelationFilter, DirectSaleWhereInput>
+  }, "id">
+
+  export type DirectSaleItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    directSaleId?: SortOrder
+    itemId?: SortOrderInput | SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrderInput | SortOrder
+    tax?: SortOrderInput | SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: DirectSaleItemCountOrderByAggregateInput
+    _avg?: DirectSaleItemAvgOrderByAggregateInput
+    _max?: DirectSaleItemMaxOrderByAggregateInput
+    _min?: DirectSaleItemMinOrderByAggregateInput
+    _sum?: DirectSaleItemSumOrderByAggregateInput
+  }
+
+  export type DirectSaleItemScalarWhereWithAggregatesInput = {
+    AND?: DirectSaleItemScalarWhereWithAggregatesInput | DirectSaleItemScalarWhereWithAggregatesInput[]
+    OR?: DirectSaleItemScalarWhereWithAggregatesInput[]
+    NOT?: DirectSaleItemScalarWhereWithAggregatesInput | DirectSaleItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"DirectSaleItem"> | string
+    directSaleId?: StringWithAggregatesFilter<"DirectSaleItem"> | string
+    itemId?: StringNullableWithAggregatesFilter<"DirectSaleItem"> | string | null
+    itemName?: StringWithAggregatesFilter<"DirectSaleItem"> | string
+    quantity?: IntWithAggregatesFilter<"DirectSaleItem"> | number
+    unitPrice?: FloatWithAggregatesFilter<"DirectSaleItem"> | number
+    discount?: FloatNullableWithAggregatesFilter<"DirectSaleItem"> | number | null
+    tax?: FloatNullableWithAggregatesFilter<"DirectSaleItem"> | number | null
+    total?: FloatWithAggregatesFilter<"DirectSaleItem"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"DirectSaleItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"DirectSaleItem"> | Date | string
+  }
+
+  export type SalesEntryWhereInput = {
+    AND?: SalesEntryWhereInput | SalesEntryWhereInput[]
+    OR?: SalesEntryWhereInput[]
+    NOT?: SalesEntryWhereInput | SalesEntryWhereInput[]
+    id?: StringFilter<"SalesEntry"> | string
+    saleDate?: DateTimeFilter<"SalesEntry"> | Date | string
+    clientId?: StringFilter<"SalesEntry"> | string
+    deliveryDetailsId?: StringFilter<"SalesEntry"> | string
+    subtotal?: FloatFilter<"SalesEntry"> | number
+    shipping?: FloatFilter<"SalesEntry"> | number
+    grandTotal?: FloatFilter<"SalesEntry"> | number
+    remarks?: StringNullableFilter<"SalesEntry"> | string | null
+    status?: StringFilter<"SalesEntry"> | string
+    createdAt?: DateTimeFilter<"SalesEntry"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesEntry"> | Date | string
+    client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    deliveryDetails?: XOR<DeliveryDetailScalarRelationFilter, DeliveryDetailWhereInput>
+    salesEntryItems?: SalesEntryItemListRelationFilter
+  }
+
+  export type SalesEntryOrderByWithRelationInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    client?: ClientOrderByWithRelationInput
+    deliveryDetails?: DeliveryDetailOrderByWithRelationInput
+    salesEntryItems?: SalesEntryItemOrderByRelationAggregateInput
+  }
+
+  export type SalesEntryWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    deliveryDetailsId?: string
+    AND?: SalesEntryWhereInput | SalesEntryWhereInput[]
+    OR?: SalesEntryWhereInput[]
+    NOT?: SalesEntryWhereInput | SalesEntryWhereInput[]
+    saleDate?: DateTimeFilter<"SalesEntry"> | Date | string
+    clientId?: StringFilter<"SalesEntry"> | string
+    subtotal?: FloatFilter<"SalesEntry"> | number
+    shipping?: FloatFilter<"SalesEntry"> | number
+    grandTotal?: FloatFilter<"SalesEntry"> | number
+    remarks?: StringNullableFilter<"SalesEntry"> | string | null
+    status?: StringFilter<"SalesEntry"> | string
+    createdAt?: DateTimeFilter<"SalesEntry"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesEntry"> | Date | string
+    client?: XOR<ClientScalarRelationFilter, ClientWhereInput>
+    deliveryDetails?: XOR<DeliveryDetailScalarRelationFilter, DeliveryDetailWhereInput>
+    salesEntryItems?: SalesEntryItemListRelationFilter
+  }, "id" | "deliveryDetailsId">
+
+  export type SalesEntryOrderByWithAggregationInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SalesEntryCountOrderByAggregateInput
+    _avg?: SalesEntryAvgOrderByAggregateInput
+    _max?: SalesEntryMaxOrderByAggregateInput
+    _min?: SalesEntryMinOrderByAggregateInput
+    _sum?: SalesEntrySumOrderByAggregateInput
+  }
+
+  export type SalesEntryScalarWhereWithAggregatesInput = {
+    AND?: SalesEntryScalarWhereWithAggregatesInput | SalesEntryScalarWhereWithAggregatesInput[]
+    OR?: SalesEntryScalarWhereWithAggregatesInput[]
+    NOT?: SalesEntryScalarWhereWithAggregatesInput | SalesEntryScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SalesEntry"> | string
+    saleDate?: DateTimeWithAggregatesFilter<"SalesEntry"> | Date | string
+    clientId?: StringWithAggregatesFilter<"SalesEntry"> | string
+    deliveryDetailsId?: StringWithAggregatesFilter<"SalesEntry"> | string
+    subtotal?: FloatWithAggregatesFilter<"SalesEntry"> | number
+    shipping?: FloatWithAggregatesFilter<"SalesEntry"> | number
+    grandTotal?: FloatWithAggregatesFilter<"SalesEntry"> | number
+    remarks?: StringNullableWithAggregatesFilter<"SalesEntry"> | string | null
+    status?: StringWithAggregatesFilter<"SalesEntry"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"SalesEntry"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SalesEntry"> | Date | string
+  }
+
+  export type SalesEntryItemWhereInput = {
+    AND?: SalesEntryItemWhereInput | SalesEntryItemWhereInput[]
+    OR?: SalesEntryItemWhereInput[]
+    NOT?: SalesEntryItemWhereInput | SalesEntryItemWhereInput[]
+    id?: StringFilter<"SalesEntryItem"> | string
+    salesEntryId?: StringFilter<"SalesEntryItem"> | string
+    itemId?: StringNullableFilter<"SalesEntryItem"> | string | null
+    itemName?: StringFilter<"SalesEntryItem"> | string
+    quantity?: IntFilter<"SalesEntryItem"> | number
+    unitPrice?: FloatFilter<"SalesEntryItem"> | number
+    discount?: FloatNullableFilter<"SalesEntryItem"> | number | null
+    tax?: FloatNullableFilter<"SalesEntryItem"> | number | null
+    total?: FloatFilter<"SalesEntryItem"> | number
+    createdAt?: DateTimeFilter<"SalesEntryItem"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesEntryItem"> | Date | string
+    salesEntry?: XOR<SalesEntryScalarRelationFilter, SalesEntryWhereInput>
+  }
+
+  export type SalesEntryItemOrderByWithRelationInput = {
+    id?: SortOrder
+    salesEntryId?: SortOrder
+    itemId?: SortOrderInput | SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrderInput | SortOrder
+    tax?: SortOrderInput | SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    salesEntry?: SalesEntryOrderByWithRelationInput
+  }
+
+  export type SalesEntryItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SalesEntryItemWhereInput | SalesEntryItemWhereInput[]
+    OR?: SalesEntryItemWhereInput[]
+    NOT?: SalesEntryItemWhereInput | SalesEntryItemWhereInput[]
+    salesEntryId?: StringFilter<"SalesEntryItem"> | string
+    itemId?: StringNullableFilter<"SalesEntryItem"> | string | null
+    itemName?: StringFilter<"SalesEntryItem"> | string
+    quantity?: IntFilter<"SalesEntryItem"> | number
+    unitPrice?: FloatFilter<"SalesEntryItem"> | number
+    discount?: FloatNullableFilter<"SalesEntryItem"> | number | null
+    tax?: FloatNullableFilter<"SalesEntryItem"> | number | null
+    total?: FloatFilter<"SalesEntryItem"> | number
+    createdAt?: DateTimeFilter<"SalesEntryItem"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesEntryItem"> | Date | string
+    salesEntry?: XOR<SalesEntryScalarRelationFilter, SalesEntryWhereInput>
+  }, "id">
+
+  export type SalesEntryItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    salesEntryId?: SortOrder
+    itemId?: SortOrderInput | SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrderInput | SortOrder
+    tax?: SortOrderInput | SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SalesEntryItemCountOrderByAggregateInput
+    _avg?: SalesEntryItemAvgOrderByAggregateInput
+    _max?: SalesEntryItemMaxOrderByAggregateInput
+    _min?: SalesEntryItemMinOrderByAggregateInput
+    _sum?: SalesEntryItemSumOrderByAggregateInput
+  }
+
+  export type SalesEntryItemScalarWhereWithAggregatesInput = {
+    AND?: SalesEntryItemScalarWhereWithAggregatesInput | SalesEntryItemScalarWhereWithAggregatesInput[]
+    OR?: SalesEntryItemScalarWhereWithAggregatesInput[]
+    NOT?: SalesEntryItemScalarWhereWithAggregatesInput | SalesEntryItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SalesEntryItem"> | string
+    salesEntryId?: StringWithAggregatesFilter<"SalesEntryItem"> | string
+    itemId?: StringNullableWithAggregatesFilter<"SalesEntryItem"> | string | null
+    itemName?: StringWithAggregatesFilter<"SalesEntryItem"> | string
+    quantity?: IntWithAggregatesFilter<"SalesEntryItem"> | number
+    unitPrice?: FloatWithAggregatesFilter<"SalesEntryItem"> | number
+    discount?: FloatNullableWithAggregatesFilter<"SalesEntryItem"> | number | null
+    tax?: FloatNullableWithAggregatesFilter<"SalesEntryItem"> | number | null
+    total?: FloatWithAggregatesFilter<"SalesEntryItem"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"SalesEntryItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SalesEntryItem"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -31390,216 +41610,6 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type ClientCreateInput = {
-    id?: string
-    customerName: string
-    customerInitials: string
-    address: string
-    kraPin: string
-    currency: string
-    isActive: boolean
-    phone1: string
-    phone2: string
-    email: string
-    bankName: string
-    accountNumber: string
-    salesPerson: string
-    discountEliginility: boolean
-    branchName: string
-    salesArea: string
-    salesType: string
-    comment: string
-    customerId: string
-    preferedPaymentMethod: string
-    sex: string
-    allowedDiscount: string
-    creditLimit: string
-    paymentTerms: string
-    refNo: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ClientUncheckedCreateInput = {
-    id?: string
-    customerName: string
-    customerInitials: string
-    address: string
-    kraPin: string
-    currency: string
-    isActive: boolean
-    phone1: string
-    phone2: string
-    email: string
-    bankName: string
-    accountNumber: string
-    salesPerson: string
-    discountEliginility: boolean
-    branchName: string
-    salesArea: string
-    salesType: string
-    comment: string
-    customerId: string
-    preferedPaymentMethod: string
-    sex: string
-    allowedDiscount: string
-    creditLimit: string
-    paymentTerms: string
-    refNo: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ClientUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerInitials?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    kraPin?: StringFieldUpdateOperationsInput | string
-    currency?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    phone1?: StringFieldUpdateOperationsInput | string
-    phone2?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    bankName?: StringFieldUpdateOperationsInput | string
-    accountNumber?: StringFieldUpdateOperationsInput | string
-    salesPerson?: StringFieldUpdateOperationsInput | string
-    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
-    branchName?: StringFieldUpdateOperationsInput | string
-    salesArea?: StringFieldUpdateOperationsInput | string
-    salesType?: StringFieldUpdateOperationsInput | string
-    comment?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
-    sex?: StringFieldUpdateOperationsInput | string
-    allowedDiscount?: StringFieldUpdateOperationsInput | string
-    creditLimit?: StringFieldUpdateOperationsInput | string
-    paymentTerms?: StringFieldUpdateOperationsInput | string
-    refNo?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ClientUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerInitials?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    kraPin?: StringFieldUpdateOperationsInput | string
-    currency?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    phone1?: StringFieldUpdateOperationsInput | string
-    phone2?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    bankName?: StringFieldUpdateOperationsInput | string
-    accountNumber?: StringFieldUpdateOperationsInput | string
-    salesPerson?: StringFieldUpdateOperationsInput | string
-    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
-    branchName?: StringFieldUpdateOperationsInput | string
-    salesArea?: StringFieldUpdateOperationsInput | string
-    salesType?: StringFieldUpdateOperationsInput | string
-    comment?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
-    sex?: StringFieldUpdateOperationsInput | string
-    allowedDiscount?: StringFieldUpdateOperationsInput | string
-    creditLimit?: StringFieldUpdateOperationsInput | string
-    paymentTerms?: StringFieldUpdateOperationsInput | string
-    refNo?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ClientCreateManyInput = {
-    id?: string
-    customerName: string
-    customerInitials: string
-    address: string
-    kraPin: string
-    currency: string
-    isActive: boolean
-    phone1: string
-    phone2: string
-    email: string
-    bankName: string
-    accountNumber: string
-    salesPerson: string
-    discountEliginility: boolean
-    branchName: string
-    salesArea: string
-    salesType: string
-    comment: string
-    customerId: string
-    preferedPaymentMethod: string
-    sex: string
-    allowedDiscount: string
-    creditLimit: string
-    paymentTerms: string
-    refNo: string
-    createdAt?: Date | string
-    updatedAt?: Date | string
-  }
-
-  export type ClientUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerInitials?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    kraPin?: StringFieldUpdateOperationsInput | string
-    currency?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    phone1?: StringFieldUpdateOperationsInput | string
-    phone2?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    bankName?: StringFieldUpdateOperationsInput | string
-    accountNumber?: StringFieldUpdateOperationsInput | string
-    salesPerson?: StringFieldUpdateOperationsInput | string
-    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
-    branchName?: StringFieldUpdateOperationsInput | string
-    salesArea?: StringFieldUpdateOperationsInput | string
-    salesType?: StringFieldUpdateOperationsInput | string
-    comment?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
-    sex?: StringFieldUpdateOperationsInput | string
-    allowedDiscount?: StringFieldUpdateOperationsInput | string
-    creditLimit?: StringFieldUpdateOperationsInput | string
-    paymentTerms?: StringFieldUpdateOperationsInput | string
-    refNo?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type ClientUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-    customerName?: StringFieldUpdateOperationsInput | string
-    customerInitials?: StringFieldUpdateOperationsInput | string
-    address?: StringFieldUpdateOperationsInput | string
-    kraPin?: StringFieldUpdateOperationsInput | string
-    currency?: StringFieldUpdateOperationsInput | string
-    isActive?: BoolFieldUpdateOperationsInput | boolean
-    phone1?: StringFieldUpdateOperationsInput | string
-    phone2?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
-    bankName?: StringFieldUpdateOperationsInput | string
-    accountNumber?: StringFieldUpdateOperationsInput | string
-    salesPerson?: StringFieldUpdateOperationsInput | string
-    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
-    branchName?: StringFieldUpdateOperationsInput | string
-    salesArea?: StringFieldUpdateOperationsInput | string
-    salesType?: StringFieldUpdateOperationsInput | string
-    comment?: StringFieldUpdateOperationsInput | string
-    customerId?: StringFieldUpdateOperationsInput | string
-    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
-    sex?: StringFieldUpdateOperationsInput | string
-    allowedDiscount?: StringFieldUpdateOperationsInput | string
-    creditLimit?: StringFieldUpdateOperationsInput | string
-    paymentTerms?: StringFieldUpdateOperationsInput | string
-    refNo?: StringFieldUpdateOperationsInput | string
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type DriverCreateInput = {
     userName: string
     firstName: string
@@ -32247,6 +42257,13 @@ export namespace Prisma {
     creator: string
     status: string
     barcode: string
+    itemPrice?: number
+    priceBeforeTax?: number
+    taxAmount?: number
+    discountWholesale?: number
+    discountRetail?: number
+    customDiscountAllowed?: boolean
+    taxType?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -32264,6 +42281,13 @@ export namespace Prisma {
     creator: string
     status: string
     barcode: string
+    itemPrice?: number
+    priceBeforeTax?: number
+    taxAmount?: number
+    discountWholesale?: number
+    discountRetail?: number
+    customDiscountAllowed?: boolean
+    taxType?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -32280,6 +42304,13 @@ export namespace Prisma {
     creator?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     barcode?: StringFieldUpdateOperationsInput | string
+    itemPrice?: FloatFieldUpdateOperationsInput | number
+    priceBeforeTax?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    discountWholesale?: FloatFieldUpdateOperationsInput | number
+    discountRetail?: FloatFieldUpdateOperationsInput | number
+    customDiscountAllowed?: BoolFieldUpdateOperationsInput | boolean
+    taxType?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32297,6 +42328,13 @@ export namespace Prisma {
     creator?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     barcode?: StringFieldUpdateOperationsInput | string
+    itemPrice?: FloatFieldUpdateOperationsInput | number
+    priceBeforeTax?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    discountWholesale?: FloatFieldUpdateOperationsInput | number
+    discountRetail?: FloatFieldUpdateOperationsInput | number
+    customDiscountAllowed?: BoolFieldUpdateOperationsInput | boolean
+    taxType?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32314,6 +42352,13 @@ export namespace Prisma {
     creator: string
     status: string
     barcode: string
+    itemPrice?: number
+    priceBeforeTax?: number
+    taxAmount?: number
+    discountWholesale?: number
+    discountRetail?: number
+    customDiscountAllowed?: boolean
+    taxType?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -32330,6 +42375,13 @@ export namespace Prisma {
     creator?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     barcode?: StringFieldUpdateOperationsInput | string
+    itemPrice?: FloatFieldUpdateOperationsInput | number
+    priceBeforeTax?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    discountWholesale?: FloatFieldUpdateOperationsInput | number
+    discountRetail?: FloatFieldUpdateOperationsInput | number
+    customDiscountAllowed?: BoolFieldUpdateOperationsInput | boolean
+    taxType?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32347,6 +42399,13 @@ export namespace Prisma {
     creator?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     barcode?: StringFieldUpdateOperationsInput | string
+    itemPrice?: FloatFieldUpdateOperationsInput | number
+    priceBeforeTax?: FloatFieldUpdateOperationsInput | number
+    taxAmount?: FloatFieldUpdateOperationsInput | number
+    discountWholesale?: FloatFieldUpdateOperationsInput | number
+    discountRetail?: FloatFieldUpdateOperationsInput | number
+    customDiscountAllowed?: BoolFieldUpdateOperationsInput | boolean
+    taxType?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -32475,6 +42534,936 @@ export namespace Prisma {
     creator?: StringFieldUpdateOperationsInput | string
     status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClientCreateInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesQuotations?: SalesQuotationCreateNestedManyWithoutClientInput
+    directSales?: DirectSaleCreateNestedManyWithoutClientInput
+    salesEntry?: SalesEntryCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientUncheckedCreateInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesQuotations?: SalesQuotationUncheckedCreateNestedManyWithoutClientInput
+    directSales?: DirectSaleUncheckedCreateNestedManyWithoutClientInput
+    salesEntry?: SalesEntryUncheckedCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesQuotations?: SalesQuotationUpdateManyWithoutClientNestedInput
+    directSales?: DirectSaleUpdateManyWithoutClientNestedInput
+    salesEntry?: SalesEntryUpdateManyWithoutClientNestedInput
+  }
+
+  export type ClientUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesQuotations?: SalesQuotationUncheckedUpdateManyWithoutClientNestedInput
+    directSales?: DirectSaleUncheckedUpdateManyWithoutClientNestedInput
+    salesEntry?: SalesEntryUncheckedUpdateManyWithoutClientNestedInput
+  }
+
+  export type ClientCreateManyInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type ClientUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClientUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuotationItemCreateInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    quotation: SalesQuotationCreateNestedOneWithoutQuotationItemsInput
+  }
+
+  export type QuotationItemUncheckedCreateInput = {
+    id?: string
+    quotationId: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuotationItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quotation?: SalesQuotationUpdateOneRequiredWithoutQuotationItemsNestedInput
+  }
+
+  export type QuotationItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationId?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuotationItemCreateManyInput = {
+    id?: string
+    quotationId: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuotationItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuotationItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationId?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesQuotationCreateInput = {
+    id?: string
+    quotationDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutSalesQuotationsInput
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutSalesQuotationInput
+    quotationItems?: QuotationItemCreateNestedManyWithoutQuotationInput
+  }
+
+  export type SalesQuotationUncheckedCreateInput = {
+    id?: string
+    quotationDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    quotationItems?: QuotationItemUncheckedCreateNestedManyWithoutQuotationInput
+  }
+
+  export type SalesQuotationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutSalesQuotationsNestedInput
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutSalesQuotationNestedInput
+    quotationItems?: QuotationItemUpdateManyWithoutQuotationNestedInput
+  }
+
+  export type SalesQuotationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quotationItems?: QuotationItemUncheckedUpdateManyWithoutQuotationNestedInput
+  }
+
+  export type SalesQuotationCreateManyInput = {
+    id?: string
+    quotationDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesQuotationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesQuotationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DeliveryDetailCreateInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    salesQuotation?: SalesQuotationCreateNestedOneWithoutDeliveryDetailsInput
+    directSale?: DirectSaleCreateNestedOneWithoutDeliveryDetailsInput
+    salesEntry?: SalesEntryCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailUncheckedCreateInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    salesQuotation?: SalesQuotationUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+    directSale?: DirectSaleUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+    salesEntry?: SalesEntryUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    salesQuotation?: SalesQuotationUpdateOneWithoutDeliveryDetailsNestedInput
+    directSale?: DirectSaleUpdateOneWithoutDeliveryDetailsNestedInput
+    salesEntry?: SalesEntryUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type DeliveryDetailUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    salesQuotation?: SalesQuotationUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+    directSale?: DirectSaleUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+    salesEntry?: SalesEntryUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type DeliveryDetailCreateManyInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+  }
+
+  export type DeliveryDetailUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DeliveryDetailUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type DirectSaleCreateInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutDirectSalesInput
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutDirectSaleInput
+    saleItems?: DirectSaleItemCreateNestedManyWithoutDirectSaleInput
+  }
+
+  export type DirectSaleUncheckedCreateInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    saleItems?: DirectSaleItemUncheckedCreateNestedManyWithoutDirectSaleInput
+  }
+
+  export type DirectSaleUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutDirectSalesNestedInput
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutDirectSaleNestedInput
+    saleItems?: DirectSaleItemUpdateManyWithoutDirectSaleNestedInput
+  }
+
+  export type DirectSaleUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    saleItems?: DirectSaleItemUncheckedUpdateManyWithoutDirectSaleNestedInput
+  }
+
+  export type DirectSaleCreateManyInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleItemCreateInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    directSale: DirectSaleCreateNestedOneWithoutSaleItemsInput
+  }
+
+  export type DirectSaleItemUncheckedCreateInput = {
+    id?: string
+    directSaleId: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    directSale?: DirectSaleUpdateOneRequiredWithoutSaleItemsNestedInput
+  }
+
+  export type DirectSaleItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    directSaleId?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleItemCreateManyInput = {
+    id?: string
+    directSaleId: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    directSaleId?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryCreateInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutSalesEntryInput
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutSalesEntryInput
+    salesEntryItems?: SalesEntryItemCreateNestedManyWithoutSalesEntryInput
+  }
+
+  export type SalesEntryUncheckedCreateInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesEntryItems?: SalesEntryItemUncheckedCreateNestedManyWithoutSalesEntryInput
+  }
+
+  export type SalesEntryUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutSalesEntryNestedInput
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutSalesEntryNestedInput
+    salesEntryItems?: SalesEntryItemUpdateManyWithoutSalesEntryNestedInput
+  }
+
+  export type SalesEntryUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesEntryItems?: SalesEntryItemUncheckedUpdateManyWithoutSalesEntryNestedInput
+  }
+
+  export type SalesEntryCreateManyInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryItemCreateInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesEntry: SalesEntryCreateNestedOneWithoutSalesEntryItemsInput
+  }
+
+  export type SalesEntryItemUncheckedCreateInput = {
+    id?: string
+    salesEntryId: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesEntry?: SalesEntryUpdateOneRequiredWithoutSalesEntryItemsNestedInput
+  }
+
+  export type SalesEntryItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    salesEntryId?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryItemCreateManyInput = {
+    id?: string
+    salesEntryId: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    salesEntryId?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -33298,96 +44287,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type ClientCountOrderByAggregateInput = {
-    id?: SortOrder
-    customerName?: SortOrder
-    customerInitials?: SortOrder
-    address?: SortOrder
-    kraPin?: SortOrder
-    currency?: SortOrder
-    isActive?: SortOrder
-    phone1?: SortOrder
-    phone2?: SortOrder
-    email?: SortOrder
-    bankName?: SortOrder
-    accountNumber?: SortOrder
-    salesPerson?: SortOrder
-    discountEliginility?: SortOrder
-    branchName?: SortOrder
-    salesArea?: SortOrder
-    salesType?: SortOrder
-    comment?: SortOrder
-    customerId?: SortOrder
-    preferedPaymentMethod?: SortOrder
-    sex?: SortOrder
-    allowedDiscount?: SortOrder
-    creditLimit?: SortOrder
-    paymentTerms?: SortOrder
-    refNo?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ClientMaxOrderByAggregateInput = {
-    id?: SortOrder
-    customerName?: SortOrder
-    customerInitials?: SortOrder
-    address?: SortOrder
-    kraPin?: SortOrder
-    currency?: SortOrder
-    isActive?: SortOrder
-    phone1?: SortOrder
-    phone2?: SortOrder
-    email?: SortOrder
-    bankName?: SortOrder
-    accountNumber?: SortOrder
-    salesPerson?: SortOrder
-    discountEliginility?: SortOrder
-    branchName?: SortOrder
-    salesArea?: SortOrder
-    salesType?: SortOrder
-    comment?: SortOrder
-    customerId?: SortOrder
-    preferedPaymentMethod?: SortOrder
-    sex?: SortOrder
-    allowedDiscount?: SortOrder
-    creditLimit?: SortOrder
-    paymentTerms?: SortOrder
-    refNo?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
-  export type ClientMinOrderByAggregateInput = {
-    id?: SortOrder
-    customerName?: SortOrder
-    customerInitials?: SortOrder
-    address?: SortOrder
-    kraPin?: SortOrder
-    currency?: SortOrder
-    isActive?: SortOrder
-    phone1?: SortOrder
-    phone2?: SortOrder
-    email?: SortOrder
-    bankName?: SortOrder
-    accountNumber?: SortOrder
-    salesPerson?: SortOrder
-    discountEliginility?: SortOrder
-    branchName?: SortOrder
-    salesArea?: SortOrder
-    salesType?: SortOrder
-    comment?: SortOrder
-    customerId?: SortOrder
-    preferedPaymentMethod?: SortOrder
-    sex?: SortOrder
-    allowedDiscount?: SortOrder
-    creditLimit?: SortOrder
-    paymentTerms?: SortOrder
-    refNo?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
-  }
-
   export type DriverCountOrderByAggregateInput = {
     id?: SortOrder
     userName?: SortOrder
@@ -33711,12 +44610,24 @@ export namespace Prisma {
     creator?: SortOrder
     status?: SortOrder
     barcode?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
+    customDiscountAllowed?: SortOrder
+    taxType?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ItemAvgOrderByAggregateInput = {
     id?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
   }
 
   export type ItemMaxOrderByAggregateInput = {
@@ -33732,6 +44643,13 @@ export namespace Prisma {
     creator?: SortOrder
     status?: SortOrder
     barcode?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
+    customDiscountAllowed?: SortOrder
+    taxType?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -33749,12 +44667,24 @@ export namespace Prisma {
     creator?: SortOrder
     status?: SortOrder
     barcode?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
+    customDiscountAllowed?: SortOrder
+    taxType?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
 
   export type ItemSumOrderByAggregateInput = {
     id?: SortOrder
+    itemPrice?: SortOrder
+    priceBeforeTax?: SortOrder
+    taxAmount?: SortOrder
+    discountWholesale?: SortOrder
+    discountRetail?: SortOrder
   }
 
   export type TaxCountOrderByAggregateInput = {
@@ -33823,6 +44753,604 @@ export namespace Prisma {
     upperLimit?: SortOrder
     rate?: SortOrder
     fixedAmount?: SortOrder
+  }
+
+  export type SalesQuotationListRelationFilter = {
+    every?: SalesQuotationWhereInput
+    some?: SalesQuotationWhereInput
+    none?: SalesQuotationWhereInput
+  }
+
+  export type DirectSaleListRelationFilter = {
+    every?: DirectSaleWhereInput
+    some?: DirectSaleWhereInput
+    none?: DirectSaleWhereInput
+  }
+
+  export type SalesEntryListRelationFilter = {
+    every?: SalesEntryWhereInput
+    some?: SalesEntryWhereInput
+    none?: SalesEntryWhereInput
+  }
+
+  export type SalesQuotationOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DirectSaleOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SalesEntryOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type ClientCountOrderByAggregateInput = {
+    id?: SortOrder
+    customerName?: SortOrder
+    customerInitials?: SortOrder
+    address?: SortOrder
+    kraPin?: SortOrder
+    currency?: SortOrder
+    isActive?: SortOrder
+    phone1?: SortOrder
+    phone2?: SortOrder
+    email?: SortOrder
+    bankName?: SortOrder
+    accountNumber?: SortOrder
+    salesPerson?: SortOrder
+    discountEliginility?: SortOrder
+    branchName?: SortOrder
+    salesArea?: SortOrder
+    salesType?: SortOrder
+    comment?: SortOrder
+    customerId?: SortOrder
+    preferedPaymentMethod?: SortOrder
+    sex?: SortOrder
+    allowedDiscount?: SortOrder
+    creditLimit?: SortOrder
+    paymentTerms?: SortOrder
+    refNo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ClientMaxOrderByAggregateInput = {
+    id?: SortOrder
+    customerName?: SortOrder
+    customerInitials?: SortOrder
+    address?: SortOrder
+    kraPin?: SortOrder
+    currency?: SortOrder
+    isActive?: SortOrder
+    phone1?: SortOrder
+    phone2?: SortOrder
+    email?: SortOrder
+    bankName?: SortOrder
+    accountNumber?: SortOrder
+    salesPerson?: SortOrder
+    discountEliginility?: SortOrder
+    branchName?: SortOrder
+    salesArea?: SortOrder
+    salesType?: SortOrder
+    comment?: SortOrder
+    customerId?: SortOrder
+    preferedPaymentMethod?: SortOrder
+    sex?: SortOrder
+    allowedDiscount?: SortOrder
+    creditLimit?: SortOrder
+    paymentTerms?: SortOrder
+    refNo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type ClientMinOrderByAggregateInput = {
+    id?: SortOrder
+    customerName?: SortOrder
+    customerInitials?: SortOrder
+    address?: SortOrder
+    kraPin?: SortOrder
+    currency?: SortOrder
+    isActive?: SortOrder
+    phone1?: SortOrder
+    phone2?: SortOrder
+    email?: SortOrder
+    bankName?: SortOrder
+    accountNumber?: SortOrder
+    salesPerson?: SortOrder
+    discountEliginility?: SortOrder
+    branchName?: SortOrder
+    salesArea?: SortOrder
+    salesType?: SortOrder
+    comment?: SortOrder
+    customerId?: SortOrder
+    preferedPaymentMethod?: SortOrder
+    sex?: SortOrder
+    allowedDiscount?: SortOrder
+    creditLimit?: SortOrder
+    paymentTerms?: SortOrder
+    refNo?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type FloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type SalesQuotationScalarRelationFilter = {
+    is?: SalesQuotationWhereInput
+    isNot?: SalesQuotationWhereInput
+  }
+
+  export type QuotationItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    quotationId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuotationItemAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+  }
+
+  export type QuotationItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    quotationId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuotationItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    quotationId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type QuotationItemSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+  }
+
+  export type FloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
+  }
+
+  export type ClientScalarRelationFilter = {
+    is?: ClientWhereInput
+    isNot?: ClientWhereInput
+  }
+
+  export type DeliveryDetailScalarRelationFilter = {
+    is?: DeliveryDetailWhereInput
+    isNot?: DeliveryDetailWhereInput
+  }
+
+  export type QuotationItemListRelationFilter = {
+    every?: QuotationItemWhereInput
+    some?: QuotationItemWhereInput
+    none?: QuotationItemWhereInput
+  }
+
+  export type QuotationItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SalesQuotationCountOrderByAggregateInput = {
+    id?: SortOrder
+    quotationDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesQuotationAvgOrderByAggregateInput = {
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+  }
+
+  export type SalesQuotationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    quotationDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesQuotationMinOrderByAggregateInput = {
+    id?: SortOrder
+    quotationDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesQuotationSumOrderByAggregateInput = {
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+  }
+
+  export type SalesQuotationNullableScalarRelationFilter = {
+    is?: SalesQuotationWhereInput | null
+    isNot?: SalesQuotationWhereInput | null
+  }
+
+  export type DirectSaleNullableScalarRelationFilter = {
+    is?: DirectSaleWhereInput | null
+    isNot?: DirectSaleWhereInput | null
+  }
+
+  export type SalesEntryNullableScalarRelationFilter = {
+    is?: SalesEntryWhereInput | null
+    isNot?: SalesEntryWhereInput | null
+  }
+
+  export type DeliveryDetailCountOrderByAggregateInput = {
+    id?: SortOrder
+    address?: SortOrder
+    shiftId?: SortOrder
+    driverId?: SortOrder
+    vehicleId?: SortOrder
+    deliveryDate?: SortOrder
+    deliveryFrom?: SortOrder
+    destination?: SortOrder
+    customerReference?: SortOrder
+    comment?: SortOrder
+    phoneNumber?: SortOrder
+    accompaniedBy?: SortOrder
+  }
+
+  export type DeliveryDetailMaxOrderByAggregateInput = {
+    id?: SortOrder
+    address?: SortOrder
+    shiftId?: SortOrder
+    driverId?: SortOrder
+    vehicleId?: SortOrder
+    deliveryDate?: SortOrder
+    deliveryFrom?: SortOrder
+    destination?: SortOrder
+    customerReference?: SortOrder
+    comment?: SortOrder
+    phoneNumber?: SortOrder
+    accompaniedBy?: SortOrder
+  }
+
+  export type DeliveryDetailMinOrderByAggregateInput = {
+    id?: SortOrder
+    address?: SortOrder
+    shiftId?: SortOrder
+    driverId?: SortOrder
+    vehicleId?: SortOrder
+    deliveryDate?: SortOrder
+    deliveryFrom?: SortOrder
+    destination?: SortOrder
+    customerReference?: SortOrder
+    comment?: SortOrder
+    phoneNumber?: SortOrder
+    accompaniedBy?: SortOrder
+  }
+
+  export type DirectSaleItemListRelationFilter = {
+    every?: DirectSaleItemWhereInput
+    some?: DirectSaleItemWhereInput
+    none?: DirectSaleItemWhereInput
+  }
+
+  export type DirectSaleItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type DirectSaleCountOrderByAggregateInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DirectSaleAvgOrderByAggregateInput = {
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+  }
+
+  export type DirectSaleMaxOrderByAggregateInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DirectSaleMinOrderByAggregateInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DirectSaleSumOrderByAggregateInput = {
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+  }
+
+  export type DirectSaleScalarRelationFilter = {
+    is?: DirectSaleWhereInput
+    isNot?: DirectSaleWhereInput
+  }
+
+  export type DirectSaleItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    directSaleId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DirectSaleItemAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+  }
+
+  export type DirectSaleItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    directSaleId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DirectSaleItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    directSaleId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type DirectSaleItemSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+  }
+
+  export type SalesEntryItemListRelationFilter = {
+    every?: SalesEntryItemWhereInput
+    some?: SalesEntryItemWhereInput
+    none?: SalesEntryItemWhereInput
+  }
+
+  export type SalesEntryItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type SalesEntryCountOrderByAggregateInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesEntryAvgOrderByAggregateInput = {
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+  }
+
+  export type SalesEntryMaxOrderByAggregateInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesEntryMinOrderByAggregateInput = {
+    id?: SortOrder
+    saleDate?: SortOrder
+    clientId?: SortOrder
+    deliveryDetailsId?: SortOrder
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesEntrySumOrderByAggregateInput = {
+    subtotal?: SortOrder
+    shipping?: SortOrder
+    grandTotal?: SortOrder
+  }
+
+  export type SalesEntryScalarRelationFilter = {
+    is?: SalesEntryWhereInput
+    isNot?: SalesEntryWhereInput
+  }
+
+  export type SalesEntryItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    salesEntryId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesEntryItemAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+  }
+
+  export type SalesEntryItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    salesEntryId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesEntryItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    salesEntryId?: SortOrder
+    itemId?: SortOrder
+    itemName?: SortOrder
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SalesEntryItemSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    unitPrice?: SortOrder
+    discount?: SortOrder
+    tax?: SortOrder
+    total?: SortOrder
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {
@@ -34073,6 +45601,488 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type SalesQuotationCreateNestedManyWithoutClientInput = {
+    create?: XOR<SalesQuotationCreateWithoutClientInput, SalesQuotationUncheckedCreateWithoutClientInput> | SalesQuotationCreateWithoutClientInput[] | SalesQuotationUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutClientInput | SalesQuotationCreateOrConnectWithoutClientInput[]
+    createMany?: SalesQuotationCreateManyClientInputEnvelope
+    connect?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+  }
+
+  export type DirectSaleCreateNestedManyWithoutClientInput = {
+    create?: XOR<DirectSaleCreateWithoutClientInput, DirectSaleUncheckedCreateWithoutClientInput> | DirectSaleCreateWithoutClientInput[] | DirectSaleUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutClientInput | DirectSaleCreateOrConnectWithoutClientInput[]
+    createMany?: DirectSaleCreateManyClientInputEnvelope
+    connect?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+  }
+
+  export type SalesEntryCreateNestedManyWithoutClientInput = {
+    create?: XOR<SalesEntryCreateWithoutClientInput, SalesEntryUncheckedCreateWithoutClientInput> | SalesEntryCreateWithoutClientInput[] | SalesEntryUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutClientInput | SalesEntryCreateOrConnectWithoutClientInput[]
+    createMany?: SalesEntryCreateManyClientInputEnvelope
+    connect?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+  }
+
+  export type SalesQuotationUncheckedCreateNestedManyWithoutClientInput = {
+    create?: XOR<SalesQuotationCreateWithoutClientInput, SalesQuotationUncheckedCreateWithoutClientInput> | SalesQuotationCreateWithoutClientInput[] | SalesQuotationUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutClientInput | SalesQuotationCreateOrConnectWithoutClientInput[]
+    createMany?: SalesQuotationCreateManyClientInputEnvelope
+    connect?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+  }
+
+  export type DirectSaleUncheckedCreateNestedManyWithoutClientInput = {
+    create?: XOR<DirectSaleCreateWithoutClientInput, DirectSaleUncheckedCreateWithoutClientInput> | DirectSaleCreateWithoutClientInput[] | DirectSaleUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutClientInput | DirectSaleCreateOrConnectWithoutClientInput[]
+    createMany?: DirectSaleCreateManyClientInputEnvelope
+    connect?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+  }
+
+  export type SalesEntryUncheckedCreateNestedManyWithoutClientInput = {
+    create?: XOR<SalesEntryCreateWithoutClientInput, SalesEntryUncheckedCreateWithoutClientInput> | SalesEntryCreateWithoutClientInput[] | SalesEntryUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutClientInput | SalesEntryCreateOrConnectWithoutClientInput[]
+    createMany?: SalesEntryCreateManyClientInputEnvelope
+    connect?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+  }
+
+  export type SalesQuotationUpdateManyWithoutClientNestedInput = {
+    create?: XOR<SalesQuotationCreateWithoutClientInput, SalesQuotationUncheckedCreateWithoutClientInput> | SalesQuotationCreateWithoutClientInput[] | SalesQuotationUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutClientInput | SalesQuotationCreateOrConnectWithoutClientInput[]
+    upsert?: SalesQuotationUpsertWithWhereUniqueWithoutClientInput | SalesQuotationUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: SalesQuotationCreateManyClientInputEnvelope
+    set?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    disconnect?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    delete?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    connect?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    update?: SalesQuotationUpdateWithWhereUniqueWithoutClientInput | SalesQuotationUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: SalesQuotationUpdateManyWithWhereWithoutClientInput | SalesQuotationUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: SalesQuotationScalarWhereInput | SalesQuotationScalarWhereInput[]
+  }
+
+  export type DirectSaleUpdateManyWithoutClientNestedInput = {
+    create?: XOR<DirectSaleCreateWithoutClientInput, DirectSaleUncheckedCreateWithoutClientInput> | DirectSaleCreateWithoutClientInput[] | DirectSaleUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutClientInput | DirectSaleCreateOrConnectWithoutClientInput[]
+    upsert?: DirectSaleUpsertWithWhereUniqueWithoutClientInput | DirectSaleUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: DirectSaleCreateManyClientInputEnvelope
+    set?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    disconnect?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    delete?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    connect?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    update?: DirectSaleUpdateWithWhereUniqueWithoutClientInput | DirectSaleUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: DirectSaleUpdateManyWithWhereWithoutClientInput | DirectSaleUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: DirectSaleScalarWhereInput | DirectSaleScalarWhereInput[]
+  }
+
+  export type SalesEntryUpdateManyWithoutClientNestedInput = {
+    create?: XOR<SalesEntryCreateWithoutClientInput, SalesEntryUncheckedCreateWithoutClientInput> | SalesEntryCreateWithoutClientInput[] | SalesEntryUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutClientInput | SalesEntryCreateOrConnectWithoutClientInput[]
+    upsert?: SalesEntryUpsertWithWhereUniqueWithoutClientInput | SalesEntryUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: SalesEntryCreateManyClientInputEnvelope
+    set?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    disconnect?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    delete?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    connect?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    update?: SalesEntryUpdateWithWhereUniqueWithoutClientInput | SalesEntryUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: SalesEntryUpdateManyWithWhereWithoutClientInput | SalesEntryUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: SalesEntryScalarWhereInput | SalesEntryScalarWhereInput[]
+  }
+
+  export type SalesQuotationUncheckedUpdateManyWithoutClientNestedInput = {
+    create?: XOR<SalesQuotationCreateWithoutClientInput, SalesQuotationUncheckedCreateWithoutClientInput> | SalesQuotationCreateWithoutClientInput[] | SalesQuotationUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutClientInput | SalesQuotationCreateOrConnectWithoutClientInput[]
+    upsert?: SalesQuotationUpsertWithWhereUniqueWithoutClientInput | SalesQuotationUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: SalesQuotationCreateManyClientInputEnvelope
+    set?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    disconnect?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    delete?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    connect?: SalesQuotationWhereUniqueInput | SalesQuotationWhereUniqueInput[]
+    update?: SalesQuotationUpdateWithWhereUniqueWithoutClientInput | SalesQuotationUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: SalesQuotationUpdateManyWithWhereWithoutClientInput | SalesQuotationUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: SalesQuotationScalarWhereInput | SalesQuotationScalarWhereInput[]
+  }
+
+  export type DirectSaleUncheckedUpdateManyWithoutClientNestedInput = {
+    create?: XOR<DirectSaleCreateWithoutClientInput, DirectSaleUncheckedCreateWithoutClientInput> | DirectSaleCreateWithoutClientInput[] | DirectSaleUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutClientInput | DirectSaleCreateOrConnectWithoutClientInput[]
+    upsert?: DirectSaleUpsertWithWhereUniqueWithoutClientInput | DirectSaleUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: DirectSaleCreateManyClientInputEnvelope
+    set?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    disconnect?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    delete?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    connect?: DirectSaleWhereUniqueInput | DirectSaleWhereUniqueInput[]
+    update?: DirectSaleUpdateWithWhereUniqueWithoutClientInput | DirectSaleUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: DirectSaleUpdateManyWithWhereWithoutClientInput | DirectSaleUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: DirectSaleScalarWhereInput | DirectSaleScalarWhereInput[]
+  }
+
+  export type SalesEntryUncheckedUpdateManyWithoutClientNestedInput = {
+    create?: XOR<SalesEntryCreateWithoutClientInput, SalesEntryUncheckedCreateWithoutClientInput> | SalesEntryCreateWithoutClientInput[] | SalesEntryUncheckedCreateWithoutClientInput[]
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutClientInput | SalesEntryCreateOrConnectWithoutClientInput[]
+    upsert?: SalesEntryUpsertWithWhereUniqueWithoutClientInput | SalesEntryUpsertWithWhereUniqueWithoutClientInput[]
+    createMany?: SalesEntryCreateManyClientInputEnvelope
+    set?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    disconnect?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    delete?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    connect?: SalesEntryWhereUniqueInput | SalesEntryWhereUniqueInput[]
+    update?: SalesEntryUpdateWithWhereUniqueWithoutClientInput | SalesEntryUpdateWithWhereUniqueWithoutClientInput[]
+    updateMany?: SalesEntryUpdateManyWithWhereWithoutClientInput | SalesEntryUpdateManyWithWhereWithoutClientInput[]
+    deleteMany?: SalesEntryScalarWhereInput | SalesEntryScalarWhereInput[]
+  }
+
+  export type SalesQuotationCreateNestedOneWithoutQuotationItemsInput = {
+    create?: XOR<SalesQuotationCreateWithoutQuotationItemsInput, SalesQuotationUncheckedCreateWithoutQuotationItemsInput>
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutQuotationItemsInput
+    connect?: SalesQuotationWhereUniqueInput
+  }
+
+  export type NullableFloatFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type SalesQuotationUpdateOneRequiredWithoutQuotationItemsNestedInput = {
+    create?: XOR<SalesQuotationCreateWithoutQuotationItemsInput, SalesQuotationUncheckedCreateWithoutQuotationItemsInput>
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutQuotationItemsInput
+    upsert?: SalesQuotationUpsertWithoutQuotationItemsInput
+    connect?: SalesQuotationWhereUniqueInput
+    update?: XOR<XOR<SalesQuotationUpdateToOneWithWhereWithoutQuotationItemsInput, SalesQuotationUpdateWithoutQuotationItemsInput>, SalesQuotationUncheckedUpdateWithoutQuotationItemsInput>
+  }
+
+  export type ClientCreateNestedOneWithoutSalesQuotationsInput = {
+    create?: XOR<ClientCreateWithoutSalesQuotationsInput, ClientUncheckedCreateWithoutSalesQuotationsInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutSalesQuotationsInput
+    connect?: ClientWhereUniqueInput
+  }
+
+  export type DeliveryDetailCreateNestedOneWithoutSalesQuotationInput = {
+    create?: XOR<DeliveryDetailCreateWithoutSalesQuotationInput, DeliveryDetailUncheckedCreateWithoutSalesQuotationInput>
+    connectOrCreate?: DeliveryDetailCreateOrConnectWithoutSalesQuotationInput
+    connect?: DeliveryDetailWhereUniqueInput
+  }
+
+  export type QuotationItemCreateNestedManyWithoutQuotationInput = {
+    create?: XOR<QuotationItemCreateWithoutQuotationInput, QuotationItemUncheckedCreateWithoutQuotationInput> | QuotationItemCreateWithoutQuotationInput[] | QuotationItemUncheckedCreateWithoutQuotationInput[]
+    connectOrCreate?: QuotationItemCreateOrConnectWithoutQuotationInput | QuotationItemCreateOrConnectWithoutQuotationInput[]
+    createMany?: QuotationItemCreateManyQuotationInputEnvelope
+    connect?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+  }
+
+  export type QuotationItemUncheckedCreateNestedManyWithoutQuotationInput = {
+    create?: XOR<QuotationItemCreateWithoutQuotationInput, QuotationItemUncheckedCreateWithoutQuotationInput> | QuotationItemCreateWithoutQuotationInput[] | QuotationItemUncheckedCreateWithoutQuotationInput[]
+    connectOrCreate?: QuotationItemCreateOrConnectWithoutQuotationInput | QuotationItemCreateOrConnectWithoutQuotationInput[]
+    createMany?: QuotationItemCreateManyQuotationInputEnvelope
+    connect?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+  }
+
+  export type ClientUpdateOneRequiredWithoutSalesQuotationsNestedInput = {
+    create?: XOR<ClientCreateWithoutSalesQuotationsInput, ClientUncheckedCreateWithoutSalesQuotationsInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutSalesQuotationsInput
+    upsert?: ClientUpsertWithoutSalesQuotationsInput
+    connect?: ClientWhereUniqueInput
+    update?: XOR<XOR<ClientUpdateToOneWithWhereWithoutSalesQuotationsInput, ClientUpdateWithoutSalesQuotationsInput>, ClientUncheckedUpdateWithoutSalesQuotationsInput>
+  }
+
+  export type DeliveryDetailUpdateOneRequiredWithoutSalesQuotationNestedInput = {
+    create?: XOR<DeliveryDetailCreateWithoutSalesQuotationInput, DeliveryDetailUncheckedCreateWithoutSalesQuotationInput>
+    connectOrCreate?: DeliveryDetailCreateOrConnectWithoutSalesQuotationInput
+    upsert?: DeliveryDetailUpsertWithoutSalesQuotationInput
+    connect?: DeliveryDetailWhereUniqueInput
+    update?: XOR<XOR<DeliveryDetailUpdateToOneWithWhereWithoutSalesQuotationInput, DeliveryDetailUpdateWithoutSalesQuotationInput>, DeliveryDetailUncheckedUpdateWithoutSalesQuotationInput>
+  }
+
+  export type QuotationItemUpdateManyWithoutQuotationNestedInput = {
+    create?: XOR<QuotationItemCreateWithoutQuotationInput, QuotationItemUncheckedCreateWithoutQuotationInput> | QuotationItemCreateWithoutQuotationInput[] | QuotationItemUncheckedCreateWithoutQuotationInput[]
+    connectOrCreate?: QuotationItemCreateOrConnectWithoutQuotationInput | QuotationItemCreateOrConnectWithoutQuotationInput[]
+    upsert?: QuotationItemUpsertWithWhereUniqueWithoutQuotationInput | QuotationItemUpsertWithWhereUniqueWithoutQuotationInput[]
+    createMany?: QuotationItemCreateManyQuotationInputEnvelope
+    set?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    disconnect?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    delete?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    connect?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    update?: QuotationItemUpdateWithWhereUniqueWithoutQuotationInput | QuotationItemUpdateWithWhereUniqueWithoutQuotationInput[]
+    updateMany?: QuotationItemUpdateManyWithWhereWithoutQuotationInput | QuotationItemUpdateManyWithWhereWithoutQuotationInput[]
+    deleteMany?: QuotationItemScalarWhereInput | QuotationItemScalarWhereInput[]
+  }
+
+  export type QuotationItemUncheckedUpdateManyWithoutQuotationNestedInput = {
+    create?: XOR<QuotationItemCreateWithoutQuotationInput, QuotationItemUncheckedCreateWithoutQuotationInput> | QuotationItemCreateWithoutQuotationInput[] | QuotationItemUncheckedCreateWithoutQuotationInput[]
+    connectOrCreate?: QuotationItemCreateOrConnectWithoutQuotationInput | QuotationItemCreateOrConnectWithoutQuotationInput[]
+    upsert?: QuotationItemUpsertWithWhereUniqueWithoutQuotationInput | QuotationItemUpsertWithWhereUniqueWithoutQuotationInput[]
+    createMany?: QuotationItemCreateManyQuotationInputEnvelope
+    set?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    disconnect?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    delete?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    connect?: QuotationItemWhereUniqueInput | QuotationItemWhereUniqueInput[]
+    update?: QuotationItemUpdateWithWhereUniqueWithoutQuotationInput | QuotationItemUpdateWithWhereUniqueWithoutQuotationInput[]
+    updateMany?: QuotationItemUpdateManyWithWhereWithoutQuotationInput | QuotationItemUpdateManyWithWhereWithoutQuotationInput[]
+    deleteMany?: QuotationItemScalarWhereInput | QuotationItemScalarWhereInput[]
+  }
+
+  export type SalesQuotationCreateNestedOneWithoutDeliveryDetailsInput = {
+    create?: XOR<SalesQuotationCreateWithoutDeliveryDetailsInput, SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutDeliveryDetailsInput
+    connect?: SalesQuotationWhereUniqueInput
+  }
+
+  export type DirectSaleCreateNestedOneWithoutDeliveryDetailsInput = {
+    create?: XOR<DirectSaleCreateWithoutDeliveryDetailsInput, DirectSaleUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutDeliveryDetailsInput
+    connect?: DirectSaleWhereUniqueInput
+  }
+
+  export type SalesEntryCreateNestedOneWithoutDeliveryDetailsInput = {
+    create?: XOR<SalesEntryCreateWithoutDeliveryDetailsInput, SalesEntryUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutDeliveryDetailsInput
+    connect?: SalesEntryWhereUniqueInput
+  }
+
+  export type SalesQuotationUncheckedCreateNestedOneWithoutDeliveryDetailsInput = {
+    create?: XOR<SalesQuotationCreateWithoutDeliveryDetailsInput, SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutDeliveryDetailsInput
+    connect?: SalesQuotationWhereUniqueInput
+  }
+
+  export type DirectSaleUncheckedCreateNestedOneWithoutDeliveryDetailsInput = {
+    create?: XOR<DirectSaleCreateWithoutDeliveryDetailsInput, DirectSaleUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutDeliveryDetailsInput
+    connect?: DirectSaleWhereUniqueInput
+  }
+
+  export type SalesEntryUncheckedCreateNestedOneWithoutDeliveryDetailsInput = {
+    create?: XOR<SalesEntryCreateWithoutDeliveryDetailsInput, SalesEntryUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutDeliveryDetailsInput
+    connect?: SalesEntryWhereUniqueInput
+  }
+
+  export type SalesQuotationUpdateOneWithoutDeliveryDetailsNestedInput = {
+    create?: XOR<SalesQuotationCreateWithoutDeliveryDetailsInput, SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutDeliveryDetailsInput
+    upsert?: SalesQuotationUpsertWithoutDeliveryDetailsInput
+    disconnect?: SalesQuotationWhereInput | boolean
+    delete?: SalesQuotationWhereInput | boolean
+    connect?: SalesQuotationWhereUniqueInput
+    update?: XOR<XOR<SalesQuotationUpdateToOneWithWhereWithoutDeliveryDetailsInput, SalesQuotationUpdateWithoutDeliveryDetailsInput>, SalesQuotationUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type DirectSaleUpdateOneWithoutDeliveryDetailsNestedInput = {
+    create?: XOR<DirectSaleCreateWithoutDeliveryDetailsInput, DirectSaleUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutDeliveryDetailsInput
+    upsert?: DirectSaleUpsertWithoutDeliveryDetailsInput
+    disconnect?: DirectSaleWhereInput | boolean
+    delete?: DirectSaleWhereInput | boolean
+    connect?: DirectSaleWhereUniqueInput
+    update?: XOR<XOR<DirectSaleUpdateToOneWithWhereWithoutDeliveryDetailsInput, DirectSaleUpdateWithoutDeliveryDetailsInput>, DirectSaleUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesEntryUpdateOneWithoutDeliveryDetailsNestedInput = {
+    create?: XOR<SalesEntryCreateWithoutDeliveryDetailsInput, SalesEntryUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutDeliveryDetailsInput
+    upsert?: SalesEntryUpsertWithoutDeliveryDetailsInput
+    disconnect?: SalesEntryWhereInput | boolean
+    delete?: SalesEntryWhereInput | boolean
+    connect?: SalesEntryWhereUniqueInput
+    update?: XOR<XOR<SalesEntryUpdateToOneWithWhereWithoutDeliveryDetailsInput, SalesEntryUpdateWithoutDeliveryDetailsInput>, SalesEntryUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesQuotationUncheckedUpdateOneWithoutDeliveryDetailsNestedInput = {
+    create?: XOR<SalesQuotationCreateWithoutDeliveryDetailsInput, SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesQuotationCreateOrConnectWithoutDeliveryDetailsInput
+    upsert?: SalesQuotationUpsertWithoutDeliveryDetailsInput
+    disconnect?: SalesQuotationWhereInput | boolean
+    delete?: SalesQuotationWhereInput | boolean
+    connect?: SalesQuotationWhereUniqueInput
+    update?: XOR<XOR<SalesQuotationUpdateToOneWithWhereWithoutDeliveryDetailsInput, SalesQuotationUpdateWithoutDeliveryDetailsInput>, SalesQuotationUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type DirectSaleUncheckedUpdateOneWithoutDeliveryDetailsNestedInput = {
+    create?: XOR<DirectSaleCreateWithoutDeliveryDetailsInput, DirectSaleUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutDeliveryDetailsInput
+    upsert?: DirectSaleUpsertWithoutDeliveryDetailsInput
+    disconnect?: DirectSaleWhereInput | boolean
+    delete?: DirectSaleWhereInput | boolean
+    connect?: DirectSaleWhereUniqueInput
+    update?: XOR<XOR<DirectSaleUpdateToOneWithWhereWithoutDeliveryDetailsInput, DirectSaleUpdateWithoutDeliveryDetailsInput>, DirectSaleUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesEntryUncheckedUpdateOneWithoutDeliveryDetailsNestedInput = {
+    create?: XOR<SalesEntryCreateWithoutDeliveryDetailsInput, SalesEntryUncheckedCreateWithoutDeliveryDetailsInput>
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutDeliveryDetailsInput
+    upsert?: SalesEntryUpsertWithoutDeliveryDetailsInput
+    disconnect?: SalesEntryWhereInput | boolean
+    delete?: SalesEntryWhereInput | boolean
+    connect?: SalesEntryWhereUniqueInput
+    update?: XOR<XOR<SalesEntryUpdateToOneWithWhereWithoutDeliveryDetailsInput, SalesEntryUpdateWithoutDeliveryDetailsInput>, SalesEntryUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type ClientCreateNestedOneWithoutDirectSalesInput = {
+    create?: XOR<ClientCreateWithoutDirectSalesInput, ClientUncheckedCreateWithoutDirectSalesInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutDirectSalesInput
+    connect?: ClientWhereUniqueInput
+  }
+
+  export type DeliveryDetailCreateNestedOneWithoutDirectSaleInput = {
+    create?: XOR<DeliveryDetailCreateWithoutDirectSaleInput, DeliveryDetailUncheckedCreateWithoutDirectSaleInput>
+    connectOrCreate?: DeliveryDetailCreateOrConnectWithoutDirectSaleInput
+    connect?: DeliveryDetailWhereUniqueInput
+  }
+
+  export type DirectSaleItemCreateNestedManyWithoutDirectSaleInput = {
+    create?: XOR<DirectSaleItemCreateWithoutDirectSaleInput, DirectSaleItemUncheckedCreateWithoutDirectSaleInput> | DirectSaleItemCreateWithoutDirectSaleInput[] | DirectSaleItemUncheckedCreateWithoutDirectSaleInput[]
+    connectOrCreate?: DirectSaleItemCreateOrConnectWithoutDirectSaleInput | DirectSaleItemCreateOrConnectWithoutDirectSaleInput[]
+    createMany?: DirectSaleItemCreateManyDirectSaleInputEnvelope
+    connect?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+  }
+
+  export type DirectSaleItemUncheckedCreateNestedManyWithoutDirectSaleInput = {
+    create?: XOR<DirectSaleItemCreateWithoutDirectSaleInput, DirectSaleItemUncheckedCreateWithoutDirectSaleInput> | DirectSaleItemCreateWithoutDirectSaleInput[] | DirectSaleItemUncheckedCreateWithoutDirectSaleInput[]
+    connectOrCreate?: DirectSaleItemCreateOrConnectWithoutDirectSaleInput | DirectSaleItemCreateOrConnectWithoutDirectSaleInput[]
+    createMany?: DirectSaleItemCreateManyDirectSaleInputEnvelope
+    connect?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+  }
+
+  export type ClientUpdateOneRequiredWithoutDirectSalesNestedInput = {
+    create?: XOR<ClientCreateWithoutDirectSalesInput, ClientUncheckedCreateWithoutDirectSalesInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutDirectSalesInput
+    upsert?: ClientUpsertWithoutDirectSalesInput
+    connect?: ClientWhereUniqueInput
+    update?: XOR<XOR<ClientUpdateToOneWithWhereWithoutDirectSalesInput, ClientUpdateWithoutDirectSalesInput>, ClientUncheckedUpdateWithoutDirectSalesInput>
+  }
+
+  export type DeliveryDetailUpdateOneRequiredWithoutDirectSaleNestedInput = {
+    create?: XOR<DeliveryDetailCreateWithoutDirectSaleInput, DeliveryDetailUncheckedCreateWithoutDirectSaleInput>
+    connectOrCreate?: DeliveryDetailCreateOrConnectWithoutDirectSaleInput
+    upsert?: DeliveryDetailUpsertWithoutDirectSaleInput
+    connect?: DeliveryDetailWhereUniqueInput
+    update?: XOR<XOR<DeliveryDetailUpdateToOneWithWhereWithoutDirectSaleInput, DeliveryDetailUpdateWithoutDirectSaleInput>, DeliveryDetailUncheckedUpdateWithoutDirectSaleInput>
+  }
+
+  export type DirectSaleItemUpdateManyWithoutDirectSaleNestedInput = {
+    create?: XOR<DirectSaleItemCreateWithoutDirectSaleInput, DirectSaleItemUncheckedCreateWithoutDirectSaleInput> | DirectSaleItemCreateWithoutDirectSaleInput[] | DirectSaleItemUncheckedCreateWithoutDirectSaleInput[]
+    connectOrCreate?: DirectSaleItemCreateOrConnectWithoutDirectSaleInput | DirectSaleItemCreateOrConnectWithoutDirectSaleInput[]
+    upsert?: DirectSaleItemUpsertWithWhereUniqueWithoutDirectSaleInput | DirectSaleItemUpsertWithWhereUniqueWithoutDirectSaleInput[]
+    createMany?: DirectSaleItemCreateManyDirectSaleInputEnvelope
+    set?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    disconnect?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    delete?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    connect?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    update?: DirectSaleItemUpdateWithWhereUniqueWithoutDirectSaleInput | DirectSaleItemUpdateWithWhereUniqueWithoutDirectSaleInput[]
+    updateMany?: DirectSaleItemUpdateManyWithWhereWithoutDirectSaleInput | DirectSaleItemUpdateManyWithWhereWithoutDirectSaleInput[]
+    deleteMany?: DirectSaleItemScalarWhereInput | DirectSaleItemScalarWhereInput[]
+  }
+
+  export type DirectSaleItemUncheckedUpdateManyWithoutDirectSaleNestedInput = {
+    create?: XOR<DirectSaleItemCreateWithoutDirectSaleInput, DirectSaleItemUncheckedCreateWithoutDirectSaleInput> | DirectSaleItemCreateWithoutDirectSaleInput[] | DirectSaleItemUncheckedCreateWithoutDirectSaleInput[]
+    connectOrCreate?: DirectSaleItemCreateOrConnectWithoutDirectSaleInput | DirectSaleItemCreateOrConnectWithoutDirectSaleInput[]
+    upsert?: DirectSaleItemUpsertWithWhereUniqueWithoutDirectSaleInput | DirectSaleItemUpsertWithWhereUniqueWithoutDirectSaleInput[]
+    createMany?: DirectSaleItemCreateManyDirectSaleInputEnvelope
+    set?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    disconnect?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    delete?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    connect?: DirectSaleItemWhereUniqueInput | DirectSaleItemWhereUniqueInput[]
+    update?: DirectSaleItemUpdateWithWhereUniqueWithoutDirectSaleInput | DirectSaleItemUpdateWithWhereUniqueWithoutDirectSaleInput[]
+    updateMany?: DirectSaleItemUpdateManyWithWhereWithoutDirectSaleInput | DirectSaleItemUpdateManyWithWhereWithoutDirectSaleInput[]
+    deleteMany?: DirectSaleItemScalarWhereInput | DirectSaleItemScalarWhereInput[]
+  }
+
+  export type DirectSaleCreateNestedOneWithoutSaleItemsInput = {
+    create?: XOR<DirectSaleCreateWithoutSaleItemsInput, DirectSaleUncheckedCreateWithoutSaleItemsInput>
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutSaleItemsInput
+    connect?: DirectSaleWhereUniqueInput
+  }
+
+  export type DirectSaleUpdateOneRequiredWithoutSaleItemsNestedInput = {
+    create?: XOR<DirectSaleCreateWithoutSaleItemsInput, DirectSaleUncheckedCreateWithoutSaleItemsInput>
+    connectOrCreate?: DirectSaleCreateOrConnectWithoutSaleItemsInput
+    upsert?: DirectSaleUpsertWithoutSaleItemsInput
+    connect?: DirectSaleWhereUniqueInput
+    update?: XOR<XOR<DirectSaleUpdateToOneWithWhereWithoutSaleItemsInput, DirectSaleUpdateWithoutSaleItemsInput>, DirectSaleUncheckedUpdateWithoutSaleItemsInput>
+  }
+
+  export type ClientCreateNestedOneWithoutSalesEntryInput = {
+    create?: XOR<ClientCreateWithoutSalesEntryInput, ClientUncheckedCreateWithoutSalesEntryInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutSalesEntryInput
+    connect?: ClientWhereUniqueInput
+  }
+
+  export type DeliveryDetailCreateNestedOneWithoutSalesEntryInput = {
+    create?: XOR<DeliveryDetailCreateWithoutSalesEntryInput, DeliveryDetailUncheckedCreateWithoutSalesEntryInput>
+    connectOrCreate?: DeliveryDetailCreateOrConnectWithoutSalesEntryInput
+    connect?: DeliveryDetailWhereUniqueInput
+  }
+
+  export type SalesEntryItemCreateNestedManyWithoutSalesEntryInput = {
+    create?: XOR<SalesEntryItemCreateWithoutSalesEntryInput, SalesEntryItemUncheckedCreateWithoutSalesEntryInput> | SalesEntryItemCreateWithoutSalesEntryInput[] | SalesEntryItemUncheckedCreateWithoutSalesEntryInput[]
+    connectOrCreate?: SalesEntryItemCreateOrConnectWithoutSalesEntryInput | SalesEntryItemCreateOrConnectWithoutSalesEntryInput[]
+    createMany?: SalesEntryItemCreateManySalesEntryInputEnvelope
+    connect?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+  }
+
+  export type SalesEntryItemUncheckedCreateNestedManyWithoutSalesEntryInput = {
+    create?: XOR<SalesEntryItemCreateWithoutSalesEntryInput, SalesEntryItemUncheckedCreateWithoutSalesEntryInput> | SalesEntryItemCreateWithoutSalesEntryInput[] | SalesEntryItemUncheckedCreateWithoutSalesEntryInput[]
+    connectOrCreate?: SalesEntryItemCreateOrConnectWithoutSalesEntryInput | SalesEntryItemCreateOrConnectWithoutSalesEntryInput[]
+    createMany?: SalesEntryItemCreateManySalesEntryInputEnvelope
+    connect?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+  }
+
+  export type ClientUpdateOneRequiredWithoutSalesEntryNestedInput = {
+    create?: XOR<ClientCreateWithoutSalesEntryInput, ClientUncheckedCreateWithoutSalesEntryInput>
+    connectOrCreate?: ClientCreateOrConnectWithoutSalesEntryInput
+    upsert?: ClientUpsertWithoutSalesEntryInput
+    connect?: ClientWhereUniqueInput
+    update?: XOR<XOR<ClientUpdateToOneWithWhereWithoutSalesEntryInput, ClientUpdateWithoutSalesEntryInput>, ClientUncheckedUpdateWithoutSalesEntryInput>
+  }
+
+  export type DeliveryDetailUpdateOneRequiredWithoutSalesEntryNestedInput = {
+    create?: XOR<DeliveryDetailCreateWithoutSalesEntryInput, DeliveryDetailUncheckedCreateWithoutSalesEntryInput>
+    connectOrCreate?: DeliveryDetailCreateOrConnectWithoutSalesEntryInput
+    upsert?: DeliveryDetailUpsertWithoutSalesEntryInput
+    connect?: DeliveryDetailWhereUniqueInput
+    update?: XOR<XOR<DeliveryDetailUpdateToOneWithWhereWithoutSalesEntryInput, DeliveryDetailUpdateWithoutSalesEntryInput>, DeliveryDetailUncheckedUpdateWithoutSalesEntryInput>
+  }
+
+  export type SalesEntryItemUpdateManyWithoutSalesEntryNestedInput = {
+    create?: XOR<SalesEntryItemCreateWithoutSalesEntryInput, SalesEntryItemUncheckedCreateWithoutSalesEntryInput> | SalesEntryItemCreateWithoutSalesEntryInput[] | SalesEntryItemUncheckedCreateWithoutSalesEntryInput[]
+    connectOrCreate?: SalesEntryItemCreateOrConnectWithoutSalesEntryInput | SalesEntryItemCreateOrConnectWithoutSalesEntryInput[]
+    upsert?: SalesEntryItemUpsertWithWhereUniqueWithoutSalesEntryInput | SalesEntryItemUpsertWithWhereUniqueWithoutSalesEntryInput[]
+    createMany?: SalesEntryItemCreateManySalesEntryInputEnvelope
+    set?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    disconnect?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    delete?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    connect?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    update?: SalesEntryItemUpdateWithWhereUniqueWithoutSalesEntryInput | SalesEntryItemUpdateWithWhereUniqueWithoutSalesEntryInput[]
+    updateMany?: SalesEntryItemUpdateManyWithWhereWithoutSalesEntryInput | SalesEntryItemUpdateManyWithWhereWithoutSalesEntryInput[]
+    deleteMany?: SalesEntryItemScalarWhereInput | SalesEntryItemScalarWhereInput[]
+  }
+
+  export type SalesEntryItemUncheckedUpdateManyWithoutSalesEntryNestedInput = {
+    create?: XOR<SalesEntryItemCreateWithoutSalesEntryInput, SalesEntryItemUncheckedCreateWithoutSalesEntryInput> | SalesEntryItemCreateWithoutSalesEntryInput[] | SalesEntryItemUncheckedCreateWithoutSalesEntryInput[]
+    connectOrCreate?: SalesEntryItemCreateOrConnectWithoutSalesEntryInput | SalesEntryItemCreateOrConnectWithoutSalesEntryInput[]
+    upsert?: SalesEntryItemUpsertWithWhereUniqueWithoutSalesEntryInput | SalesEntryItemUpsertWithWhereUniqueWithoutSalesEntryInput[]
+    createMany?: SalesEntryItemCreateManySalesEntryInputEnvelope
+    set?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    disconnect?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    delete?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    connect?: SalesEntryItemWhereUniqueInput | SalesEntryItemWhereUniqueInput[]
+    update?: SalesEntryItemUpdateWithWhereUniqueWithoutSalesEntryInput | SalesEntryItemUpdateWithWhereUniqueWithoutSalesEntryInput[]
+    updateMany?: SalesEntryItemUpdateManyWithWhereWithoutSalesEntryInput | SalesEntryItemUpdateManyWithWhereWithoutSalesEntryInput[]
+    deleteMany?: SalesEntryItemScalarWhereInput | SalesEntryItemScalarWhereInput[]
+  }
+
+  export type SalesEntryCreateNestedOneWithoutSalesEntryItemsInput = {
+    create?: XOR<SalesEntryCreateWithoutSalesEntryItemsInput, SalesEntryUncheckedCreateWithoutSalesEntryItemsInput>
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutSalesEntryItemsInput
+    connect?: SalesEntryWhereUniqueInput
+  }
+
+  export type SalesEntryUpdateOneRequiredWithoutSalesEntryItemsNestedInput = {
+    create?: XOR<SalesEntryCreateWithoutSalesEntryItemsInput, SalesEntryUncheckedCreateWithoutSalesEntryItemsInput>
+    connectOrCreate?: SalesEntryCreateOrConnectWithoutSalesEntryItemsInput
+    upsert?: SalesEntryUpsertWithoutSalesEntryItemsInput
+    connect?: SalesEntryWhereUniqueInput
+    update?: XOR<XOR<SalesEntryUpdateToOneWithWhereWithoutSalesEntryItemsInput, SalesEntryUpdateWithoutSalesEntryItemsInput>, SalesEntryUncheckedUpdateWithoutSalesEntryItemsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -34254,6 +46264,33 @@ export namespace Prisma {
     _sum?: NestedFloatFilter<$PrismaModel>
     _min?: NestedFloatFilter<$PrismaModel>
     _max?: NestedFloatFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedFloatNullableFilter<$PrismaModel>
+    _min?: NestedFloatNullableFilter<$PrismaModel>
+    _max?: NestedFloatNullableFilter<$PrismaModel>
   }
 
   export type RoleCreateWithoutUsersInput = {
@@ -34742,6 +46779,1536 @@ export namespace Prisma {
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
+  export type SalesQuotationCreateWithoutClientInput = {
+    id?: string
+    quotationDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutSalesQuotationInput
+    quotationItems?: QuotationItemCreateNestedManyWithoutQuotationInput
+  }
+
+  export type SalesQuotationUncheckedCreateWithoutClientInput = {
+    id?: string
+    quotationDate?: Date | string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    quotationItems?: QuotationItemUncheckedCreateNestedManyWithoutQuotationInput
+  }
+
+  export type SalesQuotationCreateOrConnectWithoutClientInput = {
+    where: SalesQuotationWhereUniqueInput
+    create: XOR<SalesQuotationCreateWithoutClientInput, SalesQuotationUncheckedCreateWithoutClientInput>
+  }
+
+  export type SalesQuotationCreateManyClientInputEnvelope = {
+    data: SalesQuotationCreateManyClientInput | SalesQuotationCreateManyClientInput[]
+  }
+
+  export type DirectSaleCreateWithoutClientInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutDirectSaleInput
+    saleItems?: DirectSaleItemCreateNestedManyWithoutDirectSaleInput
+  }
+
+  export type DirectSaleUncheckedCreateWithoutClientInput = {
+    id?: string
+    saleDate?: Date | string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    saleItems?: DirectSaleItemUncheckedCreateNestedManyWithoutDirectSaleInput
+  }
+
+  export type DirectSaleCreateOrConnectWithoutClientInput = {
+    where: DirectSaleWhereUniqueInput
+    create: XOR<DirectSaleCreateWithoutClientInput, DirectSaleUncheckedCreateWithoutClientInput>
+  }
+
+  export type DirectSaleCreateManyClientInputEnvelope = {
+    data: DirectSaleCreateManyClientInput | DirectSaleCreateManyClientInput[]
+  }
+
+  export type SalesEntryCreateWithoutClientInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutSalesEntryInput
+    salesEntryItems?: SalesEntryItemCreateNestedManyWithoutSalesEntryInput
+  }
+
+  export type SalesEntryUncheckedCreateWithoutClientInput = {
+    id?: string
+    saleDate?: Date | string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesEntryItems?: SalesEntryItemUncheckedCreateNestedManyWithoutSalesEntryInput
+  }
+
+  export type SalesEntryCreateOrConnectWithoutClientInput = {
+    where: SalesEntryWhereUniqueInput
+    create: XOR<SalesEntryCreateWithoutClientInput, SalesEntryUncheckedCreateWithoutClientInput>
+  }
+
+  export type SalesEntryCreateManyClientInputEnvelope = {
+    data: SalesEntryCreateManyClientInput | SalesEntryCreateManyClientInput[]
+  }
+
+  export type SalesQuotationUpsertWithWhereUniqueWithoutClientInput = {
+    where: SalesQuotationWhereUniqueInput
+    update: XOR<SalesQuotationUpdateWithoutClientInput, SalesQuotationUncheckedUpdateWithoutClientInput>
+    create: XOR<SalesQuotationCreateWithoutClientInput, SalesQuotationUncheckedCreateWithoutClientInput>
+  }
+
+  export type SalesQuotationUpdateWithWhereUniqueWithoutClientInput = {
+    where: SalesQuotationWhereUniqueInput
+    data: XOR<SalesQuotationUpdateWithoutClientInput, SalesQuotationUncheckedUpdateWithoutClientInput>
+  }
+
+  export type SalesQuotationUpdateManyWithWhereWithoutClientInput = {
+    where: SalesQuotationScalarWhereInput
+    data: XOR<SalesQuotationUpdateManyMutationInput, SalesQuotationUncheckedUpdateManyWithoutClientInput>
+  }
+
+  export type SalesQuotationScalarWhereInput = {
+    AND?: SalesQuotationScalarWhereInput | SalesQuotationScalarWhereInput[]
+    OR?: SalesQuotationScalarWhereInput[]
+    NOT?: SalesQuotationScalarWhereInput | SalesQuotationScalarWhereInput[]
+    id?: StringFilter<"SalesQuotation"> | string
+    quotationDate?: DateTimeFilter<"SalesQuotation"> | Date | string
+    clientId?: StringFilter<"SalesQuotation"> | string
+    deliveryDetailsId?: StringFilter<"SalesQuotation"> | string
+    subtotal?: FloatFilter<"SalesQuotation"> | number
+    shipping?: FloatFilter<"SalesQuotation"> | number
+    grandTotal?: FloatFilter<"SalesQuotation"> | number
+    remarks?: StringNullableFilter<"SalesQuotation"> | string | null
+    status?: StringFilter<"SalesQuotation"> | string
+    createdAt?: DateTimeFilter<"SalesQuotation"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesQuotation"> | Date | string
+  }
+
+  export type DirectSaleUpsertWithWhereUniqueWithoutClientInput = {
+    where: DirectSaleWhereUniqueInput
+    update: XOR<DirectSaleUpdateWithoutClientInput, DirectSaleUncheckedUpdateWithoutClientInput>
+    create: XOR<DirectSaleCreateWithoutClientInput, DirectSaleUncheckedCreateWithoutClientInput>
+  }
+
+  export type DirectSaleUpdateWithWhereUniqueWithoutClientInput = {
+    where: DirectSaleWhereUniqueInput
+    data: XOR<DirectSaleUpdateWithoutClientInput, DirectSaleUncheckedUpdateWithoutClientInput>
+  }
+
+  export type DirectSaleUpdateManyWithWhereWithoutClientInput = {
+    where: DirectSaleScalarWhereInput
+    data: XOR<DirectSaleUpdateManyMutationInput, DirectSaleUncheckedUpdateManyWithoutClientInput>
+  }
+
+  export type DirectSaleScalarWhereInput = {
+    AND?: DirectSaleScalarWhereInput | DirectSaleScalarWhereInput[]
+    OR?: DirectSaleScalarWhereInput[]
+    NOT?: DirectSaleScalarWhereInput | DirectSaleScalarWhereInput[]
+    id?: StringFilter<"DirectSale"> | string
+    saleDate?: DateTimeFilter<"DirectSale"> | Date | string
+    clientId?: StringFilter<"DirectSale"> | string
+    deliveryDetailsId?: StringFilter<"DirectSale"> | string
+    subtotal?: FloatFilter<"DirectSale"> | number
+    shipping?: FloatFilter<"DirectSale"> | number
+    grandTotal?: FloatFilter<"DirectSale"> | number
+    remarks?: StringNullableFilter<"DirectSale"> | string | null
+    status?: StringFilter<"DirectSale"> | string
+    createdAt?: DateTimeFilter<"DirectSale"> | Date | string
+    updatedAt?: DateTimeFilter<"DirectSale"> | Date | string
+  }
+
+  export type SalesEntryUpsertWithWhereUniqueWithoutClientInput = {
+    where: SalesEntryWhereUniqueInput
+    update: XOR<SalesEntryUpdateWithoutClientInput, SalesEntryUncheckedUpdateWithoutClientInput>
+    create: XOR<SalesEntryCreateWithoutClientInput, SalesEntryUncheckedCreateWithoutClientInput>
+  }
+
+  export type SalesEntryUpdateWithWhereUniqueWithoutClientInput = {
+    where: SalesEntryWhereUniqueInput
+    data: XOR<SalesEntryUpdateWithoutClientInput, SalesEntryUncheckedUpdateWithoutClientInput>
+  }
+
+  export type SalesEntryUpdateManyWithWhereWithoutClientInput = {
+    where: SalesEntryScalarWhereInput
+    data: XOR<SalesEntryUpdateManyMutationInput, SalesEntryUncheckedUpdateManyWithoutClientInput>
+  }
+
+  export type SalesEntryScalarWhereInput = {
+    AND?: SalesEntryScalarWhereInput | SalesEntryScalarWhereInput[]
+    OR?: SalesEntryScalarWhereInput[]
+    NOT?: SalesEntryScalarWhereInput | SalesEntryScalarWhereInput[]
+    id?: StringFilter<"SalesEntry"> | string
+    saleDate?: DateTimeFilter<"SalesEntry"> | Date | string
+    clientId?: StringFilter<"SalesEntry"> | string
+    deliveryDetailsId?: StringFilter<"SalesEntry"> | string
+    subtotal?: FloatFilter<"SalesEntry"> | number
+    shipping?: FloatFilter<"SalesEntry"> | number
+    grandTotal?: FloatFilter<"SalesEntry"> | number
+    remarks?: StringNullableFilter<"SalesEntry"> | string | null
+    status?: StringFilter<"SalesEntry"> | string
+    createdAt?: DateTimeFilter<"SalesEntry"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesEntry"> | Date | string
+  }
+
+  export type SalesQuotationCreateWithoutQuotationItemsInput = {
+    id?: string
+    quotationDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutSalesQuotationsInput
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutSalesQuotationInput
+  }
+
+  export type SalesQuotationUncheckedCreateWithoutQuotationItemsInput = {
+    id?: string
+    quotationDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesQuotationCreateOrConnectWithoutQuotationItemsInput = {
+    where: SalesQuotationWhereUniqueInput
+    create: XOR<SalesQuotationCreateWithoutQuotationItemsInput, SalesQuotationUncheckedCreateWithoutQuotationItemsInput>
+  }
+
+  export type SalesQuotationUpsertWithoutQuotationItemsInput = {
+    update: XOR<SalesQuotationUpdateWithoutQuotationItemsInput, SalesQuotationUncheckedUpdateWithoutQuotationItemsInput>
+    create: XOR<SalesQuotationCreateWithoutQuotationItemsInput, SalesQuotationUncheckedCreateWithoutQuotationItemsInput>
+    where?: SalesQuotationWhereInput
+  }
+
+  export type SalesQuotationUpdateToOneWithWhereWithoutQuotationItemsInput = {
+    where?: SalesQuotationWhereInput
+    data: XOR<SalesQuotationUpdateWithoutQuotationItemsInput, SalesQuotationUncheckedUpdateWithoutQuotationItemsInput>
+  }
+
+  export type SalesQuotationUpdateWithoutQuotationItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutSalesQuotationsNestedInput
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutSalesQuotationNestedInput
+  }
+
+  export type SalesQuotationUncheckedUpdateWithoutQuotationItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClientCreateWithoutSalesQuotationsInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    directSales?: DirectSaleCreateNestedManyWithoutClientInput
+    salesEntry?: SalesEntryCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientUncheckedCreateWithoutSalesQuotationsInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    directSales?: DirectSaleUncheckedCreateNestedManyWithoutClientInput
+    salesEntry?: SalesEntryUncheckedCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientCreateOrConnectWithoutSalesQuotationsInput = {
+    where: ClientWhereUniqueInput
+    create: XOR<ClientCreateWithoutSalesQuotationsInput, ClientUncheckedCreateWithoutSalesQuotationsInput>
+  }
+
+  export type DeliveryDetailCreateWithoutSalesQuotationInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    directSale?: DirectSaleCreateNestedOneWithoutDeliveryDetailsInput
+    salesEntry?: SalesEntryCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailUncheckedCreateWithoutSalesQuotationInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    directSale?: DirectSaleUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+    salesEntry?: SalesEntryUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailCreateOrConnectWithoutSalesQuotationInput = {
+    where: DeliveryDetailWhereUniqueInput
+    create: XOR<DeliveryDetailCreateWithoutSalesQuotationInput, DeliveryDetailUncheckedCreateWithoutSalesQuotationInput>
+  }
+
+  export type QuotationItemCreateWithoutQuotationInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuotationItemUncheckedCreateWithoutQuotationInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuotationItemCreateOrConnectWithoutQuotationInput = {
+    where: QuotationItemWhereUniqueInput
+    create: XOR<QuotationItemCreateWithoutQuotationInput, QuotationItemUncheckedCreateWithoutQuotationInput>
+  }
+
+  export type QuotationItemCreateManyQuotationInputEnvelope = {
+    data: QuotationItemCreateManyQuotationInput | QuotationItemCreateManyQuotationInput[]
+  }
+
+  export type ClientUpsertWithoutSalesQuotationsInput = {
+    update: XOR<ClientUpdateWithoutSalesQuotationsInput, ClientUncheckedUpdateWithoutSalesQuotationsInput>
+    create: XOR<ClientCreateWithoutSalesQuotationsInput, ClientUncheckedCreateWithoutSalesQuotationsInput>
+    where?: ClientWhereInput
+  }
+
+  export type ClientUpdateToOneWithWhereWithoutSalesQuotationsInput = {
+    where?: ClientWhereInput
+    data: XOR<ClientUpdateWithoutSalesQuotationsInput, ClientUncheckedUpdateWithoutSalesQuotationsInput>
+  }
+
+  export type ClientUpdateWithoutSalesQuotationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    directSales?: DirectSaleUpdateManyWithoutClientNestedInput
+    salesEntry?: SalesEntryUpdateManyWithoutClientNestedInput
+  }
+
+  export type ClientUncheckedUpdateWithoutSalesQuotationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    directSales?: DirectSaleUncheckedUpdateManyWithoutClientNestedInput
+    salesEntry?: SalesEntryUncheckedUpdateManyWithoutClientNestedInput
+  }
+
+  export type DeliveryDetailUpsertWithoutSalesQuotationInput = {
+    update: XOR<DeliveryDetailUpdateWithoutSalesQuotationInput, DeliveryDetailUncheckedUpdateWithoutSalesQuotationInput>
+    create: XOR<DeliveryDetailCreateWithoutSalesQuotationInput, DeliveryDetailUncheckedCreateWithoutSalesQuotationInput>
+    where?: DeliveryDetailWhereInput
+  }
+
+  export type DeliveryDetailUpdateToOneWithWhereWithoutSalesQuotationInput = {
+    where?: DeliveryDetailWhereInput
+    data: XOR<DeliveryDetailUpdateWithoutSalesQuotationInput, DeliveryDetailUncheckedUpdateWithoutSalesQuotationInput>
+  }
+
+  export type DeliveryDetailUpdateWithoutSalesQuotationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    directSale?: DirectSaleUpdateOneWithoutDeliveryDetailsNestedInput
+    salesEntry?: SalesEntryUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type DeliveryDetailUncheckedUpdateWithoutSalesQuotationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    directSale?: DirectSaleUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+    salesEntry?: SalesEntryUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type QuotationItemUpsertWithWhereUniqueWithoutQuotationInput = {
+    where: QuotationItemWhereUniqueInput
+    update: XOR<QuotationItemUpdateWithoutQuotationInput, QuotationItemUncheckedUpdateWithoutQuotationInput>
+    create: XOR<QuotationItemCreateWithoutQuotationInput, QuotationItemUncheckedCreateWithoutQuotationInput>
+  }
+
+  export type QuotationItemUpdateWithWhereUniqueWithoutQuotationInput = {
+    where: QuotationItemWhereUniqueInput
+    data: XOR<QuotationItemUpdateWithoutQuotationInput, QuotationItemUncheckedUpdateWithoutQuotationInput>
+  }
+
+  export type QuotationItemUpdateManyWithWhereWithoutQuotationInput = {
+    where: QuotationItemScalarWhereInput
+    data: XOR<QuotationItemUpdateManyMutationInput, QuotationItemUncheckedUpdateManyWithoutQuotationInput>
+  }
+
+  export type QuotationItemScalarWhereInput = {
+    AND?: QuotationItemScalarWhereInput | QuotationItemScalarWhereInput[]
+    OR?: QuotationItemScalarWhereInput[]
+    NOT?: QuotationItemScalarWhereInput | QuotationItemScalarWhereInput[]
+    id?: StringFilter<"QuotationItem"> | string
+    quotationId?: StringFilter<"QuotationItem"> | string
+    itemId?: StringNullableFilter<"QuotationItem"> | string | null
+    itemName?: StringFilter<"QuotationItem"> | string
+    quantity?: IntFilter<"QuotationItem"> | number
+    unitPrice?: FloatFilter<"QuotationItem"> | number
+    discount?: FloatNullableFilter<"QuotationItem"> | number | null
+    tax?: FloatNullableFilter<"QuotationItem"> | number | null
+    total?: FloatFilter<"QuotationItem"> | number
+    createdAt?: DateTimeFilter<"QuotationItem"> | Date | string
+    updatedAt?: DateTimeFilter<"QuotationItem"> | Date | string
+  }
+
+  export type SalesQuotationCreateWithoutDeliveryDetailsInput = {
+    id?: string
+    quotationDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutSalesQuotationsInput
+    quotationItems?: QuotationItemCreateNestedManyWithoutQuotationInput
+  }
+
+  export type SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput = {
+    id?: string
+    quotationDate?: Date | string
+    clientId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    quotationItems?: QuotationItemUncheckedCreateNestedManyWithoutQuotationInput
+  }
+
+  export type SalesQuotationCreateOrConnectWithoutDeliveryDetailsInput = {
+    where: SalesQuotationWhereUniqueInput
+    create: XOR<SalesQuotationCreateWithoutDeliveryDetailsInput, SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput>
+  }
+
+  export type DirectSaleCreateWithoutDeliveryDetailsInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutDirectSalesInput
+    saleItems?: DirectSaleItemCreateNestedManyWithoutDirectSaleInput
+  }
+
+  export type DirectSaleUncheckedCreateWithoutDeliveryDetailsInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    saleItems?: DirectSaleItemUncheckedCreateNestedManyWithoutDirectSaleInput
+  }
+
+  export type DirectSaleCreateOrConnectWithoutDeliveryDetailsInput = {
+    where: DirectSaleWhereUniqueInput
+    create: XOR<DirectSaleCreateWithoutDeliveryDetailsInput, DirectSaleUncheckedCreateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesEntryCreateWithoutDeliveryDetailsInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutSalesEntryInput
+    salesEntryItems?: SalesEntryItemCreateNestedManyWithoutSalesEntryInput
+  }
+
+  export type SalesEntryUncheckedCreateWithoutDeliveryDetailsInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesEntryItems?: SalesEntryItemUncheckedCreateNestedManyWithoutSalesEntryInput
+  }
+
+  export type SalesEntryCreateOrConnectWithoutDeliveryDetailsInput = {
+    where: SalesEntryWhereUniqueInput
+    create: XOR<SalesEntryCreateWithoutDeliveryDetailsInput, SalesEntryUncheckedCreateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesQuotationUpsertWithoutDeliveryDetailsInput = {
+    update: XOR<SalesQuotationUpdateWithoutDeliveryDetailsInput, SalesQuotationUncheckedUpdateWithoutDeliveryDetailsInput>
+    create: XOR<SalesQuotationCreateWithoutDeliveryDetailsInput, SalesQuotationUncheckedCreateWithoutDeliveryDetailsInput>
+    where?: SalesQuotationWhereInput
+  }
+
+  export type SalesQuotationUpdateToOneWithWhereWithoutDeliveryDetailsInput = {
+    where?: SalesQuotationWhereInput
+    data: XOR<SalesQuotationUpdateWithoutDeliveryDetailsInput, SalesQuotationUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesQuotationUpdateWithoutDeliveryDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutSalesQuotationsNestedInput
+    quotationItems?: QuotationItemUpdateManyWithoutQuotationNestedInput
+  }
+
+  export type SalesQuotationUncheckedUpdateWithoutDeliveryDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quotationItems?: QuotationItemUncheckedUpdateManyWithoutQuotationNestedInput
+  }
+
+  export type DirectSaleUpsertWithoutDeliveryDetailsInput = {
+    update: XOR<DirectSaleUpdateWithoutDeliveryDetailsInput, DirectSaleUncheckedUpdateWithoutDeliveryDetailsInput>
+    create: XOR<DirectSaleCreateWithoutDeliveryDetailsInput, DirectSaleUncheckedCreateWithoutDeliveryDetailsInput>
+    where?: DirectSaleWhereInput
+  }
+
+  export type DirectSaleUpdateToOneWithWhereWithoutDeliveryDetailsInput = {
+    where?: DirectSaleWhereInput
+    data: XOR<DirectSaleUpdateWithoutDeliveryDetailsInput, DirectSaleUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type DirectSaleUpdateWithoutDeliveryDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutDirectSalesNestedInput
+    saleItems?: DirectSaleItemUpdateManyWithoutDirectSaleNestedInput
+  }
+
+  export type DirectSaleUncheckedUpdateWithoutDeliveryDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    saleItems?: DirectSaleItemUncheckedUpdateManyWithoutDirectSaleNestedInput
+  }
+
+  export type SalesEntryUpsertWithoutDeliveryDetailsInput = {
+    update: XOR<SalesEntryUpdateWithoutDeliveryDetailsInput, SalesEntryUncheckedUpdateWithoutDeliveryDetailsInput>
+    create: XOR<SalesEntryCreateWithoutDeliveryDetailsInput, SalesEntryUncheckedCreateWithoutDeliveryDetailsInput>
+    where?: SalesEntryWhereInput
+  }
+
+  export type SalesEntryUpdateToOneWithWhereWithoutDeliveryDetailsInput = {
+    where?: SalesEntryWhereInput
+    data: XOR<SalesEntryUpdateWithoutDeliveryDetailsInput, SalesEntryUncheckedUpdateWithoutDeliveryDetailsInput>
+  }
+
+  export type SalesEntryUpdateWithoutDeliveryDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutSalesEntryNestedInput
+    salesEntryItems?: SalesEntryItemUpdateManyWithoutSalesEntryNestedInput
+  }
+
+  export type SalesEntryUncheckedUpdateWithoutDeliveryDetailsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesEntryItems?: SalesEntryItemUncheckedUpdateManyWithoutSalesEntryNestedInput
+  }
+
+  export type ClientCreateWithoutDirectSalesInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesQuotations?: SalesQuotationCreateNestedManyWithoutClientInput
+    salesEntry?: SalesEntryCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientUncheckedCreateWithoutDirectSalesInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesQuotations?: SalesQuotationUncheckedCreateNestedManyWithoutClientInput
+    salesEntry?: SalesEntryUncheckedCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientCreateOrConnectWithoutDirectSalesInput = {
+    where: ClientWhereUniqueInput
+    create: XOR<ClientCreateWithoutDirectSalesInput, ClientUncheckedCreateWithoutDirectSalesInput>
+  }
+
+  export type DeliveryDetailCreateWithoutDirectSaleInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    salesQuotation?: SalesQuotationCreateNestedOneWithoutDeliveryDetailsInput
+    salesEntry?: SalesEntryCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailUncheckedCreateWithoutDirectSaleInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    salesQuotation?: SalesQuotationUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+    salesEntry?: SalesEntryUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailCreateOrConnectWithoutDirectSaleInput = {
+    where: DeliveryDetailWhereUniqueInput
+    create: XOR<DeliveryDetailCreateWithoutDirectSaleInput, DeliveryDetailUncheckedCreateWithoutDirectSaleInput>
+  }
+
+  export type DirectSaleItemCreateWithoutDirectSaleInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleItemUncheckedCreateWithoutDirectSaleInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleItemCreateOrConnectWithoutDirectSaleInput = {
+    where: DirectSaleItemWhereUniqueInput
+    create: XOR<DirectSaleItemCreateWithoutDirectSaleInput, DirectSaleItemUncheckedCreateWithoutDirectSaleInput>
+  }
+
+  export type DirectSaleItemCreateManyDirectSaleInputEnvelope = {
+    data: DirectSaleItemCreateManyDirectSaleInput | DirectSaleItemCreateManyDirectSaleInput[]
+  }
+
+  export type ClientUpsertWithoutDirectSalesInput = {
+    update: XOR<ClientUpdateWithoutDirectSalesInput, ClientUncheckedUpdateWithoutDirectSalesInput>
+    create: XOR<ClientCreateWithoutDirectSalesInput, ClientUncheckedCreateWithoutDirectSalesInput>
+    where?: ClientWhereInput
+  }
+
+  export type ClientUpdateToOneWithWhereWithoutDirectSalesInput = {
+    where?: ClientWhereInput
+    data: XOR<ClientUpdateWithoutDirectSalesInput, ClientUncheckedUpdateWithoutDirectSalesInput>
+  }
+
+  export type ClientUpdateWithoutDirectSalesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesQuotations?: SalesQuotationUpdateManyWithoutClientNestedInput
+    salesEntry?: SalesEntryUpdateManyWithoutClientNestedInput
+  }
+
+  export type ClientUncheckedUpdateWithoutDirectSalesInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesQuotations?: SalesQuotationUncheckedUpdateManyWithoutClientNestedInput
+    salesEntry?: SalesEntryUncheckedUpdateManyWithoutClientNestedInput
+  }
+
+  export type DeliveryDetailUpsertWithoutDirectSaleInput = {
+    update: XOR<DeliveryDetailUpdateWithoutDirectSaleInput, DeliveryDetailUncheckedUpdateWithoutDirectSaleInput>
+    create: XOR<DeliveryDetailCreateWithoutDirectSaleInput, DeliveryDetailUncheckedCreateWithoutDirectSaleInput>
+    where?: DeliveryDetailWhereInput
+  }
+
+  export type DeliveryDetailUpdateToOneWithWhereWithoutDirectSaleInput = {
+    where?: DeliveryDetailWhereInput
+    data: XOR<DeliveryDetailUpdateWithoutDirectSaleInput, DeliveryDetailUncheckedUpdateWithoutDirectSaleInput>
+  }
+
+  export type DeliveryDetailUpdateWithoutDirectSaleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    salesQuotation?: SalesQuotationUpdateOneWithoutDeliveryDetailsNestedInput
+    salesEntry?: SalesEntryUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type DeliveryDetailUncheckedUpdateWithoutDirectSaleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    salesQuotation?: SalesQuotationUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+    salesEntry?: SalesEntryUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type DirectSaleItemUpsertWithWhereUniqueWithoutDirectSaleInput = {
+    where: DirectSaleItemWhereUniqueInput
+    update: XOR<DirectSaleItemUpdateWithoutDirectSaleInput, DirectSaleItemUncheckedUpdateWithoutDirectSaleInput>
+    create: XOR<DirectSaleItemCreateWithoutDirectSaleInput, DirectSaleItemUncheckedCreateWithoutDirectSaleInput>
+  }
+
+  export type DirectSaleItemUpdateWithWhereUniqueWithoutDirectSaleInput = {
+    where: DirectSaleItemWhereUniqueInput
+    data: XOR<DirectSaleItemUpdateWithoutDirectSaleInput, DirectSaleItemUncheckedUpdateWithoutDirectSaleInput>
+  }
+
+  export type DirectSaleItemUpdateManyWithWhereWithoutDirectSaleInput = {
+    where: DirectSaleItemScalarWhereInput
+    data: XOR<DirectSaleItemUpdateManyMutationInput, DirectSaleItemUncheckedUpdateManyWithoutDirectSaleInput>
+  }
+
+  export type DirectSaleItemScalarWhereInput = {
+    AND?: DirectSaleItemScalarWhereInput | DirectSaleItemScalarWhereInput[]
+    OR?: DirectSaleItemScalarWhereInput[]
+    NOT?: DirectSaleItemScalarWhereInput | DirectSaleItemScalarWhereInput[]
+    id?: StringFilter<"DirectSaleItem"> | string
+    directSaleId?: StringFilter<"DirectSaleItem"> | string
+    itemId?: StringNullableFilter<"DirectSaleItem"> | string | null
+    itemName?: StringFilter<"DirectSaleItem"> | string
+    quantity?: IntFilter<"DirectSaleItem"> | number
+    unitPrice?: FloatFilter<"DirectSaleItem"> | number
+    discount?: FloatNullableFilter<"DirectSaleItem"> | number | null
+    tax?: FloatNullableFilter<"DirectSaleItem"> | number | null
+    total?: FloatFilter<"DirectSaleItem"> | number
+    createdAt?: DateTimeFilter<"DirectSaleItem"> | Date | string
+    updatedAt?: DateTimeFilter<"DirectSaleItem"> | Date | string
+  }
+
+  export type DirectSaleCreateWithoutSaleItemsInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutDirectSalesInput
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutDirectSaleInput
+  }
+
+  export type DirectSaleUncheckedCreateWithoutSaleItemsInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleCreateOrConnectWithoutSaleItemsInput = {
+    where: DirectSaleWhereUniqueInput
+    create: XOR<DirectSaleCreateWithoutSaleItemsInput, DirectSaleUncheckedCreateWithoutSaleItemsInput>
+  }
+
+  export type DirectSaleUpsertWithoutSaleItemsInput = {
+    update: XOR<DirectSaleUpdateWithoutSaleItemsInput, DirectSaleUncheckedUpdateWithoutSaleItemsInput>
+    create: XOR<DirectSaleCreateWithoutSaleItemsInput, DirectSaleUncheckedCreateWithoutSaleItemsInput>
+    where?: DirectSaleWhereInput
+  }
+
+  export type DirectSaleUpdateToOneWithWhereWithoutSaleItemsInput = {
+    where?: DirectSaleWhereInput
+    data: XOR<DirectSaleUpdateWithoutSaleItemsInput, DirectSaleUncheckedUpdateWithoutSaleItemsInput>
+  }
+
+  export type DirectSaleUpdateWithoutSaleItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutDirectSalesNestedInput
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutDirectSaleNestedInput
+  }
+
+  export type DirectSaleUncheckedUpdateWithoutSaleItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ClientCreateWithoutSalesEntryInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesQuotations?: SalesQuotationCreateNestedManyWithoutClientInput
+    directSales?: DirectSaleCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientUncheckedCreateWithoutSalesEntryInput = {
+    id?: string
+    customerName: string
+    customerInitials: string
+    address: string
+    kraPin: string
+    currency: string
+    isActive: boolean
+    phone1: string
+    phone2: string
+    email: string
+    bankName: string
+    accountNumber: string
+    salesPerson: string
+    discountEliginility: boolean
+    branchName: string
+    salesArea: string
+    salesType: string
+    comment: string
+    customerId: string
+    preferedPaymentMethod: string
+    sex: string
+    allowedDiscount: string
+    creditLimit: string
+    paymentTerms: string
+    refNo: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    salesQuotations?: SalesQuotationUncheckedCreateNestedManyWithoutClientInput
+    directSales?: DirectSaleUncheckedCreateNestedManyWithoutClientInput
+  }
+
+  export type ClientCreateOrConnectWithoutSalesEntryInput = {
+    where: ClientWhereUniqueInput
+    create: XOR<ClientCreateWithoutSalesEntryInput, ClientUncheckedCreateWithoutSalesEntryInput>
+  }
+
+  export type DeliveryDetailCreateWithoutSalesEntryInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    salesQuotation?: SalesQuotationCreateNestedOneWithoutDeliveryDetailsInput
+    directSale?: DirectSaleCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailUncheckedCreateWithoutSalesEntryInput = {
+    id?: string
+    address: string
+    shiftId: string
+    driverId: string
+    vehicleId: string
+    deliveryDate: Date | string
+    deliveryFrom?: string | null
+    destination?: string | null
+    customerReference?: string | null
+    comment?: string | null
+    phoneNumber?: string | null
+    accompaniedBy?: string | null
+    salesQuotation?: SalesQuotationUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+    directSale?: DirectSaleUncheckedCreateNestedOneWithoutDeliveryDetailsInput
+  }
+
+  export type DeliveryDetailCreateOrConnectWithoutSalesEntryInput = {
+    where: DeliveryDetailWhereUniqueInput
+    create: XOR<DeliveryDetailCreateWithoutSalesEntryInput, DeliveryDetailUncheckedCreateWithoutSalesEntryInput>
+  }
+
+  export type SalesEntryItemCreateWithoutSalesEntryInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryItemUncheckedCreateWithoutSalesEntryInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryItemCreateOrConnectWithoutSalesEntryInput = {
+    where: SalesEntryItemWhereUniqueInput
+    create: XOR<SalesEntryItemCreateWithoutSalesEntryInput, SalesEntryItemUncheckedCreateWithoutSalesEntryInput>
+  }
+
+  export type SalesEntryItemCreateManySalesEntryInputEnvelope = {
+    data: SalesEntryItemCreateManySalesEntryInput | SalesEntryItemCreateManySalesEntryInput[]
+  }
+
+  export type ClientUpsertWithoutSalesEntryInput = {
+    update: XOR<ClientUpdateWithoutSalesEntryInput, ClientUncheckedUpdateWithoutSalesEntryInput>
+    create: XOR<ClientCreateWithoutSalesEntryInput, ClientUncheckedCreateWithoutSalesEntryInput>
+    where?: ClientWhereInput
+  }
+
+  export type ClientUpdateToOneWithWhereWithoutSalesEntryInput = {
+    where?: ClientWhereInput
+    data: XOR<ClientUpdateWithoutSalesEntryInput, ClientUncheckedUpdateWithoutSalesEntryInput>
+  }
+
+  export type ClientUpdateWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesQuotations?: SalesQuotationUpdateManyWithoutClientNestedInput
+    directSales?: DirectSaleUpdateManyWithoutClientNestedInput
+  }
+
+  export type ClientUncheckedUpdateWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    customerName?: StringFieldUpdateOperationsInput | string
+    customerInitials?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    kraPin?: StringFieldUpdateOperationsInput | string
+    currency?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    bankName?: StringFieldUpdateOperationsInput | string
+    accountNumber?: StringFieldUpdateOperationsInput | string
+    salesPerson?: StringFieldUpdateOperationsInput | string
+    discountEliginility?: BoolFieldUpdateOperationsInput | boolean
+    branchName?: StringFieldUpdateOperationsInput | string
+    salesArea?: StringFieldUpdateOperationsInput | string
+    salesType?: StringFieldUpdateOperationsInput | string
+    comment?: StringFieldUpdateOperationsInput | string
+    customerId?: StringFieldUpdateOperationsInput | string
+    preferedPaymentMethod?: StringFieldUpdateOperationsInput | string
+    sex?: StringFieldUpdateOperationsInput | string
+    allowedDiscount?: StringFieldUpdateOperationsInput | string
+    creditLimit?: StringFieldUpdateOperationsInput | string
+    paymentTerms?: StringFieldUpdateOperationsInput | string
+    refNo?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesQuotations?: SalesQuotationUncheckedUpdateManyWithoutClientNestedInput
+    directSales?: DirectSaleUncheckedUpdateManyWithoutClientNestedInput
+  }
+
+  export type DeliveryDetailUpsertWithoutSalesEntryInput = {
+    update: XOR<DeliveryDetailUpdateWithoutSalesEntryInput, DeliveryDetailUncheckedUpdateWithoutSalesEntryInput>
+    create: XOR<DeliveryDetailCreateWithoutSalesEntryInput, DeliveryDetailUncheckedCreateWithoutSalesEntryInput>
+    where?: DeliveryDetailWhereInput
+  }
+
+  export type DeliveryDetailUpdateToOneWithWhereWithoutSalesEntryInput = {
+    where?: DeliveryDetailWhereInput
+    data: XOR<DeliveryDetailUpdateWithoutSalesEntryInput, DeliveryDetailUncheckedUpdateWithoutSalesEntryInput>
+  }
+
+  export type DeliveryDetailUpdateWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    salesQuotation?: SalesQuotationUpdateOneWithoutDeliveryDetailsNestedInput
+    directSale?: DirectSaleUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type DeliveryDetailUncheckedUpdateWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    shiftId?: StringFieldUpdateOperationsInput | string
+    driverId?: StringFieldUpdateOperationsInput | string
+    vehicleId?: StringFieldUpdateOperationsInput | string
+    deliveryDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryFrom?: NullableStringFieldUpdateOperationsInput | string | null
+    destination?: NullableStringFieldUpdateOperationsInput | string | null
+    customerReference?: NullableStringFieldUpdateOperationsInput | string | null
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    phoneNumber?: NullableStringFieldUpdateOperationsInput | string | null
+    accompaniedBy?: NullableStringFieldUpdateOperationsInput | string | null
+    salesQuotation?: SalesQuotationUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+    directSale?: DirectSaleUncheckedUpdateOneWithoutDeliveryDetailsNestedInput
+  }
+
+  export type SalesEntryItemUpsertWithWhereUniqueWithoutSalesEntryInput = {
+    where: SalesEntryItemWhereUniqueInput
+    update: XOR<SalesEntryItemUpdateWithoutSalesEntryInput, SalesEntryItemUncheckedUpdateWithoutSalesEntryInput>
+    create: XOR<SalesEntryItemCreateWithoutSalesEntryInput, SalesEntryItemUncheckedCreateWithoutSalesEntryInput>
+  }
+
+  export type SalesEntryItemUpdateWithWhereUniqueWithoutSalesEntryInput = {
+    where: SalesEntryItemWhereUniqueInput
+    data: XOR<SalesEntryItemUpdateWithoutSalesEntryInput, SalesEntryItemUncheckedUpdateWithoutSalesEntryInput>
+  }
+
+  export type SalesEntryItemUpdateManyWithWhereWithoutSalesEntryInput = {
+    where: SalesEntryItemScalarWhereInput
+    data: XOR<SalesEntryItemUpdateManyMutationInput, SalesEntryItemUncheckedUpdateManyWithoutSalesEntryInput>
+  }
+
+  export type SalesEntryItemScalarWhereInput = {
+    AND?: SalesEntryItemScalarWhereInput | SalesEntryItemScalarWhereInput[]
+    OR?: SalesEntryItemScalarWhereInput[]
+    NOT?: SalesEntryItemScalarWhereInput | SalesEntryItemScalarWhereInput[]
+    id?: StringFilter<"SalesEntryItem"> | string
+    salesEntryId?: StringFilter<"SalesEntryItem"> | string
+    itemId?: StringNullableFilter<"SalesEntryItem"> | string | null
+    itemName?: StringFilter<"SalesEntryItem"> | string
+    quantity?: IntFilter<"SalesEntryItem"> | number
+    unitPrice?: FloatFilter<"SalesEntryItem"> | number
+    discount?: FloatNullableFilter<"SalesEntryItem"> | number | null
+    tax?: FloatNullableFilter<"SalesEntryItem"> | number | null
+    total?: FloatFilter<"SalesEntryItem"> | number
+    createdAt?: DateTimeFilter<"SalesEntryItem"> | Date | string
+    updatedAt?: DateTimeFilter<"SalesEntryItem"> | Date | string
+  }
+
+  export type SalesEntryCreateWithoutSalesEntryItemsInput = {
+    id?: string
+    saleDate?: Date | string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    client: ClientCreateNestedOneWithoutSalesEntryInput
+    deliveryDetails: DeliveryDetailCreateNestedOneWithoutSalesEntryInput
+  }
+
+  export type SalesEntryUncheckedCreateWithoutSalesEntryItemsInput = {
+    id?: string
+    saleDate?: Date | string
+    clientId: string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryCreateOrConnectWithoutSalesEntryItemsInput = {
+    where: SalesEntryWhereUniqueInput
+    create: XOR<SalesEntryCreateWithoutSalesEntryItemsInput, SalesEntryUncheckedCreateWithoutSalesEntryItemsInput>
+  }
+
+  export type SalesEntryUpsertWithoutSalesEntryItemsInput = {
+    update: XOR<SalesEntryUpdateWithoutSalesEntryItemsInput, SalesEntryUncheckedUpdateWithoutSalesEntryItemsInput>
+    create: XOR<SalesEntryCreateWithoutSalesEntryItemsInput, SalesEntryUncheckedCreateWithoutSalesEntryItemsInput>
+    where?: SalesEntryWhereInput
+  }
+
+  export type SalesEntryUpdateToOneWithWhereWithoutSalesEntryItemsInput = {
+    where?: SalesEntryWhereInput
+    data: XOR<SalesEntryUpdateWithoutSalesEntryItemsInput, SalesEntryUncheckedUpdateWithoutSalesEntryItemsInput>
+  }
+
+  export type SalesEntryUpdateWithoutSalesEntryItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    client?: ClientUpdateOneRequiredWithoutSalesEntryNestedInput
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutSalesEntryNestedInput
+  }
+
+  export type SalesEntryUncheckedUpdateWithoutSalesEntryItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    clientId?: StringFieldUpdateOperationsInput | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MessageCreateManyUserInput = {
     id?: string
     file?: string | null
@@ -34860,6 +48427,324 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type SalesQuotationCreateManyClientInput = {
+    id?: string
+    quotationDate?: Date | string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleCreateManyClientInput = {
+    id?: string
+    saleDate?: Date | string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryCreateManyClientInput = {
+    id?: string
+    saleDate?: Date | string
+    deliveryDetailsId: string
+    subtotal: number
+    shipping: number
+    grandTotal: number
+    remarks?: string | null
+    status?: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesQuotationUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutSalesQuotationNestedInput
+    quotationItems?: QuotationItemUpdateManyWithoutQuotationNestedInput
+  }
+
+  export type SalesQuotationUncheckedUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    quotationItems?: QuotationItemUncheckedUpdateManyWithoutQuotationNestedInput
+  }
+
+  export type SalesQuotationUncheckedUpdateManyWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    quotationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutDirectSaleNestedInput
+    saleItems?: DirectSaleItemUpdateManyWithoutDirectSaleNestedInput
+  }
+
+  export type DirectSaleUncheckedUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    saleItems?: DirectSaleItemUncheckedUpdateManyWithoutDirectSaleNestedInput
+  }
+
+  export type DirectSaleUncheckedUpdateManyWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetails?: DeliveryDetailUpdateOneRequiredWithoutSalesEntryNestedInput
+    salesEntryItems?: SalesEntryItemUpdateManyWithoutSalesEntryNestedInput
+  }
+
+  export type SalesEntryUncheckedUpdateWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    salesEntryItems?: SalesEntryItemUncheckedUpdateManyWithoutSalesEntryNestedInput
+  }
+
+  export type SalesEntryUncheckedUpdateManyWithoutClientInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    saleDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    deliveryDetailsId?: StringFieldUpdateOperationsInput | string
+    subtotal?: FloatFieldUpdateOperationsInput | number
+    shipping?: FloatFieldUpdateOperationsInput | number
+    grandTotal?: FloatFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuotationItemCreateManyQuotationInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type QuotationItemUpdateWithoutQuotationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuotationItemUncheckedUpdateWithoutQuotationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type QuotationItemUncheckedUpdateManyWithoutQuotationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleItemCreateManyDirectSaleInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type DirectSaleItemUpdateWithoutDirectSaleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleItemUncheckedUpdateWithoutDirectSaleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type DirectSaleItemUncheckedUpdateManyWithoutDirectSaleInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryItemCreateManySalesEntryInput = {
+    id?: string
+    itemId?: string | null
+    itemName: string
+    quantity: number
+    unitPrice: number
+    discount?: number | null
+    tax?: number | null
+    total: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SalesEntryItemUpdateWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryItemUncheckedUpdateWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SalesEntryItemUncheckedUpdateManyWithoutSalesEntryInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemId?: NullableStringFieldUpdateOperationsInput | string | null
+    itemName?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    unitPrice?: FloatFieldUpdateOperationsInput | number
+    discount?: NullableFloatFieldUpdateOperationsInput | number | null
+    tax?: NullableFloatFieldUpdateOperationsInput | number | null
+    total?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

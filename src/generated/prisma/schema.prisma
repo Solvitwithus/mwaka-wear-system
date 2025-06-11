@@ -207,36 +207,6 @@ model SalesCategory {
   updatedAt DateTime @updatedAt
 }
 
-model Client {
-  id                    String   @id @default(uuid())
-  customerName          String
-  customerInitials      String
-  address               String
-  kraPin                String
-  currency              String
-  isActive              Boolean
-  phone1                String
-  phone2                String
-  email                 String
-  bankName              String
-  accountNumber         String
-  salesPerson           String
-  discountEliginility   Boolean
-  branchName            String
-  salesArea             String
-  salesType             String
-  comment               String
-  customerId            String
-  preferedPaymentMethod String
-  sex                   String
-  allowedDiscount       String
-  creditLimit           String
-  paymentTerms          String
-  refNo                 String
-  createdAt             DateTime @default(now())
-  updatedAt             DateTime @updatedAt
-}
-
 model Driver {
   id               Int     @id @default(autoincrement())
   userName         String  @unique
@@ -333,20 +303,27 @@ model ItemCategory {
 }
 
 model Item {
-  id                  Int      @id @default(autoincrement())
-  code                String   @unique
-  name                String
-  category            String
-  unitOfMeasure       String
-  description         String?
-  excludeFromSale     Boolean  @default(false)
-  excludeFromPurchase Boolean  @default(false)
-  branch              String
-  creator             String
-  status              String
-  barcode             String   @unique
-  createdAt           DateTime @default(now())
-  updatedAt           DateTime @updatedAt
+  id                    Int      @id @default(autoincrement())
+  code                  String   @unique // Unique item code
+  name                  String // Item name
+  category              String // Item category
+  unitOfMeasure         String // Unit of measure (e.g., kg, piece)
+  description           String? // Optional description
+  excludeFromSale       Boolean  @default(false) // Whether the item is excluded from sales
+  excludeFromPurchase   Boolean  @default(false) // Whether the item is excluded from purchases
+  branch                String // Associated branch
+  creator               String // Created by (user or system)
+  status                String // e.g., "active", "inactive"
+  barcode               String   @unique // Unique item barcode
+  itemPrice             Float    @default(0) // Base price of the item (with tax)
+  priceBeforeTax        Float    @default(0) // Price before tax
+  taxAmount             Float    @default(0) // Tax value derived from taxType
+  discountWholesale     Float    @default(0) // Discount for wholesale
+  discountRetail        Float    @default(0) // Discount for retail
+  customDiscountAllowed Boolean  @default(false) // Whether custom discounts are allowed
+  taxType               String? // Optional tax type (e.g., VAT, None)
+  createdAt             DateTime @default(now()) // Timestamp of creation
+  updatedAt             DateTime @updatedAt // Timestamp of last update
 }
 
 model Tax {
@@ -365,4 +342,176 @@ model Tax {
   creator          String
   status           String // "Active" or "Inactive"
   createdAt        DateTime @default(now())
+}
+
+model Client {
+  id                    String   @id @default(uuid())
+  customerName          String
+  customerInitials      String
+  address               String
+  kraPin                String
+  currency              String
+  isActive              Boolean
+  phone1                String
+  phone2                String
+  email                 String
+  bankName              String
+  accountNumber         String
+  salesPerson           String
+  discountEliginility   Boolean
+  branchName            String
+  salesArea             String
+  salesType             String
+  comment               String
+  customerId            String
+  preferedPaymentMethod String
+  sex                   String
+  allowedDiscount       String
+  creditLimit           String
+  paymentTerms          String
+  refNo                 String
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  salesQuotations SalesQuotation[]
+  directSales     DirectSale[]
+  salesEntry      SalesEntry[]
+}
+
+model QuotationItem {
+  id          String         @id @default(uuid())
+  quotation   SalesQuotation @relation(fields: [quotationId], references: [id])
+  quotationId String
+
+  itemId    String? // Add this if you're linking to a central item catalog
+  itemName  String
+  quantity  Int
+  unitPrice Float
+  discount  Float?
+  tax       Float? // Optional: add this if you're using tax
+  total     Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SalesQuotation {
+  id            String   @id @default(uuid())
+  quotationDate DateTime @default(now())
+  client        Client   @relation(fields: [clientId], references: [id])
+  clientId      String
+
+  deliveryDetails   DeliveryDetail @relation(fields: [deliveryDetailsId], references: [id])
+  deliveryDetailsId String         @unique // ✅ Add this
+
+  quotationItems QuotationItem[]
+
+  subtotal   Float
+  shipping   Float
+  grandTotal Float
+  remarks    String?
+  status     String  @default("Pending")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DeliveryDetail {
+  id        String @id @default(uuid())
+  address   String
+  shiftId   String
+  driverId  String
+  vehicleId String
+
+  deliveryDate DateTime
+
+  // Optional additions based on frontend
+  deliveryFrom      String?
+  destination       String?
+  customerReference String?
+  comment           String?
+  phoneNumber       String?
+  accompaniedBy     String?
+
+  salesQuotation SalesQuotation?
+  directSale     DirectSale?
+  salesEntry     SalesEntry?
+}
+
+model DirectSale {
+  id       String   @id @default(uuid())
+  saleDate DateTime @default(now())
+  client   Client   @relation(fields: [clientId], references: [id])
+  clientId String
+
+  deliveryDetails   DeliveryDetail @relation(fields: [deliveryDetailsId], references: [id])
+  deliveryDetailsId String         @unique
+
+  saleItems DirectSaleItem[]
+
+  subtotal   Float
+  shipping   Float
+  grandTotal Float
+  remarks    String?
+  status     String  @default("Completed")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DirectSaleItem {
+  id           String     @id @default(uuid())
+  directSale   DirectSale @relation(fields: [directSaleId], references: [id])
+  directSaleId String
+
+  itemId    String? // Optional: if referencing central catalog
+  itemName  String
+  quantity  Int
+  unitPrice Float
+  discount  Float?
+  tax       Float?
+  total     Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SalesEntry {
+  id       String   @id @default(uuid())
+  saleDate DateTime @default(now())
+
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String
+
+  deliveryDetails   DeliveryDetail @relation(fields: [deliveryDetailsId], references: [id])
+  deliveryDetailsId String         @unique // Only keep this if 1:1 relation is required
+
+  salesEntryItems SalesEntryItem[] // ✅ corrected from saleEntryItems
+
+  subtotal   Float
+  shipping   Float
+  grandTotal Float
+  remarks    String?
+  status     String  @default("Completed")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model SalesEntryItem {
+  id String @id @default(uuid())
+
+  salesEntry   SalesEntry @relation(fields: [salesEntryId], references: [id]) // ✅ corrected field name
+  salesEntryId String // ✅ corrected from saleEntryId
+
+  itemId    String? // Optional: if referencing central catalog
+  itemName  String
+  quantity  Int
+  unitPrice Float
+  discount  Float?
+  tax       Float?
+  total     Float
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }

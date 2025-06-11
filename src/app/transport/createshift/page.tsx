@@ -3,7 +3,10 @@
 import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-
+const generateCode = (): string => {
+  const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+  return Array.from({ length: 6 }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+};
 type Branch = {
   branchCode: string;
   name: string;
@@ -39,7 +42,7 @@ type Shift = {
 
 const initialState: Shift = {
   shiftName: "",
-  shiftCode: "",
+  shiftCode:generateCode(),
   startTime: "",
   endTime: "",
   shiftActiveDate: "",
@@ -81,12 +84,13 @@ const [useCustomEndLocation, setUseCustomEndLocation] = useState(false);
     startLocation: useCustomStartLocation ? shift.customStartLocation : shift.startLocation,
     endLocation: useCustomEndLocation ? shift.customEndLocation : shift.endLocation,
   };
+console.log(payload);
 
   try {
     const res = await axios.post("/api/auth/addshift", payload);
     if (res.status === 201) {
       setSuccess("Shift created successfully.");
-      setShift(initialState); // Reset form
+      setShift({...initialState,shiftCode:generateCode()}); // Reset form
     }
   } catch (err) {
     setError("Failed to create shift.");
