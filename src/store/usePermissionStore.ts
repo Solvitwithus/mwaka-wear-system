@@ -148,6 +148,8 @@ interface Permissions {
  EmployeeStatus:Boolean;
  LeaveApplicationInquiry: boolean;
  StaffLeaveBalance: boolean;
+ Departments:boolean;
+ Rank:boolean;
  TrainingInquiry: boolean;
  EmployeePerformanceEvaluation: boolean;
  PolicyReports: boolean;

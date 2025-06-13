@@ -6,7 +6,11 @@ const prisma = new PrismaClient();
 // GET: Fetch all drivers
 export async function GET() {
   try {
-    const drivers = await prisma.driver.findMany();
+    const drivers = await prisma.driver.findMany({
+      orderBy: { createdAt: 'desc' },
+    });
+   
+    
     return NextResponse.json(drivers, { status: 200 });
   } catch (error) {
     console.error("Error fetching drivers:", error);

@@ -106,7 +106,7 @@ const Page = () => {
 
   const settings = [
     {title:"Mpesa Till",link:"/procurement/",permission:"MpesaTill",image:SettingsIcon},
-    {title:"Bank Accounts",link:"/procurement/",permission:"BankAccounts",image:reportIcon},
+    {title:"Bank Accounts",link:"/finance/create-account",permission:"BankAccounts",image:reportIcon},
     {title:"Add Banks",link:"/finance/createbank",permission:"Banks",image:reportIcon},
     {title:"Currencies",link:"/finance/currencymanagement",permission:"Currencies",image:SettingsIcon},
     {title:"Payment Methods",link:"/finance/paymentmethods",permission:"PaymentMethods",image:reportIcon},

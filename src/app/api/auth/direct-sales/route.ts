@@ -17,6 +17,11 @@ type DirectSaleItemInput = {
 export async function GET() {
   try {
     const sales = await prisma.directSale.findMany({
+      where:{
+         deliveryDetails: {
+      prepay: false,
+    },
+      },
       include: {
         client: true,
         deliveryDetails: true,
@@ -65,6 +70,8 @@ export async function POST(req: Request) {
         comment: deliveryDetails.comment,
         phoneNumber: deliveryDetails.phoneNumber,
         accompaniedBy: deliveryDetails.accompaniedBy,
+        prepay:deliveryDetails.prepay,
+        offload:deliveryDetails.offload
       },
     });
 

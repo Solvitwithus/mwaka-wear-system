@@ -10,7 +10,7 @@ export async function GET() {
       where: {
         role: {
           name: {
-            in: ["Manager", "administrator"],
+            in: ["manager", "administrator"],
           },
         },
       },

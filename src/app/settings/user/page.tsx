@@ -5,6 +5,11 @@ import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import Delete from "@/assets/deleteIcon.svg"
 import Edit from '@/assets/editIcon.svg'
+import axios from 'axios';
+type branchOffice = {
+ branchCode: string;
+  name: string;
+};
 
 interface user{
   firstName:string,
@@ -43,6 +48,17 @@ const Page = () => {
   const [role, setRole] = useState<fedrole[]>([]);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
+    const [branchOffices, setBranchOffices] = useState<branchOffice[]>([]);
+
+    const fetchBranch = useCallback(async()=>{
+      try{
+        const response = await axios.get("/api/auth/addbranch")
+        setBranchOffices(response.data);
+      }
+      catch (err: any) {
+      setError("Failed to fetch data");
+    }
+    },[])
   const fetchRole =useCallback(async()=>{
 try{
   const response = await fetch("/api/auth/role",{
@@ -69,7 +85,8 @@ catch (error) {
 
   useEffect(()=>{
     fetchRole()
-  },[])
+    fetchBranch()
+  },[fetchRole,fetchBranch])
   const [formData, setFormData] = useState<user>(initialState);
 
 
@@ -218,7 +235,9 @@ useEffect(() => {
     <label htmlFor='branch' className='pr-2 text-[#1b798a] font-medium text-sm font-serif'>Branch</label>
     <select id='branch' required name='branch' value={formData.branch} onChange={handleInputChange}className='border-[#ac4b3a] border-[0.5px] rounded-sm w-50 px-2 focus:outline-dotted focus:border-blue-500 placeholder-gray-500 font-mono'>
         <option>Kakamega</option>
-        <option>Busia</option>
+        {branchOffices.map((val,idx)=>(
+          <option key={idx} value={val.name }>{val.name}:{val.branchCode}</option>
+        ))}
       </select>
   </div>
   <div className=' bg-[#f3dfda] p-1 flex justify-start items-center'>
@@ -255,7 +274,7 @@ useEffect(() => {
       <h3 className='font-semibold text-[#1b798a] border-b-[1px] border-black mx-2 mb-1'>Existing USers</h3>
 
       {/* Display Section */}
-      <div className='border-[#ac4b3a] border-x-[0.5px] border-t-[0.5px]  rounded-md w-fit flex flex-col mx-auto p-2' >
+      <div className='border-[#ac4b3a] border-x-[0.5px] border-t-[0.5px]  rounded-md w-[99%] flex flex-col mx-auto p-2' >
         <div className='flex justify-end border-b-2 border-black mb-2 p-1'>
 <input type='text' placeholder='Search user' className='border-[1px] text-[#1b8a24] border-[#419253c9] px-3 w-36 py-0 my-0 mx-2 rounded-lg'/>
 <select className='border-[1px] text-[#1b798a] border-[#419253c9] rounded-md'>

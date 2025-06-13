@@ -96,7 +96,7 @@ const menu =[
   {name:"Point of Sale (POS)",link:"/sales/pos",image:StudIcon,permission:"PointOfSale" },
   {name:"Print Statement",link:"/sales/printstatement",image:StudIcon,permission:"printStatement"},
   {name:"Direct Sale",link:"/sales/directsales",image:StudIcon,permission:"directSale"},
-  {name:"Customer Postings",link:"/sales/customerposting",image:StudIcon,permission:"customerPostings"},
+  {name:"Customer Postings(payment)",link:"/sales/customerposting",image:StudIcon,permission:"customerPostings"},
   {name:"Sales Man Posting",link:"/sales/salesmanposting",image:StudIcon,permission:"salesManPosting"},
   {name:"Customer Credit",link:"/sales/customercredit",image:StudIcon,permission:"customerCredit"},
   {name:"Customer Credit Payments",link:"/sales/customercreditpayments",image:StudIcon,permission:"customerCreditPayments"}
@@ -142,13 +142,13 @@ const reportsRightItems=[
 // Reports and Inquiries Section
 const setupItems=[
   {name:"Add and Manage Customers",link:"/sales/addandmanageclients",image:SettingsIcon,permission:"addAndManageCustomes"},
-  {name:"Customer Branches",link:"/edit-customer",image:SettingsIcon,permission:"customerBranches"},
-  {name:"Sales Group",link:"/add-customer",image:SettingsIcon,permission:"salesGroup"},
+  {name:"C",link:"/sales/customer-branch-assignment",image:SettingsIcon,permission:"customerBranches"},
+  {name:"Sales Group",link:"/sales/sales-group",image:SettingsIcon,permission:"salesGroup"},
   {name:"Sales Type",link:"/sales/salestype",image:SettingsIcon,permission:"salesType"},
   {name:"Sales Person",link:"/sales/salesperson",image:SettingsIcon,permission:"salesPerson"},
-  {name:"Sales Person Targets",link:"/edit-customer",image:SettingsIcon,permission:"salesPersonTargets"},
+  {name:"S",link:"/edit-customer",image:SettingsIcon,permission:"salesPersonTargets"},
   {name:"Sales Area",link:"/sales/salesarea",image:SettingsIcon,permission:"salesArea"},
-  {name:"Credit Status Setup",link:"/add-customer",image:SettingsIcon,permission:"creditStatusSetup"},
+  {name:"Credit Status Setup",link:"/sales/credit-status-setup",image:SettingsIcon,permission:"creditStatusSetup"},
 
 ]
 

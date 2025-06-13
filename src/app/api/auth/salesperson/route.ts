@@ -3,11 +3,11 @@ import { PrismaClient } from "@/generated/prisma";
 
 const prisma = new PrismaClient();
 
-// Utility to generate a unique salesperson code
-function generateSalesCode(): string {
+// Utility to generate a unique code
+function generateUniqueCode(prefix: string = ""): string {
   const randomStr = Math.random().toString(36).substring(2, 6).toUpperCase();
   const timestamp = Date.now().toString().slice(-4);
-  return `SLP${randomStr}${timestamp}`;
+  return `${prefix}${randomStr}${timestamp}`;
 }
 
 // POST: Create new salesperson
@@ -16,33 +16,60 @@ export async function POST(req: NextRequest) {
     const data = await req.json();
 
     const {
+      salesCode,
+      employeeCode,
       firstName,
       lastName,
       gender,
       phone,
+      phone2,
       email,
       address,
       region,
+      country,
+      idNumber,
+      salesArea,
+      salesType,
+      branchOffice,
       status,
+      employmentType,
+      supervisor,
+      salesTarget,
+      salesCommission,
+      allowDiscount,
       addedBy,
       remarks,
     } = data;
 
-    const salesCode = generateSalesCode();
+    // Use provided codes or generate new ones
+    const finalSalesCode = salesCode || generateUniqueCode("SLP");
+    const finalEmployeeCode = employeeCode || generateUniqueCode("EMP");
 
     const newSalesperson = await prisma.salesperson.create({
       data: {
-        salesCode,
+        salesCode: finalSalesCode,
+        employeeCode: finalEmployeeCode,
         firstName,
         lastName,
         gender,
         phone,
+        phone2: phone2 || null,
         email,
         address,
         region,
+        country,
+        idNumber,
+        salesArea,
+        salesType,
+        branchOffice,
         status,
+        employmentType,
+        supervisor,
+        salesTarget: Number(salesTarget),
+        salesCommission: Number(salesCommission),
+        allowDiscount,
         addedBy,
-        remarks,
+        remarks: remarks || null,
       },
     });
 

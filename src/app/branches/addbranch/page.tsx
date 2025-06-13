@@ -20,7 +20,7 @@ type Branch = {
 };
 
 type User = {
-  userName: string;
+   firstName: string;
 };
 
 
@@ -219,7 +219,7 @@ useEffect(() => {
               >
                 <option value="">Select user</option>
                 {usersFetched.map((user, idx) => (
-                  <option key={idx} value={user.userName}>{user.userName}</option>
+                  <option key={idx} value={user.firstName}>{user.firstName}</option>
                 ))}
               </select>
             </div>

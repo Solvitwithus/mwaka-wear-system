@@ -105,22 +105,35 @@ model BankName {
   updatedAt         DateTime @updatedAt
 }
 model Salesperson {
-  id         String   @id @default(uuid())
-  salesCode  String   @unique
-  firstName  String
-  lastName   String
-  gender     String
-  phone      String   @unique
-  email      String   @unique
-  address    String
-  region     String
-  status     Boolean  @default(false)
-  addedBy    String
-  remarks    String?
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-}
+  id              String    @id @default(uuid())
+  salesCode       String    @unique
+  employeeCode    String    @unique @default("") // Default to empty string
+  firstName       String
+  lastName        String
+  gender          String    @default("") // Default to empty string
+  phone           String    @unique
+  phone2          String?
+  email           String    @unique
+  address         String    @default("") // Default to empty string
+  region          String    @default("") // Default to empty string
+  country         String    @default("") // Default to empty string
+  idNumber        String    @default("") // Default to empty string
+  salesArea       String    @default("") // Default to empty string
+  salesType       String    @default("") // Default to empty string
+  branchOffice    String    @default("") // Default to empty string
+  status          String    @default("Active")
+  employmentType  String    @default("") // Default to empty string
+  supervisor      String    @default("") // Default to empty string
+  salesTarget     Float     @default(0) // Default to 0
+  salesCommission Float     @default(0) // Default to 0
+  allowDiscount   Boolean   @default(false)
+  addedBy         String    @default("") // Default to empty string
+  remarks         String?
 
+  
+  createdAt       DateTime  @default(now())
+  updatedAt       DateTime  @updatedAt
+}
 model Branch {
   id            String   @id @default(uuid())
   branchCode    String   @unique
@@ -196,9 +209,9 @@ model SalesCategory {
   name                String
   description         String?
   priceAdjustmentType String   // e.g., "percentage", "fixed"
-  priceAdjustment     String
+  priceAdjustment     Float
   allowCredit         Boolean
-  creditLimit         String?
+  creditLimit         Float?
   defaultPaymentTerm  String?  // Reference payment term name or ID if normalized
   applicableChannels  String   // Comma-separated values like "online,retail"
   isActive            Boolean  @default(true)
@@ -242,6 +255,7 @@ model Vehicle {
   remarks                 String
   initialOdometerReading  String
   ownershipType           String
+    generalLedgerAccounts   VehicleGeneralLedgerAccount[]
   createdAt               DateTime @default(now())
   updatedAt               DateTime @updatedAt
 }
@@ -292,6 +306,28 @@ model UnitOfMeasure {
   isActive         Boolean  @default(true)
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+}
+
+model VehicleGeneralLedgerAccount {
+  id                String   @id @default(uuid())
+  glAccountCode     String   @unique
+  glAccountName     String
+  accountType       String   // Enum is possible (e.g. Revenue, Expense, Asset, Liability)
+  currencyCode      String
+  description       String
+  isActive          Boolean
+  isDefault         Boolean
+  isPrimaryAccount  Boolean
+  effectiveFrom     DateTime
+  openingBalance    Float
+  remarks           String
+  vehicleId         String
+  vehicle           Vehicle  @relation(fields: [vehicleId], references: [id])
+  driverUserName    String
+  licenseNumber     String?
+
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
 }
 
 model ItemCategory {
@@ -429,7 +465,8 @@ model DeliveryDetail {
   shiftId       String
   driverId      String
   vehicleId     String
-  
+  offload       Boolean?  @default(false)
+  prepay          Boolean?  @default(false)
  
   deliveryDate  DateTime
 
@@ -486,6 +523,43 @@ model DirectSaleItem {
 }
 
 
+model CreditStatus {
+  id             String   @id @default(uuid())
+  code           String   @unique
+  statusName     String
+  description    String
+  category       String
+  defaultStatus  Boolean  @default(false)
+  isFinalStatus  Boolean  @default(false)
+  isActive       Boolean  @default(true)
+  remarks        String?
+
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+}
+
+model BankAccount {
+  id                    String   @id @default(uuid())
+  bankName              String
+  accountCode             String? @unique
+  accountName           String
+  accountNumber         String   @unique
+  accountType           String
+  accountStatus         String   @default("Active")
+  allowOverdraft        Boolean  @default(false)
+  overdraftLimit        Float? 
+  isPrimaryAccount      Boolean  @default(false)
+  usedForPayroll        Boolean  @default(false)
+  branchCode            String?
+  departmentName        String?
+  currency              String
+  effectiveFrom         DateTime
+  openingBalance        Float  
+  reconciliationEnabled Boolean  @default(false)
+  notes                 String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+}
 
 
 model SalesEntry {
@@ -526,4 +600,72 @@ model SalesEntryItem {
 
   createdAt    DateTime     @default(now())
   updatedAt    DateTime     @updatedAt
+}
+model Department {
+  id               String   @id @default(uuid())
+  departmentName   String
+  shortName        String
+  description      String
+  headOfDepartmentId String
+  isActive         Boolean  @default(true)
+  establishedDate  String
+  budgetAmount     Float
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+}
+
+model Rank {
+  id          String   @id @default(uuid())
+  rankName    String
+  shortName   String
+  description String?
+  rankLevel   Int
+  isActive    Boolean  @default(true)
+  createdDate DateTime
+}
+
+model DesignationTitle {
+  id           String   @id @default(uuid())
+  titleName    String
+  titleCode    String   @unique
+  shortCode    String
+  departmentId String  
+  rankId       String
+  description  String
+  isActive     Boolean  @default(true)
+  isNew        Boolean  @default(false)
+  salary       Float
+  createdAt    DateTime @default(now())
+}
+
+model SalesGroup {
+  id                      String   @id @default(uuid())
+  code                    String   @unique
+  groupName               String
+  groupType               String
+  description             String?
+  defaultCommissionRate   Float
+  allowCustomCommission   Boolean
+  discountAllowed         Float
+  salesTarget             String?
+  isActive                Boolean  @default(true)
+  remarks                 String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
+}
+model VehicleExpenseCategory {
+  id                      String   @id @default(uuid())
+  name                    String
+  code                    String   @unique
+  description             String?
+  expenseAccount          String
+  tag                     String?
+  isRecurring             Boolean  @default(false)
+  appliesToAllVehicles    Boolean  @default(false)
+  amount                  Float?
+  effectiveFrom           DateTime
+  isActive                Boolean  @default(true)
+  remarks                 String?
+  createdAt               DateTime @default(now())
+  updatedAt               DateTime @updatedAt
 }

@@ -67,7 +67,8 @@ type lowrie = {
   customerReference:string;
   comment:string;
   destination:string;
-  offload:boolean
+  offload:boolean;
+  prepay:boolean
 }
 const initialState: lowrie = {
   deliveryFrom: "",
@@ -81,7 +82,8 @@ const initialState: lowrie = {
   customerReference: generateCode(),
   comment: "",
   destination: "",
-  offload: false
+  offload: false,
+  prepay:false
 };
 const Page =()=>{
 const [selectedClient, setSelectedClient] = useState<clientie | null>(null);
@@ -229,7 +231,7 @@ const formattedsubtotalAmount = parseFloat(subTotal .toFixed(2));
     const { name, value, type } = e.target;
 
     // Handle boolean specifically for the 'offload' property
-    const newValue = name === "offload" ? e.target.checked : value;
+    const newValue = name === "offload" || name ==="prepay" ? e.target.checked : value;
 
     setDelivery((prevDelivery) => ({
       ...prevDelivery,
@@ -266,12 +268,14 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
       accompaniedBy: delivery.accompaniedBy,
       destination: delivery.destination,
       deliveryDate: new Date(delivery.dueDate), // Ensure this is a valid date
+      offload:delivery.offload,
+      prepay:delivery.prepay
     },
     subtotal: formattedsubtotalAmount,
     shipping: shipping,
     grandTotal: formattedFinalAmount,
     remarks: delivery.comment || "",
-    status: "Active",
+    status: "Direct-Sale",
     directSaleItem: itemsTable.map((item) => ({
         itemId: item.code, // Ensure this is valid
         itemName: item.name, // Required
@@ -538,7 +542,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
     <input type='text' name='phoneNumber' value={delivery.phoneNumber} onChange={handleDeliveryChange} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md'/>
 </div>
 <div className='flex justify-end gap-2'>
-    <label className='text-sm text-black'>Customer reference:</label>
+    <label className='text-sm text-black'>Delivery reference:</label>
     <input type='text' onChange={handleDeliveryChange} name='customerReference' value={delivery.customerReference} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md' aria-readonly/>
 </div>
 <div className='flex justify-end gap-2'>
@@ -553,6 +557,9 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
 <div className='flex justify-end gap-2'>
     <label className='text-sm text-black'>Offload:</label>
     <input type='checkbox' onChange={handleDeliveryChange} name='offload' checked={delivery.offload} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md'/>
+
+    <label className='text-sm text-black'>Prepay:</label>
+    <input type='checkbox' onChange={handleDeliveryChange} name='prepay' checked={delivery.prepay} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md'/>
 </div>
 </div>
 </div>

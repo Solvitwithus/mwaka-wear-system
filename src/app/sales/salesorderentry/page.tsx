@@ -1,7 +1,7 @@
 "use client"
 import axios from 'axios'
 import { Trash2 } from "lucide-react";
-
+import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 type clientie ={
   id:string;
@@ -67,7 +67,8 @@ type lowrie = {
   customerReference:string;
   comment:string;
   destination:string;
-  offload:boolean
+  offload:boolean;
+  prepay:boolean
 }
 const initialState: lowrie = {
   deliveryFrom: "",
@@ -81,9 +82,11 @@ const initialState: lowrie = {
   customerReference: generateCode(),
   comment: "",
   destination: "",
-  offload: false
+  offload: false,
+  prepay:false
 };
 const Page =()=>{
+const route = useRouter()
 const [selectedClient, setSelectedClient] = useState<clientie | null>(null);
   const [clients, setclient] = useState<clientie[]>([])
   const [drivers, setDrivers] = useState<fahrer[]>([]);
@@ -229,7 +232,7 @@ const formattedsubtotalAmount = parseFloat(subTotal .toFixed(2));
     const { name, value, type } = e.target;
 
     // Handle boolean specifically for the 'offload' property
-    const newValue = name === "offload" ? e.target.checked : value;
+    const newValue = name === "offload" || name ==="prepay" ? e.target.checked : value;
 
     setDelivery((prevDelivery) => ({
       ...prevDelivery,
@@ -266,6 +269,8 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
       accompaniedBy: delivery.accompaniedBy,
       destination: delivery.destination,
       deliveryDate: new Date(delivery.dueDate), // Ensure this is a valid date
+      prepay:delivery.prepay,
+      offload:delivery.offload
     },
     subtotal: formattedsubtotalAmount,
     shipping: shipping,
@@ -538,7 +543,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
     <input type='text' name='phoneNumber' value={delivery.phoneNumber} onChange={handleDeliveryChange} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md'/>
 </div>
 <div className='flex justify-end gap-2'>
-    <label className='text-sm text-black'>Customer reference:</label>
+    <label className='text-sm text-black'>Delivery reference:</label>
     <input type='text' onChange={handleDeliveryChange} name='customerReference' value={delivery.customerReference} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md' aria-readonly/>
 </div>
 <div className='flex justify-end gap-2'>
@@ -553,6 +558,9 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
 <div className='flex justify-end gap-2'>
     <label className='text-sm text-black'>Offload:</label>
     <input type='checkbox' onChange={handleDeliveryChange} name='offload' checked={delivery.offload} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md'/>
+
+     <label className='text-sm text-black'>Prepay:</label>
+    <input type='checkbox' onChange={handleDeliveryChange} name='prepay' checked={delivery.prepay} className='my-[1px] bg-[#D9D9D9] h-6 rounded-md'/>
 </div>
 </div>
 </div>
@@ -561,7 +569,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
             {/* control Buttons */}
             <div className='flex gap-5 justify-center'>
                 <button type='submit' className='bg-[#4E803F] text-sm font-semibold px-3 py-[1px] text-white rounded-md'>Add Quotation</button>
-                <button className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md'>Cancel Quotation</button>
+                <button type='button' className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md' onClick={()=>route.back()}>Cancel Quotation</button>
 
             </div> </form>
             {success && (

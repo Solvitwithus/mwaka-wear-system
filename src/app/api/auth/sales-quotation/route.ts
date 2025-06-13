@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
 
-console.log("body",body);
+
 
     const {
       clientId,
@@ -39,7 +39,7 @@ console.log("body",body);
       remarks,
       status,
     } = body;
-    console.log(quotationItems);
+  console.log(quotationItems);
     
 
     // Validate required fields
@@ -63,6 +63,8 @@ console.log("body",body);
         comment: deliveryDetails.comment,
         phoneNumber: deliveryDetails.phoneNumber,
         accompaniedBy: deliveryDetails.accompaniedBy,
+        offload:deliveryDetails.offload,
+        prepay:deliveryDetails.prepay
       },
     });
 

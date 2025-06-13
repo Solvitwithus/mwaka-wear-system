@@ -1,116 +1,65 @@
 "use client";
 
-import React, { useState, useEffect, useCallback, ChangeEvent, FormEvent } from "react";
+import React, { useState, useEffect, ChangeEvent, FormEvent } from "react";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 
-type Branch = {
-  branchCode: string;
-  name: string;
-};
 
-type Driver = {
-  userName: string;
-  licenseNumber: string;
-};
-
+type driverie = {
+licenseNumber:string;
+userName:string
+}
 type Vehicle = {
   plateNumber: string;
+  make: string;
   model: string;
-};
-
-type Shift = {
-  shiftName: string;
-  shiftCode: string;
-  startTime: string;
-  endTime: string;
-  shiftActiveDate: string;
+  yearOfManufacture: string;
+  status: string;
+  fuelType: string;
+  capacity: string;
   driver: string;
-  vehicle: string;
-  transportationItem: string;
-  startLocation: string;
-  endLocation: string;
-  wayPoint: string;
-  isActive: string;
-  comment: string;
+  assignedBranch: string;
+  purpose: string;
+  remarks: string;
+  initialOdometerReading: string;
+  ownershipType: string;
 };
 
-const initialState: Shift = {
-  shiftName: "",
-  shiftCode: "",
-  startTime: "",
-  endTime: "",
-  shiftActiveDate: "",
+const initialState: Vehicle = {
+  plateNumber: "",
+  make: "",
+  model: "",
+  yearOfManufacture: "",
+  status: "Active",
+  fuelType: "Petrol",
+  capacity: "",
   driver: "",
-  vehicle: "",
-  transportationItem: "",
-  startLocation: "",
-  endLocation: "",
-  wayPoint: "",
-  isActive: "Yes",
-  comment: "",
+  assignedBranch: "",
+  purpose: "",
+  remarks: "",
+  initialOdometerReading: "",
+  ownershipType: "Company",
 };
 
 const Page = () => {
   const router = useRouter();
-  const [shift, setShift] = useState<Shift>(initialState);
-  const [drivers, setDrivers] = useState<Driver[]>([]);
-  const [vehicles, setVehicles] = useState<Vehicle[]>([]);
-  const [branches, setBranches] = useState<Branch[]>([]);
+  const [vehicle, setVehicle] = useState<Vehicle>(initialState);
+  const [drivers, setDrivers] = useState<driverie[]>([]);
+  const [branches, setBranches] = useState<string[]>([]);
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    setShift((prev) => ({ ...prev, [name]: value }));
-  };
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("/api/auth/addshift", shift);
-      if (res.status === 201) {
-        setSuccess("Shift created successfully.");
-        setShift(initialState);
-      }
-    } catch (err) {
-      setError("Failed to create shift.");
-      console.error(err);
-    }
-  };
-
-  const fetchDrivers = useCallback(async () => {
-    try {
-      const res = await axios.get("/api/auth/adddriver");
-      setDrivers(res.data);
-    } catch (err) {
-      console.error("Failed to fetch drivers:", err);
-    }
-  }, []);
-
-  const fetchVehicles = useCallback(async () => {
-    try {
-      const res = await axios.get("/api/auth/addvehicle");
-      setVehicles(res.data);
-    } catch (err) {
-      console.error("Failed to fetch vehicles:", err);
-    }
-  }, []);
-
-  const fetchBranches = useCallback(async () => {
-    try {
-      const res = await axios.get("/api/auth/addbranch");
-      setBranches(res.data);
-    } catch (err) {
-      console.error("Failed to fetch branches:", err);
-    }
-  }, []);
-
   useEffect(() => {
-    fetchDrivers();
-    fetchVehicles();
-    fetchBranches();
-  }, [fetchDrivers, fetchVehicles, fetchBranches]);
+    Promise.all([
+      axios.get("/api/auth/adddriver"),
+      axios.get("/api/auth/addbranch"),
+    ])
+      .then(([driverRes, branchRes]) => {
+        setDrivers(driverRes.data);
+        setBranches(branchRes.data.map((b: any) => b.name));
+      })
+      .catch((err) => console.error("Error fetching dropdowns:", err));
+  }, []);
 
   useEffect(() => {
     if (success || error) {
@@ -122,128 +71,202 @@ const Page = () => {
     }
   }, [success, error]);
 
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+  ) => {
+    const { name, value } = e.target;
+    setVehicle((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    try {
+      const res = await axios.post("/api/auth/addvehicle", vehicle);
+      if (res.status === 201) {
+        setSuccess("Vehicle added successfully.");
+        setVehicle(initialState);
+      }
+    } catch (err) {
+      console.error(err);
+      setError("Failed to add vehicle.");
+    }
+  };
+
   return (
     <div className="bg-[rgb(239,239,239)] m-1 rounded-md p-1 h-fit">
-      <h4 className="text-base font-semibold ml-2 mt-2 text-[#b13348]">Create Shift</h4>
+      <h4 className="text-base font-semibold ml-2 mt-2 text-[#b13348]">Add Vehicle</h4>
 
-      <form onSubmit={handleSubmit} className="border-black border-[1px] m-2 rounded-md w-[98%] mx-auto">
+      <form
+        className="border-black border-[1px] m-2 rounded-md w-[98%] mx-auto"
+        onSubmit={handleSubmit}
+      >
         <div className="border-black border-[1px] m-1 rounded-md flex justify-center gap-36 py-8">
-
           {/* Left Column */}
           <div className="flex flex-col">
             {[
-              { label: "Shift Name:", name: "shiftName", placeholder: "Morning Shift", type: "text" },
-              { label: "Shift Code:", name: "shiftCode", placeholder: "MSH001", type: "text" },
-              { label: "Start Time:", name: "startTime", placeholder: "", type: "time" },
-              { label: "End Time:", name: "endTime", placeholder: "", type: "time" },
-              { label: "Shift Active Date:", name: "shiftActiveDate", placeholder: "", type: "date" },
-              { label: "Transportation Item:", name: "transportationItem", placeholder: "Goods, Staff", type: "text" },
-              { label: "Way Point:", name: "wayPoint", placeholder: "e.g. Nairobi CBD", type: "text" },
-            ].map(({ label, name, placeholder, type }) => (
-              <div key={name} className="flex justify-end gap-2 mb-1">
-                <label htmlFor={name} className="text-sm text-black">{label}</label>
+              { label: "Plate Number:", name: "plateNumber", type: "text" },
+              { label: "Make:", name: "make", type: "text" },
+              { label: "Model:", name: "model", type: "text" },
+              {
+                label: "Year of Manufacture:",
+                name: "yearOfManufacture",
+                type: "text",
+              },
+              { label: "Capacity:", name: "capacity", type: "text" },
+              {
+                label: "Initial Odometer Reading:",
+                name: "initialOdometerReading",
+                type: "text",
+              },
+            ].map(({ label, name, type }) => (
+              <div className="flex justify-end gap-2 mb-1" key={name}>
+                <label htmlFor={name} className="text-sm text-black">
+                  {label}
+                </label>
                 <input
                   type={type}
                   name={name}
                   id={name}
-                  value={(shift as any)[name]}
+                  value={(vehicle as any)[name]}
                   onChange={handleChange}
-                  placeholder={placeholder}
                   className="bg-[#D9D9D9] h-6 rounded-md pl-2 placeholder-[#e48383]"
                 />
               </div>
             ))}
+
+            {/* Ownership Type */}
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="ownershipType" className="text-sm text-black">
+                Ownership Type:
+              </label>
+              <select
+                name="ownershipType"
+                id="ownershipType"
+                value={vehicle.ownershipType}
+                onChange={handleChange}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm"
+              >
+                <option value="Company">Company</option>
+                <option value="Leased">Leased</option>
+                <option value="Hired">Hired</option>
+                <option value="Private">Private</option>
+              </select>
+            </div>
           </div>
 
           {/* Right Column */}
           <div className="flex flex-col">
+            {/* Status */}
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="status" className="text-sm text-black">
+                Status:
+              </label>
+              <select
+                name="status"
+                id="status"
+                value={vehicle.status}
+                onChange={handleChange}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm"
+              >
+                <option value="Active">Active</option>
+                <option value="Inactive">Inactive</option>
+                <option value="Under Maintenance">Under Maintenance</option>
+                <option value="Disposed">Disposed</option>
+              </select>
+            </div>
+
+            {/* Fuel Type */}
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="fuelType" className="text-sm text-black">
+                Fuel Type:
+              </label>
+              <select
+                name="fuelType"
+                id="fuelType"
+                value={vehicle.fuelType}
+                onChange={handleChange}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm"
+              >
+                <option value="Petrol">Petrol</option>
+                <option value="Diesel">Diesel</option>
+                <option value="Electric">Electric</option>
+                <option value="Hybrid">Hybrid</option>
+              </select>
+            </div>
+
+            {/* Assigned Branch */}
+            <div className="flex justify-end gap-2 mb-1">
+              <label htmlFor="assignedBranch" className="text-sm text-black">
+                Assigned Branch:
+              </label>
+              <select
+                name="assignedBranch"
+                id="assignedBranch"
+                value={vehicle.assignedBranch}
+                onChange={handleChange}
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm"
+              >
+                <option value="">-- Select Branch --</option>
+                {branches.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
+              </select>
+            </div>
+
             {/* Driver */}
             <div className="flex justify-end gap-2 mb-1">
-              <label htmlFor="driver" className="text-sm text-black">Driver:</label>
+              <label htmlFor="driver" className="text-sm text-black">
+                Driver:
+              </label>
               <select
                 name="driver"
-                value={shift.driver}
+                id="driver"
+                value={vehicle.driver}
                 onChange={handleChange}
-                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm"
               >
-                <option value="">Select Driver</option>
-                {drivers.map((d) => (
-                  <option key={d.licenseNumber} value={d.userName}>{d.userName}</option>
-                ))}
+                <option value="">-- Select Driver --</option>
+               {
+               
+               drivers.map((val)=>(
+                <option key={val.licenseNumber} value={val.licenseNumber}>{val.userName}: {val.licenseNumber}</option>
+               ))}
               </select>
             </div>
 
-            {/* Vehicle */}
+            {/* Purpose */}
             <div className="flex justify-end gap-2 mb-1">
-              <label htmlFor="vehicle" className="text-sm text-black">Vehicle:</label>
-              <select
-                name="vehicle"
-                value={shift.vehicle}
+              <label htmlFor="purpose" className="text-sm text-black">
+                Purpose:
+              </label>
+              <input
+                type="text"
+                name="purpose"
+                id="purpose"
+                value={vehicle.purpose}
                 onChange={handleChange}
-                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
-              >
-                <option value="">Select Vehicle</option>
-                {vehicles.map((v) => (
-                  <option key={v.plateNumber} value={v.plateNumber}>{v.plateNumber}</option>
-                ))}
-              </select>
+                placeholder="Business / Delivery / Staff"
+                className="bg-[#D9D9D9] h-6 rounded-md pl-2 placeholder-[#e48383]"
+              />
             </div>
 
-            {/* Start Location */}
+            {/* Remarks */}
             <div className="flex justify-end gap-2 mb-1">
-              <label htmlFor="startLocation" className="text-sm text-black">Start Location:</label>
-              <select
-                name="startLocation"
-                value={shift.startLocation}
-                onChange={handleChange}
-                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
-              >
-                <option value="">Select Branch</option>
-                {branches.map((b) => (
-                  <option key={b.branchCode} value={b.name}>{b.name}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* End Location */}
-            <div className="flex justify-end gap-2 mb-1">
-              <label htmlFor="endLocation" className="text-sm text-black">End Location:</label>
-              <select
-                name="endLocation"
-                value={shift.endLocation}
-                onChange={handleChange}
-                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
-              >
-                <option value="">Select Branch</option>
-                {branches.map((b) => (
-                  <option key={b.branchCode} value={b.name}>{b.name}</option>
-                ))}
-              </select>
-            </div>
-
-            {/* Is Active */}
-            <div className="flex justify-end gap-2 mb-1">
-              <label htmlFor="isActive" className="text-sm text-black">Is Active:</label>
-              <select
-                name="isActive"
-                value={shift.isActive}
-                onChange={handleChange}
-                className="bg-[#D9D9D9] h-6 rounded-md pl-2 text-sm text-black"
-              >
-                <option value="Yes">Yes</option>
-                <option value="No">No</option>
-              </select>
-            </div>
-
-            {/* Comment */}
-            <div className="flex justify-end gap-2 mb-1">
-              <label htmlFor="comment" className="text-sm text-black">Comment:</label>
+              <label htmlFor="remarks" className="text-sm text-black">
+                Remarks:
+              </label>
               <textarea
-                name="comment"
-                value={shift.comment}
-                onChange={handleChange}
-                placeholder="Additional notes"
+                name="remarks"
+                id="remarks"
                 rows={3}
+                value={vehicle.remarks}
+                onChange={handleChange}
+                placeholder="Optional notes..."
                 className="bg-[#D9D9D9] rounded-md pl-2 text-sm placeholder-[#e48383]"
               />
             </div>
@@ -254,7 +277,7 @@ const Page = () => {
           type="submit"
           className="bg-[#4E803F] mb-2 text-sm font-semibold px-3 ml-[50%] py-[1px] text-white rounded-md"
         >
-          ➕ Add Shift
+          ➕ Add Vehicle
         </button>
       </form>
 
@@ -266,8 +289,17 @@ const Page = () => {
         ❌ Back
       </button>
 
-      {success && <div className="text-green-600 text-center font-semibold">{success}</div>}
-      {error && <div className="text-red-600 text-center font-semibold">{error}</div>}
+      {success && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-green-600 text-white px-4 py-2 rounded-md shadow-md z-10">
+          {success}
+        </div>
+      )}
+
+      {error && (
+        <div className="fixed top-4 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-4 py-2 rounded-md shadow-md z-10">
+          {error}
+        </div>
+      )}
     </div>
   );
 };

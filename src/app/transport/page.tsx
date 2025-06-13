@@ -30,7 +30,7 @@ type Permissions = {
 }
 
 const transactions = [
-  {name:"Create Loading Order", link:"/items-and-inventory/",image:StudIcon,permission:"CreateLoadingOrder"},
+  {name:"Create and Approve Loading Order", link:"/transport/loading-order",image:StudIcon,permission:"CreateLoadingOrder"},
   {name:"Vehicle Loading", link:"/items-and-inventory/",image:StudIcon,permission:"VehicleLoading"},
   {name:"Vehicle Purchase Order Entry", link:"/items-and-inventory/",image:StudIcon,permission:"VehiclePurchaseOrderEntry"},
   {name:"Vehicle Purchase Approval", link:"/items-and-inventory/",image:StudIcon,permission:"VehiclePurchaseApproval"},
@@ -45,8 +45,8 @@ const setups =[
    {name:"Add Driver", link:"/transport/adddriver",image:SettingsIcon,permission:"addDriver"},
   {name:"Create Vehicle Shift", link:"/transport/createshift",image:SettingsIcon,permission:"CreateVehicleShift"},
   {name:"Vehicle Categories", link:"/transport/addcategory",image:SettingsIcon,permission:"VehicleCategories"},
-  {name:"Vehicle Geneal Ledger Account", link:"/items-and-inventory/",image:SettingsIcon,permission:"VehicleGenealLedgerAccount"},
-  {name:"Vehicle Expense Categories", link:"/items-and-inventory/",image:SettingsIcon,permission:"VehicleExpenseCategories"},
+  {name:"Vehicle Geneal Ledger Account", link:"/transport/vehicle-general-ledger-account",image:SettingsIcon,permission:"VehicleGenealLedgerAccount"},
+  {name:"Vehicle Expense Categories", link:"/transport/vehicle-expense-category",image:SettingsIcon,permission:"VehicleExpenseCategories"},
 ]
 
 const reports =[

@@ -159,6 +159,8 @@ const humanResourceManagement =[
   {name:"ListEmployees",value:false},
   {name:"AddEmployee",value:false},
   {name:"AddTrainer",value:false},
+  {name:"Departments",value:false},
+  {name:"Rank",value:false},
   {name:"WorkShifts",value:false},
   {name:"HolidaySettings",value:false},
   {name:"ExitReasons",value:false},

@@ -201,14 +201,26 @@ exports.Prisma.BankNameScalarFieldEnum = {
 exports.Prisma.SalespersonScalarFieldEnum = {
   id: 'id',
   salesCode: 'salesCode',
+  employeeCode: 'employeeCode',
   firstName: 'firstName',
   lastName: 'lastName',
   gender: 'gender',
   phone: 'phone',
+  phone2: 'phone2',
   email: 'email',
   address: 'address',
   region: 'region',
+  country: 'country',
+  idNumber: 'idNumber',
+  salesArea: 'salesArea',
+  salesType: 'salesType',
+  branchOffice: 'branchOffice',
   status: 'status',
+  employmentType: 'employmentType',
+  supervisor: 'supervisor',
+  salesTarget: 'salesTarget',
+  salesCommission: 'salesCommission',
+  allowDiscount: 'allowDiscount',
   addedBy: 'addedBy',
   remarks: 'remarks',
   createdAt: 'createdAt',
@@ -381,6 +393,26 @@ exports.Prisma.UnitOfMeasureScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.VehicleGeneralLedgerAccountScalarFieldEnum = {
+  id: 'id',
+  glAccountCode: 'glAccountCode',
+  glAccountName: 'glAccountName',
+  accountType: 'accountType',
+  currencyCode: 'currencyCode',
+  description: 'description',
+  isActive: 'isActive',
+  isDefault: 'isDefault',
+  isPrimaryAccount: 'isPrimaryAccount',
+  effectiveFrom: 'effectiveFrom',
+  openingBalance: 'openingBalance',
+  remarks: 'remarks',
+  vehicleId: 'vehicleId',
+  driverUserName: 'driverUserName',
+  licenseNumber: 'licenseNumber',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ItemCategoryScalarFieldEnum = {
   id: 'id',
   categoryName: 'categoryName',
@@ -500,6 +532,8 @@ exports.Prisma.DeliveryDetailScalarFieldEnum = {
   shiftId: 'shiftId',
   driverId: 'driverId',
   vehicleId: 'vehicleId',
+  offload: 'offload',
+  prepay: 'prepay',
   deliveryDate: 'deliveryDate',
   deliveryFrom: 'deliveryFrom',
   destination: 'destination',
@@ -537,6 +571,43 @@ exports.Prisma.DirectSaleItemScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.CreditStatusScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  statusName: 'statusName',
+  description: 'description',
+  category: 'category',
+  defaultStatus: 'defaultStatus',
+  isFinalStatus: 'isFinalStatus',
+  isActive: 'isActive',
+  remarks: 'remarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BankAccountScalarFieldEnum = {
+  id: 'id',
+  bankName: 'bankName',
+  accountCode: 'accountCode',
+  accountName: 'accountName',
+  accountNumber: 'accountNumber',
+  accountType: 'accountType',
+  accountStatus: 'accountStatus',
+  allowOverdraft: 'allowOverdraft',
+  overdraftLimit: 'overdraftLimit',
+  isPrimaryAccount: 'isPrimaryAccount',
+  usedForPayroll: 'usedForPayroll',
+  branchCode: 'branchCode',
+  departmentName: 'departmentName',
+  currency: 'currency',
+  effectiveFrom: 'effectiveFrom',
+  openingBalance: 'openingBalance',
+  reconciliationEnabled: 'reconciliationEnabled',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SalesEntryScalarFieldEnum = {
   id: 'id',
   saleDate: 'saleDate',
@@ -561,6 +632,76 @@ exports.Prisma.SalesEntryItemScalarFieldEnum = {
   discount: 'discount',
   tax: 'tax',
   total: 'total',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DepartmentScalarFieldEnum = {
+  id: 'id',
+  departmentName: 'departmentName',
+  shortName: 'shortName',
+  description: 'description',
+  headOfDepartmentId: 'headOfDepartmentId',
+  isActive: 'isActive',
+  establishedDate: 'establishedDate',
+  budgetAmount: 'budgetAmount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RankScalarFieldEnum = {
+  id: 'id',
+  rankName: 'rankName',
+  shortName: 'shortName',
+  description: 'description',
+  rankLevel: 'rankLevel',
+  isActive: 'isActive',
+  createdDate: 'createdDate'
+};
+
+exports.Prisma.DesignationTitleScalarFieldEnum = {
+  id: 'id',
+  titleName: 'titleName',
+  titleCode: 'titleCode',
+  shortCode: 'shortCode',
+  departmentId: 'departmentId',
+  rankId: 'rankId',
+  description: 'description',
+  isActive: 'isActive',
+  isNew: 'isNew',
+  salary: 'salary',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SalesGroupScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  groupName: 'groupName',
+  groupType: 'groupType',
+  description: 'description',
+  defaultCommissionRate: 'defaultCommissionRate',
+  allowCustomCommission: 'allowCustomCommission',
+  discountAllowed: 'discountAllowed',
+  salesTarget: 'salesTarget',
+  isActive: 'isActive',
+  remarks: 'remarks',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VehicleExpenseCategoryScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  code: 'code',
+  description: 'description',
+  expenseAccount: 'expenseAccount',
+  tag: 'tag',
+  isRecurring: 'isRecurring',
+  appliesToAllVehicles: 'appliesToAllVehicles',
+  amount: 'amount',
+  effectiveFrom: 'effectiveFrom',
+  isActive: 'isActive',
+  remarks: 'remarks',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -610,6 +751,7 @@ exports.Prisma.ModelName = {
   Shift: 'Shift',
   VehicleCategory: 'VehicleCategory',
   UnitOfMeasure: 'UnitOfMeasure',
+  VehicleGeneralLedgerAccount: 'VehicleGeneralLedgerAccount',
   ItemCategory: 'ItemCategory',
   Item: 'Item',
   Tax: 'Tax',
@@ -619,8 +761,15 @@ exports.Prisma.ModelName = {
   DeliveryDetail: 'DeliveryDetail',
   DirectSale: 'DirectSale',
   DirectSaleItem: 'DirectSaleItem',
+  CreditStatus: 'CreditStatus',
+  BankAccount: 'BankAccount',
   SalesEntry: 'SalesEntry',
-  SalesEntryItem: 'SalesEntryItem'
+  SalesEntryItem: 'SalesEntryItem',
+  Department: 'Department',
+  Rank: 'Rank',
+  DesignationTitle: 'DesignationTitle',
+  SalesGroup: 'SalesGroup',
+  VehicleExpenseCategory: 'VehicleExpenseCategory'
 };
 
 /**

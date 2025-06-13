@@ -55,6 +55,8 @@ type Permissions = {
  PaymentMode: boolean;
  NonAttendanceReasons: boolean;
  EmployeeStatus:Boolean;
+ Departments:Boolean;
+ Rank:Boolean
 
  LeaveApplicationInquiry: boolean;
  StaffLeaveBalance: boolean;
@@ -150,8 +152,10 @@ if (loading) return (
     {title:"Holiday Settings",link:"/sales/pos-report",permission:"HolidaySettings",image:SettingsIcon},
     {title:"Exit Reasons",link:"/procurement/",permission:"ExitReasons",image:SettingsIcon},
     {title:"Leave Types",link:"/procurement/",permission:"LeaveTypes",image:SettingsIcon},
-    {title:"Designation Titles",link:"/sales/pos-report",permission:"DesignationTitles",image:SettingsIcon},
+    {title:"Designation Titles",link:"/human-resouce-management/designation-title",permission:"DesignationTitles",image:SettingsIcon},
     {title:"Priority Levels",link:"/procurement/",permission:"PriorityLevels",image:SettingsIcon},
+     {title:"Departments",link:"/human-resouce-management/departments",permission:"Departments",image:SettingsIcon},
+          {title:"Add Rank",link:"/human-resouce-management/designation-ranks",permission:"Rank",image:SettingsIcon},
     
   ]
 

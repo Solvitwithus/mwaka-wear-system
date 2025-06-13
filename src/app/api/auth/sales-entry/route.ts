@@ -3,14 +3,21 @@ import { PrismaClient } from "@/generated/prisma";
 
 const prisma = new PrismaClient();
 
-// GET all sales entries
+// GET: Fetch all active sales entries with prepay=false
 export async function GET() {
   try {
     const salesEntries = await prisma.salesEntry.findMany({
+      where: {
+        status: "Active",
+        deliveryDetails: {
+          prepay: false,
+        },
+      },
       include: {
         client: true,
         deliveryDetails: true,
         salesEntryItems: true,
+       
       },
       orderBy: {
         saleDate: "desc",
@@ -27,7 +34,7 @@ export async function GET() {
   }
 }
 
-// POST new sales entry with items and delivery details
+// POST: Create a new sales entry
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
@@ -102,3 +109,43 @@ console.log(body);
     );
   }
 }
+
+// PATCH: Update sales entry status
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    console.log("PATCH body:", body);
+
+    const { salesEntryId, status } = body;
+
+    if (!salesEntryId || !status) {
+      return NextResponse.json(
+        { error: "salesEntryId and status are required." },
+        { status: 400 }
+      );
+    }
+
+    const updatedSalesEntry = await prisma.salesEntry.update({
+      where: { id: salesEntryId },
+      data: { status },
+      include: {
+        client: true,
+        deliveryDetails: true,
+        salesEntryItems: true,
+        
+      },
+    });
+
+    return NextResponse.json({
+      message: "Sales entry status updated successfully.",
+      data: updatedSalesEntry,
+    });
+  } catch (error) {
+    console.error("Error updating sales entry:", error);
+    return NextResponse.json(
+      { error: "Failed to update sales entry status." },
+      { status: 500 }
+    );
+  }
+}
+
