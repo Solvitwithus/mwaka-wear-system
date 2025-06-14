@@ -12,7 +12,7 @@ import { Skeleton } from '@heroui/skeleton';
 type Permissions = {
   CreateLoadingOrder:Boolean;
   VehicleLoading:Boolean;
-  VehiclePurchaseOrderEntry:Boolean;
+  PrepaidDelivery:Boolean;
   VehiclePurchaseApproval:Boolean;
   VehiclePayment:Boolean;
   VehicleConsumption:Boolean;
@@ -31,8 +31,8 @@ type Permissions = {
 
 const transactions = [
   {name:"Create and Approve Loading Order", link:"/transport/loading-order",image:StudIcon,permission:"CreateLoadingOrder"},
-  {name:"Vehicle Loading", link:"/items-and-inventory/",image:StudIcon,permission:"VehicleLoading"},
-  {name:"Vehicle Purchase Order Entry", link:"/items-and-inventory/",image:StudIcon,permission:"VehiclePurchaseOrderEntry"},
+  {name:"Vehicle OffLoading", link:"/transport/vehicle-loading",image:StudIcon,permission:"VehicleLoading"},
+  {name:"Prepaid Delivery", link:"/transport/prepaid-delivery",image:StudIcon,permission:"PrepaidDelivery"},
   {name:"Vehicle Purchase Approval", link:"/items-and-inventory/",image:StudIcon,permission:"VehiclePurchaseApproval"},
   {name:"Vehicle Payment", link:"/items-and-inventory/",image:StudIcon,permission:"VehiclePayment"},
   {name:"Vehicle Consumption", link:"/items-and-inventory/",image:StudIcon,permission:"VehicleConsumption"},

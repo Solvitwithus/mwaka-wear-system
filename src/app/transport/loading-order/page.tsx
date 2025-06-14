@@ -30,6 +30,7 @@ type SalesEntry = {
   branchName?: string;
   saleDate: string;
   dueDate?: string;
+  status: string;
   grandTotal: number;
   shipping: number;
 };
@@ -50,7 +51,7 @@ const router = useRouter()
   useEffect(() => {
     const fetchSales = async () => {
       try {
-        const res = await axios.get("/api/auth/invoice-against-deliveries");
+        const res = await axios.get("/api/auth/sales-entry");
         const data = res.data.data || [];
         console.log("Fetched sales:", data);
         setSalesEntries(data);
@@ -64,32 +65,38 @@ const router = useRouter()
   }, []);
 
   // --- Filter + Sort ---
-  useEffect(() => {
-    let filtered = salesEntries.filter((entry) => {
-      const refMatch = entry.deliveryDetails?.customerReference
+useEffect(() => {
+  let filtered = salesEntries.filter((entry) => {
+    let allowedStatuses = ["New-sales-entry", "Direct-Sale"];
+let filtered = salesEntries.filter((entry) => allowedStatuses.includes(entry.status));
+
+    const refMatch =
+      entry.deliveryDetails?.customerReference
         ?.toLowerCase()
         .includes(searchRef.toLowerCase()) ?? true;
 
-      const branchMatch = entry.client?.branchName
+    const branchMatch =
+      entry.client?.branchName
         ?.toLowerCase()
         .includes(searchBranch.toLowerCase()) ?? true;
 
-      const destMatch = entry.deliveryDetails?.destination
+    const destMatch =
+      entry.deliveryDetails?.destination
         ?.toLowerCase()
         .includes(searchDestination.toLowerCase()) ?? true;
 
-      return refMatch && branchMatch && destMatch;
-    });
+    return refMatch && branchMatch && destMatch;
+  });
 
-    filtered = filtered.sort((a, b) => {
-      const dateA = new Date(a.saleDate).getTime();
-      const dateB = new Date(b.saleDate).getTime();
-      return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
-    });
+  filtered = filtered.sort((a, b) => {
+    const dateA = new Date(a.saleDate).getTime();
+    const dateB = new Date(b.saleDate).getTime();
+    return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+  });
 
-    setFilteredEntries(filtered);
-    setPage(1); // Reset page on filter change
-  }, [searchRef, searchBranch, searchDestination, sortOrder, salesEntries]);
+  setFilteredEntries(filtered);
+  setPage(1);
+}, [searchRef, searchBranch, searchDestination, sortOrder, salesEntries]);
 
   const paginatedEntries = filteredEntries.slice(
     (page - 1) * rowsPerPage,
@@ -99,20 +106,21 @@ const router = useRouter()
   const totalPages = Math.ceil(filteredEntries.length / rowsPerPage);
 const handleLocalDataParsing = (entry: any) => {
 
-  localStorage.setItem("InvoiceSaleEntryData", JSON.stringify(entry));
-router.push("/sales/invoiceagainstsalesdelivery/customer-entry-invoice")
+  localStorage.setItem("saleEntryData", JSON.stringify(entry));
+router.push("/transport/loading-order/approve-load")
   setTimeout(() => {
     
-    localStorage.removeItem("InvoiceSaleEntryData");
+    localStorage.removeItem("saleEntryData");
   }, 1000*300);
 };
 
   return (
     <div className="bg-[#EFEFEF] m-1 rounded-md p-1 h-fit">
-      <h4 className="text-black font-medium text-base ml-1">Approve Loading Order for Delivery</h4>
+      <h4 className="text-black font-medium text-base ml-1">Process Loading Orders for Sales Entries</h4>
 
       {/* Filters */}
       <div className="flex flex-col border-black border-[1px] p-2 space-y-2 rounded-md">
+
         <div className="flex gap-4 justify-end flex-wrap">
           <input
             type="text"
@@ -174,33 +182,33 @@ router.push("/sales/invoiceagainstsalesdelivery/customer-entry-invoice")
               ) : (
                 paginatedEntries.map((entry, index) => (
                   <tr key={entry.id} className="border-t">
-                    <td className=" border">
+                    <td className="p-1 border">
                       {(page - 1) * rowsPerPage + index + 1}
                     </td>
-                    <td className=" border">
+                    <td className="p-1 border">
                       {entry.deliveryDetails?.customerReference || "-"}
                     </td>
-                    <td className=" border">
+                    <td className="p-1 border">
                       {entry.client?.customerName || "-"}
                     </td>
-                    <td className=" border">{entry.client.branchName || "-"}</td>
-                    <td className=" border">
+                    <td className="p-1 border">{entry.client.branchName || "-"}</td>
+                    <td className="p-2 border">
                       {entry.deliveryDetails?.destination || "-"}
                     </td>
-                    <td className=" border">
+                    <td className="p-1 border">
                       {new Date(entry.saleDate).toLocaleDateString()}
                     </td>
-                    <td className="border">
+                    <td className="p-1 border">
                       {entry.deliveryDetails?.deliveryDate
                         ? new Date(entry.deliveryDetails.deliveryDate).toLocaleDateString()
                         : "-"}
                     </td>
-                    <td className="border">{entry.grandTotal}</td>
-                    <td className="border">{entry.shipping}</td>
-                    <td className="border">
+                    <td className="p-1 border">{entry.grandTotal}</td>
+                    <td className="p-1 border">{entry.shipping}</td>
+                    <td className="p-1 border">
                       {entry.salesEntryItems?.[0]?.itemName || "-"}
                     </td>
-                    <td className="border">
+                    <td className="p-1 border">
                       {entry.salesEntryItems?.[0]?.quantity || "-"}
                     </td>
                     <td className="p-2 border">
@@ -229,6 +237,7 @@ router.push("/sales/invoiceagainstsalesdelivery/customer-entry-invoice")
             </button>
           ))}
         </div>
+        
       </div>
                       <button className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md' onClick={()=> router.back()}>Cancel ❌</button>
     </div>

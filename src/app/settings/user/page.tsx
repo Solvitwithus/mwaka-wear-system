@@ -108,7 +108,7 @@ headers: { 'Content-Type': 'application/json' },
      setError(echo.error)
     }
     else{
-      console.log(formData);
+      
       
       setSuccess( echo.message)
       setFormData(initialState)

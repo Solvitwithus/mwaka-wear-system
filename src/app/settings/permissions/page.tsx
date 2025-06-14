@@ -189,7 +189,7 @@ const humanResourceManagement =[
 const transport =[
   {name:"CreateLoadingOrder",value:false},
   {name:"VehicleLoading",value:false},
-  {name:"VehiclePurchaseOrderEntry",value:false},
+  {name:"PrepaidDelivery",value:false},
   {name:"VehiclePurchaseApproval",value:false},
   {name:"VehiclePayment",value:false},
   {name:"VehicleConsumption",value:false},

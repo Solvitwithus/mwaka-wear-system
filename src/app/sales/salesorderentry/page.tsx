@@ -276,7 +276,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
     shipping: shipping,
     grandTotal: formattedFinalAmount,
     remarks: delivery.comment || "",
-    status: "Active",
+    status: "New-sales-entry",
     salesEntryItems: itemsTable.map((item) => ({
         itemId: item.code, // Ensure this is valid
         itemName: item.name, // Required
@@ -568,8 +568,8 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
 
             {/* control Buttons */}
             <div className='flex gap-5 justify-center'>
-                <button type='submit' className='bg-[#4E803F] text-sm font-semibold px-3 py-[1px] text-white rounded-md'>Add Quotation</button>
-                <button type='button' className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md' onClick={()=>route.back()}>Cancel Quotation</button>
+                <button type='submit' className='bg-[#4E803F] text-sm font-semibold px-3 py-[1px] text-white rounded-md'>Add New Entry</button>
+                <button type='button' className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md' onClick={()=>route.back()}>Cancel Sales Entry</button>
 
             </div> </form>
             {success && (

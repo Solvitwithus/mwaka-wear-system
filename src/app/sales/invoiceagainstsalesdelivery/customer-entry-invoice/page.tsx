@@ -60,7 +60,7 @@ const handleStatusChange = async () => {
 
     const response = await axios.patch("/api/auth/sales-entry", {
       salesEntryId: deliveryItem.salesEntryItems[0].salesEntryId, // get the ID from the first item
-      status: "Invoiced"
+      status: "Invoiced-ready-to-resolve"
     });
 
     if (response.status === 200) {

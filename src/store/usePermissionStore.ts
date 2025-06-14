@@ -162,7 +162,7 @@ interface Permissions {
 
  CreateLoadingOrder:Boolean;
  VehicleLoading:Boolean;
- VehiclePurchaseOrderEntry:Boolean;
+ PrepaidDelivery:Boolean;
  VehiclePurchaseApproval:Boolean;
  VehiclePayment:Boolean;
  VehicleConsumption:Boolean;

@@ -8,9 +8,11 @@ export async function GET() {
   try {
     const salesEntries = await prisma.salesEntry.findMany({
       where: {
-        status: "Active",
+        // status: "Active",
+
+
         deliveryDetails: {
-          prepay: false,
+         prepay:false
         },
       },
       include: {
@@ -38,7 +40,7 @@ export async function GET() {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-console.log(body);
+
 
     const {
       clientId,
@@ -58,6 +60,8 @@ console.log(body);
         shiftId: deliveryDetails.shiftId,
         driverId: deliveryDetails.driverId,
         vehicleId: deliveryDetails.vehicleId,
+        offload: deliveryDetails.offload,
+        prepay: deliveryDetails.prepay,
         deliveryDate: new Date(deliveryDetails.deliveryDate),
         deliveryFrom: deliveryDetails.deliveryFrom,
         destination: deliveryDetails.destination,

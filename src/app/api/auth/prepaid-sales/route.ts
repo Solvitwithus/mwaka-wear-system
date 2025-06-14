@@ -2,15 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@/generated/prisma";
 
 const prisma = new PrismaClient();
-
-// GET all active sales entries
 export async function GET() {
   try {
     const salesEntries = await prisma.salesEntry.findMany({
       where: {
-        status: "Active",
          deliveryDetails: {
-      prepay: true,
+      prepay:true
     },
       },
       include: {
@@ -35,7 +32,7 @@ export async function GET() {
 export async function PATCH(req: NextRequest) {
   try {
     const body = await req.json();
-    console.log("PATCH body:", body);
+ 
 
     const { salesEntryId, status } = body;
 

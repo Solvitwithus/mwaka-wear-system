@@ -32,6 +32,7 @@ type SalesEntry = {
   dueDate?: string;
   grandTotal: number;
   shipping: number;
+  status:string;
 };
 
 // --- Component ---
@@ -66,6 +67,7 @@ const router = useRouter()
   // --- Filter + Sort ---
   useEffect(() => {
     let filtered = salesEntries.filter((entry) => {
+      if(entry.status !== "Delived") return false;
       const refMatch = entry.deliveryDetails?.customerReference
         ?.toLowerCase()
         .includes(searchRef.toLowerCase()) ?? true;
@@ -109,7 +111,7 @@ router.push("/sales/deliveryagainstsalesorders/processdelivery")
 
   return (
     <div className="bg-[#EFEFEF] m-1 rounded-md p-1 h-fit">
-      <h4 className="text-black font-medium text-base ml-1">Process Sales Entries</h4>
+      <h4 className="text-black font-medium text-base ml-1">Confirm Successful Deliveries</h4>
 
       {/* Filters */}
       <div className="flex flex-col border-black border-[1px] p-2 space-y-2 rounded-md">

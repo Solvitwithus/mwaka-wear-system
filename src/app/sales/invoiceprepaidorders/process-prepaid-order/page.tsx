@@ -58,9 +58,9 @@ const handleStatusChange = async () => {
   try {
     if (!deliveryItem) return;
 
-    const response = await axios.patch("/api/auth/sales-entry", {
+    const response = await axios.patch("/api/auth/prepaid-sales", {
       salesEntryId: deliveryItem.salesEntryItems[0].salesEntryId, // get the ID from the first item
-      status: "Prepay-Invoiced"
+      status: "Prepayment-successful"
     });
 
     if (response.status === 200) {

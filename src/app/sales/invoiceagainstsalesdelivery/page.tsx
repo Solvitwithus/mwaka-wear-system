@@ -32,6 +32,7 @@ type SalesEntry = {
   dueDate?: string;
   grandTotal: number;
   shipping: number;
+  status:string;
 };
 
 // --- Component ---
@@ -50,7 +51,7 @@ const router = useRouter()
   useEffect(() => {
     const fetchSales = async () => {
       try {
-        const res = await axios.get("/api/auth/invoice-against-deliveries");
+        const res = await axios.get("/api/auth/sales-entry");
         const data = res.data.data || [];
         console.log("Fetched sales:", data);
         setSalesEntries(data);
@@ -66,6 +67,7 @@ const router = useRouter()
   // --- Filter + Sort ---
   useEffect(() => {
     let filtered = salesEntries.filter((entry) => {
+      if(entry.status !== "Delivered-successfully") return false;
       const refMatch = entry.deliveryDetails?.customerReference
         ?.toLowerCase()
         .includes(searchRef.toLowerCase()) ?? true;

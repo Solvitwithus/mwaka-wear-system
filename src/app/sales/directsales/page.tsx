@@ -276,7 +276,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
     grandTotal: formattedFinalAmount,
     remarks: delivery.comment || "",
     status: "Direct-Sale",
-    directSaleItem: itemsTable.map((item) => ({
+    salesEntryItems: itemsTable.map((item) => ({
         itemId: item.code, // Ensure this is valid
         itemName: item.name, // Required
         quantity: item.quantity,
@@ -291,7 +291,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
   console.log("payload:",payload);
 
   try {
-    const res = await axios.post("/api/auth/direct-sales", payload);
+    const res = await axios.post("/api/auth/sales-entry", payload);
 
     if (res.status === 200 || res.status === 201) {
   
