@@ -66,34 +66,42 @@ const router = useRouter()
 
   // --- Filter + Sort ---
   useEffect(() => {
-    let filtered = salesEntries.filter((entry) => {
-      
-       let allowedStatuses = ["New-sales-entry", "Direct-Sale"];
-let filtered = salesEntries.filter((entry) => allowedStatuses.includes(entry.status));
-      const refMatch = entry.deliveryDetails?.customerReference
+  const allowedStatuses = ["New-sales-entry", "Direct-Sale"];
+
+  let filtered = salesEntries.filter((entry) => {
+    // Ensure status is allowed
+    if (!allowedStatuses.includes(entry.status)) return false;
+
+    // Perform search filters
+    const refMatch =
+      entry.deliveryDetails?.customerReference
         ?.toLowerCase()
         .includes(searchRef.toLowerCase()) ?? true;
 
-      const branchMatch = entry.client?.branchName
+    const branchMatch =
+      entry.client?.branchName
         ?.toLowerCase()
         .includes(searchBranch.toLowerCase()) ?? true;
 
-      const destMatch = entry.deliveryDetails?.destination
+    const destMatch =
+      entry.deliveryDetails?.destination
         ?.toLowerCase()
         .includes(searchDestination.toLowerCase()) ?? true;
 
-      return refMatch && branchMatch && destMatch;
-    });
+    return refMatch && branchMatch && destMatch;
+  });
 
-    filtered = filtered.sort((a, b) => {
-      const dateA = new Date(a.saleDate).getTime();
-      const dateB = new Date(b.saleDate).getTime();
-      return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
-    });
+  // Sort based on saleDate
+  filtered = filtered.sort((a, b) => {
+    const dateA = new Date(a.saleDate).getTime();
+    const dateB = new Date(b.saleDate).getTime();
+    return sortOrder === "asc" ? dateA - dateB : dateB - dateA;
+  });
 
-    setFilteredEntries(filtered);
-    setPage(1); // Reset page on filter change
-  }, [searchRef, searchBranch, searchDestination, sortOrder, salesEntries]);
+  setFilteredEntries(filtered);
+  setPage(1); // Reset page on filter change
+}, [searchRef, searchBranch, searchDestination, sortOrder, salesEntries]);
+
 
   const paginatedEntries = filteredEntries.slice(
     (page - 1) * rowsPerPage,

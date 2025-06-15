@@ -96,7 +96,7 @@ const menu =[
   {name:"Point of Sale (POS)",link:"/sales/pos",image:StudIcon,permission:"PointOfSale" },
   {name:"Print Statement",link:"/sales/printstatement",image:StudIcon,permission:"printStatement"},
   {name:"Direct Sale",link:"/sales/directsales",image:StudIcon,permission:"directSale"},
-  {name:"Customer Postings(payment)",link:"/sales/customerposting",image:StudIcon,permission:"customerPostings"},
+  {name:"Customer Postings(Pre-payment)",link:"/sales/customerposting",image:StudIcon,permission:"customerPostings"},
   {name:"Sales Man Posting",link:"/sales/salesmanposting",image:StudIcon,permission:"salesManPosting"},
   {name:"Customer Credit",link:"/sales/customercredit",image:StudIcon,permission:"customerCredit"},
   {name:"Customer Credit Payments",link:"/sales/customercreditpayments",image:StudIcon,permission:"customerCreditPayments"}

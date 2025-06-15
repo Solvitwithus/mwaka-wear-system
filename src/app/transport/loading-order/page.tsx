@@ -66,9 +66,10 @@ const router = useRouter()
 
   // --- Filter + Sort ---
 useEffect(() => {
+  let allowedStatuses = ["New-sales-entry", "Direct-Sale"];
   let filtered = salesEntries.filter((entry) => {
-    let allowedStatuses = ["New-sales-entry", "Direct-Sale"];
-let filtered = salesEntries.filter((entry) => allowedStatuses.includes(entry.status));
+    
+if(!allowedStatuses.includes(entry.status)) return false;
 
     const refMatch =
       entry.deliveryDetails?.customerReference

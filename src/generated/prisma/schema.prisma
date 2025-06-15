@@ -661,3 +661,98 @@ model VehicleExpenseCategory {
   createdAt            DateTime @default(now())
   updatedAt            DateTime @updatedAt
 }
+
+model PrepaymentAllocation {
+  id                String   @id @default(uuid())
+  salesEntryId      String
+  itemId            String
+  total             Float
+  allocateAll       Float    @default(0)
+  partialAllocation Float    @default(0)
+  balance           Float    @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}
+
+model Supplier {
+  id                     String             @id @default(cuid())
+  code                   String             @unique
+  name                   String
+  shortName              String
+  email                  String             @unique
+  phone                  String
+  phone2                 String?
+  country                String
+  county                 String
+  town                   String
+  address                String
+  kra                    String
+  vat                    String
+  bankName               String
+  bankCode               String?
+  accountNumber          String
+  preferredPaymentMethod String
+  paymentTerm            String
+  currency               String
+  taxType                String
+  creditLimit            Float
+  isActive               Boolean            @default(true)
+  blacklisted            Boolean            @default(false)
+  remarks                String?
+  website                String?
+  purchaseRequisitions   PurchaseReQEntry[] @relation("SupplierPurchaseRequests")
+  createdAt              DateTime           @default(now())
+  updatedAt              DateTime           @updatedAt
+}
+
+model PurchaseReQEntry {
+  id         String  @id @default(uuid())
+  grandTotal Float
+  remarks    String?
+  shipping   Float
+  status     String
+  subtotal   Float
+
+  // Foreign key to Supplier
+  supplierId String
+  supplier   Supplier @relation("SupplierPurchaseRequests", fields: [supplierId], references: [id])
+
+  // One-to-one relation
+  purchaseAdditionalInfo   PurchaseAdditionalInfo?
+  purchaseAdditionalInfoId String?
+
+  // One-to-many relation
+  items PurchaseRequisitionEntryItem[]
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model PurchaseRequisitionEntryItem {
+  id        String @id @default(uuid())
+  itemId    String
+  itemName  String
+  quantity  Int
+  unitPrice Float
+  discount  Float
+  tax       Float
+  total     Float
+
+  purchaseReQEntryId String
+  purchaseReQEntry   PurchaseReQEntry @relation(fields: [purchaseReQEntryId], references: [id])
+}
+
+model PurchaseAdditionalInfo {
+  id          String   @id @default(uuid())
+  comment     String?
+  deliverTo   String
+  dueDate     DateTime
+  isUrgent    Boolean
+  prepay      Boolean
+  reqDate     DateTime
+  offload     Boolean
+  isDelivered Boolean
+
+  purchaseReQEntry   PurchaseReQEntry? @relation(fields: [purchaseReQEntryId], references: [id])
+  purchaseReQEntryId String?           @unique
+}

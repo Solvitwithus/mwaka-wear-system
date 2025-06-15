@@ -69,7 +69,7 @@ if (loading) return (
   </div>)
 
   const menu =[
-    {title:"Purchase Requisition Entry",link:"/procurement/",permission:"requisitionEntry",image:StudIcon},
+    {title:"Purchase Requisition Entry",link:"/procurement/purchase-requisition-entry",permission:"requisitionEntry",image:StudIcon},
     {title:"Purchase Requisition Review",link:"/sales/pos-report",permission:"requisitionReview",image:StudIcon},
     {title:"Purchase Requisition Approval",link:"/procurement/",permission:"requisitionApproval",image:StudIcon},
   {title:"Purchase Order Against Purchase Requisition",link:"/sales/pos-report",permission:"POAgainstPurchaseRequisition",image:StudIcon},
@@ -101,7 +101,7 @@ if (loading) return (
   ]
 
   const settings = [
-    {title:"Add Supplier",link:"/procurement/",permission:"addorEditSuppliers",image:SettingsIcon},
+    {title:"Add Supplier",link:"/procurement/create-supplier",permission:"addorEditSuppliers",image:SettingsIcon},
   ]
   const filteredMenu = menu.filter(item => permissions[item.permission as keyof Permissions]);
   const filteredReports = report.filter(itm => permissions[itm.permission as keyof Permissions])

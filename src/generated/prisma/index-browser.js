@@ -706,6 +706,86 @@ exports.Prisma.VehicleExpenseCategoryScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PrepaymentAllocationScalarFieldEnum = {
+  id: 'id',
+  salesEntryId: 'salesEntryId',
+  itemId: 'itemId',
+  total: 'total',
+  allocateAll: 'allocateAll',
+  partialAllocation: 'partialAllocation',
+  balance: 'balance',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SupplierScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  name: 'name',
+  shortName: 'shortName',
+  email: 'email',
+  phone: 'phone',
+  phone2: 'phone2',
+  country: 'country',
+  county: 'county',
+  town: 'town',
+  address: 'address',
+  kra: 'kra',
+  vat: 'vat',
+  bankName: 'bankName',
+  bankCode: 'bankCode',
+  accountNumber: 'accountNumber',
+  preferredPaymentMethod: 'preferredPaymentMethod',
+  paymentTerm: 'paymentTerm',
+  currency: 'currency',
+  taxType: 'taxType',
+  creditLimit: 'creditLimit',
+  isActive: 'isActive',
+  blacklisted: 'blacklisted',
+  remarks: 'remarks',
+  website: 'website',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PurchaseReQEntryScalarFieldEnum = {
+  id: 'id',
+  grandTotal: 'grandTotal',
+  remarks: 'remarks',
+  shipping: 'shipping',
+  status: 'status',
+  subtotal: 'subtotal',
+  supplierId: 'supplierId',
+  purchaseAdditionalInfoId: 'purchaseAdditionalInfoId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.PurchaseRequisitionEntryItemScalarFieldEnum = {
+  id: 'id',
+  itemId: 'itemId',
+  itemName: 'itemName',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  discount: 'discount',
+  tax: 'tax',
+  total: 'total',
+  purchaseReQEntryId: 'purchaseReQEntryId'
+};
+
+exports.Prisma.PurchaseAdditionalInfoScalarFieldEnum = {
+  id: 'id',
+  comment: 'comment',
+  deliverTo: 'deliverTo',
+  dueDate: 'dueDate',
+  isUrgent: 'isUrgent',
+  prepay: 'prepay',
+  reqDate: 'reqDate',
+  offload: 'offload',
+  isDelivered: 'isDelivered',
+  purchaseReQEntryId: 'purchaseReQEntryId'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -769,7 +849,12 @@ exports.Prisma.ModelName = {
   Rank: 'Rank',
   DesignationTitle: 'DesignationTitle',
   SalesGroup: 'SalesGroup',
-  VehicleExpenseCategory: 'VehicleExpenseCategory'
+  VehicleExpenseCategory: 'VehicleExpenseCategory',
+  PrepaymentAllocation: 'PrepaymentAllocation',
+  Supplier: 'Supplier',
+  PurchaseReQEntry: 'PurchaseReQEntry',
+  PurchaseRequisitionEntryItem: 'PurchaseRequisitionEntryItem',
+  PurchaseAdditionalInfo: 'PurchaseAdditionalInfo'
 };
 
 /**
