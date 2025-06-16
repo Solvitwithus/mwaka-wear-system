@@ -77,11 +77,11 @@ if (loading) return (
     {title:"Outstanding Purchase Order Maintainance",link:"/sales/pos-report",permission:"outstandingPOMaintainance",image:StudIcon},
     {title:"Goods Receive Note (GRN) (Direct)",link:"/procurement/",permission:"DirectGRN",image:StudIcon},
     {title:"Goods Receive Note (GRN)",link:"/procurement/quotation-goods-receive-note",permission:"GRN",image:StudIcon},
-    {title:"Supplier Invoice",link:"/sales/pos-report",permission:"supplierInvoice",image:StudIcon},
-    {title:"Invoice Payment Allocation",link:"/procurement/",permission:"allocatePayments",image:StudIcon},
+    {title:"Supplier Invoice",link:"/procurement/supplier-invoice",permission:"supplierInvoice",image:StudIcon},
+    {title:"Invoice Payment Allocation",link:"/procurement/invoice-payment-allocation",permission:"allocatePayments",image:StudIcon},
     {title:"Add Credit Note",link:"/sales/pos-report",permission:"addCreditNote",image:StudIcon},
     {title:"Allocate Credit",link:"/procurement/",permission:"allocateCredit",image:StudIcon},
-    {title:"Foward to Storage",link:"/sales/pos-report",permission:"fowardToStorage",image:StudIcon},
+    {title:"Foward to Storage",link:"/procurement/foward-to-storage",permission:"fowardToStorage",image:StudIcon},
     {title:"Supplier Rating",link:"/procurement/",permission:"supplierRating",image:StudIcon},
    
 

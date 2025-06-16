@@ -76,7 +76,7 @@ const router = useRouter()
   // --- Filter + Sort ---
   useEffect(() => {
     let filtered = purchaseEntries.filter((entry) => {
-      if(entry.status !== "req-Placed") return false;
+      if(entry.status !== "Received-ordered-goods") return false;
      const refMatch = entry.purchaseAdditionalInfo?.dueDate
   ?.toLowerCase()
   .includes(searchRef.toLowerCase()) ?? true;
@@ -113,7 +113,7 @@ const destMatch = entry.purchaseAdditionalInfo?.deliverTo
 const handleLocalDataParsing = (entry: any) => {
 
   localStorage.setItem("SupplierReqData", JSON.stringify(entry));
-router.push("/procurement/quotation-goods-receive-note/confirm-receival")
+router.push("/procurement/supplier-invoice/process-invoice")
   setTimeout(() => {
     
     localStorage.removeItem("SupplierReqData");

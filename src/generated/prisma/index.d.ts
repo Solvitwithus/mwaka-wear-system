@@ -223,6 +223,11 @@ export type PurchaseRequisitionEntryItem = $Result.DefaultSelection<Prisma.$Purc
  * 
  */
 export type PurchaseAdditionalInfo = $Result.DefaultSelection<Prisma.$PurchaseAdditionalInfoPayload>
+/**
+ * Model SupplierPaymentTracking
+ * 
+ */
+export type SupplierPaymentTracking = $Result.DefaultSelection<Prisma.$SupplierPaymentTrackingPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -768,6 +773,16 @@ export class PrismaClient<
     * ```
     */
   get purchaseAdditionalInfo(): Prisma.PurchaseAdditionalInfoDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.supplierPaymentTracking`: Exposes CRUD operations for the **SupplierPaymentTracking** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more SupplierPaymentTrackings
+    * const supplierPaymentTrackings = await prisma.supplierPaymentTracking.findMany()
+    * ```
+    */
+  get supplierPaymentTracking(): Prisma.SupplierPaymentTrackingDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1249,7 +1264,8 @@ export namespace Prisma {
     Supplier: 'Supplier',
     PurchaseReQEntry: 'PurchaseReQEntry',
     PurchaseRequisitionEntryItem: 'PurchaseRequisitionEntryItem',
-    PurchaseAdditionalInfo: 'PurchaseAdditionalInfo'
+    PurchaseAdditionalInfo: 'PurchaseAdditionalInfo',
+    SupplierPaymentTracking: 'SupplierPaymentTracking'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1268,7 +1284,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4380,6 +4396,80 @@ export namespace Prisma {
           }
         }
       }
+      SupplierPaymentTracking: {
+        payload: Prisma.$SupplierPaymentTrackingPayload<ExtArgs>
+        fields: Prisma.SupplierPaymentTrackingFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.SupplierPaymentTrackingFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.SupplierPaymentTrackingFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>
+          }
+          findFirst: {
+            args: Prisma.SupplierPaymentTrackingFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.SupplierPaymentTrackingFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>
+          }
+          findMany: {
+            args: Prisma.SupplierPaymentTrackingFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>[]
+          }
+          create: {
+            args: Prisma.SupplierPaymentTrackingCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>
+          }
+          createMany: {
+            args: Prisma.SupplierPaymentTrackingCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.SupplierPaymentTrackingCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>[]
+          }
+          delete: {
+            args: Prisma.SupplierPaymentTrackingDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>
+          }
+          update: {
+            args: Prisma.SupplierPaymentTrackingUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>
+          }
+          deleteMany: {
+            args: Prisma.SupplierPaymentTrackingDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.SupplierPaymentTrackingUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.SupplierPaymentTrackingUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>[]
+          }
+          upsert: {
+            args: Prisma.SupplierPaymentTrackingUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$SupplierPaymentTrackingPayload>
+          }
+          aggregate: {
+            args: Prisma.SupplierPaymentTrackingAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSupplierPaymentTracking>
+          }
+          groupBy: {
+            args: Prisma.SupplierPaymentTrackingGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SupplierPaymentTrackingGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.SupplierPaymentTrackingCountArgs<ExtArgs>
+            result: $Utils.Optional<SupplierPaymentTrackingCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -4506,6 +4596,7 @@ export namespace Prisma {
     purchaseReQEntry?: PurchaseReQEntryOmit
     purchaseRequisitionEntryItem?: PurchaseRequisitionEntryItemOmit
     purchaseAdditionalInfo?: PurchaseAdditionalInfoOmit
+    supplierPaymentTracking?: SupplierPaymentTrackingOmit
   }
 
   /* Types for Logging */
@@ -53643,6 +53734,1080 @@ export namespace Prisma {
 
 
   /**
+   * Model SupplierPaymentTracking
+   */
+
+  export type AggregateSupplierPaymentTracking = {
+    _count: SupplierPaymentTrackingCountAggregateOutputType | null
+    _avg: SupplierPaymentTrackingAvgAggregateOutputType | null
+    _sum: SupplierPaymentTrackingSumAggregateOutputType | null
+    _min: SupplierPaymentTrackingMinAggregateOutputType | null
+    _max: SupplierPaymentTrackingMaxAggregateOutputType | null
+  }
+
+  export type SupplierPaymentTrackingAvgAggregateOutputType = {
+    totalAmount: number | null
+    allocatedAmount: number | null
+    balance: number | null
+  }
+
+  export type SupplierPaymentTrackingSumAggregateOutputType = {
+    totalAmount: number | null
+    allocatedAmount: number | null
+    balance: number | null
+  }
+
+  export type SupplierPaymentTrackingMinAggregateOutputType = {
+    id: string | null
+    purchaseEntryId: string | null
+    itemId: string | null
+    totalAmount: number | null
+    allocatedAmount: number | null
+    balance: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SupplierPaymentTrackingMaxAggregateOutputType = {
+    id: string | null
+    purchaseEntryId: string | null
+    itemId: string | null
+    totalAmount: number | null
+    allocatedAmount: number | null
+    balance: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type SupplierPaymentTrackingCountAggregateOutputType = {
+    id: number
+    purchaseEntryId: number
+    itemId: number
+    totalAmount: number
+    allocatedAmount: number
+    balance: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type SupplierPaymentTrackingAvgAggregateInputType = {
+    totalAmount?: true
+    allocatedAmount?: true
+    balance?: true
+  }
+
+  export type SupplierPaymentTrackingSumAggregateInputType = {
+    totalAmount?: true
+    allocatedAmount?: true
+    balance?: true
+  }
+
+  export type SupplierPaymentTrackingMinAggregateInputType = {
+    id?: true
+    purchaseEntryId?: true
+    itemId?: true
+    totalAmount?: true
+    allocatedAmount?: true
+    balance?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SupplierPaymentTrackingMaxAggregateInputType = {
+    id?: true
+    purchaseEntryId?: true
+    itemId?: true
+    totalAmount?: true
+    allocatedAmount?: true
+    balance?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type SupplierPaymentTrackingCountAggregateInputType = {
+    id?: true
+    purchaseEntryId?: true
+    itemId?: true
+    totalAmount?: true
+    allocatedAmount?: true
+    balance?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type SupplierPaymentTrackingAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SupplierPaymentTracking to aggregate.
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierPaymentTrackings to fetch.
+     */
+    orderBy?: SupplierPaymentTrackingOrderByWithRelationInput | SupplierPaymentTrackingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: SupplierPaymentTrackingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierPaymentTrackings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierPaymentTrackings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned SupplierPaymentTrackings
+    **/
+    _count?: true | SupplierPaymentTrackingCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SupplierPaymentTrackingAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SupplierPaymentTrackingSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SupplierPaymentTrackingMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SupplierPaymentTrackingMaxAggregateInputType
+  }
+
+  export type GetSupplierPaymentTrackingAggregateType<T extends SupplierPaymentTrackingAggregateArgs> = {
+        [P in keyof T & keyof AggregateSupplierPaymentTracking]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSupplierPaymentTracking[P]>
+      : GetScalarType<T[P], AggregateSupplierPaymentTracking[P]>
+  }
+
+
+
+
+  export type SupplierPaymentTrackingGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: SupplierPaymentTrackingWhereInput
+    orderBy?: SupplierPaymentTrackingOrderByWithAggregationInput | SupplierPaymentTrackingOrderByWithAggregationInput[]
+    by: SupplierPaymentTrackingScalarFieldEnum[] | SupplierPaymentTrackingScalarFieldEnum
+    having?: SupplierPaymentTrackingScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SupplierPaymentTrackingCountAggregateInputType | true
+    _avg?: SupplierPaymentTrackingAvgAggregateInputType
+    _sum?: SupplierPaymentTrackingSumAggregateInputType
+    _min?: SupplierPaymentTrackingMinAggregateInputType
+    _max?: SupplierPaymentTrackingMaxAggregateInputType
+  }
+
+  export type SupplierPaymentTrackingGroupByOutputType = {
+    id: string
+    purchaseEntryId: string
+    itemId: string
+    totalAmount: number
+    allocatedAmount: number
+    balance: number
+    createdAt: Date
+    updatedAt: Date
+    _count: SupplierPaymentTrackingCountAggregateOutputType | null
+    _avg: SupplierPaymentTrackingAvgAggregateOutputType | null
+    _sum: SupplierPaymentTrackingSumAggregateOutputType | null
+    _min: SupplierPaymentTrackingMinAggregateOutputType | null
+    _max: SupplierPaymentTrackingMaxAggregateOutputType | null
+  }
+
+  type GetSupplierPaymentTrackingGroupByPayload<T extends SupplierPaymentTrackingGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SupplierPaymentTrackingGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SupplierPaymentTrackingGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SupplierPaymentTrackingGroupByOutputType[P]>
+            : GetScalarType<T[P], SupplierPaymentTrackingGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type SupplierPaymentTrackingSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    purchaseEntryId?: boolean
+    itemId?: boolean
+    totalAmount?: boolean
+    allocatedAmount?: boolean
+    balance?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["supplierPaymentTracking"]>
+
+  export type SupplierPaymentTrackingSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    purchaseEntryId?: boolean
+    itemId?: boolean
+    totalAmount?: boolean
+    allocatedAmount?: boolean
+    balance?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["supplierPaymentTracking"]>
+
+  export type SupplierPaymentTrackingSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    purchaseEntryId?: boolean
+    itemId?: boolean
+    totalAmount?: boolean
+    allocatedAmount?: boolean
+    balance?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["supplierPaymentTracking"]>
+
+  export type SupplierPaymentTrackingSelectScalar = {
+    id?: boolean
+    purchaseEntryId?: boolean
+    itemId?: boolean
+    totalAmount?: boolean
+    allocatedAmount?: boolean
+    balance?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type SupplierPaymentTrackingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "purchaseEntryId" | "itemId" | "totalAmount" | "allocatedAmount" | "balance" | "createdAt" | "updatedAt", ExtArgs["result"]["supplierPaymentTracking"]>
+
+  export type $SupplierPaymentTrackingPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "SupplierPaymentTracking"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      purchaseEntryId: string
+      itemId: string
+      totalAmount: number
+      allocatedAmount: number
+      balance: number
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["supplierPaymentTracking"]>
+    composites: {}
+  }
+
+  type SupplierPaymentTrackingGetPayload<S extends boolean | null | undefined | SupplierPaymentTrackingDefaultArgs> = $Result.GetResult<Prisma.$SupplierPaymentTrackingPayload, S>
+
+  type SupplierPaymentTrackingCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<SupplierPaymentTrackingFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: SupplierPaymentTrackingCountAggregateInputType | true
+    }
+
+  export interface SupplierPaymentTrackingDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SupplierPaymentTracking'], meta: { name: 'SupplierPaymentTracking' } }
+    /**
+     * Find zero or one SupplierPaymentTracking that matches the filter.
+     * @param {SupplierPaymentTrackingFindUniqueArgs} args - Arguments to find a SupplierPaymentTracking
+     * @example
+     * // Get one SupplierPaymentTracking
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends SupplierPaymentTrackingFindUniqueArgs>(args: SelectSubset<T, SupplierPaymentTrackingFindUniqueArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one SupplierPaymentTracking that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {SupplierPaymentTrackingFindUniqueOrThrowArgs} args - Arguments to find a SupplierPaymentTracking
+     * @example
+     * // Get one SupplierPaymentTracking
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends SupplierPaymentTrackingFindUniqueOrThrowArgs>(args: SelectSubset<T, SupplierPaymentTrackingFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SupplierPaymentTracking that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingFindFirstArgs} args - Arguments to find a SupplierPaymentTracking
+     * @example
+     * // Get one SupplierPaymentTracking
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends SupplierPaymentTrackingFindFirstArgs>(args?: SelectSubset<T, SupplierPaymentTrackingFindFirstArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first SupplierPaymentTracking that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingFindFirstOrThrowArgs} args - Arguments to find a SupplierPaymentTracking
+     * @example
+     * // Get one SupplierPaymentTracking
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends SupplierPaymentTrackingFindFirstOrThrowArgs>(args?: SelectSubset<T, SupplierPaymentTrackingFindFirstOrThrowArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more SupplierPaymentTrackings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all SupplierPaymentTrackings
+     * const supplierPaymentTrackings = await prisma.supplierPaymentTracking.findMany()
+     * 
+     * // Get first 10 SupplierPaymentTrackings
+     * const supplierPaymentTrackings = await prisma.supplierPaymentTracking.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const supplierPaymentTrackingWithIdOnly = await prisma.supplierPaymentTracking.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends SupplierPaymentTrackingFindManyArgs>(args?: SelectSubset<T, SupplierPaymentTrackingFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a SupplierPaymentTracking.
+     * @param {SupplierPaymentTrackingCreateArgs} args - Arguments to create a SupplierPaymentTracking.
+     * @example
+     * // Create one SupplierPaymentTracking
+     * const SupplierPaymentTracking = await prisma.supplierPaymentTracking.create({
+     *   data: {
+     *     // ... data to create a SupplierPaymentTracking
+     *   }
+     * })
+     * 
+     */
+    create<T extends SupplierPaymentTrackingCreateArgs>(args: SelectSubset<T, SupplierPaymentTrackingCreateArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many SupplierPaymentTrackings.
+     * @param {SupplierPaymentTrackingCreateManyArgs} args - Arguments to create many SupplierPaymentTrackings.
+     * @example
+     * // Create many SupplierPaymentTrackings
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends SupplierPaymentTrackingCreateManyArgs>(args?: SelectSubset<T, SupplierPaymentTrackingCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many SupplierPaymentTrackings and returns the data saved in the database.
+     * @param {SupplierPaymentTrackingCreateManyAndReturnArgs} args - Arguments to create many SupplierPaymentTrackings.
+     * @example
+     * // Create many SupplierPaymentTrackings
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many SupplierPaymentTrackings and only return the `id`
+     * const supplierPaymentTrackingWithIdOnly = await prisma.supplierPaymentTracking.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends SupplierPaymentTrackingCreateManyAndReturnArgs>(args?: SelectSubset<T, SupplierPaymentTrackingCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a SupplierPaymentTracking.
+     * @param {SupplierPaymentTrackingDeleteArgs} args - Arguments to delete one SupplierPaymentTracking.
+     * @example
+     * // Delete one SupplierPaymentTracking
+     * const SupplierPaymentTracking = await prisma.supplierPaymentTracking.delete({
+     *   where: {
+     *     // ... filter to delete one SupplierPaymentTracking
+     *   }
+     * })
+     * 
+     */
+    delete<T extends SupplierPaymentTrackingDeleteArgs>(args: SelectSubset<T, SupplierPaymentTrackingDeleteArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one SupplierPaymentTracking.
+     * @param {SupplierPaymentTrackingUpdateArgs} args - Arguments to update one SupplierPaymentTracking.
+     * @example
+     * // Update one SupplierPaymentTracking
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends SupplierPaymentTrackingUpdateArgs>(args: SelectSubset<T, SupplierPaymentTrackingUpdateArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more SupplierPaymentTrackings.
+     * @param {SupplierPaymentTrackingDeleteManyArgs} args - Arguments to filter SupplierPaymentTrackings to delete.
+     * @example
+     * // Delete a few SupplierPaymentTrackings
+     * const { count } = await prisma.supplierPaymentTracking.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends SupplierPaymentTrackingDeleteManyArgs>(args?: SelectSubset<T, SupplierPaymentTrackingDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SupplierPaymentTrackings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many SupplierPaymentTrackings
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends SupplierPaymentTrackingUpdateManyArgs>(args: SelectSubset<T, SupplierPaymentTrackingUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more SupplierPaymentTrackings and returns the data updated in the database.
+     * @param {SupplierPaymentTrackingUpdateManyAndReturnArgs} args - Arguments to update many SupplierPaymentTrackings.
+     * @example
+     * // Update many SupplierPaymentTrackings
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more SupplierPaymentTrackings and only return the `id`
+     * const supplierPaymentTrackingWithIdOnly = await prisma.supplierPaymentTracking.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends SupplierPaymentTrackingUpdateManyAndReturnArgs>(args: SelectSubset<T, SupplierPaymentTrackingUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one SupplierPaymentTracking.
+     * @param {SupplierPaymentTrackingUpsertArgs} args - Arguments to update or create a SupplierPaymentTracking.
+     * @example
+     * // Update or create a SupplierPaymentTracking
+     * const supplierPaymentTracking = await prisma.supplierPaymentTracking.upsert({
+     *   create: {
+     *     // ... data to create a SupplierPaymentTracking
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the SupplierPaymentTracking we want to update
+     *   }
+     * })
+     */
+    upsert<T extends SupplierPaymentTrackingUpsertArgs>(args: SelectSubset<T, SupplierPaymentTrackingUpsertArgs<ExtArgs>>): Prisma__SupplierPaymentTrackingClient<$Result.GetResult<Prisma.$SupplierPaymentTrackingPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of SupplierPaymentTrackings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingCountArgs} args - Arguments to filter SupplierPaymentTrackings to count.
+     * @example
+     * // Count the number of SupplierPaymentTrackings
+     * const count = await prisma.supplierPaymentTracking.count({
+     *   where: {
+     *     // ... the filter for the SupplierPaymentTrackings we want to count
+     *   }
+     * })
+    **/
+    count<T extends SupplierPaymentTrackingCountArgs>(
+      args?: Subset<T, SupplierPaymentTrackingCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SupplierPaymentTrackingCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a SupplierPaymentTracking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SupplierPaymentTrackingAggregateArgs>(args: Subset<T, SupplierPaymentTrackingAggregateArgs>): Prisma.PrismaPromise<GetSupplierPaymentTrackingAggregateType<T>>
+
+    /**
+     * Group by SupplierPaymentTracking.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SupplierPaymentTrackingGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends SupplierPaymentTrackingGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: SupplierPaymentTrackingGroupByArgs['orderBy'] }
+        : { orderBy?: SupplierPaymentTrackingGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, SupplierPaymentTrackingGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSupplierPaymentTrackingGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the SupplierPaymentTracking model
+   */
+  readonly fields: SupplierPaymentTrackingFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for SupplierPaymentTracking.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__SupplierPaymentTrackingClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the SupplierPaymentTracking model
+   */
+  interface SupplierPaymentTrackingFieldRefs {
+    readonly id: FieldRef<"SupplierPaymentTracking", 'String'>
+    readonly purchaseEntryId: FieldRef<"SupplierPaymentTracking", 'String'>
+    readonly itemId: FieldRef<"SupplierPaymentTracking", 'String'>
+    readonly totalAmount: FieldRef<"SupplierPaymentTracking", 'Float'>
+    readonly allocatedAmount: FieldRef<"SupplierPaymentTracking", 'Float'>
+    readonly balance: FieldRef<"SupplierPaymentTracking", 'Float'>
+    readonly createdAt: FieldRef<"SupplierPaymentTracking", 'DateTime'>
+    readonly updatedAt: FieldRef<"SupplierPaymentTracking", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * SupplierPaymentTracking findUnique
+   */
+  export type SupplierPaymentTrackingFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierPaymentTracking to fetch.
+     */
+    where: SupplierPaymentTrackingWhereUniqueInput
+  }
+
+  /**
+   * SupplierPaymentTracking findUniqueOrThrow
+   */
+  export type SupplierPaymentTrackingFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierPaymentTracking to fetch.
+     */
+    where: SupplierPaymentTrackingWhereUniqueInput
+  }
+
+  /**
+   * SupplierPaymentTracking findFirst
+   */
+  export type SupplierPaymentTrackingFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierPaymentTracking to fetch.
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierPaymentTrackings to fetch.
+     */
+    orderBy?: SupplierPaymentTrackingOrderByWithRelationInput | SupplierPaymentTrackingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SupplierPaymentTrackings.
+     */
+    cursor?: SupplierPaymentTrackingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierPaymentTrackings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierPaymentTrackings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SupplierPaymentTrackings.
+     */
+    distinct?: SupplierPaymentTrackingScalarFieldEnum | SupplierPaymentTrackingScalarFieldEnum[]
+  }
+
+  /**
+   * SupplierPaymentTracking findFirstOrThrow
+   */
+  export type SupplierPaymentTrackingFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierPaymentTracking to fetch.
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierPaymentTrackings to fetch.
+     */
+    orderBy?: SupplierPaymentTrackingOrderByWithRelationInput | SupplierPaymentTrackingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for SupplierPaymentTrackings.
+     */
+    cursor?: SupplierPaymentTrackingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierPaymentTrackings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierPaymentTrackings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of SupplierPaymentTrackings.
+     */
+    distinct?: SupplierPaymentTrackingScalarFieldEnum | SupplierPaymentTrackingScalarFieldEnum[]
+  }
+
+  /**
+   * SupplierPaymentTracking findMany
+   */
+  export type SupplierPaymentTrackingFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * Filter, which SupplierPaymentTrackings to fetch.
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of SupplierPaymentTrackings to fetch.
+     */
+    orderBy?: SupplierPaymentTrackingOrderByWithRelationInput | SupplierPaymentTrackingOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing SupplierPaymentTrackings.
+     */
+    cursor?: SupplierPaymentTrackingWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` SupplierPaymentTrackings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` SupplierPaymentTrackings.
+     */
+    skip?: number
+    distinct?: SupplierPaymentTrackingScalarFieldEnum | SupplierPaymentTrackingScalarFieldEnum[]
+  }
+
+  /**
+   * SupplierPaymentTracking create
+   */
+  export type SupplierPaymentTrackingCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * The data needed to create a SupplierPaymentTracking.
+     */
+    data: XOR<SupplierPaymentTrackingCreateInput, SupplierPaymentTrackingUncheckedCreateInput>
+  }
+
+  /**
+   * SupplierPaymentTracking createMany
+   */
+  export type SupplierPaymentTrackingCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many SupplierPaymentTrackings.
+     */
+    data: SupplierPaymentTrackingCreateManyInput | SupplierPaymentTrackingCreateManyInput[]
+  }
+
+  /**
+   * SupplierPaymentTracking createManyAndReturn
+   */
+  export type SupplierPaymentTrackingCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * The data used to create many SupplierPaymentTrackings.
+     */
+    data: SupplierPaymentTrackingCreateManyInput | SupplierPaymentTrackingCreateManyInput[]
+  }
+
+  /**
+   * SupplierPaymentTracking update
+   */
+  export type SupplierPaymentTrackingUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * The data needed to update a SupplierPaymentTracking.
+     */
+    data: XOR<SupplierPaymentTrackingUpdateInput, SupplierPaymentTrackingUncheckedUpdateInput>
+    /**
+     * Choose, which SupplierPaymentTracking to update.
+     */
+    where: SupplierPaymentTrackingWhereUniqueInput
+  }
+
+  /**
+   * SupplierPaymentTracking updateMany
+   */
+  export type SupplierPaymentTrackingUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update SupplierPaymentTrackings.
+     */
+    data: XOR<SupplierPaymentTrackingUpdateManyMutationInput, SupplierPaymentTrackingUncheckedUpdateManyInput>
+    /**
+     * Filter which SupplierPaymentTrackings to update
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * Limit how many SupplierPaymentTrackings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupplierPaymentTracking updateManyAndReturn
+   */
+  export type SupplierPaymentTrackingUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * The data used to update SupplierPaymentTrackings.
+     */
+    data: XOR<SupplierPaymentTrackingUpdateManyMutationInput, SupplierPaymentTrackingUncheckedUpdateManyInput>
+    /**
+     * Filter which SupplierPaymentTrackings to update
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * Limit how many SupplierPaymentTrackings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupplierPaymentTracking upsert
+   */
+  export type SupplierPaymentTrackingUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * The filter to search for the SupplierPaymentTracking to update in case it exists.
+     */
+    where: SupplierPaymentTrackingWhereUniqueInput
+    /**
+     * In case the SupplierPaymentTracking found by the `where` argument doesn't exist, create a new SupplierPaymentTracking with this data.
+     */
+    create: XOR<SupplierPaymentTrackingCreateInput, SupplierPaymentTrackingUncheckedCreateInput>
+    /**
+     * In case the SupplierPaymentTracking was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<SupplierPaymentTrackingUpdateInput, SupplierPaymentTrackingUncheckedUpdateInput>
+  }
+
+  /**
+   * SupplierPaymentTracking delete
+   */
+  export type SupplierPaymentTrackingDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+    /**
+     * Filter which SupplierPaymentTracking to delete.
+     */
+    where: SupplierPaymentTrackingWhereUniqueInput
+  }
+
+  /**
+   * SupplierPaymentTracking deleteMany
+   */
+  export type SupplierPaymentTrackingDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which SupplierPaymentTrackings to delete
+     */
+    where?: SupplierPaymentTrackingWhereInput
+    /**
+     * Limit how many SupplierPaymentTrackings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * SupplierPaymentTracking without action
+   */
+  export type SupplierPaymentTrackingDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierPaymentTracking
+     */
+    select?: SupplierPaymentTrackingSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the SupplierPaymentTracking
+     */
+    omit?: SupplierPaymentTrackingOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -54446,6 +55611,20 @@ export namespace Prisma {
   };
 
   export type PurchaseAdditionalInfoScalarFieldEnum = (typeof PurchaseAdditionalInfoScalarFieldEnum)[keyof typeof PurchaseAdditionalInfoScalarFieldEnum]
+
+
+  export const SupplierPaymentTrackingScalarFieldEnum: {
+    id: 'id',
+    purchaseEntryId: 'purchaseEntryId',
+    itemId: 'itemId',
+    totalAmount: 'totalAmount',
+    allocatedAmount: 'allocatedAmount',
+    balance: 'balance',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type SupplierPaymentTrackingScalarFieldEnum = (typeof SupplierPaymentTrackingScalarFieldEnum)[keyof typeof SupplierPaymentTrackingScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -58546,6 +59725,75 @@ export namespace Prisma {
     offload?: BoolWithAggregatesFilter<"PurchaseAdditionalInfo"> | boolean
     isDelivered?: BoolWithAggregatesFilter<"PurchaseAdditionalInfo"> | boolean
     purchaseReQEntryId?: StringNullableWithAggregatesFilter<"PurchaseAdditionalInfo"> | string | null
+  }
+
+  export type SupplierPaymentTrackingWhereInput = {
+    AND?: SupplierPaymentTrackingWhereInput | SupplierPaymentTrackingWhereInput[]
+    OR?: SupplierPaymentTrackingWhereInput[]
+    NOT?: SupplierPaymentTrackingWhereInput | SupplierPaymentTrackingWhereInput[]
+    id?: StringFilter<"SupplierPaymentTracking"> | string
+    purchaseEntryId?: StringFilter<"SupplierPaymentTracking"> | string
+    itemId?: StringFilter<"SupplierPaymentTracking"> | string
+    totalAmount?: FloatFilter<"SupplierPaymentTracking"> | number
+    allocatedAmount?: FloatFilter<"SupplierPaymentTracking"> | number
+    balance?: FloatFilter<"SupplierPaymentTracking"> | number
+    createdAt?: DateTimeFilter<"SupplierPaymentTracking"> | Date | string
+    updatedAt?: DateTimeFilter<"SupplierPaymentTracking"> | Date | string
+  }
+
+  export type SupplierPaymentTrackingOrderByWithRelationInput = {
+    id?: SortOrder
+    purchaseEntryId?: SortOrder
+    itemId?: SortOrder
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SupplierPaymentTrackingWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: SupplierPaymentTrackingWhereInput | SupplierPaymentTrackingWhereInput[]
+    OR?: SupplierPaymentTrackingWhereInput[]
+    NOT?: SupplierPaymentTrackingWhereInput | SupplierPaymentTrackingWhereInput[]
+    purchaseEntryId?: StringFilter<"SupplierPaymentTracking"> | string
+    itemId?: StringFilter<"SupplierPaymentTracking"> | string
+    totalAmount?: FloatFilter<"SupplierPaymentTracking"> | number
+    allocatedAmount?: FloatFilter<"SupplierPaymentTracking"> | number
+    balance?: FloatFilter<"SupplierPaymentTracking"> | number
+    createdAt?: DateTimeFilter<"SupplierPaymentTracking"> | Date | string
+    updatedAt?: DateTimeFilter<"SupplierPaymentTracking"> | Date | string
+  }, "id">
+
+  export type SupplierPaymentTrackingOrderByWithAggregationInput = {
+    id?: SortOrder
+    purchaseEntryId?: SortOrder
+    itemId?: SortOrder
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: SupplierPaymentTrackingCountOrderByAggregateInput
+    _avg?: SupplierPaymentTrackingAvgOrderByAggregateInput
+    _max?: SupplierPaymentTrackingMaxOrderByAggregateInput
+    _min?: SupplierPaymentTrackingMinOrderByAggregateInput
+    _sum?: SupplierPaymentTrackingSumOrderByAggregateInput
+  }
+
+  export type SupplierPaymentTrackingScalarWhereWithAggregatesInput = {
+    AND?: SupplierPaymentTrackingScalarWhereWithAggregatesInput | SupplierPaymentTrackingScalarWhereWithAggregatesInput[]
+    OR?: SupplierPaymentTrackingScalarWhereWithAggregatesInput[]
+    NOT?: SupplierPaymentTrackingScalarWhereWithAggregatesInput | SupplierPaymentTrackingScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"SupplierPaymentTracking"> | string
+    purchaseEntryId?: StringWithAggregatesFilter<"SupplierPaymentTracking"> | string
+    itemId?: StringWithAggregatesFilter<"SupplierPaymentTracking"> | string
+    totalAmount?: FloatWithAggregatesFilter<"SupplierPaymentTracking"> | number
+    allocatedAmount?: FloatWithAggregatesFilter<"SupplierPaymentTracking"> | number
+    balance?: FloatWithAggregatesFilter<"SupplierPaymentTracking"> | number
+    createdAt?: DateTimeWithAggregatesFilter<"SupplierPaymentTracking"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"SupplierPaymentTracking"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -63270,6 +64518,83 @@ export namespace Prisma {
     purchaseReQEntryId?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type SupplierPaymentTrackingCreateInput = {
+    id?: string
+    purchaseEntryId: string
+    itemId: string
+    totalAmount: number
+    allocatedAmount?: number
+    balance?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SupplierPaymentTrackingUncheckedCreateInput = {
+    id?: string
+    purchaseEntryId: string
+    itemId: string
+    totalAmount: number
+    allocatedAmount?: number
+    balance?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SupplierPaymentTrackingUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purchaseEntryId?: StringFieldUpdateOperationsInput | string
+    itemId?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    allocatedAmount?: FloatFieldUpdateOperationsInput | number
+    balance?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupplierPaymentTrackingUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purchaseEntryId?: StringFieldUpdateOperationsInput | string
+    itemId?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    allocatedAmount?: FloatFieldUpdateOperationsInput | number
+    balance?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupplierPaymentTrackingCreateManyInput = {
+    id?: string
+    purchaseEntryId: string
+    itemId: string
+    totalAmount: number
+    allocatedAmount?: number
+    balance?: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type SupplierPaymentTrackingUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purchaseEntryId?: StringFieldUpdateOperationsInput | string
+    itemId?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    allocatedAmount?: FloatFieldUpdateOperationsInput | number
+    balance?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type SupplierPaymentTrackingUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    purchaseEntryId?: StringFieldUpdateOperationsInput | string
+    itemId?: StringFieldUpdateOperationsInput | string
+    totalAmount?: FloatFieldUpdateOperationsInput | number
+    allocatedAmount?: FloatFieldUpdateOperationsInput | number
+    balance?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -66016,6 +67341,51 @@ export namespace Prisma {
     offload?: SortOrder
     isDelivered?: SortOrder
     purchaseReQEntryId?: SortOrder
+  }
+
+  export type SupplierPaymentTrackingCountOrderByAggregateInput = {
+    id?: SortOrder
+    purchaseEntryId?: SortOrder
+    itemId?: SortOrder
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SupplierPaymentTrackingAvgOrderByAggregateInput = {
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
+  }
+
+  export type SupplierPaymentTrackingMaxOrderByAggregateInput = {
+    id?: SortOrder
+    purchaseEntryId?: SortOrder
+    itemId?: SortOrder
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SupplierPaymentTrackingMinOrderByAggregateInput = {
+    id?: SortOrder
+    purchaseEntryId?: SortOrder
+    itemId?: SortOrder
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type SupplierPaymentTrackingSumOrderByAggregateInput = {
+    totalAmount?: SortOrder
+    allocatedAmount?: SortOrder
+    balance?: SortOrder
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {

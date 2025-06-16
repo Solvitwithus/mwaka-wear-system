@@ -76,7 +76,7 @@ const router = useRouter()
   // --- Filter + Sort ---
   useEffect(() => {
     let filtered = purchaseEntries.filter((entry) => {
-      if(entry.status !== "req-Placed") return false;
+      if(entry.status !== "purchase-invoiced") return false;
      const refMatch = entry.purchaseAdditionalInfo?.dueDate
   ?.toLowerCase()
   .includes(searchRef.toLowerCase()) ?? true;
@@ -110,19 +110,38 @@ const destMatch = entry.purchaseAdditionalInfo?.deliverTo
   );
 
   const totalPages = Math.ceil(filteredEntries.length / rowsPerPage);
-const handleLocalDataParsing = (entry: any) => {
+const handleLocalDataParsing = async(entry: any) => {
 
-  localStorage.setItem("SupplierReqData", JSON.stringify(entry));
-router.push("/procurement/quotation-goods-receive-note/confirm-receival")
-  setTimeout(() => {
-    
-    localStorage.removeItem("SupplierReqData");
-  }, 1000*300);
+  if (!entry) return;
+
+  // Save data to localStorage for the next page to use
+ 
+
+  try {
+    // First update the status
+    const res = await axios.patch("/api/auth/purchase-quotation-entry", {
+      id: entry.id,
+      status: "ready-to-thrift",
+    });
+
+    if (res.status === 200) {
+      
+
+      // Navigate only after success
+      router.push("/items-and-inventory");
+
+      // Clear localStorage after a delay
+     
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Failed to approve requisition.");
+  }
 };
 
   return (
     <div className="bg-[#EFEFEF] m-1 rounded-md p-1 h-fit">
-      <h4 className="text-black font-medium text-base ml-1">Confirm Arrival of Order</h4>
+      <h4 className="text-black font-medium text-base ml-1">Foward Items to be Thrifted</h4>
 
       {/* Filters */}
       <div className="flex flex-col border-black border-[1px] p-2 space-y-2 rounded-md">

@@ -92,7 +92,7 @@ const page = () => {
   </div>)
   
 const transactions = [
-  {name:"Receive Into Inventory", link:"/items-and-inventory/",image:StudIcon,permission:"ReceiveSupplyIntoInventory"},
+  {name:"Receive Into Inventory", link:"/items-and-inventory/inventory-receival",image:StudIcon,permission:"ReceiveSupplyIntoInventory"},
   {name:"Inventory Adjustments", link:"/items-and-inventory/",image:StudIcon,permission:"InventoryAdjustments"},
   {name:"Miscelleneous Stock Requisition", link:"/items-and-inventory/",image:StudIcon,permission:"MiscelleneousStockRequisition"},
   {name:"Approve Requisition", link:"/items-and-inventory/",image:StudIcon,permission:"ApproveRequisition"},

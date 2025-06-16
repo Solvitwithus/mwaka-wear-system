@@ -764,3 +764,13 @@ model PurchaseAdditionalInfo {
   purchaseReQEntry PurchaseReQEntry? @relation(fields: [purchaseReQEntryId], references: [id])
   purchaseReQEntryId String?         @unique
 }
+model SupplierPaymentTracking {
+  id                String   @id @default(uuid())
+  purchaseEntryId   String
+  itemId            String
+  totalAmount       Float
+  allocatedAmount   Float    @default(0)
+  balance           Float    @default(0)
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+}

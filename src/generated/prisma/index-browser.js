@@ -786,6 +786,17 @@ exports.Prisma.PurchaseAdditionalInfoScalarFieldEnum = {
   purchaseReQEntryId: 'purchaseReQEntryId'
 };
 
+exports.Prisma.SupplierPaymentTrackingScalarFieldEnum = {
+  id: 'id',
+  purchaseEntryId: 'purchaseEntryId',
+  itemId: 'itemId',
+  totalAmount: 'totalAmount',
+  allocatedAmount: 'allocatedAmount',
+  balance: 'balance',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -854,7 +865,8 @@ exports.Prisma.ModelName = {
   Supplier: 'Supplier',
   PurchaseReQEntry: 'PurchaseReQEntry',
   PurchaseRequisitionEntryItem: 'PurchaseRequisitionEntryItem',
-  PurchaseAdditionalInfo: 'PurchaseAdditionalInfo'
+  PurchaseAdditionalInfo: 'PurchaseAdditionalInfo',
+  SupplierPaymentTracking: 'SupplierPaymentTracking'
 };
 
 /**
