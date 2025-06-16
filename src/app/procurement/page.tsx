@@ -70,13 +70,13 @@ if (loading) return (
 
   const menu =[
     {title:"Purchase Requisition Entry",link:"/procurement/purchase-requisition-entry",permission:"requisitionEntry",image:StudIcon},
-    {title:"Purchase Requisition Review",link:"/sales/pos-report",permission:"requisitionReview",image:StudIcon},
-    {title:"Purchase Requisition Approval",link:"/procurement/",permission:"requisitionApproval",image:StudIcon},
-  {title:"Purchase Order Against Purchase Requisition",link:"/sales/pos-report",permission:"POAgainstPurchaseRequisition",image:StudIcon},
+    {title:"Purchase Requisition Review",link:"/procurement/purchase-requisition-review",permission:"requisitionReview",image:StudIcon},
+    {title:"Purchase Requisition Approval",link:"/procurement/approve-purchase-requisition",permission:"requisitionApproval",image:StudIcon},
+  {title:"Purchase Order Against Purchase Requisition",link:"/procurement/purchaseorder-against-purchase-reuisition",permission:"POAgainstPurchaseRequisition",image:StudIcon},
     {title:"Purchase Order Entry (Direct)",link:"/procurement/",permission:"directPOEntry",image:StudIcon},
     {title:"Outstanding Purchase Order Maintainance",link:"/sales/pos-report",permission:"outstandingPOMaintainance",image:StudIcon},
     {title:"Goods Receive Note (GRN) (Direct)",link:"/procurement/",permission:"DirectGRN",image:StudIcon},
-    {title:"Goods Receive Note (GRN)",link:"/procurement/",permission:"GRN",image:StudIcon},
+    {title:"Goods Receive Note (GRN)",link:"/procurement/quotation-goods-receive-note",permission:"GRN",image:StudIcon},
     {title:"Supplier Invoice",link:"/sales/pos-report",permission:"supplierInvoice",image:StudIcon},
     {title:"Invoice Payment Allocation",link:"/procurement/",permission:"allocatePayments",image:StudIcon},
     {title:"Add Credit Note",link:"/sales/pos-report",permission:"addCreditNote",image:StudIcon},

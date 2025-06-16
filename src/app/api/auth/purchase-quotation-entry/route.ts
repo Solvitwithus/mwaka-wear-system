@@ -92,3 +92,24 @@ export async function GET() {
     return NextResponse.json({ success: false, message: "Failed to fetch entries." }, { status: 500 });
   }
 }
+
+
+export async function PATCH(req: NextRequest) {
+  try {
+    const { id, status } = await req.json();
+
+    if (!id || !status) {
+      return NextResponse.json({ error: "Missing id or status" }, { status: 400 });
+    }
+
+    const updatedRequisition = await prisma.purchaseReQEntry.update({
+      where: {  id },
+      data: { status },
+    });
+
+    return NextResponse.json({ message: "Status updated successfully", data: updatedRequisition }, { status: 200 });
+  } catch (error) {
+    console.error("Error updating supplier requisition status:", error);
+    return NextResponse.json({ error: "Failed to update status" }, { status: 500 });
+  }
+}

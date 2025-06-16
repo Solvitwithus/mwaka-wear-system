@@ -282,7 +282,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
     return(
         // container
         <div className='bg-[#EFEFEF] m-1 rounded-md p-1 h-fit'> <form onSubmit={handleQuotqtionAdd}>
-            <h4 className='text-black font-medium ml-1 text-sm '>New Purchase Entry</h4>
+            <h4 className='text-black font-medium ml-1 text-sm '>New Purchase Requisition Entry</h4>
             {/* upper section */}
             <div className='border-[1px] border-black mx-1 rounded-md mb-2'>
 <h6 className='text-center text-sm text-black font-semibold'>Supplier Information</h6>
