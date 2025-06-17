@@ -232,7 +232,8 @@ const thriftPermissions = [
   {name:"GradingOrderInquiry",value:false},
   {name:"GradingReports",value:false},
   {name:"DiscardedItems",value:false},
-  {name:"WorkCenters",value:false}, 
+  {name:"WorkCenters",value:false},
+  {name:"Grade",value:false} 
 ]
 
 

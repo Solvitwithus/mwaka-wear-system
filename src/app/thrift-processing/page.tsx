@@ -7,6 +7,7 @@ import Image from 'next/image';
 import { usePermissionStore } from '@/store/usePermissionStore';
 import reportIcon from '@/assets/ReportIcon.svg'
 import SettingsIcon from '@/assets/SettingsIcon.svg'
+import { Skeleton } from '@heroui/skeleton';
 
 type Permissions = {
   Rebale:Boolean;
@@ -18,28 +19,29 @@ type Permissions = {
   GradingReports:Boolean;
   DiscardedItems:Boolean;
   WorkCenters:Boolean;
-  
+  Grade:Boolean
   
 }
 
 const transactions = [
-  {name:"Rebale", link:"/items-and-inventory/",image:StudIcon,permission:"Rebale"},
-  {name:"Inventory Items Grading", link:"/items-and-inventory/",image:StudIcon,permission:"InventoryItemsGrading"},
-  {name:"Print Graded Items Barcode", link:"/items-and-inventory/",image:StudIcon,permission:"PrintGradedItemsBarcode"},
-  {name:"Outstanding Grading Orders", link:"/items-and-inventory/",image:StudIcon,permission:"OutstandingGradingOrders"},
-  {name:"Discard Damaged Items", link:"/items-and-inventory/",image:StudIcon,permission:"DiscardItems"},
+  {name:"Rebale", link:"/thrift-processing/",image:StudIcon,permission:"Rebale"},
+  {name:"Inventory Items Grading", link:"/thrift-processing/inventory-item-grading",image:StudIcon,permission:"InventoryItemsGrading"},
+  {name:"Print Graded Items Barcode", link:"/thrift-processing/",image:StudIcon,permission:"PrintGradedItemsBarcode"},
+  {name:"Outstanding Grading Orders", link:"/thrift-processing/",image:StudIcon,permission:"OutstandingGradingOrders"},
+  {name:"Discard Damaged Items", link:"/thrift-processing/",image:StudIcon,permission:"DiscardItems"},
 
 ]
 
 const setups =[
-  {name:"Create Mini-Work Centers", link:"/items-and-inventory/",image:SettingsIcon,permission:"WorkCenters"},
+  {name:"Create Mini-Work Centers", link:"/thrift-processing/",image:SettingsIcon,permission:"WorkCenters"},
+  {name:"Create Grades", link:"/thrift-processing/create-grades",image:SettingsIcon,permission:"Grade"},
   
 ]
 
 const reports =[
-  {name:"Grading Order Inquiry", link:"/items-and-inventory/",image:reportIcon,permission:"GradingOrderInquiry"},
-  {name:"Grading Reports", link:"/items-and-inventory/",image:reportIcon,permission:"GradingReports"},
-  {name:"Discarded Items", link:"/items-and-inventory/",image:reportIcon,permission:"DiscardedItems"},
+  {name:"Grading Order Inquiry", link:"/thrift-processing/",image:reportIcon,permission:"GradingOrderInquiry"},
+  {name:"Grading Reports", link:"/thrift-processing/",image:reportIcon,permission:"GradingReports"},
+  {name:"Discarded Items", link:"/thrift-processing/",image:reportIcon,permission:"DiscardedItems"},
 ]
 const page = () => {
    const searchParams = useSearchParams();
@@ -58,8 +60,29 @@ const page = () => {
       fetchPermissions();
     }, [fetchPermissions]);
   
-    if (loading) return <p>Loading...</p>;
-    if (!permissions) return <p>Unauthorized</p>;
+ if (loading) return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>
+);
+  if (!permissions)  return (
+  <div className="p-4">
+    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+      <Skeleton className="rounded-lg h-24 bg-gray-300" />
+      <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+    </div>
+  </div>)
   const filteredReport = reports.filter(item => permissions[item.permission as keyof Permissions]);  
 const filteredSetup = setups.filter(item => permissions[item.permission as keyof Permissions]);  
 const filteredTransactions = transactions.filter(item => permissions[item.permission as keyof Permissions]);  

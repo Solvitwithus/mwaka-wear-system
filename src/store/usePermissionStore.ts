@@ -201,7 +201,7 @@ interface Permissions {
  GradingReports:Boolean;
  DiscardedItems:Boolean;
  WorkCenters:Boolean;
-
+Grade:Boolean;
 
  AssetPurchase:Boolean;
  AssetLocationTransfer:Boolean;
