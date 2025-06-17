@@ -10,7 +10,7 @@ export async function GET() {
       where: {
         role: {
           name: {
-            in: ["manager", "administrator"],
+            in: ["manager", "administrator","grader"],
           },
         },
       },
@@ -18,6 +18,7 @@ export async function GET() {
         userName: true,
         firstName: true,
         lastName: true,
+        role:true
       },
     });
 
