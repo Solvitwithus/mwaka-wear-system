@@ -229,10 +229,11 @@ const handleLocalDataParsing = async(entry: any) => {
     ? new Date(entry.purchaseAdditionalInfo.dueDate).toLocaleDateString()
     : "-"}
 </td>
+ <td className="p-1 border">{entry.grandTotal}</td>
+                    <td className="p-1 border">{entry.shipping}</td>
 <td className="p-1 border">{entry.items?.[0]?.itemName || "-"}</td>
 <td className="p-1 border">{entry.items?.[0]?.quantity || "-"}</td>
-                    <td className="p-1 border">{entry.grandTotal}</td>
-                    <td className="p-1 border">{entry.shipping}</td>
+                   
                 
                     <td className="p-2 border">
                       <button className="bg-[#1393AB]  text-white px-2 py-1 rounded text-xs" onClick={()=>handleLocalDataParsing(entry)}>

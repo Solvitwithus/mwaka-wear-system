@@ -1,7 +1,7 @@
 "use client"
 import axios from 'axios'
 import { Trash2 } from "lucide-react";
-
+import { useRouter } from 'next/navigation';
 import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 type supplierie ={
   id:string;
@@ -37,7 +37,7 @@ type itemie = {
   itemPrice: number;
   discountWholesale: number;
    taxAmount: number;
-
+priceBeforeTax:number
 
 }
 
@@ -67,12 +67,14 @@ const initialState: lowrie = {
    prepay:false,
 };
 const Page =()=>{
+  const route = useRouter()
 const [selectedSupplier, setSelectedSupplier] = useState<supplierie| null>(null);
   const [suppliers, setSuppliers] = useState<supplierie[]>([])
 
   const [delivery, setDelivery] = useState<lowrie>(initialState)
   const [itemized, setitemized] = useState<itemie[]>([])
   const [branch, setBranch] = useState<branchie[]>([])
+
 
   // added
   const [itemsTable, setItemsTable] = useState([
@@ -87,6 +89,7 @@ const [selectedSupplier, setSelectedSupplier] = useState<supplierie| null>(null)
       quantity: 1,
       tax: 0,
       total: 0,
+      priceBeforeTax:0
     },
   ]);
   const handleClientChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -143,6 +146,7 @@ const handleItemChange = (index: number, field: string, value: any) => {
         itemPrice: selected.itemPrice,
         discountWholesale: selected.discountWholesale,
         tax: selected.taxAmount,
+        priceBeforeTax: selected.priceBeforeTax,
         total: calculateTotal(
           1,
           selected.itemPrice,
@@ -190,6 +194,7 @@ const deleteItemRow = (index: number) => {
         quantity: 1,
         tax: 0,
         total: 0,
+        priceBeforeTax:0
       },
     ]);
   };
@@ -407,7 +412,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
                 <input readOnly value={item.unitOfMeasure} className='w-20   bg-[#D1CBCB] rounded-sm h-5' />
               </td>
               <td className='border px-2 py-1'>
-                <input readOnly value={(item.itemPrice ?? 0).toFixed(2)} className='w-20   bg-[#D1CBCB] rounded-sm h-5' />
+                <input readOnly value={(item.priceBeforeTax).toFixed(2)} className='w-20   bg-[#D1CBCB] rounded-sm h-5' />
               </td>
               <td className='border px-2 py-1'>
                 <input readOnly value={item.discountWholesale} className='w-20   bg-[#D1CBCB] rounded-sm h-5' />
@@ -505,7 +510,7 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
             {/* control Buttons */}
             <div className='flex gap-5 justify-center'>
                 <button type='submit' className='bg-[#4E803F] text-sm font-semibold px-3 py-[1px] text-white rounded-md'>Add Quotation</button>
-                <button className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md'>Cancel Quotation</button>
+                <button type='button' className='bg-[#E75D5D] text-sm px-3 py-[1px] font-semibold text-white rounded-md' onClick={()=>route.back()}>Cancel Quotation</button>
 
             </div> </form>
             {success && (
