@@ -110,34 +110,34 @@ const destMatch = entry.purchaseAdditionalInfo?.deliverTo
   );
 
   const totalPages = Math.ceil(filteredEntries.length / rowsPerPage);
-// const handleLocalDataParsing = async(entry: any) => {
+const handleLocalDataParsing = async(entry: any) => {
 
-//   if (!entry) return;
+  if (!entry) return;
 
-//   // Save data to localStorage for the next page to use
+  // Save data to localStorage for the next page to use
  
 
-//   try {
-//     // First update the status
-//     const res = await axios.patch("/api/auth/purchase-quotation-entry", {
-//       id: entry.id,
-//       status: "ready-to-thrift",
-//     });
+  try {
+    // First update the status
+    const res = await axios.patch("/api/auth/purchase-quotation-entry", {
+      id: entry.id,
+      status: "ready-to-thrift",
+    });
 
-//     if (res.status === 200) {
+    if (res.status === 200) {
       
 
-//       // Navigate only after success
-//       router.push("/items-and-inventory");
+      // Navigate only after success
+      router.push("/items-and-inventory");
 
-//       // Clear localStorage after a delay
+      // Clear localStorage after a delay
      
-//     }
-//   } catch (err) {
-//     console.error(err);
-//     alert("Failed to approve requisition.");
-//   }
-// };
+    }
+  } catch (err) {
+    console.error(err);
+    alert("Failed to approve requisition.");
+  }
+};
 
   return (
     <div className="bg-[#EFEFEF] m-1 rounded-md p-1 h-fit">
@@ -236,8 +236,8 @@ const destMatch = entry.purchaseAdditionalInfo?.deliverTo
                   
                 
                     <td className="p-2 border">
-                      <button className="bg-[#1393AB]  text-white px-2 py-1 rounded text-xs" >
-                        {/* onClick={()=>handleLocalDataParsing(entry)} */}
+                      <button type="button" onClick={()=>handleLocalDataParsing(entry)} className="bg-[#1393AB]  text-white px-2 py-1 rounded text-xs" >
+                        
                         Process⚙️
                       </button>
                     </td>

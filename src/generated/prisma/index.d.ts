@@ -233,6 +233,16 @@ export type SupplierPaymentTracking = $Result.DefaultSelection<Prisma.$SupplierP
  * 
  */
 export type Grade = $Result.DefaultSelection<Prisma.$GradePayload>
+/**
+ * Model GradingSheet
+ * 
+ */
+export type GradingSheet = $Result.DefaultSelection<Prisma.$GradingSheetPayload>
+/**
+ * Model GradedItem
+ * 
+ */
+export type GradedItem = $Result.DefaultSelection<Prisma.$GradedItemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -798,6 +808,26 @@ export class PrismaClient<
     * ```
     */
   get grade(): Prisma.GradeDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.gradingSheet`: Exposes CRUD operations for the **GradingSheet** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GradingSheets
+    * const gradingSheets = await prisma.gradingSheet.findMany()
+    * ```
+    */
+  get gradingSheet(): Prisma.GradingSheetDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.gradedItem`: Exposes CRUD operations for the **GradedItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more GradedItems
+    * const gradedItems = await prisma.gradedItem.findMany()
+    * ```
+    */
+  get gradedItem(): Prisma.GradedItemDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1281,7 +1311,9 @@ export namespace Prisma {
     PurchaseRequisitionEntryItem: 'PurchaseRequisitionEntryItem',
     PurchaseAdditionalInfo: 'PurchaseAdditionalInfo',
     SupplierPaymentTracking: 'SupplierPaymentTracking',
-    Grade: 'Grade'
+    Grade: 'Grade',
+    GradingSheet: 'GradingSheet',
+    GradedItem: 'GradedItem'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1300,7 +1332,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4560,6 +4592,154 @@ export namespace Prisma {
           }
         }
       }
+      GradingSheet: {
+        payload: Prisma.$GradingSheetPayload<ExtArgs>
+        fields: Prisma.GradingSheetFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GradingSheetFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GradingSheetFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>
+          }
+          findFirst: {
+            args: Prisma.GradingSheetFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GradingSheetFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>
+          }
+          findMany: {
+            args: Prisma.GradingSheetFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>[]
+          }
+          create: {
+            args: Prisma.GradingSheetCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>
+          }
+          createMany: {
+            args: Prisma.GradingSheetCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GradingSheetCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>[]
+          }
+          delete: {
+            args: Prisma.GradingSheetDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>
+          }
+          update: {
+            args: Prisma.GradingSheetUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>
+          }
+          deleteMany: {
+            args: Prisma.GradingSheetDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GradingSheetUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GradingSheetUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>[]
+          }
+          upsert: {
+            args: Prisma.GradingSheetUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradingSheetPayload>
+          }
+          aggregate: {
+            args: Prisma.GradingSheetAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGradingSheet>
+          }
+          groupBy: {
+            args: Prisma.GradingSheetGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GradingSheetGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GradingSheetCountArgs<ExtArgs>
+            result: $Utils.Optional<GradingSheetCountAggregateOutputType> | number
+          }
+        }
+      }
+      GradedItem: {
+        payload: Prisma.$GradedItemPayload<ExtArgs>
+        fields: Prisma.GradedItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.GradedItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.GradedItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>
+          }
+          findFirst: {
+            args: Prisma.GradedItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.GradedItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>
+          }
+          findMany: {
+            args: Prisma.GradedItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>[]
+          }
+          create: {
+            args: Prisma.GradedItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>
+          }
+          createMany: {
+            args: Prisma.GradedItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.GradedItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>[]
+          }
+          delete: {
+            args: Prisma.GradedItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>
+          }
+          update: {
+            args: Prisma.GradedItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.GradedItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.GradedItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.GradedItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.GradedItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$GradedItemPayload>
+          }
+          aggregate: {
+            args: Prisma.GradedItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateGradedItem>
+          }
+          groupBy: {
+            args: Prisma.GradedItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<GradedItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.GradedItemCountArgs<ExtArgs>
+            result: $Utils.Optional<GradedItemCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -4688,6 +4868,8 @@ export namespace Prisma {
     purchaseAdditionalInfo?: PurchaseAdditionalInfoOmit
     supplierPaymentTracking?: SupplierPaymentTrackingOmit
     grade?: GradeOmit
+    gradingSheet?: GradingSheetOmit
+    gradedItem?: GradedItemOmit
   }
 
   /* Types for Logging */
@@ -5080,6 +5262,37 @@ export namespace Prisma {
    */
   export type PurchaseReQEntryCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: PurchaseRequisitionEntryItemWhereInput
+  }
+
+
+  /**
+   * Count Type GradingSheetCountOutputType
+   */
+
+  export type GradingSheetCountOutputType = {
+    itemsProduced: number
+  }
+
+  export type GradingSheetCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    itemsProduced?: boolean | GradingSheetCountOutputTypeCountItemsProducedArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GradingSheetCountOutputType without action
+   */
+  export type GradingSheetCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheetCountOutputType
+     */
+    select?: GradingSheetCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GradingSheetCountOutputType without action
+   */
+  export type GradingSheetCountOutputTypeCountItemsProducedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GradedItemWhereInput
   }
 
 
@@ -55957,6 +56170,2430 @@ export namespace Prisma {
 
 
   /**
+   * Model GradingSheet
+   */
+
+  export type AggregateGradingSheet = {
+    _count: GradingSheetCountAggregateOutputType | null
+    _avg: GradingSheetAvgAggregateOutputType | null
+    _sum: GradingSheetSumAggregateOutputType | null
+    _min: GradingSheetMinAggregateOutputType | null
+    _max: GradingSheetMaxAggregateOutputType | null
+  }
+
+  export type GradingSheetAvgAggregateOutputType = {
+    baleWeight: number | null
+    damageCount: number | null
+    damageWeight: number | null
+    itemCount: number | null
+    unpairedCount: number | null
+  }
+
+  export type GradingSheetSumAggregateOutputType = {
+    baleWeight: number | null
+    damageCount: number | null
+    damageWeight: number | null
+    itemCount: number | null
+    unpairedCount: number | null
+  }
+
+  export type GradingSheetMinAggregateOutputType = {
+    id: string | null
+    baleName: string | null
+    baleWeight: number | null
+    branch: string | null
+    comment: string | null
+    damageCount: number | null
+    damageWeight: number | null
+    gradeDate: Date | null
+    gradeReference: string | null
+    grader: string | null
+    itemCount: number | null
+    itemtoGrade: string | null
+    unpairedCount: number | null
+    workCenter: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GradingSheetMaxAggregateOutputType = {
+    id: string | null
+    baleName: string | null
+    baleWeight: number | null
+    branch: string | null
+    comment: string | null
+    damageCount: number | null
+    damageWeight: number | null
+    gradeDate: Date | null
+    gradeReference: string | null
+    grader: string | null
+    itemCount: number | null
+    itemtoGrade: string | null
+    unpairedCount: number | null
+    workCenter: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GradingSheetCountAggregateOutputType = {
+    id: number
+    baleName: number
+    baleWeight: number
+    branch: number
+    comment: number
+    damageCount: number
+    damageWeight: number
+    gradeDate: number
+    gradeReference: number
+    grader: number
+    itemCount: number
+    itemtoGrade: number
+    unpairedCount: number
+    workCenter: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type GradingSheetAvgAggregateInputType = {
+    baleWeight?: true
+    damageCount?: true
+    damageWeight?: true
+    itemCount?: true
+    unpairedCount?: true
+  }
+
+  export type GradingSheetSumAggregateInputType = {
+    baleWeight?: true
+    damageCount?: true
+    damageWeight?: true
+    itemCount?: true
+    unpairedCount?: true
+  }
+
+  export type GradingSheetMinAggregateInputType = {
+    id?: true
+    baleName?: true
+    baleWeight?: true
+    branch?: true
+    comment?: true
+    damageCount?: true
+    damageWeight?: true
+    gradeDate?: true
+    gradeReference?: true
+    grader?: true
+    itemCount?: true
+    itemtoGrade?: true
+    unpairedCount?: true
+    workCenter?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GradingSheetMaxAggregateInputType = {
+    id?: true
+    baleName?: true
+    baleWeight?: true
+    branch?: true
+    comment?: true
+    damageCount?: true
+    damageWeight?: true
+    gradeDate?: true
+    gradeReference?: true
+    grader?: true
+    itemCount?: true
+    itemtoGrade?: true
+    unpairedCount?: true
+    workCenter?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GradingSheetCountAggregateInputType = {
+    id?: true
+    baleName?: true
+    baleWeight?: true
+    branch?: true
+    comment?: true
+    damageCount?: true
+    damageWeight?: true
+    gradeDate?: true
+    gradeReference?: true
+    grader?: true
+    itemCount?: true
+    itemtoGrade?: true
+    unpairedCount?: true
+    workCenter?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type GradingSheetAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GradingSheet to aggregate.
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradingSheets to fetch.
+     */
+    orderBy?: GradingSheetOrderByWithRelationInput | GradingSheetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GradingSheetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradingSheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradingSheets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GradingSheets
+    **/
+    _count?: true | GradingSheetCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GradingSheetAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GradingSheetSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GradingSheetMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GradingSheetMaxAggregateInputType
+  }
+
+  export type GetGradingSheetAggregateType<T extends GradingSheetAggregateArgs> = {
+        [P in keyof T & keyof AggregateGradingSheet]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGradingSheet[P]>
+      : GetScalarType<T[P], AggregateGradingSheet[P]>
+  }
+
+
+
+
+  export type GradingSheetGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GradingSheetWhereInput
+    orderBy?: GradingSheetOrderByWithAggregationInput | GradingSheetOrderByWithAggregationInput[]
+    by: GradingSheetScalarFieldEnum[] | GradingSheetScalarFieldEnum
+    having?: GradingSheetScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GradingSheetCountAggregateInputType | true
+    _avg?: GradingSheetAvgAggregateInputType
+    _sum?: GradingSheetSumAggregateInputType
+    _min?: GradingSheetMinAggregateInputType
+    _max?: GradingSheetMaxAggregateInputType
+  }
+
+  export type GradingSheetGroupByOutputType = {
+    id: string
+    baleName: string
+    baleWeight: number
+    branch: string
+    comment: string | null
+    damageCount: number
+    damageWeight: number
+    gradeDate: Date
+    gradeReference: string
+    grader: string
+    itemCount: number
+    itemtoGrade: string | null
+    unpairedCount: number
+    workCenter: string
+    createdAt: Date
+    updatedAt: Date
+    _count: GradingSheetCountAggregateOutputType | null
+    _avg: GradingSheetAvgAggregateOutputType | null
+    _sum: GradingSheetSumAggregateOutputType | null
+    _min: GradingSheetMinAggregateOutputType | null
+    _max: GradingSheetMaxAggregateOutputType | null
+  }
+
+  type GetGradingSheetGroupByPayload<T extends GradingSheetGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GradingSheetGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GradingSheetGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GradingSheetGroupByOutputType[P]>
+            : GetScalarType<T[P], GradingSheetGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GradingSheetSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    baleName?: boolean
+    baleWeight?: boolean
+    branch?: boolean
+    comment?: boolean
+    damageCount?: boolean
+    damageWeight?: boolean
+    gradeDate?: boolean
+    gradeReference?: boolean
+    grader?: boolean
+    itemCount?: boolean
+    itemtoGrade?: boolean
+    unpairedCount?: boolean
+    workCenter?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    itemsProduced?: boolean | GradingSheet$itemsProducedArgs<ExtArgs>
+    _count?: boolean | GradingSheetCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gradingSheet"]>
+
+  export type GradingSheetSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    baleName?: boolean
+    baleWeight?: boolean
+    branch?: boolean
+    comment?: boolean
+    damageCount?: boolean
+    damageWeight?: boolean
+    gradeDate?: boolean
+    gradeReference?: boolean
+    grader?: boolean
+    itemCount?: boolean
+    itemtoGrade?: boolean
+    unpairedCount?: boolean
+    workCenter?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["gradingSheet"]>
+
+  export type GradingSheetSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    baleName?: boolean
+    baleWeight?: boolean
+    branch?: boolean
+    comment?: boolean
+    damageCount?: boolean
+    damageWeight?: boolean
+    gradeDate?: boolean
+    gradeReference?: boolean
+    grader?: boolean
+    itemCount?: boolean
+    itemtoGrade?: boolean
+    unpairedCount?: boolean
+    workCenter?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }, ExtArgs["result"]["gradingSheet"]>
+
+  export type GradingSheetSelectScalar = {
+    id?: boolean
+    baleName?: boolean
+    baleWeight?: boolean
+    branch?: boolean
+    comment?: boolean
+    damageCount?: boolean
+    damageWeight?: boolean
+    gradeDate?: boolean
+    gradeReference?: boolean
+    grader?: boolean
+    itemCount?: boolean
+    itemtoGrade?: boolean
+    unpairedCount?: boolean
+    workCenter?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type GradingSheetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baleName" | "baleWeight" | "branch" | "comment" | "damageCount" | "damageWeight" | "gradeDate" | "gradeReference" | "grader" | "itemCount" | "itemtoGrade" | "unpairedCount" | "workCenter" | "createdAt" | "updatedAt", ExtArgs["result"]["gradingSheet"]>
+  export type GradingSheetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    itemsProduced?: boolean | GradingSheet$itemsProducedArgs<ExtArgs>
+    _count?: boolean | GradingSheetCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type GradingSheetIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type GradingSheetIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $GradingSheetPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GradingSheet"
+    objects: {
+      itemsProduced: Prisma.$GradedItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      baleName: string
+      baleWeight: number
+      branch: string
+      comment: string | null
+      damageCount: number
+      damageWeight: number
+      gradeDate: Date
+      gradeReference: string
+      grader: string
+      itemCount: number
+      itemtoGrade: string | null
+      unpairedCount: number
+      workCenter: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["gradingSheet"]>
+    composites: {}
+  }
+
+  type GradingSheetGetPayload<S extends boolean | null | undefined | GradingSheetDefaultArgs> = $Result.GetResult<Prisma.$GradingSheetPayload, S>
+
+  type GradingSheetCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GradingSheetFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GradingSheetCountAggregateInputType | true
+    }
+
+  export interface GradingSheetDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GradingSheet'], meta: { name: 'GradingSheet' } }
+    /**
+     * Find zero or one GradingSheet that matches the filter.
+     * @param {GradingSheetFindUniqueArgs} args - Arguments to find a GradingSheet
+     * @example
+     * // Get one GradingSheet
+     * const gradingSheet = await prisma.gradingSheet.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GradingSheetFindUniqueArgs>(args: SelectSubset<T, GradingSheetFindUniqueArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GradingSheet that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GradingSheetFindUniqueOrThrowArgs} args - Arguments to find a GradingSheet
+     * @example
+     * // Get one GradingSheet
+     * const gradingSheet = await prisma.gradingSheet.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GradingSheetFindUniqueOrThrowArgs>(args: SelectSubset<T, GradingSheetFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GradingSheet that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetFindFirstArgs} args - Arguments to find a GradingSheet
+     * @example
+     * // Get one GradingSheet
+     * const gradingSheet = await prisma.gradingSheet.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GradingSheetFindFirstArgs>(args?: SelectSubset<T, GradingSheetFindFirstArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GradingSheet that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetFindFirstOrThrowArgs} args - Arguments to find a GradingSheet
+     * @example
+     * // Get one GradingSheet
+     * const gradingSheet = await prisma.gradingSheet.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GradingSheetFindFirstOrThrowArgs>(args?: SelectSubset<T, GradingSheetFindFirstOrThrowArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GradingSheets that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GradingSheets
+     * const gradingSheets = await prisma.gradingSheet.findMany()
+     * 
+     * // Get first 10 GradingSheets
+     * const gradingSheets = await prisma.gradingSheet.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const gradingSheetWithIdOnly = await prisma.gradingSheet.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GradingSheetFindManyArgs>(args?: SelectSubset<T, GradingSheetFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GradingSheet.
+     * @param {GradingSheetCreateArgs} args - Arguments to create a GradingSheet.
+     * @example
+     * // Create one GradingSheet
+     * const GradingSheet = await prisma.gradingSheet.create({
+     *   data: {
+     *     // ... data to create a GradingSheet
+     *   }
+     * })
+     * 
+     */
+    create<T extends GradingSheetCreateArgs>(args: SelectSubset<T, GradingSheetCreateArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GradingSheets.
+     * @param {GradingSheetCreateManyArgs} args - Arguments to create many GradingSheets.
+     * @example
+     * // Create many GradingSheets
+     * const gradingSheet = await prisma.gradingSheet.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GradingSheetCreateManyArgs>(args?: SelectSubset<T, GradingSheetCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GradingSheets and returns the data saved in the database.
+     * @param {GradingSheetCreateManyAndReturnArgs} args - Arguments to create many GradingSheets.
+     * @example
+     * // Create many GradingSheets
+     * const gradingSheet = await prisma.gradingSheet.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GradingSheets and only return the `id`
+     * const gradingSheetWithIdOnly = await prisma.gradingSheet.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GradingSheetCreateManyAndReturnArgs>(args?: SelectSubset<T, GradingSheetCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GradingSheet.
+     * @param {GradingSheetDeleteArgs} args - Arguments to delete one GradingSheet.
+     * @example
+     * // Delete one GradingSheet
+     * const GradingSheet = await prisma.gradingSheet.delete({
+     *   where: {
+     *     // ... filter to delete one GradingSheet
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GradingSheetDeleteArgs>(args: SelectSubset<T, GradingSheetDeleteArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GradingSheet.
+     * @param {GradingSheetUpdateArgs} args - Arguments to update one GradingSheet.
+     * @example
+     * // Update one GradingSheet
+     * const gradingSheet = await prisma.gradingSheet.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GradingSheetUpdateArgs>(args: SelectSubset<T, GradingSheetUpdateArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GradingSheets.
+     * @param {GradingSheetDeleteManyArgs} args - Arguments to filter GradingSheets to delete.
+     * @example
+     * // Delete a few GradingSheets
+     * const { count } = await prisma.gradingSheet.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GradingSheetDeleteManyArgs>(args?: SelectSubset<T, GradingSheetDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GradingSheets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GradingSheets
+     * const gradingSheet = await prisma.gradingSheet.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GradingSheetUpdateManyArgs>(args: SelectSubset<T, GradingSheetUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GradingSheets and returns the data updated in the database.
+     * @param {GradingSheetUpdateManyAndReturnArgs} args - Arguments to update many GradingSheets.
+     * @example
+     * // Update many GradingSheets
+     * const gradingSheet = await prisma.gradingSheet.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GradingSheets and only return the `id`
+     * const gradingSheetWithIdOnly = await prisma.gradingSheet.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GradingSheetUpdateManyAndReturnArgs>(args: SelectSubset<T, GradingSheetUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GradingSheet.
+     * @param {GradingSheetUpsertArgs} args - Arguments to update or create a GradingSheet.
+     * @example
+     * // Update or create a GradingSheet
+     * const gradingSheet = await prisma.gradingSheet.upsert({
+     *   create: {
+     *     // ... data to create a GradingSheet
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GradingSheet we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GradingSheetUpsertArgs>(args: SelectSubset<T, GradingSheetUpsertArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GradingSheets.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetCountArgs} args - Arguments to filter GradingSheets to count.
+     * @example
+     * // Count the number of GradingSheets
+     * const count = await prisma.gradingSheet.count({
+     *   where: {
+     *     // ... the filter for the GradingSheets we want to count
+     *   }
+     * })
+    **/
+    count<T extends GradingSheetCountArgs>(
+      args?: Subset<T, GradingSheetCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GradingSheetCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GradingSheet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GradingSheetAggregateArgs>(args: Subset<T, GradingSheetAggregateArgs>): Prisma.PrismaPromise<GetGradingSheetAggregateType<T>>
+
+    /**
+     * Group by GradingSheet.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradingSheetGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GradingSheetGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GradingSheetGroupByArgs['orderBy'] }
+        : { orderBy?: GradingSheetGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GradingSheetGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGradingSheetGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GradingSheet model
+   */
+  readonly fields: GradingSheetFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GradingSheet.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GradingSheetClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    itemsProduced<T extends GradingSheet$itemsProducedArgs<ExtArgs> = {}>(args?: Subset<T, GradingSheet$itemsProducedArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GradingSheet model
+   */
+  interface GradingSheetFieldRefs {
+    readonly id: FieldRef<"GradingSheet", 'String'>
+    readonly baleName: FieldRef<"GradingSheet", 'String'>
+    readonly baleWeight: FieldRef<"GradingSheet", 'Float'>
+    readonly branch: FieldRef<"GradingSheet", 'String'>
+    readonly comment: FieldRef<"GradingSheet", 'String'>
+    readonly damageCount: FieldRef<"GradingSheet", 'Int'>
+    readonly damageWeight: FieldRef<"GradingSheet", 'Float'>
+    readonly gradeDate: FieldRef<"GradingSheet", 'DateTime'>
+    readonly gradeReference: FieldRef<"GradingSheet", 'String'>
+    readonly grader: FieldRef<"GradingSheet", 'String'>
+    readonly itemCount: FieldRef<"GradingSheet", 'Int'>
+    readonly itemtoGrade: FieldRef<"GradingSheet", 'String'>
+    readonly unpairedCount: FieldRef<"GradingSheet", 'Int'>
+    readonly workCenter: FieldRef<"GradingSheet", 'String'>
+    readonly createdAt: FieldRef<"GradingSheet", 'DateTime'>
+    readonly updatedAt: FieldRef<"GradingSheet", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GradingSheet findUnique
+   */
+  export type GradingSheetFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * Filter, which GradingSheet to fetch.
+     */
+    where: GradingSheetWhereUniqueInput
+  }
+
+  /**
+   * GradingSheet findUniqueOrThrow
+   */
+  export type GradingSheetFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * Filter, which GradingSheet to fetch.
+     */
+    where: GradingSheetWhereUniqueInput
+  }
+
+  /**
+   * GradingSheet findFirst
+   */
+  export type GradingSheetFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * Filter, which GradingSheet to fetch.
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradingSheets to fetch.
+     */
+    orderBy?: GradingSheetOrderByWithRelationInput | GradingSheetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GradingSheets.
+     */
+    cursor?: GradingSheetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradingSheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradingSheets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GradingSheets.
+     */
+    distinct?: GradingSheetScalarFieldEnum | GradingSheetScalarFieldEnum[]
+  }
+
+  /**
+   * GradingSheet findFirstOrThrow
+   */
+  export type GradingSheetFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * Filter, which GradingSheet to fetch.
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradingSheets to fetch.
+     */
+    orderBy?: GradingSheetOrderByWithRelationInput | GradingSheetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GradingSheets.
+     */
+    cursor?: GradingSheetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradingSheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradingSheets.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GradingSheets.
+     */
+    distinct?: GradingSheetScalarFieldEnum | GradingSheetScalarFieldEnum[]
+  }
+
+  /**
+   * GradingSheet findMany
+   */
+  export type GradingSheetFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * Filter, which GradingSheets to fetch.
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradingSheets to fetch.
+     */
+    orderBy?: GradingSheetOrderByWithRelationInput | GradingSheetOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GradingSheets.
+     */
+    cursor?: GradingSheetWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradingSheets from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradingSheets.
+     */
+    skip?: number
+    distinct?: GradingSheetScalarFieldEnum | GradingSheetScalarFieldEnum[]
+  }
+
+  /**
+   * GradingSheet create
+   */
+  export type GradingSheetCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GradingSheet.
+     */
+    data: XOR<GradingSheetCreateInput, GradingSheetUncheckedCreateInput>
+  }
+
+  /**
+   * GradingSheet createMany
+   */
+  export type GradingSheetCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GradingSheets.
+     */
+    data: GradingSheetCreateManyInput | GradingSheetCreateManyInput[]
+  }
+
+  /**
+   * GradingSheet createManyAndReturn
+   */
+  export type GradingSheetCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * The data used to create many GradingSheets.
+     */
+    data: GradingSheetCreateManyInput | GradingSheetCreateManyInput[]
+  }
+
+  /**
+   * GradingSheet update
+   */
+  export type GradingSheetUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GradingSheet.
+     */
+    data: XOR<GradingSheetUpdateInput, GradingSheetUncheckedUpdateInput>
+    /**
+     * Choose, which GradingSheet to update.
+     */
+    where: GradingSheetWhereUniqueInput
+  }
+
+  /**
+   * GradingSheet updateMany
+   */
+  export type GradingSheetUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GradingSheets.
+     */
+    data: XOR<GradingSheetUpdateManyMutationInput, GradingSheetUncheckedUpdateManyInput>
+    /**
+     * Filter which GradingSheets to update
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * Limit how many GradingSheets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GradingSheet updateManyAndReturn
+   */
+  export type GradingSheetUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * The data used to update GradingSheets.
+     */
+    data: XOR<GradingSheetUpdateManyMutationInput, GradingSheetUncheckedUpdateManyInput>
+    /**
+     * Filter which GradingSheets to update
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * Limit how many GradingSheets to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GradingSheet upsert
+   */
+  export type GradingSheetUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GradingSheet to update in case it exists.
+     */
+    where: GradingSheetWhereUniqueInput
+    /**
+     * In case the GradingSheet found by the `where` argument doesn't exist, create a new GradingSheet with this data.
+     */
+    create: XOR<GradingSheetCreateInput, GradingSheetUncheckedCreateInput>
+    /**
+     * In case the GradingSheet was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GradingSheetUpdateInput, GradingSheetUncheckedUpdateInput>
+  }
+
+  /**
+   * GradingSheet delete
+   */
+  export type GradingSheetDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+    /**
+     * Filter which GradingSheet to delete.
+     */
+    where: GradingSheetWhereUniqueInput
+  }
+
+  /**
+   * GradingSheet deleteMany
+   */
+  export type GradingSheetDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GradingSheets to delete
+     */
+    where?: GradingSheetWhereInput
+    /**
+     * Limit how many GradingSheets to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GradingSheet.itemsProduced
+   */
+  export type GradingSheet$itemsProducedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    where?: GradedItemWhereInput
+    orderBy?: GradedItemOrderByWithRelationInput | GradedItemOrderByWithRelationInput[]
+    cursor?: GradedItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GradedItemScalarFieldEnum | GradedItemScalarFieldEnum[]
+  }
+
+  /**
+   * GradingSheet without action
+   */
+  export type GradingSheetDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradingSheet
+     */
+    select?: GradingSheetSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradingSheet
+     */
+    omit?: GradingSheetOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradingSheetInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model GradedItem
+   */
+
+  export type AggregateGradedItem = {
+    _count: GradedItemCountAggregateOutputType | null
+    _avg: GradedItemAvgAggregateOutputType | null
+    _sum: GradedItemSumAggregateOutputType | null
+    _min: GradedItemMinAggregateOutputType | null
+    _max: GradedItemMaxAggregateOutputType | null
+  }
+
+  export type GradedItemAvgAggregateOutputType = {
+    quantity: number | null
+    qtyToHold: number | null
+    sellingPrice: number | null
+  }
+
+  export type GradedItemSumAggregateOutputType = {
+    quantity: number | null
+    qtyToHold: number | null
+    sellingPrice: number | null
+  }
+
+  export type GradedItemMinAggregateOutputType = {
+    id: string | null
+    itemCode: string | null
+    itemName: string | null
+    grade: string | null
+    quantity: number | null
+    qtyToHold: number | null
+    sellingPrice: number | null
+    gradingSheetId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GradedItemMaxAggregateOutputType = {
+    id: string | null
+    itemCode: string | null
+    itemName: string | null
+    grade: string | null
+    quantity: number | null
+    qtyToHold: number | null
+    sellingPrice: number | null
+    gradingSheetId: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
+  }
+
+  export type GradedItemCountAggregateOutputType = {
+    id: number
+    itemCode: number
+    itemName: number
+    grade: number
+    quantity: number
+    qtyToHold: number
+    sellingPrice: number
+    gradingSheetId: number
+    createdAt: number
+    updatedAt: number
+    _all: number
+  }
+
+
+  export type GradedItemAvgAggregateInputType = {
+    quantity?: true
+    qtyToHold?: true
+    sellingPrice?: true
+  }
+
+  export type GradedItemSumAggregateInputType = {
+    quantity?: true
+    qtyToHold?: true
+    sellingPrice?: true
+  }
+
+  export type GradedItemMinAggregateInputType = {
+    id?: true
+    itemCode?: true
+    itemName?: true
+    grade?: true
+    quantity?: true
+    qtyToHold?: true
+    sellingPrice?: true
+    gradingSheetId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GradedItemMaxAggregateInputType = {
+    id?: true
+    itemCode?: true
+    itemName?: true
+    grade?: true
+    quantity?: true
+    qtyToHold?: true
+    sellingPrice?: true
+    gradingSheetId?: true
+    createdAt?: true
+    updatedAt?: true
+  }
+
+  export type GradedItemCountAggregateInputType = {
+    id?: true
+    itemCode?: true
+    itemName?: true
+    grade?: true
+    quantity?: true
+    qtyToHold?: true
+    sellingPrice?: true
+    gradingSheetId?: true
+    createdAt?: true
+    updatedAt?: true
+    _all?: true
+  }
+
+  export type GradedItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GradedItem to aggregate.
+     */
+    where?: GradedItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradedItems to fetch.
+     */
+    orderBy?: GradedItemOrderByWithRelationInput | GradedItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: GradedItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradedItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradedItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned GradedItems
+    **/
+    _count?: true | GradedItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: GradedItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: GradedItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: GradedItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: GradedItemMaxAggregateInputType
+  }
+
+  export type GetGradedItemAggregateType<T extends GradedItemAggregateArgs> = {
+        [P in keyof T & keyof AggregateGradedItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateGradedItem[P]>
+      : GetScalarType<T[P], AggregateGradedItem[P]>
+  }
+
+
+
+
+  export type GradedItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: GradedItemWhereInput
+    orderBy?: GradedItemOrderByWithAggregationInput | GradedItemOrderByWithAggregationInput[]
+    by: GradedItemScalarFieldEnum[] | GradedItemScalarFieldEnum
+    having?: GradedItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: GradedItemCountAggregateInputType | true
+    _avg?: GradedItemAvgAggregateInputType
+    _sum?: GradedItemSumAggregateInputType
+    _min?: GradedItemMinAggregateInputType
+    _max?: GradedItemMaxAggregateInputType
+  }
+
+  export type GradedItemGroupByOutputType = {
+    id: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold: number | null
+    sellingPrice: number
+    gradingSheetId: string
+    createdAt: Date
+    updatedAt: Date
+    _count: GradedItemCountAggregateOutputType | null
+    _avg: GradedItemAvgAggregateOutputType | null
+    _sum: GradedItemSumAggregateOutputType | null
+    _min: GradedItemMinAggregateOutputType | null
+    _max: GradedItemMaxAggregateOutputType | null
+  }
+
+  type GetGradedItemGroupByPayload<T extends GradedItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<GradedItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof GradedItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], GradedItemGroupByOutputType[P]>
+            : GetScalarType<T[P], GradedItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type GradedItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    grade?: boolean
+    quantity?: boolean
+    qtyToHold?: boolean
+    sellingPrice?: boolean
+    gradingSheetId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gradedItem"]>
+
+  export type GradedItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    grade?: boolean
+    quantity?: boolean
+    qtyToHold?: boolean
+    sellingPrice?: boolean
+    gradingSheetId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gradedItem"]>
+
+  export type GradedItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    grade?: boolean
+    quantity?: boolean
+    qtyToHold?: boolean
+    sellingPrice?: boolean
+    gradingSheetId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+    gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["gradedItem"]>
+
+  export type GradedItemSelectScalar = {
+    id?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    grade?: boolean
+    quantity?: boolean
+    qtyToHold?: boolean
+    sellingPrice?: boolean
+    gradingSheetId?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
+  }
+
+  export type GradedItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemCode" | "itemName" | "grade" | "quantity" | "qtyToHold" | "sellingPrice" | "gradingSheetId" | "createdAt" | "updatedAt", ExtArgs["result"]["gradedItem"]>
+  export type GradedItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
+  }
+  export type GradedItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
+  }
+  export type GradedItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
+  }
+
+  export type $GradedItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "GradedItem"
+    objects: {
+      gradingSheet: Prisma.$GradingSheetPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      itemCode: string
+      itemName: string
+      grade: string
+      quantity: number
+      qtyToHold: number | null
+      sellingPrice: number
+      gradingSheetId: string
+      createdAt: Date
+      updatedAt: Date
+    }, ExtArgs["result"]["gradedItem"]>
+    composites: {}
+  }
+
+  type GradedItemGetPayload<S extends boolean | null | undefined | GradedItemDefaultArgs> = $Result.GetResult<Prisma.$GradedItemPayload, S>
+
+  type GradedItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<GradedItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: GradedItemCountAggregateInputType | true
+    }
+
+  export interface GradedItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['GradedItem'], meta: { name: 'GradedItem' } }
+    /**
+     * Find zero or one GradedItem that matches the filter.
+     * @param {GradedItemFindUniqueArgs} args - Arguments to find a GradedItem
+     * @example
+     * // Get one GradedItem
+     * const gradedItem = await prisma.gradedItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends GradedItemFindUniqueArgs>(args: SelectSubset<T, GradedItemFindUniqueArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one GradedItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {GradedItemFindUniqueOrThrowArgs} args - Arguments to find a GradedItem
+     * @example
+     * // Get one GradedItem
+     * const gradedItem = await prisma.gradedItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends GradedItemFindUniqueOrThrowArgs>(args: SelectSubset<T, GradedItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GradedItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemFindFirstArgs} args - Arguments to find a GradedItem
+     * @example
+     * // Get one GradedItem
+     * const gradedItem = await prisma.gradedItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends GradedItemFindFirstArgs>(args?: SelectSubset<T, GradedItemFindFirstArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first GradedItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemFindFirstOrThrowArgs} args - Arguments to find a GradedItem
+     * @example
+     * // Get one GradedItem
+     * const gradedItem = await prisma.gradedItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends GradedItemFindFirstOrThrowArgs>(args?: SelectSubset<T, GradedItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more GradedItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all GradedItems
+     * const gradedItems = await prisma.gradedItem.findMany()
+     * 
+     * // Get first 10 GradedItems
+     * const gradedItems = await prisma.gradedItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const gradedItemWithIdOnly = await prisma.gradedItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends GradedItemFindManyArgs>(args?: SelectSubset<T, GradedItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a GradedItem.
+     * @param {GradedItemCreateArgs} args - Arguments to create a GradedItem.
+     * @example
+     * // Create one GradedItem
+     * const GradedItem = await prisma.gradedItem.create({
+     *   data: {
+     *     // ... data to create a GradedItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends GradedItemCreateArgs>(args: SelectSubset<T, GradedItemCreateArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many GradedItems.
+     * @param {GradedItemCreateManyArgs} args - Arguments to create many GradedItems.
+     * @example
+     * // Create many GradedItems
+     * const gradedItem = await prisma.gradedItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends GradedItemCreateManyArgs>(args?: SelectSubset<T, GradedItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many GradedItems and returns the data saved in the database.
+     * @param {GradedItemCreateManyAndReturnArgs} args - Arguments to create many GradedItems.
+     * @example
+     * // Create many GradedItems
+     * const gradedItem = await prisma.gradedItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many GradedItems and only return the `id`
+     * const gradedItemWithIdOnly = await prisma.gradedItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends GradedItemCreateManyAndReturnArgs>(args?: SelectSubset<T, GradedItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a GradedItem.
+     * @param {GradedItemDeleteArgs} args - Arguments to delete one GradedItem.
+     * @example
+     * // Delete one GradedItem
+     * const GradedItem = await prisma.gradedItem.delete({
+     *   where: {
+     *     // ... filter to delete one GradedItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends GradedItemDeleteArgs>(args: SelectSubset<T, GradedItemDeleteArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one GradedItem.
+     * @param {GradedItemUpdateArgs} args - Arguments to update one GradedItem.
+     * @example
+     * // Update one GradedItem
+     * const gradedItem = await prisma.gradedItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends GradedItemUpdateArgs>(args: SelectSubset<T, GradedItemUpdateArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more GradedItems.
+     * @param {GradedItemDeleteManyArgs} args - Arguments to filter GradedItems to delete.
+     * @example
+     * // Delete a few GradedItems
+     * const { count } = await prisma.gradedItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends GradedItemDeleteManyArgs>(args?: SelectSubset<T, GradedItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GradedItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many GradedItems
+     * const gradedItem = await prisma.gradedItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends GradedItemUpdateManyArgs>(args: SelectSubset<T, GradedItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more GradedItems and returns the data updated in the database.
+     * @param {GradedItemUpdateManyAndReturnArgs} args - Arguments to update many GradedItems.
+     * @example
+     * // Update many GradedItems
+     * const gradedItem = await prisma.gradedItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more GradedItems and only return the `id`
+     * const gradedItemWithIdOnly = await prisma.gradedItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends GradedItemUpdateManyAndReturnArgs>(args: SelectSubset<T, GradedItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one GradedItem.
+     * @param {GradedItemUpsertArgs} args - Arguments to update or create a GradedItem.
+     * @example
+     * // Update or create a GradedItem
+     * const gradedItem = await prisma.gradedItem.upsert({
+     *   create: {
+     *     // ... data to create a GradedItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the GradedItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends GradedItemUpsertArgs>(args: SelectSubset<T, GradedItemUpsertArgs<ExtArgs>>): Prisma__GradedItemClient<$Result.GetResult<Prisma.$GradedItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of GradedItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemCountArgs} args - Arguments to filter GradedItems to count.
+     * @example
+     * // Count the number of GradedItems
+     * const count = await prisma.gradedItem.count({
+     *   where: {
+     *     // ... the filter for the GradedItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends GradedItemCountArgs>(
+      args?: Subset<T, GradedItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], GradedItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a GradedItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends GradedItemAggregateArgs>(args: Subset<T, GradedItemAggregateArgs>): Prisma.PrismaPromise<GetGradedItemAggregateType<T>>
+
+    /**
+     * Group by GradedItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {GradedItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends GradedItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: GradedItemGroupByArgs['orderBy'] }
+        : { orderBy?: GradedItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, GradedItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetGradedItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the GradedItem model
+   */
+  readonly fields: GradedItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for GradedItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__GradedItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    gradingSheet<T extends GradingSheetDefaultArgs<ExtArgs> = {}>(args?: Subset<T, GradingSheetDefaultArgs<ExtArgs>>): Prisma__GradingSheetClient<$Result.GetResult<Prisma.$GradingSheetPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the GradedItem model
+   */
+  interface GradedItemFieldRefs {
+    readonly id: FieldRef<"GradedItem", 'String'>
+    readonly itemCode: FieldRef<"GradedItem", 'String'>
+    readonly itemName: FieldRef<"GradedItem", 'String'>
+    readonly grade: FieldRef<"GradedItem", 'String'>
+    readonly quantity: FieldRef<"GradedItem", 'Int'>
+    readonly qtyToHold: FieldRef<"GradedItem", 'Int'>
+    readonly sellingPrice: FieldRef<"GradedItem", 'Float'>
+    readonly gradingSheetId: FieldRef<"GradedItem", 'String'>
+    readonly createdAt: FieldRef<"GradedItem", 'DateTime'>
+    readonly updatedAt: FieldRef<"GradedItem", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * GradedItem findUnique
+   */
+  export type GradedItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * Filter, which GradedItem to fetch.
+     */
+    where: GradedItemWhereUniqueInput
+  }
+
+  /**
+   * GradedItem findUniqueOrThrow
+   */
+  export type GradedItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * Filter, which GradedItem to fetch.
+     */
+    where: GradedItemWhereUniqueInput
+  }
+
+  /**
+   * GradedItem findFirst
+   */
+  export type GradedItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * Filter, which GradedItem to fetch.
+     */
+    where?: GradedItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradedItems to fetch.
+     */
+    orderBy?: GradedItemOrderByWithRelationInput | GradedItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GradedItems.
+     */
+    cursor?: GradedItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradedItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradedItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GradedItems.
+     */
+    distinct?: GradedItemScalarFieldEnum | GradedItemScalarFieldEnum[]
+  }
+
+  /**
+   * GradedItem findFirstOrThrow
+   */
+  export type GradedItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * Filter, which GradedItem to fetch.
+     */
+    where?: GradedItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradedItems to fetch.
+     */
+    orderBy?: GradedItemOrderByWithRelationInput | GradedItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for GradedItems.
+     */
+    cursor?: GradedItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradedItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradedItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of GradedItems.
+     */
+    distinct?: GradedItemScalarFieldEnum | GradedItemScalarFieldEnum[]
+  }
+
+  /**
+   * GradedItem findMany
+   */
+  export type GradedItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * Filter, which GradedItems to fetch.
+     */
+    where?: GradedItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of GradedItems to fetch.
+     */
+    orderBy?: GradedItemOrderByWithRelationInput | GradedItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing GradedItems.
+     */
+    cursor?: GradedItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` GradedItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` GradedItems.
+     */
+    skip?: number
+    distinct?: GradedItemScalarFieldEnum | GradedItemScalarFieldEnum[]
+  }
+
+  /**
+   * GradedItem create
+   */
+  export type GradedItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a GradedItem.
+     */
+    data: XOR<GradedItemCreateInput, GradedItemUncheckedCreateInput>
+  }
+
+  /**
+   * GradedItem createMany
+   */
+  export type GradedItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many GradedItems.
+     */
+    data: GradedItemCreateManyInput | GradedItemCreateManyInput[]
+  }
+
+  /**
+   * GradedItem createManyAndReturn
+   */
+  export type GradedItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many GradedItems.
+     */
+    data: GradedItemCreateManyInput | GradedItemCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GradedItem update
+   */
+  export type GradedItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a GradedItem.
+     */
+    data: XOR<GradedItemUpdateInput, GradedItemUncheckedUpdateInput>
+    /**
+     * Choose, which GradedItem to update.
+     */
+    where: GradedItemWhereUniqueInput
+  }
+
+  /**
+   * GradedItem updateMany
+   */
+  export type GradedItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update GradedItems.
+     */
+    data: XOR<GradedItemUpdateManyMutationInput, GradedItemUncheckedUpdateManyInput>
+    /**
+     * Filter which GradedItems to update
+     */
+    where?: GradedItemWhereInput
+    /**
+     * Limit how many GradedItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * GradedItem updateManyAndReturn
+   */
+  export type GradedItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * The data used to update GradedItems.
+     */
+    data: XOR<GradedItemUpdateManyMutationInput, GradedItemUncheckedUpdateManyInput>
+    /**
+     * Filter which GradedItems to update
+     */
+    where?: GradedItemWhereInput
+    /**
+     * Limit how many GradedItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * GradedItem upsert
+   */
+  export type GradedItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the GradedItem to update in case it exists.
+     */
+    where: GradedItemWhereUniqueInput
+    /**
+     * In case the GradedItem found by the `where` argument doesn't exist, create a new GradedItem with this data.
+     */
+    create: XOR<GradedItemCreateInput, GradedItemUncheckedCreateInput>
+    /**
+     * In case the GradedItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<GradedItemUpdateInput, GradedItemUncheckedUpdateInput>
+  }
+
+  /**
+   * GradedItem delete
+   */
+  export type GradedItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+    /**
+     * Filter which GradedItem to delete.
+     */
+    where: GradedItemWhereUniqueInput
+  }
+
+  /**
+   * GradedItem deleteMany
+   */
+  export type GradedItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which GradedItems to delete
+     */
+    where?: GradedItemWhereInput
+    /**
+     * Limit how many GradedItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * GradedItem without action
+   */
+  export type GradedItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GradedItem
+     */
+    select?: GradedItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the GradedItem
+     */
+    omit?: GradedItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: GradedItemInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -56790,6 +59427,44 @@ export namespace Prisma {
   };
 
   export type GradeScalarFieldEnum = (typeof GradeScalarFieldEnum)[keyof typeof GradeScalarFieldEnum]
+
+
+  export const GradingSheetScalarFieldEnum: {
+    id: 'id',
+    baleName: 'baleName',
+    baleWeight: 'baleWeight',
+    branch: 'branch',
+    comment: 'comment',
+    damageCount: 'damageCount',
+    damageWeight: 'damageWeight',
+    gradeDate: 'gradeDate',
+    gradeReference: 'gradeReference',
+    grader: 'grader',
+    itemCount: 'itemCount',
+    itemtoGrade: 'itemtoGrade',
+    unpairedCount: 'unpairedCount',
+    workCenter: 'workCenter',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type GradingSheetScalarFieldEnum = (typeof GradingSheetScalarFieldEnum)[keyof typeof GradingSheetScalarFieldEnum]
+
+
+  export const GradedItemScalarFieldEnum: {
+    id: 'id',
+    itemCode: 'itemCode',
+    itemName: 'itemName',
+    grade: 'grade',
+    quantity: 'quantity',
+    qtyToHold: 'qtyToHold',
+    sellingPrice: 'sellingPrice',
+    gradingSheetId: 'gradingSheetId',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
+  };
+
+  export type GradedItemScalarFieldEnum = (typeof GradedItemScalarFieldEnum)[keyof typeof GradedItemScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -61036,6 +63711,200 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"Grade"> | boolean
     createdAt?: DateTimeWithAggregatesFilter<"Grade"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"Grade"> | Date | string
+  }
+
+  export type GradingSheetWhereInput = {
+    AND?: GradingSheetWhereInput | GradingSheetWhereInput[]
+    OR?: GradingSheetWhereInput[]
+    NOT?: GradingSheetWhereInput | GradingSheetWhereInput[]
+    id?: StringFilter<"GradingSheet"> | string
+    baleName?: StringFilter<"GradingSheet"> | string
+    baleWeight?: FloatFilter<"GradingSheet"> | number
+    branch?: StringFilter<"GradingSheet"> | string
+    comment?: StringNullableFilter<"GradingSheet"> | string | null
+    damageCount?: IntFilter<"GradingSheet"> | number
+    damageWeight?: FloatFilter<"GradingSheet"> | number
+    gradeDate?: DateTimeFilter<"GradingSheet"> | Date | string
+    gradeReference?: StringFilter<"GradingSheet"> | string
+    grader?: StringFilter<"GradingSheet"> | string
+    itemCount?: IntFilter<"GradingSheet"> | number
+    itemtoGrade?: StringNullableFilter<"GradingSheet"> | string | null
+    unpairedCount?: IntFilter<"GradingSheet"> | number
+    workCenter?: StringFilter<"GradingSheet"> | string
+    createdAt?: DateTimeFilter<"GradingSheet"> | Date | string
+    updatedAt?: DateTimeFilter<"GradingSheet"> | Date | string
+    itemsProduced?: GradedItemListRelationFilter
+  }
+
+  export type GradingSheetOrderByWithRelationInput = {
+    id?: SortOrder
+    baleName?: SortOrder
+    baleWeight?: SortOrder
+    branch?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    gradeDate?: SortOrder
+    gradeReference?: SortOrder
+    grader?: SortOrder
+    itemCount?: SortOrder
+    itemtoGrade?: SortOrderInput | SortOrder
+    unpairedCount?: SortOrder
+    workCenter?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    itemsProduced?: GradedItemOrderByRelationAggregateInput
+  }
+
+  export type GradingSheetWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GradingSheetWhereInput | GradingSheetWhereInput[]
+    OR?: GradingSheetWhereInput[]
+    NOT?: GradingSheetWhereInput | GradingSheetWhereInput[]
+    baleName?: StringFilter<"GradingSheet"> | string
+    baleWeight?: FloatFilter<"GradingSheet"> | number
+    branch?: StringFilter<"GradingSheet"> | string
+    comment?: StringNullableFilter<"GradingSheet"> | string | null
+    damageCount?: IntFilter<"GradingSheet"> | number
+    damageWeight?: FloatFilter<"GradingSheet"> | number
+    gradeDate?: DateTimeFilter<"GradingSheet"> | Date | string
+    gradeReference?: StringFilter<"GradingSheet"> | string
+    grader?: StringFilter<"GradingSheet"> | string
+    itemCount?: IntFilter<"GradingSheet"> | number
+    itemtoGrade?: StringNullableFilter<"GradingSheet"> | string | null
+    unpairedCount?: IntFilter<"GradingSheet"> | number
+    workCenter?: StringFilter<"GradingSheet"> | string
+    createdAt?: DateTimeFilter<"GradingSheet"> | Date | string
+    updatedAt?: DateTimeFilter<"GradingSheet"> | Date | string
+    itemsProduced?: GradedItemListRelationFilter
+  }, "id">
+
+  export type GradingSheetOrderByWithAggregationInput = {
+    id?: SortOrder
+    baleName?: SortOrder
+    baleWeight?: SortOrder
+    branch?: SortOrder
+    comment?: SortOrderInput | SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    gradeDate?: SortOrder
+    gradeReference?: SortOrder
+    grader?: SortOrder
+    itemCount?: SortOrder
+    itemtoGrade?: SortOrderInput | SortOrder
+    unpairedCount?: SortOrder
+    workCenter?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: GradingSheetCountOrderByAggregateInput
+    _avg?: GradingSheetAvgOrderByAggregateInput
+    _max?: GradingSheetMaxOrderByAggregateInput
+    _min?: GradingSheetMinOrderByAggregateInput
+    _sum?: GradingSheetSumOrderByAggregateInput
+  }
+
+  export type GradingSheetScalarWhereWithAggregatesInput = {
+    AND?: GradingSheetScalarWhereWithAggregatesInput | GradingSheetScalarWhereWithAggregatesInput[]
+    OR?: GradingSheetScalarWhereWithAggregatesInput[]
+    NOT?: GradingSheetScalarWhereWithAggregatesInput | GradingSheetScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GradingSheet"> | string
+    baleName?: StringWithAggregatesFilter<"GradingSheet"> | string
+    baleWeight?: FloatWithAggregatesFilter<"GradingSheet"> | number
+    branch?: StringWithAggregatesFilter<"GradingSheet"> | string
+    comment?: StringNullableWithAggregatesFilter<"GradingSheet"> | string | null
+    damageCount?: IntWithAggregatesFilter<"GradingSheet"> | number
+    damageWeight?: FloatWithAggregatesFilter<"GradingSheet"> | number
+    gradeDate?: DateTimeWithAggregatesFilter<"GradingSheet"> | Date | string
+    gradeReference?: StringWithAggregatesFilter<"GradingSheet"> | string
+    grader?: StringWithAggregatesFilter<"GradingSheet"> | string
+    itemCount?: IntWithAggregatesFilter<"GradingSheet"> | number
+    itemtoGrade?: StringNullableWithAggregatesFilter<"GradingSheet"> | string | null
+    unpairedCount?: IntWithAggregatesFilter<"GradingSheet"> | number
+    workCenter?: StringWithAggregatesFilter<"GradingSheet"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"GradingSheet"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"GradingSheet"> | Date | string
+  }
+
+  export type GradedItemWhereInput = {
+    AND?: GradedItemWhereInput | GradedItemWhereInput[]
+    OR?: GradedItemWhereInput[]
+    NOT?: GradedItemWhereInput | GradedItemWhereInput[]
+    id?: StringFilter<"GradedItem"> | string
+    itemCode?: StringFilter<"GradedItem"> | string
+    itemName?: StringFilter<"GradedItem"> | string
+    grade?: StringFilter<"GradedItem"> | string
+    quantity?: IntFilter<"GradedItem"> | number
+    qtyToHold?: IntNullableFilter<"GradedItem"> | number | null
+    sellingPrice?: FloatFilter<"GradedItem"> | number
+    gradingSheetId?: StringFilter<"GradedItem"> | string
+    createdAt?: DateTimeFilter<"GradedItem"> | Date | string
+    updatedAt?: DateTimeFilter<"GradedItem"> | Date | string
+    gradingSheet?: XOR<GradingSheetScalarRelationFilter, GradingSheetWhereInput>
+  }
+
+  export type GradedItemOrderByWithRelationInput = {
+    id?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    grade?: SortOrder
+    quantity?: SortOrder
+    qtyToHold?: SortOrderInput | SortOrder
+    sellingPrice?: SortOrder
+    gradingSheetId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    gradingSheet?: GradingSheetOrderByWithRelationInput
+  }
+
+  export type GradedItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: GradedItemWhereInput | GradedItemWhereInput[]
+    OR?: GradedItemWhereInput[]
+    NOT?: GradedItemWhereInput | GradedItemWhereInput[]
+    itemCode?: StringFilter<"GradedItem"> | string
+    itemName?: StringFilter<"GradedItem"> | string
+    grade?: StringFilter<"GradedItem"> | string
+    quantity?: IntFilter<"GradedItem"> | number
+    qtyToHold?: IntNullableFilter<"GradedItem"> | number | null
+    sellingPrice?: FloatFilter<"GradedItem"> | number
+    gradingSheetId?: StringFilter<"GradedItem"> | string
+    createdAt?: DateTimeFilter<"GradedItem"> | Date | string
+    updatedAt?: DateTimeFilter<"GradedItem"> | Date | string
+    gradingSheet?: XOR<GradingSheetScalarRelationFilter, GradingSheetWhereInput>
+  }, "id">
+
+  export type GradedItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    grade?: SortOrder
+    quantity?: SortOrder
+    qtyToHold?: SortOrderInput | SortOrder
+    sellingPrice?: SortOrder
+    gradingSheetId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+    _count?: GradedItemCountOrderByAggregateInput
+    _avg?: GradedItemAvgOrderByAggregateInput
+    _max?: GradedItemMaxOrderByAggregateInput
+    _min?: GradedItemMinOrderByAggregateInput
+    _sum?: GradedItemSumOrderByAggregateInput
+  }
+
+  export type GradedItemScalarWhereWithAggregatesInput = {
+    AND?: GradedItemScalarWhereWithAggregatesInput | GradedItemScalarWhereWithAggregatesInput[]
+    OR?: GradedItemScalarWhereWithAggregatesInput[]
+    NOT?: GradedItemScalarWhereWithAggregatesInput | GradedItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"GradedItem"> | string
+    itemCode?: StringWithAggregatesFilter<"GradedItem"> | string
+    itemName?: StringWithAggregatesFilter<"GradedItem"> | string
+    grade?: StringWithAggregatesFilter<"GradedItem"> | string
+    quantity?: IntWithAggregatesFilter<"GradedItem"> | number
+    qtyToHold?: IntNullableWithAggregatesFilter<"GradedItem"> | number | null
+    sellingPrice?: FloatWithAggregatesFilter<"GradedItem"> | number
+    gradingSheetId?: StringWithAggregatesFilter<"GradedItem"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"GradedItem"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"GradedItem"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -65928,6 +68797,233 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type GradingSheetCreateInput = {
+    id?: string
+    baleName: string
+    baleWeight: number
+    branch: string
+    comment?: string | null
+    damageCount: number
+    damageWeight: number
+    gradeDate: Date | string
+    gradeReference: string
+    grader: string
+    itemCount: number
+    itemtoGrade?: string | null
+    unpairedCount: number
+    workCenter: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    itemsProduced?: GradedItemCreateNestedManyWithoutGradingSheetInput
+  }
+
+  export type GradingSheetUncheckedCreateInput = {
+    id?: string
+    baleName: string
+    baleWeight: number
+    branch: string
+    comment?: string | null
+    damageCount: number
+    damageWeight: number
+    gradeDate: Date | string
+    gradeReference: string
+    grader: string
+    itemCount: number
+    itemtoGrade?: string | null
+    unpairedCount: number
+    workCenter: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    itemsProduced?: GradedItemUncheckedCreateNestedManyWithoutGradingSheetInput
+  }
+
+  export type GradingSheetUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baleName?: StringFieldUpdateOperationsInput | string
+    baleWeight?: FloatFieldUpdateOperationsInput | number
+    branch?: StringFieldUpdateOperationsInput | string
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    damageCount?: IntFieldUpdateOperationsInput | number
+    damageWeight?: FloatFieldUpdateOperationsInput | number
+    gradeDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradeReference?: StringFieldUpdateOperationsInput | string
+    grader?: StringFieldUpdateOperationsInput | string
+    itemCount?: IntFieldUpdateOperationsInput | number
+    itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
+    unpairedCount?: IntFieldUpdateOperationsInput | number
+    workCenter?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    itemsProduced?: GradedItemUpdateManyWithoutGradingSheetNestedInput
+  }
+
+  export type GradingSheetUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baleName?: StringFieldUpdateOperationsInput | string
+    baleWeight?: FloatFieldUpdateOperationsInput | number
+    branch?: StringFieldUpdateOperationsInput | string
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    damageCount?: IntFieldUpdateOperationsInput | number
+    damageWeight?: FloatFieldUpdateOperationsInput | number
+    gradeDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradeReference?: StringFieldUpdateOperationsInput | string
+    grader?: StringFieldUpdateOperationsInput | string
+    itemCount?: IntFieldUpdateOperationsInput | number
+    itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
+    unpairedCount?: IntFieldUpdateOperationsInput | number
+    workCenter?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    itemsProduced?: GradedItemUncheckedUpdateManyWithoutGradingSheetNestedInput
+  }
+
+  export type GradingSheetCreateManyInput = {
+    id?: string
+    baleName: string
+    baleWeight: number
+    branch: string
+    comment?: string | null
+    damageCount: number
+    damageWeight: number
+    gradeDate: Date | string
+    gradeReference: string
+    grader: string
+    itemCount: number
+    itemtoGrade?: string | null
+    unpairedCount: number
+    workCenter: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradingSheetUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baleName?: StringFieldUpdateOperationsInput | string
+    baleWeight?: FloatFieldUpdateOperationsInput | number
+    branch?: StringFieldUpdateOperationsInput | string
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    damageCount?: IntFieldUpdateOperationsInput | number
+    damageWeight?: FloatFieldUpdateOperationsInput | number
+    gradeDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradeReference?: StringFieldUpdateOperationsInput | string
+    grader?: StringFieldUpdateOperationsInput | string
+    itemCount?: IntFieldUpdateOperationsInput | number
+    itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
+    unpairedCount?: IntFieldUpdateOperationsInput | number
+    workCenter?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradingSheetUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baleName?: StringFieldUpdateOperationsInput | string
+    baleWeight?: FloatFieldUpdateOperationsInput | number
+    branch?: StringFieldUpdateOperationsInput | string
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    damageCount?: IntFieldUpdateOperationsInput | number
+    damageWeight?: FloatFieldUpdateOperationsInput | number
+    gradeDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradeReference?: StringFieldUpdateOperationsInput | string
+    grader?: StringFieldUpdateOperationsInput | string
+    itemCount?: IntFieldUpdateOperationsInput | number
+    itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
+    unpairedCount?: IntFieldUpdateOperationsInput | number
+    workCenter?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradedItemCreateInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold?: number | null
+    sellingPrice: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+    gradingSheet: GradingSheetCreateNestedOneWithoutItemsProducedInput
+  }
+
+  export type GradedItemUncheckedCreateInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold?: number | null
+    sellingPrice: number
+    gradingSheetId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradedItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradingSheet?: GradingSheetUpdateOneRequiredWithoutItemsProducedNestedInput
+  }
+
+  export type GradedItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    gradingSheetId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradedItemCreateManyInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold?: number | null
+    sellingPrice: number
+    gradingSheetId: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradedItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradedItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    gradingSheetId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -68760,6 +71856,172 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
+  export type GradedItemListRelationFilter = {
+    every?: GradedItemWhereInput
+    some?: GradedItemWhereInput
+    none?: GradedItemWhereInput
+  }
+
+  export type GradedItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type GradingSheetCountOrderByAggregateInput = {
+    id?: SortOrder
+    baleName?: SortOrder
+    baleWeight?: SortOrder
+    branch?: SortOrder
+    comment?: SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    gradeDate?: SortOrder
+    gradeReference?: SortOrder
+    grader?: SortOrder
+    itemCount?: SortOrder
+    itemtoGrade?: SortOrder
+    unpairedCount?: SortOrder
+    workCenter?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GradingSheetAvgOrderByAggregateInput = {
+    baleWeight?: SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    itemCount?: SortOrder
+    unpairedCount?: SortOrder
+  }
+
+  export type GradingSheetMaxOrderByAggregateInput = {
+    id?: SortOrder
+    baleName?: SortOrder
+    baleWeight?: SortOrder
+    branch?: SortOrder
+    comment?: SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    gradeDate?: SortOrder
+    gradeReference?: SortOrder
+    grader?: SortOrder
+    itemCount?: SortOrder
+    itemtoGrade?: SortOrder
+    unpairedCount?: SortOrder
+    workCenter?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GradingSheetMinOrderByAggregateInput = {
+    id?: SortOrder
+    baleName?: SortOrder
+    baleWeight?: SortOrder
+    branch?: SortOrder
+    comment?: SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    gradeDate?: SortOrder
+    gradeReference?: SortOrder
+    grader?: SortOrder
+    itemCount?: SortOrder
+    itemtoGrade?: SortOrder
+    unpairedCount?: SortOrder
+    workCenter?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GradingSheetSumOrderByAggregateInput = {
+    baleWeight?: SortOrder
+    damageCount?: SortOrder
+    damageWeight?: SortOrder
+    itemCount?: SortOrder
+    unpairedCount?: SortOrder
+  }
+
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type GradingSheetScalarRelationFilter = {
+    is?: GradingSheetWhereInput
+    isNot?: GradingSheetWhereInput
+  }
+
+  export type GradedItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    grade?: SortOrder
+    quantity?: SortOrder
+    qtyToHold?: SortOrder
+    sellingPrice?: SortOrder
+    gradingSheetId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GradedItemAvgOrderByAggregateInput = {
+    quantity?: SortOrder
+    qtyToHold?: SortOrder
+    sellingPrice?: SortOrder
+  }
+
+  export type GradedItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    grade?: SortOrder
+    quantity?: SortOrder
+    qtyToHold?: SortOrder
+    sellingPrice?: SortOrder
+    gradingSheetId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GradedItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    grade?: SortOrder
+    quantity?: SortOrder
+    qtyToHold?: SortOrder
+    sellingPrice?: SortOrder
+    gradingSheetId?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
+  }
+
+  export type GradedItemSumOrderByAggregateInput = {
+    quantity?: SortOrder
+    qtyToHold?: SortOrder
+    sellingPrice?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
   export type RoleCreateNestedOneWithoutUsersInput = {
     create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
@@ -69710,6 +72972,70 @@ export namespace Prisma {
     update?: XOR<XOR<PurchaseReQEntryUpdateToOneWithWhereWithoutPurchaseAdditionalInfoInput, PurchaseReQEntryUpdateWithoutPurchaseAdditionalInfoInput>, PurchaseReQEntryUncheckedUpdateWithoutPurchaseAdditionalInfoInput>
   }
 
+  export type GradedItemCreateNestedManyWithoutGradingSheetInput = {
+    create?: XOR<GradedItemCreateWithoutGradingSheetInput, GradedItemUncheckedCreateWithoutGradingSheetInput> | GradedItemCreateWithoutGradingSheetInput[] | GradedItemUncheckedCreateWithoutGradingSheetInput[]
+    connectOrCreate?: GradedItemCreateOrConnectWithoutGradingSheetInput | GradedItemCreateOrConnectWithoutGradingSheetInput[]
+    createMany?: GradedItemCreateManyGradingSheetInputEnvelope
+    connect?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+  }
+
+  export type GradedItemUncheckedCreateNestedManyWithoutGradingSheetInput = {
+    create?: XOR<GradedItemCreateWithoutGradingSheetInput, GradedItemUncheckedCreateWithoutGradingSheetInput> | GradedItemCreateWithoutGradingSheetInput[] | GradedItemUncheckedCreateWithoutGradingSheetInput[]
+    connectOrCreate?: GradedItemCreateOrConnectWithoutGradingSheetInput | GradedItemCreateOrConnectWithoutGradingSheetInput[]
+    createMany?: GradedItemCreateManyGradingSheetInputEnvelope
+    connect?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+  }
+
+  export type GradedItemUpdateManyWithoutGradingSheetNestedInput = {
+    create?: XOR<GradedItemCreateWithoutGradingSheetInput, GradedItemUncheckedCreateWithoutGradingSheetInput> | GradedItemCreateWithoutGradingSheetInput[] | GradedItemUncheckedCreateWithoutGradingSheetInput[]
+    connectOrCreate?: GradedItemCreateOrConnectWithoutGradingSheetInput | GradedItemCreateOrConnectWithoutGradingSheetInput[]
+    upsert?: GradedItemUpsertWithWhereUniqueWithoutGradingSheetInput | GradedItemUpsertWithWhereUniqueWithoutGradingSheetInput[]
+    createMany?: GradedItemCreateManyGradingSheetInputEnvelope
+    set?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    disconnect?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    delete?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    connect?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    update?: GradedItemUpdateWithWhereUniqueWithoutGradingSheetInput | GradedItemUpdateWithWhereUniqueWithoutGradingSheetInput[]
+    updateMany?: GradedItemUpdateManyWithWhereWithoutGradingSheetInput | GradedItemUpdateManyWithWhereWithoutGradingSheetInput[]
+    deleteMany?: GradedItemScalarWhereInput | GradedItemScalarWhereInput[]
+  }
+
+  export type GradedItemUncheckedUpdateManyWithoutGradingSheetNestedInput = {
+    create?: XOR<GradedItemCreateWithoutGradingSheetInput, GradedItemUncheckedCreateWithoutGradingSheetInput> | GradedItemCreateWithoutGradingSheetInput[] | GradedItemUncheckedCreateWithoutGradingSheetInput[]
+    connectOrCreate?: GradedItemCreateOrConnectWithoutGradingSheetInput | GradedItemCreateOrConnectWithoutGradingSheetInput[]
+    upsert?: GradedItemUpsertWithWhereUniqueWithoutGradingSheetInput | GradedItemUpsertWithWhereUniqueWithoutGradingSheetInput[]
+    createMany?: GradedItemCreateManyGradingSheetInputEnvelope
+    set?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    disconnect?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    delete?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    connect?: GradedItemWhereUniqueInput | GradedItemWhereUniqueInput[]
+    update?: GradedItemUpdateWithWhereUniqueWithoutGradingSheetInput | GradedItemUpdateWithWhereUniqueWithoutGradingSheetInput[]
+    updateMany?: GradedItemUpdateManyWithWhereWithoutGradingSheetInput | GradedItemUpdateManyWithWhereWithoutGradingSheetInput[]
+    deleteMany?: GradedItemScalarWhereInput | GradedItemScalarWhereInput[]
+  }
+
+  export type GradingSheetCreateNestedOneWithoutItemsProducedInput = {
+    create?: XOR<GradingSheetCreateWithoutItemsProducedInput, GradingSheetUncheckedCreateWithoutItemsProducedInput>
+    connectOrCreate?: GradingSheetCreateOrConnectWithoutItemsProducedInput
+    connect?: GradingSheetWhereUniqueInput
+  }
+
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type GradingSheetUpdateOneRequiredWithoutItemsProducedNestedInput = {
+    create?: XOR<GradingSheetCreateWithoutItemsProducedInput, GradingSheetUncheckedCreateWithoutItemsProducedInput>
+    connectOrCreate?: GradingSheetCreateOrConnectWithoutItemsProducedInput
+    upsert?: GradingSheetUpsertWithoutItemsProducedInput
+    connect?: GradingSheetWhereUniqueInput
+    update?: XOR<XOR<GradingSheetUpdateToOneWithWhereWithoutItemsProducedInput, GradingSheetUpdateWithoutItemsProducedInput>, GradingSheetUncheckedUpdateWithoutItemsProducedInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -69931,6 +73257,22 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedBoolNullableFilter<$PrismaModel>
     _max?: NestedBoolNullableFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type RoleCreateWithoutUsersInput = {
@@ -72626,6 +75968,163 @@ export namespace Prisma {
     items?: PurchaseRequisitionEntryItemUncheckedUpdateManyWithoutPurchaseReQEntryNestedInput
   }
 
+  export type GradedItemCreateWithoutGradingSheetInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold?: number | null
+    sellingPrice: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradedItemUncheckedCreateWithoutGradingSheetInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold?: number | null
+    sellingPrice: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradedItemCreateOrConnectWithoutGradingSheetInput = {
+    where: GradedItemWhereUniqueInput
+    create: XOR<GradedItemCreateWithoutGradingSheetInput, GradedItemUncheckedCreateWithoutGradingSheetInput>
+  }
+
+  export type GradedItemCreateManyGradingSheetInputEnvelope = {
+    data: GradedItemCreateManyGradingSheetInput | GradedItemCreateManyGradingSheetInput[]
+  }
+
+  export type GradedItemUpsertWithWhereUniqueWithoutGradingSheetInput = {
+    where: GradedItemWhereUniqueInput
+    update: XOR<GradedItemUpdateWithoutGradingSheetInput, GradedItemUncheckedUpdateWithoutGradingSheetInput>
+    create: XOR<GradedItemCreateWithoutGradingSheetInput, GradedItemUncheckedCreateWithoutGradingSheetInput>
+  }
+
+  export type GradedItemUpdateWithWhereUniqueWithoutGradingSheetInput = {
+    where: GradedItemWhereUniqueInput
+    data: XOR<GradedItemUpdateWithoutGradingSheetInput, GradedItemUncheckedUpdateWithoutGradingSheetInput>
+  }
+
+  export type GradedItemUpdateManyWithWhereWithoutGradingSheetInput = {
+    where: GradedItemScalarWhereInput
+    data: XOR<GradedItemUpdateManyMutationInput, GradedItemUncheckedUpdateManyWithoutGradingSheetInput>
+  }
+
+  export type GradedItemScalarWhereInput = {
+    AND?: GradedItemScalarWhereInput | GradedItemScalarWhereInput[]
+    OR?: GradedItemScalarWhereInput[]
+    NOT?: GradedItemScalarWhereInput | GradedItemScalarWhereInput[]
+    id?: StringFilter<"GradedItem"> | string
+    itemCode?: StringFilter<"GradedItem"> | string
+    itemName?: StringFilter<"GradedItem"> | string
+    grade?: StringFilter<"GradedItem"> | string
+    quantity?: IntFilter<"GradedItem"> | number
+    qtyToHold?: IntNullableFilter<"GradedItem"> | number | null
+    sellingPrice?: FloatFilter<"GradedItem"> | number
+    gradingSheetId?: StringFilter<"GradedItem"> | string
+    createdAt?: DateTimeFilter<"GradedItem"> | Date | string
+    updatedAt?: DateTimeFilter<"GradedItem"> | Date | string
+  }
+
+  export type GradingSheetCreateWithoutItemsProducedInput = {
+    id?: string
+    baleName: string
+    baleWeight: number
+    branch: string
+    comment?: string | null
+    damageCount: number
+    damageWeight: number
+    gradeDate: Date | string
+    gradeReference: string
+    grader: string
+    itemCount: number
+    itemtoGrade?: string | null
+    unpairedCount: number
+    workCenter: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradingSheetUncheckedCreateWithoutItemsProducedInput = {
+    id?: string
+    baleName: string
+    baleWeight: number
+    branch: string
+    comment?: string | null
+    damageCount: number
+    damageWeight: number
+    gradeDate: Date | string
+    gradeReference: string
+    grader: string
+    itemCount: number
+    itemtoGrade?: string | null
+    unpairedCount: number
+    workCenter: string
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradingSheetCreateOrConnectWithoutItemsProducedInput = {
+    where: GradingSheetWhereUniqueInput
+    create: XOR<GradingSheetCreateWithoutItemsProducedInput, GradingSheetUncheckedCreateWithoutItemsProducedInput>
+  }
+
+  export type GradingSheetUpsertWithoutItemsProducedInput = {
+    update: XOR<GradingSheetUpdateWithoutItemsProducedInput, GradingSheetUncheckedUpdateWithoutItemsProducedInput>
+    create: XOR<GradingSheetCreateWithoutItemsProducedInput, GradingSheetUncheckedCreateWithoutItemsProducedInput>
+    where?: GradingSheetWhereInput
+  }
+
+  export type GradingSheetUpdateToOneWithWhereWithoutItemsProducedInput = {
+    where?: GradingSheetWhereInput
+    data: XOR<GradingSheetUpdateWithoutItemsProducedInput, GradingSheetUncheckedUpdateWithoutItemsProducedInput>
+  }
+
+  export type GradingSheetUpdateWithoutItemsProducedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baleName?: StringFieldUpdateOperationsInput | string
+    baleWeight?: FloatFieldUpdateOperationsInput | number
+    branch?: StringFieldUpdateOperationsInput | string
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    damageCount?: IntFieldUpdateOperationsInput | number
+    damageWeight?: FloatFieldUpdateOperationsInput | number
+    gradeDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradeReference?: StringFieldUpdateOperationsInput | string
+    grader?: StringFieldUpdateOperationsInput | string
+    itemCount?: IntFieldUpdateOperationsInput | number
+    itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
+    unpairedCount?: IntFieldUpdateOperationsInput | number
+    workCenter?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradingSheetUncheckedUpdateWithoutItemsProducedInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    baleName?: StringFieldUpdateOperationsInput | string
+    baleWeight?: FloatFieldUpdateOperationsInput | number
+    branch?: StringFieldUpdateOperationsInput | string
+    comment?: NullableStringFieldUpdateOperationsInput | string | null
+    damageCount?: IntFieldUpdateOperationsInput | number
+    damageWeight?: FloatFieldUpdateOperationsInput | number
+    gradeDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    gradeReference?: StringFieldUpdateOperationsInput | string
+    grader?: StringFieldUpdateOperationsInput | string
+    itemCount?: IntFieldUpdateOperationsInput | number
+    itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
+    unpairedCount?: IntFieldUpdateOperationsInput | number
+    workCenter?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MessageCreateManyUserInput = {
     id?: string
     file?: string | null
@@ -73234,6 +76733,54 @@ export namespace Prisma {
     discount?: FloatFieldUpdateOperationsInput | number
     tax?: FloatFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
+  }
+
+  export type GradedItemCreateManyGradingSheetInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    grade: string
+    quantity: number
+    qtyToHold?: number | null
+    sellingPrice: number
+    createdAt?: Date | string
+    updatedAt?: Date | string
+  }
+
+  export type GradedItemUpdateWithoutGradingSheetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradedItemUncheckedUpdateWithoutGradingSheetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type GradedItemUncheckedUpdateManyWithoutGradingSheetInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    grade?: StringFieldUpdateOperationsInput | string
+    quantity?: IntFieldUpdateOperationsInput | number
+    qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
+    sellingPrice?: FloatFieldUpdateOperationsInput | number
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 

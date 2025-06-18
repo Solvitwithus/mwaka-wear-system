@@ -26,7 +26,7 @@ type Permissions = {
 const transactions = [
   {name:"Rebale", link:"/thrift-processing/",image:StudIcon,permission:"Rebale"},
   {name:"Inventory Items Grading", link:"/thrift-processing/inventory-item-grading",image:StudIcon,permission:"InventoryItemsGrading"},
-  {name:"Print Graded Items Barcode", link:"/thrift-processing/",image:StudIcon,permission:"PrintGradedItemsBarcode"},
+  {name:"Print Graded Items Barcode", link:"/thrift-processing/graded-item-barcode",image:StudIcon,permission:"PrintGradedItemsBarcode"},
   {name:"Outstanding Grading Orders", link:"/thrift-processing/",image:StudIcon,permission:"OutstandingGradingOrders"},
   {name:"Discard Damaged Items", link:"/thrift-processing/",image:StudIcon,permission:"DiscardItems"},
 

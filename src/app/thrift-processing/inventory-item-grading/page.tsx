@@ -191,7 +191,13 @@ const Page = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-     console.log(gradingOrder);
+       try {
+    const res = await axios.post("/api/auth/grading-sheet", gradingOrder);
+    console.log("Grading sheet created successfully:", res.data);
+    setGradingOrder(initialState); // reset form state
+  } catch (error) {
+    console.error("Failed to create grading sheet:", error);
+  }
     const selectedBale = filterBale.find((bale) => bale.items.some((item) => item.itemName === gradingOrder.baleName));
     if (selectedBale) {
       try {
@@ -323,8 +329,8 @@ const Page = () => {
               className="w-40 rounded-md text-xs bg-slate-300 h-6 pl-2"
             >
               <option value="">--Pick Grader--</option>
-              {filterUsers.map((val) => (
-                <option value={val.userName} key={val.userName}>
+              {filterUsers.map((val,idx) => (
+                <option value={val.firstName} key={idx}>
                   {val.firstName} {val.lastName}
                 </option>
               ))}

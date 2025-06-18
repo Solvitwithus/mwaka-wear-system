@@ -810,6 +810,38 @@ exports.Prisma.GradeScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.GradingSheetScalarFieldEnum = {
+  id: 'id',
+  baleName: 'baleName',
+  baleWeight: 'baleWeight',
+  branch: 'branch',
+  comment: 'comment',
+  damageCount: 'damageCount',
+  damageWeight: 'damageWeight',
+  gradeDate: 'gradeDate',
+  gradeReference: 'gradeReference',
+  grader: 'grader',
+  itemCount: 'itemCount',
+  itemtoGrade: 'itemtoGrade',
+  unpairedCount: 'unpairedCount',
+  workCenter: 'workCenter',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.GradedItemScalarFieldEnum = {
+  id: 'id',
+  itemCode: 'itemCode',
+  itemName: 'itemName',
+  grade: 'grade',
+  quantity: 'quantity',
+  qtyToHold: 'qtyToHold',
+  sellingPrice: 'sellingPrice',
+  gradingSheetId: 'gradingSheetId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -880,7 +912,9 @@ exports.Prisma.ModelName = {
   PurchaseRequisitionEntryItem: 'PurchaseRequisitionEntryItem',
   PurchaseAdditionalInfo: 'PurchaseAdditionalInfo',
   SupplierPaymentTracking: 'SupplierPaymentTracking',
-  Grade: 'Grade'
+  Grade: 'Grade',
+  GradingSheet: 'GradingSheet',
+  GradedItem: 'GradedItem'
 };
 
 /**
