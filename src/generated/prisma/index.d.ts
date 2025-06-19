@@ -886,8 +886,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.9.0
-   * Query Engine version: 81e4af48011447c3cc503a190e86995b66d2a28e
+   * Prisma Client JS version: 6.10.0
+   * Query Engine version: aee10d5a411e4360c6d3445ce4810ca65adbf3e8
    */
   export type PrismaVersion = {
     client: string
@@ -56212,6 +56212,7 @@ export namespace Prisma {
     itemtoGrade: string | null
     unpairedCount: number | null
     workCenter: string | null
+    status: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -56231,6 +56232,7 @@ export namespace Prisma {
     itemtoGrade: string | null
     unpairedCount: number | null
     workCenter: string | null
+    status: string | null
     createdAt: Date | null
     updatedAt: Date | null
   }
@@ -56250,6 +56252,7 @@ export namespace Prisma {
     itemtoGrade: number
     unpairedCount: number
     workCenter: number
+    status: number
     createdAt: number
     updatedAt: number
     _all: number
@@ -56287,6 +56290,7 @@ export namespace Prisma {
     itemtoGrade?: true
     unpairedCount?: true
     workCenter?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -56306,6 +56310,7 @@ export namespace Prisma {
     itemtoGrade?: true
     unpairedCount?: true
     workCenter?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
   }
@@ -56325,6 +56330,7 @@ export namespace Prisma {
     itemtoGrade?: true
     unpairedCount?: true
     workCenter?: true
+    status?: true
     createdAt?: true
     updatedAt?: true
     _all?: true
@@ -56431,6 +56437,7 @@ export namespace Prisma {
     itemtoGrade: string | null
     unpairedCount: number
     workCenter: string
+    status: string
     createdAt: Date
     updatedAt: Date
     _count: GradingSheetCountAggregateOutputType | null
@@ -56469,6 +56476,7 @@ export namespace Prisma {
     itemtoGrade?: boolean
     unpairedCount?: boolean
     workCenter?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     itemsProduced?: boolean | GradingSheet$itemsProducedArgs<ExtArgs>
@@ -56490,6 +56498,7 @@ export namespace Prisma {
     itemtoGrade?: boolean
     unpairedCount?: boolean
     workCenter?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["gradingSheet"]>
@@ -56509,6 +56518,7 @@ export namespace Prisma {
     itemtoGrade?: boolean
     unpairedCount?: boolean
     workCenter?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }, ExtArgs["result"]["gradingSheet"]>
@@ -56528,11 +56538,12 @@ export namespace Prisma {
     itemtoGrade?: boolean
     unpairedCount?: boolean
     workCenter?: boolean
+    status?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type GradingSheetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baleName" | "baleWeight" | "branch" | "comment" | "damageCount" | "damageWeight" | "gradeDate" | "gradeReference" | "grader" | "itemCount" | "itemtoGrade" | "unpairedCount" | "workCenter" | "createdAt" | "updatedAt", ExtArgs["result"]["gradingSheet"]>
+  export type GradingSheetOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "baleName" | "baleWeight" | "branch" | "comment" | "damageCount" | "damageWeight" | "gradeDate" | "gradeReference" | "grader" | "itemCount" | "itemtoGrade" | "unpairedCount" | "workCenter" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["gradingSheet"]>
   export type GradingSheetInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     itemsProduced?: boolean | GradingSheet$itemsProducedArgs<ExtArgs>
     _count?: boolean | GradingSheetCountOutputTypeDefaultArgs<ExtArgs>
@@ -56560,6 +56571,7 @@ export namespace Prisma {
       itemtoGrade: string | null
       unpairedCount: number
       workCenter: string
+      status: string
       createdAt: Date
       updatedAt: Date
     }, ExtArgs["result"]["gradingSheet"]>
@@ -57000,6 +57012,7 @@ export namespace Prisma {
     readonly itemtoGrade: FieldRef<"GradingSheet", 'String'>
     readonly unpairedCount: FieldRef<"GradingSheet", 'Int'>
     readonly workCenter: FieldRef<"GradingSheet", 'String'>
+    readonly status: FieldRef<"GradingSheet", 'String'>
     readonly createdAt: FieldRef<"GradingSheet", 'DateTime'>
     readonly updatedAt: FieldRef<"GradingSheet", 'DateTime'>
   }
@@ -57446,12 +57459,14 @@ export namespace Prisma {
     quantity: number | null
     qtyToHold: number | null
     sellingPrice: number | null
+    qtyToDispatch: number | null
   }
 
   export type GradedItemSumAggregateOutputType = {
     quantity: number | null
     qtyToHold: number | null
     sellingPrice: number | null
+    qtyToDispatch: number | null
   }
 
   export type GradedItemMinAggregateOutputType = {
@@ -57462,6 +57477,7 @@ export namespace Prisma {
     quantity: number | null
     qtyToHold: number | null
     sellingPrice: number | null
+    qtyToDispatch: number | null
     gradingSheetId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -57475,6 +57491,7 @@ export namespace Prisma {
     quantity: number | null
     qtyToHold: number | null
     sellingPrice: number | null
+    qtyToDispatch: number | null
     gradingSheetId: string | null
     createdAt: Date | null
     updatedAt: Date | null
@@ -57488,6 +57505,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold: number
     sellingPrice: number
+    qtyToDispatch: number
     gradingSheetId: number
     createdAt: number
     updatedAt: number
@@ -57499,12 +57517,14 @@ export namespace Prisma {
     quantity?: true
     qtyToHold?: true
     sellingPrice?: true
+    qtyToDispatch?: true
   }
 
   export type GradedItemSumAggregateInputType = {
     quantity?: true
     qtyToHold?: true
     sellingPrice?: true
+    qtyToDispatch?: true
   }
 
   export type GradedItemMinAggregateInputType = {
@@ -57515,6 +57535,7 @@ export namespace Prisma {
     quantity?: true
     qtyToHold?: true
     sellingPrice?: true
+    qtyToDispatch?: true
     gradingSheetId?: true
     createdAt?: true
     updatedAt?: true
@@ -57528,6 +57549,7 @@ export namespace Prisma {
     quantity?: true
     qtyToHold?: true
     sellingPrice?: true
+    qtyToDispatch?: true
     gradingSheetId?: true
     createdAt?: true
     updatedAt?: true
@@ -57541,6 +57563,7 @@ export namespace Prisma {
     quantity?: true
     qtyToHold?: true
     sellingPrice?: true
+    qtyToDispatch?: true
     gradingSheetId?: true
     createdAt?: true
     updatedAt?: true
@@ -57641,6 +57664,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold: number | null
     sellingPrice: number
+    qtyToDispatch: number
     gradingSheetId: string
     createdAt: Date
     updatedAt: Date
@@ -57673,6 +57697,7 @@ export namespace Prisma {
     quantity?: boolean
     qtyToHold?: boolean
     sellingPrice?: boolean
+    qtyToDispatch?: boolean
     gradingSheetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -57687,6 +57712,7 @@ export namespace Prisma {
     quantity?: boolean
     qtyToHold?: boolean
     sellingPrice?: boolean
+    qtyToDispatch?: boolean
     gradingSheetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -57701,6 +57727,7 @@ export namespace Prisma {
     quantity?: boolean
     qtyToHold?: boolean
     sellingPrice?: boolean
+    qtyToDispatch?: boolean
     gradingSheetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
@@ -57715,12 +57742,13 @@ export namespace Prisma {
     quantity?: boolean
     qtyToHold?: boolean
     sellingPrice?: boolean
+    qtyToDispatch?: boolean
     gradingSheetId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
   }
 
-  export type GradedItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemCode" | "itemName" | "grade" | "quantity" | "qtyToHold" | "sellingPrice" | "gradingSheetId" | "createdAt" | "updatedAt", ExtArgs["result"]["gradedItem"]>
+  export type GradedItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "itemCode" | "itemName" | "grade" | "quantity" | "qtyToHold" | "sellingPrice" | "qtyToDispatch" | "gradingSheetId" | "createdAt" | "updatedAt", ExtArgs["result"]["gradedItem"]>
   export type GradedItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     gradingSheet?: boolean | GradingSheetDefaultArgs<ExtArgs>
   }
@@ -57744,6 +57772,7 @@ export namespace Prisma {
       quantity: number
       qtyToHold: number | null
       sellingPrice: number
+      qtyToDispatch: number
       gradingSheetId: string
       createdAt: Date
       updatedAt: Date
@@ -58178,6 +58207,7 @@ export namespace Prisma {
     readonly quantity: FieldRef<"GradedItem", 'Int'>
     readonly qtyToHold: FieldRef<"GradedItem", 'Int'>
     readonly sellingPrice: FieldRef<"GradedItem", 'Float'>
+    readonly qtyToDispatch: FieldRef<"GradedItem", 'Float'>
     readonly gradingSheetId: FieldRef<"GradedItem", 'String'>
     readonly createdAt: FieldRef<"GradedItem", 'DateTime'>
     readonly updatedAt: FieldRef<"GradedItem", 'DateTime'>
@@ -59444,6 +59474,7 @@ export namespace Prisma {
     itemtoGrade: 'itemtoGrade',
     unpairedCount: 'unpairedCount',
     workCenter: 'workCenter',
+    status: 'status',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
   };
@@ -59459,6 +59490,7 @@ export namespace Prisma {
     quantity: 'quantity',
     qtyToHold: 'qtyToHold',
     sellingPrice: 'sellingPrice',
+    qtyToDispatch: 'qtyToDispatch',
     gradingSheetId: 'gradingSheetId',
     createdAt: 'createdAt',
     updatedAt: 'updatedAt'
@@ -63731,6 +63763,7 @@ export namespace Prisma {
     itemtoGrade?: StringNullableFilter<"GradingSheet"> | string | null
     unpairedCount?: IntFilter<"GradingSheet"> | number
     workCenter?: StringFilter<"GradingSheet"> | string
+    status?: StringFilter<"GradingSheet"> | string
     createdAt?: DateTimeFilter<"GradingSheet"> | Date | string
     updatedAt?: DateTimeFilter<"GradingSheet"> | Date | string
     itemsProduced?: GradedItemListRelationFilter
@@ -63751,6 +63784,7 @@ export namespace Prisma {
     itemtoGrade?: SortOrderInput | SortOrder
     unpairedCount?: SortOrder
     workCenter?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     itemsProduced?: GradedItemOrderByRelationAggregateInput
@@ -63774,6 +63808,7 @@ export namespace Prisma {
     itemtoGrade?: StringNullableFilter<"GradingSheet"> | string | null
     unpairedCount?: IntFilter<"GradingSheet"> | number
     workCenter?: StringFilter<"GradingSheet"> | string
+    status?: StringFilter<"GradingSheet"> | string
     createdAt?: DateTimeFilter<"GradingSheet"> | Date | string
     updatedAt?: DateTimeFilter<"GradingSheet"> | Date | string
     itemsProduced?: GradedItemListRelationFilter
@@ -63794,6 +63829,7 @@ export namespace Prisma {
     itemtoGrade?: SortOrderInput | SortOrder
     unpairedCount?: SortOrder
     workCenter?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: GradingSheetCountOrderByAggregateInput
@@ -63821,6 +63857,7 @@ export namespace Prisma {
     itemtoGrade?: StringNullableWithAggregatesFilter<"GradingSheet"> | string | null
     unpairedCount?: IntWithAggregatesFilter<"GradingSheet"> | number
     workCenter?: StringWithAggregatesFilter<"GradingSheet"> | string
+    status?: StringWithAggregatesFilter<"GradingSheet"> | string
     createdAt?: DateTimeWithAggregatesFilter<"GradingSheet"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"GradingSheet"> | Date | string
   }
@@ -63836,6 +63873,7 @@ export namespace Prisma {
     quantity?: IntFilter<"GradedItem"> | number
     qtyToHold?: IntNullableFilter<"GradedItem"> | number | null
     sellingPrice?: FloatFilter<"GradedItem"> | number
+    qtyToDispatch?: FloatFilter<"GradedItem"> | number
     gradingSheetId?: StringFilter<"GradedItem"> | string
     createdAt?: DateTimeFilter<"GradedItem"> | Date | string
     updatedAt?: DateTimeFilter<"GradedItem"> | Date | string
@@ -63850,6 +63888,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrderInput | SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
     gradingSheetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -63867,6 +63906,7 @@ export namespace Prisma {
     quantity?: IntFilter<"GradedItem"> | number
     qtyToHold?: IntNullableFilter<"GradedItem"> | number | null
     sellingPrice?: FloatFilter<"GradedItem"> | number
+    qtyToDispatch?: FloatFilter<"GradedItem"> | number
     gradingSheetId?: StringFilter<"GradedItem"> | string
     createdAt?: DateTimeFilter<"GradedItem"> | Date | string
     updatedAt?: DateTimeFilter<"GradedItem"> | Date | string
@@ -63881,6 +63921,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrderInput | SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
     gradingSheetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -63902,6 +63943,7 @@ export namespace Prisma {
     quantity?: IntWithAggregatesFilter<"GradedItem"> | number
     qtyToHold?: IntNullableWithAggregatesFilter<"GradedItem"> | number | null
     sellingPrice?: FloatWithAggregatesFilter<"GradedItem"> | number
+    qtyToDispatch?: FloatWithAggregatesFilter<"GradedItem"> | number
     gradingSheetId?: StringWithAggregatesFilter<"GradedItem"> | string
     createdAt?: DateTimeWithAggregatesFilter<"GradedItem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"GradedItem"> | Date | string
@@ -68812,6 +68854,7 @@ export namespace Prisma {
     itemtoGrade?: string | null
     unpairedCount: number
     workCenter: string
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     itemsProduced?: GradedItemCreateNestedManyWithoutGradingSheetInput
@@ -68832,6 +68875,7 @@ export namespace Prisma {
     itemtoGrade?: string | null
     unpairedCount: number
     workCenter: string
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
     itemsProduced?: GradedItemUncheckedCreateNestedManyWithoutGradingSheetInput
@@ -68852,6 +68896,7 @@ export namespace Prisma {
     itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
     unpairedCount?: IntFieldUpdateOperationsInput | number
     workCenter?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     itemsProduced?: GradedItemUpdateManyWithoutGradingSheetNestedInput
@@ -68872,6 +68917,7 @@ export namespace Prisma {
     itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
     unpairedCount?: IntFieldUpdateOperationsInput | number
     workCenter?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     itemsProduced?: GradedItemUncheckedUpdateManyWithoutGradingSheetNestedInput
@@ -68892,6 +68938,7 @@ export namespace Prisma {
     itemtoGrade?: string | null
     unpairedCount: number
     workCenter: string
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -68911,6 +68958,7 @@ export namespace Prisma {
     itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
     unpairedCount?: IntFieldUpdateOperationsInput | number
     workCenter?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -68930,6 +68978,7 @@ export namespace Prisma {
     itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
     unpairedCount?: IntFieldUpdateOperationsInput | number
     workCenter?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -68942,6 +68991,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold?: number | null
     sellingPrice: number
+    qtyToDispatch?: number
     createdAt?: Date | string
     updatedAt?: Date | string
     gradingSheet: GradingSheetCreateNestedOneWithoutItemsProducedInput
@@ -68955,6 +69005,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold?: number | null
     sellingPrice: number
+    qtyToDispatch?: number
     gradingSheetId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -68968,6 +69019,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     gradingSheet?: GradingSheetUpdateOneRequiredWithoutItemsProducedNestedInput
@@ -68981,6 +69033,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     gradingSheetId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -68994,6 +69047,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold?: number | null
     sellingPrice: number
+    qtyToDispatch?: number
     gradingSheetId: string
     createdAt?: Date | string
     updatedAt?: Date | string
@@ -69007,6 +69061,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -69019,6 +69074,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     gradingSheetId?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -71881,6 +71937,7 @@ export namespace Prisma {
     itemtoGrade?: SortOrder
     unpairedCount?: SortOrder
     workCenter?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -71908,6 +71965,7 @@ export namespace Prisma {
     itemtoGrade?: SortOrder
     unpairedCount?: SortOrder
     workCenter?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -71927,6 +71985,7 @@ export namespace Prisma {
     itemtoGrade?: SortOrder
     unpairedCount?: SortOrder
     workCenter?: SortOrder
+    status?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
   }
@@ -71963,6 +72022,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
     gradingSheetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -71972,6 +72032,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
   }
 
   export type GradedItemMaxOrderByAggregateInput = {
@@ -71982,6 +72043,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
     gradingSheetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -71995,6 +72057,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
     gradingSheetId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
@@ -72004,6 +72067,7 @@ export namespace Prisma {
     quantity?: SortOrder
     qtyToHold?: SortOrder
     sellingPrice?: SortOrder
+    qtyToDispatch?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -75976,6 +76040,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold?: number | null
     sellingPrice: number
+    qtyToDispatch?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -75988,6 +76053,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold?: number | null
     sellingPrice: number
+    qtyToDispatch?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -76028,6 +76094,7 @@ export namespace Prisma {
     quantity?: IntFilter<"GradedItem"> | number
     qtyToHold?: IntNullableFilter<"GradedItem"> | number | null
     sellingPrice?: FloatFilter<"GradedItem"> | number
+    qtyToDispatch?: FloatFilter<"GradedItem"> | number
     gradingSheetId?: StringFilter<"GradedItem"> | string
     createdAt?: DateTimeFilter<"GradedItem"> | Date | string
     updatedAt?: DateTimeFilter<"GradedItem"> | Date | string
@@ -76048,6 +76115,7 @@ export namespace Prisma {
     itemtoGrade?: string | null
     unpairedCount: number
     workCenter: string
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -76067,6 +76135,7 @@ export namespace Prisma {
     itemtoGrade?: string | null
     unpairedCount: number
     workCenter: string
+    status?: string
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -76102,6 +76171,7 @@ export namespace Prisma {
     itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
     unpairedCount?: IntFieldUpdateOperationsInput | number
     workCenter?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -76121,6 +76191,7 @@ export namespace Prisma {
     itemtoGrade?: NullableStringFieldUpdateOperationsInput | string | null
     unpairedCount?: IntFieldUpdateOperationsInput | number
     workCenter?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -76743,6 +76814,7 @@ export namespace Prisma {
     quantity: number
     qtyToHold?: number | null
     sellingPrice: number
+    qtyToDispatch?: number
     createdAt?: Date | string
     updatedAt?: Date | string
   }
@@ -76755,6 +76827,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -76767,6 +76840,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
@@ -76779,6 +76853,7 @@ export namespace Prisma {
     quantity?: IntFieldUpdateOperationsInput | number
     qtyToHold?: NullableIntFieldUpdateOperationsInput | number | null
     sellingPrice?: FloatFieldUpdateOperationsInput | number
+    qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }

@@ -233,7 +233,8 @@ const thriftPermissions = [
   {name:"GradingReports",value:false},
   {name:"DiscardedItems",value:false},
   {name:"WorkCenters",value:false},
-  {name:"Grade",value:false} 
+  {name:"Grade",value:false},
+  {name:"DispatchToBranch",value:false}
 ]
 
 

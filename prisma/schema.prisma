@@ -803,7 +803,7 @@ model GradingSheet {
   itemtoGrade     String?
   unpairedCount   Int
   workCenter      String
-
+status            String @default("Thrift")
   // Relation to produced items
   itemsProduced   GradedItem[]
 
@@ -819,7 +819,7 @@ model GradedItem {
   quantity       Int
   qtyToHold      Int?
   sellingPrice   Float
-
+qtyToDispatch Float @default(0)
   // Foreign key
   gradingSheetId String
   gradingSheet   GradingSheet @relation(fields: [gradingSheetId], references: [id], onDelete: Cascade)

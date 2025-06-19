@@ -5,7 +5,8 @@ const prisma = new PrismaClient();
 
 async function main() {
      
-    //  await prisma.deliveryDetail.deleteMany();   
+    await prisma.gradingSheet.deleteMany();  
+    await prisma.gradedItem.deleteMany();   
   
   console.log("All SalesEntry records deleted.");
 }

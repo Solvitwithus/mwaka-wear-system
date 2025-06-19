@@ -29,27 +29,27 @@ type Permissions = {
 }
 
 const transactions = [
-  {name:"Cycle Management", link:"/items-and-inventory/",image:StudIcon,permission:"CycleManagement"},
-  {name:"Receive New Stock from Transit", link:"/items-and-inventory/",image:StudIcon,permission:"ReceiveNewStockfromTransit"},
-  {name:"Branch Inventory", link:"/items-and-inventory/",image:StudIcon,permission:"BranchInventory"},
-  {name:"Stock Return Order", link:"/items-and-inventory/",image:StudIcon,permission:"StockReturnOrder"},
-  {name:"File Return Loading Order", link:"/items-and-inventory/",image:StudIcon,permission:"FileReturnLoadingOrder"},
+  {name:"Cycle Management", link:"/branches/",image:StudIcon,permission:"CycleManagement"},
+  {name:"Receive New Stock from Transit", link:"/branches/receive-from-transit",image:StudIcon,permission:"ReceiveNewStockfromTransit"},
+  {name:"Branch Inventory", link:"/branches/branch-inventory",image:StudIcon,permission:"BranchInventory"},
+  {name:"Stock Return Order", link:"/branches/return-order",image:StudIcon,permission:"StockReturnOrder"},
+  {name:"File Return Loading Order", link:"/branches/return-load-order",image:StudIcon,permission:"FileReturnLoadingOrder"},
 ]
 
 const setups =[
   {name:"Add Branch", link:"/branches/addbranch",image:SettingsIcon,permission:"AddBranch"},
-  {name:"Create New Cycle", link:"/items-and-inventory/",image:SettingsIcon,permission:"CreateNewCycle"},
+  {name:"Create New Cycle", link:"/branches/",image:SettingsIcon,permission:"CreateNewCycle"},
  
 ]
 
 const reports =[
-  {name:"Branch Structure", link:"/items-and-inventory/",image:reportIcon,permission:"BranchStructure"},
-  {name:"Branch Customers", link:"/items-and-inventory/",image:reportIcon,permission:"BranchCustomers"},
-  {name:"Branch Assets", link:"/items-and-inventory/",image:reportIcon,permission:"BranchAssets"},
-  {name:"Branch Budget", link:"/items-and-inventory/",image:reportIcon,permission:"BranchBudget"},
-  {name:"Branch Cycle Review", link:"/items-and-inventory/",image:reportIcon,permission:"BranchCycleReview"},
-  {name:"Branch Discount Items", link:"/items-and-inventory/",image:reportIcon,permission:"BranchDiscountItems"},
-  {name:"Branch Staff", link:"/items-and-inventory/",image:reportIcon,permission:"BranchStaff"},
+  {name:"Branch Structure", link:"/branches/",image:reportIcon,permission:"BranchStructure"},
+  {name:"Branch Customers", link:"/branches/",image:reportIcon,permission:"BranchCustomers"},
+  {name:"Branch Assets", link:"/branches/",image:reportIcon,permission:"BranchAssets"},
+  {name:"Branch Budget", link:"/branches/",image:reportIcon,permission:"BranchBudget"},
+  {name:"Branch Cycle Review", link:"/branches/",image:reportIcon,permission:"BranchCycleReview"},
+  {name:"Branch Discount Items", link:"/branches/",image:reportIcon,permission:"BranchDiscountItems"},
+  {name:"Branch Staff", link:"/branches/",image:reportIcon,permission:"BranchStaff"},
 ]
 const page = () => {
    const searchParams = useSearchParams();

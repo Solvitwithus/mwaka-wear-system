@@ -174,10 +174,10 @@ const Page = () => {
       </div>
 
       {/* Produced Items */}
-      <div>
-        <h2 className="text-base font-semibold ml-2 mt-2 text-[#b13348]">Produced Items</h2>
-        <div className="bg-white rounded-md shadow overflow-auto">
-          <table className="w-full table-auto border-collapse text-sm">
+          <div className="flex justify-center flex-col">
+        <h2 className="text-base text-center font-semibold ml-2 mt-2 text-[#f33555]">Produced Items</h2>
+        <div className="rounded-md shadow overflow-auto">
+          <table className="w-[40%] mx-auto table-auto border-collapse text-sm rounded-md shadow overflow-auto">
             <thead className="bg-[#1393AB] text-white">
               <tr>
                 <th className="px-4 py-2 border">Item Name</th>

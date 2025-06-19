@@ -71,6 +71,7 @@ type Grading = {
     quantity: number;
     sellingPrice: number;
     qtyToHold: number;
+    qtyToDispatch:number;
   }[];
   comment: string;
 };
@@ -153,13 +154,24 @@ const Page = () => {
     setGradingOrder((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleItemChange = (index: number, field: string, value: string | number) => {
-    setGradingOrder((prev) => {
-      const newItems = [...prev.itemsProduced];
-      newItems[index] = { ...newItems[index], [field]: value };
-      return { ...prev, itemsProduced: newItems };
-    });
-  };
+const handleItemChange = (index: number, field: string, value: string | number) => {
+  setGradingOrder((prev) => {
+    const newItems = [...prev.itemsProduced];
+    const updatedItem = { ...newItems[index], [field]: value };
+
+    // Parse quantity and qtyToHold as numbers
+    const quantity = field === "quantity" ? Number(value) : Number(updatedItem.quantity);
+    const qtyToHold = field === "qtyToHold" ? Number(value) : Number(updatedItem.qtyToHold);
+
+    // Recalculate qtyToDispatch
+    updatedItem.qtyToDispatch = Math.max(quantity - qtyToHold, 0);
+
+    newItems[index] = updatedItem;
+
+    return { ...prev, itemsProduced: newItems };
+  });
+};
+
 
   
 
@@ -177,6 +189,7 @@ const Page = () => {
           quantity: 0,
           sellingPrice: 0,
           qtyToHold: 0,
+          qtyToDispatch:0
         },
       ],
     }));
@@ -191,9 +204,14 @@ const Page = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log(gradingOrder);
        try {
-    const res = await axios.post("/api/auth/grading-sheet", gradingOrder);
-    console.log("Grading sheet created successfully:", res.data);
+await axios.post("/api/auth/grading-sheet", {
+  ...gradingOrder,
+  status: "Thrift",
+});
+
+
     setGradingOrder(initialState); // reset form state
   } catch (error) {
     console.error("Failed to create grading sheet:", error);
@@ -203,7 +221,7 @@ const Page = () => {
       try {
         await axios.patch("/api/auth/purchase-quotation-entry", {
           id: selectedBale.id,
-          status: "graded",
+          status: "Thrift",
         });
         alert("Grading processed successfully!");
         setGradingOrder(initialState); // Reset form
@@ -415,6 +433,7 @@ const Page = () => {
               <th className="border border-gray-400 p-2">Quantity</th>
               <th className="border border-gray-400 p-2">Selling Price</th>
               <th className="border border-gray-400 p-2">Qty to Hold</th>
+              <th className="border border-gray-400 p-2">Qty to Didpatch</th>
               <th className="border border-gray-400 p-2">Action</th>
             </tr>
           </thead>
@@ -478,6 +497,15 @@ const Page = () => {
                     min={0}
                   />
                 </td>
+               <td className="border border-gray-400 p-2">
+  <input
+    type="number"
+    name="qtyToDispatch"
+    disabled
+    value={item.qtyToDispatch}
+    className="w-full bg-slate-300 text-xs rounded-md p-1"
+  />
+</td>
                 <td className="border border-gray-400 p-2 text-center">
                   <button type="button" onClick={() => deleteItemRow(index)}>
                     <Trash2 className="text-red-600" size={18} />

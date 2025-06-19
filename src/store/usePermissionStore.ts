@@ -202,6 +202,8 @@ interface Permissions {
  DiscardedItems:Boolean;
  WorkCenters:Boolean;
 Grade:Boolean;
+DispatchToBranch:Boolean;
+
 
  AssetPurchase:Boolean;
  AssetLocationTransfer:Boolean;

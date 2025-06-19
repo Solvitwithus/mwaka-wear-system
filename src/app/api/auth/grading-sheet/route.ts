@@ -48,6 +48,7 @@ export async function POST(req: NextRequest) {
             quantity: parseInt(item.quantity),
             qtyToHold: item.qtyToHold ? parseInt(item.qtyToHold) : 0,
             sellingPrice: parseFloat(item.sellingPrice),
+           qtyToDispatch: item.qtyToDispatch ? parseFloat(item.qtyToDispatch) : 0
           })),
         },
       },
@@ -73,5 +74,29 @@ export async function GET() {
   } catch (error) {
     console.error("GradingSheet GET error:", error);
     return NextResponse.json({ error: "Failed to fetch grading sheets" }, { status: 500 });
+  }
+}
+// PATCH: Update status and/or comment of an existing GradingSheet
+export async function PATCH(req: NextRequest) {
+  try {
+    const body = await req.json();
+    const { id, status, comment } = body;
+
+    if (!id || !status) {
+      return NextResponse.json({ error: "ID and status are required." }, { status: 400 });
+    }
+
+    const updatedGradingSheet = await prisma.gradingSheet.update({
+      where: { id },
+      data: {
+        status,
+        ...(comment && { comment }), // only update comment if provided
+      },
+    });
+
+    return NextResponse.json(updatedGradingSheet, { status: 200 });
+  } catch (error) {
+    console.error("GradingSheet PATCH error:", error);
+    return NextResponse.json({ error: "Failed to update grading sheet" }, { status: 500 });
   }
 }

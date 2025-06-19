@@ -3,6 +3,7 @@
 import axios from "axios";
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+
 type Grading = {
   branch: string;
   gradeReference: string;
@@ -12,11 +13,13 @@ type Grading = {
   grader: string;
   baleWeight: number;
   itemCount: number;
+  status: string;
 };
 
 const Page = () => {
-  const route = useRouter()
+  const route = useRouter();
   const [gradeOrder, setGradeOrder] = useState<Grading[]>([]);
+  const [filteredGradeOrder, setFilteredGradeOrder] = useState<Grading[]>([]);
   const [searchRef, setSearchRef] = useState("");
   const [searchBank, setSearchBank] = useState("");
   const [searchDestination, setSearchDestination] = useState("");
@@ -35,73 +38,74 @@ const Page = () => {
     fetchGradingOrders();
   }, [fetchGradingOrders]);
 
-  const filteredOrders = gradeOrder
-    .filter((entry) =>
-      entry.gradeReference.toLowerCase().includes(searchRef.toLowerCase())
-    )
-    .filter((entry) =>
-      entry.branch.toLowerCase().includes(searchBank.toLowerCase())
-    )
-    .filter((entry) =>
-      entry.baleName.toLowerCase().includes(searchDestination.toLowerCase())
-    )
-    .sort((a, b) =>
-      sortOrder === "asc"
-        ? new Date(a.gradeDate).getTime() - new Date(b.gradeDate).getTime()
-        : new Date(b.gradeDate).getTime() - new Date(a.gradeDate).getTime()
-    );
+  // 🔍 Apply filter and sort anytime filters or data changes
+  useEffect(() => {
+    const filtered = gradeOrder
+      .filter((entry) => entry.status === "Thrift")
+      .filter((entry) =>
+        entry.gradeReference.toLowerCase().includes(searchRef.toLowerCase())
+      )
+      .filter((entry) =>
+        entry.branch.toLowerCase().includes(searchBank.toLowerCase())
+      )
+      .filter((entry) =>
+        entry.baleName.toLowerCase().includes(searchDestination.toLowerCase())
+      )
+      .sort((a, b) =>
+        sortOrder === "asc"
+          ? new Date(a.gradeDate).getTime() - new Date(b.gradeDate).getTime()
+          : new Date(b.gradeDate).getTime() - new Date(a.gradeDate).getTime()
+      );
 
-    const handlePrint =async(val:any)=>{
-let theValue = JSON.stringify(val)
-localStorage.setItem("printBarcodes",theValue)
-route.push("/thrift-processing/graded-item-barcode/get-barcode")
+    setFilteredGradeOrder(filtered);
+  }, [gradeOrder, searchRef, searchBank, searchDestination, sortOrder]);
 
-  setTimeout(() => {
-    
-    localStorage.removeItem("printBarcodes");
-  }, 1000*200);
-    }
+  const handlePrint = async (val: any) => {
+    localStorage.setItem("printBarcodes", JSON.stringify(val));
+    route.push("/thrift-processing/graded-item-barcode/get-barcode");
+
+    setTimeout(() => {
+      localStorage.removeItem("printBarcodes");
+    }, 1000 * 200);
+  };
+
   return (
     <div className="bg-[rgb(239,239,239)] m-1 rounded-md p-1 h-fit">
-    
-        <h2 className="text-base font-semibold ml-2 mt-2 text-[#b13348]">
-          Print Barcodes for the Grading Order
-        </h2>
-   
+      <h2 className="text-base font-semibold ml-2 mt-2 text-[#b13348]">
+        Print Barcodes for the Grading Order
+      </h2>
 
       {/* Search & Filters */}
-      
-        <div className="flex justify-end gap-1 mb-1">
-          <input
-            type="text"
-            placeholder="Search by Grade Ref"
-            value={searchRef}
-            onChange={(e) => setSearchRef(e.target.value)}
-            className="px-3 border w-48 border-gray-300 rounded-md text-sm"
-          />
-          <input
-            type="text"
-            placeholder="Search by Branch Name"
-            value={searchBank}
-            onChange={(e) => setSearchBank(e.target.value)}
-            className="px-3 border w-48 border-gray-300 rounded-md text-sm"
-          />
-          <input
-            type="text"
-            placeholder="Search by Bale Name"
-            value={searchDestination}
-            onChange={(e) => setSearchDestination(e.target.value)}
-            className="px-3 border w-48 border-gray-300 rounded-md text-sm"
-          />
-          <select
-            value={sortOrder}
-            onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
-            className="px-3 border w-48 border-gray-300 rounded-md text-sm"
-          >
-            <option value="desc">Sort by: Most Recent First</option>
-            <option value="asc">Sort by: Oldest First</option>
-          </select>
-      
+      <div className="flex justify-end gap-1 mb-1">
+        <input
+          type="text"
+          placeholder="Search by Grade Ref"
+          value={searchRef}
+          onChange={(e) => setSearchRef(e.target.value)}
+          className="px-3 border w-48 border-gray-300 rounded-md text-sm"
+        />
+        <input
+          type="text"
+          placeholder="Search by Branch Name"
+          value={searchBank}
+          onChange={(e) => setSearchBank(e.target.value)}
+          className="px-3 border w-48 border-gray-300 rounded-md text-sm"
+        />
+        <input
+          type="text"
+          placeholder="Search by Bale Name"
+          value={searchDestination}
+          onChange={(e) => setSearchDestination(e.target.value)}
+          className="px-3 border w-48 border-gray-300 rounded-md text-sm"
+        />
+        <select
+          value={sortOrder}
+          onChange={(e) => setSortOrder(e.target.value as "asc" | "desc")}
+          className="px-3 border w-48 border-gray-300 rounded-md text-sm"
+        >
+          <option value="desc">Sort by: Most Recent First</option>
+          <option value="asc">Sort by: Oldest First</option>
+        </select>
       </div>
 
       {/* Table */}
@@ -121,7 +125,7 @@ route.push("/thrift-processing/graded-item-barcode/get-barcode")
             </tr>
           </thead>
           <tbody>
-            {filteredOrders.map((val) => (
+            {filteredGradeOrder.map((val) => (
               <tr key={val.gradeReference} className="hover:bg-gray-50">
                 <td className="px-4 py-2 border">{val.branch}</td>
                 <td className="px-4 py-2 border">{val.gradeReference}</td>
@@ -135,14 +139,14 @@ route.push("/thrift-processing/graded-item-barcode/get-barcode")
                   <button
                     type="button"
                     className="bg-[#1393AB] hover:bg-[#0f7b91] text-white px-3 py-1 rounded text-xs"
-                    onClick={()=>handlePrint(val)}
+                    onClick={() => handlePrint(val)}
                   >
                     Barcodes ⚙️
                   </button>
                 </td>
               </tr>
             ))}
-            {filteredOrders.length === 0 && (
+            {filteredGradeOrder.length === 0 && (
               <tr>
                 <td colSpan={9} className="text-center py-4 text-gray-500">
                   No grading orders found.
