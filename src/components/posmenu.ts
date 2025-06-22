@@ -3,5 +3,5 @@ export const Posmenu = [
 {name:"Itemized-Sales-Report",link:""},
 {name:"Daily-Report",link:""},
 {name:"Z-Report",link:""},
-{name:"Branch Inventory",link:""}
+{name:"Branch Inventory",link:"/branches/branch-inventory"}
 ]

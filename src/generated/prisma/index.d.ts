@@ -243,6 +243,16 @@ export type GradingSheet = $Result.DefaultSelection<Prisma.$GradingSheetPayload>
  * 
  */
 export type GradedItem = $Result.DefaultSelection<Prisma.$GradedItemPayload>
+/**
+ * Model PausedCart
+ * 
+ */
+export type PausedCart = $Result.DefaultSelection<Prisma.$PausedCartPayload>
+/**
+ * Model PausedCartItem
+ * 
+ */
+export type PausedCartItem = $Result.DefaultSelection<Prisma.$PausedCartItemPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -828,6 +838,26 @@ export class PrismaClient<
     * ```
     */
   get gradedItem(): Prisma.GradedItemDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pausedCart`: Exposes CRUD operations for the **PausedCart** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PausedCarts
+    * const pausedCarts = await prisma.pausedCart.findMany()
+    * ```
+    */
+  get pausedCart(): Prisma.PausedCartDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pausedCartItem`: Exposes CRUD operations for the **PausedCartItem** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PausedCartItems
+    * const pausedCartItems = await prisma.pausedCartItem.findMany()
+    * ```
+    */
+  get pausedCartItem(): Prisma.PausedCartItemDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1313,7 +1343,9 @@ export namespace Prisma {
     SupplierPaymentTracking: 'SupplierPaymentTracking',
     Grade: 'Grade',
     GradingSheet: 'GradingSheet',
-    GradedItem: 'GradedItem'
+    GradedItem: 'GradedItem',
+    PausedCart: 'PausedCart',
+    PausedCartItem: 'PausedCartItem'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1332,7 +1364,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -4740,6 +4772,154 @@ export namespace Prisma {
           }
         }
       }
+      PausedCart: {
+        payload: Prisma.$PausedCartPayload<ExtArgs>
+        fields: Prisma.PausedCartFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PausedCartFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PausedCartFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>
+          }
+          findFirst: {
+            args: Prisma.PausedCartFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PausedCartFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>
+          }
+          findMany: {
+            args: Prisma.PausedCartFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>[]
+          }
+          create: {
+            args: Prisma.PausedCartCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>
+          }
+          createMany: {
+            args: Prisma.PausedCartCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PausedCartCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>[]
+          }
+          delete: {
+            args: Prisma.PausedCartDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>
+          }
+          update: {
+            args: Prisma.PausedCartUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>
+          }
+          deleteMany: {
+            args: Prisma.PausedCartDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PausedCartUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PausedCartUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>[]
+          }
+          upsert: {
+            args: Prisma.PausedCartUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartPayload>
+          }
+          aggregate: {
+            args: Prisma.PausedCartAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePausedCart>
+          }
+          groupBy: {
+            args: Prisma.PausedCartGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PausedCartGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PausedCartCountArgs<ExtArgs>
+            result: $Utils.Optional<PausedCartCountAggregateOutputType> | number
+          }
+        }
+      }
+      PausedCartItem: {
+        payload: Prisma.$PausedCartItemPayload<ExtArgs>
+        fields: Prisma.PausedCartItemFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PausedCartItemFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PausedCartItemFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>
+          }
+          findFirst: {
+            args: Prisma.PausedCartItemFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PausedCartItemFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>
+          }
+          findMany: {
+            args: Prisma.PausedCartItemFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>[]
+          }
+          create: {
+            args: Prisma.PausedCartItemCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>
+          }
+          createMany: {
+            args: Prisma.PausedCartItemCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PausedCartItemCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>[]
+          }
+          delete: {
+            args: Prisma.PausedCartItemDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>
+          }
+          update: {
+            args: Prisma.PausedCartItemUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>
+          }
+          deleteMany: {
+            args: Prisma.PausedCartItemDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PausedCartItemUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PausedCartItemUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>[]
+          }
+          upsert: {
+            args: Prisma.PausedCartItemUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PausedCartItemPayload>
+          }
+          aggregate: {
+            args: Prisma.PausedCartItemAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePausedCartItem>
+          }
+          groupBy: {
+            args: Prisma.PausedCartItemGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PausedCartItemGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PausedCartItemCountArgs<ExtArgs>
+            result: $Utils.Optional<PausedCartItemCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -4870,6 +5050,8 @@ export namespace Prisma {
     grade?: GradeOmit
     gradingSheet?: GradingSheetOmit
     gradedItem?: GradedItemOmit
+    pausedCart?: PausedCartOmit
+    pausedCartItem?: PausedCartItemOmit
   }
 
   /* Types for Logging */
@@ -5293,6 +5475,37 @@ export namespace Prisma {
    */
   export type GradingSheetCountOutputTypeCountItemsProducedArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: GradedItemWhereInput
+  }
+
+
+  /**
+   * Count Type PausedCartCountOutputType
+   */
+
+  export type PausedCartCountOutputType = {
+    items: number
+  }
+
+  export type PausedCartCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | PausedCartCountOutputTypeCountItemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PausedCartCountOutputType without action
+   */
+  export type PausedCartCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartCountOutputType
+     */
+    select?: PausedCartCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PausedCartCountOutputType without action
+   */
+  export type PausedCartCountOutputTypeCountItemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PausedCartItemWhereInput
   }
 
 
@@ -58624,6 +58837,2198 @@ export namespace Prisma {
 
 
   /**
+   * Model PausedCart
+   */
+
+  export type AggregatePausedCart = {
+    _count: PausedCartCountAggregateOutputType | null
+    _min: PausedCartMinAggregateOutputType | null
+    _max: PausedCartMaxAggregateOutputType | null
+  }
+
+  export type PausedCartMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    branchName: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type PausedCartMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    branchName: string | null
+    userId: string | null
+    createdAt: Date | null
+  }
+
+  export type PausedCartCountAggregateOutputType = {
+    id: number
+    name: number
+    branchName: number
+    userId: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PausedCartMinAggregateInputType = {
+    id?: true
+    name?: true
+    branchName?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type PausedCartMaxAggregateInputType = {
+    id?: true
+    name?: true
+    branchName?: true
+    userId?: true
+    createdAt?: true
+  }
+
+  export type PausedCartCountAggregateInputType = {
+    id?: true
+    name?: true
+    branchName?: true
+    userId?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PausedCartAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PausedCart to aggregate.
+     */
+    where?: PausedCartWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCarts to fetch.
+     */
+    orderBy?: PausedCartOrderByWithRelationInput | PausedCartOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PausedCartWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCarts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCarts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PausedCarts
+    **/
+    _count?: true | PausedCartCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PausedCartMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PausedCartMaxAggregateInputType
+  }
+
+  export type GetPausedCartAggregateType<T extends PausedCartAggregateArgs> = {
+        [P in keyof T & keyof AggregatePausedCart]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePausedCart[P]>
+      : GetScalarType<T[P], AggregatePausedCart[P]>
+  }
+
+
+
+
+  export type PausedCartGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PausedCartWhereInput
+    orderBy?: PausedCartOrderByWithAggregationInput | PausedCartOrderByWithAggregationInput[]
+    by: PausedCartScalarFieldEnum[] | PausedCartScalarFieldEnum
+    having?: PausedCartScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PausedCartCountAggregateInputType | true
+    _min?: PausedCartMinAggregateInputType
+    _max?: PausedCartMaxAggregateInputType
+  }
+
+  export type PausedCartGroupByOutputType = {
+    id: string
+    name: string
+    branchName: string
+    userId: string
+    createdAt: Date
+    _count: PausedCartCountAggregateOutputType | null
+    _min: PausedCartMinAggregateOutputType | null
+    _max: PausedCartMaxAggregateOutputType | null
+  }
+
+  type GetPausedCartGroupByPayload<T extends PausedCartGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PausedCartGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PausedCartGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PausedCartGroupByOutputType[P]>
+            : GetScalarType<T[P], PausedCartGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PausedCartSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    branchName?: boolean
+    userId?: boolean
+    createdAt?: boolean
+    items?: boolean | PausedCart$itemsArgs<ExtArgs>
+    _count?: boolean | PausedCartCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pausedCart"]>
+
+  export type PausedCartSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    branchName?: boolean
+    userId?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["pausedCart"]>
+
+  export type PausedCartSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    branchName?: boolean
+    userId?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["pausedCart"]>
+
+  export type PausedCartSelectScalar = {
+    id?: boolean
+    name?: boolean
+    branchName?: boolean
+    userId?: boolean
+    createdAt?: boolean
+  }
+
+  export type PausedCartOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "branchName" | "userId" | "createdAt", ExtArgs["result"]["pausedCart"]>
+  export type PausedCartInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    items?: boolean | PausedCart$itemsArgs<ExtArgs>
+    _count?: boolean | PausedCartCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type PausedCartIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type PausedCartIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $PausedCartPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PausedCart"
+    objects: {
+      items: Prisma.$PausedCartItemPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      branchName: string
+      userId: string
+      createdAt: Date
+    }, ExtArgs["result"]["pausedCart"]>
+    composites: {}
+  }
+
+  type PausedCartGetPayload<S extends boolean | null | undefined | PausedCartDefaultArgs> = $Result.GetResult<Prisma.$PausedCartPayload, S>
+
+  type PausedCartCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PausedCartFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PausedCartCountAggregateInputType | true
+    }
+
+  export interface PausedCartDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PausedCart'], meta: { name: 'PausedCart' } }
+    /**
+     * Find zero or one PausedCart that matches the filter.
+     * @param {PausedCartFindUniqueArgs} args - Arguments to find a PausedCart
+     * @example
+     * // Get one PausedCart
+     * const pausedCart = await prisma.pausedCart.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PausedCartFindUniqueArgs>(args: SelectSubset<T, PausedCartFindUniqueArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PausedCart that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PausedCartFindUniqueOrThrowArgs} args - Arguments to find a PausedCart
+     * @example
+     * // Get one PausedCart
+     * const pausedCart = await prisma.pausedCart.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PausedCartFindUniqueOrThrowArgs>(args: SelectSubset<T, PausedCartFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PausedCart that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartFindFirstArgs} args - Arguments to find a PausedCart
+     * @example
+     * // Get one PausedCart
+     * const pausedCart = await prisma.pausedCart.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PausedCartFindFirstArgs>(args?: SelectSubset<T, PausedCartFindFirstArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PausedCart that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartFindFirstOrThrowArgs} args - Arguments to find a PausedCart
+     * @example
+     * // Get one PausedCart
+     * const pausedCart = await prisma.pausedCart.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PausedCartFindFirstOrThrowArgs>(args?: SelectSubset<T, PausedCartFindFirstOrThrowArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PausedCarts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PausedCarts
+     * const pausedCarts = await prisma.pausedCart.findMany()
+     * 
+     * // Get first 10 PausedCarts
+     * const pausedCarts = await prisma.pausedCart.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pausedCartWithIdOnly = await prisma.pausedCart.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PausedCartFindManyArgs>(args?: SelectSubset<T, PausedCartFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PausedCart.
+     * @param {PausedCartCreateArgs} args - Arguments to create a PausedCart.
+     * @example
+     * // Create one PausedCart
+     * const PausedCart = await prisma.pausedCart.create({
+     *   data: {
+     *     // ... data to create a PausedCart
+     *   }
+     * })
+     * 
+     */
+    create<T extends PausedCartCreateArgs>(args: SelectSubset<T, PausedCartCreateArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PausedCarts.
+     * @param {PausedCartCreateManyArgs} args - Arguments to create many PausedCarts.
+     * @example
+     * // Create many PausedCarts
+     * const pausedCart = await prisma.pausedCart.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PausedCartCreateManyArgs>(args?: SelectSubset<T, PausedCartCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PausedCarts and returns the data saved in the database.
+     * @param {PausedCartCreateManyAndReturnArgs} args - Arguments to create many PausedCarts.
+     * @example
+     * // Create many PausedCarts
+     * const pausedCart = await prisma.pausedCart.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PausedCarts and only return the `id`
+     * const pausedCartWithIdOnly = await prisma.pausedCart.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PausedCartCreateManyAndReturnArgs>(args?: SelectSubset<T, PausedCartCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PausedCart.
+     * @param {PausedCartDeleteArgs} args - Arguments to delete one PausedCart.
+     * @example
+     * // Delete one PausedCart
+     * const PausedCart = await prisma.pausedCart.delete({
+     *   where: {
+     *     // ... filter to delete one PausedCart
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PausedCartDeleteArgs>(args: SelectSubset<T, PausedCartDeleteArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PausedCart.
+     * @param {PausedCartUpdateArgs} args - Arguments to update one PausedCart.
+     * @example
+     * // Update one PausedCart
+     * const pausedCart = await prisma.pausedCart.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PausedCartUpdateArgs>(args: SelectSubset<T, PausedCartUpdateArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PausedCarts.
+     * @param {PausedCartDeleteManyArgs} args - Arguments to filter PausedCarts to delete.
+     * @example
+     * // Delete a few PausedCarts
+     * const { count } = await prisma.pausedCart.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PausedCartDeleteManyArgs>(args?: SelectSubset<T, PausedCartDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PausedCarts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PausedCarts
+     * const pausedCart = await prisma.pausedCart.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PausedCartUpdateManyArgs>(args: SelectSubset<T, PausedCartUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PausedCarts and returns the data updated in the database.
+     * @param {PausedCartUpdateManyAndReturnArgs} args - Arguments to update many PausedCarts.
+     * @example
+     * // Update many PausedCarts
+     * const pausedCart = await prisma.pausedCart.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PausedCarts and only return the `id`
+     * const pausedCartWithIdOnly = await prisma.pausedCart.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PausedCartUpdateManyAndReturnArgs>(args: SelectSubset<T, PausedCartUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PausedCart.
+     * @param {PausedCartUpsertArgs} args - Arguments to update or create a PausedCart.
+     * @example
+     * // Update or create a PausedCart
+     * const pausedCart = await prisma.pausedCart.upsert({
+     *   create: {
+     *     // ... data to create a PausedCart
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PausedCart we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PausedCartUpsertArgs>(args: SelectSubset<T, PausedCartUpsertArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PausedCarts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartCountArgs} args - Arguments to filter PausedCarts to count.
+     * @example
+     * // Count the number of PausedCarts
+     * const count = await prisma.pausedCart.count({
+     *   where: {
+     *     // ... the filter for the PausedCarts we want to count
+     *   }
+     * })
+    **/
+    count<T extends PausedCartCountArgs>(
+      args?: Subset<T, PausedCartCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PausedCartCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PausedCart.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PausedCartAggregateArgs>(args: Subset<T, PausedCartAggregateArgs>): Prisma.PrismaPromise<GetPausedCartAggregateType<T>>
+
+    /**
+     * Group by PausedCart.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PausedCartGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PausedCartGroupByArgs['orderBy'] }
+        : { orderBy?: PausedCartGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PausedCartGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPausedCartGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PausedCart model
+   */
+  readonly fields: PausedCartFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PausedCart.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PausedCartClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    items<T extends PausedCart$itemsArgs<ExtArgs> = {}>(args?: Subset<T, PausedCart$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PausedCart model
+   */
+  interface PausedCartFieldRefs {
+    readonly id: FieldRef<"PausedCart", 'String'>
+    readonly name: FieldRef<"PausedCart", 'String'>
+    readonly branchName: FieldRef<"PausedCart", 'String'>
+    readonly userId: FieldRef<"PausedCart", 'String'>
+    readonly createdAt: FieldRef<"PausedCart", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PausedCart findUnique
+   */
+  export type PausedCartFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCart to fetch.
+     */
+    where: PausedCartWhereUniqueInput
+  }
+
+  /**
+   * PausedCart findUniqueOrThrow
+   */
+  export type PausedCartFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCart to fetch.
+     */
+    where: PausedCartWhereUniqueInput
+  }
+
+  /**
+   * PausedCart findFirst
+   */
+  export type PausedCartFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCart to fetch.
+     */
+    where?: PausedCartWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCarts to fetch.
+     */
+    orderBy?: PausedCartOrderByWithRelationInput | PausedCartOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PausedCarts.
+     */
+    cursor?: PausedCartWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCarts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCarts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PausedCarts.
+     */
+    distinct?: PausedCartScalarFieldEnum | PausedCartScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCart findFirstOrThrow
+   */
+  export type PausedCartFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCart to fetch.
+     */
+    where?: PausedCartWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCarts to fetch.
+     */
+    orderBy?: PausedCartOrderByWithRelationInput | PausedCartOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PausedCarts.
+     */
+    cursor?: PausedCartWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCarts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCarts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PausedCarts.
+     */
+    distinct?: PausedCartScalarFieldEnum | PausedCartScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCart findMany
+   */
+  export type PausedCartFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCarts to fetch.
+     */
+    where?: PausedCartWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCarts to fetch.
+     */
+    orderBy?: PausedCartOrderByWithRelationInput | PausedCartOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PausedCarts.
+     */
+    cursor?: PausedCartWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCarts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCarts.
+     */
+    skip?: number
+    distinct?: PausedCartScalarFieldEnum | PausedCartScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCart create
+   */
+  export type PausedCartCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PausedCart.
+     */
+    data: XOR<PausedCartCreateInput, PausedCartUncheckedCreateInput>
+  }
+
+  /**
+   * PausedCart createMany
+   */
+  export type PausedCartCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PausedCarts.
+     */
+    data: PausedCartCreateManyInput | PausedCartCreateManyInput[]
+  }
+
+  /**
+   * PausedCart createManyAndReturn
+   */
+  export type PausedCartCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * The data used to create many PausedCarts.
+     */
+    data: PausedCartCreateManyInput | PausedCartCreateManyInput[]
+  }
+
+  /**
+   * PausedCart update
+   */
+  export type PausedCartUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PausedCart.
+     */
+    data: XOR<PausedCartUpdateInput, PausedCartUncheckedUpdateInput>
+    /**
+     * Choose, which PausedCart to update.
+     */
+    where: PausedCartWhereUniqueInput
+  }
+
+  /**
+   * PausedCart updateMany
+   */
+  export type PausedCartUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PausedCarts.
+     */
+    data: XOR<PausedCartUpdateManyMutationInput, PausedCartUncheckedUpdateManyInput>
+    /**
+     * Filter which PausedCarts to update
+     */
+    where?: PausedCartWhereInput
+    /**
+     * Limit how many PausedCarts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PausedCart updateManyAndReturn
+   */
+  export type PausedCartUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * The data used to update PausedCarts.
+     */
+    data: XOR<PausedCartUpdateManyMutationInput, PausedCartUncheckedUpdateManyInput>
+    /**
+     * Filter which PausedCarts to update
+     */
+    where?: PausedCartWhereInput
+    /**
+     * Limit how many PausedCarts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PausedCart upsert
+   */
+  export type PausedCartUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PausedCart to update in case it exists.
+     */
+    where: PausedCartWhereUniqueInput
+    /**
+     * In case the PausedCart found by the `where` argument doesn't exist, create a new PausedCart with this data.
+     */
+    create: XOR<PausedCartCreateInput, PausedCartUncheckedCreateInput>
+    /**
+     * In case the PausedCart was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PausedCartUpdateInput, PausedCartUncheckedUpdateInput>
+  }
+
+  /**
+   * PausedCart delete
+   */
+  export type PausedCartDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+    /**
+     * Filter which PausedCart to delete.
+     */
+    where: PausedCartWhereUniqueInput
+  }
+
+  /**
+   * PausedCart deleteMany
+   */
+  export type PausedCartDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PausedCarts to delete
+     */
+    where?: PausedCartWhereInput
+    /**
+     * Limit how many PausedCarts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PausedCart.items
+   */
+  export type PausedCart$itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    where?: PausedCartItemWhereInput
+    orderBy?: PausedCartItemOrderByWithRelationInput | PausedCartItemOrderByWithRelationInput[]
+    cursor?: PausedCartItemWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PausedCartItemScalarFieldEnum | PausedCartItemScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCart without action
+   */
+  export type PausedCartDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCart
+     */
+    select?: PausedCartSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCart
+     */
+    omit?: PausedCartOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PausedCartItem
+   */
+
+  export type AggregatePausedCartItem = {
+    _count: PausedCartItemCountAggregateOutputType | null
+    _avg: PausedCartItemAvgAggregateOutputType | null
+    _sum: PausedCartItemSumAggregateOutputType | null
+    _min: PausedCartItemMinAggregateOutputType | null
+    _max: PausedCartItemMaxAggregateOutputType | null
+  }
+
+  export type PausedCartItemAvgAggregateOutputType = {
+    price: number | null
+    qty: number | null
+    availableQty: number | null
+  }
+
+  export type PausedCartItemSumAggregateOutputType = {
+    price: number | null
+    qty: number | null
+    availableQty: number | null
+  }
+
+  export type PausedCartItemMinAggregateOutputType = {
+    id: string | null
+    pausedCartId: string | null
+    itemCode: string | null
+    itemName: string | null
+    price: number | null
+    qty: number | null
+    availableQty: number | null
+  }
+
+  export type PausedCartItemMaxAggregateOutputType = {
+    id: string | null
+    pausedCartId: string | null
+    itemCode: string | null
+    itemName: string | null
+    price: number | null
+    qty: number | null
+    availableQty: number | null
+  }
+
+  export type PausedCartItemCountAggregateOutputType = {
+    id: number
+    pausedCartId: number
+    itemCode: number
+    itemName: number
+    price: number
+    qty: number
+    availableQty: number
+    _all: number
+  }
+
+
+  export type PausedCartItemAvgAggregateInputType = {
+    price?: true
+    qty?: true
+    availableQty?: true
+  }
+
+  export type PausedCartItemSumAggregateInputType = {
+    price?: true
+    qty?: true
+    availableQty?: true
+  }
+
+  export type PausedCartItemMinAggregateInputType = {
+    id?: true
+    pausedCartId?: true
+    itemCode?: true
+    itemName?: true
+    price?: true
+    qty?: true
+    availableQty?: true
+  }
+
+  export type PausedCartItemMaxAggregateInputType = {
+    id?: true
+    pausedCartId?: true
+    itemCode?: true
+    itemName?: true
+    price?: true
+    qty?: true
+    availableQty?: true
+  }
+
+  export type PausedCartItemCountAggregateInputType = {
+    id?: true
+    pausedCartId?: true
+    itemCode?: true
+    itemName?: true
+    price?: true
+    qty?: true
+    availableQty?: true
+    _all?: true
+  }
+
+  export type PausedCartItemAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PausedCartItem to aggregate.
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCartItems to fetch.
+     */
+    orderBy?: PausedCartItemOrderByWithRelationInput | PausedCartItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PausedCartItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCartItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCartItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PausedCartItems
+    **/
+    _count?: true | PausedCartItemCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PausedCartItemAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PausedCartItemSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PausedCartItemMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PausedCartItemMaxAggregateInputType
+  }
+
+  export type GetPausedCartItemAggregateType<T extends PausedCartItemAggregateArgs> = {
+        [P in keyof T & keyof AggregatePausedCartItem]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePausedCartItem[P]>
+      : GetScalarType<T[P], AggregatePausedCartItem[P]>
+  }
+
+
+
+
+  export type PausedCartItemGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PausedCartItemWhereInput
+    orderBy?: PausedCartItemOrderByWithAggregationInput | PausedCartItemOrderByWithAggregationInput[]
+    by: PausedCartItemScalarFieldEnum[] | PausedCartItemScalarFieldEnum
+    having?: PausedCartItemScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PausedCartItemCountAggregateInputType | true
+    _avg?: PausedCartItemAvgAggregateInputType
+    _sum?: PausedCartItemSumAggregateInputType
+    _min?: PausedCartItemMinAggregateInputType
+    _max?: PausedCartItemMaxAggregateInputType
+  }
+
+  export type PausedCartItemGroupByOutputType = {
+    id: string
+    pausedCartId: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+    _count: PausedCartItemCountAggregateOutputType | null
+    _avg: PausedCartItemAvgAggregateOutputType | null
+    _sum: PausedCartItemSumAggregateOutputType | null
+    _min: PausedCartItemMinAggregateOutputType | null
+    _max: PausedCartItemMaxAggregateOutputType | null
+  }
+
+  type GetPausedCartItemGroupByPayload<T extends PausedCartItemGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PausedCartItemGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PausedCartItemGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PausedCartItemGroupByOutputType[P]>
+            : GetScalarType<T[P], PausedCartItemGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PausedCartItemSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pausedCartId?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    price?: boolean
+    qty?: boolean
+    availableQty?: boolean
+    pausedCart?: boolean | PausedCartDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pausedCartItem"]>
+
+  export type PausedCartItemSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pausedCartId?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    price?: boolean
+    qty?: boolean
+    availableQty?: boolean
+    pausedCart?: boolean | PausedCartDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pausedCartItem"]>
+
+  export type PausedCartItemSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    pausedCartId?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    price?: boolean
+    qty?: boolean
+    availableQty?: boolean
+    pausedCart?: boolean | PausedCartDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pausedCartItem"]>
+
+  export type PausedCartItemSelectScalar = {
+    id?: boolean
+    pausedCartId?: boolean
+    itemCode?: boolean
+    itemName?: boolean
+    price?: boolean
+    qty?: boolean
+    availableQty?: boolean
+  }
+
+  export type PausedCartItemOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "pausedCartId" | "itemCode" | "itemName" | "price" | "qty" | "availableQty", ExtArgs["result"]["pausedCartItem"]>
+  export type PausedCartItemInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pausedCart?: boolean | PausedCartDefaultArgs<ExtArgs>
+  }
+  export type PausedCartItemIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pausedCart?: boolean | PausedCartDefaultArgs<ExtArgs>
+  }
+  export type PausedCartItemIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pausedCart?: boolean | PausedCartDefaultArgs<ExtArgs>
+  }
+
+  export type $PausedCartItemPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PausedCartItem"
+    objects: {
+      pausedCart: Prisma.$PausedCartPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      pausedCartId: string
+      itemCode: string
+      itemName: string
+      price: number
+      qty: number
+      availableQty: number
+    }, ExtArgs["result"]["pausedCartItem"]>
+    composites: {}
+  }
+
+  type PausedCartItemGetPayload<S extends boolean | null | undefined | PausedCartItemDefaultArgs> = $Result.GetResult<Prisma.$PausedCartItemPayload, S>
+
+  type PausedCartItemCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PausedCartItemFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PausedCartItemCountAggregateInputType | true
+    }
+
+  export interface PausedCartItemDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PausedCartItem'], meta: { name: 'PausedCartItem' } }
+    /**
+     * Find zero or one PausedCartItem that matches the filter.
+     * @param {PausedCartItemFindUniqueArgs} args - Arguments to find a PausedCartItem
+     * @example
+     * // Get one PausedCartItem
+     * const pausedCartItem = await prisma.pausedCartItem.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PausedCartItemFindUniqueArgs>(args: SelectSubset<T, PausedCartItemFindUniqueArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PausedCartItem that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PausedCartItemFindUniqueOrThrowArgs} args - Arguments to find a PausedCartItem
+     * @example
+     * // Get one PausedCartItem
+     * const pausedCartItem = await prisma.pausedCartItem.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PausedCartItemFindUniqueOrThrowArgs>(args: SelectSubset<T, PausedCartItemFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PausedCartItem that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemFindFirstArgs} args - Arguments to find a PausedCartItem
+     * @example
+     * // Get one PausedCartItem
+     * const pausedCartItem = await prisma.pausedCartItem.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PausedCartItemFindFirstArgs>(args?: SelectSubset<T, PausedCartItemFindFirstArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PausedCartItem that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemFindFirstOrThrowArgs} args - Arguments to find a PausedCartItem
+     * @example
+     * // Get one PausedCartItem
+     * const pausedCartItem = await prisma.pausedCartItem.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PausedCartItemFindFirstOrThrowArgs>(args?: SelectSubset<T, PausedCartItemFindFirstOrThrowArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PausedCartItems that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PausedCartItems
+     * const pausedCartItems = await prisma.pausedCartItem.findMany()
+     * 
+     * // Get first 10 PausedCartItems
+     * const pausedCartItems = await prisma.pausedCartItem.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pausedCartItemWithIdOnly = await prisma.pausedCartItem.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PausedCartItemFindManyArgs>(args?: SelectSubset<T, PausedCartItemFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PausedCartItem.
+     * @param {PausedCartItemCreateArgs} args - Arguments to create a PausedCartItem.
+     * @example
+     * // Create one PausedCartItem
+     * const PausedCartItem = await prisma.pausedCartItem.create({
+     *   data: {
+     *     // ... data to create a PausedCartItem
+     *   }
+     * })
+     * 
+     */
+    create<T extends PausedCartItemCreateArgs>(args: SelectSubset<T, PausedCartItemCreateArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PausedCartItems.
+     * @param {PausedCartItemCreateManyArgs} args - Arguments to create many PausedCartItems.
+     * @example
+     * // Create many PausedCartItems
+     * const pausedCartItem = await prisma.pausedCartItem.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PausedCartItemCreateManyArgs>(args?: SelectSubset<T, PausedCartItemCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PausedCartItems and returns the data saved in the database.
+     * @param {PausedCartItemCreateManyAndReturnArgs} args - Arguments to create many PausedCartItems.
+     * @example
+     * // Create many PausedCartItems
+     * const pausedCartItem = await prisma.pausedCartItem.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PausedCartItems and only return the `id`
+     * const pausedCartItemWithIdOnly = await prisma.pausedCartItem.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PausedCartItemCreateManyAndReturnArgs>(args?: SelectSubset<T, PausedCartItemCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PausedCartItem.
+     * @param {PausedCartItemDeleteArgs} args - Arguments to delete one PausedCartItem.
+     * @example
+     * // Delete one PausedCartItem
+     * const PausedCartItem = await prisma.pausedCartItem.delete({
+     *   where: {
+     *     // ... filter to delete one PausedCartItem
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PausedCartItemDeleteArgs>(args: SelectSubset<T, PausedCartItemDeleteArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PausedCartItem.
+     * @param {PausedCartItemUpdateArgs} args - Arguments to update one PausedCartItem.
+     * @example
+     * // Update one PausedCartItem
+     * const pausedCartItem = await prisma.pausedCartItem.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PausedCartItemUpdateArgs>(args: SelectSubset<T, PausedCartItemUpdateArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PausedCartItems.
+     * @param {PausedCartItemDeleteManyArgs} args - Arguments to filter PausedCartItems to delete.
+     * @example
+     * // Delete a few PausedCartItems
+     * const { count } = await prisma.pausedCartItem.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PausedCartItemDeleteManyArgs>(args?: SelectSubset<T, PausedCartItemDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PausedCartItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PausedCartItems
+     * const pausedCartItem = await prisma.pausedCartItem.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PausedCartItemUpdateManyArgs>(args: SelectSubset<T, PausedCartItemUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PausedCartItems and returns the data updated in the database.
+     * @param {PausedCartItemUpdateManyAndReturnArgs} args - Arguments to update many PausedCartItems.
+     * @example
+     * // Update many PausedCartItems
+     * const pausedCartItem = await prisma.pausedCartItem.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PausedCartItems and only return the `id`
+     * const pausedCartItemWithIdOnly = await prisma.pausedCartItem.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PausedCartItemUpdateManyAndReturnArgs>(args: SelectSubset<T, PausedCartItemUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PausedCartItem.
+     * @param {PausedCartItemUpsertArgs} args - Arguments to update or create a PausedCartItem.
+     * @example
+     * // Update or create a PausedCartItem
+     * const pausedCartItem = await prisma.pausedCartItem.upsert({
+     *   create: {
+     *     // ... data to create a PausedCartItem
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PausedCartItem we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PausedCartItemUpsertArgs>(args: SelectSubset<T, PausedCartItemUpsertArgs<ExtArgs>>): Prisma__PausedCartItemClient<$Result.GetResult<Prisma.$PausedCartItemPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PausedCartItems.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemCountArgs} args - Arguments to filter PausedCartItems to count.
+     * @example
+     * // Count the number of PausedCartItems
+     * const count = await prisma.pausedCartItem.count({
+     *   where: {
+     *     // ... the filter for the PausedCartItems we want to count
+     *   }
+     * })
+    **/
+    count<T extends PausedCartItemCountArgs>(
+      args?: Subset<T, PausedCartItemCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PausedCartItemCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PausedCartItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PausedCartItemAggregateArgs>(args: Subset<T, PausedCartItemAggregateArgs>): Prisma.PrismaPromise<GetPausedCartItemAggregateType<T>>
+
+    /**
+     * Group by PausedCartItem.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PausedCartItemGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PausedCartItemGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PausedCartItemGroupByArgs['orderBy'] }
+        : { orderBy?: PausedCartItemGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PausedCartItemGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPausedCartItemGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PausedCartItem model
+   */
+  readonly fields: PausedCartItemFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PausedCartItem.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PausedCartItemClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    pausedCart<T extends PausedCartDefaultArgs<ExtArgs> = {}>(args?: Subset<T, PausedCartDefaultArgs<ExtArgs>>): Prisma__PausedCartClient<$Result.GetResult<Prisma.$PausedCartPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PausedCartItem model
+   */
+  interface PausedCartItemFieldRefs {
+    readonly id: FieldRef<"PausedCartItem", 'String'>
+    readonly pausedCartId: FieldRef<"PausedCartItem", 'String'>
+    readonly itemCode: FieldRef<"PausedCartItem", 'String'>
+    readonly itemName: FieldRef<"PausedCartItem", 'String'>
+    readonly price: FieldRef<"PausedCartItem", 'Float'>
+    readonly qty: FieldRef<"PausedCartItem", 'Int'>
+    readonly availableQty: FieldRef<"PausedCartItem", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PausedCartItem findUnique
+   */
+  export type PausedCartItemFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCartItem to fetch.
+     */
+    where: PausedCartItemWhereUniqueInput
+  }
+
+  /**
+   * PausedCartItem findUniqueOrThrow
+   */
+  export type PausedCartItemFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCartItem to fetch.
+     */
+    where: PausedCartItemWhereUniqueInput
+  }
+
+  /**
+   * PausedCartItem findFirst
+   */
+  export type PausedCartItemFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCartItem to fetch.
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCartItems to fetch.
+     */
+    orderBy?: PausedCartItemOrderByWithRelationInput | PausedCartItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PausedCartItems.
+     */
+    cursor?: PausedCartItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCartItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCartItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PausedCartItems.
+     */
+    distinct?: PausedCartItemScalarFieldEnum | PausedCartItemScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCartItem findFirstOrThrow
+   */
+  export type PausedCartItemFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCartItem to fetch.
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCartItems to fetch.
+     */
+    orderBy?: PausedCartItemOrderByWithRelationInput | PausedCartItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PausedCartItems.
+     */
+    cursor?: PausedCartItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCartItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCartItems.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PausedCartItems.
+     */
+    distinct?: PausedCartItemScalarFieldEnum | PausedCartItemScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCartItem findMany
+   */
+  export type PausedCartItemFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * Filter, which PausedCartItems to fetch.
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PausedCartItems to fetch.
+     */
+    orderBy?: PausedCartItemOrderByWithRelationInput | PausedCartItemOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PausedCartItems.
+     */
+    cursor?: PausedCartItemWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PausedCartItems from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PausedCartItems.
+     */
+    skip?: number
+    distinct?: PausedCartItemScalarFieldEnum | PausedCartItemScalarFieldEnum[]
+  }
+
+  /**
+   * PausedCartItem create
+   */
+  export type PausedCartItemCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * The data needed to create a PausedCartItem.
+     */
+    data: XOR<PausedCartItemCreateInput, PausedCartItemUncheckedCreateInput>
+  }
+
+  /**
+   * PausedCartItem createMany
+   */
+  export type PausedCartItemCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PausedCartItems.
+     */
+    data: PausedCartItemCreateManyInput | PausedCartItemCreateManyInput[]
+  }
+
+  /**
+   * PausedCartItem createManyAndReturn
+   */
+  export type PausedCartItemCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * The data used to create many PausedCartItems.
+     */
+    data: PausedCartItemCreateManyInput | PausedCartItemCreateManyInput[]
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PausedCartItem update
+   */
+  export type PausedCartItemUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * The data needed to update a PausedCartItem.
+     */
+    data: XOR<PausedCartItemUpdateInput, PausedCartItemUncheckedUpdateInput>
+    /**
+     * Choose, which PausedCartItem to update.
+     */
+    where: PausedCartItemWhereUniqueInput
+  }
+
+  /**
+   * PausedCartItem updateMany
+   */
+  export type PausedCartItemUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PausedCartItems.
+     */
+    data: XOR<PausedCartItemUpdateManyMutationInput, PausedCartItemUncheckedUpdateManyInput>
+    /**
+     * Filter which PausedCartItems to update
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * Limit how many PausedCartItems to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PausedCartItem updateManyAndReturn
+   */
+  export type PausedCartItemUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * The data used to update PausedCartItems.
+     */
+    data: XOR<PausedCartItemUpdateManyMutationInput, PausedCartItemUncheckedUpdateManyInput>
+    /**
+     * Filter which PausedCartItems to update
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * Limit how many PausedCartItems to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * PausedCartItem upsert
+   */
+  export type PausedCartItemUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * The filter to search for the PausedCartItem to update in case it exists.
+     */
+    where: PausedCartItemWhereUniqueInput
+    /**
+     * In case the PausedCartItem found by the `where` argument doesn't exist, create a new PausedCartItem with this data.
+     */
+    create: XOR<PausedCartItemCreateInput, PausedCartItemUncheckedCreateInput>
+    /**
+     * In case the PausedCartItem was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PausedCartItemUpdateInput, PausedCartItemUncheckedUpdateInput>
+  }
+
+  /**
+   * PausedCartItem delete
+   */
+  export type PausedCartItemDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+    /**
+     * Filter which PausedCartItem to delete.
+     */
+    where: PausedCartItemWhereUniqueInput
+  }
+
+  /**
+   * PausedCartItem deleteMany
+   */
+  export type PausedCartItemDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PausedCartItems to delete
+     */
+    where?: PausedCartItemWhereInput
+    /**
+     * Limit how many PausedCartItems to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PausedCartItem without action
+   */
+  export type PausedCartItemDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PausedCartItem
+     */
+    select?: PausedCartItemSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PausedCartItem
+     */
+    omit?: PausedCartItemOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PausedCartItemInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -59497,6 +61902,30 @@ export namespace Prisma {
   };
 
   export type GradedItemScalarFieldEnum = (typeof GradedItemScalarFieldEnum)[keyof typeof GradedItemScalarFieldEnum]
+
+
+  export const PausedCartScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    branchName: 'branchName',
+    userId: 'userId',
+    createdAt: 'createdAt'
+  };
+
+  export type PausedCartScalarFieldEnum = (typeof PausedCartScalarFieldEnum)[keyof typeof PausedCartScalarFieldEnum]
+
+
+  export const PausedCartItemScalarFieldEnum: {
+    id: 'id',
+    pausedCartId: 'pausedCartId',
+    itemCode: 'itemCode',
+    itemName: 'itemName',
+    price: 'price',
+    qty: 'qty',
+    availableQty: 'availableQty'
+  };
+
+  export type PausedCartItemScalarFieldEnum = (typeof PausedCartItemScalarFieldEnum)[keyof typeof PausedCartItemScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -63947,6 +66376,128 @@ export namespace Prisma {
     gradingSheetId?: StringWithAggregatesFilter<"GradedItem"> | string
     createdAt?: DateTimeWithAggregatesFilter<"GradedItem"> | Date | string
     updatedAt?: DateTimeWithAggregatesFilter<"GradedItem"> | Date | string
+  }
+
+  export type PausedCartWhereInput = {
+    AND?: PausedCartWhereInput | PausedCartWhereInput[]
+    OR?: PausedCartWhereInput[]
+    NOT?: PausedCartWhereInput | PausedCartWhereInput[]
+    id?: StringFilter<"PausedCart"> | string
+    name?: StringFilter<"PausedCart"> | string
+    branchName?: StringFilter<"PausedCart"> | string
+    userId?: StringFilter<"PausedCart"> | string
+    createdAt?: DateTimeFilter<"PausedCart"> | Date | string
+    items?: PausedCartItemListRelationFilter
+  }
+
+  export type PausedCartOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchName?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    items?: PausedCartItemOrderByRelationAggregateInput
+  }
+
+  export type PausedCartWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PausedCartWhereInput | PausedCartWhereInput[]
+    OR?: PausedCartWhereInput[]
+    NOT?: PausedCartWhereInput | PausedCartWhereInput[]
+    name?: StringFilter<"PausedCart"> | string
+    branchName?: StringFilter<"PausedCart"> | string
+    userId?: StringFilter<"PausedCart"> | string
+    createdAt?: DateTimeFilter<"PausedCart"> | Date | string
+    items?: PausedCartItemListRelationFilter
+  }, "id">
+
+  export type PausedCartOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchName?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+    _count?: PausedCartCountOrderByAggregateInput
+    _max?: PausedCartMaxOrderByAggregateInput
+    _min?: PausedCartMinOrderByAggregateInput
+  }
+
+  export type PausedCartScalarWhereWithAggregatesInput = {
+    AND?: PausedCartScalarWhereWithAggregatesInput | PausedCartScalarWhereWithAggregatesInput[]
+    OR?: PausedCartScalarWhereWithAggregatesInput[]
+    NOT?: PausedCartScalarWhereWithAggregatesInput | PausedCartScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PausedCart"> | string
+    name?: StringWithAggregatesFilter<"PausedCart"> | string
+    branchName?: StringWithAggregatesFilter<"PausedCart"> | string
+    userId?: StringWithAggregatesFilter<"PausedCart"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PausedCart"> | Date | string
+  }
+
+  export type PausedCartItemWhereInput = {
+    AND?: PausedCartItemWhereInput | PausedCartItemWhereInput[]
+    OR?: PausedCartItemWhereInput[]
+    NOT?: PausedCartItemWhereInput | PausedCartItemWhereInput[]
+    id?: StringFilter<"PausedCartItem"> | string
+    pausedCartId?: StringFilter<"PausedCartItem"> | string
+    itemCode?: StringFilter<"PausedCartItem"> | string
+    itemName?: StringFilter<"PausedCartItem"> | string
+    price?: FloatFilter<"PausedCartItem"> | number
+    qty?: IntFilter<"PausedCartItem"> | number
+    availableQty?: IntFilter<"PausedCartItem"> | number
+    pausedCart?: XOR<PausedCartScalarRelationFilter, PausedCartWhereInput>
+  }
+
+  export type PausedCartItemOrderByWithRelationInput = {
+    id?: SortOrder
+    pausedCartId?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+    pausedCart?: PausedCartOrderByWithRelationInput
+  }
+
+  export type PausedCartItemWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PausedCartItemWhereInput | PausedCartItemWhereInput[]
+    OR?: PausedCartItemWhereInput[]
+    NOT?: PausedCartItemWhereInput | PausedCartItemWhereInput[]
+    pausedCartId?: StringFilter<"PausedCartItem"> | string
+    itemCode?: StringFilter<"PausedCartItem"> | string
+    itemName?: StringFilter<"PausedCartItem"> | string
+    price?: FloatFilter<"PausedCartItem"> | number
+    qty?: IntFilter<"PausedCartItem"> | number
+    availableQty?: IntFilter<"PausedCartItem"> | number
+    pausedCart?: XOR<PausedCartScalarRelationFilter, PausedCartWhereInput>
+  }, "id">
+
+  export type PausedCartItemOrderByWithAggregationInput = {
+    id?: SortOrder
+    pausedCartId?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+    _count?: PausedCartItemCountOrderByAggregateInput
+    _avg?: PausedCartItemAvgOrderByAggregateInput
+    _max?: PausedCartItemMaxOrderByAggregateInput
+    _min?: PausedCartItemMinOrderByAggregateInput
+    _sum?: PausedCartItemSumOrderByAggregateInput
+  }
+
+  export type PausedCartItemScalarWhereWithAggregatesInput = {
+    AND?: PausedCartItemScalarWhereWithAggregatesInput | PausedCartItemScalarWhereWithAggregatesInput[]
+    OR?: PausedCartItemScalarWhereWithAggregatesInput[]
+    NOT?: PausedCartItemScalarWhereWithAggregatesInput | PausedCartItemScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PausedCartItem"> | string
+    pausedCartId?: StringWithAggregatesFilter<"PausedCartItem"> | string
+    itemCode?: StringWithAggregatesFilter<"PausedCartItem"> | string
+    itemName?: StringWithAggregatesFilter<"PausedCartItem"> | string
+    price?: FloatWithAggregatesFilter<"PausedCartItem"> | number
+    qty?: IntWithAggregatesFilter<"PausedCartItem"> | number
+    availableQty?: IntWithAggregatesFilter<"PausedCartItem"> | number
   }
 
   export type UserCreateInput = {
@@ -69080,6 +71631,135 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PausedCartCreateInput = {
+    id?: string
+    name: string
+    branchName: string
+    userId: string
+    createdAt?: Date | string
+    items?: PausedCartItemCreateNestedManyWithoutPausedCartInput
+  }
+
+  export type PausedCartUncheckedCreateInput = {
+    id?: string
+    name: string
+    branchName: string
+    userId: string
+    createdAt?: Date | string
+    items?: PausedCartItemUncheckedCreateNestedManyWithoutPausedCartInput
+  }
+
+  export type PausedCartUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    branchName?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: PausedCartItemUpdateManyWithoutPausedCartNestedInput
+  }
+
+  export type PausedCartUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    branchName?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    items?: PausedCartItemUncheckedUpdateManyWithoutPausedCartNestedInput
+  }
+
+  export type PausedCartCreateManyInput = {
+    id?: string
+    name: string
+    branchName: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type PausedCartUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    branchName?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PausedCartUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    branchName?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PausedCartItemCreateInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+    pausedCart: PausedCartCreateNestedOneWithoutItemsInput
+  }
+
+  export type PausedCartItemUncheckedCreateInput = {
+    id?: string
+    pausedCartId: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+  }
+
+  export type PausedCartItemUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
+    pausedCart?: PausedCartUpdateOneRequiredWithoutItemsNestedInput
+  }
+
+  export type PausedCartItemUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pausedCartId?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PausedCartItemCreateManyInput = {
+    id?: string
+    pausedCartId: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+  }
+
+  export type PausedCartItemUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PausedCartItemUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    pausedCartId?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -72086,6 +74766,87 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type PausedCartItemListRelationFilter = {
+    every?: PausedCartItemWhereInput
+    some?: PausedCartItemWhereInput
+    none?: PausedCartItemWhereInput
+  }
+
+  export type PausedCartItemOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type PausedCartCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchName?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PausedCartMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchName?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PausedCartMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    branchName?: SortOrder
+    userId?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PausedCartScalarRelationFilter = {
+    is?: PausedCartWhereInput
+    isNot?: PausedCartWhereInput
+  }
+
+  export type PausedCartItemCountOrderByAggregateInput = {
+    id?: SortOrder
+    pausedCartId?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+  }
+
+  export type PausedCartItemAvgOrderByAggregateInput = {
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+  }
+
+  export type PausedCartItemMaxOrderByAggregateInput = {
+    id?: SortOrder
+    pausedCartId?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+  }
+
+  export type PausedCartItemMinOrderByAggregateInput = {
+    id?: SortOrder
+    pausedCartId?: SortOrder
+    itemCode?: SortOrder
+    itemName?: SortOrder
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+  }
+
+  export type PausedCartItemSumOrderByAggregateInput = {
+    price?: SortOrder
+    qty?: SortOrder
+    availableQty?: SortOrder
+  }
+
   export type RoleCreateNestedOneWithoutUsersInput = {
     create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
@@ -73098,6 +75859,62 @@ export namespace Prisma {
     upsert?: GradingSheetUpsertWithoutItemsProducedInput
     connect?: GradingSheetWhereUniqueInput
     update?: XOR<XOR<GradingSheetUpdateToOneWithWhereWithoutItemsProducedInput, GradingSheetUpdateWithoutItemsProducedInput>, GradingSheetUncheckedUpdateWithoutItemsProducedInput>
+  }
+
+  export type PausedCartItemCreateNestedManyWithoutPausedCartInput = {
+    create?: XOR<PausedCartItemCreateWithoutPausedCartInput, PausedCartItemUncheckedCreateWithoutPausedCartInput> | PausedCartItemCreateWithoutPausedCartInput[] | PausedCartItemUncheckedCreateWithoutPausedCartInput[]
+    connectOrCreate?: PausedCartItemCreateOrConnectWithoutPausedCartInput | PausedCartItemCreateOrConnectWithoutPausedCartInput[]
+    createMany?: PausedCartItemCreateManyPausedCartInputEnvelope
+    connect?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+  }
+
+  export type PausedCartItemUncheckedCreateNestedManyWithoutPausedCartInput = {
+    create?: XOR<PausedCartItemCreateWithoutPausedCartInput, PausedCartItemUncheckedCreateWithoutPausedCartInput> | PausedCartItemCreateWithoutPausedCartInput[] | PausedCartItemUncheckedCreateWithoutPausedCartInput[]
+    connectOrCreate?: PausedCartItemCreateOrConnectWithoutPausedCartInput | PausedCartItemCreateOrConnectWithoutPausedCartInput[]
+    createMany?: PausedCartItemCreateManyPausedCartInputEnvelope
+    connect?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+  }
+
+  export type PausedCartItemUpdateManyWithoutPausedCartNestedInput = {
+    create?: XOR<PausedCartItemCreateWithoutPausedCartInput, PausedCartItemUncheckedCreateWithoutPausedCartInput> | PausedCartItemCreateWithoutPausedCartInput[] | PausedCartItemUncheckedCreateWithoutPausedCartInput[]
+    connectOrCreate?: PausedCartItemCreateOrConnectWithoutPausedCartInput | PausedCartItemCreateOrConnectWithoutPausedCartInput[]
+    upsert?: PausedCartItemUpsertWithWhereUniqueWithoutPausedCartInput | PausedCartItemUpsertWithWhereUniqueWithoutPausedCartInput[]
+    createMany?: PausedCartItemCreateManyPausedCartInputEnvelope
+    set?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    disconnect?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    delete?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    connect?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    update?: PausedCartItemUpdateWithWhereUniqueWithoutPausedCartInput | PausedCartItemUpdateWithWhereUniqueWithoutPausedCartInput[]
+    updateMany?: PausedCartItemUpdateManyWithWhereWithoutPausedCartInput | PausedCartItemUpdateManyWithWhereWithoutPausedCartInput[]
+    deleteMany?: PausedCartItemScalarWhereInput | PausedCartItemScalarWhereInput[]
+  }
+
+  export type PausedCartItemUncheckedUpdateManyWithoutPausedCartNestedInput = {
+    create?: XOR<PausedCartItemCreateWithoutPausedCartInput, PausedCartItemUncheckedCreateWithoutPausedCartInput> | PausedCartItemCreateWithoutPausedCartInput[] | PausedCartItemUncheckedCreateWithoutPausedCartInput[]
+    connectOrCreate?: PausedCartItemCreateOrConnectWithoutPausedCartInput | PausedCartItemCreateOrConnectWithoutPausedCartInput[]
+    upsert?: PausedCartItemUpsertWithWhereUniqueWithoutPausedCartInput | PausedCartItemUpsertWithWhereUniqueWithoutPausedCartInput[]
+    createMany?: PausedCartItemCreateManyPausedCartInputEnvelope
+    set?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    disconnect?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    delete?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    connect?: PausedCartItemWhereUniqueInput | PausedCartItemWhereUniqueInput[]
+    update?: PausedCartItemUpdateWithWhereUniqueWithoutPausedCartInput | PausedCartItemUpdateWithWhereUniqueWithoutPausedCartInput[]
+    updateMany?: PausedCartItemUpdateManyWithWhereWithoutPausedCartInput | PausedCartItemUpdateManyWithWhereWithoutPausedCartInput[]
+    deleteMany?: PausedCartItemScalarWhereInput | PausedCartItemScalarWhereInput[]
+  }
+
+  export type PausedCartCreateNestedOneWithoutItemsInput = {
+    create?: XOR<PausedCartCreateWithoutItemsInput, PausedCartUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: PausedCartCreateOrConnectWithoutItemsInput
+    connect?: PausedCartWhereUniqueInput
+  }
+
+  export type PausedCartUpdateOneRequiredWithoutItemsNestedInput = {
+    create?: XOR<PausedCartCreateWithoutItemsInput, PausedCartUncheckedCreateWithoutItemsInput>
+    connectOrCreate?: PausedCartCreateOrConnectWithoutItemsInput
+    upsert?: PausedCartUpsertWithoutItemsInput
+    connect?: PausedCartWhereUniqueInput
+    update?: XOR<XOR<PausedCartUpdateToOneWithWhereWithoutItemsInput, PausedCartUpdateWithoutItemsInput>, PausedCartUncheckedUpdateWithoutItemsInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -76196,6 +79013,110 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PausedCartItemCreateWithoutPausedCartInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+  }
+
+  export type PausedCartItemUncheckedCreateWithoutPausedCartInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+  }
+
+  export type PausedCartItemCreateOrConnectWithoutPausedCartInput = {
+    where: PausedCartItemWhereUniqueInput
+    create: XOR<PausedCartItemCreateWithoutPausedCartInput, PausedCartItemUncheckedCreateWithoutPausedCartInput>
+  }
+
+  export type PausedCartItemCreateManyPausedCartInputEnvelope = {
+    data: PausedCartItemCreateManyPausedCartInput | PausedCartItemCreateManyPausedCartInput[]
+  }
+
+  export type PausedCartItemUpsertWithWhereUniqueWithoutPausedCartInput = {
+    where: PausedCartItemWhereUniqueInput
+    update: XOR<PausedCartItemUpdateWithoutPausedCartInput, PausedCartItemUncheckedUpdateWithoutPausedCartInput>
+    create: XOR<PausedCartItemCreateWithoutPausedCartInput, PausedCartItemUncheckedCreateWithoutPausedCartInput>
+  }
+
+  export type PausedCartItemUpdateWithWhereUniqueWithoutPausedCartInput = {
+    where: PausedCartItemWhereUniqueInput
+    data: XOR<PausedCartItemUpdateWithoutPausedCartInput, PausedCartItemUncheckedUpdateWithoutPausedCartInput>
+  }
+
+  export type PausedCartItemUpdateManyWithWhereWithoutPausedCartInput = {
+    where: PausedCartItemScalarWhereInput
+    data: XOR<PausedCartItemUpdateManyMutationInput, PausedCartItemUncheckedUpdateManyWithoutPausedCartInput>
+  }
+
+  export type PausedCartItemScalarWhereInput = {
+    AND?: PausedCartItemScalarWhereInput | PausedCartItemScalarWhereInput[]
+    OR?: PausedCartItemScalarWhereInput[]
+    NOT?: PausedCartItemScalarWhereInput | PausedCartItemScalarWhereInput[]
+    id?: StringFilter<"PausedCartItem"> | string
+    pausedCartId?: StringFilter<"PausedCartItem"> | string
+    itemCode?: StringFilter<"PausedCartItem"> | string
+    itemName?: StringFilter<"PausedCartItem"> | string
+    price?: FloatFilter<"PausedCartItem"> | number
+    qty?: IntFilter<"PausedCartItem"> | number
+    availableQty?: IntFilter<"PausedCartItem"> | number
+  }
+
+  export type PausedCartCreateWithoutItemsInput = {
+    id?: string
+    name: string
+    branchName: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type PausedCartUncheckedCreateWithoutItemsInput = {
+    id?: string
+    name: string
+    branchName: string
+    userId: string
+    createdAt?: Date | string
+  }
+
+  export type PausedCartCreateOrConnectWithoutItemsInput = {
+    where: PausedCartWhereUniqueInput
+    create: XOR<PausedCartCreateWithoutItemsInput, PausedCartUncheckedCreateWithoutItemsInput>
+  }
+
+  export type PausedCartUpsertWithoutItemsInput = {
+    update: XOR<PausedCartUpdateWithoutItemsInput, PausedCartUncheckedUpdateWithoutItemsInput>
+    create: XOR<PausedCartCreateWithoutItemsInput, PausedCartUncheckedCreateWithoutItemsInput>
+    where?: PausedCartWhereInput
+  }
+
+  export type PausedCartUpdateToOneWithWhereWithoutItemsInput = {
+    where?: PausedCartWhereInput
+    data: XOR<PausedCartUpdateWithoutItemsInput, PausedCartUncheckedUpdateWithoutItemsInput>
+  }
+
+  export type PausedCartUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    branchName?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PausedCartUncheckedUpdateWithoutItemsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    branchName?: StringFieldUpdateOperationsInput | string
+    userId?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type MessageCreateManyUserInput = {
     id?: string
     file?: string | null
@@ -76856,6 +79777,42 @@ export namespace Prisma {
     qtyToDispatch?: FloatFieldUpdateOperationsInput | number
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PausedCartItemCreateManyPausedCartInput = {
+    id?: string
+    itemCode: string
+    itemName: string
+    price: number
+    qty: number
+    availableQty: number
+  }
+
+  export type PausedCartItemUpdateWithoutPausedCartInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PausedCartItemUncheckedUpdateWithoutPausedCartInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type PausedCartItemUncheckedUpdateManyWithoutPausedCartInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    itemCode?: StringFieldUpdateOperationsInput | string
+    itemName?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    availableQty?: IntFieldUpdateOperationsInput | number
   }
 
 

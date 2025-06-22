@@ -844,6 +844,24 @@ exports.Prisma.GradedItemScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.PausedCartScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  branchName: 'branchName',
+  userId: 'userId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PausedCartItemScalarFieldEnum = {
+  id: 'id',
+  pausedCartId: 'pausedCartId',
+  itemCode: 'itemCode',
+  itemName: 'itemName',
+  price: 'price',
+  qty: 'qty',
+  availableQty: 'availableQty'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -916,7 +934,9 @@ exports.Prisma.ModelName = {
   SupplierPaymentTracking: 'SupplierPaymentTracking',
   Grade: 'Grade',
   GradingSheet: 'GradingSheet',
-  GradedItem: 'GradedItem'
+  GradedItem: 'GradedItem',
+  PausedCart: 'PausedCart',
+  PausedCartItem: 'PausedCartItem'
 };
 
 /**

@@ -330,6 +330,7 @@ await axios.post("/api/auth/grading-sheet", {
                     </option>
                   ))
                 )}
+                 <option value="combined">--Multiple--</option>
               </select>
             </div>
           </div>

@@ -54,7 +54,7 @@ const PosLandingPage = () => {
   }, [fetchAnalytics]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] text-white font-sans">
+    <div className="min-h-screen overflow-hidden bg-gradient-to-br from-[#1A1A1A] to-[#2A2A2A] text-white font-sans">
       {/* Navbar */}
       <nav className="bg-[#1F1F1F] border-b border-[#FF8C00]/20 flex items-center justify-between px-6 py-3 shadow-lg">
         <div className="flex items-center gap-3">

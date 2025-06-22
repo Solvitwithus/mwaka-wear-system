@@ -103,14 +103,14 @@ const PosInventory = () => {
   }, [getCurrentUser, getGradingSheets]);
 
   return (
-    <div className="h-fit">
-      <h1 className="text-xl font-semibold text-[#A4F1FF] mb-4">
+    <div className="h-fit  max-h-72 overflow-y-auto">
+      <h1 className="text-xl font-semibold text-[#A4F1FF] mb-2">
         Items Available for Branch:{" "}
         <span className="text-green-700">{user?.branch || "Loading..."}</span>
       </h1>
 
-      <div className="rounded shadow overflow-auto">
-        <table className="w-[80%] cursor-text bg-[#746E6E] text-sm border-collapse">
+    <div className="rounded shadow w-[80%] border border-gray-300">
+  <table className="w-full bg-[#746E6E] text-sm border-collapse">
           <thead className="bg-[#1393AB] ml-10 text-white">
             <tr>
               <th className="px-4 py-2 border">Item Code</th>

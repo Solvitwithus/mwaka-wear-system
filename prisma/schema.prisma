@@ -827,3 +827,23 @@ qtyToDispatch Float @default(0)
   createdAt      DateTime     @default(now())
   updatedAt      DateTime     @updatedAt
 }
+
+model PausedCart {
+  id         String         @id @default(uuid())
+  name       String
+  branchName String
+  userId     String
+  items      PausedCartItem[]
+  createdAt  DateTime       @default(now())
+}
+
+model PausedCartItem {
+  id           String     @id @default(uuid())
+  pausedCart   PausedCart @relation(fields: [pausedCartId], references: [id], onDelete: Cascade)
+  pausedCartId String
+  itemCode     String
+  itemName     String
+  price        Float
+  qty          Int
+  availableQty Int
+}

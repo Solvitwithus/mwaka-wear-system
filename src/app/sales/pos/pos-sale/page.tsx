@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import axios from "axios";
-import PosInventory from "@/components/pos-inventory";
+import { useRouter } from "next/navigation";
 import Logo from "@/assets/mwakawear-logo.png";
+import { Trash2 } from "lucide-react";
+import bcrypt from "bcryptjs";
 
 type ItemProduced = {
   itemCode: string;
@@ -17,8 +19,50 @@ type ItemProduced = {
 };
 
 
+type User = {
+  id: string;
+  firstName: string;
+  lastName: string;
+  userName: string;
+  shortName: string;
+  address: string;
+  email: string;
+  password: string;
+  roleId: string;
+  branch: string;
+  phone1: string;
+  phone2: string;
+  description: string;
+  role?: {
+    name: string;
+    permissions: { name: string; value: boolean }[];
+  };
+};
+
+type PausedCart = {
+  name: string;
+  branchName: string;
+  userId: string;
+  items: {
+    itemCode: string;
+    itemName: string;
+    qty: number;
+    price: number;
+    availableQty: number;
+  }[];
+};
+
 const SellPage = () => {
+  const router = useRouter()
+  const [user, setUser] = useState<User | null>(null);
   const [itemCode, setItemCode] = useState("");
+  const [password, setPassword] = useState("");
+  const [discountAmount, setDiscountAmount] = useState<string>("");
+  const [userPassword, setUserPassword] = useState("");
+  const [codeToAdjust, setCodeToAdjust] = useState("");
+   const [quantityToAdjust, setQuantityToAdjust] = useState("");
+   
+  const [pausedtransactionName, setPausedtransactionName] = useState("");
   const [cashAmount, setcashAmount] = useState("");
   const [cart, setCart] = useState<{ itemCode: string; itemName: string; qty: number; price: number; availableQty: number }[]>([]);
   const [selectedItem, setSelectedItem] = useState<any>(null);
@@ -27,8 +71,38 @@ const SellPage = () => {
   const [inventory, setInventory] = useState<ItemProduced[]>([]);
   const [error, setError] = useState("");
 
+    const getCurrentUser = useCallback(async () => {
+    try {
+      const response = await axios.get("/api/auth/access");
+      if (response.data?.user) {
+        setUser(response.data.user);
+        console.log("Logged-in user:", response.data.user);
+      } else {
+        console.warn("User object not found in /access response");
+      }
+    } catch (error) {
+      console.error("Failed to fetch current user from /access:", error);
+    }
+  }, []);
+
+  const [transactionsToVoid, setTransactionsToVoid] = useState<PausedCart[] | null>(null)
+const canbeVoided = useCallback(async()=>{
+try {
+      const response = await axios.get("/api/auth/paused-carts");
+      setTransactionsToVoid(response.data);
+      console.log("Paused carts fetched:", response.data);
+    } catch (error) {
+      console.error("Failed to fetch paused carts:", error);
+      setError("Failed to load paused carts.");
+    }
+
+
+},[])
+
+
   // Fetch inventory
   useEffect(() => {
+    
     const fetchInventory = async () => {
       try {
         const response = await axios.get("/api/auth/grading-sheet");
@@ -42,7 +116,10 @@ const SellPage = () => {
       }
     };
     fetchInventory();
-  }, []);
+    getCurrentUser()
+    canbeVoided();
+  }, [getCurrentUser,canbeVoided]);
+  
 
   // Handle item code input and lookup
   const handleItemLookup = () => {
@@ -50,6 +127,7 @@ const SellPage = () => {
     if (item) {
       setSelectedItem({ ...item, qty: 1 });
       setError("");
+      addToCart()
     } else {
       setSelectedItem(null);
       setError("Item code not found!");
@@ -79,6 +157,7 @@ const SellPage = () => {
         return prev.map((item) =>
           item.itemCode === selectedItem.itemCode ? { ...item, qty: newQty } : item
         );
+       
       }
 
       return [...prev, {
@@ -131,9 +210,9 @@ const printReceipt = (cart:any, totalAmount:any, paidAmount:any) => {
     <p>Date: ${new Date().toLocaleString()}</p>
     <hr />
     <ul>
-      ${cart.map(item => `
+      ${cart.map(itm => `
         <li>
-          ${item.itemName} x${item.qty} @ KES ${item.price.toFixed(2)} = KES ${(item.qty * item.price).toFixed(2)}
+          ${itm.itemName} x${itm.qty} @ KES ${itm.price.toFixed(2)} = KES ${(itm.qty * itm.price).toFixed(2)}
         </li>
       `).join("")}
     </ul>
@@ -233,7 +312,160 @@ const handleCashProcessment = async() => {
   setShowCashUI(false);
   setcashAmount("");
 };
+const [isCartPaused, setisCartPaused] = useState(false)
+const [cartToDelete, setCartToDelete] = useState<any>(null);
+const cartPause =()=>{
+setisCartPaused(true)
+}
+const pauseCart =async()=>{
 
+const payload = {...cart,name:pausedtransactionName,userId:user?.id,branchName:user?.branch}
+console.log(payload);
+
+  try {
+    await axios.post("/api/auth/paused-carts", payload);
+  
+    
+  }catch (err: any) {
+    const message =
+      err?.response?.data?.error || "Failed to save paused cart.";
+    setError(message);
+  }
+setSelectedItem(null)
+setCart([])
+setPausedtransactionName("")
+}
+
+const [isvoid, setIsVoid] = useState(false)
+
+const voidTransaction =()=>{
+setIsVoid(true)
+
+}
+
+useEffect(() => {
+  if (isvoid) {
+    canbeVoided();
+  }
+}, [isvoid, canbeVoided]);
+
+const handleHeldCartProcessing =(cartPause:any)=>{
+  setCart(cartPause.items);
+  setIsVoid(false); 
+
+}
+const [ispassword, setIsPassword] = useState(false)
+const handleVoidingATransaction = (cartPause: any) => {
+  setCartToDelete(cartPause); // store this cart
+  setIsPassword(true);        // show the password modal
+};
+
+
+
+const deleteHeld = async (cartPause: any) => {
+  try {
+    if (!user?.password) {
+      setError("User password not found.");
+      return;
+    }
+
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      setError("Wrong password. Cannot void cart.");
+      return;
+    }
+
+    await axios.delete("/api/auth/paused-carts", {
+      data: { pausedCartId: cartPause.id },
+    });
+
+    setIsPassword(false);
+    canbeVoided();
+    setCartToDelete(null);
+  } catch (err) {
+    console.error("Failed to delete paused cart", err);
+    setError("Could not delete cart.");
+  }
+};
+
+const handleEndShift =async()=>{
+await axios.post("/api/auth/logout")
+router.push("/")
+}
+const [isToEdit, setIsToEdit] = useState(false)
+const handleEditQuantity =()=>{
+setIsToEdit(true)
+}
+const itemToEdit = cart.find((item) => item.itemCode === codeToAdjust);
+
+const handleActualEdit = () => {
+  const parsedQty = parseInt(quantityToAdjust);
+
+  if (!itemToEdit) {
+    setError("Edit Failed! Item not found in cart.");
+    return;
+  }
+
+  if (parsedQty > itemToEdit.availableQty) {
+    setError(`Quantity cannot exceed available stock (${itemToEdit.availableQty})`);
+    setQuantityToAdjust(itemToEdit.availableQty.toString());
+    return;
+  }
+
+  const updatedCart = cart.map((item) => {
+    if (item.itemCode === codeToAdjust) {
+      return {
+        ...item,
+        qty: parsedQty,
+      };
+    }
+    return item;
+  });
+
+  setCart(updatedCart);
+  setIsToEdit(false);
+  setError("");
+};
+
+
+const [isDiscountEligible, setIsDiscountEligible] = useState(false)
+const IssueDiscount = () => {
+  setIsDiscountEligible(true);
+  setError("");
+};
+
+const ApproveDiscount = async () => {
+  const discount = parseFloat(discountAmount);
+
+  if (!user?.password) {
+    setError("User not authenticated.");
+    return;
+  }
+
+  const comparePassKey = await bcrypt.compare(userPassword, user.password);
+
+  if (!comparePassKey) {
+    setError("Wrong password. Cannot issue discount.");
+    return;
+  }
+
+  if (isNaN(discount) || discount <= 0) {
+    setError("Invalid discount amount.");
+    return;
+  }
+
+  if (discount >= totalAmount) {
+    setError("Discount can't be more than the total.");
+    return;
+  }
+
+  setDiscountAmount(discount.toString());
+  setTotalAmount(totalAmount - discount); // Update amount to be paid
+  setIsDiscountEligible(false);
+  setError("");
+  setDiscountAmount("")
+  setUserPassword("")
+};
   return (
     <div className="min-h-screen bg-[#1A1A1A] text-white p-4">
       <div className="flex justify-between items-center mb-6">
@@ -241,7 +473,7 @@ const handleCashProcessment = async() => {
           <Image src={Logo} alt="Mwakawear Logo" width={50} height={50} className="rounded" />
           <h1 className="text-2xl font-bold text-[#FF8C00]">Mwakawear POS</h1>
         </div>
-        <span className="text-red-500 cursor-pointer">Manual Exit</span>
+        <span className="text-red-500 cursor-pointer" onClick={()=>router.push("/sales/pos")}>Manual Exit</span>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-6 h-[calc(100vh-120px)]">
@@ -249,19 +481,21 @@ const handleCashProcessment = async() => {
         <div className="w-full lg:w-2/3 bg-[#2A2A2A] rounded-lg p-4 shadow-lg overflow-auto">
           <div className="flex gap-4 mb-4">
             <input
-              type="text"
+              type="text" autoFocus
               value={itemCode}
               onChange={(e) => setItemCode(e.target.value)}
               onKeyUp={(e) => e.key === "Enter" && handleItemLookup()}
               placeholder="Search item code here"
               className="bg-[#1F1F1F] text-white p-2 rounded w-full"
             />
-            <button
+            <button type="button"
               onClick={handleItemLookup}
               className="bg-[#FF8C00] text-white px-4 py-1 rounded"
+             
             >
               Search
             </button>
+           
           </div>
 
           {/* Show selected item */}
@@ -269,7 +503,7 @@ const handleCashProcessment = async() => {
             <div className="mb-4">
               <h2 className="text-lg font-semibold mb-2">Item Found</h2>
               <table className="w-full text-sm border border-gray-700">
-                <thead className="bg-[#1393AB] text-white">
+                <thead className="bg-[#d35abf] text-white">
                   <tr>
                     <th className="p-2">Code</th>
                     <th className="p-2">Name</th>
@@ -289,12 +523,16 @@ const handleCashProcessment = async() => {
                     <td className="p-2">{selectedItem.qtyToDispatch}</td>
                     <td className="p-2">{selectedItem.qty}</td>
                     <td className="p-2">
-                      <button
+                      <button type="button"
                         onClick={addToCart}
-                        className="bg-green-600 text-white px-3 py-1 rounded"
+                         onKeyUp={(e) => e.key === "Enter" && addToCart()}
+                        className="bg-green-600 mr-1 text-white px-3 py-1 rounded"
                       >
                         Add
                       </button>
+                       <button type="button" className="bg-red-600 text-white px-3 py-1 rounded" onClick={()=>{setSelectedItem(null),setItemCode("")}}>
+              Cancel
+            </button>
                     </td>
                   </tr>
                 </tbody>
@@ -309,6 +547,7 @@ const handleCashProcessment = async() => {
               <thead>
                 <tr className="bg-[#1393AB] text-white">
                   <th className="p-2">No.</th>
+                  <th className="p-2">Code</th>
                   <th className="p-2">Product</th>
                   <th className="p-2">Quantity</th>
                   <th className="p-2">Unit Price</th>
@@ -319,7 +558,8 @@ const handleCashProcessment = async() => {
                 {cart.map((item, index) => (
                   <tr key={item.itemCode} className="text-center">
                     <td className="p-2">{index + 1}</td>
-                    <td className="p-2">{item.itemName}</td>
+                     <td className="p-2">{item.itemCode}</td>
+                     <td className="p-2">{item.itemName}</td>
                     <td className="p-2">{item.qty}</td>
                     <td className="p-2">KES {item.price.toLocaleString()}</td>
                     <td className="p-2">KES {(item.price * item.qty).toLocaleString()}</td>
@@ -348,9 +588,9 @@ const handleCashProcessment = async() => {
         {/* Right Section */}
         <div className="w-full lg:w-1/3 bg-[#2A2A2A] rounded-lg p-4 shadow-lg flex flex-col justify-between">
           <div className="grid grid-cols-3 gap-2 h-full">
-            <button className="bg-teal-500 p-8 rounded hover:bg-teal-600 text-sm" onClick={handleCashPayment}>Cash</button>
+            <button type="button" className="bg-teal-500 p-8 rounded hover:bg-teal-600 text-sm" onClick={handleCashPayment}>Cash</button>
             {["Mpesa", "PDQ"].map((method) => (
-              <button
+              <button type="button"
                 key={method}
                 onClick={() => handlePayment(method)}
                 className="bg-teal-500 p-8 rounded flex items-center justify-center hover:bg-teal-600 transition text-sm"
@@ -358,38 +598,278 @@ const handleCashProcessment = async() => {
                 {method}
               </button>
             ))}
-            <button className="bg-red-600 p-8 rounded hover:bg-red-700 text-sm">Void</button>
-            <button className="bg-yellow-600 p-8 rounded hover:bg-yellow-700 text-sm">Pause Cart</button>
-            <button className="bg-pink-600 p-8 rounded hover:bg-pink-700 text-sm">Edit</button>
-            <button className="bg-orange-500 p-8 rounded hover:bg-orange-600 text-sm">Transactions</button>
-            <button className="bg-purple-600 p-8 rounded hover:bg-purple-700 text-sm">Reports</button>
-            <button className="bg-green-600 p-8 rounded hover:bg-green-700 text-sm">Discount</button>
-            <button className="bg-lime-600 p-8 rounded hover:bg-lime-700 text-sm">Inventory</button>
-            <button className="bg-green-500 p-8 rounded hover:bg-green-600 text-sm" onClick={printReceipt}>Print</button>
-            <button className="bg-red-500 p-8 rounded hover:bg-red-600 text-sm">End Shift</button>
+            <button type="button" className="bg-red-600 p-8 rounded hover:bg-red-700 text-sm" onClick={voidTransaction}>Void</button>
+            <button type="button" className="bg-yellow-600 p-8 rounded hover:bg-yellow-700 text-sm" onClick={cartPause}>Pause Cart</button>
+            <button type="button" className="bg-pink-600 p-8 rounded hover:bg-pink-700 text-sm" onClick={handleEditQuantity}>Edit</button>
+            <button type="button" className="bg-orange-500 p-8 rounded hover:bg-orange-600 text-sm">Transactions</button>
+            <button type="button" className="bg-purple-600 p-8 rounded hover:bg-purple-700 text-sm">Reports</button>
+            <button type="button" className="bg-green-600 p-8 rounded hover:bg-green-700 text-sm" onClick={IssueDiscount}>Discount</button>
+            <button type="button" className="bg-lime-600 p-8 rounded hover:bg-lime-700 text-sm" onClick={()=>router.push("/sales/pos")}>Inventory</button>
+            <button type="button" className="bg-green-500 p-8 rounded hover:bg-green-600 text-sm">Receipts</button>
+            <button type="button" className="bg-red-500 p-8 rounded hover:bg-red-600 text-sm" onClick={handleEndShift}>End Shift</button>
           </div>
         </div>
       </div>
-      {showCashUI && (
-  <div className="absolute top-5 left-1/2 z-50 bg-white text-black p-4 mt-4 rounded shadow-lg">
-    <h2 className="text-xl font-semibold">Cash Payment</h2>
-    <p>Proceed with cash transaction...</p>
-    <div className="flex gap-4 items-center">
+{showCashUI && (
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white w-full max-w-md p-6 rounded-2xl shadow-2xl border border-gray-200 animate-fade-in">
+      <h2 className="text-2xl font-bold text-center text-green-800 mb-4">
+        Cash Payment
+      </h2>
+      <p className="text-sm text-center text-gray-600 mb-6">
+        Enter the amount received from the customer.
+      </p>
+
       <input
-  type="number"
-  step="0.01"
-  min="0" value={cashAmount} onChange={(e)=>setcashAmount(e.target.value)}
-  className="bg-[#494646] w-32 h-8 text-white p-2 rounded"
-/>
- <button onClick={handleCashProcessment} className="mt-2 bg-[#0c3d0c] text-white px-3 py-1 rounded">
-      Process
-    </button>
+        type="number"
+        step="0.01"
+        min="0"
+        value={cashAmount}
+        onChange={(e) => setcashAmount(e.target.value)}
+        placeholder="Enter amount e.g. 1000"
+        className="w-full px-4 py-2 mb-4 text-sm text-white bg-[#494646] rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 placeholder:text-gray-300"
+      />
+
+      <div className="flex justify-between gap-4">
+        <button type="button"
+          onClick={handleCashProcessment}
+          className="flex-1 bg-green-700 hover:bg-green-800 text-white font-medium py-2 rounded-lg transition"
+        >
+          💵 Process
+        </button>
+
+        <button type="button"
+          onClick={() => setShowCashUI(false)}
+          className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 rounded-lg transition"
+        >
+          Cancel
+        </button>
+      </div>
     </div>
-    <button onClick={() => setShowCashUI(false)} className="mt-2 bg-red-500 text-white px-3 py-1 rounded">
+  </div>
+)}
+
+
+{isCartPaused && (
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white w-full max-w-md p-6 rounded-2xl shadow-2xl border border-gray-200 animate-fade-in">
+      <h2 className="text-2xl font-bold text-center text-green-800 mb-4">
+        Pause Current Cart
+      </h2>
+      <p className="text-sm text-center text-gray-600 mb-6">
+        Give this transaction a name so you can resume it later.
+      </p>
+
+      <input
+        type="text"
+        autoFocus
+        placeholder="Transaction name e.g. Jane's Cart"
+        value={pausedtransactionName}
+        onChange={(e) => setPausedtransactionName(e.target.value)}
+        className="w-full px-4 py-2 mb-4 text-sm text-white bg-[#494646] rounded-md focus:outline-none focus:ring-2 focus:ring-green-600 placeholder:text-gray-300"
+      />
+
+      <div className="flex gap-4 justify-between">
+        <button type="button"
+          onClick={() => {
+            pauseCart();
+            setisCartPaused(false);
+          }}
+          className="flex-1 bg-green-700 hover:bg-green-800 text-white font-medium py-2 rounded-lg transition"
+        >
+          ✅ Pause Cart
+        </button>
+
+        <button type="button"
+          onClick={() => setisCartPaused(false)}
+          className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 rounded-lg transition"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+{isvoid && transactionsToVoid && (
+  <div className="fixed inset-0 z-50 bg-black top-10 left-10 bg-opacity-40 flex flex-col items-center justify-center">
+    <div className="w-full max-w-4xl max-h-[80vh] overflow-y-auto bg-white p-6 rounded-xl shadow-2xl">
+      <h2 className="text-2xl font-bold text-center text-green-800 mb-6">
+        Paused Carts
+      </h2>
+
+      {transactionsToVoid.length === 0 ? (
+        <p className="text-center text-gray-500">No paused carts found.</p>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+          {transactionsToVoid.map((cartPause: any, index: number) => {
+            const totalItems =
+              cartPause.items?.reduce((sum: number, item: any) => sum + item.qty, 0) || 0;
+
+            return (
+              <div
+              onClick={()=>handleHeldCartProcessing(cartPause)}
+                key={index}
+                className="bg-[#f4fdf7] border border-green-300 rounded-lg p-4 shadow-md hover:shadow-xl hover:bg-[#dff0e5] transition-shadow duration-200"
+              >
+                <h3 className="text-lg font-semibold text-[#124c36] mb-2">
+                  {cartPause.name}
+                </h3>
+                <p className="text-sm text-gray-700 mb-1">
+                  <span className="font-medium text-gray-600">Branch:</span>{" "}
+                  {cartPause.branchName}
+                </p>
+                <p className="text-sm text-gray-700 mb-1">
+                  <span className="font-medium text-gray-600">Items:</span>{" "}
+                  <span className="text-green-800 font-bold">{totalItems}</span>
+                </p>
+                <Trash2 color="red" className="hover:cursor-pointer" onClick={()=>handleVoidingATransaction(cartPause)}/>
+              </div>
+            );
+          })}
+        </div>
+      )}
+    </div>
+       <button type="button" onClick={() => setIsVoid(false)} className="mt-2 bg-red-500 text-white px-3 py-1 rounded">
       Close
     </button>
   </div>
+
 )}
+{ispassword && (
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 border border-gray-200">
+      <h2 className="text-xl font-semibold text-center text-red-600 mb-4">Admin Authorization</h2>
+      <p className="text-sm text-center text-gray-600 mb-4">Enter your password to confirm voiding this transaction.</p>
+
+      <input
+        type="password"
+        autoFocus
+        className="w-full px-4 py-2 mb-4 text-sm text-white bg-[#494646] rounded-lg focus:outline-none focus:ring-2 focus:ring-green-600 placeholder:text-gray-300"
+        placeholder="Admin password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+      />
+
+      <div className="flex justify-between gap-4">
+        <button type="button"
+          onClick={() => {
+    deleteHeld(cartToDelete); // ✅ pass it here
+    setIsPassword(false);
+  }}
+          className="flex-1 bg-green-700 hover:bg-green-800 text-white font-medium py-2 rounded-lg transition"
+        >
+          Void ❌
+        </button>
+
+        <button type="button"
+          onClick={() => setIsPassword(false)}
+          className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 rounded-lg transition"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+{isToEdit && (
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 border border-gray-200">
+      <h2 className="text-xl font-semibold text-center text-teal-700 mb-4">Edit Cart Item</h2>
+      <p className="text-sm text-center text-gray-600 mb-4">Enter item code and the new quantity.</p>
+<div className="flex flex-col gap-2">
+      <input
+        type="text"
+        autoFocus
+        placeholder="Item code (e.g. ITEM001)"
+        className="w-full px-4 py-2 mb-3 text-sm text-white bg-[#494646] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 placeholder:text-gray-300"
+        value={codeToAdjust}
+        onChange={(e) => setCodeToAdjust(e.target.value)}
+      />
+
+      <input
+        type="number"
+        min={0}
+        step={1}
+        max={itemToEdit?.availableQty || undefined} 
+        placeholder="New quantity"
+        className="w-full px-4 py-2 mb-4 text-sm text-white bg-[#494646] rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 placeholder:text-gray-300"
+        value={quantityToAdjust}
+        onChange={(e) => setQuantityToAdjust(e.target.value)}
+      />
+</div>
+      {error && (
+        <p className="text-sm text-red-600 text-center mb-2">{error}</p>
+      )}
+
+      <div className="flex justify-between gap-4">
+        <button type="button"
+          onClick={handleActualEdit}
+          className="flex-1 bg-green-700 hover:bg-green-800 text-white font-medium py-2 rounded-lg transition"
+        >
+          Save ✅
+        </button>
+
+        <button type="button"
+          onClick={() => setIsToEdit(false)}
+          className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 rounded-lg transition"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+{isDiscountEligible && (
+  <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex items-center justify-center">
+    <div className="bg-white rounded-2xl shadow-xl w-full max-w-sm p-6 border border-gray-200">
+      <h2 className="text-xl font-semibold text-center text-blue-600 mb-4">Issue Discount</h2>
+      <p className="text-sm text-center text-gray-600 mb-4">Enter discount amount and admin password.</p>
+<div className="flex flex-col gap-2">
+      <input
+        type="number"
+        min={0}
+        step={0.01}
+        autoFocus
+        value={discountAmount}
+        placeholder="Discount amount"
+        onChange={(e) => setDiscountAmount(e.target.value)}
+        className="w-full px-4 py-2 mb-3 text-sm text-white bg-[#494646] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-300"
+      />
+
+      <input
+        type="password"
+        value={userPassword}
+        placeholder="Admin password"
+        onChange={(e) => setUserPassword(e.target.value)}
+        className="w-full px-4 py-2 mb-4 text-sm text-white bg-[#494646] rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-gray-300"
+      />
+</div>
+      {error && <p className="text-sm text-red-600 text-center mb-2">{error}</p>}
+
+      <div className="flex flex-col justify-between gap-4">
+        <button type="button"
+          
+          onClick={ApproveDiscount}
+          className="flex-1 bg-green-700 hover:bg-green-800 text-white font-medium py-2 rounded-lg transition"
+        >
+          Issue Discount ✅
+        </button>
+
+        <button type="button"
+          onClick={() => setIsDiscountEligible(false)}
+          className="flex-1 bg-gray-300 hover:bg-gray-400 text-gray-800 font-medium py-2 rounded-lg transition"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+)}
+
+
+
     </div>
   );
 };
