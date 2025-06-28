@@ -7,7 +7,7 @@ generator client {
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -128,8 +128,9 @@ model Salesperson {
   addedBy         String  @default("") // Default to empty string
   remarks         String?
 
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  salesEntries SalesEntry[]
+  createdAt    DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
 }
 
 model Branch {
@@ -563,12 +564,13 @@ model SalesEntry {
   deliveryDetailsId String         @unique // Only keep this if 1:1 relation is required
 
   salesEntryItems SalesEntryItem[] // ✅ corrected from saleEntryItems
-
-  subtotal   Float
-  shipping   Float
-  grandTotal Float
-  remarks    String?
-  status     String  @default("Completed")
+  salesperson     Salesperson      @relation(fields: [salespersonId], references: [id])
+  salespersonId   String
+  subtotal        Float
+  shipping        Float
+  grandTotal      Float
+  remarks         String?
+  status          String           @default("Completed")
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
