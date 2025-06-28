@@ -146,20 +146,28 @@ const Page = () => {
     fetchData();
   }, [fetchData]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type } = e.target;
-    if (e.target instanceof HTMLInputElement && type === "checkbox") {
-      setSalesperson((prev) => ({
-        ...prev,
-        [name]: e.target.checked,
-      }));
-    } else {
-      setSalesperson((prev) => ({
-        ...prev,
-        [name]: type === "number" ? Number(value) : value,
-      }));
-    }
-  };
+const numberFields = new Set(["salesTarget", "salesCommission", "idNumber"]);
+
+const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const target = e.target;
+  const { name, value, type } = target;
+
+  if (target instanceof HTMLInputElement && type === "checkbox") {
+    setSalesperson((prev) => ({
+      ...prev,
+      [name]: target.checked,
+    }));
+  } else {
+    setSalesperson((prev) => ({
+      ...prev,
+      [name]: numberFields.has(name) ? Number(value) : value,
+    }));
+  }
+};
+
+
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();

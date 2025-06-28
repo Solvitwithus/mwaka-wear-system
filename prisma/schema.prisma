@@ -130,7 +130,7 @@ model Salesperson {
   addedBy         String    @default("") // Default to empty string
   remarks         String?
 
-  
+  salesEntries SalesEntry[] 
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 }
@@ -573,7 +573,8 @@ model SalesEntry {
   deliveryDetailsId String             @unique   // Only keep this if 1:1 relation is required
 
   salesEntryItems   SalesEntryItem[]   // ✅ corrected from saleEntryItems
-
+salesperson   Salesperson @relation(fields: [salespersonId], references: [id])
+salespersonId String
   subtotal          Float
   shipping          Float
   grandTotal        Float
@@ -612,6 +613,7 @@ model Department {
   budgetAmount     Float
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
+  designationTitles DesignationTitle[]
 }
 
 model Rank {
@@ -622,6 +624,7 @@ model Rank {
   rankLevel   Int
   isActive    Boolean  @default(true)
   createdDate DateTime
+  designationTitles DesignationTitle[]
 }
 
 model DesignationTitle {
@@ -636,6 +639,8 @@ model DesignationTitle {
   isNew        Boolean  @default(false)
   salary       Float
   createdAt    DateTime @default(now())
+     department   Department @relation(fields: [departmentId], references: [id])
+  rank         Rank       @relation(fields: [rankId], references: [id])
 }
 
 model SalesGroup {
@@ -846,4 +851,14 @@ model PausedCartItem {
   price        Float
   qty          Int
   availableQty Int
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  amount          Float
+  mpesaReceipt    String   @unique
+  phoneNumber     String
+  transactionTime DateTime
+  status          String   @default("paid")
+  createdAt       DateTime @default(now())
 }

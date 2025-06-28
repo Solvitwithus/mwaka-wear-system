@@ -8,6 +8,7 @@ import Logo from "@/assets/mwakawear-logo.png";
 import { Trash2 } from "lucide-react";
 import bcrypt from "bcryptjs";
 
+const generateRandomInvoiceReference = `code-${Math.floor(1000000000000 + Math.random() * 9000000000000)}`;
 type ItemProduced = {
   itemCode: string;
   itemName: string;
@@ -52,6 +53,15 @@ type PausedCart = {
   }[];
 };
 
+type Payment = {
+  id: string;
+  mpesaReceipt: string;
+  amount: number;
+  phoneNumber: string;
+  transactionTime: string; // ISO string
+  status: string;
+};
+
 const SellPage = () => {
   const router = useRouter()
   const [user, setUser] = useState<User | null>(null);
@@ -70,7 +80,8 @@ const SellPage = () => {
   const [paidAmount, setPaidAmount] = useState(0);
   const [inventory, setInventory] = useState<ItemProduced[]>([]);
   const [error, setError] = useState("");
-
+ const [payments, setPayments] = useState<Payment[]>([]);
+  const [loading, setLoading] = useState(false);
     const getCurrentUser = useCallback(async () => {
     try {
       const response = await axios.get("/api/auth/access");
@@ -108,8 +119,8 @@ try {
         const response = await axios.get("/api/auth/grading-sheet");
         const sheets = response.data;
         const items = sheets
-          .filter((sheet) => sheet.status.toLowerCase() === "received")
-          .flatMap((sheet) => sheet.itemsProduced);
+          .filter((sheet:any) => sheet.status.toLowerCase() === "received")
+          .flatMap((sheet:any) => sheet.itemsProduced);
         setInventory(items);
       } catch (error) {
         console.error("Failed to fetch inventory:", error);
@@ -186,6 +197,32 @@ try {
       )
     );
   };
+    const [mpesaTransactionsMount, setMpesaTransactionsMount] = useState(false)
+  const handleMpesaTransactions =()=>{
+    setMpesaTransactionsMount(true)
+  }
+ // Fetch all payments from backend
+  const fetchPayments = useCallback(async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get<Payment[]>("/api/auth/c2b-confirmation");
+      setPayments(response.data);
+    } catch (error) {
+      console.error("❌ Failed to fetch M-Pesa payments:", error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (mpesaTransactionsMount) {
+      fetchPayments();
+    }
+  }, [mpesaTransactionsMount, fetchPayments]);
+
+  // Filter only paid transactions
+  const paidTransactions = payments.filter((p) => p.status === "paid");
+
 
   useEffect(() => {
     const newTotal = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
@@ -206,23 +243,61 @@ try {
 
 const printReceipt = (cart:any, totalAmount:any, paidAmount:any) => {
   const content = `
-    <h2>My Store</h2>
-    <p>Date: ${new Date().toLocaleString()}</p>
+    <h2>Mwaka Wear Trading LTD</h2>
+    <h6>P.O BOX 192-00946</h6>
+    <h6>Nakuru</h6>
+  <h5 class="fisal">----START OF FISCAL RECEIPT----</h5>
+  <hr/>
+    <p class="itemHeaders">Served By:${user?.firstName} ${user?.lastName}</p>    
+    <p class="itemHeaders">Store: ${user?.branch}</p>
+    <p class="invNumber">Invoice Number: ${generateRandomInvoiceReference}</p>
+<p class="itemHeaders">Date: ${new Date().toLocaleString()}</p>
     <hr />
-    <ul>
-      ${cart.map(itm => `
-        <li>
-          ${itm.itemName} x${itm.qty} @ KES ${itm.price.toFixed(2)} = KES ${(itm.qty * itm.price).toFixed(2)}
-        </li>
-      `).join("")}
-    </ul>
+
+    
+  
+
+    <table>
+    <thead>
+    <tr>
+    <th>ITEM</th>
+     
+      <th>PRICE</th>
+      <th>QTY</th>
+       <th>TOTAL</th>
+    <tr>
+    </thead>'
+    <tbody>
+    
+      ${cart.map((itm: { itemName: string; price: number; qty: number }) => `
+  <tr>
+    <td>${itm.itemName}</td>
+    <td>${itm.price.toFixed(2)}</td>
+    <td>${itm.qty}pcs</td>
+    <td>${itm.price.toFixed(0)}*${itm.qty}=${(itm.qty * itm.price).toFixed(0)}</td>
+  </tr>
+`).join("")}
+   
+    </tbody>
+    </table>
     <div class="totals">
-      <p><strong>Total:</strong> KES ${totalAmount.toFixed(2)}</p>
-      <p><strong>Paid:</strong> KES ${paidAmount.toFixed(2)}</p>
-      <p><strong>Change:</strong> KES ${(paidAmount - totalAmount).toFixed(2)}</p>
+      <p style="  margin:0px;
+             font-size:12px;
+              font-weight:light;"><strong>Total:</strong> KES ${totalAmount.toFixed(2)}</p>
+      <p style="  margin:0px;
+             font-size:12px;
+              font-weight:light;"><strong>Paid:</strong> KES ${paidAmount.toFixed(2)}</p>
+      <p style="  margin:0px;
+             font-size:12px;
+              font-weight:light;"><strong>Change:</strong> KES ${(paidAmount - totalAmount).toFixed(2)}</p>
     </div>
     <hr />
-    <p style="text-align: center;">Thanks and welcome again!</p>
+     <p class="itemHeaders">Payment Method: Cash</p>
+     <h6>Mpesa Till: <span style="font-weight:bold">3700922</span></h6>
+ <p class="itemHeaders">For inquiries call or whats app us on</p>
+ <h6>Phone: <span style="font-weight:bold">0746741528</span></h6>
+  <h6>Thank you for shopping with Us</h6>
+   <h6>**************Karibu Tena**************</h6>
   `;
 
   const iframe = document.createElement("iframe");
@@ -252,19 +327,60 @@ const printReceipt = (cart:any, totalAmount:any, paidAmount:any) => {
             h2 {
               text-align: center;
               margin-bottom: 10px;
+              font-size:13px;
+              font-weight:bold;
             }
             ul {
               list-style: none;
               padding: 0;
             }
-            li {
-              margin: 4px 0;
-            }
+          
             .totals {
-              margin-top: 10px;
-              border-top: 1px dashed #000;
-              padding-top: 5px;
+             
+              display:flex;
+              flex-direction: column;
+             align-items: flex-end;
+           margin-top:2rem;
+           margin-bottom:1rem
+
             }
+              .itemHeaders{
+          text-align:left;
+              margin:0px;
+              font-size:9px;
+              font-weight:light;
+              }
+
+              h6{
+               text-align: center;
+              margin: 0px;
+              font-size:10px;
+              font-weight:semi-bold;
+              }
+              .invNumber{
+               margin:0px;
+              font-size:10px;
+              font-weight:extra-light;
+              }
+              .fisal{
+              text-align:center;
+              margin:0;
+              font-size:9px;
+              font-weight:extre-bold;
+    }
+              th{
+               font-size:11px;
+              font-weight:madium;
+              }
+              thead{
+               width: 100%;
+              }
+               td{
+                font-size:13px;
+              font-weight: 10px;
+               }
+
+           
           </style>
         </head>
         <body onload="window.print(); window.close();">
@@ -588,16 +704,11 @@ const ApproveDiscount = async () => {
         {/* Right Section */}
         <div className="w-full lg:w-1/3 bg-[#2A2A2A] rounded-lg p-4 shadow-lg flex flex-col justify-between">
           <div className="grid grid-cols-3 gap-2 h-full">
+            
             <button type="button" className="bg-teal-500 p-8 rounded hover:bg-teal-600 text-sm" onClick={handleCashPayment}>Cash</button>
-            {["Mpesa", "PDQ"].map((method) => (
-              <button type="button"
-                key={method}
-                onClick={() => handlePayment(method)}
-                className="bg-teal-500 p-8 rounded flex items-center justify-center hover:bg-teal-600 transition text-sm"
-              >
-                {method}
-              </button>
-            ))}
+             <button type="button" className="bg-teal-500 p-8 rounded hover:bg-teal-600 text-sm" onClick={handleMpesaTransactions}>M-Pesa</button>
+              <button type="button" className="bg-teal-500 p-8 rounded hover:bg-teal-600 text-sm cursor-none">Prompt</button>
+          
             <button type="button" className="bg-red-600 p-8 rounded hover:bg-red-700 text-sm" onClick={voidTransaction}>Void</button>
             <button type="button" className="bg-yellow-600 p-8 rounded hover:bg-yellow-700 text-sm" onClick={cartPause}>Pause Cart</button>
             <button type="button" className="bg-pink-600 p-8 rounded hover:bg-pink-700 text-sm" onClick={handleEditQuantity}>Edit</button>
@@ -624,6 +735,7 @@ const ApproveDiscount = async () => {
         type="number"
         step="0.01"
         min="0"
+        autoFocus
         value={cashAmount}
         onChange={(e) => setcashAmount(e.target.value)}
         placeholder="Enter amount e.g. 1000"
@@ -868,6 +980,56 @@ const ApproveDiscount = async () => {
   </div>
 )}
 
+ {mpesaTransactionsMount && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-40 flex flex-col items-center justify-center">
+          <div className="w-full max-w-5xl max-h-[85vh] overflow-y-auto bg-white p-6 rounded-xl shadow-2xl">
+            <h2 className="text-2xl font-bold text-center text-green-800 mb-6">
+              M-Pesa Paid Transactions
+            </h2>
+
+            {loading ? (
+              <p className="text-center text-gray-500">Loading...</p>
+            ) : paidTransactions.length === 0 ? (
+              <p className="text-center text-gray-500">No paid transactions found.</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+                {paidTransactions.map((txn) => (
+                  <div
+                    key={txn.id}
+                    className="bg-[#f4fdf7] border border-green-300 rounded-lg p-4 shadow-md hover:shadow-xl hover:bg-[#dff0e5] transition-shadow duration-200"
+                  >
+                    <h3 className="text-lg font-semibold text-[#124c36] mb-2">
+                      {txn.mpesaReceipt}
+                    </h3>
+                    <p className="text-sm text-gray-700 mb-1">
+                      <span className="font-medium text-gray-600">Amount:</span>{" "}
+                      <span className="text-green-800 font-bold">KES {txn.amount.toFixed(2)}</span>
+                    </p>
+                    <p className="text-sm text-gray-700 mb-1">
+                      <span className="font-medium text-gray-600">Phone:</span>{" "}
+                      {txn.phoneNumber}
+                    </p>
+                    <p className="text-sm text-gray-700 mb-1">
+                      <span className="font-medium text-gray-600">Time:</span>{" "}
+                      {new Date(txn.transactionTime).toLocaleString()}
+                    </p>
+                    <p className="text-sm text-green-600 font-semibold">Status: {txn.status}</p>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMpesaTransactionsMount(false)}
+            className="mt-4 bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600"
+          >
+            Close
+          </button>
+        </div>
+      )}
+    
 
 
     </div>

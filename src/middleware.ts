@@ -1,6 +1,5 @@
 
 
-
 // import { NextResponse, type NextRequest } from "next/server";
 // import { jwtVerify } from "jose";
 
@@ -25,7 +24,17 @@
 //   }
 
 //   try {
-//     await jwtVerify(token, secret); // ✅ jose doesn't require crypto module
+//     const { payload } = await jwtVerify(token, secret);
+
+//     // 🧠 Restrict access to /pos for non-cashiers
+//     if (pathname.startsWith("/sales/pos")) {
+//       const userRole = payload.role as string; // Make sure your JWT includes a 'role' claim
+//       if (!["cashier", "sales","administrator","manager"].includes(userRole)) {
+//         return NextResponse.redirect(new URL("/sales?error=unauthorized", req.url));
+
+//       }
+//     }
+
 //     return NextResponse.next();
 //   } catch (err) {
 //     console.error("❌ Invalid token:", err);
@@ -33,20 +42,9 @@
 //   }
 // }
 
-
-
-
-
-
-
-
-
 // export const config = {
 //   matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 // };
-
-
-
 import { NextResponse, type NextRequest } from "next/server";
 import { jwtVerify } from "jose";
 
@@ -60,9 +58,13 @@ export async function middleware(req: NextRequest) {
   const isStaticAsset = pathname.match(/\.(?:png|jpg|jpeg|svg|gif|ico|webp|woff2?|ttf|eot|txt|json|js|css)$/i);
   const isInternal = pathname.startsWith("/_next") || pathname === "/favicon.ico";
 
+  // ✅ Skip public routes, static assets, internal Next.js assets
   if (publicRoutes.includes(pathname) || isStaticAsset || isInternal) {
     return NextResponse.next();
   }
+
+  // ✅ Optional: Debug log to verify middleware scope
+  console.log("🔒 Middleware applied to:", pathname);
 
   const token = req.cookies.get("authToken")?.value;
 
@@ -73,12 +75,11 @@ export async function middleware(req: NextRequest) {
   try {
     const { payload } = await jwtVerify(token, secret);
 
-    // 🧠 Restrict access to /pos for non-cashiers
+    // 🧠 Restrict access to /sales/pos for certain roles
     if (pathname.startsWith("/sales/pos")) {
-      const userRole = payload.role as string; // Make sure your JWT includes a 'role' claim
-      if (!["cashier", "sales","administrator","manager"].includes(userRole)) {
+      const userRole = payload.role as string;
+      if (!["cashier", "sales", "administrator", "manager"].includes(userRole)) {
         return NextResponse.redirect(new URL("/sales?error=unauthorized", req.url));
-
       }
     }
 
@@ -89,6 +90,7 @@ export async function middleware(req: NextRequest) {
   }
 }
 
+// ✅ Exclude API routes from middleware
 export const config = {
-  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)"],
 };

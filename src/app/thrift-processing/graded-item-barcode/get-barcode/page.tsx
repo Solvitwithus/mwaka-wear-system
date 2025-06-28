@@ -135,7 +135,11 @@ const Page = () => {
       }
     }
   };
-
+useEffect(() => {
+  if (showPopup) {
+    handlePrint();
+  }
+}, [showPopup]);
   return (
     <div className="bg-[rgb(239,239,239)] m-1 rounded-md p-1 h-fit">
       <div className="bg-white rounded-md shadow overflow-auto mb-4">
@@ -219,12 +223,11 @@ const Page = () => {
       </div>
 
       {/* Hidden Print Area */}
-      {showPopup && (
-        <div style={{ display: "none" }}>
-          <div ref={printRef}></div>
-          {handlePrint()}
-        </div>
-      )}
+    {showPopup && (
+  <div style={{ display: "none" }}>
+    <div ref={printRef}></div>
+  </div>
+)}
     </div>
   );
 };

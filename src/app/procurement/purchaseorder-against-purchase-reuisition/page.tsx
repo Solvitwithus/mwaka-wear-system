@@ -132,7 +132,7 @@ const handleLocalDataParsing = async (entry: PurchaseReqEntry) => {
       // Clear localStorage after a delay
       setTimeout(() => {
         localStorage.removeItem("SupplierReqData");
-      }, 1000 * 300); // 5 minutes
+      }, 1000 * 1000);
     }
   } catch (err) {
     console.error(err);

@@ -46,15 +46,21 @@ const Page = () => {
     }
   }, [success, error]);
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
-  ) => {
-    const { name, value, type, checked } = e.target;
-    setGrade((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+) => {
+  const { name, value, type } = e.target;
+  const newValue =
+    type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
+
+  setGrade((prev) => ({
+    ...prev,
+    [name]: newValue,
+  }));
+};
+
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

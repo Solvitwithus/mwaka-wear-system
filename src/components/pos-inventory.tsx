@@ -103,7 +103,7 @@ const PosInventory = () => {
   }, [getCurrentUser, getGradingSheets]);
 
   return (
-    <div className="h-fit  max-h-72 overflow-y-auto">
+    <div className="h-fit max-h-64 overflow-y-auto">
       <h1 className="text-xl font-semibold text-[#A4F1FF] mb-2">
         Items Available for Branch:{" "}
         <span className="text-green-700">{user?.branch || "Loading..."}</span>

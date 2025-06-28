@@ -227,17 +227,23 @@ const finalAmount = subTotal + shipping;
 
 const formattedFinalAmount = parseFloat(finalAmount.toFixed(2)); 
 const formattedsubtotalAmount = parseFloat(subTotal .toFixed(2)); 
-  const handleDeliveryChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement > ) => {
-    const { name, value, type } = e.target;
+const handleDeliveryChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value, type } = e.target;
 
-    // Handle boolean specifically for the 'offload' property
-    const newValue = name === "offload" || name ==="prepay" ? e.target.checked : value;
+  // Only access `.checked` if it's an input and a checkbox
+  const newValue =
+    (name === "offload" || name === "prepay") && type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
 
-    setDelivery((prevDelivery) => ({
-      ...prevDelivery,
-      [name]: newValue
-    }));
-  };
+  setDelivery((prevDelivery) => ({
+    ...prevDelivery,
+    [name]: newValue,
+  }));
+};
+
 
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");

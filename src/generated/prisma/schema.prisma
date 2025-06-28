@@ -593,40 +593,44 @@ model SalesEntryItem {
 }
 
 model Department {
-  id                 String   @id @default(uuid())
+  id                 String             @id @default(uuid())
   departmentName     String
   shortName          String
   description        String
   headOfDepartmentId String
-  isActive           Boolean  @default(true)
+  isActive           Boolean            @default(true)
   establishedDate    String
   budgetAmount       Float
-  createdAt          DateTime @default(now())
-  updatedAt          DateTime @updatedAt
+  createdAt          DateTime           @default(now())
+  updatedAt          DateTime           @updatedAt
+  designationTitles  DesignationTitle[]
 }
 
 model Rank {
-  id          String   @id @default(uuid())
-  rankName    String
-  shortName   String
-  description String?
-  rankLevel   Int
-  isActive    Boolean  @default(true)
-  createdDate DateTime
+  id                String             @id @default(uuid())
+  rankName          String
+  shortName         String
+  description       String?
+  rankLevel         Int
+  isActive          Boolean            @default(true)
+  createdDate       DateTime
+  designationTitles DesignationTitle[]
 }
 
 model DesignationTitle {
-  id           String   @id @default(uuid())
+  id           String     @id @default(uuid())
   titleName    String
-  titleCode    String   @unique
+  titleCode    String     @unique
   shortCode    String
   departmentId String
   rankId       String
   description  String
-  isActive     Boolean  @default(true)
-  isNew        Boolean  @default(false)
+  isActive     Boolean    @default(true)
+  isNew        Boolean    @default(false)
   salary       Float
-  createdAt    DateTime @default(now())
+  createdAt    DateTime   @default(now())
+  department   Department @relation(fields: [departmentId], references: [id])
+  rank         Rank       @relation(fields: [rankId], references: [id])
 }
 
 model SalesGroup {
@@ -839,4 +843,14 @@ model PausedCartItem {
   price        Float
   qty          Int
   availableQty Int
+}
+
+model Payment {
+  id              String   @id @default(cuid())
+  amount          Float
+  mpesaReceipt    String   @unique
+  phoneNumber     String
+  transactionTime DateTime
+  status          String   @default("paid")
+  createdAt       DateTime @default(now())
 }

@@ -64,13 +64,18 @@ const Page = () => {
     }
   }, [success, error]);
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    const { name, value, type, checked } = e.target;
-    setAccount((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>
+) => {
+  const { name, value, type } = e.target as HTMLInputElement;
+
+  setAccount((prev) => ({
+    ...prev,
+    [name]: type === "checkbox"
+      ? (e.target as HTMLInputElement).checked // safe cast
+      : value,
+  }));
+};
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

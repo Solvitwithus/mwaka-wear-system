@@ -1,155 +1,164 @@
-import { NextRequest, NextResponse } from "next/server";
-import { PrismaClient } from "@/generated/prisma";
+// import { NextRequest, NextResponse } from "next/server";
+// import { PrismaClient } from "@/generated/prisma";
 
-const prisma = new PrismaClient();
+import { NextRequest } from "next/server";
 
-// GET: Fetch all active sales entries with prepay=false
-export async function GET() {
-  try {
-    const salesEntries = await prisma.salesEntry.findMany({
-      where: {
-        // status: "Active",
+// const prisma = new PrismaClient();
+
+// // GET: Fetch all active sales entries with prepay=false
+// export async function GET() {
+//   try {
+//     const salesEntries = await prisma.salesEntry.findMany({
+//       where: {
+//         // status: "Active",
 
 
-        deliveryDetails: {
-         prepay:false
-        },
-      },
-      include: {
-        client: true,
-        deliveryDetails: true,
-        salesEntryItems: true,
+//         deliveryDetails: {
+//          prepay:false
+//         },
+//       },
+//       include: {
+//         client: true,
+//         deliveryDetails: true,
+//         salesEntryItems: true,
        
-      },
-      orderBy: {
-        saleDate: "desc",
-      },
-    });
+//       },
+//       orderBy: {
+//         saleDate: "desc",
+//       },
+//     });
 
-    return NextResponse.json({ data: salesEntries });
-  } catch (error) {
-    console.error("Error fetching sales entries:", error);
-    return NextResponse.json(
-      { error: "Failed to fetch sales entries" },
-      { status: 500 }
-    );
-  }
-}
+//     return NextResponse.json({ data: salesEntries });
+//   } catch (error) {
+//     console.error("Error fetching sales entries:", error);
+//     return NextResponse.json(
+//       { error: "Failed to fetch sales entries" },
+//       { status: 500 }
+//     );
+//   }
+// }
 
-// POST: Create a new sales entry
-export async function POST(req: NextRequest) {
-  try {
-    const body = await req.json();
+// // POST: Create a new sales entry
+// export async function POST(req: NextRequest) {
+//   try {
+//     const body = await req.json();
 
 
-    const {
-      clientId,
-      deliveryDetails,
-      salesEntryItems,
-      subtotal,
-      shipping,
-      grandTotal,
-      remarks,
-      status,
-    } = body;
+//     const {
+//       clientId,
+//       deliveryDetails,
+//       salesEntryItems,
+//       subtotal,
+//       shipping,
+//       grandTotal,
+//       remarks,
+//       status,
+//     } = body;
 
-    // 1. Create DeliveryDetail
-    const createdDelivery = await prisma.deliveryDetail.create({
-      data: {
-        address: deliveryDetails.address,
-        shiftId: deliveryDetails.shiftId,
-        driverId: deliveryDetails.driverId,
-        vehicleId: deliveryDetails.vehicleId,
-        offload: deliveryDetails.offload,
-        prepay: deliveryDetails.prepay,
-        deliveryDate: new Date(deliveryDetails.deliveryDate),
-        deliveryFrom: deliveryDetails.deliveryFrom,
-        destination: deliveryDetails.destination,
-        customerReference: deliveryDetails.customerReference,
-        comment: deliveryDetails.comment,
-        phoneNumber: deliveryDetails.phoneNumber,
-        accompaniedBy: deliveryDetails.accompaniedBy,
-      },
-    });
+//     // 1. Create DeliveryDetail
+//     const createdDelivery = await prisma.deliveryDetail.create({
+//       data: {
+//         address: deliveryDetails.address,
+//         shiftId: deliveryDetails.shiftId,
+//         driverId: deliveryDetails.driverId,
+//         vehicleId: deliveryDetails.vehicleId,
+//         offload: deliveryDetails.offload,
+//         prepay: deliveryDetails.prepay,
+//         deliveryDate: new Date(deliveryDetails.deliveryDate),
+//         deliveryFrom: deliveryDetails.deliveryFrom,
+//         destination: deliveryDetails.destination,
+//         customerReference: deliveryDetails.customerReference,
+//         comment: deliveryDetails.comment,
+//         phoneNumber: deliveryDetails.phoneNumber,
+//         accompaniedBy: deliveryDetails.accompaniedBy,
+//       },
+//     });
 
-    // 2. Create SalesEntry and nested SaleEntryItems
-    const newSalesEntry = await prisma.salesEntry.create({
-      data: {
-        clientId,
-        deliveryDetailsId: createdDelivery.id,
-        subtotal,
-        shipping,
-        grandTotal,
-        remarks,
-        status: status ?? "Completed",
-        salesEntryItems: {
-          create: salesEntryItems.map((item: any) => ({
-            itemId: item.itemId,
-            itemName: item.itemName,
-            quantity: item.quantity,
-            unitPrice: item.unitPrice,
-            discount: item.discount,
-            tax: item.tax,
-            total: item.total,
-          })),
-        },
-      },
-      include: {
-        client: true,
-        deliveryDetails: true,
-        salesEntryItems: true,
-      },
-    });
+//     // 2. Create SalesEntry and nested SaleEntryItems
+//     const newSalesEntry = await prisma.salesEntry.create({
+//       data: {
+//         clientId,
+//         deliveryDetailsId: createdDelivery.id,
+//         subtotal,
+//         shipping,
+//         grandTotal,
+//         remarks,
+//         status: status ?? "Completed",
+//         salesEntryItems: {
+//           create: salesEntryItems.map((item: any) => ({
+//             itemId: item.itemId,
+//             itemName: item.itemName,
+//             quantity: item.quantity,
+//             unitPrice: item.unitPrice,
+//             discount: item.discount,
+//             tax: item.tax,
+//             total: item.total,
+//           })),
+//         },
+//       },
+//       include: {
+//         client: true,
+//         deliveryDetails: true,
+//         salesEntryItems: true,
+//       },
+//     });
 
-    return NextResponse.json({
-      message: "Sales entry created successfully",
-      data: newSalesEntry,
-    });
-  } catch (error) {
-    console.error("Error creating sales entry:", error);
-    return NextResponse.json(
-      { error: "Failed to create sales entry" },
-      { status: 500 }
-    );
-  }
-}
+//     return NextResponse.json({
+//       message: "Sales entry created successfully",
+//       data: newSalesEntry,
+//     });
+//   } catch (error) {
+//     console.error("Error creating sales entry:", error);
+//     return NextResponse.json(
+//       { error: "Failed to create sales entry" },
+//       { status: 500 }
+//     );
+//   }
 
-// PATCH: Update sales entry status
-export async function PATCH(req: NextRequest) {
-  try {
-    const body = await req.json();
-    console.log("PATCH body:", body);
+//   finally {
+//   await prisma.$disconnect();
+// }
+// }
 
-    const { salesEntryId, status } = body;
+// // PATCH: Update sales entry status
+// export async function PATCH(req: NextRequest) {
+//   try {
+//     const body = await req.json();
+//     console.log("PATCH body:", body);
 
-    if (!salesEntryId || !status) {
-      return NextResponse.json(
-        { error: "salesEntryId and status are required." },
-        { status: 400 }
-      );
-    }
+//     const { salesEntryId, status } = body;
 
-    const updatedSalesEntry = await prisma.salesEntry.update({
-      where: { id: salesEntryId },
-      data: { status },
-      include: {
-        client: true,
-        deliveryDetails: true,
-        salesEntryItems: true,
+//     if (!salesEntryId || !status) {
+//       return NextResponse.json(
+//         { error: "salesEntryId and status are required." },
+//         { status: 400 }
+//       );
+//     }
+
+//     const updatedSalesEntry = await prisma.salesEntry.update({
+//       where: { id: salesEntryId },
+//       data: { status },
+//       include: {
+//         client: true,
+//         deliveryDetails: true,
+//         salesEntryItems: true,
         
-      },
-    });
+//       },
+//     });
 
-    return NextResponse.json({
-      message: "Sales entry status updated successfully.",
-      data: updatedSalesEntry,
-    });
-  } catch (error) {
-    console.error("Error updating sales entry:", error);
-    return NextResponse.json(
-      { error: "Failed to update sales entry status." },
-      { status: 500 }
-    );
-  }
+//     return NextResponse.json({
+//       message: "Sales entry status updated successfully.",
+//       data: updatedSalesEntry,
+//     });
+//   } catch (error) {
+//     console.error("Error updating sales entry:", error);
+//     return NextResponse.json(
+//       { error: "Failed to update sales entry status." },
+//       { status: 500 }
+//     );
+//   }
+// }
+
+export async function PATCH() {
+  // ...
 }
-

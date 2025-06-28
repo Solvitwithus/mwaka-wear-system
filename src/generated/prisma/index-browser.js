@@ -613,6 +613,7 @@ exports.Prisma.SalesEntryScalarFieldEnum = {
   saleDate: 'saleDate',
   clientId: 'clientId',
   deliveryDetailsId: 'deliveryDetailsId',
+  salespersonId: 'salespersonId',
   subtotal: 'subtotal',
   shipping: 'shipping',
   grandTotal: 'grandTotal',
@@ -862,6 +863,16 @@ exports.Prisma.PausedCartItemScalarFieldEnum = {
   availableQty: 'availableQty'
 };
 
+exports.Prisma.PaymentScalarFieldEnum = {
+  id: 'id',
+  amount: 'amount',
+  mpesaReceipt: 'mpesaReceipt',
+  phoneNumber: 'phoneNumber',
+  transactionTime: 'transactionTime',
+  status: 'status',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -936,7 +947,8 @@ exports.Prisma.ModelName = {
   GradingSheet: 'GradingSheet',
   GradedItem: 'GradedItem',
   PausedCart: 'PausedCart',
-  PausedCartItem: 'PausedCartItem'
+  PausedCartItem: 'PausedCartItem',
+  Payment: 'Payment'
 };
 
 /**

@@ -89,17 +89,24 @@ const Page = () => {
     fetchData();
   }, [fetchData]);
 
-  const handleChange = (
-    e: ChangeEvent<
-      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
-    >
-  ) => {
-    const { name, value, type, checked } = e.target;
-    setDesignation((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+const handleChange = (
+  e: ChangeEvent<
+    HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+  >
+) => {
+  const { name, value, type } = e.target;
+
+  const newValue =
+    type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
+
+  setDesignation((prev) => ({
+    ...prev,
+    [name]: newValue,
+  }));
+};
+
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

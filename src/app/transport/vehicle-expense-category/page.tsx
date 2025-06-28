@@ -46,15 +46,22 @@ const Page = () => {
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
 
-  const handleChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
-  ) => {
-    const { name, value, type, checked } = e.target;
-    setExpense((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value, type } = e.target;
+
+  const newValue =
+    type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
+
+  setExpense((prev) => ({
+    ...prev,
+    [name]: newValue,
+  }));
+};
+
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

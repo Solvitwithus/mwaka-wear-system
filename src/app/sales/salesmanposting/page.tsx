@@ -2,7 +2,7 @@
 import axios from 'axios'
 import { Trash2 } from "lucide-react";
 import { useRouter } from 'next/navigation';
-import { on } from 'node:stream';
+
 import React, { ChangeEvent, FormEvent, useCallback, useEffect, useState } from 'react'
 type clientie ={
   id:string;
@@ -244,17 +244,22 @@ const finalAmount = subTotal + shipping;
 
 const formattedFinalAmount = parseFloat(finalAmount.toFixed(2)); 
 const formattedsubtotalAmount = parseFloat(subTotal .toFixed(2)); 
-  const handleDeliveryChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement > ) => {
-    const { name, value, type } = e.target;
+const handleDeliveryChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value, type } = e.target;
 
-    // Handle boolean specifically for the 'offload' property
-    const newValue = name === "offload" || name ==="prepay" ? e.target.checked : value;
+  const newValue =
+    (name === "offload" || name === "prepay") && type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
 
-    setDelivery((prevDelivery) => ({
-      ...prevDelivery,
-      [name]: newValue
-    }));
-  };
+  setDelivery((prevDelivery) => ({
+    ...prevDelivery,
+    [name]: newValue,
+  }));
+};
+
 
 
   const handleSalesPersonChange = (e:ChangeEvent <HTMLSelectElement>) =>{

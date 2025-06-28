@@ -101,12 +101,22 @@ const Page = () => {
       })
       .catch(() => setError("Failed to fetch select data"));
   }, []);
+const handleChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value, type } = e.target;
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-    const { name, value, type, checked } = e.target;
-    const newValue = type === "checkbox" ? checked : value;
-    setSupplier((prev) => ({ ...prev, [name]: newValue }));
-  };
+  const newValue =
+    type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
+
+  setSupplier((prev) => ({
+    ...prev,
+    [name]: newValue,
+  }));
+};
+
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

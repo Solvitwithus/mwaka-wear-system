@@ -228,17 +228,22 @@ const finalAmount = subTotal + shipping;
 
 const formattedFinalAmount = parseFloat(finalAmount.toFixed(2)); 
 const formattedsubtotalAmount = parseFloat(subTotal .toFixed(2)); 
-  const handleDeliveryChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement > ) => {
-    const { name, value, type } = e.target;
+const handleDeliveryChange = (
+  e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+) => {
+  const { name, value, type } = e.target;
 
-    // Handle boolean specifically for the 'offload' property
-    const newValue = name === "offload" || name ==="prepay" ? e.target.checked : value;
+  const newValue =
+    (name === "offload" || name === "prepay") && type === "checkbox"
+      ? (e.target as HTMLInputElement).checked
+      : value;
 
-    setDelivery((prevDelivery) => ({
-      ...prevDelivery,
-      [name]: newValue
-    }));
-  };
+  setDelivery((prevDelivery) => ({
+    ...prevDelivery,
+    [name]: newValue,
+  }));
+};
+
 
   const [success, setSuccess] = useState("");
   const [error, setError] = useState("");
@@ -255,61 +260,62 @@ const formattedsubtotalAmount = parseFloat(subTotal .toFixed(2));
 const handleQuotqtionAdd = async (e: FormEvent) => {
   e.preventDefault();
 
-  const payload = {
-    clientId: selectedClient?.id, // Ensure this is valid
-    deliveryDetails: {
-      address: delivery.address,
-      deliveryFrom: delivery.deliveryFrom,
-      vehicleId: delivery.vehicle,
-      driverId: delivery.driver,
-      shiftId: delivery.trip,
-      customerReference: delivery.customerReference,
-      comment: delivery.comment || "",
-      phoneNumber: delivery.phoneNumber,
-      accompaniedBy: delivery.accompaniedBy,
-      destination: delivery.destination,
-      deliveryDate: new Date(delivery.dueDate), // Ensure this is a valid date
-      prepay:delivery.prepay,
-      offload:delivery.offload
-    },
-    subtotal: formattedsubtotalAmount,
-    shipping: shipping,
-    grandTotal: formattedFinalAmount,
-    remarks: delivery.comment || "",
-    status: "New-sales-entry",
-    salesEntryItems: itemsTable.map((item) => ({
-        itemId: item.code, // Ensure this is valid
-        itemName: item.name, // Required
-        quantity: item.quantity,
-        unitPrice: item.itemPrice,
-        total: item.total,
-        discount: item.discountWholesale ?? 0,
-        tax: item.tax ?? 0,
-      })),
+  // const payload = {
+  //   clientId: selectedClient?.id, // Ensure this is valid
+  //   deliveryDetails: {
+  //     address: delivery.address,
+  //     deliveryFrom: delivery.deliveryFrom,
+  //     vehicleId: delivery.vehicle,
+  //     driverId: delivery.driver,
+  //     shiftId: delivery.trip,
+  //     customerReference: delivery.customerReference,
+  //     comment: delivery.comment || "",
+  //     phoneNumber: delivery.phoneNumber,
+  //     accompaniedBy: delivery.accompaniedBy,
+  //     destination: delivery.destination,
+  //     deliveryDate: new Date(delivery.dueDate), // Ensure this is a valid date
+  //     prepay:delivery.prepay,
+  //     offload:delivery.offload
+  //   },
+  //   salespersonId: selectedSalesperson?.id,
+  //   subtotal: formattedsubtotalAmount,
+  //   shipping: shipping,
+  //   grandTotal: formattedFinalAmount,
+  //   remarks: delivery.comment || "",
+  //   status: "New-sales-entry",
+  //   salesEntryItems: itemsTable.map((item) => ({
+  //       itemId: item.code, // Ensure this is valid
+  //       itemName: item.name, // Required
+  //       quantity: item.quantity,
+  //       unitPrice: item.itemPrice,
+  //       total: item.total,
+  //       discount: item.discountWholesale ?? 0,
+  //       tax: item.tax ?? 0,
+  //     })),
     
-  };
+  // };
 
-  console.log("payload:",payload);
+  // console.log("payload:",payload);
 
-  try {
-    const res = await axios.post("/api/auth/sales-entry", payload);
+  // try {
+  //   const res = await axios.post("/api/auth/sales-entry", payload);
 
-    if (res.status === 200 || res.status === 201) {
+  //   if (res.status === 200 || res.status === 201) {
   
-      // Reset form if needed:
-      setDelivery(initialState);
-      setSelectedClient(null);
-      setItemsTable([ /* reset item table */ ]);
-       setSuccess(res.data.message)
-    } else {
-      console.error("Unexpected response:", res);
-      setError(res.data.error)
+  //     // Reset form if needed:
+  //     setDelivery(initialState);
+  //     setSelectedClient(null);
+  //     setItemsTable([ /* reset item table */ ]);
+  //      setSuccess(res.data.message)
+  //   } else {
+  //     console.error("Unexpected response:", res);
+  //     setError(res.data.error)
      
-    }
-  } catch (error) {
-    console.error("Error submitting quotation:");
-    alert(error);
-  }
+  //   }
+  // } catch (error) {
+  //   console.error("Error submitting quotation:");
+  //   alert(error);
+  // }
 };
     return(
         // container
