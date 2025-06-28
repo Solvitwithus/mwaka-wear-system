@@ -151,7 +151,7 @@ router.back()
       </div>
       <div className="flex flex-col justify-center">
       <label htmlFor="" className="text-[0.9rem] text-blue-950 font-semibold">Comment:</label>
-      <textarea name="" id=""   className="w-full bg-slate-300 text-xs rounded-md p-2"
+      <textarea className="w-full bg-slate-300 text-xs rounded-md p-2"
             rows={4}></textarea>
       </div>
 <div className="flex gap-2 justify-center items-center my-2">

@@ -1,5 +1,5 @@
 "use client"
-import { useEffect } from 'react';
+import { Suspense, useEffect } from 'react';
 import { usePermissionStore } from '@/store/usePermissionStore';
 import Link from 'next/link';
 import StudIcon from "@/assets/LinkBar.svg"
@@ -92,6 +92,16 @@ if (loading) return (
   const filteredReports = report.filter(itm => permissions[itm.permission as keyof Permissions])
   const filteredSettings = settings.filter(itm => permissions[itm.permission as keyof Permissions])
   return (
+          <Suspense fallback={<div className="p-4">
+                <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+                  <Skeleton className="rounded-lg h-24 bg-gray-300" />
+                  <div className="space-y-3">
+                    <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+                    <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+                    <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+                  </div>
+                </div>
+              </div>}>
     <div className=' bg-[#EFEFEF] h-max mx-5 mt-1 rounded-md'>
       {/* wrapper */}
       <div className='flex justify-center gap-4'>
@@ -132,6 +142,7 @@ if (loading) return (
       </div>
       <span className='bg-[#FF8C00] text-white font-bold px-3 py-1 rounded-md cursor-pointer'>Contact Support</span>
     </div>
+    </Suspense>
   );
 };
 

@@ -98,7 +98,7 @@ paymentTerms:"",
 refNo:""
 }
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
     const [curr, setCurr] = useState<Currency[]>([])
     const fetchCurrencies = async()=>{
@@ -417,7 +417,7 @@ return(
 </div>
           <div className='flex justify-end gap-2 mb-1'>
     <label className='text-sm text-black'>Comment:</label>
-    <textarea name="comment" value={addClient.comment} onChange={handleChange} aria-placeholder='comment' cols={30} rows={4}>Enter comment</textarea>
+    <textarea name="comment" value={addClient.comment} onChange={handleChange} aria-placeholder='comment' cols={30} rows={4}></textarea>
 </div>
 <div className='flex justify-end gap-2 mb-1'>
     <label className='text-sm text-black'>Customer ID:</label>
@@ -489,4 +489,4 @@ return(
   )
 }
 
-export default page
+export default Page

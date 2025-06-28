@@ -1,13 +1,14 @@
-// app/sales/page.tsx or wherever you're using it
-"use client"
-import { useEffect } from 'react';
-import { usePermissionStore } from '@/store/usePermissionStore';
-import Link from 'next/link';
-import StudIcon from "@/assets/LinkBar.svg"
-import reportIcon from '@/assets/ReportIcon.svg'
-import SettingsIcon from '@/assets/SettingsIcon.svg'
-import Image from 'next/image';
-import { Skeleton } from '@heroui/skeleton';
+"use client";
+
+import { useEffect } from "react";
+import { usePermissionStore } from "@/store/usePermissionStore";
+import Link from "next/link";
+import Image from "next/image";
+import StudIcon from "@/assets/LinkBar.svg";
+import reportIcon from "@/assets/ReportIcon.svg";
+import SettingsIcon from "@/assets/SettingsIcon.svg";
+import { Skeleton } from "@heroui/skeleton";
+
 type Permissions = {
   SalesDashboard: boolean;
   CustomerAnalysis: boolean;
@@ -19,18 +20,30 @@ type Permissions = {
   AddandManageLeads: boolean;
   SalesArea: boolean;
   SalesGroups: boolean;
-  
 };
-const Page = () => {
-  const { permissions, loading, fetchPermissions } = usePermissionStore();
 
-  useEffect(() => {
-    fetchPermissions();
-  }, [fetchPermissions]);
+const menu = [
+  { title: "Sales Dashboard", link: "/procurement/", permission: "SalesDashboard", image: StudIcon },
+  { title: "Customer Analysis", link: "/sales/pos-report", permission: "CustomerAnalysis", image: StudIcon },
+];
 
-if (loading) return (
+const report = [
+  { title: "Customer Transaction View", link: "/procurement/", permission: "CustomerTransactionView", image: reportIcon },
+  { title: "Customer Listing", link: "/sales/pos-report", permission: "CustomerListing", image: reportIcon },
+  { title: "Customer Remarks", link: "/procurement/", permission: "CustomerRemarks", image: reportIcon },
+  { title: "Disqualified Leads", link: "/sales/pos-report", permission: "DisqualifiedLeads", image: reportIcon },
+  { title: "Appointments", link: "/procurement/", permission: "Appointment", image: reportIcon },
+];
+
+const settings = [
+  { title: "Add and Manage Leads", link: "/procurement/", permission: "AddandManageLeads", image: SettingsIcon },
+  { title: "Sales Area", link: "/procurement/", permission: "SalesArea", image: SettingsIcon },
+  { title: "Sales Groups", link: "/procurement/", permission: "SalesGroups", image: SettingsIcon },
+];
+
+const SkeletonLoader = () => (
   <div className="p-4">
-    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
+    <div className="w-full opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
       <Skeleton className="rounded-lg h-24 bg-gray-300" />
       <div className="space-y-3">
         <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
@@ -40,83 +53,69 @@ if (loading) return (
     </div>
   </div>
 );
-  if (!permissions)  return (
-  <div className="p-4">
-    <div className="w-[100%] opacity-20 space-y-5 p-4 rounded-lg border border-gray-300 shadow-md bg-white">
-      <Skeleton className="rounded-lg h-24 bg-gray-300" />
-      <div className="space-y-3">
-        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
-        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
-        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
-      </div>
-    </div>
-  </div>)
 
-  const menu =[
-    {title:"Sales Dashboard",link:"/procurement/",permission:"SalesDashboard",image:StudIcon},
-    {title:"Customer Analysis",link:"/sales/pos-report",permission:"CustomerAnalysis",image:StudIcon},
-   
+const Page = () => {
+  const { permissions, loading, fetchPermissions } = usePermissionStore();
 
-  ]
+  useEffect(() => {
+    fetchPermissions();
+  }, [fetchPermissions]);
 
-  const report =[
-    {title:"Customer Transaction View",link:"/procurement/",permission:"CustomerTransactionView",image:reportIcon},
-    {title:"Customer Listing",link:"/sales/pos-report",permission:"CustomerListing",image:reportIcon},
-    {title:"Customer Remarks",link:"/procurement/",permission:"CustomerRemarks",image:reportIcon},
-  {title:"Disqualified Leads",link:"/sales/pos-report",permission:"DisqualifiedLeads",image:reportIcon},
-    {title:"Appointments",link:"/procurement/",permission:"Appointments",image:reportIcon},
-  ]
+  if (loading || !permissions) return <SkeletonLoader />;
 
-  const settings = [
-    {title:"Add and Manage Leads",link:"/procurement/",permission:"AddandManageLeads",image:SettingsIcon},
-    {title:"Sales Area",link:"/procurement/",permission:"SalesArea",image:SettingsIcon},
-  {title:"Sales roups",link:"/procurement/",permission:"SalesGroups",image:SettingsIcon},
+  const filteredMenu = menu.filter((item) => permissions[item.permission as keyof Permissions]);
+  const filteredReports = report.filter((item) => permissions[item.permission as keyof Permissions]);
+  const filteredSettings = settings.filter((item) => permissions[item.permission as keyof Permissions]);
 
-  ]
-
-  const filteredMenu = menu.filter(item => permissions[item.permission as keyof Permissions]);
-  const filteredReports = report.filter(itm => permissions[itm.permission as keyof Permissions])
-  const filteredSettings = settings.filter(itm => permissions[itm.permission as keyof Permissions])
   return (
-    <div className=' bg-[#EFEFEF] h-max mx-5 mt-1 rounded-md'>
-      {/* wrapper */}
-      <div className='flex justify-center gap-4'>
-        {/* left content */}
-        <div className=' flex flex-col bg-[#CACACA] w-1/3 border-[1px] border-black m-2 h-fit rounded-md'>
-      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Customer Relationship Management Operations</span>
-      <div className='ml-2'>
-        {
-         filteredMenu.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
-          <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
-          <span className="text-[#8E530D] cursor-pointer font-medium text-sm">{val.title}</span>
-          </Link>))
-        }
-        </div>
+    <div className="bg-[#EFEFEF] h-max mx-5 mt-1 rounded-md">
+      <div className="flex justify-center gap-4">
+        {/* Left Panel */}
+        <div className="flex flex-col bg-[#CACACA] w-1/3 border border-black m-2 rounded-md">
+          <span className="bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm">
+            Customer Relationship Management Operations
+          </span>
+          <div className="ml-2">
+            {filteredMenu.map((val, idx) => (
+              <Link href={val.link} key={idx} className="flex gap-2 mb-1">
+                <Image src={val.image} alt="icon" height={20} width={20} />
+                <span className="text-[#8E530D] font-medium text-sm">{val.title}</span>
+              </Link>
+            ))}
+          </div>
         </div>
 
-        {/* right content */}
-        <div className=' flex flex-col bg-[#CACACA] w-2/3 border-[1px] border-black m-2 h-96 rounded-md'>
-      <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Customer Relationship Management Reports and Inquiries</span>
-      <div className='ml-2'>
-      {
-         filteredReports.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
-          <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
-          <span className="text-[#249B00] cursor-pointer font-medium text-sm">{val.title}</span>
-          </Link>))
-        }
-        </div>
-        <span className=' bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm'>Customer Relationship Management Setups and Company Configuration</span>
-        <div className='ml-2'>
-          {
-             filteredSettings.map((val,idx)=>(<Link href={val.link} key={idx} className='flex gap-2 mb-1'>
-              <Image src={val.image} alt="Stud-icon" height={20} width={20} title={val.link}/>
-              <span className="text-[#333333] cursor-pointer font-medium text-sm">{val.title}</span>
-              </Link>))
-          }
-        </div>
+        {/* Right Panel */}
+        <div className="flex flex-col bg-[#CACACA] w-2/3 border border-black m-2 rounded-md">
+          <span className="bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm">
+            Customer Relationship Management Reports and Inquiries
+          </span>
+          <div className="ml-2">
+            {filteredReports.map((val, idx) => (
+              <Link href={val.link} key={idx} className="flex gap-2 mb-1">
+                <Image src={val.image} alt="icon" height={20} width={20} />
+                <span className="text-[#249B00] font-medium text-sm">{val.title}</span>
+              </Link>
+            ))}
+          </div>
+
+          <span className="bg-[#006E7A] mb-2 px-4 ml-2 rounded-md mt-1 py-1 w-fit text-[#FF8C00] font-semibold text-sm">
+            Customer Relationship Management Setups and Company Configuration
+          </span>
+          <div className="ml-2 mb-4">
+            {filteredSettings.map((val, idx) => (
+              <Link href={val.link} key={idx} className="flex gap-2 mb-1">
+                <Image src={val.image} alt="icon" height={20} width={20} />
+                <span className="text-[#333333] font-medium text-sm">{val.title}</span>
+              </Link>
+            ))}
+          </div>
         </div>
       </div>
-      <span className='bg-[#FF8C00] text-white font-bold px-3 py-1 rounded-md cursor-pointer'>Contact Support</span>
+
+      <span className="bg-[#FF8C00] text-white font-bold px-3 py-1 rounded-md cursor-pointer">
+        Contact Support
+      </span>
     </div>
   );
 };

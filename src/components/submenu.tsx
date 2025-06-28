@@ -159,7 +159,7 @@ const Submenu = () => {
       <nav className='flex justify-between items-center border border-black bg-[#D9D9D9] px-2 py-1 mx-1 mt-[0.5px] h-9'>
         <span className='text-[#894B00] text-sm font-semibold font-sans inline'>
           MwaKa Clothing Center | skeletalerpapp.vercel.com | SolvIt Support
-          <Link href="/chathub" className='font-serif text-[#2b8508]'> --- ChatHub ---</Link>
+          <Link href="/ChatHubPage" className='font-serif text-[#2b8508]'> --- ChatHub ---</Link>
         </span>
         <div className='flex gap-4'>
           {menuItems.map((item, index) => (

@@ -225,11 +225,13 @@
 
 // export default ChatUploader;
 
-
-import React from 'react'
-
-export const page = () => {
+"use client"
+export default function ChatHubPage() {
   return (
-    <div>Feature coming soon</div>
-  )
+    <div>
+      <h1>ChatHub</h1>
+      {/* ...your component JSX */}
+    </div>
+  );
 }
+
