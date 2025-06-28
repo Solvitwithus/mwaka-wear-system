@@ -68,7 +68,7 @@ export async function POST(req: NextRequest) {
     response.cookies.set("authToken", token, {
       httpOnly: true,
       secure: true, // ✅ false for local, true in production
-      sameSite: "strict",
+      sameSite: "lax",
       path: "/",
       maxAge: 60 * 60 * 3, // 3 hours in seconds
     });
