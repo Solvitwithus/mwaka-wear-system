@@ -6,7 +6,7 @@ import "./globals.css";
 import ConditionalMenu from "@/components/ConditionalMenu";
 import { ThemeProvider } from "@/components/theme-provider";
 import Head from "next/head";
-
+import RegisterSW from "@/components/RegisterSW";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -45,7 +45,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased m-0 overflow-x-auto bg-[#9FBFC5] whitespace-nowrap flex`}
       >
-        
+        <RegisterSW />
         <div className="flex-1">
           
           
