@@ -1,54 +1,86 @@
 "use client"
 import React,{ChangeEvent, FormEvent,useEffect,useCallback, useState} from 'react';
-import SortIcon from '@/assets/sortIcon.svg'
 import Image from 'next/image';
 import { Input } from '@/components/ui/input';
 import Delete from "@/assets/deleteIcon.svg"
 import Edit from '@/assets/editIcon.svg'
 import axios from 'axios';
-type branchOffice = {
- branchCode: string;
+import { ArrowUpDown} from 'lucide-react';
+
+type BranchOffice = {
+  branchCode: string;
   name: string;
 };
 
-interface user{
-  firstName:string,
-  lastName:string,
-  userName:string,
-  shortName:string,
-  address:string,
-  email:string,
-  password:string,
-  roleId:string,
-  branch:string,
-  phone1:string,
-  phone2:string,
-  description:string
-}
-const initialState={
-  firstName:"",
-  lastName:"",
-  userName:"",
-  shortName:"",
-  address:"",
-  email:"",
-  password:"",
-  roleId:"",
-  branch:"",
-  phone1:"",
-  phone2:"",
-  description:""
-}
+type Role = {
+  id: string;
+  name: string;
+  description?: string;
+};
+
+type User = {
+  id: string;
+  userName: string;
+  password: string;
+  firstName: string;
+  lastName: string;
+  shortName: string;
+  address: string;
+  email: string;
+  roleId: string;
+  branch: string;
+  phone1: string;
+  phone2: string;
+  description?: string;
+  role?: Role;
+};
+
+const initialState: User = {
+  id: '',
+  userName: '',
+  password: '',
+  firstName: '',
+  lastName: '',
+  shortName: '',
+  address: '',
+  email: '',
+  roleId: '',
+  branch: '',
+  phone1: '',
+  phone2: '',
+  description: '',
+};
 const Page = () => {
   
-  type fedrole = {
-    id: string;
-    name: string;
-  }
-  const [role, setRole] = useState<fedrole[]>([]);
+  
+   const [roles, setRoles] = useState<Role[]>([]);
   const [error, setError] = useState<string>("");
   const [success, setSuccess] = useState<string>("");
-    const [branchOffices, setBranchOffices] = useState<branchOffice[]>([]);
+    const [branchOffices, setBranchOffices] = useState<BranchOffice[]>([]);
+const [usersFetched, setUsersFetched] = useState<User[]>([]);
+ 
+   const [editingUser, setEditingUser] = useState<User | null>(null);
+   const [searchTerm, setSearchTerm] = useState('');
+const [filterRole, setFilterRole] = useState('');
+const [sortAsc, setSortAsc] = useState(true);
+      const fetchData = useCallback(async () => {
+    try {
+      const [usersResponse, rolesResponse, branchesResponse] = await Promise.all([
+        axios.get('/api/auth/user'),
+        axios.get('/api/auth/role'),
+        axios.get('/api/auth/addbranch'),
+      ]);
+      setUsersFetched(usersResponse.data);
+      setRoles(rolesResponse.data);
+      setBranchOffices(branchesResponse.data);
+    } catch (err: any) {
+      setError('Failed to fetch data');
+    }
+  }, []);
+
+  useEffect(() => {
+    fetchData();
+  }, [fetchData]);
 
     const fetchBranch = useCallback(async()=>{
       try{
@@ -70,7 +102,7 @@ try{
 setError(echo.error)
   }
   else{
-    setRole(echo)
+    setRoles(echo)
   }
 }
 
@@ -87,68 +119,37 @@ catch (error) {
     fetchRole()
     fetchBranch()
   },[fetchRole,fetchBranch])
-  const [formData, setFormData] = useState<user>(initialState);
+  const [formData, setFormData] = useState<User>(initialState);
 
 
   const handleInputChange = (e:ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>)=>{
 const {name,value} = e.target
 setFormData({...formData,[name]:value})
   }
-  const [refreshUsers, setRefreshUsers] = useState(false);
+ 
 const handleUserCreation =async(e:FormEvent<HTMLFormElement>)=>{
-  e.preventDefault()
-  try{
-    const response = await fetch("/api/auth/user",{
-method:"POST",
-headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData)
-    })
-    const echo = await response.json()
-    if(!response.ok){
-     setError(echo.error)
+   e.preventDefault();
+    try {
+      const url = editingUser ? `/api/auth/user/${editingUser.id}` : '/api/auth/user';
+      const method = editingUser ? 'PUT' : 'POST';
+      const response = await axios({
+        method,
+        url,
+        data: formData,
+        headers: { 'Content-Type': 'application/json' },
+      });
+
+      setSuccess(response.data.message || (editingUser ? 'User updated successfully' : 'User created successfully'));
+      setFormData(initialState);
+      setEditingUser(null);
+      fetchData();
+    } catch (err: any) {
+      setError(err.response?.data?.error || 'Failed to save user');
     }
-    else{
-      
-      
-      setSuccess( echo.message)
-      setFormData(initialState)
-      setRefreshUsers(prev => !prev);
-    }
-  }
-  catch (error) {
-    setError(`Error fetching roles: ${error}`);
-  }
-  
-  
-  
-
-}
+  };
 
 
-const [usersFetched, setUsersFetched] = useState<user[]>([]);
-// Update this useCallback hook
-const fetchExistingUsers = useCallback(async () => {
-  try {
-    const response = await fetch("/api/auth/user", {
-      method: "GET",
-      headers: { 'Content-Type': 'application/json' },
-    });
-    const echo = await response.json();
-    if (!response.ok) {
-      setError(echo.error || "Failed to fetch Users!");
-    } else {
-      setUsersFetched(echo);
-     
-    }
-  } catch (err) {
-    setError(`Error fetching: ${err}`);
-  }
-}, []);
 
-useEffect(()=>{
-  fetchExistingUsers()
-
-},[refreshUsers])
 
 
 useEffect(() => {
@@ -161,6 +162,37 @@ useEffect(() => {
   }
 }, [error, success]);
 
+
+  const handleDelete = async (id: string) => {
+   
+      try {
+        await axios.delete(`/api/auth/user/${id}`);
+        setSuccess('User deleted successfully');
+        fetchData();
+      } catch (err: any) {
+        setError('Failed to delete user');
+      }
+    
+  };
+const handleEdit = (user: User) => {
+    setEditingUser(user);
+    setFormData({...user,password:""});
+  };
+
+
+  const filteredUsers = usersFetched
+  .filter((user) => {
+    const fullName = `${user.firstName} ${user.lastName}`.toLowerCase();
+    const matchesSearch = fullName.includes(searchTerm.toLowerCase()) || user.email.toLowerCase().includes(searchTerm.toLowerCase());
+    const matchesRole = !filterRole || roles.find(r => r.id === user.roleId)?.name === filterRole;
+    return matchesSearch && matchesRole;
+  })
+  .sort((a, b) => {
+    const nameA = `${a.firstName} ${a.lastName}`.toLowerCase();
+    const nameB = `${b.firstName} ${b.lastName}`.toLowerCase();
+    if (sortAsc) return nameA.localeCompare(nameB);
+    else return nameB.localeCompare(nameA);
+  });
 
   return (
     <>
@@ -223,7 +255,7 @@ useEffect(() => {
     className='border-[#ac4b3a] border-[0.5px] rounded-sm w-50 px-2 focus:outline-dotted focus:border-blue-500 placeholder-gray-500 font-mono'
   >
     <option value="">Select role</option>
-    {role.map((val) => (
+    {roles.map((val) => (
       <option key={val.id} value={val.id}>
         {val.name}
       </option>
@@ -260,66 +292,96 @@ useEffect(() => {
 
         </div>
         <div className='flex justify-center'>
-        <button type='submit' className='text-sm font-medium text-[#1b8a24] mr-4'>Submit</button>
-        <button className='text-sm font-medium text-[#d84949]'>Cancel</button>
+        <button type='submit' className='text-sm font-medium text-[#1b8a24] transition mr-4' >{editingUser ? 'Update User' : 'Create User'}</button>
+        <button className='text-sm font-medium text-[#d84949]' onClick={()=>{setFormData(initialState);setEditingUser(null);}}>Cancel</button>
         </div>
         
       </form>
       
-        {success && <p className='text-green-500 absolute z-10 bottom-2 right-2 p-1 rounded-md bg-[#c3e44d] font-medium border-[1px] border-black'>{success}</p>}
-        {error && <p className=' text-red-500 absolute z-10 bottom-2 right-2 p-1 rounded-md bg-[#c3e44d] font-medium border-[1px] border-black'>{error}</p>}
+        {success && <p className='text-white absolute z-10 bottom-2 right-2 p-1 rounded-md bg-green-500 font-medium border-[1px] border-black'>{success}</p>}
+        {error && <p className=' text-white absolute z-10 bottom-2 right-2 p-1 rounded-md bg-red-500 font-medium border-[1px] border-black'>{error}</p>}
       
       </div>
 
-      <h3 className='font-semibold text-[#1b798a] border-b-[1px] border-black mx-2 mb-1'>Existing USers</h3>
+      <h3 className='font-semibold text-[#2e8a1b] border-b-[1px] border-black mx-2 mb-1'>Existing Users</h3>
 
       {/* Display Section */}
       <div className='border-[#ac4b3a] border-x-[0.5px] border-t-[0.5px]  rounded-md w-[99%] flex flex-col mx-auto p-2' >
         <div className='flex justify-end border-b-2 border-black mb-2 p-1'>
-<input type='text' placeholder='Search user' className='border-[1px] text-[#1b8a24] border-[#419253c9] px-3 w-36 py-0 my-0 mx-2 rounded-lg'/>
-<select className='border-[1px] text-[#1b798a] border-[#419253c9] rounded-md'>
-        <option>Role filter</option>
-        <option>Admin</option>
-        <option>Cashier</option>
-      </select>
-<Image src={SortIcon} alt='sortIcon' height={28} width={28} className='mx-1'/>
+<input
+  type='text'
+  placeholder='Search user'
+  value={searchTerm}
+  onChange={(e) => setSearchTerm(e.target.value)}
+  className='border-[1px] text-[#1b8a24] border-[#419253c9] px-3 w-36 h-6 py-0 my-0 mx-2 rounded-lg'
+/>
+
+<select
+  value={filterRole}
+  onChange={(e) => setFilterRole(e.target.value)}
+  className='border-[1px] text-[#1b798a] border-[#419253c9] rounded-md'
+>
+  <option value="">Filter by Role</option>
+  {roles.map((val) => (
+    <option key={val.id} value={val.name}>{val.name}</option>
+  ))}
+</select>
+
+<ArrowUpDown
+  height={20}
+  width={20}
+  className='cursor-pointer'
+  onClick={() => setSortAsc(!sortAsc)}
+/>
+
+
 </div>
 
       
-<div className='max-h-60 min-h-60 overflow-y-auto mb-2'>
-  <table className="table-auto border-collapse w-full">
+<div className='max-h-56 min-h-56 overflow-y-auto mb-2'>
+  <table className="text-left text-sm border-collapse w-full">
     <thead className="bg-[#1b798a] text-white font-sans text-sm sticky top-0">
       <tr>
-        <th>No:</th>
-        <th>Name:</th>
-        <th>Role:</th>
-        <th>email:</th>
-        <th>Description</th>
-        <th>phone:</th>
-        <th>user Name:</th>
-        <th>address:</th>
-        <th>Branch:</th>
-        <th>Short Name:</th>
-        <th>Action</th>
+        <th className='border border-[#777777]'>No:</th>
+        <th className='border border-[#777777]'>Name:</th>
+        <th className='border border-[#777777]'>Role:</th>
+        <th className='border border-[#777777]'>email:</th>
+        <th className='border border-[#777777]'>Description</th>
+        <th className='border border-[#777777]'>phone:</th>
+        <th className='border border-[#777777]'>user Name:</th>
+        <th className='border border-[#777777]'>address:</th>
+        <th className='border border-[#777777]'>Branch:</th>
+        <th className='border border-[#777777]'>Short Name:</th>
+        <th className='border border-[#777777]'>Action</th>
       </tr>
     </thead>
  
     <tbody>
-  {usersFetched.map((user, index) => (
-    <tr key={user.userName}> {/* assuming username is unique */}
-      <td>{index + 1}</td>
-      <td>{user.firstName} {user.lastName}</td>
-      <td>{role.find(r => r.id === user.roleId)?.name || "N/A"}</td>
-      <td>{user.email}</td>
-      <td>{user.description}</td>
-      <td>{user.phone1}, {user.phone2}</td>
-      <td>{user.userName}</td>
-      <td>{user.address}</td>
-      <td>{user.branch}</td>
-      <td>{user.shortName}</td>
-      <td className='flex gap-2 justify-center'>
+  {
+  filteredUsers.length === 0 ?
+  <tr>
+  <td colSpan={11} className="text-center p-4 border border-[#777777]">
+                    No user records found!
+                  </td></tr>:
+  filteredUsers.map((user, index) => (
+    <tr key={user.userName} className='hover:bg-[#f3dfda] cursor-pointer'> 
+      <td className='border border-[#777777]'>{index + 1}</td>
+      <td className='border border-[#777777]'>{user.firstName} {user.lastName}</td>
+      <td className='border border-[#777777]'>{roles.find(r => r.id === user.roleId)?.name || "N/A"}</td>
+      <td className='border border-[#777777]'>{user.email}</td>
+      <td className='border border-[#777777]'>{user.description}</td>
+      <td className='border border-[#777777]'>{user.phone1}, {user.phone2}</td>
+      <td className='border border-[#777777]'>{user.userName}</td>
+      <td className='border border-[#777777]'>{user.address}</td>
+      <td className='border border-[#777777]'>{user.branch}</td>
+      <td className='border border-[#777777]'>{user.shortName}</td>
+      <td className='flex space-x-2 border border-[#777777]'>
+        <button onClick={() => handleEdit(user)}>
         <Image src={Edit} alt="edit" width={18} height={18} />
-        <Image src={Delete} alt="delete" width={18} height={18} />
+        </button>
+        <button onClick={()=>handleDelete(user.id)}>
+        <Image src={Delete} alt="delete" width={18} height={18}/>
+        </button>
       </td>
     </tr>
   ))}

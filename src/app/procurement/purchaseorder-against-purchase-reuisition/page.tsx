@@ -124,7 +124,7 @@ const handleLocalDataParsing = async (entry: PurchaseReqEntry) => {
     });
 
     if (res.status === 200) {
-      alert("Supplier Requisition Approved!");
+      alert("Order Placed Successfully! Print PDF to email supplier");
 
       // Navigate only after success
       router.push("/procurement/purchaseorder-against-purchase-reuisition/dox");

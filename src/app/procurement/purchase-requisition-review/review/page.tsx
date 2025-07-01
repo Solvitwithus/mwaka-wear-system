@@ -60,7 +60,7 @@ const Page = () => {
         };
         setReqData(withItemsKeyFixed);
       } catch (error) {
-        console.error("Error parsing SupplierReqData:", error);
+       
       }
     }
   }, []);
@@ -73,11 +73,9 @@ const Page = () => {
         status: "reviewed",
       });
       if (res.status === 200) {
-        alert("Supplier Requisition Approved!");
         router.back();
       }
     } catch (err) {
-      console.error(err);
       alert("Failed to approve requisition.");
     }
   };
@@ -86,9 +84,11 @@ const Page = () => {
 
   return (
     <div className="p-4">
+      
       {reqData ? (
         <div className="bg-white p-4 rounded-md shadow-md space-y-6">
           {/* Supplier Info */}
+           <h2 className="text-left text-md font-serif font-bold mb-2">Purchase Requisition Review for Order: {reqData.id}</h2>
           <div className="border border-gray-300 p-3 rounded-md">
             <h2 className="text-center text-md font-bold mb-2">Supplier Information</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -195,7 +195,7 @@ const Page = () => {
               onClick={handleApprove}
               className="bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-md font-semibold"
             >
-              Approve Requisition
+              Approve Review
             </button>
             <button
               onClick={() => router.back()}

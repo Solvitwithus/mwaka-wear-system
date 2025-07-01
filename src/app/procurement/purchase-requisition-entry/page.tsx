@@ -283,12 +283,12 @@ const handleQuotqtionAdd = async (e: FormEvent) => {
       setItemsTable([ /* reset item table */ ]);
        setSuccess(res.data.message)
     } else {
-      console.error("Unexpected response:", res);
+      
       setError(res.data.error)
      
     }
   } catch (error) {
-    console.error("Error submitting quotation:");
+   
     alert("An error occurred while submitting the quotation.");
   }
 };

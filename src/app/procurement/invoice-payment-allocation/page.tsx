@@ -400,7 +400,7 @@ const Page = () => {
                         className="bg-[#1393AB] text-white px-2 py-1 rounded text-xs"
                         onClick={() => handleLocalDataParsing(entry)}
                       >
-                        Process⚙️
+                        Allocate💵
                       </button>
                     </td>
                   </tr>

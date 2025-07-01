@@ -5,16 +5,7 @@ import bcrypt from 'bcryptjs'
 export async function POST(req:NextRequest){
 const {firstName,lastName,userName,shortName,address,email,password,roleId,branch,phone1,phone2,description}=await req.json()
 try{
-// const existing = await prisma.user.findUnique({
-//     where:{
-//         userName,
-//         email
-//     }
-// })
 
-// if(existing){
-//     return NextResponse.json({error: "User already exist"})
-// }
 
 const [existingEmail, existingUsername] = await Promise.all([
     prisma.user.findUnique({ where: { email } }),
@@ -69,3 +60,5 @@ export async function GET() {
       await prisma.$disconnect();
     }
   }
+
+  

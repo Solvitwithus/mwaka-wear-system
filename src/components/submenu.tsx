@@ -1,81 +1,4 @@
-
-// import Image from 'next/image';
-// import React, { useEffect, useState } from 'react';
-// import credentialImage from "@/assets/change-cedentials-icon.svg";
-// import logoutImage from "@/assets/logout.svg";
-// import axios from 'axios';
-// import { setTimeout } from 'timers/promises';
-// const handleCredentialChange =()=>{
-//   alert("Credentials")
-// }
-// const [success, setsuccess] = useState<string>("");
-// useEffect(() => {
-//   const warningTimer = setTimeout(()=>{
-// setsuccess("Your Token will expire after 30 seconds")
-//   },30000)
-
-//   const LogoutTimer = setTimeout(() => {
-//     setsuccess("Login Again!")
-//   },60000);
-//   return()=>{
-//     clearTimeout(warningTimer)
-//     clearTimeout(LogoutTimer)
-//   }
-// }, []);
-// const handleLogout = async () => {
-//   try {
-//     await axios.post("/api/auth/logout", {}, { withCredentials: true });
-//     window.location.href = "/";
-//   } catch (error) {
-//     console.error("Logout failed:", error);
-//   }
-// };
-// const menuItems = [
-//   {
-//     icon: credentialImage,
-//     alt: "Change Credentials Icon",
-//     label: "Change Credentials",
-//     textColor: "text-[#244D00]",
-//     handleEvent:handleCredentialChange
-//   },
-//   {
-//     icon: logoutImage,
-//     alt: "Logout Icon",
-//     label: "Log Out",
-//     textColor: "text-black",
-//     handleEvent:handleLogout
-//   },
-// ];
-
-// const SubmenuItem = ({ icon, alt, label, textColor,handleEvent }: {
-//   icon: any;
-//   alt: string;
-//   label: string;
-//   textColor: string;
-//   handleEvent:()=>void
-// }) => (
-//   <div className='flex gap-2 items-center cursor-pointer ' onClick={handleEvent}>
-//     <Image src={icon} alt={alt} height={18} width={18} />
-//     <span className={`${textColor} text-sm font-medium font-serif`}>{label}</span>
-//   </div>
-// );
-
-// const Submenu = () => {
- 
-//     <nav className='flex justify-between items-center border border-black bg-[#D9D9D9] px-2 py-1 mx-1 mt-[0.5px]'>
-//       <span className='text-[#894B00] text-sm font-semibold font-sans'>
-//         MwaKa Clothing Center | skeletalerpapp.vercel.com | SolvIt Support
-//       </span>
-//       <div className='flex gap-4'>
-//         {menuItems.map((item, index) => (
-//           <SubmenuItem key={index} {...item} />
-//         ))}
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Submenu;
+"use client"
 
 
 import Image from 'next/image';
@@ -85,7 +8,9 @@ import logoutImage from "@/assets/logout.svg";
 import axios from 'axios';
 import Link from 'next/link';
 import { ModeToggle } from './ui/darkmode';
-
+import { useRouter } from 'next/navigation';
+const Submenu = () => {
+ const router = useRouter()
 const handleCredentialChange = () => {
   alert("Change Credentials clicked!");
 };
@@ -93,6 +18,7 @@ const handleCredentialChange = () => {
 const handleLogout = async () => {
   try {
     await axios.post("/api/auth/logout", {}, { withCredentials: true });
+    router.refresh()
     window.location.href = "/";
   } catch (error) {
     console.error("Logout failed:", error);
@@ -112,7 +38,9 @@ const SubmenuItem = ({ icon, alt, label, textColor, handleEvent }: {
   </div>
 );
 
-const Submenu = () => {
+
+
+ 
   const [success, setSuccess] = useState<string>("");
 
   useEffect(() => {
@@ -127,7 +55,7 @@ const Submenu = () => {
     const logoutTimer = setTimeout(() => {
       setSuccess("🔒 Session expired. Please login again.");
       setTimeout(() => {
-        window.location.reload();
+        router.refresh()
       }, 2000);
     }, 10800*1000);
 

@@ -141,7 +141,7 @@ const handleLocalDataParsing = async(entry: any) => {
 
   return (
     <div className="bg-[#EFEFEF] m-1 rounded-md p-1 h-fit">
-      <h4 className="text-black font-medium text-base ml-1">Foward Items to be Thrifted</h4>
+      <h4 className="text-black font-medium text-base ml-1">Foward Items for Thrifting</h4>
 
       {/* Filters */}
       <div className="flex flex-col border-black border-[1px] p-2 space-y-2 rounded-md">
@@ -237,7 +237,7 @@ const handleLocalDataParsing = async(entry: any) => {
                 
                     <td className="p-2 border">
                       <button className="bg-[#1393AB]  text-white px-2 py-1 rounded text-xs" onClick={()=>handleLocalDataParsing(entry)}>
-                        Process⚙️
+                        Foward Order🚗
                       </button>
                     </td>
                   </tr>

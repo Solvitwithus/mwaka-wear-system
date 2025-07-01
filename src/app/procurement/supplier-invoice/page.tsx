@@ -122,7 +122,7 @@ router.push("/procurement/supplier-invoice/process-invoice")
 
   return (
     <div className="bg-[#EFEFEF] m-1 rounded-md p-1 h-fit">
-      <h4 className="text-black font-medium text-base ml-1">Confirm Arrival of Order</h4>
+      <h4 className="text-black font-medium text-base ml-1">Invoice for GRN</h4>
 
       {/* Filters */}
       <div className="flex flex-col border-black border-[1px] p-2 space-y-2 rounded-md">

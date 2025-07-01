@@ -80,7 +80,7 @@ const PosLandingPage = () => {
                 <a
                   key={idx}
                   href={val.link}
-                  className="text-[#A4F1FF] text-lg hover:text-[#FF8C00] transition-colors"
+                  className="text-[#A4F1FF] flex justify-center gap-4 mr-4 bg-[#1393AB]/20 rounded-md border mb-1 text-lg hover:text-[#FF8C00] transition-colors"
                 >
                   {val.name}
                 </a>
