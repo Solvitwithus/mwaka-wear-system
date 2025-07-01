@@ -1,11 +1,10 @@
 {
   "name": "Mwaka Wear POS",
   "short_name": "MwakaPOS",
-  "start_url": "/sales/pos",
+  "start_url": "/",
   "display": "standalone",
-  "background_color": "#999999",
   "theme_color": "#0f4f20",
-  "description": "POS system for Mwaka Wear",
+  "background_color": "#ffffff",
   "icons": [
     {
       "src": "/icons/icon-192x192.png",
