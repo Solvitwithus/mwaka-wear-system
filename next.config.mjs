@@ -8,7 +8,7 @@ const withPWA = require('next-pwa')({
   // Optional: Customize runtime caching if needed (see Step 6)
 });
 
-module.exports = withPWA({
+export default withPWA({
   // Your existing Next.js config, if any
   reactStrictMode: true, // Example
 });
