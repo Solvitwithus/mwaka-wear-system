@@ -7,7 +7,7 @@ const withPWA = require('next-pwa')({
   buildExcludes: [],
 });
 
-export default withPWA({
+module.exports = withPWA({
   reactStrictMode: true,
   swcMinify: true,
 });
