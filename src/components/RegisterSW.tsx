@@ -10,7 +10,7 @@ export default function RegisterSW() {
           .register('/sw.js')
           .then((reg) => {
             console.log('✅ SW registered: ', reg);
-            return navigator.serviceWorker.ready; // Wait for the service worker to be ready
+            return navigator.serviceWorker.ready;
           })
           .then((registration) => {
             console.log('SW ready');
@@ -19,11 +19,9 @@ export default function RegisterSW() {
       };
 
       window.addEventListener('load', handleLoad);
-
-      // Cleanup event listener
       return () => window.removeEventListener('load', handleLoad);
     }
-  }, []); // Empty dependency array ensures this runs once on mount
+  }, []);
 
   return null;
 }
