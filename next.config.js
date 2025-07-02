@@ -1,3 +1,4 @@
+// next.config.js
 const withPWA = require('next-pwa')({
   dest: 'public',
   register: true,
@@ -6,7 +7,7 @@ const withPWA = require('next-pwa')({
   buildExcludes: [],
 });
 
-module.exports = withPWA({
+export default withPWA({
   reactStrictMode: true,
   swcMinify: true,
 });
