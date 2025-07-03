@@ -14,8 +14,11 @@ export async function POST() {
       {
         ShortCode: process.env.MPESA_SHORTCODE,
         ResponseType: "Completed",
-        ConfirmationURL: process.env.MPESA_CONFIRMATION_URL,
-        ValidationURL: process.env.MPESA_VALIDATION_URL, // ✅ REQUIRED
+       ConfirmationURL:
+  process.env.MPESA_CONFIRMATION_URL || "https://demo-script-cruise-erp.vercel.app/api/auth/c2b-confirmation",
+ValidationURL:
+  process.env.MPESA_VALIDATION_URL || "https://demo-script-cruise-erp.vercel.app/api/auth/validation",
+
       },
       {
         headers: {
