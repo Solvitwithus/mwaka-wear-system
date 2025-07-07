@@ -22,7 +22,7 @@ export async function POST(req: NextRequest) {
       remarks
     } = data;
 
-    const shift = await prisma.WorkShift.create({
+    const shift = await prisma.workShift.create({
       data: {
         shiftCode,
         shiftName,
@@ -48,7 +48,7 @@ export async function POST(req: NextRequest) {
 // GET: Retrieve all shifts
 export async function GET() {
   try {
-    const shifts = await prisma.WorkShift.findMany({
+    const shifts = await prisma.workShift.findMany({
       orderBy: { createdAt: "desc" }
     });
 
