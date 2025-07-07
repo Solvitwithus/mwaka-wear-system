@@ -1,3 +1,10 @@
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+  runtime: 'nodejs',
+};
+
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@/generated/prisma";
 

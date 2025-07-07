@@ -26,6 +26,8 @@
     "clsx": "^2.1.1",
     "cookie": "^1.0.2",
     "date-fns": "^4.1.0",
+    "firebase": "^11.10.0",
+    "firebase-admin": "^13.4.0",
     "jose": "^6.0.10",
     "jsbarcode": "^3.12.1",
     "jsonwebtoken": "^9.0.2",
@@ -46,6 +48,7 @@
     "tailwind-merge": "^3.2.0",
     "tailwindcss-animate": "^1.0.7",
     "uploadthing": "^7.6.0",
+    "uuid": "^11.1.0",
     "zustand": "^5.0.3"
   },
   "devDependencies": {

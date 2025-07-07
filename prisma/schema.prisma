@@ -862,3 +862,138 @@ model Payment {
   status          String   @default("paid")
   createdAt       DateTime @default(now())
 }
+model Policy {
+  id                   String   @id @default(cuid())
+  policyTitle          String
+  code                 String   @unique
+  policyCategory       String
+  effectiveDate        String
+  purpose              String
+  scope                String
+  policyRules          String
+  consequences         String
+  applicableDepartments String[] // Stored as string array
+  applicableBranches    String[] // Stored as string array
+  rolesAffected        String
+  comment              String
+  createdAt            DateTime @default(now())
+}
+model Trainer {
+  id                 String   @id @default(cuid())
+  nationalId         String   @unique
+  fullName           String
+  email              String
+  phone1             String
+  phone2             String?
+  website            String?
+  gender             String
+  specialization     String
+  credentials        String[] // list of certifications
+  experienceYears    Int
+  languages          String[]
+  trainerType        String
+  availability       String
+  ratePerSession     Float
+  city               String
+  country            String
+  preferredMode      String
+  canTravel          Boolean
+  workingZones       String[]
+  contractStartDate  String
+  contractEndDate    String
+  status             String   @default("Active")
+  trainerProfile     String?
+  remarks            String?
+  portfolioLinks     String[]
+  addedBy            String
+  createdAt          DateTime @default(now())
+}
+model WorkShift {
+  id                String   @id @default(cuid())
+  shiftCode         String   @unique
+  shiftName         String
+  startTime         String
+  endTime           String
+  days              String[]     // e.g. ["Monday", "Wednesday", "Friday"]
+  assignedEmployees String[]     // e.g. list of employee IDs or usernames
+  branch            String
+  status            String       // e.g. "Active", "Inactive"
+  description       String
+  addedBy           String
+  remarks           String
+  createdAt         DateTime @default(now())
+}
+model Holiday {
+  id                String   @id @default(cuid())
+  holidayCode       String   @unique
+  holidayName       String
+  date              String
+  type              String
+  applicableBranches String[]   // branch codes
+  description       String
+  status            String      // e.g., Active, Inactive
+  addedBy           String
+  remarks           String
+  createdAt         DateTime @default(now())
+}
+model ExitReason {
+  id           String   @id @default(cuid())
+  reasonCode   String   @unique
+  reasonName   String
+  category     String            // e.g. Resignation, Termination, Retirement, etc.
+  description  String
+  applicableTo String[]          // e.g. ["Employees", "Contractors"]
+  status       String            // e.g. "Active", "Inactive"
+  addedBy      String
+  remarks      String
+  createdAt    DateTime @default(now())
+}
+model LeaveType {
+  id           String   @id @default(cuid())
+  leaveCode    String   @unique
+  leaveName    String
+  category     String            // e.g., Annual, Sick, Maternity, Paternity
+  duration     Int               // in days
+  applicableTo String[]          // e.g., ["Full-time", "Contract", "Intern"]
+  description  String
+  status       String            // e.g., "Active", "Inactive"
+  addedBy      String
+  remarks      String
+  createdAt    DateTime @default(now())
+}
+model PriorityLevel {
+  id            String   @id @default(cuid())
+  priorityCode  String   @unique
+  priorityName  String
+  level         Int                // e.g., 1 for High, 2 for Medium, etc.
+  category      String             // e.g., Task, Request, Incident
+  description   String
+  status        String             // "Active", "Inactive", etc.
+  addedBy       String
+  remarks       String
+  createdAt     DateTime @default(now())
+}
+model ContractType {
+  id            String   @id @default(cuid())
+  contractCode  String   @unique
+  contractName  String
+  category      String           // e.g., Employment, Consultancy, Internship
+  duration      Int?             // Duration in months or days (nullable)
+  description   String
+  status        String           // e.g., "Active", "Inactive"
+  addedBy       String
+  remarks       String
+  createdAt     DateTime @default(now())
+}
+model NonAttendanceReason {
+  id            String   @id @default(cuid())
+  reasonCode    String   @unique
+  reasonName    String
+  category      String             // e.g., Medical, Personal, Emergency
+  description   String
+  applicableTo  String[]           // e.g., ["Employees", "Trainees"]
+  status        String             // e.g., "Active", "Inactive"
+  addedBy       String
+  remarks       String
+  createdAt     DateTime @default(now())
+}

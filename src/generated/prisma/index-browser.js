@@ -876,6 +876,150 @@ exports.Prisma.PaymentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PolicyScalarFieldEnum = {
+  id: 'id',
+  policyTitle: 'policyTitle',
+  code: 'code',
+  policyCategory: 'policyCategory',
+  effectiveDate: 'effectiveDate',
+  purpose: 'purpose',
+  scope: 'scope',
+  policyRules: 'policyRules',
+  consequences: 'consequences',
+  applicableDepartments: 'applicableDepartments',
+  applicableBranches: 'applicableBranches',
+  rolesAffected: 'rolesAffected',
+  comment: 'comment',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.TrainerScalarFieldEnum = {
+  id: 'id',
+  nationalId: 'nationalId',
+  fullName: 'fullName',
+  email: 'email',
+  phone1: 'phone1',
+  phone2: 'phone2',
+  website: 'website',
+  gender: 'gender',
+  specialization: 'specialization',
+  credentials: 'credentials',
+  experienceYears: 'experienceYears',
+  languages: 'languages',
+  trainerType: 'trainerType',
+  availability: 'availability',
+  ratePerSession: 'ratePerSession',
+  city: 'city',
+  country: 'country',
+  preferredMode: 'preferredMode',
+  canTravel: 'canTravel',
+  workingZones: 'workingZones',
+  contractStartDate: 'contractStartDate',
+  contractEndDate: 'contractEndDate',
+  status: 'status',
+  trainerProfile: 'trainerProfile',
+  remarks: 'remarks',
+  portfolioLinks: 'portfolioLinks',
+  addedBy: 'addedBy',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.WorkShiftScalarFieldEnum = {
+  id: 'id',
+  shiftCode: 'shiftCode',
+  shiftName: 'shiftName',
+  startTime: 'startTime',
+  endTime: 'endTime',
+  days: 'days',
+  assignedEmployees: 'assignedEmployees',
+  branch: 'branch',
+  status: 'status',
+  description: 'description',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.HolidayScalarFieldEnum = {
+  id: 'id',
+  holidayCode: 'holidayCode',
+  holidayName: 'holidayName',
+  date: 'date',
+  type: 'type',
+  applicableBranches: 'applicableBranches',
+  description: 'description',
+  status: 'status',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ExitReasonScalarFieldEnum = {
+  id: 'id',
+  reasonCode: 'reasonCode',
+  reasonName: 'reasonName',
+  category: 'category',
+  description: 'description',
+  applicableTo: 'applicableTo',
+  status: 'status',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LeaveTypeScalarFieldEnum = {
+  id: 'id',
+  leaveCode: 'leaveCode',
+  leaveName: 'leaveName',
+  category: 'category',
+  duration: 'duration',
+  applicableTo: 'applicableTo',
+  description: 'description',
+  status: 'status',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PriorityLevelScalarFieldEnum = {
+  id: 'id',
+  priorityCode: 'priorityCode',
+  priorityName: 'priorityName',
+  level: 'level',
+  category: 'category',
+  description: 'description',
+  status: 'status',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ContractTypeScalarFieldEnum = {
+  id: 'id',
+  contractCode: 'contractCode',
+  contractName: 'contractName',
+  category: 'category',
+  duration: 'duration',
+  description: 'description',
+  status: 'status',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.NonAttendanceReasonScalarFieldEnum = {
+  id: 'id',
+  reasonCode: 'reasonCode',
+  reasonName: 'reasonName',
+  category: 'category',
+  description: 'description',
+  applicableTo: 'applicableTo',
+  status: 'status',
+  addedBy: 'addedBy',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -951,7 +1095,16 @@ exports.Prisma.ModelName = {
   GradedItem: 'GradedItem',
   PausedCart: 'PausedCart',
   PausedCartItem: 'PausedCartItem',
-  Payment: 'Payment'
+  Payment: 'Payment',
+  Policy: 'Policy',
+  Trainer: 'Trainer',
+  WorkShift: 'WorkShift',
+  Holiday: 'Holiday',
+  ExitReason: 'ExitReason',
+  LeaveType: 'LeaveType',
+  PriorityLevel: 'PriorityLevel',
+  ContractType: 'ContractType',
+  NonAttendanceReason: 'NonAttendanceReason'
 };
 
 /**

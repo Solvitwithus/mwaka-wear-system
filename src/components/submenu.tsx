@@ -9,7 +9,7 @@ import axios from 'axios';
 import Link from 'next/link';
 import { ModeToggle } from './ui/darkmode';
 import { useRouter } from 'next/navigation';
-import InstallPWAButton from './pwa';
+
 const Submenu = () => {
  const router = useRouter()
 const handleCredentialChange = () => {
@@ -90,7 +90,7 @@ const SubmenuItem = ({ icon, alt, label, textColor, handleEvent }: {
           MwaKa Clothing Center | skeletalerpapp.vercel.com | SolvIt Support
           <Link href="/chathub" className='font-serif text-[#2b8508]'> --- ChatHub ---</Link>
         </span>
-        <InstallPWAButton/>
+       
         <div className='flex gap-4'>
           {menuItems.map((item, index) => (
             <SubmenuItem key={index} {...item} />

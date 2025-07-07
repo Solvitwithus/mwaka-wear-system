@@ -43,7 +43,7 @@ finally{
 
 
 export async function GET() {
-    console.log("see");
+   
     
     try {
       // Fetch all roles from the database
