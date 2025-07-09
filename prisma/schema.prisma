@@ -997,3 +997,15 @@ model NonAttendanceReason {
   remarks       String
   createdAt     DateTime @default(now())
 }
+model PositionRequisition {
+  id                  String   @id @default(cuid())
+  designation         String
+  priority            String
+  department          String
+  contractType        String
+  dueDate             DateTime
+  numberOfPositions   Int
+  jobDescription      String   @db.Text
+  reasonForRequisition String  @db.Text
+  createdAt           DateTime @default(now())
+}

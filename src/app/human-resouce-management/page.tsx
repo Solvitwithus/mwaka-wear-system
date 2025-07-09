@@ -103,7 +103,7 @@ if (loading) return (
   </div>)
 
   const menu =[
-    {title:"New Position Requisition",link:"/human-resouce-management/",permission:"NewPositionRequisition",image:StudIcon},
+    {title:"New Position Requisition",link:"/human-resouce-management/new-position-requisition",permission:"NewPositionRequisition",image:StudIcon},
     {title:"Approve New Position Requisition",link:"/human-resouce-management/pos-report",permission:"ApproveNewPositionRequisition",image:StudIcon},
     {title:"Advertise Job Opening",link:"/human-resouce-management/",permission:"AdvertiseJobOpening",image:StudIcon},
   {title:"Add New Candidates",link:"/human-resouce-management/pos-report",permission:"AddCandidate",image:StudIcon},

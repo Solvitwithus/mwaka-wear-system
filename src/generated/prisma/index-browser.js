@@ -1020,6 +1020,19 @@ exports.Prisma.NonAttendanceReasonScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.PositionRequisitionScalarFieldEnum = {
+  id: 'id',
+  designation: 'designation',
+  priority: 'priority',
+  department: 'department',
+  contractType: 'contractType',
+  dueDate: 'dueDate',
+  numberOfPositions: 'numberOfPositions',
+  jobDescription: 'jobDescription',
+  reasonForRequisition: 'reasonForRequisition',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1104,7 +1117,8 @@ exports.Prisma.ModelName = {
   LeaveType: 'LeaveType',
   PriorityLevel: 'PriorityLevel',
   ContractType: 'ContractType',
-  NonAttendanceReason: 'NonAttendanceReason'
+  NonAttendanceReason: 'NonAttendanceReason',
+  PositionRequisition: 'PositionRequisition'
 };
 
 /**

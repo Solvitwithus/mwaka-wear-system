@@ -303,6 +303,11 @@ export type ContractType = $Result.DefaultSelection<Prisma.$ContractTypePayload>
  * 
  */
 export type NonAttendanceReason = $Result.DefaultSelection<Prisma.$NonAttendanceReasonPayload>
+/**
+ * Model PositionRequisition
+ * 
+ */
+export type PositionRequisition = $Result.DefaultSelection<Prisma.$PositionRequisitionPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1008,6 +1013,16 @@ export class PrismaClient<
     * ```
     */
   get nonAttendanceReason(): Prisma.NonAttendanceReasonDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.positionRequisition`: Exposes CRUD operations for the **PositionRequisition** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PositionRequisitions
+    * const positionRequisitions = await prisma.positionRequisition.findMany()
+    * ```
+    */
+  get positionRequisition(): Prisma.PositionRequisitionDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1505,7 +1520,8 @@ export namespace Prisma {
     LeaveType: 'LeaveType',
     PriorityLevel: 'PriorityLevel',
     ContractType: 'ContractType',
-    NonAttendanceReason: 'NonAttendanceReason'
+    NonAttendanceReason: 'NonAttendanceReason',
+    PositionRequisition: 'PositionRequisition'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1524,7 +1540,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -5820,6 +5836,80 @@ export namespace Prisma {
           }
         }
       }
+      PositionRequisition: {
+        payload: Prisma.$PositionRequisitionPayload<ExtArgs>
+        fields: Prisma.PositionRequisitionFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PositionRequisitionFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PositionRequisitionFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>
+          }
+          findFirst: {
+            args: Prisma.PositionRequisitionFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PositionRequisitionFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>
+          }
+          findMany: {
+            args: Prisma.PositionRequisitionFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>[]
+          }
+          create: {
+            args: Prisma.PositionRequisitionCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>
+          }
+          createMany: {
+            args: Prisma.PositionRequisitionCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PositionRequisitionCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>[]
+          }
+          delete: {
+            args: Prisma.PositionRequisitionDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>
+          }
+          update: {
+            args: Prisma.PositionRequisitionUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>
+          }
+          deleteMany: {
+            args: Prisma.PositionRequisitionDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PositionRequisitionUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PositionRequisitionUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>[]
+          }
+          upsert: {
+            args: Prisma.PositionRequisitionUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PositionRequisitionPayload>
+          }
+          aggregate: {
+            args: Prisma.PositionRequisitionAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePositionRequisition>
+          }
+          groupBy: {
+            args: Prisma.PositionRequisitionGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PositionRequisitionGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PositionRequisitionCountArgs<ExtArgs>
+            result: $Utils.Optional<PositionRequisitionCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -5962,6 +6052,7 @@ export namespace Prisma {
     priorityLevel?: PriorityLevelOmit
     contractType?: ContractTypeOmit
     nonAttendanceReason?: NonAttendanceReasonOmit
+    positionRequisition?: PositionRequisitionOmit
   }
 
   /* Types for Logging */
@@ -73483,6 +73574,1100 @@ export namespace Prisma {
 
 
   /**
+   * Model PositionRequisition
+   */
+
+  export type AggregatePositionRequisition = {
+    _count: PositionRequisitionCountAggregateOutputType | null
+    _avg: PositionRequisitionAvgAggregateOutputType | null
+    _sum: PositionRequisitionSumAggregateOutputType | null
+    _min: PositionRequisitionMinAggregateOutputType | null
+    _max: PositionRequisitionMaxAggregateOutputType | null
+  }
+
+  export type PositionRequisitionAvgAggregateOutputType = {
+    numberOfPositions: number | null
+  }
+
+  export type PositionRequisitionSumAggregateOutputType = {
+    numberOfPositions: number | null
+  }
+
+  export type PositionRequisitionMinAggregateOutputType = {
+    id: string | null
+    designation: string | null
+    priority: string | null
+    department: string | null
+    contractType: string | null
+    dueDate: Date | null
+    numberOfPositions: number | null
+    jobDescription: string | null
+    reasonForRequisition: string | null
+    createdAt: Date | null
+  }
+
+  export type PositionRequisitionMaxAggregateOutputType = {
+    id: string | null
+    designation: string | null
+    priority: string | null
+    department: string | null
+    contractType: string | null
+    dueDate: Date | null
+    numberOfPositions: number | null
+    jobDescription: string | null
+    reasonForRequisition: string | null
+    createdAt: Date | null
+  }
+
+  export type PositionRequisitionCountAggregateOutputType = {
+    id: number
+    designation: number
+    priority: number
+    department: number
+    contractType: number
+    dueDate: number
+    numberOfPositions: number
+    jobDescription: number
+    reasonForRequisition: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PositionRequisitionAvgAggregateInputType = {
+    numberOfPositions?: true
+  }
+
+  export type PositionRequisitionSumAggregateInputType = {
+    numberOfPositions?: true
+  }
+
+  export type PositionRequisitionMinAggregateInputType = {
+    id?: true
+    designation?: true
+    priority?: true
+    department?: true
+    contractType?: true
+    dueDate?: true
+    numberOfPositions?: true
+    jobDescription?: true
+    reasonForRequisition?: true
+    createdAt?: true
+  }
+
+  export type PositionRequisitionMaxAggregateInputType = {
+    id?: true
+    designation?: true
+    priority?: true
+    department?: true
+    contractType?: true
+    dueDate?: true
+    numberOfPositions?: true
+    jobDescription?: true
+    reasonForRequisition?: true
+    createdAt?: true
+  }
+
+  export type PositionRequisitionCountAggregateInputType = {
+    id?: true
+    designation?: true
+    priority?: true
+    department?: true
+    contractType?: true
+    dueDate?: true
+    numberOfPositions?: true
+    jobDescription?: true
+    reasonForRequisition?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PositionRequisitionAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PositionRequisition to aggregate.
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PositionRequisitions to fetch.
+     */
+    orderBy?: PositionRequisitionOrderByWithRelationInput | PositionRequisitionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PositionRequisitionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PositionRequisitions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PositionRequisitions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PositionRequisitions
+    **/
+    _count?: true | PositionRequisitionCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: PositionRequisitionAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: PositionRequisitionSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PositionRequisitionMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PositionRequisitionMaxAggregateInputType
+  }
+
+  export type GetPositionRequisitionAggregateType<T extends PositionRequisitionAggregateArgs> = {
+        [P in keyof T & keyof AggregatePositionRequisition]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePositionRequisition[P]>
+      : GetScalarType<T[P], AggregatePositionRequisition[P]>
+  }
+
+
+
+
+  export type PositionRequisitionGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PositionRequisitionWhereInput
+    orderBy?: PositionRequisitionOrderByWithAggregationInput | PositionRequisitionOrderByWithAggregationInput[]
+    by: PositionRequisitionScalarFieldEnum[] | PositionRequisitionScalarFieldEnum
+    having?: PositionRequisitionScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PositionRequisitionCountAggregateInputType | true
+    _avg?: PositionRequisitionAvgAggregateInputType
+    _sum?: PositionRequisitionSumAggregateInputType
+    _min?: PositionRequisitionMinAggregateInputType
+    _max?: PositionRequisitionMaxAggregateInputType
+  }
+
+  export type PositionRequisitionGroupByOutputType = {
+    id: string
+    designation: string
+    priority: string
+    department: string
+    contractType: string
+    dueDate: Date
+    numberOfPositions: number
+    jobDescription: string
+    reasonForRequisition: string
+    createdAt: Date
+    _count: PositionRequisitionCountAggregateOutputType | null
+    _avg: PositionRequisitionAvgAggregateOutputType | null
+    _sum: PositionRequisitionSumAggregateOutputType | null
+    _min: PositionRequisitionMinAggregateOutputType | null
+    _max: PositionRequisitionMaxAggregateOutputType | null
+  }
+
+  type GetPositionRequisitionGroupByPayload<T extends PositionRequisitionGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PositionRequisitionGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PositionRequisitionGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PositionRequisitionGroupByOutputType[P]>
+            : GetScalarType<T[P], PositionRequisitionGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PositionRequisitionSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    designation?: boolean
+    priority?: boolean
+    department?: boolean
+    contractType?: boolean
+    dueDate?: boolean
+    numberOfPositions?: boolean
+    jobDescription?: boolean
+    reasonForRequisition?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["positionRequisition"]>
+
+  export type PositionRequisitionSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    designation?: boolean
+    priority?: boolean
+    department?: boolean
+    contractType?: boolean
+    dueDate?: boolean
+    numberOfPositions?: boolean
+    jobDescription?: boolean
+    reasonForRequisition?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["positionRequisition"]>
+
+  export type PositionRequisitionSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    designation?: boolean
+    priority?: boolean
+    department?: boolean
+    contractType?: boolean
+    dueDate?: boolean
+    numberOfPositions?: boolean
+    jobDescription?: boolean
+    reasonForRequisition?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["positionRequisition"]>
+
+  export type PositionRequisitionSelectScalar = {
+    id?: boolean
+    designation?: boolean
+    priority?: boolean
+    department?: boolean
+    contractType?: boolean
+    dueDate?: boolean
+    numberOfPositions?: boolean
+    jobDescription?: boolean
+    reasonForRequisition?: boolean
+    createdAt?: boolean
+  }
+
+  export type PositionRequisitionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "designation" | "priority" | "department" | "contractType" | "dueDate" | "numberOfPositions" | "jobDescription" | "reasonForRequisition" | "createdAt", ExtArgs["result"]["positionRequisition"]>
+
+  export type $PositionRequisitionPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PositionRequisition"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      designation: string
+      priority: string
+      department: string
+      contractType: string
+      dueDate: Date
+      numberOfPositions: number
+      jobDescription: string
+      reasonForRequisition: string
+      createdAt: Date
+    }, ExtArgs["result"]["positionRequisition"]>
+    composites: {}
+  }
+
+  type PositionRequisitionGetPayload<S extends boolean | null | undefined | PositionRequisitionDefaultArgs> = $Result.GetResult<Prisma.$PositionRequisitionPayload, S>
+
+  type PositionRequisitionCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PositionRequisitionFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PositionRequisitionCountAggregateInputType | true
+    }
+
+  export interface PositionRequisitionDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PositionRequisition'], meta: { name: 'PositionRequisition' } }
+    /**
+     * Find zero or one PositionRequisition that matches the filter.
+     * @param {PositionRequisitionFindUniqueArgs} args - Arguments to find a PositionRequisition
+     * @example
+     * // Get one PositionRequisition
+     * const positionRequisition = await prisma.positionRequisition.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PositionRequisitionFindUniqueArgs>(args: SelectSubset<T, PositionRequisitionFindUniqueArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PositionRequisition that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PositionRequisitionFindUniqueOrThrowArgs} args - Arguments to find a PositionRequisition
+     * @example
+     * // Get one PositionRequisition
+     * const positionRequisition = await prisma.positionRequisition.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PositionRequisitionFindUniqueOrThrowArgs>(args: SelectSubset<T, PositionRequisitionFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PositionRequisition that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionFindFirstArgs} args - Arguments to find a PositionRequisition
+     * @example
+     * // Get one PositionRequisition
+     * const positionRequisition = await prisma.positionRequisition.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PositionRequisitionFindFirstArgs>(args?: SelectSubset<T, PositionRequisitionFindFirstArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PositionRequisition that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionFindFirstOrThrowArgs} args - Arguments to find a PositionRequisition
+     * @example
+     * // Get one PositionRequisition
+     * const positionRequisition = await prisma.positionRequisition.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PositionRequisitionFindFirstOrThrowArgs>(args?: SelectSubset<T, PositionRequisitionFindFirstOrThrowArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PositionRequisitions that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PositionRequisitions
+     * const positionRequisitions = await prisma.positionRequisition.findMany()
+     * 
+     * // Get first 10 PositionRequisitions
+     * const positionRequisitions = await prisma.positionRequisition.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const positionRequisitionWithIdOnly = await prisma.positionRequisition.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PositionRequisitionFindManyArgs>(args?: SelectSubset<T, PositionRequisitionFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PositionRequisition.
+     * @param {PositionRequisitionCreateArgs} args - Arguments to create a PositionRequisition.
+     * @example
+     * // Create one PositionRequisition
+     * const PositionRequisition = await prisma.positionRequisition.create({
+     *   data: {
+     *     // ... data to create a PositionRequisition
+     *   }
+     * })
+     * 
+     */
+    create<T extends PositionRequisitionCreateArgs>(args: SelectSubset<T, PositionRequisitionCreateArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PositionRequisitions.
+     * @param {PositionRequisitionCreateManyArgs} args - Arguments to create many PositionRequisitions.
+     * @example
+     * // Create many PositionRequisitions
+     * const positionRequisition = await prisma.positionRequisition.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PositionRequisitionCreateManyArgs>(args?: SelectSubset<T, PositionRequisitionCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PositionRequisitions and returns the data saved in the database.
+     * @param {PositionRequisitionCreateManyAndReturnArgs} args - Arguments to create many PositionRequisitions.
+     * @example
+     * // Create many PositionRequisitions
+     * const positionRequisition = await prisma.positionRequisition.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PositionRequisitions and only return the `id`
+     * const positionRequisitionWithIdOnly = await prisma.positionRequisition.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PositionRequisitionCreateManyAndReturnArgs>(args?: SelectSubset<T, PositionRequisitionCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PositionRequisition.
+     * @param {PositionRequisitionDeleteArgs} args - Arguments to delete one PositionRequisition.
+     * @example
+     * // Delete one PositionRequisition
+     * const PositionRequisition = await prisma.positionRequisition.delete({
+     *   where: {
+     *     // ... filter to delete one PositionRequisition
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PositionRequisitionDeleteArgs>(args: SelectSubset<T, PositionRequisitionDeleteArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PositionRequisition.
+     * @param {PositionRequisitionUpdateArgs} args - Arguments to update one PositionRequisition.
+     * @example
+     * // Update one PositionRequisition
+     * const positionRequisition = await prisma.positionRequisition.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PositionRequisitionUpdateArgs>(args: SelectSubset<T, PositionRequisitionUpdateArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PositionRequisitions.
+     * @param {PositionRequisitionDeleteManyArgs} args - Arguments to filter PositionRequisitions to delete.
+     * @example
+     * // Delete a few PositionRequisitions
+     * const { count } = await prisma.positionRequisition.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PositionRequisitionDeleteManyArgs>(args?: SelectSubset<T, PositionRequisitionDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PositionRequisitions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PositionRequisitions
+     * const positionRequisition = await prisma.positionRequisition.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PositionRequisitionUpdateManyArgs>(args: SelectSubset<T, PositionRequisitionUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PositionRequisitions and returns the data updated in the database.
+     * @param {PositionRequisitionUpdateManyAndReturnArgs} args - Arguments to update many PositionRequisitions.
+     * @example
+     * // Update many PositionRequisitions
+     * const positionRequisition = await prisma.positionRequisition.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PositionRequisitions and only return the `id`
+     * const positionRequisitionWithIdOnly = await prisma.positionRequisition.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PositionRequisitionUpdateManyAndReturnArgs>(args: SelectSubset<T, PositionRequisitionUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PositionRequisition.
+     * @param {PositionRequisitionUpsertArgs} args - Arguments to update or create a PositionRequisition.
+     * @example
+     * // Update or create a PositionRequisition
+     * const positionRequisition = await prisma.positionRequisition.upsert({
+     *   create: {
+     *     // ... data to create a PositionRequisition
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PositionRequisition we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PositionRequisitionUpsertArgs>(args: SelectSubset<T, PositionRequisitionUpsertArgs<ExtArgs>>): Prisma__PositionRequisitionClient<$Result.GetResult<Prisma.$PositionRequisitionPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PositionRequisitions.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionCountArgs} args - Arguments to filter PositionRequisitions to count.
+     * @example
+     * // Count the number of PositionRequisitions
+     * const count = await prisma.positionRequisition.count({
+     *   where: {
+     *     // ... the filter for the PositionRequisitions we want to count
+     *   }
+     * })
+    **/
+    count<T extends PositionRequisitionCountArgs>(
+      args?: Subset<T, PositionRequisitionCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PositionRequisitionCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PositionRequisition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PositionRequisitionAggregateArgs>(args: Subset<T, PositionRequisitionAggregateArgs>): Prisma.PrismaPromise<GetPositionRequisitionAggregateType<T>>
+
+    /**
+     * Group by PositionRequisition.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PositionRequisitionGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PositionRequisitionGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PositionRequisitionGroupByArgs['orderBy'] }
+        : { orderBy?: PositionRequisitionGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PositionRequisitionGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPositionRequisitionGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PositionRequisition model
+   */
+  readonly fields: PositionRequisitionFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PositionRequisition.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PositionRequisitionClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PositionRequisition model
+   */
+  interface PositionRequisitionFieldRefs {
+    readonly id: FieldRef<"PositionRequisition", 'String'>
+    readonly designation: FieldRef<"PositionRequisition", 'String'>
+    readonly priority: FieldRef<"PositionRequisition", 'String'>
+    readonly department: FieldRef<"PositionRequisition", 'String'>
+    readonly contractType: FieldRef<"PositionRequisition", 'String'>
+    readonly dueDate: FieldRef<"PositionRequisition", 'DateTime'>
+    readonly numberOfPositions: FieldRef<"PositionRequisition", 'Int'>
+    readonly jobDescription: FieldRef<"PositionRequisition", 'String'>
+    readonly reasonForRequisition: FieldRef<"PositionRequisition", 'String'>
+    readonly createdAt: FieldRef<"PositionRequisition", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PositionRequisition findUnique
+   */
+  export type PositionRequisitionFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * Filter, which PositionRequisition to fetch.
+     */
+    where: PositionRequisitionWhereUniqueInput
+  }
+
+  /**
+   * PositionRequisition findUniqueOrThrow
+   */
+  export type PositionRequisitionFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * Filter, which PositionRequisition to fetch.
+     */
+    where: PositionRequisitionWhereUniqueInput
+  }
+
+  /**
+   * PositionRequisition findFirst
+   */
+  export type PositionRequisitionFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * Filter, which PositionRequisition to fetch.
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PositionRequisitions to fetch.
+     */
+    orderBy?: PositionRequisitionOrderByWithRelationInput | PositionRequisitionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PositionRequisitions.
+     */
+    cursor?: PositionRequisitionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PositionRequisitions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PositionRequisitions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PositionRequisitions.
+     */
+    distinct?: PositionRequisitionScalarFieldEnum | PositionRequisitionScalarFieldEnum[]
+  }
+
+  /**
+   * PositionRequisition findFirstOrThrow
+   */
+  export type PositionRequisitionFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * Filter, which PositionRequisition to fetch.
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PositionRequisitions to fetch.
+     */
+    orderBy?: PositionRequisitionOrderByWithRelationInput | PositionRequisitionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PositionRequisitions.
+     */
+    cursor?: PositionRequisitionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PositionRequisitions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PositionRequisitions.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PositionRequisitions.
+     */
+    distinct?: PositionRequisitionScalarFieldEnum | PositionRequisitionScalarFieldEnum[]
+  }
+
+  /**
+   * PositionRequisition findMany
+   */
+  export type PositionRequisitionFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * Filter, which PositionRequisitions to fetch.
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PositionRequisitions to fetch.
+     */
+    orderBy?: PositionRequisitionOrderByWithRelationInput | PositionRequisitionOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PositionRequisitions.
+     */
+    cursor?: PositionRequisitionWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PositionRequisitions from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PositionRequisitions.
+     */
+    skip?: number
+    distinct?: PositionRequisitionScalarFieldEnum | PositionRequisitionScalarFieldEnum[]
+  }
+
+  /**
+   * PositionRequisition create
+   */
+  export type PositionRequisitionCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * The data needed to create a PositionRequisition.
+     */
+    data: XOR<PositionRequisitionCreateInput, PositionRequisitionUncheckedCreateInput>
+  }
+
+  /**
+   * PositionRequisition createMany
+   */
+  export type PositionRequisitionCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PositionRequisitions.
+     */
+    data: PositionRequisitionCreateManyInput | PositionRequisitionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PositionRequisition createManyAndReturn
+   */
+  export type PositionRequisitionCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * The data used to create many PositionRequisitions.
+     */
+    data: PositionRequisitionCreateManyInput | PositionRequisitionCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PositionRequisition update
+   */
+  export type PositionRequisitionUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * The data needed to update a PositionRequisition.
+     */
+    data: XOR<PositionRequisitionUpdateInput, PositionRequisitionUncheckedUpdateInput>
+    /**
+     * Choose, which PositionRequisition to update.
+     */
+    where: PositionRequisitionWhereUniqueInput
+  }
+
+  /**
+   * PositionRequisition updateMany
+   */
+  export type PositionRequisitionUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PositionRequisitions.
+     */
+    data: XOR<PositionRequisitionUpdateManyMutationInput, PositionRequisitionUncheckedUpdateManyInput>
+    /**
+     * Filter which PositionRequisitions to update
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * Limit how many PositionRequisitions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PositionRequisition updateManyAndReturn
+   */
+  export type PositionRequisitionUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * The data used to update PositionRequisitions.
+     */
+    data: XOR<PositionRequisitionUpdateManyMutationInput, PositionRequisitionUncheckedUpdateManyInput>
+    /**
+     * Filter which PositionRequisitions to update
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * Limit how many PositionRequisitions to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PositionRequisition upsert
+   */
+  export type PositionRequisitionUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * The filter to search for the PositionRequisition to update in case it exists.
+     */
+    where: PositionRequisitionWhereUniqueInput
+    /**
+     * In case the PositionRequisition found by the `where` argument doesn't exist, create a new PositionRequisition with this data.
+     */
+    create: XOR<PositionRequisitionCreateInput, PositionRequisitionUncheckedCreateInput>
+    /**
+     * In case the PositionRequisition was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PositionRequisitionUpdateInput, PositionRequisitionUncheckedUpdateInput>
+  }
+
+  /**
+   * PositionRequisition delete
+   */
+  export type PositionRequisitionDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+    /**
+     * Filter which PositionRequisition to delete.
+     */
+    where: PositionRequisitionWhereUniqueInput
+  }
+
+  /**
+   * PositionRequisition deleteMany
+   */
+  export type PositionRequisitionDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PositionRequisitions to delete
+     */
+    where?: PositionRequisitionWhereInput
+    /**
+     * Limit how many PositionRequisitions to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PositionRequisition without action
+   */
+  export type PositionRequisitionDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PositionRequisition
+     */
+    select?: PositionRequisitionSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PositionRequisition
+     */
+    omit?: PositionRequisitionOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -74568,6 +75753,22 @@ export namespace Prisma {
   };
 
   export type NonAttendanceReasonScalarFieldEnum = (typeof NonAttendanceReasonScalarFieldEnum)[keyof typeof NonAttendanceReasonScalarFieldEnum]
+
+
+  export const PositionRequisitionScalarFieldEnum: {
+    id: 'id',
+    designation: 'designation',
+    priority: 'priority',
+    department: 'department',
+    contractType: 'contractType',
+    dueDate: 'dueDate',
+    numberOfPositions: 'numberOfPositions',
+    jobDescription: 'jobDescription',
+    reasonForRequisition: 'reasonForRequisition',
+    createdAt: 'createdAt'
+  };
+
+  export type PositionRequisitionScalarFieldEnum = (typeof PositionRequisitionScalarFieldEnum)[keyof typeof PositionRequisitionScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -80091,6 +81292,85 @@ export namespace Prisma {
     addedBy?: StringWithAggregatesFilter<"NonAttendanceReason"> | string
     remarks?: StringWithAggregatesFilter<"NonAttendanceReason"> | string
     createdAt?: DateTimeWithAggregatesFilter<"NonAttendanceReason"> | Date | string
+  }
+
+  export type PositionRequisitionWhereInput = {
+    AND?: PositionRequisitionWhereInput | PositionRequisitionWhereInput[]
+    OR?: PositionRequisitionWhereInput[]
+    NOT?: PositionRequisitionWhereInput | PositionRequisitionWhereInput[]
+    id?: StringFilter<"PositionRequisition"> | string
+    designation?: StringFilter<"PositionRequisition"> | string
+    priority?: StringFilter<"PositionRequisition"> | string
+    department?: StringFilter<"PositionRequisition"> | string
+    contractType?: StringFilter<"PositionRequisition"> | string
+    dueDate?: DateTimeFilter<"PositionRequisition"> | Date | string
+    numberOfPositions?: IntFilter<"PositionRequisition"> | number
+    jobDescription?: StringFilter<"PositionRequisition"> | string
+    reasonForRequisition?: StringFilter<"PositionRequisition"> | string
+    createdAt?: DateTimeFilter<"PositionRequisition"> | Date | string
+  }
+
+  export type PositionRequisitionOrderByWithRelationInput = {
+    id?: SortOrder
+    designation?: SortOrder
+    priority?: SortOrder
+    department?: SortOrder
+    contractType?: SortOrder
+    dueDate?: SortOrder
+    numberOfPositions?: SortOrder
+    jobDescription?: SortOrder
+    reasonForRequisition?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PositionRequisitionWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PositionRequisitionWhereInput | PositionRequisitionWhereInput[]
+    OR?: PositionRequisitionWhereInput[]
+    NOT?: PositionRequisitionWhereInput | PositionRequisitionWhereInput[]
+    designation?: StringFilter<"PositionRequisition"> | string
+    priority?: StringFilter<"PositionRequisition"> | string
+    department?: StringFilter<"PositionRequisition"> | string
+    contractType?: StringFilter<"PositionRequisition"> | string
+    dueDate?: DateTimeFilter<"PositionRequisition"> | Date | string
+    numberOfPositions?: IntFilter<"PositionRequisition"> | number
+    jobDescription?: StringFilter<"PositionRequisition"> | string
+    reasonForRequisition?: StringFilter<"PositionRequisition"> | string
+    createdAt?: DateTimeFilter<"PositionRequisition"> | Date | string
+  }, "id">
+
+  export type PositionRequisitionOrderByWithAggregationInput = {
+    id?: SortOrder
+    designation?: SortOrder
+    priority?: SortOrder
+    department?: SortOrder
+    contractType?: SortOrder
+    dueDate?: SortOrder
+    numberOfPositions?: SortOrder
+    jobDescription?: SortOrder
+    reasonForRequisition?: SortOrder
+    createdAt?: SortOrder
+    _count?: PositionRequisitionCountOrderByAggregateInput
+    _avg?: PositionRequisitionAvgOrderByAggregateInput
+    _max?: PositionRequisitionMaxOrderByAggregateInput
+    _min?: PositionRequisitionMinOrderByAggregateInput
+    _sum?: PositionRequisitionSumOrderByAggregateInput
+  }
+
+  export type PositionRequisitionScalarWhereWithAggregatesInput = {
+    AND?: PositionRequisitionScalarWhereWithAggregatesInput | PositionRequisitionScalarWhereWithAggregatesInput[]
+    OR?: PositionRequisitionScalarWhereWithAggregatesInput[]
+    NOT?: PositionRequisitionScalarWhereWithAggregatesInput | PositionRequisitionScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    designation?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    priority?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    department?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    contractType?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    dueDate?: DateTimeWithAggregatesFilter<"PositionRequisition"> | Date | string
+    numberOfPositions?: IntWithAggregatesFilter<"PositionRequisition"> | number
+    jobDescription?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    reasonForRequisition?: StringWithAggregatesFilter<"PositionRequisition"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"PositionRequisition"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -86447,6 +87727,97 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type PositionRequisitionCreateInput = {
+    id?: string
+    designation: string
+    priority: string
+    department: string
+    contractType: string
+    dueDate: Date | string
+    numberOfPositions: number
+    jobDescription: string
+    reasonForRequisition: string
+    createdAt?: Date | string
+  }
+
+  export type PositionRequisitionUncheckedCreateInput = {
+    id?: string
+    designation: string
+    priority: string
+    department: string
+    contractType: string
+    dueDate: Date | string
+    numberOfPositions: number
+    jobDescription: string
+    reasonForRequisition: string
+    createdAt?: Date | string
+  }
+
+  export type PositionRequisitionUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    priority?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    contractType?: StringFieldUpdateOperationsInput | string
+    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfPositions?: IntFieldUpdateOperationsInput | number
+    jobDescription?: StringFieldUpdateOperationsInput | string
+    reasonForRequisition?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PositionRequisitionUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    priority?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    contractType?: StringFieldUpdateOperationsInput | string
+    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfPositions?: IntFieldUpdateOperationsInput | number
+    jobDescription?: StringFieldUpdateOperationsInput | string
+    reasonForRequisition?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PositionRequisitionCreateManyInput = {
+    id?: string
+    designation: string
+    priority: string
+    department: string
+    contractType: string
+    dueDate: Date | string
+    numberOfPositions: number
+    jobDescription: string
+    reasonForRequisition: string
+    createdAt?: Date | string
+  }
+
+  export type PositionRequisitionUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    priority?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    contractType?: StringFieldUpdateOperationsInput | string
+    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfPositions?: IntFieldUpdateOperationsInput | number
+    jobDescription?: StringFieldUpdateOperationsInput | string
+    reasonForRequisition?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PositionRequisitionUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    designation?: StringFieldUpdateOperationsInput | string
+    priority?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    contractType?: StringFieldUpdateOperationsInput | string
+    dueDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    numberOfPositions?: IntFieldUpdateOperationsInput | number
+    jobDescription?: StringFieldUpdateOperationsInput | string
+    reasonForRequisition?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -90062,6 +91433,53 @@ export namespace Prisma {
     addedBy?: SortOrder
     remarks?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type PositionRequisitionCountOrderByAggregateInput = {
+    id?: SortOrder
+    designation?: SortOrder
+    priority?: SortOrder
+    department?: SortOrder
+    contractType?: SortOrder
+    dueDate?: SortOrder
+    numberOfPositions?: SortOrder
+    jobDescription?: SortOrder
+    reasonForRequisition?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PositionRequisitionAvgOrderByAggregateInput = {
+    numberOfPositions?: SortOrder
+  }
+
+  export type PositionRequisitionMaxOrderByAggregateInput = {
+    id?: SortOrder
+    designation?: SortOrder
+    priority?: SortOrder
+    department?: SortOrder
+    contractType?: SortOrder
+    dueDate?: SortOrder
+    numberOfPositions?: SortOrder
+    jobDescription?: SortOrder
+    reasonForRequisition?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PositionRequisitionMinOrderByAggregateInput = {
+    id?: SortOrder
+    designation?: SortOrder
+    priority?: SortOrder
+    department?: SortOrder
+    contractType?: SortOrder
+    dueDate?: SortOrder
+    numberOfPositions?: SortOrder
+    jobDescription?: SortOrder
+    reasonForRequisition?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PositionRequisitionSumOrderByAggregateInput = {
+    numberOfPositions?: SortOrder
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {
