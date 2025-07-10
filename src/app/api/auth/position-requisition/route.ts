@@ -15,6 +15,7 @@ export async function POST(req: NextRequest) {
       dueDate,
       numberOfPositions,
       jobDescription,
+      status,
       reasonForRequisition
     } = body
 
@@ -27,6 +28,7 @@ export async function POST(req: NextRequest) {
         dueDate: new Date(dueDate),
         numberOfPositions: parseInt(numberOfPositions),
         jobDescription,
+        status,
         reasonForRequisition
       }
     })

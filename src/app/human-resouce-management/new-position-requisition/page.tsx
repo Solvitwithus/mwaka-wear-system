@@ -86,6 +86,7 @@ const handleSubmit = async (e: React.FormEvent) => {
     department,
     contractType,
     dueDate,
+    status:"new",
     numberOfPositions,
   }
 

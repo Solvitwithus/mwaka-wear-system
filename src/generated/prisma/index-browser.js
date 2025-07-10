@@ -1028,8 +1028,34 @@ exports.Prisma.PositionRequisitionScalarFieldEnum = {
   contractType: 'contractType',
   dueDate: 'dueDate',
   numberOfPositions: 'numberOfPositions',
+  status: 'status',
   jobDescription: 'jobDescription',
   reasonForRequisition: 'reasonForRequisition',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.CandidateScalarFieldEnum = {
+  id: 'id',
+  candidateCode: 'candidateCode',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  phone: 'phone',
+  address: 'address',
+  city: 'city',
+  country: 'country',
+  applicationDate: 'applicationDate',
+  coverLetter: 'coverLetter',
+  designation: 'designation',
+  graduationYear: 'graduationYear',
+  highestEducation: 'highestEducation',
+  institution: 'institution',
+  jobId: 'jobId',
+  resumeLink: 'resumeLink',
+  skills: 'skills',
+  tools: 'tools',
+  status: 'status',
+  workExperience: 'workExperience',
   createdAt: 'createdAt'
 };
 
@@ -1118,7 +1144,8 @@ exports.Prisma.ModelName = {
   PriorityLevel: 'PriorityLevel',
   ContractType: 'ContractType',
   NonAttendanceReason: 'NonAttendanceReason',
-  PositionRequisition: 'PositionRequisition'
+  PositionRequisition: 'PositionRequisition',
+  Candidate: 'Candidate'
 };
 
 /**

@@ -1005,7 +1005,32 @@ model PositionRequisition {
   contractType        String
   dueDate             DateTime
   numberOfPositions   Int
+  status String @default("new")
   jobDescription      String   @db.Text
   reasonForRequisition String  @db.Text
   createdAt           DateTime @default(now())
+}
+model Candidate {
+  id               String   @id @default(cuid())
+  candidateCode    String   @unique
+  firstName        String
+  lastName         String
+  email            String
+  phone            String
+  address          String
+  city             String
+  country          String
+  applicationDate  DateTime
+  coverLetter      String
+  designation      String
+  graduationYear   DateTime
+  highestEducation String
+  institution      String
+  jobId            String
+  resumeLink       String
+  skills           String
+  tools            String @default("No tools")
+  status           String
+  workExperience   String
+  createdAt        DateTime @default(now())
 }
