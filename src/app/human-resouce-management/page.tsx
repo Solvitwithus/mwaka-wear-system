@@ -111,7 +111,7 @@ if (loading) return (
     {title:"Select Suited Candidate",link:"/human-resouce-management/select-suited-candidates",permission:"SelectSuitedCandidate",image:StudIcon},
     {title:"Orientation Process",link:"/human-resouce-management/orientation",permission:"Orientation",image:StudIcon},
     {title:"Issue of Working Tools",link:"/human-resouce-management/issuarance-of-working-tools",permission:"IssueofWorkingTools",image:StudIcon},
-    {title:"Leave Application Initiation",link:"/human-resouce-management/pos-report",permission:"LeaveApplication",image:StudIcon},
+    {title:"Leave Application Initiation",link:"/human-resouce-management/leave-application",permission:"LeaveApplication",image:StudIcon},
     {title:"Leave Approval by HR",link:"/human-resouce-management/",permission:"LeaveApprovalbyHR",image:StudIcon},
     {title:"Leave Approval by Management",link:"/human-resouce-management/pos-report",permission:"LeaveApprovalbyManagement",image:StudIcon},
     {title:"Training Request by Staff",link:"/human-resouce-management/",permission:"TrainingRequestbyStaff",image:StudIcon},

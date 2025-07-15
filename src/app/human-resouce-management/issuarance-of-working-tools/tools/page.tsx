@@ -48,7 +48,6 @@ const Page = () => {
     try {
       if (!candidateData) return;
       const res = await axios.patch(`/api/auth/add-candidate/${candidateData.id}`, {
-        status: "Shortlisted",
         toolsRequired, // Include tools in the PATCH request
       });
       if (res.status === 200) {

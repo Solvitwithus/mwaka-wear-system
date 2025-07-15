@@ -1034,3 +1034,21 @@ model Candidate {
   workExperience   String
   createdAt        DateTime @default(now())
 }
+model LeaveApplication {
+  id               String   @id @default(cuid())
+  employeeId       String
+  firstName        String
+  lastName         String
+  email            String
+  address          String
+  branch           String
+  phone            String
+  leaveType        String
+  leaveBalance     Int
+  applicationDate  DateTime
+  startDate        DateTime
+  endDate          DateTime
+  leaveDays        Int
+  remarks          String?
+  createdAt        DateTime @default(now())
+}

@@ -1059,6 +1059,25 @@ exports.Prisma.CandidateScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.LeaveApplicationScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  firstName: 'firstName',
+  lastName: 'lastName',
+  email: 'email',
+  address: 'address',
+  branch: 'branch',
+  phone: 'phone',
+  leaveType: 'leaveType',
+  leaveBalance: 'leaveBalance',
+  applicationDate: 'applicationDate',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  leaveDays: 'leaveDays',
+  remarks: 'remarks',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1145,7 +1164,8 @@ exports.Prisma.ModelName = {
   ContractType: 'ContractType',
   NonAttendanceReason: 'NonAttendanceReason',
   PositionRequisition: 'PositionRequisition',
-  Candidate: 'Candidate'
+  Candidate: 'Candidate',
+  LeaveApplication: 'LeaveApplication'
 };
 
 /**

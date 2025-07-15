@@ -313,6 +313,11 @@ export type PositionRequisition = $Result.DefaultSelection<Prisma.$PositionRequi
  * 
  */
 export type Candidate = $Result.DefaultSelection<Prisma.$CandidatePayload>
+/**
+ * Model LeaveApplication
+ * 
+ */
+export type LeaveApplication = $Result.DefaultSelection<Prisma.$LeaveApplicationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1038,6 +1043,16 @@ export class PrismaClient<
     * ```
     */
   get candidate(): Prisma.CandidateDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.leaveApplication`: Exposes CRUD operations for the **LeaveApplication** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more LeaveApplications
+    * const leaveApplications = await prisma.leaveApplication.findMany()
+    * ```
+    */
+  get leaveApplication(): Prisma.LeaveApplicationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1537,7 +1552,8 @@ export namespace Prisma {
     ContractType: 'ContractType',
     NonAttendanceReason: 'NonAttendanceReason',
     PositionRequisition: 'PositionRequisition',
-    Candidate: 'Candidate'
+    Candidate: 'Candidate',
+    LeaveApplication: 'LeaveApplication'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1556,7 +1572,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -6000,6 +6016,80 @@ export namespace Prisma {
           }
         }
       }
+      LeaveApplication: {
+        payload: Prisma.$LeaveApplicationPayload<ExtArgs>
+        fields: Prisma.LeaveApplicationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.LeaveApplicationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.LeaveApplicationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>
+          }
+          findFirst: {
+            args: Prisma.LeaveApplicationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.LeaveApplicationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>
+          }
+          findMany: {
+            args: Prisma.LeaveApplicationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>[]
+          }
+          create: {
+            args: Prisma.LeaveApplicationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>
+          }
+          createMany: {
+            args: Prisma.LeaveApplicationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.LeaveApplicationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>[]
+          }
+          delete: {
+            args: Prisma.LeaveApplicationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>
+          }
+          update: {
+            args: Prisma.LeaveApplicationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>
+          }
+          deleteMany: {
+            args: Prisma.LeaveApplicationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.LeaveApplicationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.LeaveApplicationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>[]
+          }
+          upsert: {
+            args: Prisma.LeaveApplicationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$LeaveApplicationPayload>
+          }
+          aggregate: {
+            args: Prisma.LeaveApplicationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateLeaveApplication>
+          }
+          groupBy: {
+            args: Prisma.LeaveApplicationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<LeaveApplicationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.LeaveApplicationCountArgs<ExtArgs>
+            result: $Utils.Optional<LeaveApplicationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -6144,6 +6234,7 @@ export namespace Prisma {
     nonAttendanceReason?: NonAttendanceReasonOmit
     positionRequisition?: PositionRequisitionOmit
     candidate?: CandidateOmit
+    leaveApplication?: LeaveApplicationOmit
   }
 
   /* Types for Logging */
@@ -75988,6 +76079,1182 @@ export namespace Prisma {
 
 
   /**
+   * Model LeaveApplication
+   */
+
+  export type AggregateLeaveApplication = {
+    _count: LeaveApplicationCountAggregateOutputType | null
+    _avg: LeaveApplicationAvgAggregateOutputType | null
+    _sum: LeaveApplicationSumAggregateOutputType | null
+    _min: LeaveApplicationMinAggregateOutputType | null
+    _max: LeaveApplicationMaxAggregateOutputType | null
+  }
+
+  export type LeaveApplicationAvgAggregateOutputType = {
+    leaveBalance: number | null
+    leaveDays: number | null
+  }
+
+  export type LeaveApplicationSumAggregateOutputType = {
+    leaveBalance: number | null
+    leaveDays: number | null
+  }
+
+  export type LeaveApplicationMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    address: string | null
+    branch: string | null
+    phone: string | null
+    leaveType: string | null
+    leaveBalance: number | null
+    applicationDate: Date | null
+    startDate: Date | null
+    endDate: Date | null
+    leaveDays: number | null
+    remarks: string | null
+    createdAt: Date | null
+  }
+
+  export type LeaveApplicationMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    firstName: string | null
+    lastName: string | null
+    email: string | null
+    address: string | null
+    branch: string | null
+    phone: string | null
+    leaveType: string | null
+    leaveBalance: number | null
+    applicationDate: Date | null
+    startDate: Date | null
+    endDate: Date | null
+    leaveDays: number | null
+    remarks: string | null
+    createdAt: Date | null
+  }
+
+  export type LeaveApplicationCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    firstName: number
+    lastName: number
+    email: number
+    address: number
+    branch: number
+    phone: number
+    leaveType: number
+    leaveBalance: number
+    applicationDate: number
+    startDate: number
+    endDate: number
+    leaveDays: number
+    remarks: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type LeaveApplicationAvgAggregateInputType = {
+    leaveBalance?: true
+    leaveDays?: true
+  }
+
+  export type LeaveApplicationSumAggregateInputType = {
+    leaveBalance?: true
+    leaveDays?: true
+  }
+
+  export type LeaveApplicationMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    address?: true
+    branch?: true
+    phone?: true
+    leaveType?: true
+    leaveBalance?: true
+    applicationDate?: true
+    startDate?: true
+    endDate?: true
+    leaveDays?: true
+    remarks?: true
+    createdAt?: true
+  }
+
+  export type LeaveApplicationMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    address?: true
+    branch?: true
+    phone?: true
+    leaveType?: true
+    leaveBalance?: true
+    applicationDate?: true
+    startDate?: true
+    endDate?: true
+    leaveDays?: true
+    remarks?: true
+    createdAt?: true
+  }
+
+  export type LeaveApplicationCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    firstName?: true
+    lastName?: true
+    email?: true
+    address?: true
+    branch?: true
+    phone?: true
+    leaveType?: true
+    leaveBalance?: true
+    applicationDate?: true
+    startDate?: true
+    endDate?: true
+    leaveDays?: true
+    remarks?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type LeaveApplicationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LeaveApplication to aggregate.
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LeaveApplications to fetch.
+     */
+    orderBy?: LeaveApplicationOrderByWithRelationInput | LeaveApplicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: LeaveApplicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LeaveApplications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LeaveApplications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned LeaveApplications
+    **/
+    _count?: true | LeaveApplicationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: LeaveApplicationAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: LeaveApplicationSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: LeaveApplicationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: LeaveApplicationMaxAggregateInputType
+  }
+
+  export type GetLeaveApplicationAggregateType<T extends LeaveApplicationAggregateArgs> = {
+        [P in keyof T & keyof AggregateLeaveApplication]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateLeaveApplication[P]>
+      : GetScalarType<T[P], AggregateLeaveApplication[P]>
+  }
+
+
+
+
+  export type LeaveApplicationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: LeaveApplicationWhereInput
+    orderBy?: LeaveApplicationOrderByWithAggregationInput | LeaveApplicationOrderByWithAggregationInput[]
+    by: LeaveApplicationScalarFieldEnum[] | LeaveApplicationScalarFieldEnum
+    having?: LeaveApplicationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: LeaveApplicationCountAggregateInputType | true
+    _avg?: LeaveApplicationAvgAggregateInputType
+    _sum?: LeaveApplicationSumAggregateInputType
+    _min?: LeaveApplicationMinAggregateInputType
+    _max?: LeaveApplicationMaxAggregateInputType
+  }
+
+  export type LeaveApplicationGroupByOutputType = {
+    id: string
+    employeeId: string
+    firstName: string
+    lastName: string
+    email: string
+    address: string
+    branch: string
+    phone: string
+    leaveType: string
+    leaveBalance: number
+    applicationDate: Date
+    startDate: Date
+    endDate: Date
+    leaveDays: number
+    remarks: string | null
+    createdAt: Date
+    _count: LeaveApplicationCountAggregateOutputType | null
+    _avg: LeaveApplicationAvgAggregateOutputType | null
+    _sum: LeaveApplicationSumAggregateOutputType | null
+    _min: LeaveApplicationMinAggregateOutputType | null
+    _max: LeaveApplicationMaxAggregateOutputType | null
+  }
+
+  type GetLeaveApplicationGroupByPayload<T extends LeaveApplicationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<LeaveApplicationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof LeaveApplicationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], LeaveApplicationGroupByOutputType[P]>
+            : GetScalarType<T[P], LeaveApplicationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type LeaveApplicationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    address?: boolean
+    branch?: boolean
+    phone?: boolean
+    leaveType?: boolean
+    leaveBalance?: boolean
+    applicationDate?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    leaveDays?: boolean
+    remarks?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["leaveApplication"]>
+
+  export type LeaveApplicationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    address?: boolean
+    branch?: boolean
+    phone?: boolean
+    leaveType?: boolean
+    leaveBalance?: boolean
+    applicationDate?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    leaveDays?: boolean
+    remarks?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["leaveApplication"]>
+
+  export type LeaveApplicationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    address?: boolean
+    branch?: boolean
+    phone?: boolean
+    leaveType?: boolean
+    leaveBalance?: boolean
+    applicationDate?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    leaveDays?: boolean
+    remarks?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["leaveApplication"]>
+
+  export type LeaveApplicationSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    firstName?: boolean
+    lastName?: boolean
+    email?: boolean
+    address?: boolean
+    branch?: boolean
+    phone?: boolean
+    leaveType?: boolean
+    leaveBalance?: boolean
+    applicationDate?: boolean
+    startDate?: boolean
+    endDate?: boolean
+    leaveDays?: boolean
+    remarks?: boolean
+    createdAt?: boolean
+  }
+
+  export type LeaveApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "firstName" | "lastName" | "email" | "address" | "branch" | "phone" | "leaveType" | "leaveBalance" | "applicationDate" | "startDate" | "endDate" | "leaveDays" | "remarks" | "createdAt", ExtArgs["result"]["leaveApplication"]>
+
+  export type $LeaveApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "LeaveApplication"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      firstName: string
+      lastName: string
+      email: string
+      address: string
+      branch: string
+      phone: string
+      leaveType: string
+      leaveBalance: number
+      applicationDate: Date
+      startDate: Date
+      endDate: Date
+      leaveDays: number
+      remarks: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["leaveApplication"]>
+    composites: {}
+  }
+
+  type LeaveApplicationGetPayload<S extends boolean | null | undefined | LeaveApplicationDefaultArgs> = $Result.GetResult<Prisma.$LeaveApplicationPayload, S>
+
+  type LeaveApplicationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<LeaveApplicationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: LeaveApplicationCountAggregateInputType | true
+    }
+
+  export interface LeaveApplicationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['LeaveApplication'], meta: { name: 'LeaveApplication' } }
+    /**
+     * Find zero or one LeaveApplication that matches the filter.
+     * @param {LeaveApplicationFindUniqueArgs} args - Arguments to find a LeaveApplication
+     * @example
+     * // Get one LeaveApplication
+     * const leaveApplication = await prisma.leaveApplication.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends LeaveApplicationFindUniqueArgs>(args: SelectSubset<T, LeaveApplicationFindUniqueArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one LeaveApplication that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {LeaveApplicationFindUniqueOrThrowArgs} args - Arguments to find a LeaveApplication
+     * @example
+     * // Get one LeaveApplication
+     * const leaveApplication = await prisma.leaveApplication.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends LeaveApplicationFindUniqueOrThrowArgs>(args: SelectSubset<T, LeaveApplicationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LeaveApplication that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationFindFirstArgs} args - Arguments to find a LeaveApplication
+     * @example
+     * // Get one LeaveApplication
+     * const leaveApplication = await prisma.leaveApplication.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends LeaveApplicationFindFirstArgs>(args?: SelectSubset<T, LeaveApplicationFindFirstArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first LeaveApplication that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationFindFirstOrThrowArgs} args - Arguments to find a LeaveApplication
+     * @example
+     * // Get one LeaveApplication
+     * const leaveApplication = await prisma.leaveApplication.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends LeaveApplicationFindFirstOrThrowArgs>(args?: SelectSubset<T, LeaveApplicationFindFirstOrThrowArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more LeaveApplications that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all LeaveApplications
+     * const leaveApplications = await prisma.leaveApplication.findMany()
+     * 
+     * // Get first 10 LeaveApplications
+     * const leaveApplications = await prisma.leaveApplication.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const leaveApplicationWithIdOnly = await prisma.leaveApplication.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends LeaveApplicationFindManyArgs>(args?: SelectSubset<T, LeaveApplicationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a LeaveApplication.
+     * @param {LeaveApplicationCreateArgs} args - Arguments to create a LeaveApplication.
+     * @example
+     * // Create one LeaveApplication
+     * const LeaveApplication = await prisma.leaveApplication.create({
+     *   data: {
+     *     // ... data to create a LeaveApplication
+     *   }
+     * })
+     * 
+     */
+    create<T extends LeaveApplicationCreateArgs>(args: SelectSubset<T, LeaveApplicationCreateArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many LeaveApplications.
+     * @param {LeaveApplicationCreateManyArgs} args - Arguments to create many LeaveApplications.
+     * @example
+     * // Create many LeaveApplications
+     * const leaveApplication = await prisma.leaveApplication.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends LeaveApplicationCreateManyArgs>(args?: SelectSubset<T, LeaveApplicationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many LeaveApplications and returns the data saved in the database.
+     * @param {LeaveApplicationCreateManyAndReturnArgs} args - Arguments to create many LeaveApplications.
+     * @example
+     * // Create many LeaveApplications
+     * const leaveApplication = await prisma.leaveApplication.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many LeaveApplications and only return the `id`
+     * const leaveApplicationWithIdOnly = await prisma.leaveApplication.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends LeaveApplicationCreateManyAndReturnArgs>(args?: SelectSubset<T, LeaveApplicationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a LeaveApplication.
+     * @param {LeaveApplicationDeleteArgs} args - Arguments to delete one LeaveApplication.
+     * @example
+     * // Delete one LeaveApplication
+     * const LeaveApplication = await prisma.leaveApplication.delete({
+     *   where: {
+     *     // ... filter to delete one LeaveApplication
+     *   }
+     * })
+     * 
+     */
+    delete<T extends LeaveApplicationDeleteArgs>(args: SelectSubset<T, LeaveApplicationDeleteArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one LeaveApplication.
+     * @param {LeaveApplicationUpdateArgs} args - Arguments to update one LeaveApplication.
+     * @example
+     * // Update one LeaveApplication
+     * const leaveApplication = await prisma.leaveApplication.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends LeaveApplicationUpdateArgs>(args: SelectSubset<T, LeaveApplicationUpdateArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more LeaveApplications.
+     * @param {LeaveApplicationDeleteManyArgs} args - Arguments to filter LeaveApplications to delete.
+     * @example
+     * // Delete a few LeaveApplications
+     * const { count } = await prisma.leaveApplication.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends LeaveApplicationDeleteManyArgs>(args?: SelectSubset<T, LeaveApplicationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LeaveApplications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many LeaveApplications
+     * const leaveApplication = await prisma.leaveApplication.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends LeaveApplicationUpdateManyArgs>(args: SelectSubset<T, LeaveApplicationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more LeaveApplications and returns the data updated in the database.
+     * @param {LeaveApplicationUpdateManyAndReturnArgs} args - Arguments to update many LeaveApplications.
+     * @example
+     * // Update many LeaveApplications
+     * const leaveApplication = await prisma.leaveApplication.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more LeaveApplications and only return the `id`
+     * const leaveApplicationWithIdOnly = await prisma.leaveApplication.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends LeaveApplicationUpdateManyAndReturnArgs>(args: SelectSubset<T, LeaveApplicationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one LeaveApplication.
+     * @param {LeaveApplicationUpsertArgs} args - Arguments to update or create a LeaveApplication.
+     * @example
+     * // Update or create a LeaveApplication
+     * const leaveApplication = await prisma.leaveApplication.upsert({
+     *   create: {
+     *     // ... data to create a LeaveApplication
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the LeaveApplication we want to update
+     *   }
+     * })
+     */
+    upsert<T extends LeaveApplicationUpsertArgs>(args: SelectSubset<T, LeaveApplicationUpsertArgs<ExtArgs>>): Prisma__LeaveApplicationClient<$Result.GetResult<Prisma.$LeaveApplicationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of LeaveApplications.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationCountArgs} args - Arguments to filter LeaveApplications to count.
+     * @example
+     * // Count the number of LeaveApplications
+     * const count = await prisma.leaveApplication.count({
+     *   where: {
+     *     // ... the filter for the LeaveApplications we want to count
+     *   }
+     * })
+    **/
+    count<T extends LeaveApplicationCountArgs>(
+      args?: Subset<T, LeaveApplicationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], LeaveApplicationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a LeaveApplication.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends LeaveApplicationAggregateArgs>(args: Subset<T, LeaveApplicationAggregateArgs>): Prisma.PrismaPromise<GetLeaveApplicationAggregateType<T>>
+
+    /**
+     * Group by LeaveApplication.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {LeaveApplicationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends LeaveApplicationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: LeaveApplicationGroupByArgs['orderBy'] }
+        : { orderBy?: LeaveApplicationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, LeaveApplicationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetLeaveApplicationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the LeaveApplication model
+   */
+  readonly fields: LeaveApplicationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for LeaveApplication.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__LeaveApplicationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the LeaveApplication model
+   */
+  interface LeaveApplicationFieldRefs {
+    readonly id: FieldRef<"LeaveApplication", 'String'>
+    readonly employeeId: FieldRef<"LeaveApplication", 'String'>
+    readonly firstName: FieldRef<"LeaveApplication", 'String'>
+    readonly lastName: FieldRef<"LeaveApplication", 'String'>
+    readonly email: FieldRef<"LeaveApplication", 'String'>
+    readonly address: FieldRef<"LeaveApplication", 'String'>
+    readonly branch: FieldRef<"LeaveApplication", 'String'>
+    readonly phone: FieldRef<"LeaveApplication", 'String'>
+    readonly leaveType: FieldRef<"LeaveApplication", 'String'>
+    readonly leaveBalance: FieldRef<"LeaveApplication", 'Int'>
+    readonly applicationDate: FieldRef<"LeaveApplication", 'DateTime'>
+    readonly startDate: FieldRef<"LeaveApplication", 'DateTime'>
+    readonly endDate: FieldRef<"LeaveApplication", 'DateTime'>
+    readonly leaveDays: FieldRef<"LeaveApplication", 'Int'>
+    readonly remarks: FieldRef<"LeaveApplication", 'String'>
+    readonly createdAt: FieldRef<"LeaveApplication", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * LeaveApplication findUnique
+   */
+  export type LeaveApplicationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * Filter, which LeaveApplication to fetch.
+     */
+    where: LeaveApplicationWhereUniqueInput
+  }
+
+  /**
+   * LeaveApplication findUniqueOrThrow
+   */
+  export type LeaveApplicationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * Filter, which LeaveApplication to fetch.
+     */
+    where: LeaveApplicationWhereUniqueInput
+  }
+
+  /**
+   * LeaveApplication findFirst
+   */
+  export type LeaveApplicationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * Filter, which LeaveApplication to fetch.
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LeaveApplications to fetch.
+     */
+    orderBy?: LeaveApplicationOrderByWithRelationInput | LeaveApplicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LeaveApplications.
+     */
+    cursor?: LeaveApplicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LeaveApplications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LeaveApplications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LeaveApplications.
+     */
+    distinct?: LeaveApplicationScalarFieldEnum | LeaveApplicationScalarFieldEnum[]
+  }
+
+  /**
+   * LeaveApplication findFirstOrThrow
+   */
+  export type LeaveApplicationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * Filter, which LeaveApplication to fetch.
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LeaveApplications to fetch.
+     */
+    orderBy?: LeaveApplicationOrderByWithRelationInput | LeaveApplicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for LeaveApplications.
+     */
+    cursor?: LeaveApplicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LeaveApplications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LeaveApplications.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of LeaveApplications.
+     */
+    distinct?: LeaveApplicationScalarFieldEnum | LeaveApplicationScalarFieldEnum[]
+  }
+
+  /**
+   * LeaveApplication findMany
+   */
+  export type LeaveApplicationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * Filter, which LeaveApplications to fetch.
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of LeaveApplications to fetch.
+     */
+    orderBy?: LeaveApplicationOrderByWithRelationInput | LeaveApplicationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing LeaveApplications.
+     */
+    cursor?: LeaveApplicationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` LeaveApplications from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` LeaveApplications.
+     */
+    skip?: number
+    distinct?: LeaveApplicationScalarFieldEnum | LeaveApplicationScalarFieldEnum[]
+  }
+
+  /**
+   * LeaveApplication create
+   */
+  export type LeaveApplicationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * The data needed to create a LeaveApplication.
+     */
+    data: XOR<LeaveApplicationCreateInput, LeaveApplicationUncheckedCreateInput>
+  }
+
+  /**
+   * LeaveApplication createMany
+   */
+  export type LeaveApplicationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many LeaveApplications.
+     */
+    data: LeaveApplicationCreateManyInput | LeaveApplicationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LeaveApplication createManyAndReturn
+   */
+  export type LeaveApplicationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * The data used to create many LeaveApplications.
+     */
+    data: LeaveApplicationCreateManyInput | LeaveApplicationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * LeaveApplication update
+   */
+  export type LeaveApplicationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * The data needed to update a LeaveApplication.
+     */
+    data: XOR<LeaveApplicationUpdateInput, LeaveApplicationUncheckedUpdateInput>
+    /**
+     * Choose, which LeaveApplication to update.
+     */
+    where: LeaveApplicationWhereUniqueInput
+  }
+
+  /**
+   * LeaveApplication updateMany
+   */
+  export type LeaveApplicationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update LeaveApplications.
+     */
+    data: XOR<LeaveApplicationUpdateManyMutationInput, LeaveApplicationUncheckedUpdateManyInput>
+    /**
+     * Filter which LeaveApplications to update
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * Limit how many LeaveApplications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LeaveApplication updateManyAndReturn
+   */
+  export type LeaveApplicationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * The data used to update LeaveApplications.
+     */
+    data: XOR<LeaveApplicationUpdateManyMutationInput, LeaveApplicationUncheckedUpdateManyInput>
+    /**
+     * Filter which LeaveApplications to update
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * Limit how many LeaveApplications to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * LeaveApplication upsert
+   */
+  export type LeaveApplicationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * The filter to search for the LeaveApplication to update in case it exists.
+     */
+    where: LeaveApplicationWhereUniqueInput
+    /**
+     * In case the LeaveApplication found by the `where` argument doesn't exist, create a new LeaveApplication with this data.
+     */
+    create: XOR<LeaveApplicationCreateInput, LeaveApplicationUncheckedCreateInput>
+    /**
+     * In case the LeaveApplication was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<LeaveApplicationUpdateInput, LeaveApplicationUncheckedUpdateInput>
+  }
+
+  /**
+   * LeaveApplication delete
+   */
+  export type LeaveApplicationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+    /**
+     * Filter which LeaveApplication to delete.
+     */
+    where: LeaveApplicationWhereUniqueInput
+  }
+
+  /**
+   * LeaveApplication deleteMany
+   */
+  export type LeaveApplicationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which LeaveApplications to delete
+     */
+    where?: LeaveApplicationWhereInput
+    /**
+     * Limit how many LeaveApplications to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * LeaveApplication without action
+   */
+  export type LeaveApplicationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the LeaveApplication
+     */
+    select?: LeaveApplicationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the LeaveApplication
+     */
+    omit?: LeaveApplicationOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -77118,6 +78385,28 @@ export namespace Prisma {
   };
 
   export type CandidateScalarFieldEnum = (typeof CandidateScalarFieldEnum)[keyof typeof CandidateScalarFieldEnum]
+
+
+  export const LeaveApplicationScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    firstName: 'firstName',
+    lastName: 'lastName',
+    email: 'email',
+    address: 'address',
+    branch: 'branch',
+    phone: 'phone',
+    leaveType: 'leaveType',
+    leaveBalance: 'leaveBalance',
+    applicationDate: 'applicationDate',
+    startDate: 'startDate',
+    endDate: 'endDate',
+    leaveDays: 'leaveDays',
+    remarks: 'remarks',
+    createdAt: 'createdAt'
+  };
+
+  export type LeaveApplicationScalarFieldEnum = (typeof LeaveApplicationScalarFieldEnum)[keyof typeof LeaveApplicationScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -82862,6 +84151,115 @@ export namespace Prisma {
     status?: StringWithAggregatesFilter<"Candidate"> | string
     workExperience?: StringWithAggregatesFilter<"Candidate"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Candidate"> | Date | string
+  }
+
+  export type LeaveApplicationWhereInput = {
+    AND?: LeaveApplicationWhereInput | LeaveApplicationWhereInput[]
+    OR?: LeaveApplicationWhereInput[]
+    NOT?: LeaveApplicationWhereInput | LeaveApplicationWhereInput[]
+    id?: StringFilter<"LeaveApplication"> | string
+    employeeId?: StringFilter<"LeaveApplication"> | string
+    firstName?: StringFilter<"LeaveApplication"> | string
+    lastName?: StringFilter<"LeaveApplication"> | string
+    email?: StringFilter<"LeaveApplication"> | string
+    address?: StringFilter<"LeaveApplication"> | string
+    branch?: StringFilter<"LeaveApplication"> | string
+    phone?: StringFilter<"LeaveApplication"> | string
+    leaveType?: StringFilter<"LeaveApplication"> | string
+    leaveBalance?: IntFilter<"LeaveApplication"> | number
+    applicationDate?: DateTimeFilter<"LeaveApplication"> | Date | string
+    startDate?: DateTimeFilter<"LeaveApplication"> | Date | string
+    endDate?: DateTimeFilter<"LeaveApplication"> | Date | string
+    leaveDays?: IntFilter<"LeaveApplication"> | number
+    remarks?: StringNullableFilter<"LeaveApplication"> | string | null
+    createdAt?: DateTimeFilter<"LeaveApplication"> | Date | string
+  }
+
+  export type LeaveApplicationOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    branch?: SortOrder
+    phone?: SortOrder
+    leaveType?: SortOrder
+    leaveBalance?: SortOrder
+    applicationDate?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    leaveDays?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LeaveApplicationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: LeaveApplicationWhereInput | LeaveApplicationWhereInput[]
+    OR?: LeaveApplicationWhereInput[]
+    NOT?: LeaveApplicationWhereInput | LeaveApplicationWhereInput[]
+    employeeId?: StringFilter<"LeaveApplication"> | string
+    firstName?: StringFilter<"LeaveApplication"> | string
+    lastName?: StringFilter<"LeaveApplication"> | string
+    email?: StringFilter<"LeaveApplication"> | string
+    address?: StringFilter<"LeaveApplication"> | string
+    branch?: StringFilter<"LeaveApplication"> | string
+    phone?: StringFilter<"LeaveApplication"> | string
+    leaveType?: StringFilter<"LeaveApplication"> | string
+    leaveBalance?: IntFilter<"LeaveApplication"> | number
+    applicationDate?: DateTimeFilter<"LeaveApplication"> | Date | string
+    startDate?: DateTimeFilter<"LeaveApplication"> | Date | string
+    endDate?: DateTimeFilter<"LeaveApplication"> | Date | string
+    leaveDays?: IntFilter<"LeaveApplication"> | number
+    remarks?: StringNullableFilter<"LeaveApplication"> | string | null
+    createdAt?: DateTimeFilter<"LeaveApplication"> | Date | string
+  }, "id">
+
+  export type LeaveApplicationOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    branch?: SortOrder
+    phone?: SortOrder
+    leaveType?: SortOrder
+    leaveBalance?: SortOrder
+    applicationDate?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    leaveDays?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: LeaveApplicationCountOrderByAggregateInput
+    _avg?: LeaveApplicationAvgOrderByAggregateInput
+    _max?: LeaveApplicationMaxOrderByAggregateInput
+    _min?: LeaveApplicationMinOrderByAggregateInput
+    _sum?: LeaveApplicationSumOrderByAggregateInput
+  }
+
+  export type LeaveApplicationScalarWhereWithAggregatesInput = {
+    AND?: LeaveApplicationScalarWhereWithAggregatesInput | LeaveApplicationScalarWhereWithAggregatesInput[]
+    OR?: LeaveApplicationScalarWhereWithAggregatesInput[]
+    NOT?: LeaveApplicationScalarWhereWithAggregatesInput | LeaveApplicationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    employeeId?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    firstName?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    lastName?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    email?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    address?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    branch?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    phone?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    leaveType?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    leaveBalance?: IntWithAggregatesFilter<"LeaveApplication"> | number
+    applicationDate?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
+    startDate?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
+    endDate?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
+    leaveDays?: IntWithAggregatesFilter<"LeaveApplication"> | number
+    remarks?: StringNullableWithAggregatesFilter<"LeaveApplication"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -89491,6 +90889,139 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type LeaveApplicationCreateInput = {
+    id?: string
+    employeeId: string
+    firstName: string
+    lastName: string
+    email: string
+    address: string
+    branch: string
+    phone: string
+    leaveType: string
+    leaveBalance: number
+    applicationDate: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    leaveDays: number
+    remarks?: string | null
+    createdAt?: Date | string
+  }
+
+  export type LeaveApplicationUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    firstName: string
+    lastName: string
+    email: string
+    address: string
+    branch: string
+    phone: string
+    leaveType: string
+    leaveBalance: number
+    applicationDate: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    leaveDays: number
+    remarks?: string | null
+    createdAt?: Date | string
+  }
+
+  export type LeaveApplicationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    leaveType?: StringFieldUpdateOperationsInput | string
+    leaveBalance?: IntFieldUpdateOperationsInput | number
+    applicationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaveDays?: IntFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LeaveApplicationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    leaveType?: StringFieldUpdateOperationsInput | string
+    leaveBalance?: IntFieldUpdateOperationsInput | number
+    applicationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaveDays?: IntFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LeaveApplicationCreateManyInput = {
+    id?: string
+    employeeId: string
+    firstName: string
+    lastName: string
+    email: string
+    address: string
+    branch: string
+    phone: string
+    leaveType: string
+    leaveBalance: number
+    applicationDate: Date | string
+    startDate: Date | string
+    endDate: Date | string
+    leaveDays: number
+    remarks?: string | null
+    createdAt?: Date | string
+  }
+
+  export type LeaveApplicationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    leaveType?: StringFieldUpdateOperationsInput | string
+    leaveBalance?: IntFieldUpdateOperationsInput | number
+    applicationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaveDays?: IntFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type LeaveApplicationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone?: StringFieldUpdateOperationsInput | string
+    leaveType?: StringFieldUpdateOperationsInput | string
+    leaveBalance?: IntFieldUpdateOperationsInput | number
+    applicationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    leaveDays?: IntFieldUpdateOperationsInput | number
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -93231,6 +94762,73 @@ export namespace Prisma {
     status?: SortOrder
     workExperience?: SortOrder
     createdAt?: SortOrder
+  }
+
+  export type LeaveApplicationCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    branch?: SortOrder
+    phone?: SortOrder
+    leaveType?: SortOrder
+    leaveBalance?: SortOrder
+    applicationDate?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    leaveDays?: SortOrder
+    remarks?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LeaveApplicationAvgOrderByAggregateInput = {
+    leaveBalance?: SortOrder
+    leaveDays?: SortOrder
+  }
+
+  export type LeaveApplicationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    branch?: SortOrder
+    phone?: SortOrder
+    leaveType?: SortOrder
+    leaveBalance?: SortOrder
+    applicationDate?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    leaveDays?: SortOrder
+    remarks?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LeaveApplicationMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    firstName?: SortOrder
+    lastName?: SortOrder
+    email?: SortOrder
+    address?: SortOrder
+    branch?: SortOrder
+    phone?: SortOrder
+    leaveType?: SortOrder
+    leaveBalance?: SortOrder
+    applicationDate?: SortOrder
+    startDate?: SortOrder
+    endDate?: SortOrder
+    leaveDays?: SortOrder
+    remarks?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type LeaveApplicationSumOrderByAggregateInput = {
+    leaveBalance?: SortOrder
+    leaveDays?: SortOrder
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {
