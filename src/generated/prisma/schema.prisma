@@ -1056,5 +1056,8 @@ model LeaveApplication {
   endDate         DateTime
   leaveDays       Int
   remarks         String?
+  status          String   @default("Pending")
+  approver        String?
+  finalApprover   String?
   createdAt       DateTime @default(now())
 }

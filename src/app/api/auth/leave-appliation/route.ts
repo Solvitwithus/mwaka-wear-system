@@ -32,3 +32,40 @@ export async function POST(req: Request) {
     return NextResponse.json({ error: "Failed to apply for leave" }, { status: 500 });
   }
 }
+
+
+export async function GET (){
+  try{
+const data = await prisma.leaveApplication.findMany()
+ 
+  return NextResponse.json(data, { status: 200 });
+
+  
+  }
+  catch(err){
+  return NextResponse.json( {error:"failed to fetch"},{ status: 500 });
+  }
+}
+
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    console.log("PATCH incoming body:", body);
+    const { id, status, approver ,finalApprover} = body;
+
+    const updatedLeave = await prisma.leaveApplication.update({
+      where: { id },
+      data: {
+        status,
+        approver,
+        finalApprover
+       
+      },
+    });
+
+    return NextResponse.json(updatedLeave, { status: 200 });
+  } catch (error) {
+    console.error("PATCH Leave Error:", error);
+    return NextResponse.json({ error: "Failed to update leave status" }, { status: 500 });
+  }
+}

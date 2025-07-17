@@ -1111,8 +1111,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.10.0
-   * Query Engine version: aee10d5a411e4360c6d3445ce4810ca65adbf3e8
+   * Prisma Client JS version: 6.12.0
+   * Query Engine version: 8047c96bbd92db98a2abc7c9323ce77c02c89dbc
    */
   export type PrismaVersion = {
     client: string
@@ -76116,6 +76116,9 @@ export namespace Prisma {
     endDate: Date | null
     leaveDays: number | null
     remarks: string | null
+    status: string | null
+    approver: string | null
+    finalApprover: string | null
     createdAt: Date | null
   }
 
@@ -76135,6 +76138,9 @@ export namespace Prisma {
     endDate: Date | null
     leaveDays: number | null
     remarks: string | null
+    status: string | null
+    approver: string | null
+    finalApprover: string | null
     createdAt: Date | null
   }
 
@@ -76154,6 +76160,9 @@ export namespace Prisma {
     endDate: number
     leaveDays: number
     remarks: number
+    status: number
+    approver: number
+    finalApprover: number
     createdAt: number
     _all: number
   }
@@ -76185,6 +76194,9 @@ export namespace Prisma {
     endDate?: true
     leaveDays?: true
     remarks?: true
+    status?: true
+    approver?: true
+    finalApprover?: true
     createdAt?: true
   }
 
@@ -76204,6 +76216,9 @@ export namespace Prisma {
     endDate?: true
     leaveDays?: true
     remarks?: true
+    status?: true
+    approver?: true
+    finalApprover?: true
     createdAt?: true
   }
 
@@ -76223,6 +76238,9 @@ export namespace Prisma {
     endDate?: true
     leaveDays?: true
     remarks?: true
+    status?: true
+    approver?: true
+    finalApprover?: true
     createdAt?: true
     _all?: true
   }
@@ -76329,6 +76347,9 @@ export namespace Prisma {
     endDate: Date
     leaveDays: number
     remarks: string | null
+    status: string
+    approver: string | null
+    finalApprover: string | null
     createdAt: Date
     _count: LeaveApplicationCountAggregateOutputType | null
     _avg: LeaveApplicationAvgAggregateOutputType | null
@@ -76367,6 +76388,9 @@ export namespace Prisma {
     endDate?: boolean
     leaveDays?: boolean
     remarks?: boolean
+    status?: boolean
+    approver?: boolean
+    finalApprover?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["leaveApplication"]>
 
@@ -76386,6 +76410,9 @@ export namespace Prisma {
     endDate?: boolean
     leaveDays?: boolean
     remarks?: boolean
+    status?: boolean
+    approver?: boolean
+    finalApprover?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["leaveApplication"]>
 
@@ -76405,6 +76432,9 @@ export namespace Prisma {
     endDate?: boolean
     leaveDays?: boolean
     remarks?: boolean
+    status?: boolean
+    approver?: boolean
+    finalApprover?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["leaveApplication"]>
 
@@ -76424,10 +76454,13 @@ export namespace Prisma {
     endDate?: boolean
     leaveDays?: boolean
     remarks?: boolean
+    status?: boolean
+    approver?: boolean
+    finalApprover?: boolean
     createdAt?: boolean
   }
 
-  export type LeaveApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "firstName" | "lastName" | "email" | "address" | "branch" | "phone" | "leaveType" | "leaveBalance" | "applicationDate" | "startDate" | "endDate" | "leaveDays" | "remarks" | "createdAt", ExtArgs["result"]["leaveApplication"]>
+  export type LeaveApplicationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "firstName" | "lastName" | "email" | "address" | "branch" | "phone" | "leaveType" | "leaveBalance" | "applicationDate" | "startDate" | "endDate" | "leaveDays" | "remarks" | "status" | "approver" | "finalApprover" | "createdAt", ExtArgs["result"]["leaveApplication"]>
 
   export type $LeaveApplicationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "LeaveApplication"
@@ -76448,6 +76481,9 @@ export namespace Prisma {
       endDate: Date
       leaveDays: number
       remarks: string | null
+      status: string
+      approver: string | null
+      finalApprover: string | null
       createdAt: Date
     }, ExtArgs["result"]["leaveApplication"]>
     composites: {}
@@ -76887,6 +76923,9 @@ export namespace Prisma {
     readonly endDate: FieldRef<"LeaveApplication", 'DateTime'>
     readonly leaveDays: FieldRef<"LeaveApplication", 'Int'>
     readonly remarks: FieldRef<"LeaveApplication", 'String'>
+    readonly status: FieldRef<"LeaveApplication", 'String'>
+    readonly approver: FieldRef<"LeaveApplication", 'String'>
+    readonly finalApprover: FieldRef<"LeaveApplication", 'String'>
     readonly createdAt: FieldRef<"LeaveApplication", 'DateTime'>
   }
     
@@ -78403,6 +78442,9 @@ export namespace Prisma {
     endDate: 'endDate',
     leaveDays: 'leaveDays',
     remarks: 'remarks',
+    status: 'status',
+    approver: 'approver',
+    finalApprover: 'finalApprover',
     createdAt: 'createdAt'
   };
 
@@ -84172,6 +84214,9 @@ export namespace Prisma {
     endDate?: DateTimeFilter<"LeaveApplication"> | Date | string
     leaveDays?: IntFilter<"LeaveApplication"> | number
     remarks?: StringNullableFilter<"LeaveApplication"> | string | null
+    status?: StringFilter<"LeaveApplication"> | string
+    approver?: StringNullableFilter<"LeaveApplication"> | string | null
+    finalApprover?: StringNullableFilter<"LeaveApplication"> | string | null
     createdAt?: DateTimeFilter<"LeaveApplication"> | Date | string
   }
 
@@ -84191,6 +84236,9 @@ export namespace Prisma {
     endDate?: SortOrder
     leaveDays?: SortOrder
     remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    approver?: SortOrderInput | SortOrder
+    finalApprover?: SortOrderInput | SortOrder
     createdAt?: SortOrder
   }
 
@@ -84213,6 +84261,9 @@ export namespace Prisma {
     endDate?: DateTimeFilter<"LeaveApplication"> | Date | string
     leaveDays?: IntFilter<"LeaveApplication"> | number
     remarks?: StringNullableFilter<"LeaveApplication"> | string | null
+    status?: StringFilter<"LeaveApplication"> | string
+    approver?: StringNullableFilter<"LeaveApplication"> | string | null
+    finalApprover?: StringNullableFilter<"LeaveApplication"> | string | null
     createdAt?: DateTimeFilter<"LeaveApplication"> | Date | string
   }, "id">
 
@@ -84232,6 +84283,9 @@ export namespace Prisma {
     endDate?: SortOrder
     leaveDays?: SortOrder
     remarks?: SortOrderInput | SortOrder
+    status?: SortOrder
+    approver?: SortOrderInput | SortOrder
+    finalApprover?: SortOrderInput | SortOrder
     createdAt?: SortOrder
     _count?: LeaveApplicationCountOrderByAggregateInput
     _avg?: LeaveApplicationAvgOrderByAggregateInput
@@ -84259,6 +84313,9 @@ export namespace Prisma {
     endDate?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
     leaveDays?: IntWithAggregatesFilter<"LeaveApplication"> | number
     remarks?: StringNullableWithAggregatesFilter<"LeaveApplication"> | string | null
+    status?: StringWithAggregatesFilter<"LeaveApplication"> | string
+    approver?: StringNullableWithAggregatesFilter<"LeaveApplication"> | string | null
+    finalApprover?: StringNullableWithAggregatesFilter<"LeaveApplication"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
   }
 
@@ -90905,6 +90962,9 @@ export namespace Prisma {
     endDate: Date | string
     leaveDays: number
     remarks?: string | null
+    status?: string
+    approver?: string | null
+    finalApprover?: string | null
     createdAt?: Date | string
   }
 
@@ -90924,6 +90984,9 @@ export namespace Prisma {
     endDate: Date | string
     leaveDays: number
     remarks?: string | null
+    status?: string
+    approver?: string | null
+    finalApprover?: string | null
     createdAt?: Date | string
   }
 
@@ -90943,6 +91006,9 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     leaveDays?: IntFieldUpdateOperationsInput | number
     remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -90962,6 +91028,9 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     leaveDays?: IntFieldUpdateOperationsInput | number
     remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -90981,6 +91050,9 @@ export namespace Prisma {
     endDate: Date | string
     leaveDays: number
     remarks?: string | null
+    status?: string
+    approver?: string | null
+    finalApprover?: string | null
     createdAt?: Date | string
   }
 
@@ -91000,6 +91072,9 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     leaveDays?: IntFieldUpdateOperationsInput | number
     remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -91019,6 +91094,9 @@ export namespace Prisma {
     endDate?: DateTimeFieldUpdateOperationsInput | Date | string
     leaveDays?: IntFieldUpdateOperationsInput | number
     remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: StringFieldUpdateOperationsInput | string
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -94780,6 +94858,9 @@ export namespace Prisma {
     endDate?: SortOrder
     leaveDays?: SortOrder
     remarks?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+    finalApprover?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -94804,6 +94885,9 @@ export namespace Prisma {
     endDate?: SortOrder
     leaveDays?: SortOrder
     remarks?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+    finalApprover?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -94823,6 +94907,9 @@ export namespace Prisma {
     endDate?: SortOrder
     leaveDays?: SortOrder
     remarks?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+    finalApprover?: SortOrder
     createdAt?: SortOrder
   }
 
