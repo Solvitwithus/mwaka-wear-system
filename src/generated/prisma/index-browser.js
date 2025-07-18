@@ -1081,6 +1081,36 @@ exports.Prisma.LeaveApplicationScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.TrainingRequestScalarFieldEnum = {
+  id: 'id',
+  requestDate: 'requestDate',
+  currentTime: 'currentTime',
+  department: 'department',
+  areaOfTraining: 'areaOfTraining',
+  targetGroup: 'targetGroup',
+  budget: 'budget',
+  startDate: 'startDate',
+  trainer: 'trainer',
+  endDate: 'endDate',
+  remarks: 'remarks',
+  status: 'status',
+  finalApprover: 'finalApprover',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.PerformanceEvaluationScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  evaluationDate: 'evaluationDate',
+  evaluationTime: 'evaluationTime',
+  department: 'department',
+  overallFeedback: 'overallFeedback',
+  goals: 'goals',
+  status: 'status',
+  skills: 'skills',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1168,7 +1198,9 @@ exports.Prisma.ModelName = {
   NonAttendanceReason: 'NonAttendanceReason',
   PositionRequisition: 'PositionRequisition',
   Candidate: 'Candidate',
-  LeaveApplication: 'LeaveApplication'
+  LeaveApplication: 'LeaveApplication',
+  TrainingRequest: 'TrainingRequest',
+  PerformanceEvaluation: 'PerformanceEvaluation'
 };
 
 /**

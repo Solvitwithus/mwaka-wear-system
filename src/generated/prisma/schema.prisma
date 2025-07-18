@@ -1061,3 +1061,33 @@ model LeaveApplication {
   finalApprover   String?
   createdAt       DateTime @default(now())
 }
+
+model TrainingRequest {
+  id             String   @id @default(uuid())
+  requestDate    DateTime
+  currentTime    String
+  department     String
+  areaOfTraining String
+  targetGroup    String // store comma-separated user IDs
+  budget         Float
+  startDate      DateTime
+  trainer        String?
+  endDate        DateTime
+  remarks        String?
+  status         String?
+  finalApprover  String?
+  createdAt      DateTime @default(now())
+}
+
+model PerformanceEvaluation {
+  id              String   @id @default(uuid())
+  employeeId      String
+  evaluationDate  DateTime
+  evaluationTime  String
+  department      String
+  overallFeedback String
+  goals           String
+  status          String
+  skills          Json // Array of skill ratings
+  createdAt       DateTime @default(now())
+}

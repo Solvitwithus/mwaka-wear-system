@@ -318,6 +318,16 @@ export type Candidate = $Result.DefaultSelection<Prisma.$CandidatePayload>
  * 
  */
 export type LeaveApplication = $Result.DefaultSelection<Prisma.$LeaveApplicationPayload>
+/**
+ * Model TrainingRequest
+ * 
+ */
+export type TrainingRequest = $Result.DefaultSelection<Prisma.$TrainingRequestPayload>
+/**
+ * Model PerformanceEvaluation
+ * 
+ */
+export type PerformanceEvaluation = $Result.DefaultSelection<Prisma.$PerformanceEvaluationPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1053,6 +1063,26 @@ export class PrismaClient<
     * ```
     */
   get leaveApplication(): Prisma.LeaveApplicationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.trainingRequest`: Exposes CRUD operations for the **TrainingRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TrainingRequests
+    * const trainingRequests = await prisma.trainingRequest.findMany()
+    * ```
+    */
+  get trainingRequest(): Prisma.TrainingRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.performanceEvaluation`: Exposes CRUD operations for the **PerformanceEvaluation** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PerformanceEvaluations
+    * const performanceEvaluations = await prisma.performanceEvaluation.findMany()
+    * ```
+    */
+  get performanceEvaluation(): Prisma.PerformanceEvaluationDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1553,7 +1583,9 @@ export namespace Prisma {
     NonAttendanceReason: 'NonAttendanceReason',
     PositionRequisition: 'PositionRequisition',
     Candidate: 'Candidate',
-    LeaveApplication: 'LeaveApplication'
+    LeaveApplication: 'LeaveApplication',
+    TrainingRequest: 'TrainingRequest',
+    PerformanceEvaluation: 'PerformanceEvaluation'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1572,7 +1604,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -6090,6 +6122,154 @@ export namespace Prisma {
           }
         }
       }
+      TrainingRequest: {
+        payload: Prisma.$TrainingRequestPayload<ExtArgs>
+        fields: Prisma.TrainingRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrainingRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrainingRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.TrainingRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrainingRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>
+          }
+          findMany: {
+            args: Prisma.TrainingRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>[]
+          }
+          create: {
+            args: Prisma.TrainingRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>
+          }
+          createMany: {
+            args: Prisma.TrainingRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrainingRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.TrainingRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>
+          }
+          update: {
+            args: Prisma.TrainingRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrainingRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrainingRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrainingRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrainingRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrainingRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.TrainingRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrainingRequest>
+          }
+          groupBy: {
+            args: Prisma.TrainingRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrainingRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrainingRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<TrainingRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      PerformanceEvaluation: {
+        payload: Prisma.$PerformanceEvaluationPayload<ExtArgs>
+        fields: Prisma.PerformanceEvaluationFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PerformanceEvaluationFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PerformanceEvaluationFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>
+          }
+          findFirst: {
+            args: Prisma.PerformanceEvaluationFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PerformanceEvaluationFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>
+          }
+          findMany: {
+            args: Prisma.PerformanceEvaluationFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>[]
+          }
+          create: {
+            args: Prisma.PerformanceEvaluationCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>
+          }
+          createMany: {
+            args: Prisma.PerformanceEvaluationCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PerformanceEvaluationCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>[]
+          }
+          delete: {
+            args: Prisma.PerformanceEvaluationDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>
+          }
+          update: {
+            args: Prisma.PerformanceEvaluationUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>
+          }
+          deleteMany: {
+            args: Prisma.PerformanceEvaluationDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PerformanceEvaluationUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PerformanceEvaluationUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>[]
+          }
+          upsert: {
+            args: Prisma.PerformanceEvaluationUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PerformanceEvaluationPayload>
+          }
+          aggregate: {
+            args: Prisma.PerformanceEvaluationAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePerformanceEvaluation>
+          }
+          groupBy: {
+            args: Prisma.PerformanceEvaluationGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PerformanceEvaluationGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PerformanceEvaluationCountArgs<ExtArgs>
+            result: $Utils.Optional<PerformanceEvaluationCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -6235,6 +6415,8 @@ export namespace Prisma {
     positionRequisition?: PositionRequisitionOmit
     candidate?: CandidateOmit
     leaveApplication?: LeaveApplicationOmit
+    trainingRequest?: TrainingRequestOmit
+    performanceEvaluation?: PerformanceEvaluationOmit
   }
 
   /* Types for Logging */
@@ -77294,6 +77476,2208 @@ export namespace Prisma {
 
 
   /**
+   * Model TrainingRequest
+   */
+
+  export type AggregateTrainingRequest = {
+    _count: TrainingRequestCountAggregateOutputType | null
+    _avg: TrainingRequestAvgAggregateOutputType | null
+    _sum: TrainingRequestSumAggregateOutputType | null
+    _min: TrainingRequestMinAggregateOutputType | null
+    _max: TrainingRequestMaxAggregateOutputType | null
+  }
+
+  export type TrainingRequestAvgAggregateOutputType = {
+    budget: number | null
+  }
+
+  export type TrainingRequestSumAggregateOutputType = {
+    budget: number | null
+  }
+
+  export type TrainingRequestMinAggregateOutputType = {
+    id: string | null
+    requestDate: Date | null
+    currentTime: string | null
+    department: string | null
+    areaOfTraining: string | null
+    targetGroup: string | null
+    budget: number | null
+    startDate: Date | null
+    trainer: string | null
+    endDate: Date | null
+    remarks: string | null
+    status: string | null
+    finalApprover: string | null
+    createdAt: Date | null
+  }
+
+  export type TrainingRequestMaxAggregateOutputType = {
+    id: string | null
+    requestDate: Date | null
+    currentTime: string | null
+    department: string | null
+    areaOfTraining: string | null
+    targetGroup: string | null
+    budget: number | null
+    startDate: Date | null
+    trainer: string | null
+    endDate: Date | null
+    remarks: string | null
+    status: string | null
+    finalApprover: string | null
+    createdAt: Date | null
+  }
+
+  export type TrainingRequestCountAggregateOutputType = {
+    id: number
+    requestDate: number
+    currentTime: number
+    department: number
+    areaOfTraining: number
+    targetGroup: number
+    budget: number
+    startDate: number
+    trainer: number
+    endDate: number
+    remarks: number
+    status: number
+    finalApprover: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type TrainingRequestAvgAggregateInputType = {
+    budget?: true
+  }
+
+  export type TrainingRequestSumAggregateInputType = {
+    budget?: true
+  }
+
+  export type TrainingRequestMinAggregateInputType = {
+    id?: true
+    requestDate?: true
+    currentTime?: true
+    department?: true
+    areaOfTraining?: true
+    targetGroup?: true
+    budget?: true
+    startDate?: true
+    trainer?: true
+    endDate?: true
+    remarks?: true
+    status?: true
+    finalApprover?: true
+    createdAt?: true
+  }
+
+  export type TrainingRequestMaxAggregateInputType = {
+    id?: true
+    requestDate?: true
+    currentTime?: true
+    department?: true
+    areaOfTraining?: true
+    targetGroup?: true
+    budget?: true
+    startDate?: true
+    trainer?: true
+    endDate?: true
+    remarks?: true
+    status?: true
+    finalApprover?: true
+    createdAt?: true
+  }
+
+  export type TrainingRequestCountAggregateInputType = {
+    id?: true
+    requestDate?: true
+    currentTime?: true
+    department?: true
+    areaOfTraining?: true
+    targetGroup?: true
+    budget?: true
+    startDate?: true
+    trainer?: true
+    endDate?: true
+    remarks?: true
+    status?: true
+    finalApprover?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type TrainingRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingRequest to aggregate.
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRequests to fetch.
+     */
+    orderBy?: TrainingRequestOrderByWithRelationInput | TrainingRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrainingRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TrainingRequests
+    **/
+    _count?: true | TrainingRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: TrainingRequestAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: TrainingRequestSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrainingRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrainingRequestMaxAggregateInputType
+  }
+
+  export type GetTrainingRequestAggregateType<T extends TrainingRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrainingRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrainingRequest[P]>
+      : GetScalarType<T[P], AggregateTrainingRequest[P]>
+  }
+
+
+
+
+  export type TrainingRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrainingRequestWhereInput
+    orderBy?: TrainingRequestOrderByWithAggregationInput | TrainingRequestOrderByWithAggregationInput[]
+    by: TrainingRequestScalarFieldEnum[] | TrainingRequestScalarFieldEnum
+    having?: TrainingRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrainingRequestCountAggregateInputType | true
+    _avg?: TrainingRequestAvgAggregateInputType
+    _sum?: TrainingRequestSumAggregateInputType
+    _min?: TrainingRequestMinAggregateInputType
+    _max?: TrainingRequestMaxAggregateInputType
+  }
+
+  export type TrainingRequestGroupByOutputType = {
+    id: string
+    requestDate: Date
+    currentTime: string
+    department: string
+    areaOfTraining: string
+    targetGroup: string
+    budget: number
+    startDate: Date
+    trainer: string | null
+    endDate: Date
+    remarks: string | null
+    status: string | null
+    finalApprover: string | null
+    createdAt: Date
+    _count: TrainingRequestCountAggregateOutputType | null
+    _avg: TrainingRequestAvgAggregateOutputType | null
+    _sum: TrainingRequestSumAggregateOutputType | null
+    _min: TrainingRequestMinAggregateOutputType | null
+    _max: TrainingRequestMaxAggregateOutputType | null
+  }
+
+  type GetTrainingRequestGroupByPayload<T extends TrainingRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrainingRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrainingRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrainingRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], TrainingRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrainingRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    requestDate?: boolean
+    currentTime?: boolean
+    department?: boolean
+    areaOfTraining?: boolean
+    targetGroup?: boolean
+    budget?: boolean
+    startDate?: boolean
+    trainer?: boolean
+    endDate?: boolean
+    remarks?: boolean
+    status?: boolean
+    finalApprover?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["trainingRequest"]>
+
+  export type TrainingRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    requestDate?: boolean
+    currentTime?: boolean
+    department?: boolean
+    areaOfTraining?: boolean
+    targetGroup?: boolean
+    budget?: boolean
+    startDate?: boolean
+    trainer?: boolean
+    endDate?: boolean
+    remarks?: boolean
+    status?: boolean
+    finalApprover?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["trainingRequest"]>
+
+  export type TrainingRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    requestDate?: boolean
+    currentTime?: boolean
+    department?: boolean
+    areaOfTraining?: boolean
+    targetGroup?: boolean
+    budget?: boolean
+    startDate?: boolean
+    trainer?: boolean
+    endDate?: boolean
+    remarks?: boolean
+    status?: boolean
+    finalApprover?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["trainingRequest"]>
+
+  export type TrainingRequestSelectScalar = {
+    id?: boolean
+    requestDate?: boolean
+    currentTime?: boolean
+    department?: boolean
+    areaOfTraining?: boolean
+    targetGroup?: boolean
+    budget?: boolean
+    startDate?: boolean
+    trainer?: boolean
+    endDate?: boolean
+    remarks?: boolean
+    status?: boolean
+    finalApprover?: boolean
+    createdAt?: boolean
+  }
+
+  export type TrainingRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "requestDate" | "currentTime" | "department" | "areaOfTraining" | "targetGroup" | "budget" | "startDate" | "trainer" | "endDate" | "remarks" | "status" | "finalApprover" | "createdAt", ExtArgs["result"]["trainingRequest"]>
+
+  export type $TrainingRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TrainingRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      requestDate: Date
+      currentTime: string
+      department: string
+      areaOfTraining: string
+      targetGroup: string
+      budget: number
+      startDate: Date
+      trainer: string | null
+      endDate: Date
+      remarks: string | null
+      status: string | null
+      finalApprover: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["trainingRequest"]>
+    composites: {}
+  }
+
+  type TrainingRequestGetPayload<S extends boolean | null | undefined | TrainingRequestDefaultArgs> = $Result.GetResult<Prisma.$TrainingRequestPayload, S>
+
+  type TrainingRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrainingRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrainingRequestCountAggregateInputType | true
+    }
+
+  export interface TrainingRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TrainingRequest'], meta: { name: 'TrainingRequest' } }
+    /**
+     * Find zero or one TrainingRequest that matches the filter.
+     * @param {TrainingRequestFindUniqueArgs} args - Arguments to find a TrainingRequest
+     * @example
+     * // Get one TrainingRequest
+     * const trainingRequest = await prisma.trainingRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrainingRequestFindUniqueArgs>(args: SelectSubset<T, TrainingRequestFindUniqueArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TrainingRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrainingRequestFindUniqueOrThrowArgs} args - Arguments to find a TrainingRequest
+     * @example
+     * // Get one TrainingRequest
+     * const trainingRequest = await prisma.trainingRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrainingRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, TrainingRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestFindFirstArgs} args - Arguments to find a TrainingRequest
+     * @example
+     * // Get one TrainingRequest
+     * const trainingRequest = await prisma.trainingRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrainingRequestFindFirstArgs>(args?: SelectSubset<T, TrainingRequestFindFirstArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TrainingRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestFindFirstOrThrowArgs} args - Arguments to find a TrainingRequest
+     * @example
+     * // Get one TrainingRequest
+     * const trainingRequest = await prisma.trainingRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrainingRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, TrainingRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TrainingRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TrainingRequests
+     * const trainingRequests = await prisma.trainingRequest.findMany()
+     * 
+     * // Get first 10 TrainingRequests
+     * const trainingRequests = await prisma.trainingRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trainingRequestWithIdOnly = await prisma.trainingRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrainingRequestFindManyArgs>(args?: SelectSubset<T, TrainingRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TrainingRequest.
+     * @param {TrainingRequestCreateArgs} args - Arguments to create a TrainingRequest.
+     * @example
+     * // Create one TrainingRequest
+     * const TrainingRequest = await prisma.trainingRequest.create({
+     *   data: {
+     *     // ... data to create a TrainingRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrainingRequestCreateArgs>(args: SelectSubset<T, TrainingRequestCreateArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TrainingRequests.
+     * @param {TrainingRequestCreateManyArgs} args - Arguments to create many TrainingRequests.
+     * @example
+     * // Create many TrainingRequests
+     * const trainingRequest = await prisma.trainingRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrainingRequestCreateManyArgs>(args?: SelectSubset<T, TrainingRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TrainingRequests and returns the data saved in the database.
+     * @param {TrainingRequestCreateManyAndReturnArgs} args - Arguments to create many TrainingRequests.
+     * @example
+     * // Create many TrainingRequests
+     * const trainingRequest = await prisma.trainingRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TrainingRequests and only return the `id`
+     * const trainingRequestWithIdOnly = await prisma.trainingRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrainingRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, TrainingRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TrainingRequest.
+     * @param {TrainingRequestDeleteArgs} args - Arguments to delete one TrainingRequest.
+     * @example
+     * // Delete one TrainingRequest
+     * const TrainingRequest = await prisma.trainingRequest.delete({
+     *   where: {
+     *     // ... filter to delete one TrainingRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrainingRequestDeleteArgs>(args: SelectSubset<T, TrainingRequestDeleteArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TrainingRequest.
+     * @param {TrainingRequestUpdateArgs} args - Arguments to update one TrainingRequest.
+     * @example
+     * // Update one TrainingRequest
+     * const trainingRequest = await prisma.trainingRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrainingRequestUpdateArgs>(args: SelectSubset<T, TrainingRequestUpdateArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TrainingRequests.
+     * @param {TrainingRequestDeleteManyArgs} args - Arguments to filter TrainingRequests to delete.
+     * @example
+     * // Delete a few TrainingRequests
+     * const { count } = await prisma.trainingRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrainingRequestDeleteManyArgs>(args?: SelectSubset<T, TrainingRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TrainingRequests
+     * const trainingRequest = await prisma.trainingRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrainingRequestUpdateManyArgs>(args: SelectSubset<T, TrainingRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TrainingRequests and returns the data updated in the database.
+     * @param {TrainingRequestUpdateManyAndReturnArgs} args - Arguments to update many TrainingRequests.
+     * @example
+     * // Update many TrainingRequests
+     * const trainingRequest = await prisma.trainingRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TrainingRequests and only return the `id`
+     * const trainingRequestWithIdOnly = await prisma.trainingRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrainingRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, TrainingRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TrainingRequest.
+     * @param {TrainingRequestUpsertArgs} args - Arguments to update or create a TrainingRequest.
+     * @example
+     * // Update or create a TrainingRequest
+     * const trainingRequest = await prisma.trainingRequest.upsert({
+     *   create: {
+     *     // ... data to create a TrainingRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TrainingRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrainingRequestUpsertArgs>(args: SelectSubset<T, TrainingRequestUpsertArgs<ExtArgs>>): Prisma__TrainingRequestClient<$Result.GetResult<Prisma.$TrainingRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TrainingRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestCountArgs} args - Arguments to filter TrainingRequests to count.
+     * @example
+     * // Count the number of TrainingRequests
+     * const count = await prisma.trainingRequest.count({
+     *   where: {
+     *     // ... the filter for the TrainingRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrainingRequestCountArgs>(
+      args?: Subset<T, TrainingRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrainingRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TrainingRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrainingRequestAggregateArgs>(args: Subset<T, TrainingRequestAggregateArgs>): Prisma.PrismaPromise<GetTrainingRequestAggregateType<T>>
+
+    /**
+     * Group by TrainingRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrainingRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrainingRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrainingRequestGroupByArgs['orderBy'] }
+        : { orderBy?: TrainingRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrainingRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrainingRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TrainingRequest model
+   */
+  readonly fields: TrainingRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TrainingRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrainingRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TrainingRequest model
+   */
+  interface TrainingRequestFieldRefs {
+    readonly id: FieldRef<"TrainingRequest", 'String'>
+    readonly requestDate: FieldRef<"TrainingRequest", 'DateTime'>
+    readonly currentTime: FieldRef<"TrainingRequest", 'String'>
+    readonly department: FieldRef<"TrainingRequest", 'String'>
+    readonly areaOfTraining: FieldRef<"TrainingRequest", 'String'>
+    readonly targetGroup: FieldRef<"TrainingRequest", 'String'>
+    readonly budget: FieldRef<"TrainingRequest", 'Float'>
+    readonly startDate: FieldRef<"TrainingRequest", 'DateTime'>
+    readonly trainer: FieldRef<"TrainingRequest", 'String'>
+    readonly endDate: FieldRef<"TrainingRequest", 'DateTime'>
+    readonly remarks: FieldRef<"TrainingRequest", 'String'>
+    readonly status: FieldRef<"TrainingRequest", 'String'>
+    readonly finalApprover: FieldRef<"TrainingRequest", 'String'>
+    readonly createdAt: FieldRef<"TrainingRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TrainingRequest findUnique
+   */
+  export type TrainingRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TrainingRequest to fetch.
+     */
+    where: TrainingRequestWhereUniqueInput
+  }
+
+  /**
+   * TrainingRequest findUniqueOrThrow
+   */
+  export type TrainingRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TrainingRequest to fetch.
+     */
+    where: TrainingRequestWhereUniqueInput
+  }
+
+  /**
+   * TrainingRequest findFirst
+   */
+  export type TrainingRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TrainingRequest to fetch.
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRequests to fetch.
+     */
+    orderBy?: TrainingRequestOrderByWithRelationInput | TrainingRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingRequests.
+     */
+    cursor?: TrainingRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingRequests.
+     */
+    distinct?: TrainingRequestScalarFieldEnum | TrainingRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingRequest findFirstOrThrow
+   */
+  export type TrainingRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TrainingRequest to fetch.
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRequests to fetch.
+     */
+    orderBy?: TrainingRequestOrderByWithRelationInput | TrainingRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TrainingRequests.
+     */
+    cursor?: TrainingRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TrainingRequests.
+     */
+    distinct?: TrainingRequestScalarFieldEnum | TrainingRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingRequest findMany
+   */
+  export type TrainingRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TrainingRequests to fetch.
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TrainingRequests to fetch.
+     */
+    orderBy?: TrainingRequestOrderByWithRelationInput | TrainingRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TrainingRequests.
+     */
+    cursor?: TrainingRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TrainingRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TrainingRequests.
+     */
+    skip?: number
+    distinct?: TrainingRequestScalarFieldEnum | TrainingRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TrainingRequest create
+   */
+  export type TrainingRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TrainingRequest.
+     */
+    data: XOR<TrainingRequestCreateInput, TrainingRequestUncheckedCreateInput>
+  }
+
+  /**
+   * TrainingRequest createMany
+   */
+  export type TrainingRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TrainingRequests.
+     */
+    data: TrainingRequestCreateManyInput | TrainingRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingRequest createManyAndReturn
+   */
+  export type TrainingRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many TrainingRequests.
+     */
+    data: TrainingRequestCreateManyInput | TrainingRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TrainingRequest update
+   */
+  export type TrainingRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TrainingRequest.
+     */
+    data: XOR<TrainingRequestUpdateInput, TrainingRequestUncheckedUpdateInput>
+    /**
+     * Choose, which TrainingRequest to update.
+     */
+    where: TrainingRequestWhereUniqueInput
+  }
+
+  /**
+   * TrainingRequest updateMany
+   */
+  export type TrainingRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TrainingRequests.
+     */
+    data: XOR<TrainingRequestUpdateManyMutationInput, TrainingRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingRequests to update
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * Limit how many TrainingRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingRequest updateManyAndReturn
+   */
+  export type TrainingRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update TrainingRequests.
+     */
+    data: XOR<TrainingRequestUpdateManyMutationInput, TrainingRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which TrainingRequests to update
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * Limit how many TrainingRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingRequest upsert
+   */
+  export type TrainingRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TrainingRequest to update in case it exists.
+     */
+    where: TrainingRequestWhereUniqueInput
+    /**
+     * In case the TrainingRequest found by the `where` argument doesn't exist, create a new TrainingRequest with this data.
+     */
+    create: XOR<TrainingRequestCreateInput, TrainingRequestUncheckedCreateInput>
+    /**
+     * In case the TrainingRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrainingRequestUpdateInput, TrainingRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * TrainingRequest delete
+   */
+  export type TrainingRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+    /**
+     * Filter which TrainingRequest to delete.
+     */
+    where: TrainingRequestWhereUniqueInput
+  }
+
+  /**
+   * TrainingRequest deleteMany
+   */
+  export type TrainingRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TrainingRequests to delete
+     */
+    where?: TrainingRequestWhereInput
+    /**
+     * Limit how many TrainingRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TrainingRequest without action
+   */
+  export type TrainingRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TrainingRequest
+     */
+    select?: TrainingRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TrainingRequest
+     */
+    omit?: TrainingRequestOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PerformanceEvaluation
+   */
+
+  export type AggregatePerformanceEvaluation = {
+    _count: PerformanceEvaluationCountAggregateOutputType | null
+    _min: PerformanceEvaluationMinAggregateOutputType | null
+    _max: PerformanceEvaluationMaxAggregateOutputType | null
+  }
+
+  export type PerformanceEvaluationMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    evaluationDate: Date | null
+    evaluationTime: string | null
+    department: string | null
+    overallFeedback: string | null
+    goals: string | null
+    status: string | null
+    createdAt: Date | null
+  }
+
+  export type PerformanceEvaluationMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    evaluationDate: Date | null
+    evaluationTime: string | null
+    department: string | null
+    overallFeedback: string | null
+    goals: string | null
+    status: string | null
+    createdAt: Date | null
+  }
+
+  export type PerformanceEvaluationCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    evaluationDate: number
+    evaluationTime: number
+    department: number
+    overallFeedback: number
+    goals: number
+    status: number
+    skills: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PerformanceEvaluationMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    evaluationDate?: true
+    evaluationTime?: true
+    department?: true
+    overallFeedback?: true
+    goals?: true
+    status?: true
+    createdAt?: true
+  }
+
+  export type PerformanceEvaluationMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    evaluationDate?: true
+    evaluationTime?: true
+    department?: true
+    overallFeedback?: true
+    goals?: true
+    status?: true
+    createdAt?: true
+  }
+
+  export type PerformanceEvaluationCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    evaluationDate?: true
+    evaluationTime?: true
+    department?: true
+    overallFeedback?: true
+    goals?: true
+    status?: true
+    skills?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PerformanceEvaluationAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PerformanceEvaluation to aggregate.
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PerformanceEvaluations to fetch.
+     */
+    orderBy?: PerformanceEvaluationOrderByWithRelationInput | PerformanceEvaluationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PerformanceEvaluationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PerformanceEvaluations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PerformanceEvaluations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PerformanceEvaluations
+    **/
+    _count?: true | PerformanceEvaluationCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PerformanceEvaluationMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PerformanceEvaluationMaxAggregateInputType
+  }
+
+  export type GetPerformanceEvaluationAggregateType<T extends PerformanceEvaluationAggregateArgs> = {
+        [P in keyof T & keyof AggregatePerformanceEvaluation]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePerformanceEvaluation[P]>
+      : GetScalarType<T[P], AggregatePerformanceEvaluation[P]>
+  }
+
+
+
+
+  export type PerformanceEvaluationGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PerformanceEvaluationWhereInput
+    orderBy?: PerformanceEvaluationOrderByWithAggregationInput | PerformanceEvaluationOrderByWithAggregationInput[]
+    by: PerformanceEvaluationScalarFieldEnum[] | PerformanceEvaluationScalarFieldEnum
+    having?: PerformanceEvaluationScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PerformanceEvaluationCountAggregateInputType | true
+    _min?: PerformanceEvaluationMinAggregateInputType
+    _max?: PerformanceEvaluationMaxAggregateInputType
+  }
+
+  export type PerformanceEvaluationGroupByOutputType = {
+    id: string
+    employeeId: string
+    evaluationDate: Date
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonValue
+    createdAt: Date
+    _count: PerformanceEvaluationCountAggregateOutputType | null
+    _min: PerformanceEvaluationMinAggregateOutputType | null
+    _max: PerformanceEvaluationMaxAggregateOutputType | null
+  }
+
+  type GetPerformanceEvaluationGroupByPayload<T extends PerformanceEvaluationGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PerformanceEvaluationGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PerformanceEvaluationGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PerformanceEvaluationGroupByOutputType[P]>
+            : GetScalarType<T[P], PerformanceEvaluationGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PerformanceEvaluationSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    evaluationDate?: boolean
+    evaluationTime?: boolean
+    department?: boolean
+    overallFeedback?: boolean
+    goals?: boolean
+    status?: boolean
+    skills?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["performanceEvaluation"]>
+
+  export type PerformanceEvaluationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    evaluationDate?: boolean
+    evaluationTime?: boolean
+    department?: boolean
+    overallFeedback?: boolean
+    goals?: boolean
+    status?: boolean
+    skills?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["performanceEvaluation"]>
+
+  export type PerformanceEvaluationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    evaluationDate?: boolean
+    evaluationTime?: boolean
+    department?: boolean
+    overallFeedback?: boolean
+    goals?: boolean
+    status?: boolean
+    skills?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["performanceEvaluation"]>
+
+  export type PerformanceEvaluationSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    evaluationDate?: boolean
+    evaluationTime?: boolean
+    department?: boolean
+    overallFeedback?: boolean
+    goals?: boolean
+    status?: boolean
+    skills?: boolean
+    createdAt?: boolean
+  }
+
+  export type PerformanceEvaluationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "evaluationDate" | "evaluationTime" | "department" | "overallFeedback" | "goals" | "status" | "skills" | "createdAt", ExtArgs["result"]["performanceEvaluation"]>
+
+  export type $PerformanceEvaluationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PerformanceEvaluation"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      evaluationDate: Date
+      evaluationTime: string
+      department: string
+      overallFeedback: string
+      goals: string
+      status: string
+      skills: Prisma.JsonValue
+      createdAt: Date
+    }, ExtArgs["result"]["performanceEvaluation"]>
+    composites: {}
+  }
+
+  type PerformanceEvaluationGetPayload<S extends boolean | null | undefined | PerformanceEvaluationDefaultArgs> = $Result.GetResult<Prisma.$PerformanceEvaluationPayload, S>
+
+  type PerformanceEvaluationCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PerformanceEvaluationFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PerformanceEvaluationCountAggregateInputType | true
+    }
+
+  export interface PerformanceEvaluationDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PerformanceEvaluation'], meta: { name: 'PerformanceEvaluation' } }
+    /**
+     * Find zero or one PerformanceEvaluation that matches the filter.
+     * @param {PerformanceEvaluationFindUniqueArgs} args - Arguments to find a PerformanceEvaluation
+     * @example
+     * // Get one PerformanceEvaluation
+     * const performanceEvaluation = await prisma.performanceEvaluation.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PerformanceEvaluationFindUniqueArgs>(args: SelectSubset<T, PerformanceEvaluationFindUniqueArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PerformanceEvaluation that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PerformanceEvaluationFindUniqueOrThrowArgs} args - Arguments to find a PerformanceEvaluation
+     * @example
+     * // Get one PerformanceEvaluation
+     * const performanceEvaluation = await prisma.performanceEvaluation.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PerformanceEvaluationFindUniqueOrThrowArgs>(args: SelectSubset<T, PerformanceEvaluationFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PerformanceEvaluation that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationFindFirstArgs} args - Arguments to find a PerformanceEvaluation
+     * @example
+     * // Get one PerformanceEvaluation
+     * const performanceEvaluation = await prisma.performanceEvaluation.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PerformanceEvaluationFindFirstArgs>(args?: SelectSubset<T, PerformanceEvaluationFindFirstArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PerformanceEvaluation that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationFindFirstOrThrowArgs} args - Arguments to find a PerformanceEvaluation
+     * @example
+     * // Get one PerformanceEvaluation
+     * const performanceEvaluation = await prisma.performanceEvaluation.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PerformanceEvaluationFindFirstOrThrowArgs>(args?: SelectSubset<T, PerformanceEvaluationFindFirstOrThrowArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PerformanceEvaluations that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PerformanceEvaluations
+     * const performanceEvaluations = await prisma.performanceEvaluation.findMany()
+     * 
+     * // Get first 10 PerformanceEvaluations
+     * const performanceEvaluations = await prisma.performanceEvaluation.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const performanceEvaluationWithIdOnly = await prisma.performanceEvaluation.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PerformanceEvaluationFindManyArgs>(args?: SelectSubset<T, PerformanceEvaluationFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PerformanceEvaluation.
+     * @param {PerformanceEvaluationCreateArgs} args - Arguments to create a PerformanceEvaluation.
+     * @example
+     * // Create one PerformanceEvaluation
+     * const PerformanceEvaluation = await prisma.performanceEvaluation.create({
+     *   data: {
+     *     // ... data to create a PerformanceEvaluation
+     *   }
+     * })
+     * 
+     */
+    create<T extends PerformanceEvaluationCreateArgs>(args: SelectSubset<T, PerformanceEvaluationCreateArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PerformanceEvaluations.
+     * @param {PerformanceEvaluationCreateManyArgs} args - Arguments to create many PerformanceEvaluations.
+     * @example
+     * // Create many PerformanceEvaluations
+     * const performanceEvaluation = await prisma.performanceEvaluation.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PerformanceEvaluationCreateManyArgs>(args?: SelectSubset<T, PerformanceEvaluationCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PerformanceEvaluations and returns the data saved in the database.
+     * @param {PerformanceEvaluationCreateManyAndReturnArgs} args - Arguments to create many PerformanceEvaluations.
+     * @example
+     * // Create many PerformanceEvaluations
+     * const performanceEvaluation = await prisma.performanceEvaluation.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PerformanceEvaluations and only return the `id`
+     * const performanceEvaluationWithIdOnly = await prisma.performanceEvaluation.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PerformanceEvaluationCreateManyAndReturnArgs>(args?: SelectSubset<T, PerformanceEvaluationCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PerformanceEvaluation.
+     * @param {PerformanceEvaluationDeleteArgs} args - Arguments to delete one PerformanceEvaluation.
+     * @example
+     * // Delete one PerformanceEvaluation
+     * const PerformanceEvaluation = await prisma.performanceEvaluation.delete({
+     *   where: {
+     *     // ... filter to delete one PerformanceEvaluation
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PerformanceEvaluationDeleteArgs>(args: SelectSubset<T, PerformanceEvaluationDeleteArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PerformanceEvaluation.
+     * @param {PerformanceEvaluationUpdateArgs} args - Arguments to update one PerformanceEvaluation.
+     * @example
+     * // Update one PerformanceEvaluation
+     * const performanceEvaluation = await prisma.performanceEvaluation.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PerformanceEvaluationUpdateArgs>(args: SelectSubset<T, PerformanceEvaluationUpdateArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PerformanceEvaluations.
+     * @param {PerformanceEvaluationDeleteManyArgs} args - Arguments to filter PerformanceEvaluations to delete.
+     * @example
+     * // Delete a few PerformanceEvaluations
+     * const { count } = await prisma.performanceEvaluation.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PerformanceEvaluationDeleteManyArgs>(args?: SelectSubset<T, PerformanceEvaluationDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PerformanceEvaluations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PerformanceEvaluations
+     * const performanceEvaluation = await prisma.performanceEvaluation.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PerformanceEvaluationUpdateManyArgs>(args: SelectSubset<T, PerformanceEvaluationUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PerformanceEvaluations and returns the data updated in the database.
+     * @param {PerformanceEvaluationUpdateManyAndReturnArgs} args - Arguments to update many PerformanceEvaluations.
+     * @example
+     * // Update many PerformanceEvaluations
+     * const performanceEvaluation = await prisma.performanceEvaluation.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PerformanceEvaluations and only return the `id`
+     * const performanceEvaluationWithIdOnly = await prisma.performanceEvaluation.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PerformanceEvaluationUpdateManyAndReturnArgs>(args: SelectSubset<T, PerformanceEvaluationUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PerformanceEvaluation.
+     * @param {PerformanceEvaluationUpsertArgs} args - Arguments to update or create a PerformanceEvaluation.
+     * @example
+     * // Update or create a PerformanceEvaluation
+     * const performanceEvaluation = await prisma.performanceEvaluation.upsert({
+     *   create: {
+     *     // ... data to create a PerformanceEvaluation
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PerformanceEvaluation we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PerformanceEvaluationUpsertArgs>(args: SelectSubset<T, PerformanceEvaluationUpsertArgs<ExtArgs>>): Prisma__PerformanceEvaluationClient<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PerformanceEvaluations.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationCountArgs} args - Arguments to filter PerformanceEvaluations to count.
+     * @example
+     * // Count the number of PerformanceEvaluations
+     * const count = await prisma.performanceEvaluation.count({
+     *   where: {
+     *     // ... the filter for the PerformanceEvaluations we want to count
+     *   }
+     * })
+    **/
+    count<T extends PerformanceEvaluationCountArgs>(
+      args?: Subset<T, PerformanceEvaluationCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PerformanceEvaluationCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PerformanceEvaluation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PerformanceEvaluationAggregateArgs>(args: Subset<T, PerformanceEvaluationAggregateArgs>): Prisma.PrismaPromise<GetPerformanceEvaluationAggregateType<T>>
+
+    /**
+     * Group by PerformanceEvaluation.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PerformanceEvaluationGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PerformanceEvaluationGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PerformanceEvaluationGroupByArgs['orderBy'] }
+        : { orderBy?: PerformanceEvaluationGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PerformanceEvaluationGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPerformanceEvaluationGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PerformanceEvaluation model
+   */
+  readonly fields: PerformanceEvaluationFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PerformanceEvaluation.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PerformanceEvaluationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PerformanceEvaluation model
+   */
+  interface PerformanceEvaluationFieldRefs {
+    readonly id: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly employeeId: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly evaluationDate: FieldRef<"PerformanceEvaluation", 'DateTime'>
+    readonly evaluationTime: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly department: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly overallFeedback: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly goals: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly status: FieldRef<"PerformanceEvaluation", 'String'>
+    readonly skills: FieldRef<"PerformanceEvaluation", 'Json'>
+    readonly createdAt: FieldRef<"PerformanceEvaluation", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PerformanceEvaluation findUnique
+   */
+  export type PerformanceEvaluationFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Filter, which PerformanceEvaluation to fetch.
+     */
+    where: PerformanceEvaluationWhereUniqueInput
+  }
+
+  /**
+   * PerformanceEvaluation findUniqueOrThrow
+   */
+  export type PerformanceEvaluationFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Filter, which PerformanceEvaluation to fetch.
+     */
+    where: PerformanceEvaluationWhereUniqueInput
+  }
+
+  /**
+   * PerformanceEvaluation findFirst
+   */
+  export type PerformanceEvaluationFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Filter, which PerformanceEvaluation to fetch.
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PerformanceEvaluations to fetch.
+     */
+    orderBy?: PerformanceEvaluationOrderByWithRelationInput | PerformanceEvaluationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PerformanceEvaluations.
+     */
+    cursor?: PerformanceEvaluationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PerformanceEvaluations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PerformanceEvaluations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PerformanceEvaluations.
+     */
+    distinct?: PerformanceEvaluationScalarFieldEnum | PerformanceEvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * PerformanceEvaluation findFirstOrThrow
+   */
+  export type PerformanceEvaluationFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Filter, which PerformanceEvaluation to fetch.
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PerformanceEvaluations to fetch.
+     */
+    orderBy?: PerformanceEvaluationOrderByWithRelationInput | PerformanceEvaluationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PerformanceEvaluations.
+     */
+    cursor?: PerformanceEvaluationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PerformanceEvaluations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PerformanceEvaluations.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PerformanceEvaluations.
+     */
+    distinct?: PerformanceEvaluationScalarFieldEnum | PerformanceEvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * PerformanceEvaluation findMany
+   */
+  export type PerformanceEvaluationFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Filter, which PerformanceEvaluations to fetch.
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PerformanceEvaluations to fetch.
+     */
+    orderBy?: PerformanceEvaluationOrderByWithRelationInput | PerformanceEvaluationOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PerformanceEvaluations.
+     */
+    cursor?: PerformanceEvaluationWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PerformanceEvaluations from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PerformanceEvaluations.
+     */
+    skip?: number
+    distinct?: PerformanceEvaluationScalarFieldEnum | PerformanceEvaluationScalarFieldEnum[]
+  }
+
+  /**
+   * PerformanceEvaluation create
+   */
+  export type PerformanceEvaluationCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * The data needed to create a PerformanceEvaluation.
+     */
+    data: XOR<PerformanceEvaluationCreateInput, PerformanceEvaluationUncheckedCreateInput>
+  }
+
+  /**
+   * PerformanceEvaluation createMany
+   */
+  export type PerformanceEvaluationCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PerformanceEvaluations.
+     */
+    data: PerformanceEvaluationCreateManyInput | PerformanceEvaluationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PerformanceEvaluation createManyAndReturn
+   */
+  export type PerformanceEvaluationCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * The data used to create many PerformanceEvaluations.
+     */
+    data: PerformanceEvaluationCreateManyInput | PerformanceEvaluationCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PerformanceEvaluation update
+   */
+  export type PerformanceEvaluationUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * The data needed to update a PerformanceEvaluation.
+     */
+    data: XOR<PerformanceEvaluationUpdateInput, PerformanceEvaluationUncheckedUpdateInput>
+    /**
+     * Choose, which PerformanceEvaluation to update.
+     */
+    where: PerformanceEvaluationWhereUniqueInput
+  }
+
+  /**
+   * PerformanceEvaluation updateMany
+   */
+  export type PerformanceEvaluationUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PerformanceEvaluations.
+     */
+    data: XOR<PerformanceEvaluationUpdateManyMutationInput, PerformanceEvaluationUncheckedUpdateManyInput>
+    /**
+     * Filter which PerformanceEvaluations to update
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * Limit how many PerformanceEvaluations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PerformanceEvaluation updateManyAndReturn
+   */
+  export type PerformanceEvaluationUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * The data used to update PerformanceEvaluations.
+     */
+    data: XOR<PerformanceEvaluationUpdateManyMutationInput, PerformanceEvaluationUncheckedUpdateManyInput>
+    /**
+     * Filter which PerformanceEvaluations to update
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * Limit how many PerformanceEvaluations to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PerformanceEvaluation upsert
+   */
+  export type PerformanceEvaluationUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * The filter to search for the PerformanceEvaluation to update in case it exists.
+     */
+    where: PerformanceEvaluationWhereUniqueInput
+    /**
+     * In case the PerformanceEvaluation found by the `where` argument doesn't exist, create a new PerformanceEvaluation with this data.
+     */
+    create: XOR<PerformanceEvaluationCreateInput, PerformanceEvaluationUncheckedCreateInput>
+    /**
+     * In case the PerformanceEvaluation was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PerformanceEvaluationUpdateInput, PerformanceEvaluationUncheckedUpdateInput>
+  }
+
+  /**
+   * PerformanceEvaluation delete
+   */
+  export type PerformanceEvaluationDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Filter which PerformanceEvaluation to delete.
+     */
+    where: PerformanceEvaluationWhereUniqueInput
+  }
+
+  /**
+   * PerformanceEvaluation deleteMany
+   */
+  export type PerformanceEvaluationDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PerformanceEvaluations to delete
+     */
+    where?: PerformanceEvaluationWhereInput
+    /**
+     * Limit how many PerformanceEvaluations to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PerformanceEvaluation without action
+   */
+  export type PerformanceEvaluationDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -78449,6 +80833,42 @@ export namespace Prisma {
   };
 
   export type LeaveApplicationScalarFieldEnum = (typeof LeaveApplicationScalarFieldEnum)[keyof typeof LeaveApplicationScalarFieldEnum]
+
+
+  export const TrainingRequestScalarFieldEnum: {
+    id: 'id',
+    requestDate: 'requestDate',
+    currentTime: 'currentTime',
+    department: 'department',
+    areaOfTraining: 'areaOfTraining',
+    targetGroup: 'targetGroup',
+    budget: 'budget',
+    startDate: 'startDate',
+    trainer: 'trainer',
+    endDate: 'endDate',
+    remarks: 'remarks',
+    status: 'status',
+    finalApprover: 'finalApprover',
+    createdAt: 'createdAt'
+  };
+
+  export type TrainingRequestScalarFieldEnum = (typeof TrainingRequestScalarFieldEnum)[keyof typeof TrainingRequestScalarFieldEnum]
+
+
+  export const PerformanceEvaluationScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    evaluationDate: 'evaluationDate',
+    evaluationTime: 'evaluationTime',
+    department: 'department',
+    overallFeedback: 'overallFeedback',
+    goals: 'goals',
+    status: 'status',
+    skills: 'skills',
+    createdAt: 'createdAt'
+  };
+
+  export type PerformanceEvaluationScalarFieldEnum = (typeof PerformanceEvaluationScalarFieldEnum)[keyof typeof PerformanceEvaluationScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -84317,6 +86737,182 @@ export namespace Prisma {
     approver?: StringNullableWithAggregatesFilter<"LeaveApplication"> | string | null
     finalApprover?: StringNullableWithAggregatesFilter<"LeaveApplication"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"LeaveApplication"> | Date | string
+  }
+
+  export type TrainingRequestWhereInput = {
+    AND?: TrainingRequestWhereInput | TrainingRequestWhereInput[]
+    OR?: TrainingRequestWhereInput[]
+    NOT?: TrainingRequestWhereInput | TrainingRequestWhereInput[]
+    id?: StringFilter<"TrainingRequest"> | string
+    requestDate?: DateTimeFilter<"TrainingRequest"> | Date | string
+    currentTime?: StringFilter<"TrainingRequest"> | string
+    department?: StringFilter<"TrainingRequest"> | string
+    areaOfTraining?: StringFilter<"TrainingRequest"> | string
+    targetGroup?: StringFilter<"TrainingRequest"> | string
+    budget?: FloatFilter<"TrainingRequest"> | number
+    startDate?: DateTimeFilter<"TrainingRequest"> | Date | string
+    trainer?: StringNullableFilter<"TrainingRequest"> | string | null
+    endDate?: DateTimeFilter<"TrainingRequest"> | Date | string
+    remarks?: StringNullableFilter<"TrainingRequest"> | string | null
+    status?: StringNullableFilter<"TrainingRequest"> | string | null
+    finalApprover?: StringNullableFilter<"TrainingRequest"> | string | null
+    createdAt?: DateTimeFilter<"TrainingRequest"> | Date | string
+  }
+
+  export type TrainingRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    requestDate?: SortOrder
+    currentTime?: SortOrder
+    department?: SortOrder
+    areaOfTraining?: SortOrder
+    targetGroup?: SortOrder
+    budget?: SortOrder
+    startDate?: SortOrder
+    trainer?: SortOrderInput | SortOrder
+    endDate?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    finalApprover?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TrainingRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TrainingRequestWhereInput | TrainingRequestWhereInput[]
+    OR?: TrainingRequestWhereInput[]
+    NOT?: TrainingRequestWhereInput | TrainingRequestWhereInput[]
+    requestDate?: DateTimeFilter<"TrainingRequest"> | Date | string
+    currentTime?: StringFilter<"TrainingRequest"> | string
+    department?: StringFilter<"TrainingRequest"> | string
+    areaOfTraining?: StringFilter<"TrainingRequest"> | string
+    targetGroup?: StringFilter<"TrainingRequest"> | string
+    budget?: FloatFilter<"TrainingRequest"> | number
+    startDate?: DateTimeFilter<"TrainingRequest"> | Date | string
+    trainer?: StringNullableFilter<"TrainingRequest"> | string | null
+    endDate?: DateTimeFilter<"TrainingRequest"> | Date | string
+    remarks?: StringNullableFilter<"TrainingRequest"> | string | null
+    status?: StringNullableFilter<"TrainingRequest"> | string | null
+    finalApprover?: StringNullableFilter<"TrainingRequest"> | string | null
+    createdAt?: DateTimeFilter<"TrainingRequest"> | Date | string
+  }, "id">
+
+  export type TrainingRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    requestDate?: SortOrder
+    currentTime?: SortOrder
+    department?: SortOrder
+    areaOfTraining?: SortOrder
+    targetGroup?: SortOrder
+    budget?: SortOrder
+    startDate?: SortOrder
+    trainer?: SortOrderInput | SortOrder
+    endDate?: SortOrder
+    remarks?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    finalApprover?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: TrainingRequestCountOrderByAggregateInput
+    _avg?: TrainingRequestAvgOrderByAggregateInput
+    _max?: TrainingRequestMaxOrderByAggregateInput
+    _min?: TrainingRequestMinOrderByAggregateInput
+    _sum?: TrainingRequestSumOrderByAggregateInput
+  }
+
+  export type TrainingRequestScalarWhereWithAggregatesInput = {
+    AND?: TrainingRequestScalarWhereWithAggregatesInput | TrainingRequestScalarWhereWithAggregatesInput[]
+    OR?: TrainingRequestScalarWhereWithAggregatesInput[]
+    NOT?: TrainingRequestScalarWhereWithAggregatesInput | TrainingRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TrainingRequest"> | string
+    requestDate?: DateTimeWithAggregatesFilter<"TrainingRequest"> | Date | string
+    currentTime?: StringWithAggregatesFilter<"TrainingRequest"> | string
+    department?: StringWithAggregatesFilter<"TrainingRequest"> | string
+    areaOfTraining?: StringWithAggregatesFilter<"TrainingRequest"> | string
+    targetGroup?: StringWithAggregatesFilter<"TrainingRequest"> | string
+    budget?: FloatWithAggregatesFilter<"TrainingRequest"> | number
+    startDate?: DateTimeWithAggregatesFilter<"TrainingRequest"> | Date | string
+    trainer?: StringNullableWithAggregatesFilter<"TrainingRequest"> | string | null
+    endDate?: DateTimeWithAggregatesFilter<"TrainingRequest"> | Date | string
+    remarks?: StringNullableWithAggregatesFilter<"TrainingRequest"> | string | null
+    status?: StringNullableWithAggregatesFilter<"TrainingRequest"> | string | null
+    finalApprover?: StringNullableWithAggregatesFilter<"TrainingRequest"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TrainingRequest"> | Date | string
+  }
+
+  export type PerformanceEvaluationWhereInput = {
+    AND?: PerformanceEvaluationWhereInput | PerformanceEvaluationWhereInput[]
+    OR?: PerformanceEvaluationWhereInput[]
+    NOT?: PerformanceEvaluationWhereInput | PerformanceEvaluationWhereInput[]
+    id?: StringFilter<"PerformanceEvaluation"> | string
+    employeeId?: StringFilter<"PerformanceEvaluation"> | string
+    evaluationDate?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+    evaluationTime?: StringFilter<"PerformanceEvaluation"> | string
+    department?: StringFilter<"PerformanceEvaluation"> | string
+    overallFeedback?: StringFilter<"PerformanceEvaluation"> | string
+    goals?: StringFilter<"PerformanceEvaluation"> | string
+    status?: StringFilter<"PerformanceEvaluation"> | string
+    skills?: JsonFilter<"PerformanceEvaluation">
+    createdAt?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+  }
+
+  export type PerformanceEvaluationOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    evaluationDate?: SortOrder
+    evaluationTime?: SortOrder
+    department?: SortOrder
+    overallFeedback?: SortOrder
+    goals?: SortOrder
+    status?: SortOrder
+    skills?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PerformanceEvaluationWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PerformanceEvaluationWhereInput | PerformanceEvaluationWhereInput[]
+    OR?: PerformanceEvaluationWhereInput[]
+    NOT?: PerformanceEvaluationWhereInput | PerformanceEvaluationWhereInput[]
+    employeeId?: StringFilter<"PerformanceEvaluation"> | string
+    evaluationDate?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+    evaluationTime?: StringFilter<"PerformanceEvaluation"> | string
+    department?: StringFilter<"PerformanceEvaluation"> | string
+    overallFeedback?: StringFilter<"PerformanceEvaluation"> | string
+    goals?: StringFilter<"PerformanceEvaluation"> | string
+    status?: StringFilter<"PerformanceEvaluation"> | string
+    skills?: JsonFilter<"PerformanceEvaluation">
+    createdAt?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+  }, "id">
+
+  export type PerformanceEvaluationOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    evaluationDate?: SortOrder
+    evaluationTime?: SortOrder
+    department?: SortOrder
+    overallFeedback?: SortOrder
+    goals?: SortOrder
+    status?: SortOrder
+    skills?: SortOrder
+    createdAt?: SortOrder
+    _count?: PerformanceEvaluationCountOrderByAggregateInput
+    _max?: PerformanceEvaluationMaxOrderByAggregateInput
+    _min?: PerformanceEvaluationMinOrderByAggregateInput
+  }
+
+  export type PerformanceEvaluationScalarWhereWithAggregatesInput = {
+    AND?: PerformanceEvaluationScalarWhereWithAggregatesInput | PerformanceEvaluationScalarWhereWithAggregatesInput[]
+    OR?: PerformanceEvaluationScalarWhereWithAggregatesInput[]
+    NOT?: PerformanceEvaluationScalarWhereWithAggregatesInput | PerformanceEvaluationScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    employeeId?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    evaluationDate?: DateTimeWithAggregatesFilter<"PerformanceEvaluation"> | Date | string
+    evaluationTime?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    department?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    overallFeedback?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    goals?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    status?: StringWithAggregatesFilter<"PerformanceEvaluation"> | string
+    skills?: JsonWithAggregatesFilter<"PerformanceEvaluation">
+    createdAt?: DateTimeWithAggregatesFilter<"PerformanceEvaluation"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -91100,6 +93696,216 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type TrainingRequestCreateInput = {
+    id?: string
+    requestDate: Date | string
+    currentTime: string
+    department: string
+    areaOfTraining: string
+    targetGroup: string
+    budget: number
+    startDate: Date | string
+    trainer?: string | null
+    endDate: Date | string
+    remarks?: string | null
+    status?: string | null
+    finalApprover?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TrainingRequestUncheckedCreateInput = {
+    id?: string
+    requestDate: Date | string
+    currentTime: string
+    department: string
+    areaOfTraining: string
+    targetGroup: string
+    budget: number
+    startDate: Date | string
+    trainer?: string | null
+    endDate: Date | string
+    remarks?: string | null
+    status?: string | null
+    finalApprover?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TrainingRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    areaOfTraining?: StringFieldUpdateOperationsInput | string
+    targetGroup?: StringFieldUpdateOperationsInput | string
+    budget?: FloatFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainer?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    areaOfTraining?: StringFieldUpdateOperationsInput | string
+    targetGroup?: StringFieldUpdateOperationsInput | string
+    budget?: FloatFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainer?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingRequestCreateManyInput = {
+    id?: string
+    requestDate: Date | string
+    currentTime: string
+    department: string
+    areaOfTraining: string
+    targetGroup: string
+    budget: number
+    startDate: Date | string
+    trainer?: string | null
+    endDate: Date | string
+    remarks?: string | null
+    status?: string | null
+    finalApprover?: string | null
+    createdAt?: Date | string
+  }
+
+  export type TrainingRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    areaOfTraining?: StringFieldUpdateOperationsInput | string
+    targetGroup?: StringFieldUpdateOperationsInput | string
+    budget?: FloatFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainer?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type TrainingRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    requestDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    currentTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    areaOfTraining?: StringFieldUpdateOperationsInput | string
+    targetGroup?: StringFieldUpdateOperationsInput | string
+    budget?: FloatFieldUpdateOperationsInput | number
+    startDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    trainer?: NullableStringFieldUpdateOperationsInput | string | null
+    endDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    remarks?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    finalApprover?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PerformanceEvaluationCreateInput = {
+    id?: string
+    employeeId: string
+    evaluationDate: Date | string
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PerformanceEvaluationUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    evaluationDate: Date | string
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PerformanceEvaluationUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PerformanceEvaluationUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PerformanceEvaluationCreateManyInput = {
+    id?: string
+    employeeId: string
+    evaluationDate: Date | string
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PerformanceEvaluationUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PerformanceEvaluationUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -94916,6 +97722,102 @@ export namespace Prisma {
   export type LeaveApplicationSumOrderByAggregateInput = {
     leaveBalance?: SortOrder
     leaveDays?: SortOrder
+  }
+
+  export type TrainingRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    requestDate?: SortOrder
+    currentTime?: SortOrder
+    department?: SortOrder
+    areaOfTraining?: SortOrder
+    targetGroup?: SortOrder
+    budget?: SortOrder
+    startDate?: SortOrder
+    trainer?: SortOrder
+    endDate?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    finalApprover?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TrainingRequestAvgOrderByAggregateInput = {
+    budget?: SortOrder
+  }
+
+  export type TrainingRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    requestDate?: SortOrder
+    currentTime?: SortOrder
+    department?: SortOrder
+    areaOfTraining?: SortOrder
+    targetGroup?: SortOrder
+    budget?: SortOrder
+    startDate?: SortOrder
+    trainer?: SortOrder
+    endDate?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    finalApprover?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TrainingRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    requestDate?: SortOrder
+    currentTime?: SortOrder
+    department?: SortOrder
+    areaOfTraining?: SortOrder
+    targetGroup?: SortOrder
+    budget?: SortOrder
+    startDate?: SortOrder
+    trainer?: SortOrder
+    endDate?: SortOrder
+    remarks?: SortOrder
+    status?: SortOrder
+    finalApprover?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type TrainingRequestSumOrderByAggregateInput = {
+    budget?: SortOrder
+  }
+
+  export type PerformanceEvaluationCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    evaluationDate?: SortOrder
+    evaluationTime?: SortOrder
+    department?: SortOrder
+    overallFeedback?: SortOrder
+    goals?: SortOrder
+    status?: SortOrder
+    skills?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PerformanceEvaluationMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    evaluationDate?: SortOrder
+    evaluationTime?: SortOrder
+    department?: SortOrder
+    overallFeedback?: SortOrder
+    goals?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PerformanceEvaluationMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    evaluationDate?: SortOrder
+    evaluationTime?: SortOrder
+    department?: SortOrder
+    overallFeedback?: SortOrder
+    goals?: SortOrder
+    status?: SortOrder
+    createdAt?: SortOrder
   }
 
   export type RoleCreateNestedOneWithoutUsersInput = {
