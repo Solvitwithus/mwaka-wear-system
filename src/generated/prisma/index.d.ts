@@ -6511,10 +6511,12 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    performanceEvaluations: number
     messages: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    performanceEvaluations?: boolean | UserCountOutputTypeCountPerformanceEvaluationsArgs
     messages?: boolean | UserCountOutputTypeCountMessagesArgs
   }
 
@@ -6527,6 +6529,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountPerformanceEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PerformanceEvaluationWhereInput
   }
 
   /**
@@ -7199,6 +7208,7 @@ export namespace Prisma {
     phone1?: boolean
     phone2?: boolean
     description?: boolean
+    performanceEvaluations?: boolean | User$performanceEvaluationsArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
     messages?: boolean | User$messagesArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
@@ -7257,6 +7267,7 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userName" | "password" | "firstName" | "lastName" | "shortName" | "address" | "email" | "roleId" | "branch" | "phone1" | "phone2" | "description", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    performanceEvaluations?: boolean | User$performanceEvaluationsArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
     messages?: boolean | User$messagesArgs<ExtArgs>
     profile?: boolean | User$profileArgs<ExtArgs>
@@ -7272,6 +7283,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
+      performanceEvaluations: Prisma.$PerformanceEvaluationPayload<ExtArgs>[]
       role: Prisma.$RolePayload<ExtArgs>
       messages: Prisma.$MessagePayload<ExtArgs>[]
       profile: Prisma.$ProfilePayload<ExtArgs> | null
@@ -7684,6 +7696,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    performanceEvaluations<T extends User$performanceEvaluationsArgs<ExtArgs> = {}>(args?: Subset<T, User$performanceEvaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     messages<T extends User$messagesArgs<ExtArgs> = {}>(args?: Subset<T, User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     profile<T extends User$profileArgs<ExtArgs> = {}>(args?: Subset<T, User$profileArgs<ExtArgs>>): Prisma__ProfileClient<$Result.GetResult<Prisma.$ProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -8122,6 +8135,30 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.performanceEvaluations
+   */
+  export type User$performanceEvaluationsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PerformanceEvaluation
+     */
+    select?: PerformanceEvaluationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PerformanceEvaluation
+     */
+    omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
+    where?: PerformanceEvaluationWhereInput
+    orderBy?: PerformanceEvaluationOrderByWithRelationInput | PerformanceEvaluationOrderByWithRelationInput[]
+    cursor?: PerformanceEvaluationWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: PerformanceEvaluationScalarFieldEnum | PerformanceEvaluationScalarFieldEnum[]
   }
 
   /**
@@ -78821,6 +78858,7 @@ export namespace Prisma {
     status?: boolean
     skills?: boolean
     createdAt?: boolean
+    employee?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["performanceEvaluation"]>
 
   export type PerformanceEvaluationSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -78834,6 +78872,7 @@ export namespace Prisma {
     status?: boolean
     skills?: boolean
     createdAt?: boolean
+    employee?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["performanceEvaluation"]>
 
   export type PerformanceEvaluationSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -78847,6 +78886,7 @@ export namespace Prisma {
     status?: boolean
     skills?: boolean
     createdAt?: boolean
+    employee?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["performanceEvaluation"]>
 
   export type PerformanceEvaluationSelectScalar = {
@@ -78863,10 +78903,21 @@ export namespace Prisma {
   }
 
   export type PerformanceEvaluationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "evaluationDate" | "evaluationTime" | "department" | "overallFeedback" | "goals" | "status" | "skills" | "createdAt", ExtArgs["result"]["performanceEvaluation"]>
+  export type PerformanceEvaluationInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PerformanceEvaluationIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type PerformanceEvaluationIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }
 
   export type $PerformanceEvaluationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "PerformanceEvaluation"
-    objects: {}
+    objects: {
+      employee: Prisma.$UserPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       employeeId: string
@@ -79272,6 +79323,7 @@ export namespace Prisma {
    */
   export interface Prisma__PerformanceEvaluationClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -79328,6 +79380,10 @@ export namespace Prisma {
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
+    /**
      * Filter, which PerformanceEvaluation to fetch.
      */
     where: PerformanceEvaluationWhereUniqueInput
@@ -79346,6 +79402,10 @@ export namespace Prisma {
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
+    /**
      * Filter, which PerformanceEvaluation to fetch.
      */
     where: PerformanceEvaluationWhereUniqueInput
@@ -79363,6 +79423,10 @@ export namespace Prisma {
      * Omit specific fields from the PerformanceEvaluation
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
     /**
      * Filter, which PerformanceEvaluation to fetch.
      */
@@ -79412,6 +79476,10 @@ export namespace Prisma {
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
+    /**
      * Filter, which PerformanceEvaluation to fetch.
      */
     where?: PerformanceEvaluationWhereInput
@@ -79460,6 +79528,10 @@ export namespace Prisma {
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
+    /**
      * Filter, which PerformanceEvaluations to fetch.
      */
     where?: PerformanceEvaluationWhereInput
@@ -79503,6 +79575,10 @@ export namespace Prisma {
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
+    /**
      * The data needed to create a PerformanceEvaluation.
      */
     data: XOR<PerformanceEvaluationCreateInput, PerformanceEvaluationUncheckedCreateInput>
@@ -79536,6 +79612,10 @@ export namespace Prisma {
      */
     data: PerformanceEvaluationCreateManyInput | PerformanceEvaluationCreateManyInput[]
     skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationIncludeCreateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -79550,6 +79630,10 @@ export namespace Prisma {
      * Omit specific fields from the PerformanceEvaluation
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
     /**
      * The data needed to update a PerformanceEvaluation.
      */
@@ -79602,6 +79686,10 @@ export namespace Prisma {
      * Limit how many PerformanceEvaluations to update.
      */
     limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationIncludeUpdateManyAndReturn<ExtArgs> | null
   }
 
   /**
@@ -79616,6 +79704,10 @@ export namespace Prisma {
      * Omit specific fields from the PerformanceEvaluation
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
     /**
      * The filter to search for the PerformanceEvaluation to update in case it exists.
      */
@@ -79642,6 +79734,10 @@ export namespace Prisma {
      * Omit specific fields from the PerformanceEvaluation
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
     /**
      * Filter which PerformanceEvaluation to delete.
      */
@@ -79674,6 +79770,10 @@ export namespace Prisma {
      * Omit specific fields from the PerformanceEvaluation
      */
     omit?: PerformanceEvaluationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: PerformanceEvaluationInclude<ExtArgs> | null
   }
 
 
@@ -81013,6 +81113,7 @@ export namespace Prisma {
     phone1?: StringFilter<"User"> | string
     phone2?: StringFilter<"User"> | string
     description?: StringNullableFilter<"User"> | string | null
+    performanceEvaluations?: PerformanceEvaluationListRelationFilter
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     messages?: MessageListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
@@ -81032,6 +81133,7 @@ export namespace Prisma {
     phone1?: SortOrder
     phone2?: SortOrder
     description?: SortOrderInput | SortOrder
+    performanceEvaluations?: PerformanceEvaluationOrderByRelationAggregateInput
     role?: RoleOrderByWithRelationInput
     messages?: MessageOrderByRelationAggregateInput
     profile?: ProfileOrderByWithRelationInput
@@ -81054,6 +81156,7 @@ export namespace Prisma {
     phone1?: StringFilter<"User"> | string
     phone2?: StringFilter<"User"> | string
     description?: StringNullableFilter<"User"> | string | null
+    performanceEvaluations?: PerformanceEvaluationListRelationFilter
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     messages?: MessageListRelationFilter
     profile?: XOR<ProfileNullableScalarRelationFilter, ProfileWhereInput> | null
@@ -86852,6 +86955,7 @@ export namespace Prisma {
     status?: StringFilter<"PerformanceEvaluation"> | string
     skills?: JsonFilter<"PerformanceEvaluation">
     createdAt?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+    employee?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
   export type PerformanceEvaluationOrderByWithRelationInput = {
@@ -86865,6 +86969,7 @@ export namespace Prisma {
     status?: SortOrder
     skills?: SortOrder
     createdAt?: SortOrder
+    employee?: UserOrderByWithRelationInput
   }
 
   export type PerformanceEvaluationWhereUniqueInput = Prisma.AtLeast<{
@@ -86881,6 +86986,7 @@ export namespace Prisma {
     status?: StringFilter<"PerformanceEvaluation"> | string
     skills?: JsonFilter<"PerformanceEvaluation">
     createdAt?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+    employee?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
   export type PerformanceEvaluationOrderByWithAggregationInput = {
@@ -86928,6 +87034,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     messages?: MessageCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
@@ -86947,6 +87054,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
@@ -86964,6 +87072,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
@@ -86983,6 +87092,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
@@ -93817,7 +93927,6 @@ export namespace Prisma {
 
   export type PerformanceEvaluationCreateInput = {
     id?: string
-    employeeId: string
     evaluationDate: Date | string
     evaluationTime: string
     department: string
@@ -93826,6 +93935,7 @@ export namespace Prisma {
     status: string
     skills: JsonNullValueInput | InputJsonValue
     createdAt?: Date | string
+    employee: UserCreateNestedOneWithoutPerformanceEvaluationsInput
   }
 
   export type PerformanceEvaluationUncheckedCreateInput = {
@@ -93843,7 +93953,6 @@ export namespace Prisma {
 
   export type PerformanceEvaluationUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
-    employeeId?: StringFieldUpdateOperationsInput | string
     evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluationTime?: StringFieldUpdateOperationsInput | string
     department?: StringFieldUpdateOperationsInput | string
@@ -93852,6 +93961,7 @@ export namespace Prisma {
     status?: StringFieldUpdateOperationsInput | string
     skills?: JsonNullValueInput | InputJsonValue
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    employee?: UserUpdateOneRequiredWithoutPerformanceEvaluationsNestedInput
   }
 
   export type PerformanceEvaluationUncheckedUpdateInput = {
@@ -93882,7 +93992,6 @@ export namespace Prisma {
 
   export type PerformanceEvaluationUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
-    employeeId?: StringFieldUpdateOperationsInput | string
     evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
     evaluationTime?: StringFieldUpdateOperationsInput | string
     department?: StringFieldUpdateOperationsInput | string
@@ -93936,6 +94045,12 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type PerformanceEvaluationListRelationFilter = {
+    every?: PerformanceEvaluationWhereInput
+    some?: PerformanceEvaluationWhereInput
+    none?: PerformanceEvaluationWhereInput
+  }
+
   export type RoleScalarRelationFilter = {
     is?: RoleWhereInput
     isNot?: RoleWhereInput
@@ -93955,6 +94070,10 @@ export namespace Prisma {
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type PerformanceEvaluationOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type MessageOrderByRelationAggregateInput = {
@@ -97820,6 +97939,13 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type PerformanceEvaluationCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput> | PerformanceEvaluationCreateWithoutEmployeeInput[] | PerformanceEvaluationUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: PerformanceEvaluationCreateOrConnectWithoutEmployeeInput | PerformanceEvaluationCreateOrConnectWithoutEmployeeInput[]
+    createMany?: PerformanceEvaluationCreateManyEmployeeInputEnvelope
+    connect?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+  }
+
   export type RoleCreateNestedOneWithoutUsersInput = {
     create?: XOR<RoleCreateWithoutUsersInput, RoleUncheckedCreateWithoutUsersInput>
     connectOrCreate?: RoleCreateOrConnectWithoutUsersInput
@@ -97837,6 +97963,13 @@ export namespace Prisma {
     create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
     connect?: ProfileWhereUniqueInput
+  }
+
+  export type PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput> | PerformanceEvaluationCreateWithoutEmployeeInput[] | PerformanceEvaluationUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: PerformanceEvaluationCreateOrConnectWithoutEmployeeInput | PerformanceEvaluationCreateOrConnectWithoutEmployeeInput[]
+    createMany?: PerformanceEvaluationCreateManyEmployeeInputEnvelope
+    connect?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
   }
 
   export type MessageUncheckedCreateNestedManyWithoutUserInput = {
@@ -97858,6 +97991,20 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput> | PerformanceEvaluationCreateWithoutEmployeeInput[] | PerformanceEvaluationUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: PerformanceEvaluationCreateOrConnectWithoutEmployeeInput | PerformanceEvaluationCreateOrConnectWithoutEmployeeInput[]
+    upsert?: PerformanceEvaluationUpsertWithWhereUniqueWithoutEmployeeInput | PerformanceEvaluationUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: PerformanceEvaluationCreateManyEmployeeInputEnvelope
+    set?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    disconnect?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    delete?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    connect?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    update?: PerformanceEvaluationUpdateWithWhereUniqueWithoutEmployeeInput | PerformanceEvaluationUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: PerformanceEvaluationUpdateManyWithWhereWithoutEmployeeInput | PerformanceEvaluationUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: PerformanceEvaluationScalarWhereInput | PerformanceEvaluationScalarWhereInput[]
   }
 
   export type RoleUpdateOneRequiredWithoutUsersNestedInput = {
@@ -97890,6 +98037,20 @@ export namespace Prisma {
     delete?: ProfileWhereInput | boolean
     connect?: ProfileWhereUniqueInput
     update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput> | PerformanceEvaluationCreateWithoutEmployeeInput[] | PerformanceEvaluationUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: PerformanceEvaluationCreateOrConnectWithoutEmployeeInput | PerformanceEvaluationCreateOrConnectWithoutEmployeeInput[]
+    upsert?: PerformanceEvaluationUpsertWithWhereUniqueWithoutEmployeeInput | PerformanceEvaluationUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: PerformanceEvaluationCreateManyEmployeeInputEnvelope
+    set?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    disconnect?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    delete?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    connect?: PerformanceEvaluationWhereUniqueInput | PerformanceEvaluationWhereUniqueInput[]
+    update?: PerformanceEvaluationUpdateWithWhereUniqueWithoutEmployeeInput | PerformanceEvaluationUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: PerformanceEvaluationUpdateManyWithWhereWithoutEmployeeInput | PerformanceEvaluationUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: PerformanceEvaluationScalarWhereInput | PerformanceEvaluationScalarWhereInput[]
   }
 
   export type MessageUncheckedUpdateManyWithoutUserNestedInput = {
@@ -99166,6 +99327,20 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type UserCreateNestedOneWithoutPerformanceEvaluationsInput = {
+    create?: XOR<UserCreateWithoutPerformanceEvaluationsInput, UserUncheckedCreateWithoutPerformanceEvaluationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPerformanceEvaluationsInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutPerformanceEvaluationsNestedInput = {
+    create?: XOR<UserCreateWithoutPerformanceEvaluationsInput, UserUncheckedCreateWithoutPerformanceEvaluationsInput>
+    connectOrCreate?: UserCreateOrConnectWithoutPerformanceEvaluationsInput
+    upsert?: UserUpsertWithoutPerformanceEvaluationsInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPerformanceEvaluationsInput, UserUpdateWithoutPerformanceEvaluationsInput>, UserUncheckedUpdateWithoutPerformanceEvaluationsInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -99410,6 +99585,40 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type PerformanceEvaluationCreateWithoutEmployeeInput = {
+    id?: string
+    evaluationDate: Date | string
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PerformanceEvaluationUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    evaluationDate: Date | string
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
+  export type PerformanceEvaluationCreateOrConnectWithoutEmployeeInput = {
+    where: PerformanceEvaluationWhereUniqueInput
+    create: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type PerformanceEvaluationCreateManyEmployeeInputEnvelope = {
+    data: PerformanceEvaluationCreateManyEmployeeInput | PerformanceEvaluationCreateManyEmployeeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type RoleCreateWithoutUsersInput = {
     id?: string
     name: string
@@ -99476,6 +99685,38 @@ export namespace Prisma {
   export type ProfileCreateOrConnectWithoutUserInput = {
     where: ProfileWhereUniqueInput
     create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+  }
+
+  export type PerformanceEvaluationUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: PerformanceEvaluationWhereUniqueInput
+    update: XOR<PerformanceEvaluationUpdateWithoutEmployeeInput, PerformanceEvaluationUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type PerformanceEvaluationUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: PerformanceEvaluationWhereUniqueInput
+    data: XOR<PerformanceEvaluationUpdateWithoutEmployeeInput, PerformanceEvaluationUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type PerformanceEvaluationUpdateManyWithWhereWithoutEmployeeInput = {
+    where: PerformanceEvaluationScalarWhereInput
+    data: XOR<PerformanceEvaluationUpdateManyMutationInput, PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type PerformanceEvaluationScalarWhereInput = {
+    AND?: PerformanceEvaluationScalarWhereInput | PerformanceEvaluationScalarWhereInput[]
+    OR?: PerformanceEvaluationScalarWhereInput[]
+    NOT?: PerformanceEvaluationScalarWhereInput | PerformanceEvaluationScalarWhereInput[]
+    id?: StringFilter<"PerformanceEvaluation"> | string
+    employeeId?: StringFilter<"PerformanceEvaluation"> | string
+    evaluationDate?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
+    evaluationTime?: StringFilter<"PerformanceEvaluation"> | string
+    department?: StringFilter<"PerformanceEvaluation"> | string
+    overallFeedback?: StringFilter<"PerformanceEvaluation"> | string
+    goals?: StringFilter<"PerformanceEvaluation"> | string
+    status?: StringFilter<"PerformanceEvaluation"> | string
+    skills?: JsonFilter<"PerformanceEvaluation">
+    createdAt?: DateTimeFilter<"PerformanceEvaluation"> | Date | string
   }
 
   export type RoleUpsertWithoutUsersInput = {
@@ -99595,6 +99836,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     messages?: MessageCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
   }
@@ -99612,6 +99854,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
@@ -99744,6 +99987,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     profile?: ProfileCreateNestedOneWithoutUserInput
   }
@@ -99762,6 +100006,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
 
@@ -99794,6 +100039,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
   }
@@ -99812,6 +100058,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
 
@@ -99828,6 +100075,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     messages?: MessageCreateNestedManyWithoutUserInput
   }
@@ -99846,6 +100094,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
   }
 
@@ -99878,6 +100127,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
   }
@@ -99896,6 +100146,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
   }
 
@@ -102829,12 +103080,148 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type UserCreateWithoutPerformanceEvaluationsInput = {
+    id?: string
+    userName: string
+    password: string
+    firstName: string
+    lastName: string
+    shortName: string
+    address: string
+    email: string
+    branch: string
+    phone1: string
+    phone2: string
+    description?: string | null
+    role: RoleCreateNestedOneWithoutUsersInput
+    messages?: MessageCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutPerformanceEvaluationsInput = {
+    id?: string
+    userName: string
+    password: string
+    firstName: string
+    lastName: string
+    shortName: string
+    address: string
+    email: string
+    roleId: string
+    branch: string
+    phone1: string
+    phone2: string
+    description?: string | null
+    messages?: MessageUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutPerformanceEvaluationsInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutPerformanceEvaluationsInput, UserUncheckedCreateWithoutPerformanceEvaluationsInput>
+  }
+
+  export type UserUpsertWithoutPerformanceEvaluationsInput = {
+    update: XOR<UserUpdateWithoutPerformanceEvaluationsInput, UserUncheckedUpdateWithoutPerformanceEvaluationsInput>
+    create: XOR<UserCreateWithoutPerformanceEvaluationsInput, UserUncheckedCreateWithoutPerformanceEvaluationsInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutPerformanceEvaluationsInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutPerformanceEvaluationsInput, UserUncheckedUpdateWithoutPerformanceEvaluationsInput>
+  }
+
+  export type UserUpdateWithoutPerformanceEvaluationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    messages?: MessageUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutPerformanceEvaluationsInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type PerformanceEvaluationCreateManyEmployeeInput = {
+    id?: string
+    evaluationDate: Date | string
+    evaluationTime: string
+    department: string
+    overallFeedback: string
+    goals: string
+    status: string
+    skills: JsonNullValueInput | InputJsonValue
+    createdAt?: Date | string
+  }
+
   export type MessageCreateManyUserInput = {
     id?: string
     file?: string | null
     chat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type PerformanceEvaluationUpdateWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PerformanceEvaluationUncheckedUpdateWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    evaluationDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    evaluationTime?: StringFieldUpdateOperationsInput | string
+    department?: StringFieldUpdateOperationsInput | string
+    overallFeedback?: StringFieldUpdateOperationsInput | string
+    goals?: StringFieldUpdateOperationsInput | string
+    status?: StringFieldUpdateOperationsInput | string
+    skills?: JsonNullValueInput | InputJsonValue
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type MessageUpdateWithoutUserInput = {
@@ -102913,6 +103300,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
   }
@@ -102930,6 +103318,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }

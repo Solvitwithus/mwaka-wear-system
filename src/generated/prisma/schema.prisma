@@ -12,22 +12,23 @@ datasource db {
 }
 
 model User {
-  id          String    @id @default(uuid())
-  userName    String    @unique
-  password    String
-  firstName   String
-  lastName    String
-  shortName   String
-  address     String
-  email       String    @unique
-  roleId      String
-  branch      String
-  phone1      String
-  phone2      String
-  description String?   @default("No description")
-  role        Role      @relation(fields: [roleId], references: [id], onDelete: Cascade)
-  messages    Message[]
-  profile     Profile?
+  id                     String                  @id @default(uuid())
+  userName               String                  @unique
+  password               String
+  firstName              String
+  lastName               String
+  shortName              String
+  address                String
+  email                  String                  @unique
+  roleId                 String
+  branch                 String
+  phone1                 String
+  phone2                 String
+  performanceEvaluations PerformanceEvaluation[]
+  description            String?                 @default("No description")
+  role                   Role                    @relation(fields: [roleId], references: [id], onDelete: Cascade)
+  messages               Message[]
+  profile                Profile?
 }
 
 model Role {
@@ -1088,6 +1089,9 @@ model PerformanceEvaluation {
   overallFeedback String
   goals           String
   status          String
-  skills          Json // Array of skill ratings
+  skills          Json
   createdAt       DateTime @default(now())
+
+  // 👇 Add this line to define the relation
+  employee User @relation(fields: [employeeId], references: [id])
 }

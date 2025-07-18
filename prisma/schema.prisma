@@ -24,6 +24,7 @@ model User {
   branch     String
   phone1     String
   phone2     String
+   performanceEvaluations  PerformanceEvaluation[]
   description String? @default("No description")
   role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
   messages Message[]
@@ -1072,7 +1073,7 @@ model TrainingRequest {
   createdAt       DateTime @default(now())
 }
 model PerformanceEvaluation {
-  id              String         @id @default(uuid())
+  id              String   @id @default(uuid())
   employeeId      String
   evaluationDate  DateTime
   evaluationTime  String
@@ -1080,8 +1081,9 @@ model PerformanceEvaluation {
   overallFeedback String
   goals           String
   status          String
-  skills          Json           // Array of skill ratings
-  createdAt       DateTime       @default(now())
+  skills          Json
+  createdAt       DateTime @default(now())
 
- 
+  // 👇 Add this line to define the relation
+  employee        User     @relation(fields: [employeeId], references: [id])
 }
