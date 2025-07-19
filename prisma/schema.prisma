@@ -24,6 +24,7 @@ model User {
   branch     String
   phone1     String
   phone2     String
+  attendance Attendance[]
    performanceEvaluations  PerformanceEvaluation[]
   description String? @default("No description")
   role       Role     @relation(fields: [roleId], references: [id], onDelete: Cascade)
@@ -1086,4 +1087,23 @@ model PerformanceEvaluation {
 
   // 👇 Add this line to define the relation
   employee        User     @relation(fields: [employeeId], references: [id])
+}
+model Attendance {
+  id         String   @id @default(uuid())
+  employeeId String
+  date       DateTime
+  status     String
+
+  employee   User     @relation(fields: [employeeId], references: [id], onDelete: Cascade)
+
+  @@unique([employeeId, date])
+  @@map("attendance") // optional table name
+}
+model Warning {
+  id         String   @id @default(uuid())
+  employeeId String   // Just stores the employee/user ID
+  date       DateTime
+  reason     String
+  details    String
+  createdAt  DateTime @default(now())
 }

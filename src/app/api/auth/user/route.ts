@@ -47,7 +47,7 @@ export async function GET() {
     
     try {
       // Fetch all roles from the database
-      const roles = await prisma.user.findMany();
+      const roles = await prisma.user.findMany({include:{role:true}});
   
       return NextResponse.json(roles, { status: 200 });
     } catch (err) {

@@ -1111,6 +1111,22 @@ exports.Prisma.PerformanceEvaluationScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.AttendanceScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  date: 'date',
+  status: 'status'
+};
+
+exports.Prisma.WarningScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  date: 'date',
+  reason: 'reason',
+  details: 'details',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1200,7 +1216,9 @@ exports.Prisma.ModelName = {
   Candidate: 'Candidate',
   LeaveApplication: 'LeaveApplication',
   TrainingRequest: 'TrainingRequest',
-  PerformanceEvaluation: 'PerformanceEvaluation'
+  PerformanceEvaluation: 'PerformanceEvaluation',
+  Attendance: 'Attendance',
+  Warning: 'Warning'
 };
 
 /**

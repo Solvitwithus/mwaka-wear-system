@@ -328,6 +328,16 @@ export type TrainingRequest = $Result.DefaultSelection<Prisma.$TrainingRequestPa
  * 
  */
 export type PerformanceEvaluation = $Result.DefaultSelection<Prisma.$PerformanceEvaluationPayload>
+/**
+ * Model Attendance
+ * 
+ */
+export type Attendance = $Result.DefaultSelection<Prisma.$AttendancePayload>
+/**
+ * Model Warning
+ * 
+ */
+export type Warning = $Result.DefaultSelection<Prisma.$WarningPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1083,6 +1093,26 @@ export class PrismaClient<
     * ```
     */
   get performanceEvaluation(): Prisma.PerformanceEvaluationDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.attendance`: Exposes CRUD operations for the **Attendance** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Attendances
+    * const attendances = await prisma.attendance.findMany()
+    * ```
+    */
+  get attendance(): Prisma.AttendanceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.warning`: Exposes CRUD operations for the **Warning** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Warnings
+    * const warnings = await prisma.warning.findMany()
+    * ```
+    */
+  get warning(): Prisma.WarningDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1585,7 +1615,9 @@ export namespace Prisma {
     Candidate: 'Candidate',
     LeaveApplication: 'LeaveApplication',
     TrainingRequest: 'TrainingRequest',
-    PerformanceEvaluation: 'PerformanceEvaluation'
+    PerformanceEvaluation: 'PerformanceEvaluation',
+    Attendance: 'Attendance',
+    Warning: 'Warning'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1604,7 +1636,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation" | "attendance" | "warning"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -6270,6 +6302,154 @@ export namespace Prisma {
           }
         }
       }
+      Attendance: {
+        payload: Prisma.$AttendancePayload<ExtArgs>
+        fields: Prisma.AttendanceFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AttendanceFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AttendanceFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          findFirst: {
+            args: Prisma.AttendanceFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AttendanceFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          findMany: {
+            args: Prisma.AttendanceFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+          }
+          create: {
+            args: Prisma.AttendanceCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          createMany: {
+            args: Prisma.AttendanceCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AttendanceCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+          }
+          delete: {
+            args: Prisma.AttendanceDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          update: {
+            args: Prisma.AttendanceUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          deleteMany: {
+            args: Prisma.AttendanceDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AttendanceUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AttendanceUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>[]
+          }
+          upsert: {
+            args: Prisma.AttendanceUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AttendancePayload>
+          }
+          aggregate: {
+            args: Prisma.AttendanceAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAttendance>
+          }
+          groupBy: {
+            args: Prisma.AttendanceGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AttendanceGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AttendanceCountArgs<ExtArgs>
+            result: $Utils.Optional<AttendanceCountAggregateOutputType> | number
+          }
+        }
+      }
+      Warning: {
+        payload: Prisma.$WarningPayload<ExtArgs>
+        fields: Prisma.WarningFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.WarningFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.WarningFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>
+          }
+          findFirst: {
+            args: Prisma.WarningFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.WarningFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>
+          }
+          findMany: {
+            args: Prisma.WarningFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>[]
+          }
+          create: {
+            args: Prisma.WarningCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>
+          }
+          createMany: {
+            args: Prisma.WarningCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.WarningCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>[]
+          }
+          delete: {
+            args: Prisma.WarningDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>
+          }
+          update: {
+            args: Prisma.WarningUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>
+          }
+          deleteMany: {
+            args: Prisma.WarningDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.WarningUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.WarningUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>[]
+          }
+          upsert: {
+            args: Prisma.WarningUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$WarningPayload>
+          }
+          aggregate: {
+            args: Prisma.WarningAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateWarning>
+          }
+          groupBy: {
+            args: Prisma.WarningGroupByArgs<ExtArgs>
+            result: $Utils.Optional<WarningGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.WarningCountArgs<ExtArgs>
+            result: $Utils.Optional<WarningCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -6417,6 +6597,8 @@ export namespace Prisma {
     leaveApplication?: LeaveApplicationOmit
     trainingRequest?: TrainingRequestOmit
     performanceEvaluation?: PerformanceEvaluationOmit
+    attendance?: AttendanceOmit
+    warning?: WarningOmit
   }
 
   /* Types for Logging */
@@ -6511,11 +6693,13 @@ export namespace Prisma {
    */
 
   export type UserCountOutputType = {
+    attendance: number
     performanceEvaluations: number
     messages: number
   }
 
   export type UserCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attendance?: boolean | UserCountOutputTypeCountAttendanceArgs
     performanceEvaluations?: boolean | UserCountOutputTypeCountPerformanceEvaluationsArgs
     messages?: boolean | UserCountOutputTypeCountMessagesArgs
   }
@@ -6529,6 +6713,13 @@ export namespace Prisma {
      * Select specific fields to fetch from the UserCountOutputType
      */
     select?: UserCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UserCountOutputType without action
+   */
+  export type UserCountOutputTypeCountAttendanceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceWhereInput
   }
 
   /**
@@ -7208,6 +7399,7 @@ export namespace Prisma {
     phone1?: boolean
     phone2?: boolean
     description?: boolean
+    attendance?: boolean | User$attendanceArgs<ExtArgs>
     performanceEvaluations?: boolean | User$performanceEvaluationsArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
     messages?: boolean | User$messagesArgs<ExtArgs>
@@ -7267,6 +7459,7 @@ export namespace Prisma {
 
   export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userName" | "password" | "firstName" | "lastName" | "shortName" | "address" | "email" | "roleId" | "branch" | "phone1" | "phone2" | "description", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    attendance?: boolean | User$attendanceArgs<ExtArgs>
     performanceEvaluations?: boolean | User$performanceEvaluationsArgs<ExtArgs>
     role?: boolean | RoleDefaultArgs<ExtArgs>
     messages?: boolean | User$messagesArgs<ExtArgs>
@@ -7283,6 +7476,7 @@ export namespace Prisma {
   export type $UserPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "User"
     objects: {
+      attendance: Prisma.$AttendancePayload<ExtArgs>[]
       performanceEvaluations: Prisma.$PerformanceEvaluationPayload<ExtArgs>[]
       role: Prisma.$RolePayload<ExtArgs>
       messages: Prisma.$MessagePayload<ExtArgs>[]
@@ -7696,6 +7890,7 @@ export namespace Prisma {
    */
   export interface Prisma__UserClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    attendance<T extends User$attendanceArgs<ExtArgs> = {}>(args?: Subset<T, User$attendanceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     performanceEvaluations<T extends User$performanceEvaluationsArgs<ExtArgs> = {}>(args?: Subset<T, User$performanceEvaluationsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PerformanceEvaluationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     role<T extends RoleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, RoleDefaultArgs<ExtArgs>>): Prisma__RoleClient<$Result.GetResult<Prisma.$RolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     messages<T extends User$messagesArgs<ExtArgs> = {}>(args?: Subset<T, User$messagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MessagePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -8135,6 +8330,30 @@ export namespace Prisma {
      * Limit how many Users to delete.
      */
     limit?: number
+  }
+
+  /**
+   * User.attendance
+   */
+  export type User$attendanceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    where?: AttendanceWhereInput
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    cursor?: AttendanceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
   }
 
   /**
@@ -79778,6 +79997,2059 @@ export namespace Prisma {
 
 
   /**
+   * Model Attendance
+   */
+
+  export type AggregateAttendance = {
+    _count: AttendanceCountAggregateOutputType | null
+    _min: AttendanceMinAggregateOutputType | null
+    _max: AttendanceMaxAggregateOutputType | null
+  }
+
+  export type AttendanceMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    date: Date | null
+    status: string | null
+  }
+
+  export type AttendanceMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    date: Date | null
+    status: string | null
+  }
+
+  export type AttendanceCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    date: number
+    status: number
+    _all: number
+  }
+
+
+  export type AttendanceMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    status?: true
+  }
+
+  export type AttendanceMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    status?: true
+  }
+
+  export type AttendanceCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    status?: true
+    _all?: true
+  }
+
+  export type AttendanceAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Attendance to aggregate.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Attendances
+    **/
+    _count?: true | AttendanceCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AttendanceMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AttendanceMaxAggregateInputType
+  }
+
+  export type GetAttendanceAggregateType<T extends AttendanceAggregateArgs> = {
+        [P in keyof T & keyof AggregateAttendance]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAttendance[P]>
+      : GetScalarType<T[P], AggregateAttendance[P]>
+  }
+
+
+
+
+  export type AttendanceGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AttendanceWhereInput
+    orderBy?: AttendanceOrderByWithAggregationInput | AttendanceOrderByWithAggregationInput[]
+    by: AttendanceScalarFieldEnum[] | AttendanceScalarFieldEnum
+    having?: AttendanceScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AttendanceCountAggregateInputType | true
+    _min?: AttendanceMinAggregateInputType
+    _max?: AttendanceMaxAggregateInputType
+  }
+
+  export type AttendanceGroupByOutputType = {
+    id: string
+    employeeId: string
+    date: Date
+    status: string
+    _count: AttendanceCountAggregateOutputType | null
+    _min: AttendanceMinAggregateOutputType | null
+    _max: AttendanceMaxAggregateOutputType | null
+  }
+
+  type GetAttendanceGroupByPayload<T extends AttendanceGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AttendanceGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AttendanceGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AttendanceGroupByOutputType[P]>
+            : GetScalarType<T[P], AttendanceGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AttendanceSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    status?: boolean
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["attendance"]>
+
+  export type AttendanceSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    status?: boolean
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["attendance"]>
+
+  export type AttendanceSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    status?: boolean
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["attendance"]>
+
+  export type AttendanceSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    status?: boolean
+  }
+
+  export type AttendanceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "date" | "status", ExtArgs["result"]["attendance"]>
+  export type AttendanceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AttendanceIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+  export type AttendanceIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    employee?: boolean | UserDefaultArgs<ExtArgs>
+  }
+
+  export type $AttendancePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Attendance"
+    objects: {
+      employee: Prisma.$UserPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      date: Date
+      status: string
+    }, ExtArgs["result"]["attendance"]>
+    composites: {}
+  }
+
+  type AttendanceGetPayload<S extends boolean | null | undefined | AttendanceDefaultArgs> = $Result.GetResult<Prisma.$AttendancePayload, S>
+
+  type AttendanceCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AttendanceFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AttendanceCountAggregateInputType | true
+    }
+
+  export interface AttendanceDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Attendance'], meta: { name: 'Attendance' } }
+    /**
+     * Find zero or one Attendance that matches the filter.
+     * @param {AttendanceFindUniqueArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AttendanceFindUniqueArgs>(args: SelectSubset<T, AttendanceFindUniqueArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Attendance that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AttendanceFindUniqueOrThrowArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AttendanceFindUniqueOrThrowArgs>(args: SelectSubset<T, AttendanceFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Attendance that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceFindFirstArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AttendanceFindFirstArgs>(args?: SelectSubset<T, AttendanceFindFirstArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Attendance that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceFindFirstOrThrowArgs} args - Arguments to find a Attendance
+     * @example
+     * // Get one Attendance
+     * const attendance = await prisma.attendance.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AttendanceFindFirstOrThrowArgs>(args?: SelectSubset<T, AttendanceFindFirstOrThrowArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Attendances that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Attendances
+     * const attendances = await prisma.attendance.findMany()
+     * 
+     * // Get first 10 Attendances
+     * const attendances = await prisma.attendance.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const attendanceWithIdOnly = await prisma.attendance.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AttendanceFindManyArgs>(args?: SelectSubset<T, AttendanceFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Attendance.
+     * @param {AttendanceCreateArgs} args - Arguments to create a Attendance.
+     * @example
+     * // Create one Attendance
+     * const Attendance = await prisma.attendance.create({
+     *   data: {
+     *     // ... data to create a Attendance
+     *   }
+     * })
+     * 
+     */
+    create<T extends AttendanceCreateArgs>(args: SelectSubset<T, AttendanceCreateArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Attendances.
+     * @param {AttendanceCreateManyArgs} args - Arguments to create many Attendances.
+     * @example
+     * // Create many Attendances
+     * const attendance = await prisma.attendance.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AttendanceCreateManyArgs>(args?: SelectSubset<T, AttendanceCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Attendances and returns the data saved in the database.
+     * @param {AttendanceCreateManyAndReturnArgs} args - Arguments to create many Attendances.
+     * @example
+     * // Create many Attendances
+     * const attendance = await prisma.attendance.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Attendances and only return the `id`
+     * const attendanceWithIdOnly = await prisma.attendance.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AttendanceCreateManyAndReturnArgs>(args?: SelectSubset<T, AttendanceCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Attendance.
+     * @param {AttendanceDeleteArgs} args - Arguments to delete one Attendance.
+     * @example
+     * // Delete one Attendance
+     * const Attendance = await prisma.attendance.delete({
+     *   where: {
+     *     // ... filter to delete one Attendance
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AttendanceDeleteArgs>(args: SelectSubset<T, AttendanceDeleteArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Attendance.
+     * @param {AttendanceUpdateArgs} args - Arguments to update one Attendance.
+     * @example
+     * // Update one Attendance
+     * const attendance = await prisma.attendance.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AttendanceUpdateArgs>(args: SelectSubset<T, AttendanceUpdateArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Attendances.
+     * @param {AttendanceDeleteManyArgs} args - Arguments to filter Attendances to delete.
+     * @example
+     * // Delete a few Attendances
+     * const { count } = await prisma.attendance.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AttendanceDeleteManyArgs>(args?: SelectSubset<T, AttendanceDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Attendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Attendances
+     * const attendance = await prisma.attendance.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AttendanceUpdateManyArgs>(args: SelectSubset<T, AttendanceUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Attendances and returns the data updated in the database.
+     * @param {AttendanceUpdateManyAndReturnArgs} args - Arguments to update many Attendances.
+     * @example
+     * // Update many Attendances
+     * const attendance = await prisma.attendance.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Attendances and only return the `id`
+     * const attendanceWithIdOnly = await prisma.attendance.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AttendanceUpdateManyAndReturnArgs>(args: SelectSubset<T, AttendanceUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Attendance.
+     * @param {AttendanceUpsertArgs} args - Arguments to update or create a Attendance.
+     * @example
+     * // Update or create a Attendance
+     * const attendance = await prisma.attendance.upsert({
+     *   create: {
+     *     // ... data to create a Attendance
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Attendance we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AttendanceUpsertArgs>(args: SelectSubset<T, AttendanceUpsertArgs<ExtArgs>>): Prisma__AttendanceClient<$Result.GetResult<Prisma.$AttendancePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Attendances.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceCountArgs} args - Arguments to filter Attendances to count.
+     * @example
+     * // Count the number of Attendances
+     * const count = await prisma.attendance.count({
+     *   where: {
+     *     // ... the filter for the Attendances we want to count
+     *   }
+     * })
+    **/
+    count<T extends AttendanceCountArgs>(
+      args?: Subset<T, AttendanceCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AttendanceCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Attendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AttendanceAggregateArgs>(args: Subset<T, AttendanceAggregateArgs>): Prisma.PrismaPromise<GetAttendanceAggregateType<T>>
+
+    /**
+     * Group by Attendance.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AttendanceGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AttendanceGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AttendanceGroupByArgs['orderBy'] }
+        : { orderBy?: AttendanceGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AttendanceGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAttendanceGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Attendance model
+   */
+  readonly fields: AttendanceFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Attendance.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AttendanceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    employee<T extends UserDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UserDefaultArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Attendance model
+   */
+  interface AttendanceFieldRefs {
+    readonly id: FieldRef<"Attendance", 'String'>
+    readonly employeeId: FieldRef<"Attendance", 'String'>
+    readonly date: FieldRef<"Attendance", 'DateTime'>
+    readonly status: FieldRef<"Attendance", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Attendance findUnique
+   */
+  export type AttendanceFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance findUniqueOrThrow
+   */
+  export type AttendanceFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance findFirst
+   */
+  export type AttendanceFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Attendances.
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Attendances.
+     */
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Attendance findFirstOrThrow
+   */
+  export type AttendanceFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendance to fetch.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Attendances.
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Attendances.
+     */
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Attendance findMany
+   */
+  export type AttendanceFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter, which Attendances to fetch.
+     */
+    where?: AttendanceWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Attendances to fetch.
+     */
+    orderBy?: AttendanceOrderByWithRelationInput | AttendanceOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Attendances.
+     */
+    cursor?: AttendanceWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Attendances from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Attendances.
+     */
+    skip?: number
+    distinct?: AttendanceScalarFieldEnum | AttendanceScalarFieldEnum[]
+  }
+
+  /**
+   * Attendance create
+   */
+  export type AttendanceCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Attendance.
+     */
+    data: XOR<AttendanceCreateInput, AttendanceUncheckedCreateInput>
+  }
+
+  /**
+   * Attendance createMany
+   */
+  export type AttendanceCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Attendances.
+     */
+    data: AttendanceCreateManyInput | AttendanceCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Attendance createManyAndReturn
+   */
+  export type AttendanceCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * The data used to create many Attendances.
+     */
+    data: AttendanceCreateManyInput | AttendanceCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Attendance update
+   */
+  export type AttendanceUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Attendance.
+     */
+    data: XOR<AttendanceUpdateInput, AttendanceUncheckedUpdateInput>
+    /**
+     * Choose, which Attendance to update.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance updateMany
+   */
+  export type AttendanceUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Attendances.
+     */
+    data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyInput>
+    /**
+     * Filter which Attendances to update
+     */
+    where?: AttendanceWhereInput
+    /**
+     * Limit how many Attendances to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Attendance updateManyAndReturn
+   */
+  export type AttendanceUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * The data used to update Attendances.
+     */
+    data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyInput>
+    /**
+     * Filter which Attendances to update
+     */
+    where?: AttendanceWhereInput
+    /**
+     * Limit how many Attendances to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Attendance upsert
+   */
+  export type AttendanceUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Attendance to update in case it exists.
+     */
+    where: AttendanceWhereUniqueInput
+    /**
+     * In case the Attendance found by the `where` argument doesn't exist, create a new Attendance with this data.
+     */
+    create: XOR<AttendanceCreateInput, AttendanceUncheckedCreateInput>
+    /**
+     * In case the Attendance was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AttendanceUpdateInput, AttendanceUncheckedUpdateInput>
+  }
+
+  /**
+   * Attendance delete
+   */
+  export type AttendanceDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+    /**
+     * Filter which Attendance to delete.
+     */
+    where: AttendanceWhereUniqueInput
+  }
+
+  /**
+   * Attendance deleteMany
+   */
+  export type AttendanceDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Attendances to delete
+     */
+    where?: AttendanceWhereInput
+    /**
+     * Limit how many Attendances to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Attendance without action
+   */
+  export type AttendanceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Attendance
+     */
+    select?: AttendanceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Attendance
+     */
+    omit?: AttendanceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AttendanceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Warning
+   */
+
+  export type AggregateWarning = {
+    _count: WarningCountAggregateOutputType | null
+    _min: WarningMinAggregateOutputType | null
+    _max: WarningMaxAggregateOutputType | null
+  }
+
+  export type WarningMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    date: Date | null
+    reason: string | null
+    details: string | null
+    createdAt: Date | null
+  }
+
+  export type WarningMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    date: Date | null
+    reason: string | null
+    details: string | null
+    createdAt: Date | null
+  }
+
+  export type WarningCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    date: number
+    reason: number
+    details: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type WarningMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    reason?: true
+    details?: true
+    createdAt?: true
+  }
+
+  export type WarningMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    reason?: true
+    details?: true
+    createdAt?: true
+  }
+
+  export type WarningCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    date?: true
+    reason?: true
+    details?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type WarningAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Warning to aggregate.
+     */
+    where?: WarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Warnings to fetch.
+     */
+    orderBy?: WarningOrderByWithRelationInput | WarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: WarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Warnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Warnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Warnings
+    **/
+    _count?: true | WarningCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: WarningMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: WarningMaxAggregateInputType
+  }
+
+  export type GetWarningAggregateType<T extends WarningAggregateArgs> = {
+        [P in keyof T & keyof AggregateWarning]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateWarning[P]>
+      : GetScalarType<T[P], AggregateWarning[P]>
+  }
+
+
+
+
+  export type WarningGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: WarningWhereInput
+    orderBy?: WarningOrderByWithAggregationInput | WarningOrderByWithAggregationInput[]
+    by: WarningScalarFieldEnum[] | WarningScalarFieldEnum
+    having?: WarningScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: WarningCountAggregateInputType | true
+    _min?: WarningMinAggregateInputType
+    _max?: WarningMaxAggregateInputType
+  }
+
+  export type WarningGroupByOutputType = {
+    id: string
+    employeeId: string
+    date: Date
+    reason: string
+    details: string
+    createdAt: Date
+    _count: WarningCountAggregateOutputType | null
+    _min: WarningMinAggregateOutputType | null
+    _max: WarningMaxAggregateOutputType | null
+  }
+
+  type GetWarningGroupByPayload<T extends WarningGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<WarningGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof WarningGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], WarningGroupByOutputType[P]>
+            : GetScalarType<T[P], WarningGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type WarningSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    reason?: boolean
+    details?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["warning"]>
+
+  export type WarningSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    reason?: boolean
+    details?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["warning"]>
+
+  export type WarningSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    reason?: boolean
+    details?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["warning"]>
+
+  export type WarningSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    date?: boolean
+    reason?: boolean
+    details?: boolean
+    createdAt?: boolean
+  }
+
+  export type WarningOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "date" | "reason" | "details" | "createdAt", ExtArgs["result"]["warning"]>
+
+  export type $WarningPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Warning"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      date: Date
+      reason: string
+      details: string
+      createdAt: Date
+    }, ExtArgs["result"]["warning"]>
+    composites: {}
+  }
+
+  type WarningGetPayload<S extends boolean | null | undefined | WarningDefaultArgs> = $Result.GetResult<Prisma.$WarningPayload, S>
+
+  type WarningCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<WarningFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: WarningCountAggregateInputType | true
+    }
+
+  export interface WarningDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Warning'], meta: { name: 'Warning' } }
+    /**
+     * Find zero or one Warning that matches the filter.
+     * @param {WarningFindUniqueArgs} args - Arguments to find a Warning
+     * @example
+     * // Get one Warning
+     * const warning = await prisma.warning.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends WarningFindUniqueArgs>(args: SelectSubset<T, WarningFindUniqueArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Warning that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {WarningFindUniqueOrThrowArgs} args - Arguments to find a Warning
+     * @example
+     * // Get one Warning
+     * const warning = await prisma.warning.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends WarningFindUniqueOrThrowArgs>(args: SelectSubset<T, WarningFindUniqueOrThrowArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Warning that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningFindFirstArgs} args - Arguments to find a Warning
+     * @example
+     * // Get one Warning
+     * const warning = await prisma.warning.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends WarningFindFirstArgs>(args?: SelectSubset<T, WarningFindFirstArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Warning that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningFindFirstOrThrowArgs} args - Arguments to find a Warning
+     * @example
+     * // Get one Warning
+     * const warning = await prisma.warning.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends WarningFindFirstOrThrowArgs>(args?: SelectSubset<T, WarningFindFirstOrThrowArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Warnings that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Warnings
+     * const warnings = await prisma.warning.findMany()
+     * 
+     * // Get first 10 Warnings
+     * const warnings = await prisma.warning.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const warningWithIdOnly = await prisma.warning.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends WarningFindManyArgs>(args?: SelectSubset<T, WarningFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Warning.
+     * @param {WarningCreateArgs} args - Arguments to create a Warning.
+     * @example
+     * // Create one Warning
+     * const Warning = await prisma.warning.create({
+     *   data: {
+     *     // ... data to create a Warning
+     *   }
+     * })
+     * 
+     */
+    create<T extends WarningCreateArgs>(args: SelectSubset<T, WarningCreateArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Warnings.
+     * @param {WarningCreateManyArgs} args - Arguments to create many Warnings.
+     * @example
+     * // Create many Warnings
+     * const warning = await prisma.warning.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends WarningCreateManyArgs>(args?: SelectSubset<T, WarningCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Warnings and returns the data saved in the database.
+     * @param {WarningCreateManyAndReturnArgs} args - Arguments to create many Warnings.
+     * @example
+     * // Create many Warnings
+     * const warning = await prisma.warning.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Warnings and only return the `id`
+     * const warningWithIdOnly = await prisma.warning.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends WarningCreateManyAndReturnArgs>(args?: SelectSubset<T, WarningCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Warning.
+     * @param {WarningDeleteArgs} args - Arguments to delete one Warning.
+     * @example
+     * // Delete one Warning
+     * const Warning = await prisma.warning.delete({
+     *   where: {
+     *     // ... filter to delete one Warning
+     *   }
+     * })
+     * 
+     */
+    delete<T extends WarningDeleteArgs>(args: SelectSubset<T, WarningDeleteArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Warning.
+     * @param {WarningUpdateArgs} args - Arguments to update one Warning.
+     * @example
+     * // Update one Warning
+     * const warning = await prisma.warning.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends WarningUpdateArgs>(args: SelectSubset<T, WarningUpdateArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Warnings.
+     * @param {WarningDeleteManyArgs} args - Arguments to filter Warnings to delete.
+     * @example
+     * // Delete a few Warnings
+     * const { count } = await prisma.warning.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends WarningDeleteManyArgs>(args?: SelectSubset<T, WarningDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Warnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Warnings
+     * const warning = await prisma.warning.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends WarningUpdateManyArgs>(args: SelectSubset<T, WarningUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Warnings and returns the data updated in the database.
+     * @param {WarningUpdateManyAndReturnArgs} args - Arguments to update many Warnings.
+     * @example
+     * // Update many Warnings
+     * const warning = await prisma.warning.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Warnings and only return the `id`
+     * const warningWithIdOnly = await prisma.warning.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends WarningUpdateManyAndReturnArgs>(args: SelectSubset<T, WarningUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Warning.
+     * @param {WarningUpsertArgs} args - Arguments to update or create a Warning.
+     * @example
+     * // Update or create a Warning
+     * const warning = await prisma.warning.upsert({
+     *   create: {
+     *     // ... data to create a Warning
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Warning we want to update
+     *   }
+     * })
+     */
+    upsert<T extends WarningUpsertArgs>(args: SelectSubset<T, WarningUpsertArgs<ExtArgs>>): Prisma__WarningClient<$Result.GetResult<Prisma.$WarningPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Warnings.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningCountArgs} args - Arguments to filter Warnings to count.
+     * @example
+     * // Count the number of Warnings
+     * const count = await prisma.warning.count({
+     *   where: {
+     *     // ... the filter for the Warnings we want to count
+     *   }
+     * })
+    **/
+    count<T extends WarningCountArgs>(
+      args?: Subset<T, WarningCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], WarningCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Warning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends WarningAggregateArgs>(args: Subset<T, WarningAggregateArgs>): Prisma.PrismaPromise<GetWarningAggregateType<T>>
+
+    /**
+     * Group by Warning.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {WarningGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends WarningGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: WarningGroupByArgs['orderBy'] }
+        : { orderBy?: WarningGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, WarningGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetWarningGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Warning model
+   */
+  readonly fields: WarningFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Warning.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__WarningClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Warning model
+   */
+  interface WarningFieldRefs {
+    readonly id: FieldRef<"Warning", 'String'>
+    readonly employeeId: FieldRef<"Warning", 'String'>
+    readonly date: FieldRef<"Warning", 'DateTime'>
+    readonly reason: FieldRef<"Warning", 'String'>
+    readonly details: FieldRef<"Warning", 'String'>
+    readonly createdAt: FieldRef<"Warning", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Warning findUnique
+   */
+  export type WarningFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * Filter, which Warning to fetch.
+     */
+    where: WarningWhereUniqueInput
+  }
+
+  /**
+   * Warning findUniqueOrThrow
+   */
+  export type WarningFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * Filter, which Warning to fetch.
+     */
+    where: WarningWhereUniqueInput
+  }
+
+  /**
+   * Warning findFirst
+   */
+  export type WarningFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * Filter, which Warning to fetch.
+     */
+    where?: WarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Warnings to fetch.
+     */
+    orderBy?: WarningOrderByWithRelationInput | WarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Warnings.
+     */
+    cursor?: WarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Warnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Warnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Warnings.
+     */
+    distinct?: WarningScalarFieldEnum | WarningScalarFieldEnum[]
+  }
+
+  /**
+   * Warning findFirstOrThrow
+   */
+  export type WarningFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * Filter, which Warning to fetch.
+     */
+    where?: WarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Warnings to fetch.
+     */
+    orderBy?: WarningOrderByWithRelationInput | WarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Warnings.
+     */
+    cursor?: WarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Warnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Warnings.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Warnings.
+     */
+    distinct?: WarningScalarFieldEnum | WarningScalarFieldEnum[]
+  }
+
+  /**
+   * Warning findMany
+   */
+  export type WarningFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * Filter, which Warnings to fetch.
+     */
+    where?: WarningWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Warnings to fetch.
+     */
+    orderBy?: WarningOrderByWithRelationInput | WarningOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Warnings.
+     */
+    cursor?: WarningWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Warnings from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Warnings.
+     */
+    skip?: number
+    distinct?: WarningScalarFieldEnum | WarningScalarFieldEnum[]
+  }
+
+  /**
+   * Warning create
+   */
+  export type WarningCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * The data needed to create a Warning.
+     */
+    data: XOR<WarningCreateInput, WarningUncheckedCreateInput>
+  }
+
+  /**
+   * Warning createMany
+   */
+  export type WarningCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Warnings.
+     */
+    data: WarningCreateManyInput | WarningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Warning createManyAndReturn
+   */
+  export type WarningCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * The data used to create many Warnings.
+     */
+    data: WarningCreateManyInput | WarningCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Warning update
+   */
+  export type WarningUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * The data needed to update a Warning.
+     */
+    data: XOR<WarningUpdateInput, WarningUncheckedUpdateInput>
+    /**
+     * Choose, which Warning to update.
+     */
+    where: WarningWhereUniqueInput
+  }
+
+  /**
+   * Warning updateMany
+   */
+  export type WarningUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Warnings.
+     */
+    data: XOR<WarningUpdateManyMutationInput, WarningUncheckedUpdateManyInput>
+    /**
+     * Filter which Warnings to update
+     */
+    where?: WarningWhereInput
+    /**
+     * Limit how many Warnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Warning updateManyAndReturn
+   */
+  export type WarningUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * The data used to update Warnings.
+     */
+    data: XOR<WarningUpdateManyMutationInput, WarningUncheckedUpdateManyInput>
+    /**
+     * Filter which Warnings to update
+     */
+    where?: WarningWhereInput
+    /**
+     * Limit how many Warnings to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Warning upsert
+   */
+  export type WarningUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * The filter to search for the Warning to update in case it exists.
+     */
+    where: WarningWhereUniqueInput
+    /**
+     * In case the Warning found by the `where` argument doesn't exist, create a new Warning with this data.
+     */
+    create: XOR<WarningCreateInput, WarningUncheckedCreateInput>
+    /**
+     * In case the Warning was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<WarningUpdateInput, WarningUncheckedUpdateInput>
+  }
+
+  /**
+   * Warning delete
+   */
+  export type WarningDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+    /**
+     * Filter which Warning to delete.
+     */
+    where: WarningWhereUniqueInput
+  }
+
+  /**
+   * Warning deleteMany
+   */
+  export type WarningDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Warnings to delete
+     */
+    where?: WarningWhereInput
+    /**
+     * Limit how many Warnings to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Warning without action
+   */
+  export type WarningDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Warning
+     */
+    select?: WarningSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Warning
+     */
+    omit?: WarningOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -80971,6 +83243,28 @@ export namespace Prisma {
   export type PerformanceEvaluationScalarFieldEnum = (typeof PerformanceEvaluationScalarFieldEnum)[keyof typeof PerformanceEvaluationScalarFieldEnum]
 
 
+  export const AttendanceScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    date: 'date',
+    status: 'status'
+  };
+
+  export type AttendanceScalarFieldEnum = (typeof AttendanceScalarFieldEnum)[keyof typeof AttendanceScalarFieldEnum]
+
+
+  export const WarningScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    date: 'date',
+    reason: 'reason',
+    details: 'details',
+    createdAt: 'createdAt'
+  };
+
+  export type WarningScalarFieldEnum = (typeof WarningScalarFieldEnum)[keyof typeof WarningScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -81113,6 +83407,7 @@ export namespace Prisma {
     phone1?: StringFilter<"User"> | string
     phone2?: StringFilter<"User"> | string
     description?: StringNullableFilter<"User"> | string | null
+    attendance?: AttendanceListRelationFilter
     performanceEvaluations?: PerformanceEvaluationListRelationFilter
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     messages?: MessageListRelationFilter
@@ -81133,6 +83428,7 @@ export namespace Prisma {
     phone1?: SortOrder
     phone2?: SortOrder
     description?: SortOrderInput | SortOrder
+    attendance?: AttendanceOrderByRelationAggregateInput
     performanceEvaluations?: PerformanceEvaluationOrderByRelationAggregateInput
     role?: RoleOrderByWithRelationInput
     messages?: MessageOrderByRelationAggregateInput
@@ -81156,6 +83452,7 @@ export namespace Prisma {
     phone1?: StringFilter<"User"> | string
     phone2?: StringFilter<"User"> | string
     description?: StringNullableFilter<"User"> | string | null
+    attendance?: AttendanceListRelationFilter
     performanceEvaluations?: PerformanceEvaluationListRelationFilter
     role?: XOR<RoleScalarRelationFilter, RoleWhereInput>
     messages?: MessageListRelationFilter
@@ -87021,6 +89318,114 @@ export namespace Prisma {
     createdAt?: DateTimeWithAggregatesFilter<"PerformanceEvaluation"> | Date | string
   }
 
+  export type AttendanceWhereInput = {
+    AND?: AttendanceWhereInput | AttendanceWhereInput[]
+    OR?: AttendanceWhereInput[]
+    NOT?: AttendanceWhereInput | AttendanceWhereInput[]
+    id?: StringFilter<"Attendance"> | string
+    employeeId?: StringFilter<"Attendance"> | string
+    date?: DateTimeFilter<"Attendance"> | Date | string
+    status?: StringFilter<"Attendance"> | string
+    employee?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }
+
+  export type AttendanceOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    status?: SortOrder
+    employee?: UserOrderByWithRelationInput
+  }
+
+  export type AttendanceWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    employeeId_date?: AttendanceEmployeeIdDateCompoundUniqueInput
+    AND?: AttendanceWhereInput | AttendanceWhereInput[]
+    OR?: AttendanceWhereInput[]
+    NOT?: AttendanceWhereInput | AttendanceWhereInput[]
+    employeeId?: StringFilter<"Attendance"> | string
+    date?: DateTimeFilter<"Attendance"> | Date | string
+    status?: StringFilter<"Attendance"> | string
+    employee?: XOR<UserScalarRelationFilter, UserWhereInput>
+  }, "id" | "employeeId_date">
+
+  export type AttendanceOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    status?: SortOrder
+    _count?: AttendanceCountOrderByAggregateInput
+    _max?: AttendanceMaxOrderByAggregateInput
+    _min?: AttendanceMinOrderByAggregateInput
+  }
+
+  export type AttendanceScalarWhereWithAggregatesInput = {
+    AND?: AttendanceScalarWhereWithAggregatesInput | AttendanceScalarWhereWithAggregatesInput[]
+    OR?: AttendanceScalarWhereWithAggregatesInput[]
+    NOT?: AttendanceScalarWhereWithAggregatesInput | AttendanceScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Attendance"> | string
+    employeeId?: StringWithAggregatesFilter<"Attendance"> | string
+    date?: DateTimeWithAggregatesFilter<"Attendance"> | Date | string
+    status?: StringWithAggregatesFilter<"Attendance"> | string
+  }
+
+  export type WarningWhereInput = {
+    AND?: WarningWhereInput | WarningWhereInput[]
+    OR?: WarningWhereInput[]
+    NOT?: WarningWhereInput | WarningWhereInput[]
+    id?: StringFilter<"Warning"> | string
+    employeeId?: StringFilter<"Warning"> | string
+    date?: DateTimeFilter<"Warning"> | Date | string
+    reason?: StringFilter<"Warning"> | string
+    details?: StringFilter<"Warning"> | string
+    createdAt?: DateTimeFilter<"Warning"> | Date | string
+  }
+
+  export type WarningOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    reason?: SortOrder
+    details?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WarningWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: WarningWhereInput | WarningWhereInput[]
+    OR?: WarningWhereInput[]
+    NOT?: WarningWhereInput | WarningWhereInput[]
+    employeeId?: StringFilter<"Warning"> | string
+    date?: DateTimeFilter<"Warning"> | Date | string
+    reason?: StringFilter<"Warning"> | string
+    details?: StringFilter<"Warning"> | string
+    createdAt?: DateTimeFilter<"Warning"> | Date | string
+  }, "id">
+
+  export type WarningOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    reason?: SortOrder
+    details?: SortOrder
+    createdAt?: SortOrder
+    _count?: WarningCountOrderByAggregateInput
+    _max?: WarningMaxOrderByAggregateInput
+    _min?: WarningMinOrderByAggregateInput
+  }
+
+  export type WarningScalarWhereWithAggregatesInput = {
+    AND?: WarningScalarWhereWithAggregatesInput | WarningScalarWhereWithAggregatesInput[]
+    OR?: WarningScalarWhereWithAggregatesInput[]
+    NOT?: WarningScalarWhereWithAggregatesInput | WarningScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Warning"> | string
+    employeeId?: StringWithAggregatesFilter<"Warning"> | string
+    date?: DateTimeWithAggregatesFilter<"Warning"> | Date | string
+    reason?: StringWithAggregatesFilter<"Warning"> | string
+    details?: StringWithAggregatesFilter<"Warning"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Warning"> | Date | string
+  }
+
   export type UserCreateInput = {
     id?: string
     userName: string
@@ -87034,6 +89439,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     messages?: MessageCreateNestedManyWithoutUserInput
@@ -87054,6 +89460,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -87072,6 +89479,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
@@ -87092,6 +89500,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
@@ -94015,6 +96424,117 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type AttendanceCreateInput = {
+    id?: string
+    date: Date | string
+    status: string
+    employee: UserCreateNestedOneWithoutAttendanceInput
+  }
+
+  export type AttendanceUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    status: string
+  }
+
+  export type AttendanceUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+    employee?: UserUpdateOneRequiredWithoutAttendanceNestedInput
+  }
+
+  export type AttendanceUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AttendanceCreateManyInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    status: string
+  }
+
+  export type AttendanceUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AttendanceUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type WarningCreateInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    reason: string
+    details: string
+    createdAt?: Date | string
+  }
+
+  export type WarningUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    reason: string
+    details: string
+    createdAt?: Date | string
+  }
+
+  export type WarningUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    reason?: StringFieldUpdateOperationsInput | string
+    details?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WarningUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    reason?: StringFieldUpdateOperationsInput | string
+    details?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WarningCreateManyInput = {
+    id?: string
+    employeeId: string
+    date: Date | string
+    reason: string
+    details: string
+    createdAt?: Date | string
+  }
+
+  export type WarningUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    reason?: StringFieldUpdateOperationsInput | string
+    details?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type WarningUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    reason?: StringFieldUpdateOperationsInput | string
+    details?: StringFieldUpdateOperationsInput | string
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -94045,6 +96565,12 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
+  export type AttendanceListRelationFilter = {
+    every?: AttendanceWhereInput
+    some?: AttendanceWhereInput
+    none?: AttendanceWhereInput
+  }
+
   export type PerformanceEvaluationListRelationFilter = {
     every?: PerformanceEvaluationWhereInput
     some?: PerformanceEvaluationWhereInput
@@ -94070,6 +96596,10 @@ export namespace Prisma {
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type AttendanceOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type PerformanceEvaluationOrderByRelationAggregateInput = {
@@ -97939,6 +100469,66 @@ export namespace Prisma {
     createdAt?: SortOrder
   }
 
+  export type AttendanceEmployeeIdDateCompoundUniqueInput = {
+    employeeId: string
+    date: Date | string
+  }
+
+  export type AttendanceCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    status?: SortOrder
+  }
+
+  export type AttendanceMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    status?: SortOrder
+  }
+
+  export type AttendanceMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    status?: SortOrder
+  }
+
+  export type WarningCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    reason?: SortOrder
+    details?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WarningMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    reason?: SortOrder
+    details?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type WarningMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    date?: SortOrder
+    reason?: SortOrder
+    details?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type AttendanceCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<AttendanceCreateWithoutEmployeeInput, AttendanceUncheckedCreateWithoutEmployeeInput> | AttendanceCreateWithoutEmployeeInput[] | AttendanceUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutEmployeeInput | AttendanceCreateOrConnectWithoutEmployeeInput[]
+    createMany?: AttendanceCreateManyEmployeeInputEnvelope
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+  }
+
   export type PerformanceEvaluationCreateNestedManyWithoutEmployeeInput = {
     create?: XOR<PerformanceEvaluationCreateWithoutEmployeeInput, PerformanceEvaluationUncheckedCreateWithoutEmployeeInput> | PerformanceEvaluationCreateWithoutEmployeeInput[] | PerformanceEvaluationUncheckedCreateWithoutEmployeeInput[]
     connectOrCreate?: PerformanceEvaluationCreateOrConnectWithoutEmployeeInput | PerformanceEvaluationCreateOrConnectWithoutEmployeeInput[]
@@ -97963,6 +100553,13 @@ export namespace Prisma {
     create?: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
     connectOrCreate?: ProfileCreateOrConnectWithoutUserInput
     connect?: ProfileWhereUniqueInput
+  }
+
+  export type AttendanceUncheckedCreateNestedManyWithoutEmployeeInput = {
+    create?: XOR<AttendanceCreateWithoutEmployeeInput, AttendanceUncheckedCreateWithoutEmployeeInput> | AttendanceCreateWithoutEmployeeInput[] | AttendanceUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutEmployeeInput | AttendanceCreateOrConnectWithoutEmployeeInput[]
+    createMany?: AttendanceCreateManyEmployeeInputEnvelope
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
   }
 
   export type PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput = {
@@ -97991,6 +100588,20 @@ export namespace Prisma {
 
   export type NullableStringFieldUpdateOperationsInput = {
     set?: string | null
+  }
+
+  export type AttendanceUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<AttendanceCreateWithoutEmployeeInput, AttendanceUncheckedCreateWithoutEmployeeInput> | AttendanceCreateWithoutEmployeeInput[] | AttendanceUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutEmployeeInput | AttendanceCreateOrConnectWithoutEmployeeInput[]
+    upsert?: AttendanceUpsertWithWhereUniqueWithoutEmployeeInput | AttendanceUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: AttendanceCreateManyEmployeeInputEnvelope
+    set?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    disconnect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    delete?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    update?: AttendanceUpdateWithWhereUniqueWithoutEmployeeInput | AttendanceUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: AttendanceUpdateManyWithWhereWithoutEmployeeInput | AttendanceUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
   }
 
   export type PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput = {
@@ -98037,6 +100648,20 @@ export namespace Prisma {
     delete?: ProfileWhereInput | boolean
     connect?: ProfileWhereUniqueInput
     update?: XOR<XOR<ProfileUpdateToOneWithWhereWithoutUserInput, ProfileUpdateWithoutUserInput>, ProfileUncheckedUpdateWithoutUserInput>
+  }
+
+  export type AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput = {
+    create?: XOR<AttendanceCreateWithoutEmployeeInput, AttendanceUncheckedCreateWithoutEmployeeInput> | AttendanceCreateWithoutEmployeeInput[] | AttendanceUncheckedCreateWithoutEmployeeInput[]
+    connectOrCreate?: AttendanceCreateOrConnectWithoutEmployeeInput | AttendanceCreateOrConnectWithoutEmployeeInput[]
+    upsert?: AttendanceUpsertWithWhereUniqueWithoutEmployeeInput | AttendanceUpsertWithWhereUniqueWithoutEmployeeInput[]
+    createMany?: AttendanceCreateManyEmployeeInputEnvelope
+    set?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    disconnect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    delete?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    connect?: AttendanceWhereUniqueInput | AttendanceWhereUniqueInput[]
+    update?: AttendanceUpdateWithWhereUniqueWithoutEmployeeInput | AttendanceUpdateWithWhereUniqueWithoutEmployeeInput[]
+    updateMany?: AttendanceUpdateManyWithWhereWithoutEmployeeInput | AttendanceUpdateManyWithWhereWithoutEmployeeInput[]
+    deleteMany?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
   }
 
   export type PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput = {
@@ -99341,6 +101966,20 @@ export namespace Prisma {
     update?: XOR<XOR<UserUpdateToOneWithWhereWithoutPerformanceEvaluationsInput, UserUpdateWithoutPerformanceEvaluationsInput>, UserUncheckedUpdateWithoutPerformanceEvaluationsInput>
   }
 
+  export type UserCreateNestedOneWithoutAttendanceInput = {
+    create?: XOR<UserCreateWithoutAttendanceInput, UserUncheckedCreateWithoutAttendanceInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAttendanceInput
+    connect?: UserWhereUniqueInput
+  }
+
+  export type UserUpdateOneRequiredWithoutAttendanceNestedInput = {
+    create?: XOR<UserCreateWithoutAttendanceInput, UserUncheckedCreateWithoutAttendanceInput>
+    connectOrCreate?: UserCreateOrConnectWithoutAttendanceInput
+    upsert?: UserUpsertWithoutAttendanceInput
+    connect?: UserWhereUniqueInput
+    update?: XOR<XOR<UserUpdateToOneWithWhereWithoutAttendanceInput, UserUpdateWithoutAttendanceInput>, UserUncheckedUpdateWithoutAttendanceInput>
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -99585,6 +102224,28 @@ export namespace Prisma {
     _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
+  export type AttendanceCreateWithoutEmployeeInput = {
+    id?: string
+    date: Date | string
+    status: string
+  }
+
+  export type AttendanceUncheckedCreateWithoutEmployeeInput = {
+    id?: string
+    date: Date | string
+    status: string
+  }
+
+  export type AttendanceCreateOrConnectWithoutEmployeeInput = {
+    where: AttendanceWhereUniqueInput
+    create: XOR<AttendanceCreateWithoutEmployeeInput, AttendanceUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type AttendanceCreateManyEmployeeInputEnvelope = {
+    data: AttendanceCreateManyEmployeeInput | AttendanceCreateManyEmployeeInput[]
+    skipDuplicates?: boolean
+  }
+
   export type PerformanceEvaluationCreateWithoutEmployeeInput = {
     id?: string
     evaluationDate: Date | string
@@ -99685,6 +102346,32 @@ export namespace Prisma {
   export type ProfileCreateOrConnectWithoutUserInput = {
     where: ProfileWhereUniqueInput
     create: XOR<ProfileCreateWithoutUserInput, ProfileUncheckedCreateWithoutUserInput>
+  }
+
+  export type AttendanceUpsertWithWhereUniqueWithoutEmployeeInput = {
+    where: AttendanceWhereUniqueInput
+    update: XOR<AttendanceUpdateWithoutEmployeeInput, AttendanceUncheckedUpdateWithoutEmployeeInput>
+    create: XOR<AttendanceCreateWithoutEmployeeInput, AttendanceUncheckedCreateWithoutEmployeeInput>
+  }
+
+  export type AttendanceUpdateWithWhereUniqueWithoutEmployeeInput = {
+    where: AttendanceWhereUniqueInput
+    data: XOR<AttendanceUpdateWithoutEmployeeInput, AttendanceUncheckedUpdateWithoutEmployeeInput>
+  }
+
+  export type AttendanceUpdateManyWithWhereWithoutEmployeeInput = {
+    where: AttendanceScalarWhereInput
+    data: XOR<AttendanceUpdateManyMutationInput, AttendanceUncheckedUpdateManyWithoutEmployeeInput>
+  }
+
+  export type AttendanceScalarWhereInput = {
+    AND?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+    OR?: AttendanceScalarWhereInput[]
+    NOT?: AttendanceScalarWhereInput | AttendanceScalarWhereInput[]
+    id?: StringFilter<"Attendance"> | string
+    employeeId?: StringFilter<"Attendance"> | string
+    date?: DateTimeFilter<"Attendance"> | Date | string
+    status?: StringFilter<"Attendance"> | string
   }
 
   export type PerformanceEvaluationUpsertWithWhereUniqueWithoutEmployeeInput = {
@@ -99836,6 +102523,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     messages?: MessageCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
@@ -99854,6 +102542,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
@@ -99987,6 +102676,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     profile?: ProfileCreateNestedOneWithoutUserInput
@@ -100006,6 +102696,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
@@ -100039,6 +102730,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
@@ -100058,6 +102750,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
   }
@@ -100075,6 +102768,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     messages?: MessageCreateNestedManyWithoutUserInput
@@ -100094,6 +102788,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
   }
@@ -100127,6 +102822,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
@@ -100146,6 +102842,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -103093,6 +105790,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceCreateNestedManyWithoutEmployeeInput
     role: RoleCreateNestedOneWithoutUsersInput
     messages?: MessageCreateNestedManyWithoutUserInput
     profile?: ProfileCreateNestedOneWithoutUserInput
@@ -103112,6 +105810,7 @@ export namespace Prisma {
     phone1: string
     phone2: string
     description?: string | null
+    attendance?: AttendanceUncheckedCreateNestedManyWithoutEmployeeInput
     messages?: MessageUncheckedCreateNestedManyWithoutUserInput
     profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
   }
@@ -103145,6 +105844,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUpdateManyWithoutEmployeeNestedInput
     role?: RoleUpdateOneRequiredWithoutUsersNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
@@ -103164,8 +105864,107 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserCreateWithoutAttendanceInput = {
+    id?: string
+    userName: string
+    password: string
+    firstName: string
+    lastName: string
+    shortName: string
+    address: string
+    email: string
+    branch: string
+    phone1: string
+    phone2: string
+    description?: string | null
+    performanceEvaluations?: PerformanceEvaluationCreateNestedManyWithoutEmployeeInput
+    role: RoleCreateNestedOneWithoutUsersInput
+    messages?: MessageCreateNestedManyWithoutUserInput
+    profile?: ProfileCreateNestedOneWithoutUserInput
+  }
+
+  export type UserUncheckedCreateWithoutAttendanceInput = {
+    id?: string
+    userName: string
+    password: string
+    firstName: string
+    lastName: string
+    shortName: string
+    address: string
+    email: string
+    roleId: string
+    branch: string
+    phone1: string
+    phone2: string
+    description?: string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedCreateNestedManyWithoutEmployeeInput
+    messages?: MessageUncheckedCreateNestedManyWithoutUserInput
+    profile?: ProfileUncheckedCreateNestedOneWithoutUserInput
+  }
+
+  export type UserCreateOrConnectWithoutAttendanceInput = {
+    where: UserWhereUniqueInput
+    create: XOR<UserCreateWithoutAttendanceInput, UserUncheckedCreateWithoutAttendanceInput>
+  }
+
+  export type UserUpsertWithoutAttendanceInput = {
+    update: XOR<UserUpdateWithoutAttendanceInput, UserUncheckedUpdateWithoutAttendanceInput>
+    create: XOR<UserCreateWithoutAttendanceInput, UserUncheckedCreateWithoutAttendanceInput>
+    where?: UserWhereInput
+  }
+
+  export type UserUpdateToOneWithWhereWithoutAttendanceInput = {
+    where?: UserWhereInput
+    data: XOR<UserUpdateWithoutAttendanceInput, UserUncheckedUpdateWithoutAttendanceInput>
+  }
+
+  export type UserUpdateWithoutAttendanceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
+    role?: RoleUpdateOneRequiredWithoutUsersNestedInput
+    messages?: MessageUpdateManyWithoutUserNestedInput
+    profile?: ProfileUpdateOneWithoutUserNestedInput
+  }
+
+  export type UserUncheckedUpdateWithoutAttendanceInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    userName?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    firstName?: StringFieldUpdateOperationsInput | string
+    lastName?: StringFieldUpdateOperationsInput | string
+    shortName?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    roleId?: StringFieldUpdateOperationsInput | string
+    branch?: StringFieldUpdateOperationsInput | string
+    phone1?: StringFieldUpdateOperationsInput | string
+    phone2?: StringFieldUpdateOperationsInput | string
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
+    messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
+    profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput
+  }
+
+  export type AttendanceCreateManyEmployeeInput = {
+    id?: string
+    date: Date | string
+    status: string
   }
 
   export type PerformanceEvaluationCreateManyEmployeeInput = {
@@ -103186,6 +105985,24 @@ export namespace Prisma {
     chat?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string
+  }
+
+  export type AttendanceUpdateWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AttendanceUncheckedUpdateWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AttendanceUncheckedUpdateManyWithoutEmployeeInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: StringFieldUpdateOperationsInput | string
   }
 
   export type PerformanceEvaluationUpdateWithoutEmployeeInput = {
@@ -103300,6 +106117,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUpdateManyWithoutUserNestedInput
     profile?: ProfileUpdateOneWithoutUserNestedInput
@@ -103318,6 +106136,7 @@ export namespace Prisma {
     phone1?: StringFieldUpdateOperationsInput | string
     phone2?: StringFieldUpdateOperationsInput | string
     description?: NullableStringFieldUpdateOperationsInput | string | null
+    attendance?: AttendanceUncheckedUpdateManyWithoutEmployeeNestedInput
     performanceEvaluations?: PerformanceEvaluationUncheckedUpdateManyWithoutEmployeeNestedInput
     messages?: MessageUncheckedUpdateManyWithoutUserNestedInput
     profile?: ProfileUncheckedUpdateOneWithoutUserNestedInput

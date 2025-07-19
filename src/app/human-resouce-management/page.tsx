@@ -87,6 +87,16 @@ if (loading) return (
         <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
         <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
       </div>
+        <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
+        <div className="space-y-3">
+        <Skeleton className="h-3 w-3/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-4/5 rounded-lg bg-gray-300" />
+        <Skeleton className="h-3 w-2/5 rounded-lg bg-gray-300" />
+      </div>
     </div>
   </div>
 );
@@ -120,9 +130,9 @@ if (loading) return (
     {title:"Training Approval",link:"/human-resouce-management/training-approval",permission:"TrainingApproval",image:StudIcon},
     {title:"Conduct Actual Training",link:"/human-resouce-management/conduct-actualtraining",permission:"ConductTraining",image:StudIcon},
       {title:"Post Training Assessment",link:"/human-resouce-management/performane-evaluation",permission:"PostTrainingAssessment",image:StudIcon},
-      {title:"Mark Employee Attendance",link:"/human-resouce-management/pos-report",permission:"MarkEmployeeAttendance",image:StudIcon},
+      {title:"Mark Employee Attendance",link:"/human-resouce-management/employee-attendance",permission:"MarkEmployeeAttendance",image:StudIcon},
       {title:"Report Employee for Disciplinary",link:"/human-resouce-management/",permission:" ReportEmployeeforDisciplinary",image:StudIcon},
-      {title:"Issue Disciplinary Warning",link:"/human-resouce-management/",permission:"IssueDisciplinaryWarning",image:StudIcon},
+      {title:"Issue Disciplinary Warning",link:"/human-resouce-management/issue-displinary-warning",permission:"IssueDisciplinaryWarning",image:StudIcon},
      
   ]
 
