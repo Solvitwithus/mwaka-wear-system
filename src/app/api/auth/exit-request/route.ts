@@ -48,3 +48,29 @@ export async function GET() {
     return NextResponse.json({ error: "Failed to fetch exit requests" }, { status: 500 });
   }
 }
+export async function PATCH(req: Request) {
+  try {
+    const body = await req.json();
+    const { id, status, approver } = body;
+
+    if (!id || !status) {
+      return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
+    }
+
+    const updatedRequest = await prisma.exitRequest.update({
+      where: { id },
+      data: {
+        status,
+        approver,
+      },
+    });
+
+    return NextResponse.json(updatedRequest, { status: 200 });
+  } catch (error) {
+    console.error("PATCH /exit-request error:", error);
+    return NextResponse.json(
+      { error: "Failed to approve exit request" },
+      { status: 500 }
+    );
+  }
+}

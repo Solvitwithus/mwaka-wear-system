@@ -343,6 +343,16 @@ export type Warning = $Result.DefaultSelection<Prisma.$WarningPayload>
  * 
  */
 export type ExitRequest = $Result.DefaultSelection<Prisma.$ExitRequestPayload>
+/**
+ * Model TransferRequest
+ * 
+ */
+export type TransferRequest = $Result.DefaultSelection<Prisma.$TransferRequestPayload>
+/**
+ * Model PromotionRequest
+ * 
+ */
+export type PromotionRequest = $Result.DefaultSelection<Prisma.$PromotionRequestPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1128,6 +1138,26 @@ export class PrismaClient<
     * ```
     */
   get exitRequest(): Prisma.ExitRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transferRequest`: Exposes CRUD operations for the **TransferRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more TransferRequests
+    * const transferRequests = await prisma.transferRequest.findMany()
+    * ```
+    */
+  get transferRequest(): Prisma.TransferRequestDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.promotionRequest`: Exposes CRUD operations for the **PromotionRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more PromotionRequests
+    * const promotionRequests = await prisma.promotionRequest.findMany()
+    * ```
+    */
+  get promotionRequest(): Prisma.PromotionRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1633,7 +1663,9 @@ export namespace Prisma {
     PerformanceEvaluation: 'PerformanceEvaluation',
     Attendance: 'Attendance',
     Warning: 'Warning',
-    ExitRequest: 'ExitRequest'
+    ExitRequest: 'ExitRequest',
+    TransferRequest: 'TransferRequest',
+    PromotionRequest: 'PromotionRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1652,7 +1684,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation" | "attendance" | "warning" | "exitRequest"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation" | "attendance" | "warning" | "exitRequest" | "transferRequest" | "promotionRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -6540,6 +6572,154 @@ export namespace Prisma {
           }
         }
       }
+      TransferRequest: {
+        payload: Prisma.$TransferRequestPayload<ExtArgs>
+        fields: Prisma.TransferRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TransferRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TransferRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.TransferRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TransferRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>
+          }
+          findMany: {
+            args: Prisma.TransferRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>[]
+          }
+          create: {
+            args: Prisma.TransferRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>
+          }
+          createMany: {
+            args: Prisma.TransferRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TransferRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.TransferRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>
+          }
+          update: {
+            args: Prisma.TransferRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.TransferRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TransferRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TransferRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.TransferRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TransferRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.TransferRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransferRequest>
+          }
+          groupBy: {
+            args: Prisma.TransferRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TransferRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TransferRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<TransferRequestCountAggregateOutputType> | number
+          }
+        }
+      }
+      PromotionRequest: {
+        payload: Prisma.$PromotionRequestPayload<ExtArgs>
+        fields: Prisma.PromotionRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.PromotionRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.PromotionRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.PromotionRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.PromotionRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>
+          }
+          findMany: {
+            args: Prisma.PromotionRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>[]
+          }
+          create: {
+            args: Prisma.PromotionRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>
+          }
+          createMany: {
+            args: Prisma.PromotionRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.PromotionRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.PromotionRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>
+          }
+          update: {
+            args: Prisma.PromotionRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.PromotionRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.PromotionRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.PromotionRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.PromotionRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$PromotionRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.PromotionRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePromotionRequest>
+          }
+          groupBy: {
+            args: Prisma.PromotionRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<PromotionRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.PromotionRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<PromotionRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -6690,6 +6870,8 @@ export namespace Prisma {
     attendance?: AttendanceOmit
     warning?: WarningOmit
     exitRequest?: ExitRequestOmit
+    transferRequest?: TransferRequestOmit
+    promotionRequest?: PromotionRequestOmit
   }
 
   /* Types for Logging */
@@ -82159,6 +82341,8 @@ export namespace Prisma {
     knowledgeTransferPlan: string | null
     documentUrl: string | null
     createdAt: Date | null
+    status: string | null
+    approver: string | null
   }
 
   export type ExitRequestMaxAggregateOutputType = {
@@ -82170,6 +82354,8 @@ export namespace Prisma {
     knowledgeTransferPlan: string | null
     documentUrl: string | null
     createdAt: Date | null
+    status: string | null
+    approver: string | null
   }
 
   export type ExitRequestCountAggregateOutputType = {
@@ -82181,6 +82367,8 @@ export namespace Prisma {
     knowledgeTransferPlan: number
     documentUrl: number
     createdAt: number
+    status: number
+    approver: number
     _all: number
   }
 
@@ -82194,6 +82382,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: true
     documentUrl?: true
     createdAt?: true
+    status?: true
+    approver?: true
   }
 
   export type ExitRequestMaxAggregateInputType = {
@@ -82205,6 +82395,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: true
     documentUrl?: true
     createdAt?: true
+    status?: true
+    approver?: true
   }
 
   export type ExitRequestCountAggregateInputType = {
@@ -82216,6 +82408,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: true
     documentUrl?: true
     createdAt?: true
+    status?: true
+    approver?: true
     _all?: true
   }
 
@@ -82300,6 +82494,8 @@ export namespace Prisma {
     knowledgeTransferPlan: string
     documentUrl: string | null
     createdAt: Date
+    status: string | null
+    approver: string | null
     _count: ExitRequestCountAggregateOutputType | null
     _min: ExitRequestMinAggregateOutputType | null
     _max: ExitRequestMaxAggregateOutputType | null
@@ -82328,6 +82524,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: boolean
     documentUrl?: boolean
     createdAt?: boolean
+    status?: boolean
+    approver?: boolean
   }, ExtArgs["result"]["exitRequest"]>
 
   export type ExitRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -82339,6 +82537,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: boolean
     documentUrl?: boolean
     createdAt?: boolean
+    status?: boolean
+    approver?: boolean
   }, ExtArgs["result"]["exitRequest"]>
 
   export type ExitRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -82350,6 +82550,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: boolean
     documentUrl?: boolean
     createdAt?: boolean
+    status?: boolean
+    approver?: boolean
   }, ExtArgs["result"]["exitRequest"]>
 
   export type ExitRequestSelectScalar = {
@@ -82361,9 +82563,11 @@ export namespace Prisma {
     knowledgeTransferPlan?: boolean
     documentUrl?: boolean
     createdAt?: boolean
+    status?: boolean
+    approver?: boolean
   }
 
-  export type ExitRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "reasonToExit" | "exitDate" | "exitInterview" | "knowledgeTransferPlan" | "documentUrl" | "createdAt", ExtArgs["result"]["exitRequest"]>
+  export type ExitRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "reasonToExit" | "exitDate" | "exitInterview" | "knowledgeTransferPlan" | "documentUrl" | "createdAt" | "status" | "approver", ExtArgs["result"]["exitRequest"]>
 
   export type $ExitRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "ExitRequest"
@@ -82377,6 +82581,8 @@ export namespace Prisma {
       knowledgeTransferPlan: string
       documentUrl: string | null
       createdAt: Date
+      status: string | null
+      approver: string | null
     }, ExtArgs["result"]["exitRequest"]>
     composites: {}
   }
@@ -82808,6 +83014,8 @@ export namespace Prisma {
     readonly knowledgeTransferPlan: FieldRef<"ExitRequest", 'String'>
     readonly documentUrl: FieldRef<"ExitRequest", 'String'>
     readonly createdAt: FieldRef<"ExitRequest", 'DateTime'>
+    readonly status: FieldRef<"ExitRequest", 'String'>
+    readonly approver: FieldRef<"ExitRequest", 'String'>
   }
     
 
@@ -83171,6 +83379,2126 @@ export namespace Prisma {
      * Omit specific fields from the ExitRequest
      */
     omit?: ExitRequestOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model TransferRequest
+   */
+
+  export type AggregateTransferRequest = {
+    _count: TransferRequestCountAggregateOutputType | null
+    _min: TransferRequestMinAggregateOutputType | null
+    _max: TransferRequestMaxAggregateOutputType | null
+  }
+
+  export type TransferRequestMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    transferReason: string | null
+    transferDate: Date | null
+    transferInterview: string | null
+    knowledgeTransferPlan: string | null
+    documentUrl: string | null
+    createdAt: Date | null
+    status: string | null
+    approver: string | null
+  }
+
+  export type TransferRequestMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    transferReason: string | null
+    transferDate: Date | null
+    transferInterview: string | null
+    knowledgeTransferPlan: string | null
+    documentUrl: string | null
+    createdAt: Date | null
+    status: string | null
+    approver: string | null
+  }
+
+  export type TransferRequestCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    transferReason: number
+    transferDate: number
+    transferInterview: number
+    knowledgeTransferPlan: number
+    documentUrl: number
+    createdAt: number
+    status: number
+    approver: number
+    _all: number
+  }
+
+
+  export type TransferRequestMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    transferReason?: true
+    transferDate?: true
+    transferInterview?: true
+    knowledgeTransferPlan?: true
+    documentUrl?: true
+    createdAt?: true
+    status?: true
+    approver?: true
+  }
+
+  export type TransferRequestMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    transferReason?: true
+    transferDate?: true
+    transferInterview?: true
+    knowledgeTransferPlan?: true
+    documentUrl?: true
+    createdAt?: true
+    status?: true
+    approver?: true
+  }
+
+  export type TransferRequestCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    transferReason?: true
+    transferDate?: true
+    transferInterview?: true
+    knowledgeTransferPlan?: true
+    documentUrl?: true
+    createdAt?: true
+    status?: true
+    approver?: true
+    _all?: true
+  }
+
+  export type TransferRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransferRequest to aggregate.
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransferRequests to fetch.
+     */
+    orderBy?: TransferRequestOrderByWithRelationInput | TransferRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TransferRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransferRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransferRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned TransferRequests
+    **/
+    _count?: true | TransferRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TransferRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TransferRequestMaxAggregateInputType
+  }
+
+  export type GetTransferRequestAggregateType<T extends TransferRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransferRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransferRequest[P]>
+      : GetScalarType<T[P], AggregateTransferRequest[P]>
+  }
+
+
+
+
+  export type TransferRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TransferRequestWhereInput
+    orderBy?: TransferRequestOrderByWithAggregationInput | TransferRequestOrderByWithAggregationInput[]
+    by: TransferRequestScalarFieldEnum[] | TransferRequestScalarFieldEnum
+    having?: TransferRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TransferRequestCountAggregateInputType | true
+    _min?: TransferRequestMinAggregateInputType
+    _max?: TransferRequestMaxAggregateInputType
+  }
+
+  export type TransferRequestGroupByOutputType = {
+    id: string
+    employeeId: string
+    transferReason: string
+    transferDate: Date
+    transferInterview: string
+    knowledgeTransferPlan: string
+    documentUrl: string | null
+    createdAt: Date
+    status: string | null
+    approver: string | null
+    _count: TransferRequestCountAggregateOutputType | null
+    _min: TransferRequestMinAggregateOutputType | null
+    _max: TransferRequestMaxAggregateOutputType | null
+  }
+
+  type GetTransferRequestGroupByPayload<T extends TransferRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TransferRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TransferRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TransferRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], TransferRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TransferRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    transferReason?: boolean
+    transferDate?: boolean
+    transferInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+    status?: boolean
+    approver?: boolean
+  }, ExtArgs["result"]["transferRequest"]>
+
+  export type TransferRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    transferReason?: boolean
+    transferDate?: boolean
+    transferInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+    status?: boolean
+    approver?: boolean
+  }, ExtArgs["result"]["transferRequest"]>
+
+  export type TransferRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    transferReason?: boolean
+    transferDate?: boolean
+    transferInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+    status?: boolean
+    approver?: boolean
+  }, ExtArgs["result"]["transferRequest"]>
+
+  export type TransferRequestSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    transferReason?: boolean
+    transferDate?: boolean
+    transferInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+    status?: boolean
+    approver?: boolean
+  }
+
+  export type TransferRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "transferReason" | "transferDate" | "transferInterview" | "knowledgeTransferPlan" | "documentUrl" | "createdAt" | "status" | "approver", ExtArgs["result"]["transferRequest"]>
+
+  export type $TransferRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "TransferRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      transferReason: string
+      transferDate: Date
+      transferInterview: string
+      knowledgeTransferPlan: string
+      documentUrl: string | null
+      createdAt: Date
+      status: string | null
+      approver: string | null
+    }, ExtArgs["result"]["transferRequest"]>
+    composites: {}
+  }
+
+  type TransferRequestGetPayload<S extends boolean | null | undefined | TransferRequestDefaultArgs> = $Result.GetResult<Prisma.$TransferRequestPayload, S>
+
+  type TransferRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TransferRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TransferRequestCountAggregateInputType | true
+    }
+
+  export interface TransferRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TransferRequest'], meta: { name: 'TransferRequest' } }
+    /**
+     * Find zero or one TransferRequest that matches the filter.
+     * @param {TransferRequestFindUniqueArgs} args - Arguments to find a TransferRequest
+     * @example
+     * // Get one TransferRequest
+     * const transferRequest = await prisma.transferRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TransferRequestFindUniqueArgs>(args: SelectSubset<T, TransferRequestFindUniqueArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one TransferRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TransferRequestFindUniqueOrThrowArgs} args - Arguments to find a TransferRequest
+     * @example
+     * // Get one TransferRequest
+     * const transferRequest = await prisma.transferRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TransferRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, TransferRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TransferRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestFindFirstArgs} args - Arguments to find a TransferRequest
+     * @example
+     * // Get one TransferRequest
+     * const transferRequest = await prisma.transferRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TransferRequestFindFirstArgs>(args?: SelectSubset<T, TransferRequestFindFirstArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first TransferRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestFindFirstOrThrowArgs} args - Arguments to find a TransferRequest
+     * @example
+     * // Get one TransferRequest
+     * const transferRequest = await prisma.transferRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TransferRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, TransferRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more TransferRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all TransferRequests
+     * const transferRequests = await prisma.transferRequest.findMany()
+     * 
+     * // Get first 10 TransferRequests
+     * const transferRequests = await prisma.transferRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transferRequestWithIdOnly = await prisma.transferRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TransferRequestFindManyArgs>(args?: SelectSubset<T, TransferRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a TransferRequest.
+     * @param {TransferRequestCreateArgs} args - Arguments to create a TransferRequest.
+     * @example
+     * // Create one TransferRequest
+     * const TransferRequest = await prisma.transferRequest.create({
+     *   data: {
+     *     // ... data to create a TransferRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends TransferRequestCreateArgs>(args: SelectSubset<T, TransferRequestCreateArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many TransferRequests.
+     * @param {TransferRequestCreateManyArgs} args - Arguments to create many TransferRequests.
+     * @example
+     * // Create many TransferRequests
+     * const transferRequest = await prisma.transferRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TransferRequestCreateManyArgs>(args?: SelectSubset<T, TransferRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many TransferRequests and returns the data saved in the database.
+     * @param {TransferRequestCreateManyAndReturnArgs} args - Arguments to create many TransferRequests.
+     * @example
+     * // Create many TransferRequests
+     * const transferRequest = await prisma.transferRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many TransferRequests and only return the `id`
+     * const transferRequestWithIdOnly = await prisma.transferRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TransferRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, TransferRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a TransferRequest.
+     * @param {TransferRequestDeleteArgs} args - Arguments to delete one TransferRequest.
+     * @example
+     * // Delete one TransferRequest
+     * const TransferRequest = await prisma.transferRequest.delete({
+     *   where: {
+     *     // ... filter to delete one TransferRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TransferRequestDeleteArgs>(args: SelectSubset<T, TransferRequestDeleteArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one TransferRequest.
+     * @param {TransferRequestUpdateArgs} args - Arguments to update one TransferRequest.
+     * @example
+     * // Update one TransferRequest
+     * const transferRequest = await prisma.transferRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TransferRequestUpdateArgs>(args: SelectSubset<T, TransferRequestUpdateArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more TransferRequests.
+     * @param {TransferRequestDeleteManyArgs} args - Arguments to filter TransferRequests to delete.
+     * @example
+     * // Delete a few TransferRequests
+     * const { count } = await prisma.transferRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TransferRequestDeleteManyArgs>(args?: SelectSubset<T, TransferRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransferRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many TransferRequests
+     * const transferRequest = await prisma.transferRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TransferRequestUpdateManyArgs>(args: SelectSubset<T, TransferRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more TransferRequests and returns the data updated in the database.
+     * @param {TransferRequestUpdateManyAndReturnArgs} args - Arguments to update many TransferRequests.
+     * @example
+     * // Update many TransferRequests
+     * const transferRequest = await prisma.transferRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more TransferRequests and only return the `id`
+     * const transferRequestWithIdOnly = await prisma.transferRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TransferRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, TransferRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one TransferRequest.
+     * @param {TransferRequestUpsertArgs} args - Arguments to update or create a TransferRequest.
+     * @example
+     * // Update or create a TransferRequest
+     * const transferRequest = await prisma.transferRequest.upsert({
+     *   create: {
+     *     // ... data to create a TransferRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the TransferRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TransferRequestUpsertArgs>(args: SelectSubset<T, TransferRequestUpsertArgs<ExtArgs>>): Prisma__TransferRequestClient<$Result.GetResult<Prisma.$TransferRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of TransferRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestCountArgs} args - Arguments to filter TransferRequests to count.
+     * @example
+     * // Count the number of TransferRequests
+     * const count = await prisma.transferRequest.count({
+     *   where: {
+     *     // ... the filter for the TransferRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends TransferRequestCountArgs>(
+      args?: Subset<T, TransferRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TransferRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a TransferRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TransferRequestAggregateArgs>(args: Subset<T, TransferRequestAggregateArgs>): Prisma.PrismaPromise<GetTransferRequestAggregateType<T>>
+
+    /**
+     * Group by TransferRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TransferRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TransferRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TransferRequestGroupByArgs['orderBy'] }
+        : { orderBy?: TransferRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TransferRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransferRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the TransferRequest model
+   */
+  readonly fields: TransferRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for TransferRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TransferRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the TransferRequest model
+   */
+  interface TransferRequestFieldRefs {
+    readonly id: FieldRef<"TransferRequest", 'String'>
+    readonly employeeId: FieldRef<"TransferRequest", 'String'>
+    readonly transferReason: FieldRef<"TransferRequest", 'String'>
+    readonly transferDate: FieldRef<"TransferRequest", 'DateTime'>
+    readonly transferInterview: FieldRef<"TransferRequest", 'String'>
+    readonly knowledgeTransferPlan: FieldRef<"TransferRequest", 'String'>
+    readonly documentUrl: FieldRef<"TransferRequest", 'String'>
+    readonly createdAt: FieldRef<"TransferRequest", 'DateTime'>
+    readonly status: FieldRef<"TransferRequest", 'String'>
+    readonly approver: FieldRef<"TransferRequest", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * TransferRequest findUnique
+   */
+  export type TransferRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TransferRequest to fetch.
+     */
+    where: TransferRequestWhereUniqueInput
+  }
+
+  /**
+   * TransferRequest findUniqueOrThrow
+   */
+  export type TransferRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TransferRequest to fetch.
+     */
+    where: TransferRequestWhereUniqueInput
+  }
+
+  /**
+   * TransferRequest findFirst
+   */
+  export type TransferRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TransferRequest to fetch.
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransferRequests to fetch.
+     */
+    orderBy?: TransferRequestOrderByWithRelationInput | TransferRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransferRequests.
+     */
+    cursor?: TransferRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransferRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransferRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransferRequests.
+     */
+    distinct?: TransferRequestScalarFieldEnum | TransferRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TransferRequest findFirstOrThrow
+   */
+  export type TransferRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TransferRequest to fetch.
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransferRequests to fetch.
+     */
+    orderBy?: TransferRequestOrderByWithRelationInput | TransferRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for TransferRequests.
+     */
+    cursor?: TransferRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransferRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransferRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of TransferRequests.
+     */
+    distinct?: TransferRequestScalarFieldEnum | TransferRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TransferRequest findMany
+   */
+  export type TransferRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which TransferRequests to fetch.
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of TransferRequests to fetch.
+     */
+    orderBy?: TransferRequestOrderByWithRelationInput | TransferRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing TransferRequests.
+     */
+    cursor?: TransferRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` TransferRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` TransferRequests.
+     */
+    skip?: number
+    distinct?: TransferRequestScalarFieldEnum | TransferRequestScalarFieldEnum[]
+  }
+
+  /**
+   * TransferRequest create
+   */
+  export type TransferRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a TransferRequest.
+     */
+    data: XOR<TransferRequestCreateInput, TransferRequestUncheckedCreateInput>
+  }
+
+  /**
+   * TransferRequest createMany
+   */
+  export type TransferRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many TransferRequests.
+     */
+    data: TransferRequestCreateManyInput | TransferRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TransferRequest createManyAndReturn
+   */
+  export type TransferRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many TransferRequests.
+     */
+    data: TransferRequestCreateManyInput | TransferRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * TransferRequest update
+   */
+  export type TransferRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a TransferRequest.
+     */
+    data: XOR<TransferRequestUpdateInput, TransferRequestUncheckedUpdateInput>
+    /**
+     * Choose, which TransferRequest to update.
+     */
+    where: TransferRequestWhereUniqueInput
+  }
+
+  /**
+   * TransferRequest updateMany
+   */
+  export type TransferRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update TransferRequests.
+     */
+    data: XOR<TransferRequestUpdateManyMutationInput, TransferRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which TransferRequests to update
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * Limit how many TransferRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransferRequest updateManyAndReturn
+   */
+  export type TransferRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update TransferRequests.
+     */
+    data: XOR<TransferRequestUpdateManyMutationInput, TransferRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which TransferRequests to update
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * Limit how many TransferRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransferRequest upsert
+   */
+  export type TransferRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the TransferRequest to update in case it exists.
+     */
+    where: TransferRequestWhereUniqueInput
+    /**
+     * In case the TransferRequest found by the `where` argument doesn't exist, create a new TransferRequest with this data.
+     */
+    create: XOR<TransferRequestCreateInput, TransferRequestUncheckedCreateInput>
+    /**
+     * In case the TransferRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TransferRequestUpdateInput, TransferRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * TransferRequest delete
+   */
+  export type TransferRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+    /**
+     * Filter which TransferRequest to delete.
+     */
+    where: TransferRequestWhereUniqueInput
+  }
+
+  /**
+   * TransferRequest deleteMany
+   */
+  export type TransferRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which TransferRequests to delete
+     */
+    where?: TransferRequestWhereInput
+    /**
+     * Limit how many TransferRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * TransferRequest without action
+   */
+  export type TransferRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the TransferRequest
+     */
+    select?: TransferRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the TransferRequest
+     */
+    omit?: TransferRequestOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model PromotionRequest
+   */
+
+  export type AggregatePromotionRequest = {
+    _count: PromotionRequestCountAggregateOutputType | null
+    _min: PromotionRequestMinAggregateOutputType | null
+    _max: PromotionRequestMaxAggregateOutputType | null
+  }
+
+  export type PromotionRequestMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    promotionReason: string | null
+    promotionDate: Date | null
+    promotionDetails: string | null
+    performanceReview: string | null
+    documentUrl: string | null
+    status: string | null
+    approver: string | null
+    createdAt: Date | null
+  }
+
+  export type PromotionRequestMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    promotionReason: string | null
+    promotionDate: Date | null
+    promotionDetails: string | null
+    performanceReview: string | null
+    documentUrl: string | null
+    status: string | null
+    approver: string | null
+    createdAt: Date | null
+  }
+
+  export type PromotionRequestCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    promotionReason: number
+    promotionDate: number
+    promotionDetails: number
+    performanceReview: number
+    documentUrl: number
+    status: number
+    approver: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type PromotionRequestMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    promotionReason?: true
+    promotionDate?: true
+    promotionDetails?: true
+    performanceReview?: true
+    documentUrl?: true
+    status?: true
+    approver?: true
+    createdAt?: true
+  }
+
+  export type PromotionRequestMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    promotionReason?: true
+    promotionDate?: true
+    promotionDetails?: true
+    performanceReview?: true
+    documentUrl?: true
+    status?: true
+    approver?: true
+    createdAt?: true
+  }
+
+  export type PromotionRequestCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    promotionReason?: true
+    promotionDate?: true
+    promotionDetails?: true
+    performanceReview?: true
+    documentUrl?: true
+    status?: true
+    approver?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type PromotionRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PromotionRequest to aggregate.
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromotionRequests to fetch.
+     */
+    orderBy?: PromotionRequestOrderByWithRelationInput | PromotionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: PromotionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromotionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromotionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned PromotionRequests
+    **/
+    _count?: true | PromotionRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: PromotionRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: PromotionRequestMaxAggregateInputType
+  }
+
+  export type GetPromotionRequestAggregateType<T extends PromotionRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregatePromotionRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePromotionRequest[P]>
+      : GetScalarType<T[P], AggregatePromotionRequest[P]>
+  }
+
+
+
+
+  export type PromotionRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: PromotionRequestWhereInput
+    orderBy?: PromotionRequestOrderByWithAggregationInput | PromotionRequestOrderByWithAggregationInput[]
+    by: PromotionRequestScalarFieldEnum[] | PromotionRequestScalarFieldEnum
+    having?: PromotionRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: PromotionRequestCountAggregateInputType | true
+    _min?: PromotionRequestMinAggregateInputType
+    _max?: PromotionRequestMaxAggregateInputType
+  }
+
+  export type PromotionRequestGroupByOutputType = {
+    id: string
+    employeeId: string
+    promotionReason: string
+    promotionDate: Date
+    promotionDetails: string
+    performanceReview: string
+    documentUrl: string | null
+    status: string | null
+    approver: string | null
+    createdAt: Date
+    _count: PromotionRequestCountAggregateOutputType | null
+    _min: PromotionRequestMinAggregateOutputType | null
+    _max: PromotionRequestMaxAggregateOutputType | null
+  }
+
+  type GetPromotionRequestGroupByPayload<T extends PromotionRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<PromotionRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof PromotionRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], PromotionRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], PromotionRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type PromotionRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    promotionReason?: boolean
+    promotionDate?: boolean
+    promotionDetails?: boolean
+    performanceReview?: boolean
+    documentUrl?: boolean
+    status?: boolean
+    approver?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["promotionRequest"]>
+
+  export type PromotionRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    promotionReason?: boolean
+    promotionDate?: boolean
+    promotionDetails?: boolean
+    performanceReview?: boolean
+    documentUrl?: boolean
+    status?: boolean
+    approver?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["promotionRequest"]>
+
+  export type PromotionRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    promotionReason?: boolean
+    promotionDate?: boolean
+    promotionDetails?: boolean
+    performanceReview?: boolean
+    documentUrl?: boolean
+    status?: boolean
+    approver?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["promotionRequest"]>
+
+  export type PromotionRequestSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    promotionReason?: boolean
+    promotionDate?: boolean
+    promotionDetails?: boolean
+    performanceReview?: boolean
+    documentUrl?: boolean
+    status?: boolean
+    approver?: boolean
+    createdAt?: boolean
+  }
+
+  export type PromotionRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "promotionReason" | "promotionDate" | "promotionDetails" | "performanceReview" | "documentUrl" | "status" | "approver" | "createdAt", ExtArgs["result"]["promotionRequest"]>
+
+  export type $PromotionRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "PromotionRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      promotionReason: string
+      promotionDate: Date
+      promotionDetails: string
+      performanceReview: string
+      documentUrl: string | null
+      status: string | null
+      approver: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["promotionRequest"]>
+    composites: {}
+  }
+
+  type PromotionRequestGetPayload<S extends boolean | null | undefined | PromotionRequestDefaultArgs> = $Result.GetResult<Prisma.$PromotionRequestPayload, S>
+
+  type PromotionRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<PromotionRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: PromotionRequestCountAggregateInputType | true
+    }
+
+  export interface PromotionRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['PromotionRequest'], meta: { name: 'PromotionRequest' } }
+    /**
+     * Find zero or one PromotionRequest that matches the filter.
+     * @param {PromotionRequestFindUniqueArgs} args - Arguments to find a PromotionRequest
+     * @example
+     * // Get one PromotionRequest
+     * const promotionRequest = await prisma.promotionRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends PromotionRequestFindUniqueArgs>(args: SelectSubset<T, PromotionRequestFindUniqueArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one PromotionRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {PromotionRequestFindUniqueOrThrowArgs} args - Arguments to find a PromotionRequest
+     * @example
+     * // Get one PromotionRequest
+     * const promotionRequest = await prisma.promotionRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends PromotionRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, PromotionRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PromotionRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestFindFirstArgs} args - Arguments to find a PromotionRequest
+     * @example
+     * // Get one PromotionRequest
+     * const promotionRequest = await prisma.promotionRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends PromotionRequestFindFirstArgs>(args?: SelectSubset<T, PromotionRequestFindFirstArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first PromotionRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestFindFirstOrThrowArgs} args - Arguments to find a PromotionRequest
+     * @example
+     * // Get one PromotionRequest
+     * const promotionRequest = await prisma.promotionRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends PromotionRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, PromotionRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more PromotionRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all PromotionRequests
+     * const promotionRequests = await prisma.promotionRequest.findMany()
+     * 
+     * // Get first 10 PromotionRequests
+     * const promotionRequests = await prisma.promotionRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const promotionRequestWithIdOnly = await prisma.promotionRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends PromotionRequestFindManyArgs>(args?: SelectSubset<T, PromotionRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a PromotionRequest.
+     * @param {PromotionRequestCreateArgs} args - Arguments to create a PromotionRequest.
+     * @example
+     * // Create one PromotionRequest
+     * const PromotionRequest = await prisma.promotionRequest.create({
+     *   data: {
+     *     // ... data to create a PromotionRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends PromotionRequestCreateArgs>(args: SelectSubset<T, PromotionRequestCreateArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many PromotionRequests.
+     * @param {PromotionRequestCreateManyArgs} args - Arguments to create many PromotionRequests.
+     * @example
+     * // Create many PromotionRequests
+     * const promotionRequest = await prisma.promotionRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends PromotionRequestCreateManyArgs>(args?: SelectSubset<T, PromotionRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many PromotionRequests and returns the data saved in the database.
+     * @param {PromotionRequestCreateManyAndReturnArgs} args - Arguments to create many PromotionRequests.
+     * @example
+     * // Create many PromotionRequests
+     * const promotionRequest = await prisma.promotionRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many PromotionRequests and only return the `id`
+     * const promotionRequestWithIdOnly = await prisma.promotionRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends PromotionRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, PromotionRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a PromotionRequest.
+     * @param {PromotionRequestDeleteArgs} args - Arguments to delete one PromotionRequest.
+     * @example
+     * // Delete one PromotionRequest
+     * const PromotionRequest = await prisma.promotionRequest.delete({
+     *   where: {
+     *     // ... filter to delete one PromotionRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends PromotionRequestDeleteArgs>(args: SelectSubset<T, PromotionRequestDeleteArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one PromotionRequest.
+     * @param {PromotionRequestUpdateArgs} args - Arguments to update one PromotionRequest.
+     * @example
+     * // Update one PromotionRequest
+     * const promotionRequest = await prisma.promotionRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends PromotionRequestUpdateArgs>(args: SelectSubset<T, PromotionRequestUpdateArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more PromotionRequests.
+     * @param {PromotionRequestDeleteManyArgs} args - Arguments to filter PromotionRequests to delete.
+     * @example
+     * // Delete a few PromotionRequests
+     * const { count } = await prisma.promotionRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends PromotionRequestDeleteManyArgs>(args?: SelectSubset<T, PromotionRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PromotionRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many PromotionRequests
+     * const promotionRequest = await prisma.promotionRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends PromotionRequestUpdateManyArgs>(args: SelectSubset<T, PromotionRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more PromotionRequests and returns the data updated in the database.
+     * @param {PromotionRequestUpdateManyAndReturnArgs} args - Arguments to update many PromotionRequests.
+     * @example
+     * // Update many PromotionRequests
+     * const promotionRequest = await prisma.promotionRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more PromotionRequests and only return the `id`
+     * const promotionRequestWithIdOnly = await prisma.promotionRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends PromotionRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, PromotionRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one PromotionRequest.
+     * @param {PromotionRequestUpsertArgs} args - Arguments to update or create a PromotionRequest.
+     * @example
+     * // Update or create a PromotionRequest
+     * const promotionRequest = await prisma.promotionRequest.upsert({
+     *   create: {
+     *     // ... data to create a PromotionRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the PromotionRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends PromotionRequestUpsertArgs>(args: SelectSubset<T, PromotionRequestUpsertArgs<ExtArgs>>): Prisma__PromotionRequestClient<$Result.GetResult<Prisma.$PromotionRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of PromotionRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestCountArgs} args - Arguments to filter PromotionRequests to count.
+     * @example
+     * // Count the number of PromotionRequests
+     * const count = await prisma.promotionRequest.count({
+     *   where: {
+     *     // ... the filter for the PromotionRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends PromotionRequestCountArgs>(
+      args?: Subset<T, PromotionRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], PromotionRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a PromotionRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends PromotionRequestAggregateArgs>(args: Subset<T, PromotionRequestAggregateArgs>): Prisma.PrismaPromise<GetPromotionRequestAggregateType<T>>
+
+    /**
+     * Group by PromotionRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {PromotionRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends PromotionRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: PromotionRequestGroupByArgs['orderBy'] }
+        : { orderBy?: PromotionRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, PromotionRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPromotionRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the PromotionRequest model
+   */
+  readonly fields: PromotionRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for PromotionRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__PromotionRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the PromotionRequest model
+   */
+  interface PromotionRequestFieldRefs {
+    readonly id: FieldRef<"PromotionRequest", 'String'>
+    readonly employeeId: FieldRef<"PromotionRequest", 'String'>
+    readonly promotionReason: FieldRef<"PromotionRequest", 'String'>
+    readonly promotionDate: FieldRef<"PromotionRequest", 'DateTime'>
+    readonly promotionDetails: FieldRef<"PromotionRequest", 'String'>
+    readonly performanceReview: FieldRef<"PromotionRequest", 'String'>
+    readonly documentUrl: FieldRef<"PromotionRequest", 'String'>
+    readonly status: FieldRef<"PromotionRequest", 'String'>
+    readonly approver: FieldRef<"PromotionRequest", 'String'>
+    readonly createdAt: FieldRef<"PromotionRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * PromotionRequest findUnique
+   */
+  export type PromotionRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which PromotionRequest to fetch.
+     */
+    where: PromotionRequestWhereUniqueInput
+  }
+
+  /**
+   * PromotionRequest findUniqueOrThrow
+   */
+  export type PromotionRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which PromotionRequest to fetch.
+     */
+    where: PromotionRequestWhereUniqueInput
+  }
+
+  /**
+   * PromotionRequest findFirst
+   */
+  export type PromotionRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which PromotionRequest to fetch.
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromotionRequests to fetch.
+     */
+    orderBy?: PromotionRequestOrderByWithRelationInput | PromotionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PromotionRequests.
+     */
+    cursor?: PromotionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromotionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromotionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PromotionRequests.
+     */
+    distinct?: PromotionRequestScalarFieldEnum | PromotionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * PromotionRequest findFirstOrThrow
+   */
+  export type PromotionRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which PromotionRequest to fetch.
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromotionRequests to fetch.
+     */
+    orderBy?: PromotionRequestOrderByWithRelationInput | PromotionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for PromotionRequests.
+     */
+    cursor?: PromotionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromotionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromotionRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of PromotionRequests.
+     */
+    distinct?: PromotionRequestScalarFieldEnum | PromotionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * PromotionRequest findMany
+   */
+  export type PromotionRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which PromotionRequests to fetch.
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of PromotionRequests to fetch.
+     */
+    orderBy?: PromotionRequestOrderByWithRelationInput | PromotionRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing PromotionRequests.
+     */
+    cursor?: PromotionRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` PromotionRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` PromotionRequests.
+     */
+    skip?: number
+    distinct?: PromotionRequestScalarFieldEnum | PromotionRequestScalarFieldEnum[]
+  }
+
+  /**
+   * PromotionRequest create
+   */
+  export type PromotionRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a PromotionRequest.
+     */
+    data: XOR<PromotionRequestCreateInput, PromotionRequestUncheckedCreateInput>
+  }
+
+  /**
+   * PromotionRequest createMany
+   */
+  export type PromotionRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many PromotionRequests.
+     */
+    data: PromotionRequestCreateManyInput | PromotionRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PromotionRequest createManyAndReturn
+   */
+  export type PromotionRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many PromotionRequests.
+     */
+    data: PromotionRequestCreateManyInput | PromotionRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * PromotionRequest update
+   */
+  export type PromotionRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a PromotionRequest.
+     */
+    data: XOR<PromotionRequestUpdateInput, PromotionRequestUncheckedUpdateInput>
+    /**
+     * Choose, which PromotionRequest to update.
+     */
+    where: PromotionRequestWhereUniqueInput
+  }
+
+  /**
+   * PromotionRequest updateMany
+   */
+  export type PromotionRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update PromotionRequests.
+     */
+    data: XOR<PromotionRequestUpdateManyMutationInput, PromotionRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which PromotionRequests to update
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * Limit how many PromotionRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PromotionRequest updateManyAndReturn
+   */
+  export type PromotionRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update PromotionRequests.
+     */
+    data: XOR<PromotionRequestUpdateManyMutationInput, PromotionRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which PromotionRequests to update
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * Limit how many PromotionRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * PromotionRequest upsert
+   */
+  export type PromotionRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the PromotionRequest to update in case it exists.
+     */
+    where: PromotionRequestWhereUniqueInput
+    /**
+     * In case the PromotionRequest found by the `where` argument doesn't exist, create a new PromotionRequest with this data.
+     */
+    create: XOR<PromotionRequestCreateInput, PromotionRequestUncheckedCreateInput>
+    /**
+     * In case the PromotionRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<PromotionRequestUpdateInput, PromotionRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * PromotionRequest delete
+   */
+  export type PromotionRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
+    /**
+     * Filter which PromotionRequest to delete.
+     */
+    where: PromotionRequestWhereUniqueInput
+  }
+
+  /**
+   * PromotionRequest deleteMany
+   */
+  export type PromotionRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which PromotionRequests to delete
+     */
+    where?: PromotionRequestWhereInput
+    /**
+     * Limit how many PromotionRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * PromotionRequest without action
+   */
+  export type PromotionRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PromotionRequest
+     */
+    select?: PromotionRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the PromotionRequest
+     */
+    omit?: PromotionRequestOmit<ExtArgs> | null
   }
 
 
@@ -84398,10 +86726,44 @@ export namespace Prisma {
     exitInterview: 'exitInterview',
     knowledgeTransferPlan: 'knowledgeTransferPlan',
     documentUrl: 'documentUrl',
-    createdAt: 'createdAt'
+    createdAt: 'createdAt',
+    status: 'status',
+    approver: 'approver'
   };
 
   export type ExitRequestScalarFieldEnum = (typeof ExitRequestScalarFieldEnum)[keyof typeof ExitRequestScalarFieldEnum]
+
+
+  export const TransferRequestScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    transferReason: 'transferReason',
+    transferDate: 'transferDate',
+    transferInterview: 'transferInterview',
+    knowledgeTransferPlan: 'knowledgeTransferPlan',
+    documentUrl: 'documentUrl',
+    createdAt: 'createdAt',
+    status: 'status',
+    approver: 'approver'
+  };
+
+  export type TransferRequestScalarFieldEnum = (typeof TransferRequestScalarFieldEnum)[keyof typeof TransferRequestScalarFieldEnum]
+
+
+  export const PromotionRequestScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    promotionReason: 'promotionReason',
+    promotionDate: 'promotionDate',
+    promotionDetails: 'promotionDetails',
+    performanceReview: 'performanceReview',
+    documentUrl: 'documentUrl',
+    status: 'status',
+    approver: 'approver',
+    createdAt: 'createdAt'
+  };
+
+  export type PromotionRequestScalarFieldEnum = (typeof PromotionRequestScalarFieldEnum)[keyof typeof PromotionRequestScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -90577,6 +92939,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: StringFilter<"ExitRequest"> | string
     documentUrl?: StringNullableFilter<"ExitRequest"> | string | null
     createdAt?: DateTimeFilter<"ExitRequest"> | Date | string
+    status?: StringNullableFilter<"ExitRequest"> | string | null
+    approver?: StringNullableFilter<"ExitRequest"> | string | null
   }
 
   export type ExitRequestOrderByWithRelationInput = {
@@ -90588,6 +92952,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: SortOrder
     documentUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    status?: SortOrderInput | SortOrder
+    approver?: SortOrderInput | SortOrder
   }
 
   export type ExitRequestWhereUniqueInput = Prisma.AtLeast<{
@@ -90602,6 +92968,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: StringFilter<"ExitRequest"> | string
     documentUrl?: StringNullableFilter<"ExitRequest"> | string | null
     createdAt?: DateTimeFilter<"ExitRequest"> | Date | string
+    status?: StringNullableFilter<"ExitRequest"> | string | null
+    approver?: StringNullableFilter<"ExitRequest"> | string | null
   }, "id">
 
   export type ExitRequestOrderByWithAggregationInput = {
@@ -90613,6 +92981,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: SortOrder
     documentUrl?: SortOrderInput | SortOrder
     createdAt?: SortOrder
+    status?: SortOrderInput | SortOrder
+    approver?: SortOrderInput | SortOrder
     _count?: ExitRequestCountOrderByAggregateInput
     _max?: ExitRequestMaxOrderByAggregateInput
     _min?: ExitRequestMinOrderByAggregateInput
@@ -90630,6 +93000,162 @@ export namespace Prisma {
     knowledgeTransferPlan?: StringWithAggregatesFilter<"ExitRequest"> | string
     documentUrl?: StringNullableWithAggregatesFilter<"ExitRequest"> | string | null
     createdAt?: DateTimeWithAggregatesFilter<"ExitRequest"> | Date | string
+    status?: StringNullableWithAggregatesFilter<"ExitRequest"> | string | null
+    approver?: StringNullableWithAggregatesFilter<"ExitRequest"> | string | null
+  }
+
+  export type TransferRequestWhereInput = {
+    AND?: TransferRequestWhereInput | TransferRequestWhereInput[]
+    OR?: TransferRequestWhereInput[]
+    NOT?: TransferRequestWhereInput | TransferRequestWhereInput[]
+    id?: StringFilter<"TransferRequest"> | string
+    employeeId?: StringFilter<"TransferRequest"> | string
+    transferReason?: StringFilter<"TransferRequest"> | string
+    transferDate?: DateTimeFilter<"TransferRequest"> | Date | string
+    transferInterview?: StringFilter<"TransferRequest"> | string
+    knowledgeTransferPlan?: StringFilter<"TransferRequest"> | string
+    documentUrl?: StringNullableFilter<"TransferRequest"> | string | null
+    createdAt?: DateTimeFilter<"TransferRequest"> | Date | string
+    status?: StringNullableFilter<"TransferRequest"> | string | null
+    approver?: StringNullableFilter<"TransferRequest"> | string | null
+  }
+
+  export type TransferRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    transferReason?: SortOrder
+    transferDate?: SortOrder
+    transferInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    status?: SortOrderInput | SortOrder
+    approver?: SortOrderInput | SortOrder
+  }
+
+  export type TransferRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TransferRequestWhereInput | TransferRequestWhereInput[]
+    OR?: TransferRequestWhereInput[]
+    NOT?: TransferRequestWhereInput | TransferRequestWhereInput[]
+    employeeId?: StringFilter<"TransferRequest"> | string
+    transferReason?: StringFilter<"TransferRequest"> | string
+    transferDate?: DateTimeFilter<"TransferRequest"> | Date | string
+    transferInterview?: StringFilter<"TransferRequest"> | string
+    knowledgeTransferPlan?: StringFilter<"TransferRequest"> | string
+    documentUrl?: StringNullableFilter<"TransferRequest"> | string | null
+    createdAt?: DateTimeFilter<"TransferRequest"> | Date | string
+    status?: StringNullableFilter<"TransferRequest"> | string | null
+    approver?: StringNullableFilter<"TransferRequest"> | string | null
+  }, "id">
+
+  export type TransferRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    transferReason?: SortOrder
+    transferDate?: SortOrder
+    transferInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    status?: SortOrderInput | SortOrder
+    approver?: SortOrderInput | SortOrder
+    _count?: TransferRequestCountOrderByAggregateInput
+    _max?: TransferRequestMaxOrderByAggregateInput
+    _min?: TransferRequestMinOrderByAggregateInput
+  }
+
+  export type TransferRequestScalarWhereWithAggregatesInput = {
+    AND?: TransferRequestScalarWhereWithAggregatesInput | TransferRequestScalarWhereWithAggregatesInput[]
+    OR?: TransferRequestScalarWhereWithAggregatesInput[]
+    NOT?: TransferRequestScalarWhereWithAggregatesInput | TransferRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"TransferRequest"> | string
+    employeeId?: StringWithAggregatesFilter<"TransferRequest"> | string
+    transferReason?: StringWithAggregatesFilter<"TransferRequest"> | string
+    transferDate?: DateTimeWithAggregatesFilter<"TransferRequest"> | Date | string
+    transferInterview?: StringWithAggregatesFilter<"TransferRequest"> | string
+    knowledgeTransferPlan?: StringWithAggregatesFilter<"TransferRequest"> | string
+    documentUrl?: StringNullableWithAggregatesFilter<"TransferRequest"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"TransferRequest"> | Date | string
+    status?: StringNullableWithAggregatesFilter<"TransferRequest"> | string | null
+    approver?: StringNullableWithAggregatesFilter<"TransferRequest"> | string | null
+  }
+
+  export type PromotionRequestWhereInput = {
+    AND?: PromotionRequestWhereInput | PromotionRequestWhereInput[]
+    OR?: PromotionRequestWhereInput[]
+    NOT?: PromotionRequestWhereInput | PromotionRequestWhereInput[]
+    id?: StringFilter<"PromotionRequest"> | string
+    employeeId?: StringFilter<"PromotionRequest"> | string
+    promotionReason?: StringFilter<"PromotionRequest"> | string
+    promotionDate?: DateTimeFilter<"PromotionRequest"> | Date | string
+    promotionDetails?: StringFilter<"PromotionRequest"> | string
+    performanceReview?: StringFilter<"PromotionRequest"> | string
+    documentUrl?: StringNullableFilter<"PromotionRequest"> | string | null
+    status?: StringNullableFilter<"PromotionRequest"> | string | null
+    approver?: StringNullableFilter<"PromotionRequest"> | string | null
+    createdAt?: DateTimeFilter<"PromotionRequest"> | Date | string
+  }
+
+  export type PromotionRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    promotionReason?: SortOrder
+    promotionDate?: SortOrder
+    promotionDetails?: SortOrder
+    performanceReview?: SortOrder
+    documentUrl?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    approver?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PromotionRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: PromotionRequestWhereInput | PromotionRequestWhereInput[]
+    OR?: PromotionRequestWhereInput[]
+    NOT?: PromotionRequestWhereInput | PromotionRequestWhereInput[]
+    employeeId?: StringFilter<"PromotionRequest"> | string
+    promotionReason?: StringFilter<"PromotionRequest"> | string
+    promotionDate?: DateTimeFilter<"PromotionRequest"> | Date | string
+    promotionDetails?: StringFilter<"PromotionRequest"> | string
+    performanceReview?: StringFilter<"PromotionRequest"> | string
+    documentUrl?: StringNullableFilter<"PromotionRequest"> | string | null
+    status?: StringNullableFilter<"PromotionRequest"> | string | null
+    approver?: StringNullableFilter<"PromotionRequest"> | string | null
+    createdAt?: DateTimeFilter<"PromotionRequest"> | Date | string
+  }, "id">
+
+  export type PromotionRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    promotionReason?: SortOrder
+    promotionDate?: SortOrder
+    promotionDetails?: SortOrder
+    performanceReview?: SortOrder
+    documentUrl?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    approver?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: PromotionRequestCountOrderByAggregateInput
+    _max?: PromotionRequestMaxOrderByAggregateInput
+    _min?: PromotionRequestMinOrderByAggregateInput
+  }
+
+  export type PromotionRequestScalarWhereWithAggregatesInput = {
+    AND?: PromotionRequestScalarWhereWithAggregatesInput | PromotionRequestScalarWhereWithAggregatesInput[]
+    OR?: PromotionRequestScalarWhereWithAggregatesInput[]
+    NOT?: PromotionRequestScalarWhereWithAggregatesInput | PromotionRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"PromotionRequest"> | string
+    employeeId?: StringWithAggregatesFilter<"PromotionRequest"> | string
+    promotionReason?: StringWithAggregatesFilter<"PromotionRequest"> | string
+    promotionDate?: DateTimeWithAggregatesFilter<"PromotionRequest"> | Date | string
+    promotionDetails?: StringWithAggregatesFilter<"PromotionRequest"> | string
+    performanceReview?: StringWithAggregatesFilter<"PromotionRequest"> | string
+    documentUrl?: StringNullableWithAggregatesFilter<"PromotionRequest"> | string | null
+    status?: StringNullableWithAggregatesFilter<"PromotionRequest"> | string | null
+    approver?: StringNullableWithAggregatesFilter<"PromotionRequest"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"PromotionRequest"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -97750,6 +100276,8 @@ export namespace Prisma {
     knowledgeTransferPlan: string
     documentUrl?: string | null
     createdAt?: Date | string
+    status?: string | null
+    approver?: string | null
   }
 
   export type ExitRequestUncheckedCreateInput = {
@@ -97761,6 +100289,8 @@ export namespace Prisma {
     knowledgeTransferPlan: string
     documentUrl?: string | null
     createdAt?: Date | string
+    status?: string | null
+    approver?: string | null
   }
 
   export type ExitRequestUpdateInput = {
@@ -97772,6 +100302,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
     documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExitRequestUncheckedUpdateInput = {
@@ -97783,6 +100315,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
     documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExitRequestCreateManyInput = {
@@ -97794,6 +100328,8 @@ export namespace Prisma {
     knowledgeTransferPlan: string
     documentUrl?: string | null
     createdAt?: Date | string
+    status?: string | null
+    approver?: string | null
   }
 
   export type ExitRequestUpdateManyMutationInput = {
@@ -97805,6 +100341,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
     documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type ExitRequestUncheckedUpdateManyInput = {
@@ -97815,6 +100353,190 @@ export namespace Prisma {
     exitInterview?: StringFieldUpdateOperationsInput | string
     knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
     documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransferRequestCreateInput = {
+    id?: string
+    employeeId: string
+    transferReason: string
+    transferDate: Date | string
+    transferInterview: string
+    knowledgeTransferPlan: string
+    documentUrl?: string | null
+    createdAt?: Date | string
+    status?: string | null
+    approver?: string | null
+  }
+
+  export type TransferRequestUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    transferReason: string
+    transferDate: Date | string
+    transferInterview: string
+    knowledgeTransferPlan: string
+    documentUrl?: string | null
+    createdAt?: Date | string
+    status?: string | null
+    approver?: string | null
+  }
+
+  export type TransferRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    transferReason?: StringFieldUpdateOperationsInput | string
+    transferDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    transferInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransferRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    transferReason?: StringFieldUpdateOperationsInput | string
+    transferDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    transferInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransferRequestCreateManyInput = {
+    id?: string
+    employeeId: string
+    transferReason: string
+    transferDate: Date | string
+    transferInterview: string
+    knowledgeTransferPlan: string
+    documentUrl?: string | null
+    createdAt?: Date | string
+    status?: string | null
+    approver?: string | null
+  }
+
+  export type TransferRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    transferReason?: StringFieldUpdateOperationsInput | string
+    transferDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    transferInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type TransferRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    transferReason?: StringFieldUpdateOperationsInput | string
+    transferDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    transferInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type PromotionRequestCreateInput = {
+    id?: string
+    employeeId: string
+    promotionReason: string
+    promotionDate: Date | string
+    promotionDetails: string
+    performanceReview: string
+    documentUrl?: string | null
+    status?: string | null
+    approver?: string | null
+    createdAt?: Date | string
+  }
+
+  export type PromotionRequestUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    promotionReason: string
+    promotionDate: Date | string
+    promotionDetails: string
+    performanceReview: string
+    documentUrl?: string | null
+    status?: string | null
+    approver?: string | null
+    createdAt?: Date | string
+  }
+
+  export type PromotionRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    promotionReason?: StringFieldUpdateOperationsInput | string
+    promotionDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    promotionDetails?: StringFieldUpdateOperationsInput | string
+    performanceReview?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PromotionRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    promotionReason?: StringFieldUpdateOperationsInput | string
+    promotionDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    promotionDetails?: StringFieldUpdateOperationsInput | string
+    performanceReview?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PromotionRequestCreateManyInput = {
+    id?: string
+    employeeId: string
+    promotionReason: string
+    promotionDate: Date | string
+    promotionDetails: string
+    performanceReview: string
+    documentUrl?: string | null
+    status?: string | null
+    approver?: string | null
+    createdAt?: Date | string
+  }
+
+  export type PromotionRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    promotionReason?: StringFieldUpdateOperationsInput | string
+    promotionDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    promotionDetails?: StringFieldUpdateOperationsInput | string
+    performanceReview?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type PromotionRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    promotionReason?: StringFieldUpdateOperationsInput | string
+    promotionDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    promotionDetails?: StringFieldUpdateOperationsInput | string
+    performanceReview?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    approver?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -101814,6 +104536,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
   }
 
   export type ExitRequestMaxOrderByAggregateInput = {
@@ -101825,6 +104549,8 @@ export namespace Prisma {
     knowledgeTransferPlan?: SortOrder
     documentUrl?: SortOrder
     createdAt?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
   }
 
   export type ExitRequestMinOrderByAggregateInput = {
@@ -101835,6 +104561,86 @@ export namespace Prisma {
     exitInterview?: SortOrder
     knowledgeTransferPlan?: SortOrder
     documentUrl?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+  }
+
+  export type TransferRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    transferReason?: SortOrder
+    transferDate?: SortOrder
+    transferInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+  }
+
+  export type TransferRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    transferReason?: SortOrder
+    transferDate?: SortOrder
+    transferInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+  }
+
+  export type TransferRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    transferReason?: SortOrder
+    transferDate?: SortOrder
+    transferInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrder
+    createdAt?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+  }
+
+  export type PromotionRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    promotionReason?: SortOrder
+    promotionDate?: SortOrder
+    promotionDetails?: SortOrder
+    performanceReview?: SortOrder
+    documentUrl?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PromotionRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    promotionReason?: SortOrder
+    promotionDate?: SortOrder
+    promotionDetails?: SortOrder
+    performanceReview?: SortOrder
+    documentUrl?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type PromotionRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    promotionReason?: SortOrder
+    promotionDate?: SortOrder
+    promotionDetails?: SortOrder
+    performanceReview?: SortOrder
+    documentUrl?: SortOrder
+    status?: SortOrder
+    approver?: SortOrder
     createdAt?: SortOrder
   }
 

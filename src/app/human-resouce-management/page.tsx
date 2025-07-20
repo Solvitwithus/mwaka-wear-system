@@ -142,13 +142,13 @@ if (loading) return (
     {title:"Final Disciplinary Hearing",link:"/human-resouce-management/pos-report",permission:"FinalDisciplinaryHearin",image:StudIcon},
     {title:"Disciplinary Case-Closure",link:"/human-resouce-management/",permission:"DisciplinaryCaseClosure",image:StudIcon},
     {title:"RequestExit",link:"/human-resouce-management/request-exit",permission:"RequestExit",image:StudIcon},
-    {title:"ReviewExitRequestandApproval",link:"/human-resouce-management/",permission:"ReviewExitRequestandApproval",image:StudIcon},
-    {title:"Employee Exit",link:"/human-resouce-management/pos-report",permission:"EmployeeExit",image:StudIcon},
-    {title:"Employee Transfer Request",link:"/human-resouce-management/",permission:"EmployeeTransferRequest",image:StudIcon},
-    {title:"Employee Transfer Approval Decline",link:"/human-resouce-management/pos-report",permission:"TransferApprovalDecline",image:StudIcon},
-    {title:"Employee Promotion Request",link:"/human-resouce-management/",permission:"EmployeePromotionRequest",image:StudIcon},
-    {title:"PromotionApproval",link:"/human-resouce-management/pos-report",permission:"PromotionApproval",image:StudIcon},
-    {title:"Direct Employee Promotion",link:"/human-resouce-management/",permission:"DirectPromotion",image:StudIcon},
+    {title:"ReviewExitRequestandApproval",link:"/human-resouce-management/review&approve-exit-reasons",permission:"ReviewExitRequestandApproval",image:StudIcon},
+    {title:"Employee Exit",link:"/human-resouce-management/employee-leave",permission:"EmployeeExit",image:StudIcon},
+    {title:"Employee Transfer Request",link:"/human-resouce-management/employee-transfer-request",permission:"EmployeeTransferRequest",image:StudIcon},
+    {title:"Employee Transfer Approval Decline",link:"/human-resouce-management/transfer-status-check",permission:"TransferApprovalDecline",image:StudIcon},
+    {title:"Employee Promotion Request",link:"/human-resouce-management/promotion-request",permission:"EmployeePromotionRequest",image:StudIcon},
+    {title:"PromotionApproval",link:"/human-resouce-management/promotion-status-check",permission:"PromotionApproval",image:StudIcon},
+    {title:"Direct Employee Promotion",link:"/human-resouce-management/direct-promotion",permission:"DirectPromotion",image:StudIcon},
  
 
   ]

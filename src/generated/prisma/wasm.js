@@ -1135,6 +1135,34 @@ exports.Prisma.ExitRequestScalarFieldEnum = {
   exitInterview: 'exitInterview',
   knowledgeTransferPlan: 'knowledgeTransferPlan',
   documentUrl: 'documentUrl',
+  createdAt: 'createdAt',
+  status: 'status',
+  approver: 'approver'
+};
+
+exports.Prisma.TransferRequestScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  transferReason: 'transferReason',
+  transferDate: 'transferDate',
+  transferInterview: 'transferInterview',
+  knowledgeTransferPlan: 'knowledgeTransferPlan',
+  documentUrl: 'documentUrl',
+  createdAt: 'createdAt',
+  status: 'status',
+  approver: 'approver'
+};
+
+exports.Prisma.PromotionRequestScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  promotionReason: 'promotionReason',
+  promotionDate: 'promotionDate',
+  promotionDetails: 'promotionDetails',
+  performanceReview: 'performanceReview',
+  documentUrl: 'documentUrl',
+  status: 'status',
+  approver: 'approver',
   createdAt: 'createdAt'
 };
 
@@ -1230,7 +1258,9 @@ exports.Prisma.ModelName = {
   PerformanceEvaluation: 'PerformanceEvaluation',
   Attendance: 'Attendance',
   Warning: 'Warning',
-  ExitRequest: 'ExitRequest'
+  ExitRequest: 'ExitRequest',
+  TransferRequest: 'TransferRequest',
+  PromotionRequest: 'PromotionRequest'
 };
 
 /**

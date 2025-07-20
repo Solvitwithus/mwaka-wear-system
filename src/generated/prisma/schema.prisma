@@ -1127,4 +1127,32 @@ model ExitRequest {
   knowledgeTransferPlan String
   documentUrl           String?
   createdAt             DateTime @default(now())
+  status                String?
+  approver              String?
+}
+
+model TransferRequest {
+  id                    String   @id @default(uuid())
+  employeeId            String
+  transferReason        String
+  transferDate          DateTime
+  transferInterview     String
+  knowledgeTransferPlan String
+  documentUrl           String?
+  createdAt             DateTime @default(now())
+  status                String?
+  approver              String?
+}
+
+model PromotionRequest {
+  id                String   @id @default(uuid())
+  employeeId        String
+  promotionReason   String
+  promotionDate     DateTime
+  promotionDetails  String
+  performanceReview String
+  documentUrl       String?
+  status            String? // e.g., "pending", "approved", etc.
+  approver          String? // e.g., full name of approver
+  createdAt         DateTime @default(now())
 }
