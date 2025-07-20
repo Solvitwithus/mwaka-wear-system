@@ -1127,6 +1127,17 @@ exports.Prisma.WarningScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.ExitRequestScalarFieldEnum = {
+  id: 'id',
+  employeeId: 'employeeId',
+  reasonToExit: 'reasonToExit',
+  exitDate: 'exitDate',
+  exitInterview: 'exitInterview',
+  knowledgeTransferPlan: 'knowledgeTransferPlan',
+  documentUrl: 'documentUrl',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1218,7 +1229,8 @@ exports.Prisma.ModelName = {
   TrainingRequest: 'TrainingRequest',
   PerformanceEvaluation: 'PerformanceEvaluation',
   Attendance: 'Attendance',
-  Warning: 'Warning'
+  Warning: 'Warning',
+  ExitRequest: 'ExitRequest'
 };
 
 /**

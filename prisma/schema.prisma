@@ -1107,3 +1107,13 @@ model Warning {
   details    String
   createdAt  DateTime @default(now())
 }
+model ExitRequest {
+  id                      String @id   @default(uuid()) 
+    employeeId              String
+  reasonToExit            String
+  exitDate                DateTime
+  exitInterview           String
+  knowledgeTransferPlan   String
+  documentUrl             String?
+  createdAt               DateTime @default(now())
+}

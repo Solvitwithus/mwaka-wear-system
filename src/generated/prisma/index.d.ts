@@ -338,6 +338,11 @@ export type Attendance = $Result.DefaultSelection<Prisma.$AttendancePayload>
  * 
  */
 export type Warning = $Result.DefaultSelection<Prisma.$WarningPayload>
+/**
+ * Model ExitRequest
+ * 
+ */
+export type ExitRequest = $Result.DefaultSelection<Prisma.$ExitRequestPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -1113,6 +1118,16 @@ export class PrismaClient<
     * ```
     */
   get warning(): Prisma.WarningDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.exitRequest`: Exposes CRUD operations for the **ExitRequest** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more ExitRequests
+    * const exitRequests = await prisma.exitRequest.findMany()
+    * ```
+    */
+  get exitRequest(): Prisma.ExitRequestDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1617,7 +1632,8 @@ export namespace Prisma {
     TrainingRequest: 'TrainingRequest',
     PerformanceEvaluation: 'PerformanceEvaluation',
     Attendance: 'Attendance',
-    Warning: 'Warning'
+    Warning: 'Warning',
+    ExitRequest: 'ExitRequest'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1636,7 +1652,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation" | "attendance" | "warning"
+      modelProps: "user" | "role" | "permission" | "message" | "profile" | "currency" | "bankName" | "salesperson" | "branch" | "salesArea" | "paymentTerm" | "paymentMethod" | "salesCategory" | "driver" | "vehicle" | "shift" | "vehicleCategory" | "unitOfMeasure" | "vehicleGeneralLedgerAccount" | "itemCategory" | "item" | "tax" | "client" | "quotationItem" | "salesQuotation" | "deliveryDetail" | "directSale" | "directSaleItem" | "creditStatus" | "bankAccount" | "salesEntry" | "salesEntryItem" | "department" | "rank" | "designationTitle" | "salesGroup" | "vehicleExpenseCategory" | "prepaymentAllocation" | "supplier" | "purchaseReQEntry" | "purchaseRequisitionEntryItem" | "purchaseAdditionalInfo" | "supplierPaymentTracking" | "grade" | "gradingSheet" | "gradedItem" | "pausedCart" | "pausedCartItem" | "payment" | "policy" | "trainer" | "workShift" | "holiday" | "exitReason" | "leaveType" | "priorityLevel" | "contractType" | "nonAttendanceReason" | "positionRequisition" | "candidate" | "leaveApplication" | "trainingRequest" | "performanceEvaluation" | "attendance" | "warning" | "exitRequest"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -6450,6 +6466,80 @@ export namespace Prisma {
           }
         }
       }
+      ExitRequest: {
+        payload: Prisma.$ExitRequestPayload<ExtArgs>
+        fields: Prisma.ExitRequestFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.ExitRequestFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.ExitRequestFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>
+          }
+          findFirst: {
+            args: Prisma.ExitRequestFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.ExitRequestFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>
+          }
+          findMany: {
+            args: Prisma.ExitRequestFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>[]
+          }
+          create: {
+            args: Prisma.ExitRequestCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>
+          }
+          createMany: {
+            args: Prisma.ExitRequestCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.ExitRequestCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>[]
+          }
+          delete: {
+            args: Prisma.ExitRequestDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>
+          }
+          update: {
+            args: Prisma.ExitRequestUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>
+          }
+          deleteMany: {
+            args: Prisma.ExitRequestDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.ExitRequestUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.ExitRequestUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>[]
+          }
+          upsert: {
+            args: Prisma.ExitRequestUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$ExitRequestPayload>
+          }
+          aggregate: {
+            args: Prisma.ExitRequestAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateExitRequest>
+          }
+          groupBy: {
+            args: Prisma.ExitRequestGroupByArgs<ExtArgs>
+            result: $Utils.Optional<ExitRequestGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.ExitRequestCountArgs<ExtArgs>
+            result: $Utils.Optional<ExitRequestCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -6599,6 +6689,7 @@ export namespace Prisma {
     performanceEvaluation?: PerformanceEvaluationOmit
     attendance?: AttendanceOmit
     warning?: WarningOmit
+    exitRequest?: ExitRequestOmit
   }
 
   /* Types for Logging */
@@ -82050,6 +82141,1040 @@ export namespace Prisma {
 
 
   /**
+   * Model ExitRequest
+   */
+
+  export type AggregateExitRequest = {
+    _count: ExitRequestCountAggregateOutputType | null
+    _min: ExitRequestMinAggregateOutputType | null
+    _max: ExitRequestMaxAggregateOutputType | null
+  }
+
+  export type ExitRequestMinAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    reasonToExit: string | null
+    exitDate: Date | null
+    exitInterview: string | null
+    knowledgeTransferPlan: string | null
+    documentUrl: string | null
+    createdAt: Date | null
+  }
+
+  export type ExitRequestMaxAggregateOutputType = {
+    id: string | null
+    employeeId: string | null
+    reasonToExit: string | null
+    exitDate: Date | null
+    exitInterview: string | null
+    knowledgeTransferPlan: string | null
+    documentUrl: string | null
+    createdAt: Date | null
+  }
+
+  export type ExitRequestCountAggregateOutputType = {
+    id: number
+    employeeId: number
+    reasonToExit: number
+    exitDate: number
+    exitInterview: number
+    knowledgeTransferPlan: number
+    documentUrl: number
+    createdAt: number
+    _all: number
+  }
+
+
+  export type ExitRequestMinAggregateInputType = {
+    id?: true
+    employeeId?: true
+    reasonToExit?: true
+    exitDate?: true
+    exitInterview?: true
+    knowledgeTransferPlan?: true
+    documentUrl?: true
+    createdAt?: true
+  }
+
+  export type ExitRequestMaxAggregateInputType = {
+    id?: true
+    employeeId?: true
+    reasonToExit?: true
+    exitDate?: true
+    exitInterview?: true
+    knowledgeTransferPlan?: true
+    documentUrl?: true
+    createdAt?: true
+  }
+
+  export type ExitRequestCountAggregateInputType = {
+    id?: true
+    employeeId?: true
+    reasonToExit?: true
+    exitDate?: true
+    exitInterview?: true
+    knowledgeTransferPlan?: true
+    documentUrl?: true
+    createdAt?: true
+    _all?: true
+  }
+
+  export type ExitRequestAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExitRequest to aggregate.
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExitRequests to fetch.
+     */
+    orderBy?: ExitRequestOrderByWithRelationInput | ExitRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: ExitRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExitRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExitRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned ExitRequests
+    **/
+    _count?: true | ExitRequestCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: ExitRequestMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: ExitRequestMaxAggregateInputType
+  }
+
+  export type GetExitRequestAggregateType<T extends ExitRequestAggregateArgs> = {
+        [P in keyof T & keyof AggregateExitRequest]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateExitRequest[P]>
+      : GetScalarType<T[P], AggregateExitRequest[P]>
+  }
+
+
+
+
+  export type ExitRequestGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: ExitRequestWhereInput
+    orderBy?: ExitRequestOrderByWithAggregationInput | ExitRequestOrderByWithAggregationInput[]
+    by: ExitRequestScalarFieldEnum[] | ExitRequestScalarFieldEnum
+    having?: ExitRequestScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: ExitRequestCountAggregateInputType | true
+    _min?: ExitRequestMinAggregateInputType
+    _max?: ExitRequestMaxAggregateInputType
+  }
+
+  export type ExitRequestGroupByOutputType = {
+    id: string
+    employeeId: string
+    reasonToExit: string
+    exitDate: Date
+    exitInterview: string
+    knowledgeTransferPlan: string
+    documentUrl: string | null
+    createdAt: Date
+    _count: ExitRequestCountAggregateOutputType | null
+    _min: ExitRequestMinAggregateOutputType | null
+    _max: ExitRequestMaxAggregateOutputType | null
+  }
+
+  type GetExitRequestGroupByPayload<T extends ExitRequestGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<ExitRequestGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof ExitRequestGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], ExitRequestGroupByOutputType[P]>
+            : GetScalarType<T[P], ExitRequestGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type ExitRequestSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    reasonToExit?: boolean
+    exitDate?: boolean
+    exitInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["exitRequest"]>
+
+  export type ExitRequestSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    reasonToExit?: boolean
+    exitDate?: boolean
+    exitInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["exitRequest"]>
+
+  export type ExitRequestSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    employeeId?: boolean
+    reasonToExit?: boolean
+    exitDate?: boolean
+    exitInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+  }, ExtArgs["result"]["exitRequest"]>
+
+  export type ExitRequestSelectScalar = {
+    id?: boolean
+    employeeId?: boolean
+    reasonToExit?: boolean
+    exitDate?: boolean
+    exitInterview?: boolean
+    knowledgeTransferPlan?: boolean
+    documentUrl?: boolean
+    createdAt?: boolean
+  }
+
+  export type ExitRequestOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "employeeId" | "reasonToExit" | "exitDate" | "exitInterview" | "knowledgeTransferPlan" | "documentUrl" | "createdAt", ExtArgs["result"]["exitRequest"]>
+
+  export type $ExitRequestPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "ExitRequest"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      employeeId: string
+      reasonToExit: string
+      exitDate: Date
+      exitInterview: string
+      knowledgeTransferPlan: string
+      documentUrl: string | null
+      createdAt: Date
+    }, ExtArgs["result"]["exitRequest"]>
+    composites: {}
+  }
+
+  type ExitRequestGetPayload<S extends boolean | null | undefined | ExitRequestDefaultArgs> = $Result.GetResult<Prisma.$ExitRequestPayload, S>
+
+  type ExitRequestCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<ExitRequestFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: ExitRequestCountAggregateInputType | true
+    }
+
+  export interface ExitRequestDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['ExitRequest'], meta: { name: 'ExitRequest' } }
+    /**
+     * Find zero or one ExitRequest that matches the filter.
+     * @param {ExitRequestFindUniqueArgs} args - Arguments to find a ExitRequest
+     * @example
+     * // Get one ExitRequest
+     * const exitRequest = await prisma.exitRequest.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends ExitRequestFindUniqueArgs>(args: SelectSubset<T, ExitRequestFindUniqueArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one ExitRequest that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {ExitRequestFindUniqueOrThrowArgs} args - Arguments to find a ExitRequest
+     * @example
+     * // Get one ExitRequest
+     * const exitRequest = await prisma.exitRequest.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends ExitRequestFindUniqueOrThrowArgs>(args: SelectSubset<T, ExitRequestFindUniqueOrThrowArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExitRequest that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestFindFirstArgs} args - Arguments to find a ExitRequest
+     * @example
+     * // Get one ExitRequest
+     * const exitRequest = await prisma.exitRequest.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends ExitRequestFindFirstArgs>(args?: SelectSubset<T, ExitRequestFindFirstArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first ExitRequest that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestFindFirstOrThrowArgs} args - Arguments to find a ExitRequest
+     * @example
+     * // Get one ExitRequest
+     * const exitRequest = await prisma.exitRequest.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends ExitRequestFindFirstOrThrowArgs>(args?: SelectSubset<T, ExitRequestFindFirstOrThrowArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more ExitRequests that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all ExitRequests
+     * const exitRequests = await prisma.exitRequest.findMany()
+     * 
+     * // Get first 10 ExitRequests
+     * const exitRequests = await prisma.exitRequest.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const exitRequestWithIdOnly = await prisma.exitRequest.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends ExitRequestFindManyArgs>(args?: SelectSubset<T, ExitRequestFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a ExitRequest.
+     * @param {ExitRequestCreateArgs} args - Arguments to create a ExitRequest.
+     * @example
+     * // Create one ExitRequest
+     * const ExitRequest = await prisma.exitRequest.create({
+     *   data: {
+     *     // ... data to create a ExitRequest
+     *   }
+     * })
+     * 
+     */
+    create<T extends ExitRequestCreateArgs>(args: SelectSubset<T, ExitRequestCreateArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many ExitRequests.
+     * @param {ExitRequestCreateManyArgs} args - Arguments to create many ExitRequests.
+     * @example
+     * // Create many ExitRequests
+     * const exitRequest = await prisma.exitRequest.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends ExitRequestCreateManyArgs>(args?: SelectSubset<T, ExitRequestCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many ExitRequests and returns the data saved in the database.
+     * @param {ExitRequestCreateManyAndReturnArgs} args - Arguments to create many ExitRequests.
+     * @example
+     * // Create many ExitRequests
+     * const exitRequest = await prisma.exitRequest.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many ExitRequests and only return the `id`
+     * const exitRequestWithIdOnly = await prisma.exitRequest.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends ExitRequestCreateManyAndReturnArgs>(args?: SelectSubset<T, ExitRequestCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a ExitRequest.
+     * @param {ExitRequestDeleteArgs} args - Arguments to delete one ExitRequest.
+     * @example
+     * // Delete one ExitRequest
+     * const ExitRequest = await prisma.exitRequest.delete({
+     *   where: {
+     *     // ... filter to delete one ExitRequest
+     *   }
+     * })
+     * 
+     */
+    delete<T extends ExitRequestDeleteArgs>(args: SelectSubset<T, ExitRequestDeleteArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one ExitRequest.
+     * @param {ExitRequestUpdateArgs} args - Arguments to update one ExitRequest.
+     * @example
+     * // Update one ExitRequest
+     * const exitRequest = await prisma.exitRequest.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends ExitRequestUpdateArgs>(args: SelectSubset<T, ExitRequestUpdateArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more ExitRequests.
+     * @param {ExitRequestDeleteManyArgs} args - Arguments to filter ExitRequests to delete.
+     * @example
+     * // Delete a few ExitRequests
+     * const { count } = await prisma.exitRequest.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends ExitRequestDeleteManyArgs>(args?: SelectSubset<T, ExitRequestDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExitRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many ExitRequests
+     * const exitRequest = await prisma.exitRequest.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends ExitRequestUpdateManyArgs>(args: SelectSubset<T, ExitRequestUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more ExitRequests and returns the data updated in the database.
+     * @param {ExitRequestUpdateManyAndReturnArgs} args - Arguments to update many ExitRequests.
+     * @example
+     * // Update many ExitRequests
+     * const exitRequest = await prisma.exitRequest.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more ExitRequests and only return the `id`
+     * const exitRequestWithIdOnly = await prisma.exitRequest.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends ExitRequestUpdateManyAndReturnArgs>(args: SelectSubset<T, ExitRequestUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one ExitRequest.
+     * @param {ExitRequestUpsertArgs} args - Arguments to update or create a ExitRequest.
+     * @example
+     * // Update or create a ExitRequest
+     * const exitRequest = await prisma.exitRequest.upsert({
+     *   create: {
+     *     // ... data to create a ExitRequest
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the ExitRequest we want to update
+     *   }
+     * })
+     */
+    upsert<T extends ExitRequestUpsertArgs>(args: SelectSubset<T, ExitRequestUpsertArgs<ExtArgs>>): Prisma__ExitRequestClient<$Result.GetResult<Prisma.$ExitRequestPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of ExitRequests.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestCountArgs} args - Arguments to filter ExitRequests to count.
+     * @example
+     * // Count the number of ExitRequests
+     * const count = await prisma.exitRequest.count({
+     *   where: {
+     *     // ... the filter for the ExitRequests we want to count
+     *   }
+     * })
+    **/
+    count<T extends ExitRequestCountArgs>(
+      args?: Subset<T, ExitRequestCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], ExitRequestCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a ExitRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends ExitRequestAggregateArgs>(args: Subset<T, ExitRequestAggregateArgs>): Prisma.PrismaPromise<GetExitRequestAggregateType<T>>
+
+    /**
+     * Group by ExitRequest.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {ExitRequestGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends ExitRequestGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: ExitRequestGroupByArgs['orderBy'] }
+        : { orderBy?: ExitRequestGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, ExitRequestGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetExitRequestGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the ExitRequest model
+   */
+  readonly fields: ExitRequestFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for ExitRequest.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__ExitRequestClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the ExitRequest model
+   */
+  interface ExitRequestFieldRefs {
+    readonly id: FieldRef<"ExitRequest", 'String'>
+    readonly employeeId: FieldRef<"ExitRequest", 'String'>
+    readonly reasonToExit: FieldRef<"ExitRequest", 'String'>
+    readonly exitDate: FieldRef<"ExitRequest", 'DateTime'>
+    readonly exitInterview: FieldRef<"ExitRequest", 'String'>
+    readonly knowledgeTransferPlan: FieldRef<"ExitRequest", 'String'>
+    readonly documentUrl: FieldRef<"ExitRequest", 'String'>
+    readonly createdAt: FieldRef<"ExitRequest", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * ExitRequest findUnique
+   */
+  export type ExitRequestFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which ExitRequest to fetch.
+     */
+    where: ExitRequestWhereUniqueInput
+  }
+
+  /**
+   * ExitRequest findUniqueOrThrow
+   */
+  export type ExitRequestFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which ExitRequest to fetch.
+     */
+    where: ExitRequestWhereUniqueInput
+  }
+
+  /**
+   * ExitRequest findFirst
+   */
+  export type ExitRequestFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which ExitRequest to fetch.
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExitRequests to fetch.
+     */
+    orderBy?: ExitRequestOrderByWithRelationInput | ExitRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExitRequests.
+     */
+    cursor?: ExitRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExitRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExitRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExitRequests.
+     */
+    distinct?: ExitRequestScalarFieldEnum | ExitRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ExitRequest findFirstOrThrow
+   */
+  export type ExitRequestFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which ExitRequest to fetch.
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExitRequests to fetch.
+     */
+    orderBy?: ExitRequestOrderByWithRelationInput | ExitRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for ExitRequests.
+     */
+    cursor?: ExitRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExitRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExitRequests.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of ExitRequests.
+     */
+    distinct?: ExitRequestScalarFieldEnum | ExitRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ExitRequest findMany
+   */
+  export type ExitRequestFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * Filter, which ExitRequests to fetch.
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of ExitRequests to fetch.
+     */
+    orderBy?: ExitRequestOrderByWithRelationInput | ExitRequestOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing ExitRequests.
+     */
+    cursor?: ExitRequestWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` ExitRequests from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` ExitRequests.
+     */
+    skip?: number
+    distinct?: ExitRequestScalarFieldEnum | ExitRequestScalarFieldEnum[]
+  }
+
+  /**
+   * ExitRequest create
+   */
+  export type ExitRequestCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to create a ExitRequest.
+     */
+    data: XOR<ExitRequestCreateInput, ExitRequestUncheckedCreateInput>
+  }
+
+  /**
+   * ExitRequest createMany
+   */
+  export type ExitRequestCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many ExitRequests.
+     */
+    data: ExitRequestCreateManyInput | ExitRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ExitRequest createManyAndReturn
+   */
+  export type ExitRequestCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * The data used to create many ExitRequests.
+     */
+    data: ExitRequestCreateManyInput | ExitRequestCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * ExitRequest update
+   */
+  export type ExitRequestUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * The data needed to update a ExitRequest.
+     */
+    data: XOR<ExitRequestUpdateInput, ExitRequestUncheckedUpdateInput>
+    /**
+     * Choose, which ExitRequest to update.
+     */
+    where: ExitRequestWhereUniqueInput
+  }
+
+  /**
+   * ExitRequest updateMany
+   */
+  export type ExitRequestUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update ExitRequests.
+     */
+    data: XOR<ExitRequestUpdateManyMutationInput, ExitRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which ExitRequests to update
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * Limit how many ExitRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExitRequest updateManyAndReturn
+   */
+  export type ExitRequestUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * The data used to update ExitRequests.
+     */
+    data: XOR<ExitRequestUpdateManyMutationInput, ExitRequestUncheckedUpdateManyInput>
+    /**
+     * Filter which ExitRequests to update
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * Limit how many ExitRequests to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExitRequest upsert
+   */
+  export type ExitRequestUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * The filter to search for the ExitRequest to update in case it exists.
+     */
+    where: ExitRequestWhereUniqueInput
+    /**
+     * In case the ExitRequest found by the `where` argument doesn't exist, create a new ExitRequest with this data.
+     */
+    create: XOR<ExitRequestCreateInput, ExitRequestUncheckedCreateInput>
+    /**
+     * In case the ExitRequest was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<ExitRequestUpdateInput, ExitRequestUncheckedUpdateInput>
+  }
+
+  /**
+   * ExitRequest delete
+   */
+  export type ExitRequestDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+    /**
+     * Filter which ExitRequest to delete.
+     */
+    where: ExitRequestWhereUniqueInput
+  }
+
+  /**
+   * ExitRequest deleteMany
+   */
+  export type ExitRequestDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which ExitRequests to delete
+     */
+    where?: ExitRequestWhereInput
+    /**
+     * Limit how many ExitRequests to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * ExitRequest without action
+   */
+  export type ExitRequestDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ExitRequest
+     */
+    select?: ExitRequestSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the ExitRequest
+     */
+    omit?: ExitRequestOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -83263,6 +84388,20 @@ export namespace Prisma {
   };
 
   export type WarningScalarFieldEnum = (typeof WarningScalarFieldEnum)[keyof typeof WarningScalarFieldEnum]
+
+
+  export const ExitRequestScalarFieldEnum: {
+    id: 'id',
+    employeeId: 'employeeId',
+    reasonToExit: 'reasonToExit',
+    exitDate: 'exitDate',
+    exitInterview: 'exitInterview',
+    knowledgeTransferPlan: 'knowledgeTransferPlan',
+    documentUrl: 'documentUrl',
+    createdAt: 'createdAt'
+  };
+
+  export type ExitRequestScalarFieldEnum = (typeof ExitRequestScalarFieldEnum)[keyof typeof ExitRequestScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -89424,6 +90563,73 @@ export namespace Prisma {
     reason?: StringWithAggregatesFilter<"Warning"> | string
     details?: StringWithAggregatesFilter<"Warning"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Warning"> | Date | string
+  }
+
+  export type ExitRequestWhereInput = {
+    AND?: ExitRequestWhereInput | ExitRequestWhereInput[]
+    OR?: ExitRequestWhereInput[]
+    NOT?: ExitRequestWhereInput | ExitRequestWhereInput[]
+    id?: StringFilter<"ExitRequest"> | string
+    employeeId?: StringFilter<"ExitRequest"> | string
+    reasonToExit?: StringFilter<"ExitRequest"> | string
+    exitDate?: DateTimeFilter<"ExitRequest"> | Date | string
+    exitInterview?: StringFilter<"ExitRequest"> | string
+    knowledgeTransferPlan?: StringFilter<"ExitRequest"> | string
+    documentUrl?: StringNullableFilter<"ExitRequest"> | string | null
+    createdAt?: DateTimeFilter<"ExitRequest"> | Date | string
+  }
+
+  export type ExitRequestOrderByWithRelationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    reasonToExit?: SortOrder
+    exitDate?: SortOrder
+    exitInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ExitRequestWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: ExitRequestWhereInput | ExitRequestWhereInput[]
+    OR?: ExitRequestWhereInput[]
+    NOT?: ExitRequestWhereInput | ExitRequestWhereInput[]
+    employeeId?: StringFilter<"ExitRequest"> | string
+    reasonToExit?: StringFilter<"ExitRequest"> | string
+    exitDate?: DateTimeFilter<"ExitRequest"> | Date | string
+    exitInterview?: StringFilter<"ExitRequest"> | string
+    knowledgeTransferPlan?: StringFilter<"ExitRequest"> | string
+    documentUrl?: StringNullableFilter<"ExitRequest"> | string | null
+    createdAt?: DateTimeFilter<"ExitRequest"> | Date | string
+  }, "id">
+
+  export type ExitRequestOrderByWithAggregationInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    reasonToExit?: SortOrder
+    exitDate?: SortOrder
+    exitInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    _count?: ExitRequestCountOrderByAggregateInput
+    _max?: ExitRequestMaxOrderByAggregateInput
+    _min?: ExitRequestMinOrderByAggregateInput
+  }
+
+  export type ExitRequestScalarWhereWithAggregatesInput = {
+    AND?: ExitRequestScalarWhereWithAggregatesInput | ExitRequestScalarWhereWithAggregatesInput[]
+    OR?: ExitRequestScalarWhereWithAggregatesInput[]
+    NOT?: ExitRequestScalarWhereWithAggregatesInput | ExitRequestScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"ExitRequest"> | string
+    employeeId?: StringWithAggregatesFilter<"ExitRequest"> | string
+    reasonToExit?: StringWithAggregatesFilter<"ExitRequest"> | string
+    exitDate?: DateTimeWithAggregatesFilter<"ExitRequest"> | Date | string
+    exitInterview?: StringWithAggregatesFilter<"ExitRequest"> | string
+    knowledgeTransferPlan?: StringWithAggregatesFilter<"ExitRequest"> | string
+    documentUrl?: StringNullableWithAggregatesFilter<"ExitRequest"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"ExitRequest"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -96535,6 +97741,83 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
+  export type ExitRequestCreateInput = {
+    id?: string
+    employeeId: string
+    reasonToExit: string
+    exitDate: Date | string
+    exitInterview: string
+    knowledgeTransferPlan: string
+    documentUrl?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ExitRequestUncheckedCreateInput = {
+    id?: string
+    employeeId: string
+    reasonToExit: string
+    exitDate: Date | string
+    exitInterview: string
+    knowledgeTransferPlan: string
+    documentUrl?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ExitRequestUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    reasonToExit?: StringFieldUpdateOperationsInput | string
+    exitDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    exitInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExitRequestUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    reasonToExit?: StringFieldUpdateOperationsInput | string
+    exitDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    exitInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExitRequestCreateManyInput = {
+    id?: string
+    employeeId: string
+    reasonToExit: string
+    exitDate: Date | string
+    exitInterview: string
+    knowledgeTransferPlan: string
+    documentUrl?: string | null
+    createdAt?: Date | string
+  }
+
+  export type ExitRequestUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    reasonToExit?: StringFieldUpdateOperationsInput | string
+    exitDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    exitInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type ExitRequestUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    employeeId?: StringFieldUpdateOperationsInput | string
+    reasonToExit?: StringFieldUpdateOperationsInput | string
+    exitDate?: DateTimeFieldUpdateOperationsInput | Date | string
+    exitInterview?: StringFieldUpdateOperationsInput | string
+    knowledgeTransferPlan?: StringFieldUpdateOperationsInput | string
+    documentUrl?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -100519,6 +101802,39 @@ export namespace Prisma {
     date?: SortOrder
     reason?: SortOrder
     details?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ExitRequestCountOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    reasonToExit?: SortOrder
+    exitDate?: SortOrder
+    exitInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ExitRequestMaxOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    reasonToExit?: SortOrder
+    exitDate?: SortOrder
+    exitInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrder
+    createdAt?: SortOrder
+  }
+
+  export type ExitRequestMinOrderByAggregateInput = {
+    id?: SortOrder
+    employeeId?: SortOrder
+    reasonToExit?: SortOrder
+    exitDate?: SortOrder
+    exitInterview?: SortOrder
+    knowledgeTransferPlan?: SortOrder
+    documentUrl?: SortOrder
     createdAt?: SortOrder
   }
 

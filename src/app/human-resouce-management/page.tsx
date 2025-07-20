@@ -141,7 +141,7 @@ if (loading) return (
     {title:"List Pending Disciplinaries",link:"/human-resouce-management/",permission:"ListPendingDisciplinaries",image:StudIcon},
     {title:"Final Disciplinary Hearing",link:"/human-resouce-management/pos-report",permission:"FinalDisciplinaryHearin",image:StudIcon},
     {title:"Disciplinary Case-Closure",link:"/human-resouce-management/",permission:"DisciplinaryCaseClosure",image:StudIcon},
-    {title:"RequestExit",link:"/human-resouce-management/pos-report",permission:"RequestExit",image:StudIcon},
+    {title:"RequestExit",link:"/human-resouce-management/request-exit",permission:"RequestExit",image:StudIcon},
     {title:"ReviewExitRequestandApproval",link:"/human-resouce-management/",permission:"ReviewExitRequestandApproval",image:StudIcon},
     {title:"Employee Exit",link:"/human-resouce-management/pos-report",permission:"EmployeeExit",image:StudIcon},
     {title:"Employee Transfer Request",link:"/human-resouce-management/",permission:"EmployeeTransferRequest",image:StudIcon},
