@@ -1166,6 +1166,16 @@ exports.Prisma.PromotionRequestScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.MpesaTransactionScalarFieldEnum = {
+  id: 'id',
+  transactionId: 'transactionId',
+  phone: 'phone',
+  amount: 'amount',
+  paymentTime: 'paymentTime',
+  billRef: 'billRef',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -1260,7 +1270,8 @@ exports.Prisma.ModelName = {
   Warning: 'Warning',
   ExitRequest: 'ExitRequest',
   TransferRequest: 'TransferRequest',
-  PromotionRequest: 'PromotionRequest'
+  PromotionRequest: 'PromotionRequest',
+  MpesaTransaction: 'MpesaTransaction'
 };
 
 /**

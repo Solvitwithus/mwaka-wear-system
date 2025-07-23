@@ -205,7 +205,7 @@ try {
   const fetchPayments = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await axios.get<Payment[]>("/api/auth/c2b-confirmation");
+      const response = await axios.get<Payment[]>("/api/mpesa/recent");
       setPayments(response.data);
     } catch (error) {
       console.error("❌ Failed to fetch M-Pesa payments:", error);

@@ -1144,3 +1144,13 @@ model PromotionRequest {
   approver          String?     // e.g., full name of approver
   createdAt         DateTime @default(now())
 }
+model MpesaTransaction {
+  id            String   @id @default(cuid())
+  transactionId String   @unique
+  phone         String
+  amount        Float
+  paymentTime   DateTime
+  billRef       String?
+  createdAt     DateTime @default(now())
+}
+
